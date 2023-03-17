@@ -41,7 +41,7 @@ UAL.EUAL2.valeurBinaire = 0b0101010101010101;
 // Exécuter les méthodes Add() et Sub()
 console.log("UAL1:" , UAL.EUAL1.valeurBinaire);
 console.log("Addition:", UAL.Add()); // Résultat attendu : 65535 (0xFFFF en hexadécimal)
-console.log("Soustraction:", UAL.Sub()); // Résultat attendu : 5461 (0x1555 en hexadécimal)
+console.log("Soustraction:", UAL.Sub()); // Résultat attendu : 21845 (0x1555 en hexadécimal)
 console.log("Incrementation", UAL.Inc()); // Résultat attendu : 43691
 console.log("Soustraction", UAL.Dec()); // Résultat attendu : 43698
 
