@@ -2,20 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const app = express();
+  
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost/myproject', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+//routes
+app.get('/',(req,res)=>{
+res.send('hello world !!!');
 });
 
-// Define routes
-app.get('/', (req, res) => {
-  res.send('Hello, world!');
-});
 
+app.get('/Welcome',(req,res)=>{
+    res.send('Welcome to Simulify !');
+})
+ 
 // Start the server
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+app.listen(3000,()=>{
+   console.log('index is running on port 3000')
 });
