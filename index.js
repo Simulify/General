@@ -1,21 +1,23 @@
 const express = require('express');
-const mongoose = require('mongoose');
 
 const app = express();
+//routes
+app.get('/',(req,res)=>{
+res.send('hello world !');
+});
+const dotenv = require('dotenv');
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost/myproject', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+
+// Start the server 
+app.listen(3000,()=>{
+   console.log('index.js is running on port 3000')
 });
 
-// Define routes
-app.get('/', (req, res) => {
-  res.send('Hello, world!');
-});
+const connectDB = require('./config/db');
+//Load Config
+dotenv.config({ path: '.config/config.env'});
 
-// Start the server
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
-});
+connectDB();
+
+
+
