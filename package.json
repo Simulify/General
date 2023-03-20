@@ -2,9 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "xxx",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "express": "^4.18.2",
     "mongodb": "^5.1.0",
     "mongoose": "^7.0.1",
-    "nodemon": "^2.0.21"
+    "nodemon": "^2.0.21",
+    "router": "^1.3.8"
   }
 }
