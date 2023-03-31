@@ -20,8 +20,7 @@ connectDB();
 // Set up middleware to parse JSON data
 app.use(express.json());
 
-// Use the indexRoutes module for all requests starting with '/api/users'
-app.use('/api/users', indexRoutes);
+
 
 // Use the indexRoutes module for all other requests
 app.use('/', indexRoutes);
@@ -33,7 +32,3 @@ module.exports = app;
 app.listen(process.env.PORT || 3000, () => {
   console.log('Server is running on port 3000');
 });
-/* In summary, this code sets up an Express server, loads environment variables from a config file,
- connects to a database, sets up middleware to parse JSON data, and specifies the routing of requests
-  using the indexRoutes module. Finally, it exports the app for use in other modules and starts the 
-  server on the specified port.*/

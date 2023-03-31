@@ -1,86 +1,180 @@
 // Importing required modules and packages
 const express = require('express'); // Importing Express web framework
 const router = express.Router(); // Creating a router instance
-const { User } = require('../models/User'); // Importing User model
+const { User}  =require('../models/User');  // Importing User model 
 const dotenv = require('dotenv'); // Importing dotenv package
 const session = require('express-session'); // Importing express-session package
 
 dotenv.config({ path: './config/config.env' }); // Loading environment variables from .env file
 
-// Beginning Auth0 snippet
-const { auth } = require('express-openid-connect'); // Importing Auth0 package
-
-const config = {
-  authRequired: false,
-  auth0Logout: true,
-  secret: process.env.SESSION_SECRET,
-  baseURL: process.env.BASE_URL,
-  clientID:process.env.AUTH0_CLIENT_ID,
-  issuerBaseURL:process.env.AUTH0_ISSUER_BASE_URL
-}; // Configuration object for Auth0
-
-// Attaching /login, /logout, and /callback routes to the router instance
-router.use(auth(config));
-
-// Route to handle GET request for the root URL
-// If the user is not authenticated, redirect to /login URL
-router.get('/', (req, res) => {
-  if (!req.oidc.isAuthenticated()) {
-    return res.redirect('/login');
-  }
-  res.send('Logged in');
-});
-
-// Route to handle GET request for /login URL
-// Calls auth middleware to authenticate the user
-// Redirects to root URL
-router.get('/login', auth(config), (req, res) => {
-  res.redirect('/');
-});
-
-// End Auth0 snippet
-
-// Middleware to require authentication to access /profile URL
-const { requiresAuth } = require('express-openid-connect');
-
-// Route to handle GET request for /profile URL
-// Requires authentication to access the route
-// Sends a JSON response with the authenticated user's information
-router.get('/profile', requiresAuth(), (req, res) => {
-  res.send(JSON.stringify(req.oidc.user));
-});
-
-// Route to handle POST request to create a new user
-router.post('/users', async (req, res) => {
+// Define the POST endpoint to create a new user
+router.post('/users', async (req, res) => { //tick
   try {
-    const { email, password, username, level, created_at, codes } = req.body;
-    const user = new User({ email, password, username, level, created_at, codes }); // Creating a new user instance
-    await user.save(); // Saving the new user to the database
-    res.status(201).json(user); // Sending a JSON response with the new user's information
+    const user = new User(req.body);
+    await user.save();
+    console.log('User saved to database:', user);
+    res.status(201).send(user);
+  } catch (err) {
+    console.error('Failed to create user:', err);
+    res.status(400).send(err);
+  }
+});
+
+
+// Set up of the session property
+router.use(session({
+  secret: process.env.MY_SECRET_KEY,
+  resave: false,
+  saveUninitialized: true
+}));
+
+
+
+
+
+// Get all users
+router.get('/users/:userId', async (req, res) => {//tick
+  try {
+    const users = await User.find();
+    console.log('All users retrieved:', users);
+    res.status(200).send(users);
+  } catch (err) {
+    console.error('Failed to retrieve users:', err);
+    res.status(500).send(err);
+  }
+});
+
+
+
+
+// Get a user by ID
+router.get('/users', async (req, res) => { //tick
+  try {
+    const userId = req.query.userId;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).send({error: 'User not found'});
+    }
+    console.log('User retrieved:', user);
+    res.status(200).send(user);
+  } catch (err) {
+    console.error('Failed to retrieve user:', err);
+    res.status(500).send(err);
+  }
+});
+
+
+
+
+// Delete a user by ID
+router.delete('/users/:userId', async (req, res) => { //tick
+  try {
+    const userId = req.params.userId;
+    const deletedUser = await User.findByIdAndDelete(userId);
+    if (!deletedUser) {
+      return res.status(404).send({error: 'User not found'});
+    }
+    console.log('User deleted:', deletedUser);
+    res.status(200).send(deletedUser);
+  } catch (err) {
+    console.error('Failed to delete user:', err);
+    res.status(500).send(err);
+  }
+});
+
+
+
+
+
+// Create a new code for a user
+router.post('/users/:userId/codes', async (req, res) => { //tick
+  try {
+    const userId = req.params.userId;
+    const codeData = req.body;
+    const newCode = await createCode(userId, codeData);
+    console.log('New code created:', newCode);
+    res.status(201).send(newCode);
+  } catch (err) {
+    console.error('Failed to create code:', err);
+    res.status(500).send(err);
+  }
+});
+
+async function createCode(userId, codeData) { //tick
+  const user = await User.findById(userId);
+
+  const newCode = {
+    title: codeData.title,
+    codeHexa: codeData.codeHexa,
+    type: codeData.type,
+    description: codeData.description // Use the new description field
+  };
+
+  user.codes.push(newCode);
+  await user.save();
+
+  return user.codes[user.codes.length - 1]; // Return the newly created code
+}
+
+// Read a code by ID for a user
+router.get('/users/:userId/codes/:codeId', async (req, res) => {//tick
+  try {
+    const userId = req.params.userId;
+    const codeId = req.params.codeId;
+    const code = await getCode(userId, codeId);
+    console.log('Code found:', code);
+    res.status(200).send(code);
+  } catch (err) {
+    console.error('Failed to find code:', err);
+    res.status(404).send({ error: err.message });
+  }
+});
+
+//Read a code 
+async function getCode(userId, codeId) {//tick
+  const user = await User.findById(userId);
+
+  const code = user.codes.id(codeId);
+
+  if (!code) {
+    throw new Error('Code not found');
+  }
+
+  return code;
+}
+
+// Update a code by ID
+router.put('/users/:userId/codes/:codeId', async (req, res) => {//tick
+  try {
+    const user = await User.findById(req.params.userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const code = user.codes.id(req.params.codeId);
+    if (!code) {
+      return res.status(404).json({ message: 'Code not found' });
+    }
+
+    // Update the code properties
+    if (req.body.title) {//tick
+      code.title = req.body.title;
+    }
+    if (req.body.codeHexa) {
+      code.codeHexa = req.body.codeHexa;
+    }
+    if (req.body.type) {
+      code.type = req.body.type;
+    }
+
+    await user.save();
+    res.json(code);
   } catch (err) {
     console.error(err);
-    res.status(500).send('Server error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
-// Route to handle GET request to retrieve all users
-router.get('/users', async (req, res) => {
-  try {
-    const users = await User.find(); // Finding all users in the database
-    res.json(users); // Sending a JSON response with all users' information
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Server error');
-  }
-});
-
-module.exports = router; // Exporting the router instance
 
 
-
-/*This code defines routes for a Node.js application using the Express framework. 
-It includes functionality for user authentication using Auth0, as well as CRUD (Create, Read, Update, Delete) 
-operations for a user model. 
-The code also loads configuration variables from a .env file using the dotenv package.
- Overall, this code serves as a basic template for building a Node.js application with user
-  authentication and database functionality.*/
+module.exports=router;
