@@ -442,7 +442,7 @@ code {
   width: 80%;
   grid-column: 7 / span 2;
   grid-row: 3 / span 1;
-  transform: translateY(100%);
+  transform: translateY(80%);
   display: flex;
   align-items: center;
   background-color: #DCEFFD;
@@ -485,7 +485,7 @@ code {
 
 .UcToRi .rectangle {
   width: 14.5px;
-  height:  52%;
+  height:  46%;
   border: 1px solid #023047;
 }
 
@@ -517,7 +517,7 @@ code {
 
 .RimToRi .rectangle {
   width: 22.5px;
-  height: 229.5px;
+  height: 223px;
   border: 1px solid #023047;
 }
 
@@ -529,7 +529,7 @@ code {
   align-items: center;
   grid-row: 2 / span 1;
   grid-column: 8 / span 3;
-  transform: translateY(295px);
+  transform: translateY(289px);
   margin-left: 17.8%;
 }
 
