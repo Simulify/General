@@ -1,0 +1,753 @@
+body {
+  margin: 0;
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+   color: #023047;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 50px ;
+  margin: auto;
+  align-items: start;
+}
+
+/**********************************************/
+.Simulation .h1 {
+  position: absolute;
+  top: 0%;
+  margin-left: 7%;
+}
+
+/*********************************************/
+
+.RegistresEtBus {
+  grid-column: 4 / span 1;
+  position: relative;
+}
+
+.Registre{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #DCEFFD;
+  border: 1px solid #00A6FB;
+  border-radius: 5px;
+  margin-bottom: 2px;
+}
+
+.C1 ,.C2, .C3 {
+  border-right: 1px solid #00A6FB;
+  padding: 3px 8px;
+}
+
+.C4 {
+  padding: 3px 8px;
+}
+
+.RegBus {
+  height: 100%;
+  position: absolute;
+  right: 32%;
+  top: 99%;
+}
+
+.RegBus .triangleHaut, .RegBus .triangleBas {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+
+.RegBus .triangleHaut {
+  border-bottom: 15px solid #023047;
+}
+
+.RegBus .triangleBas {
+  border-top: 15px solid #023047;
+}
+
+.RegBus .rectangle {
+  width: 14.4px;
+  height: 54%;
+  border: 1px solid #023047;
+}
+
+.NomReg .nom{
+  padding: 5px;
+  font-size: 15px;
+}
+
+.RegEtNom {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*********************************************************/
+
+.PileEtBus {
+  grid-column: 6 / span 1;
+  position: relative;
+  border: 1px solid #023047;
+  border-radius: 10px;
+}
+
+.RegistrePile {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #00A6FB;
+}
+
+.RegistrePile8 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.PileBus {
+  position: absolute;
+  top: 100%;
+  left: 33.5%;
+  height: 30%;
+  transform: translateX(50%);
+}
+
+.PileBus .triangleHaut, .PileBus .triangleBas {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+
+.PileBus .triangleHaut {
+  border-bottom: 15px solid #023047;
+}
+
+.PileBus .triangleBas {
+  border-top: 15px solid #023047;
+}
+
+.PileBus .rectangle {
+  width: 14px;
+  height: 20%;
+  border: 1px solid #023047;
+}
+
+/************************************************/
+.COBus {
+  grid-column: 8 / span 1;
+  position: relative;
+}
+
+.CO {
+  border: 1px solid #00A6FB;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-column: 7 / span 1;
+}
+
+.Co, .Co4 {
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.Co {
+  border-right: 1px solid #00A6FB;
+}
+
+/*********************************************/
+.BusCo {
+  position: absolute;
+  left: 43%;
+  height: 140%;
+}
+
+.BusCo .triangleHaut, .BusCo .triangleBas {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+
+.BusCo .triangleHaut {
+  border-bottom: 15px solid #023047;
+}
+
+.BusCo .triangleBas {
+  border-top: 15px solid #023047;
+}
+
+.BusCo .rectangle {
+  width: 14.5px;
+  height: 100%;
+  border: 1px solid #023047;
+}
+
+/**********************************************/
+.CoToRam {
+  grid-column: 8 / span 2;
+  width: 190%;
+  position: absolute;
+  transform: translateY(180%);
+  display: flex;
+  align-items: center;
+}
+
+.CoToRam .rectangle {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #023047;
+
+}
+
+.CoToRam .triangleDroit {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 40px solid #023047;
+}
+
+/*************************************************/
+
+.RamBusAdr {
+  position: absolute;
+  transform: translateY(84%);
+  right: 43%;
+}
+
+.RamBusAdr .triangleHaut, .RamBusAdr .triangleBas {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+
+.RamBusAdr .triangleHaut {
+  border-bottom: 15px solid #023047;
+}
+
+.RamBusAdr .triangleBas {
+  border-top: 15px solid #023047;
+}
+
+.RamBusAdr .rectangle {
+  width: 14.5px;
+  height: 98px;
+  border: 1px solid #023047;
+}
+
+/**************************************************/
+.Memoire {
+  height: 250px;
+  overflow-y: scroll;
+  border: 2px solid #00A6FB;
+  border-radius: 5px;
+}
+
+.Memoire::-webkit-scrollbar {
+  width: 5px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.Memoire::-webkit-scrollbar-thumb {
+  background-color: #CFEFFF;
+  height: 20px;
+  border-radius: 5px;
+}
+
+.CaseMemoire {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #00A6FB;
+}
+
+.case {
+  border-right: 1px solid #00A6FB;
+  padding: 3px 15px;
+  text-align: center;
+}
+
+/********************************************/
+
+.MemoireRam {
+  grid-column: 10 / span 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.Ram, .Flags {
+  width: 30px;
+  border: 1px solid #00A6FB;
+  border-radius: 5px;
+  background-color: #DCEFFD;
+}
+
+.ram {
+  padding: 5px;
+  border-bottom: 1px solid #00A6FB;
+  text-align: center;
+}
+
+.ramf {
+  padding: 5px;
+  text-align: center;
+}
+
+/*********************************************/
+
+.Rim {
+  margin-top: 10px;
+  left: 26%;
+  background-color: #DCEFFD;
+  border: 1px solid #00A6FB;
+  border-radius: 5px;
+  display: flex;
+  position: absolute;
+}
+
+/***********************************************/
+
+.BusDonnees {
+  height: 30px;
+  width: 100%;
+  border: 2px solid #023047;
+  grid-row: 2 / span 1;
+  grid-column: 3 / span 7;
+  text-align: center;
+  font-size: large;
+  transform: translateY(41%);
+  color: #00A6FB;
+  font-size: 17px;
+}
+
+/**************************************************/
+
+.UAL {
+  height: 100%;
+  grid-row: 2 / span 1;
+  grid-column: 4 / span 2;
+  text-align: center;
+  font-size: large;
+  margin-top: 100px ;
+  position: relative;
+}
+
+.UAL .ual1 {
+    height: 40%;
+    border-top: 2px solid #023047;
+    border-left: 2px solid #023047;
+    border-right: 2px solid #023047;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.UAL .ual2 {
+  display: flex;
+  height: 70px;
+}
+
+.UAL .ual2 .r1 , .UAL .ual2 .r3{
+    width: 40%;
+    border-left: 2px solid #023047;
+    border-right: 2px solid #023047;
+    border-bottom: 2px solid #023047;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+}
+
+.UAL .ual2 .r2{
+    width: 40%;
+    border-top: 2px solid #023047;
+}
+
+.UAL .text {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  transform: translateX(-50%);
+}
+
+.Euals {
+  grid-row: 3 / span 1;
+  grid-column: 4 / span 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.Eual {
+  display: flex;
+  border: 1px solid #00A6FB;
+  border-radius: 5px;
+  justify-content: space-between;
+  margin-top: 10%;
+}
+
+.Eual .eual {
+  padding: 2px;
+  border-right: 1px solid #00A6FB;
+}
+
+.Eual .eualf {
+  padding: 2px;
+}
+
+/************************************************/
+.Flags {
+  grid-row: 2 / span 1;
+  grid-column:  3 / span 1;
+  margin-top: 125px;
+}
+/************************************************/
+
+.UC {
+  grid-row: 2 / span 1;
+  grid-column: 7 / span 2;
+  width: 80%;
+  height: 100px;
+  border: 2px solid #00A6FB;
+  border-radius: 10px;
+  transform: translateY(100%);  
+  position: relative;
+}
+
+.UC .text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/**********************************************/
+
+.Ri {
+  width: 80%;
+  grid-column: 7 / span 2;
+  grid-row: 3 / span 1;
+  transform: translateY(100%);
+  display: flex;
+  align-items: center;
+  background-color: #DCEFFD;
+  border: 1px solid #00A6FB;
+  border-radius: 5px;
+}
+
+.Ri .ri {
+  border-right: 1px solid #023047 ;
+  padding: 3% 10%;
+}
+
+.Ri .ri4 {
+  padding: 3% 10%;
+}
+
+.UcToRi {
+  position: absolute;
+  grid-row: 2 / span 1;
+  grid-column: 6 / span 1;
+  top: 102%;
+  left: 45.15%;
+  height: 100%;
+}
+
+.UcToRi .triangleHaut, .UcToRi .triangleBas {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+
+.UcToRi .triangleHaut {
+  border-bottom: 15px solid #023047;
+}
+
+.UcToRi .triangleBas {
+  border-top: 15px solid #023047;
+}
+
+.UcToRi .rectangle {
+  width: 14.5px;
+  height:  52%;
+  border: 1px solid #023047;
+}
+
+/*********************************************/
+
+.RimToRi {
+  position: absolute;
+  grid-row: 2 / span 1;
+  grid-column: 6 / span 1;
+  top: calc(100% + 43px);
+  left: 50%;
+}
+
+.BusDonneesEual {
+  grid-row: 2 / span 3;
+  grid-column: 6 / span 1;
+  margin-top: 22px;
+  transform: translateX(38%);
+
+}
+
+.RimToRi .triangleHaut, .BusDonneesEual .triangleHaut{
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 24px solid #023047;
+}
+
+.RimToRi .rectangle {
+  width: 22.5px;
+  height: 229.5px;
+  border: 1px solid #023047;
+}
+
+/*************************************************/
+
+.RimToUc {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  grid-row: 2 / span 1;
+  grid-column: 8 / span 3;
+  transform: translateY(295px);
+  margin-left: 17.8%;
+}
+
+.RimToUc .triangleGauche, .BusEual .triangleGauche, .RimBusDonnees .triangleGauche {
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 24px solid #023047;
+}
+
+.RimToUc .rectangle {
+  width: 58.6%;
+  height: 22.5px;
+  border: 1px solid #023047;
+}
+
+/*************************************************/
+.UalBusDonnees {
+  left: 50%;
+  grid-row: 2;
+  grid-column: 4;
+  transform: translateY(82%); 
+  margin-left: 56%;
+}
+
+.BusDonneesEual .rectangle{
+  width: 22.5px;
+  height: 244px;
+  border-top: 1px solid #023047;
+  border-right: 1px solid #023047;
+  border-left: 1px solid #023047;
+}
+
+.BusDonneesEual {
+  margin-left: 40px;
+  transform: translateY(25px);
+  height: 100%;
+}
+
+.UcBusDonnees {
+  grid-row: 2;
+  grid-column: 7;
+  transform: translateY(81%);
+  margin-left: 75%;
+}
+
+.UalBusDonnees .triangleHaut, .UalBusDonnees .triangleBas ,.UcBusDonnees .triangleHaut, .UcBusDonnees .triangleBas{
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+
+.UalBusDonnees .triangleHaut ,.UcBusDonnees .triangleHaut {
+  border-bottom: 15px solid #023047;
+}
+
+.UalBusDonnees .triangleBas, .UcBusDonnees .triangleBas {
+  border-top: 15px solid #023047;
+}
+
+.UcBusDonnees .rectangle {
+  width: 14.2px;
+  height: 27px;
+  border: 1px solid #023047;
+}
+
+.UalBusDonnees .rectangle {
+  width: 14.5px;
+  height:25px;
+  border: 1px solid #023047;
+}
+
+/************************************************/
+.BusEual {
+  width: 87.2%;
+  display: flex;
+  align-items: center;
+  grid-row: 3 / span 2;
+  grid-column: 4 / span 3;
+  transform: translateY(250%);
+}
+
+.BusEual .rectangle {
+  width: 100%;
+  height: 22px;
+  border: 1px solid #023047;
+}
+
+.RimBusDonnees {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  grid-row: 2 / span 2;
+  grid-column: 9 / span 3;
+  transform: translateY(445%);
+}
+
+.RimBusDonnees .rectangle {
+  width: 44.5%;
+  height: 22px;
+  border-bottom: 1px solid #023047;
+  border-top: 1px solid #023047;
+}
+
+/************************************************/
+
+.Sidebar {
+  position: absolute;
+  width: 65px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #F8F9FA;
+  box-shadow: 21px 3px 8px rgba(186, 201, 216, 0.01), 12px 2px 7px rgba(186, 201, 216, 0.04), 5px 1px 5px rgba(186, 201, 216, 0.07), 1px 0px 3px rgba(186, 201, 216, 0.08), 0px 0px 0px rgba(186, 201, 216, 0.08);
+  transition: all 0.5s ease;
+}
+
+.logo svg{
+  margin-top: 15px;
+  margin-left: 5px;
+  width: 50px;
+  height: 50px;
+}
+
+.Sidebar ul {
+  position:absolute;
+  top: 80px;
+  left: auto;
+  height: auto;
+  padding: 0;
+  width: 100%;
+}
+
+.Sidebar ul li{
+  width:  75%;
+  height: 50px;
+  margin-top: 9px;
+  margin-left: 8px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  background-color: #F8F9FA;
+  border-radius: 16px;
+}
+
+.Sidebar a svg{
+position: absolute;
+left: 20px;
+width: 27px;
+height: 27px;
+top: 522px;
+}
+
+.exit path, .icon path,.simuicon path{
+  fill: #00A6FB;
+}
+.homeicon path{
+  stroke: #00A6FB;
+}
+
+.homeicon svg{
+  width: 30px;
+  height: 30px;
+}
+.icon svg{
+  width: 26px;
+  height: 26px;
+}
+.simuicon svg{
+  width: 29px;
+  height: 29px;
+} 
+
+.Sidebar ul li:hover{
+  cursor: pointer;
+  background-color: #CFEFFF;
+  transition: all 0.3s ease;
+}
+
+.Sidebar #active {
+  cursor:default;
+  background-color: #00A6FB;
+}
+#active .homeicon path {
+  stroke: #F8F9FA;
+}
+#active .simuicon path,#active .icon path {
+  fill: #F8F9FA;
+}
+
+@media (min-width: 1370px) and (max-width: 1510px) {
+  .RimBusDonnees .rectangle {
+    width: 43.5%;
+  }
+  
+  .BusEual {
+    width: 88.5%;
+  }
+
+  
+.RimToUc {
+  margin-left: 19.5%;
+}
+
+.RimToUc .rectangle {
+  width: 56%;
+}
+
+.CoToRam {
+  width: 175.5%;
+}
+
+}
+
+
+
