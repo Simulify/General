@@ -593,7 +593,7 @@ code {
 }
 
 .UcBusDonnees .rectangle {
-  width: 14.2px;
+  width: 14.5px;
   height: 27px;
   border: 1px solid #023047;
 }
@@ -637,93 +637,6 @@ code {
 }
 
 /************************************************/
-
-.Sidebar {
-  position: absolute;
-  width: 65px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background: #F8F9FA;
-  box-shadow: 21px 3px 8px rgba(186, 201, 216, 0.01), 12px 2px 7px rgba(186, 201, 216, 0.04), 5px 1px 5px rgba(186, 201, 216, 0.07), 1px 0px 3px rgba(186, 201, 216, 0.08), 0px 0px 0px rgba(186, 201, 216, 0.08);
-  transition: all 0.5s ease;
-}
-
-.logo svg{
-  margin-top: 15px;
-  margin-left: 5px;
-  width: 50px;
-  height: 50px;
-}
-
-.Sidebar ul {
-  position:absolute;
-  top: 80px;
-  left: auto;
-  height: auto;
-  padding: 0;
-  width: 100%;
-}
-
-.Sidebar ul li{
-  width:  75%;
-  height: 50px;
-  margin-top: 9px;
-  margin-left: 8px;
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
-  background-color: #F8F9FA;
-  border-radius: 16px;
-}
-
-.Sidebar a svg{
-position: absolute;
-left: 20px;
-width: 27px;
-height: 27px;
-top: 522px;
-}
-
-.exit path, .icon path,.simuicon path{
-  fill: #00A6FB;
-}
-.homeicon path{
-  stroke: #00A6FB;
-}
-
-.homeicon svg{
-  width: 30px;
-  height: 30px;
-}
-.icon svg{
-  width: 26px;
-  height: 26px;
-}
-.simuicon svg{
-  width: 29px;
-  height: 29px;
-} 
-
-.Sidebar ul li:hover{
-  cursor: pointer;
-  background-color: #CFEFFF;
-  transition: all 0.3s ease;
-}
-
-.Sidebar #active {
-  cursor:default;
-  background-color: #00A6FB;
-}
-#active .homeicon path {
-  stroke: #F8F9FA;
-}
-#active .simuicon path,#active .icon path {
-  fill: #F8F9FA;
-}
 
 @media (min-width: 1370px) and (max-width: 1510px) {
   .RimBusDonnees .rectangle {
