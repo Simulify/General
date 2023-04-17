@@ -1,6 +1,6 @@
 import React from "react";
 import "./File.css";
-import file from "../img/File.svg"
+import file from "../Images/File.svg"
 
 function File(props) {
   return (

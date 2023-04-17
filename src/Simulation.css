@@ -428,12 +428,13 @@ code {
   border-radius: 10px;
   transform: translateY(100%);  
   position: relative;
+  text-align: center;
 }
 
 .UC .text {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 42%;
+  top: 18%;
 }
 
 /**********************************************/
@@ -442,7 +443,7 @@ code {
   width: 80%;
   grid-column: 7 / span 2;
   grid-row: 3 / span 1;
-  transform: translateY(100%);
+  transform: translateY(80%);
   display: flex;
   align-items: center;
   background-color: #DCEFFD;
@@ -485,7 +486,7 @@ code {
 
 .UcToRi .rectangle {
   width: 14.5px;
-  height:  52%;
+  height:  46%;
   border: 1px solid #023047;
 }
 
@@ -517,7 +518,7 @@ code {
 
 .RimToRi .rectangle {
   width: 22.5px;
-  height: 229.5px;
+  height: 223px;
   border: 1px solid #023047;
 }
 
@@ -529,7 +530,7 @@ code {
   align-items: center;
   grid-row: 2 / span 1;
   grid-column: 8 / span 3;
-  transform: translateY(295px);
+  transform: translateY(289px);
   margin-left: 17.8%;
 }
 
@@ -660,6 +661,130 @@ code {
   width: 175.5%;
 }
 
+}
+
+
+@media (min-width: 1200px) and (max-width: 1370px) {
+  .RimBusDonnees .rectangle {
+    width: 42.5%;
+  }
+  
+  .BusEual {
+    width: 88.5%;
+  }
+
+  
+.RimToUc {
+  margin-left: 19.5%;
+}
+
+.RimToUc .rectangle {
+  width: 56%;
+}
+
+.CoToRam {
+  width: 158%;
+}
+
+}
+
+@media (min-height: 560px) and (max-height: 600px) {
+ 
+  .Co, .Co4 {
+    padding: 3px 10px;
+  }
+    
+  .C1 ,.C2, .C3 {
+    padding: 1px 8px;
+  }
+
+  .C4 {
+    padding: 1px 8px;
+  }
+
+  .UAL .ual1 {
+    height: 35%;
+  }
+
+  .UAL .ual2 {
+    height: 20%;
+  }
+
+  .UAL .ual2 .r1 , .UAL .ual2 .r3{
+    width: 50%;
+  }
+
+  .Eual {
+    margin-top: 2%;
+  }
+
+  .Eual .eual, .Eual .eualf {
+    padding: 1px 2px;
+    font-size: 12px;
+  }
+
+  .BusDonneesEual .rectangle{
+    width: 22.5px;
+    height: 182px;
+  }
+  
+  .BusEual {
+    transform: translateY(125%);
+    width: 87.8%;
+  }
+
+  .Memoire {
+    height: 220px;
+  }
+
+  .case {
+    padding: 2px 12px;
+    text-align: center;
+  }
+  
+  .RamBusAdr .rectangle {
+    height: 78px;
+  }
+
+  .RamBusAdr {
+    transform: translateY(92%);
+  }
+
+  .CoToRam {
+    transform: translateY(158%);
+  }
+
+  .ram , .ramf{
+    padding: 1px;
+  }
+
+  .RegBus .rectangle {
+    height: 50%;
+  }
+
+  .RegBus {
+    top: 89%;
+  }
+
+  .PileBus .rectangle {
+    width: 14.7px;
+  }
+
+  .BusCo .rectangle {
+    width: 14.2px;
+    height: 92%;
+  }
+
+  .UC {
+    height: 75px;
+    transform: translateY(132%);  
+  }
+
+
+
+  
+
+  
 }
 
 
