@@ -1,22 +1,27 @@
 import React from "react";
 import "./Navbar.css";
-import avatar from "../img/Ellipse 515.svg"
-import Info from "../img/Info-circle.svg"
+import { Link } from "react-router-dom";
+import avatar from "../Images/Ellipse 515.svg"
+import Info from "../Images/Info-circle.svg"
 
 
 function Navbar(props) {
   return (
     <header>
-    <div class="navbar">
-      <div class="logo">  {props.label}</div>
-
+    <div className="navbar">
+      <h2>{props.label}</h2>
       <div className="nav-icons">
-          <img className="avatar-icon" src={avatar} alt="Avatar"></img>
-          <img className="notification-icon" src={Info} alt="Info"></img>
-        </div>
-
-   
-     
+        <Link to="/settings">
+          <img className="avatar-icon" src={avatar} alt="Avatar" />
+        </Link>
+        <Link to="/guide">
+          <img
+            className="info-icon"
+            src={Info}
+            alt="info"
+          />
+        </Link>
+      </div>
     </div>
   </header>
   

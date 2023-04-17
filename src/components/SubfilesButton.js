@@ -1,7 +1,7 @@
 import React from "react";
 import "./SubfilesButton.css";
-import sup from "../img/sup2.svg"
-import folder from "../img/Folder-open.svg"
+import sup from "../Images/sup2.svg"
+import folder from "../Images/Folder-open.svg"
 
 function SubfilesButton(props) {
   return (
