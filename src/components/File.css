@@ -1,0 +1,21 @@
+.File-button {
+    background-color: #fff;
+    font-size:small;
+    width: 600px;
+    height: 50px;
+    border: none;
+    color: #023047;
+    padding: 10px;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: auto auto 5fr;
+    grid-gap: 10px;
+    align-items: center;
+    justify-content: left;
+    padding: 10px 20px;
+  }
+  
+  .file{
+    height: 80%;
+  }
+  
