@@ -80,7 +80,7 @@ code {
 
 .RegBus .rectangle {
   width: 14.4px;
-  height: 54%;
+  height: 65%;
   border: 1px solid #023047;
 }
 
@@ -119,7 +119,7 @@ code {
   position: absolute;
   top: 100%;
   left: 33.5%;
-  height: 30%;
+  height: 68%;
   transform: translateX(50%);
 }
 
@@ -172,7 +172,7 @@ code {
 .BusCo {
   position: absolute;
   left: 43%;
-  height: 140%;
+  height: 150%;
 }
 
 .BusCo .triangleHaut, .BusCo .triangleBas {
@@ -199,9 +199,9 @@ code {
 /**********************************************/
 .CoToRam {
   grid-column: 8 / span 2;
-  width: 190%;
+  width: 185%;
   position: absolute;
-  transform: translateY(180%);
+  transform: translateY(185%);
   display: flex;
   align-items: center;
 }
@@ -225,7 +225,7 @@ code {
 
 .RamBusAdr {
   position: absolute;
-  transform: translateY(84%);
+  transform: translateY(87%);
   right: 43%;
 }
 
@@ -246,7 +246,7 @@ code {
 
 .RamBusAdr .rectangle {
   width: 14.5px;
-  height: 98px;
+  height: 96px;
   border: 1px solid #023047;
 }
 
@@ -454,10 +454,12 @@ code {
 .Ri .ri {
   border-right: 1px solid #023047 ;
   padding: 3% 10%;
+  text-align: center;
 }
 
 .Ri .ri4 {
   padding: 3% 10%;
+  text-align: center;
 }
 
 .UcToRi {
@@ -486,7 +488,7 @@ code {
 
 .UcToRi .rectangle {
   width: 14.5px;
-  height:  46%;
+  height:  42%;
   border: 1px solid #023047;
 }
 
@@ -518,7 +520,7 @@ code {
 
 .RimToRi .rectangle {
   width: 22.5px;
-  height: 223px;
+  height: 217px;
   border: 1px solid #023047;
 }
 
@@ -530,8 +532,8 @@ code {
   align-items: center;
   grid-row: 2 / span 1;
   grid-column: 8 / span 3;
-  transform: translateY(289px);
-  margin-left: 17.8%;
+  transform: translateY(285px);
+  margin-left: 18.5%;
 }
 
 .RimToUc .triangleGauche, .BusEual .triangleGauche, .RimBusDonnees .triangleGauche {
@@ -543,7 +545,7 @@ code {
 }
 
 .RimToUc .rectangle {
-  width: 58.6%;
+  width: 57.8%;
   height: 22.5px;
   border: 1px solid #023047;
 }
@@ -559,7 +561,7 @@ code {
 
 .BusDonneesEual .rectangle{
   width: 22.5px;
-  height: 244px;
+  height: 243px;
   border-top: 1px solid #023047;
   border-right: 1px solid #023047;
   border-left: 1px solid #023047;
@@ -667,17 +669,12 @@ code {
     width: 88.5%;
   }
 
-  
-.RimToUc {
-  margin-left: 19.5%;
-}
-
 .RimToUc .rectangle {
-  width: 58%;
+  width: 56.8%;
 }
 
 .CoToRam {
-  width: 160%;
+  width: 152%;
 }
 
 .CoToRam .rectangle{
@@ -736,7 +733,7 @@ code {
   
   .BusEual {
     transform: translateY(125%);
-    width: 85.4%;
+    width: 83.8%;
   }
 
   .BusEual .rectangle {
@@ -782,12 +779,17 @@ code {
   }
   /***********************************************/
   .RegBus .rectangle {
-    height: 53%;
+    height: 75%;
     width: 14px;
   }
 
   .RegBus {
-    top: 89%;
+    top: 97%;
+  }
+
+  .NomReg .nom{
+    padding: 3px;
+    font-size: 15px;
   }
 
   /***********************************************/
@@ -821,7 +823,7 @@ code {
 
   .RimToUc {
     transform: translateY(228px);
-    margin-left: 18%;
+    margin-left: 19%;
   }
 
   .RimToUc .rectangle {
