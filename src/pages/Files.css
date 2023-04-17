@@ -1,0 +1,27 @@
+.content {
+    width: calc(100% - 1px); /* Retrait pour la barre latérale */
+}
+
+.Menu-container {
+    width: 70%;
+    margin: 120px auto 0 auto; /* Set the top margin to 170px and center the container horizontally */
+    justify-content: center;
+    display: flex;
+    flex-direction: column; /* Display the elements vertically */
+  }
+  .subfiles-exemple {
+    margin-left: 40px;
+  }
+  .file{
+    margin-left: 70px;
+  }
+  .navbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+
+ 
+  
+  
