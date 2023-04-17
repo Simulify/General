@@ -11,10 +11,10 @@
   }
   h2 {
     position: absolute;
-    top: 10px;
-    left: 100px;
+    top: 1%;
+    left: 11%;
     color: #023047;
-    font-size: 30px;
+    font-size: xx-large;
     line-height: 40px;
     font-style: SemiBold;
     text-align: left;
@@ -42,8 +42,8 @@
   }
   .left {
     position: absolute;
-    top: 100px;
-    left: 210px;
+    top: 18%;
+    left: 16%;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -54,7 +54,7 @@
     font-family: Montserrat;
     font-style: bold;
     color: #023047;
-    font-size: 30px;
+    font-size: xx-large;
     line-height: 40px;
     padding: 0px;
     margin-bottom: 10px;
@@ -63,7 +63,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     margin: 0;
-    font-size: 17px;
+    font-size: large;
     line-height: 30px;
     color: #023047;
   }
@@ -90,8 +90,8 @@
   .button {
     width: auto;
     height: auto;
-    margin-top: 90px;
-    margin-left: 175px;
+    margin-top: 20%;
+    margin-left: 40%;
     padding: 19px 87px;
     background: #00A6FB;
     box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 23px 14px rgba(43, 110, 177, 0.05), 0px 10px 10px rgba(43, 110, 177, 0.09), 0px 3px 6px rgba(43, 110, 177, 0.1), 0px 0px 0px rgba(43, 110, 177, 0.1);
