@@ -27,17 +27,17 @@ margin-top: 30px;
   
   .notification-icon,
   .avatar-icon {
-    margin: 0 10px;
+    margin: 0 8px;
   }
   
-  .notification-icon i {
-    font-size: 1.2rem;
-    color: #333;
-  }
+ 
   
   .avatar-icon img {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
 
   }
-  
+  .notification-icon{
+    height: 35px;
+    width: 35px;
+  }  

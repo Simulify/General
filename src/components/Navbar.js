@@ -11,8 +11,8 @@ function Navbar(props) {
       <div class="logo">  {props.label}</div>
 
       <div className="nav-icons">
-          <img className="notification-icon" src={Info} alt="Info"></img>
           <img className="avatar-icon" src={avatar} alt="Avatar"></img>
+          <img className="notification-icon" src={Info} alt="Info"></img>
         </div>
 
    
