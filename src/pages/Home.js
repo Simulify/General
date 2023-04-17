@@ -8,7 +8,7 @@ import { ReactComponent as Logo} from '../Images/Logo.svg';
 function Home () {
   return (
     <div class="hero">        
-      <h2>Page d'accueil</h2> 
+      <h2>Page d'accueil</h2>  
       <div class="right-image"><Processor/></div>
       <div class="right-image1"><Logo/></div>       
       <div class="left">        

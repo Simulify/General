@@ -1,7 +1,7 @@
 import React from "react";
 import "./FilesButton.css";
-import folder from "../img/Icon.svg"
-import sup from "../img/Caret right.svg"
+import folder from "../Images/Icon.svg"
+import sup from "../Images/Caret right.svg"
 
 function FilesButton(props) {
   return (

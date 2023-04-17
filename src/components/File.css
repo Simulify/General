@@ -1,6 +1,8 @@
 .File-button {
     background-color: #fff;
-    font-size:small;
+    font-size: 13px;
+    font-weight: Bold;
+    font-family: Montserrat;
     width: 600px;
     height: 50px;
     border: none;
