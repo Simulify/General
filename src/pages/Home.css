@@ -67,25 +67,25 @@
     line-height: 30px;
     color: #023047;
   }
-  .left .Dark {
+  .left .Dark svg {
     position: absolute;
     top: 290px;
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
   }
-  .left .Clair1 {
+  .left .Clair1 svg {
     position: absolute;
     top: 290px;
     left: 50px;
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
   }
-  .left .Clair2 {
+  .left .Clair2 svg {
     position: absolute;
     top: 290px;
     left: 100px;
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
   }
   .button {
     width: auto;
