@@ -648,25 +648,19 @@ code {
     width: 88.5%;
   }
 
-  
-.RimToUc {
-  margin-left: 19.5%;
-}
+ .RimToUc .rectangle {
+   width: 56%;
+ }
 
-.RimToUc .rectangle {
-  width: 56%;
-}
-
-.CoToRam {
-  width: 175.5%;
-}
+ .CoToRam {
+   width: 175.5%;
+ }
 
 }
-
 
 @media (min-width: 1200px) and (max-width: 1370px) {
   .RimBusDonnees .rectangle {
-    width: 42.5%;
+    width: 45.5%;
   }
   
   .BusEual {
@@ -679,14 +673,24 @@ code {
 }
 
 .RimToUc .rectangle {
-  width: 56%;
+  width: 58%;
 }
 
 .CoToRam {
-  width: 158%;
+  width: 160%;
+}
+
+.CoToRam .rectangle{
+  height: 20px;
+}
+
+
+.UAL .ual2 .r1 , .UAL .ual2 .r3{
+  width: 40%;
 }
 
 }
+
 
 @media (min-height: 560px) and (max-height: 600px) {
  
@@ -701,17 +705,14 @@ code {
   .C4 {
     padding: 1px 8px;
   }
-
+   
+  /*************************************************/
   .UAL .ual1 {
     height: 35%;
   }
 
   .UAL .ual2 {
     height: 20%;
-  }
-
-  .UAL .ual2 .r1 , .UAL .ual2 .r3{
-    width: 50%;
   }
 
   .Eual {
@@ -723,15 +724,26 @@ code {
     font-size: 12px;
   }
 
+  .BusDonneesEual {
+    margin-left: 40px;
+    transform: translateY(30px);
+  }
+  
   .BusDonneesEual .rectangle{
-    width: 22.5px;
-    height: 182px;
+    width: 15.5px;
+    height: 190px;
   }
   
   .BusEual {
     transform: translateY(125%);
-    width: 87.8%;
+    width: 85.4%;
   }
+
+  .BusEual .rectangle {
+    height: 15px;
+  }
+
+  /************************************************/
 
   .Memoire {
     height: 220px;
@@ -741,49 +753,140 @@ code {
     padding: 2px 12px;
     text-align: center;
   }
-  
+
+  /************************************************/
   .RamBusAdr .rectangle {
-    height: 78px;
+    height: 90px;
   }
 
   .RamBusAdr {
-    transform: translateY(92%);
+    transform: translateY(78%);
   }
 
+  /************************************************/
+
   .CoToRam {
-    transform: translateY(158%);
+    transform: translateY(240%);
+  }
+
+  .CoToRam .triangleDroit {
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 30px solid #023047;
   }
 
   .ram , .ramf{
     padding: 1px;
   }
-
+  /***********************************************/
   .RegBus .rectangle {
-    height: 50%;
+    height: 53%;
+    width: 14px;
   }
 
   .RegBus {
     top: 89%;
   }
 
-  .PileBus .rectangle {
-    width: 14.7px;
-  }
-
+  /***********************************************/
   .BusCo .rectangle {
-    width: 14.2px;
-    height: 92%;
+    width: 14px;
+    height: 105%;
   }
 
+  /***********************************************/
   .UC {
     height: 75px;
     transform: translateY(132%);  
   }
 
+  .RimToRi .rectangle {
+    height: 173px;
+    width: 15px;
+  }
 
+  .RimToRi {
+    left: 55%;
+  }
 
+  .RimToRi .triangleHaut, .BusDonneesEual .triangleHaut{
+    width: 0;
+    height: 0;
+    border-left: 8.8px solid transparent;
+    border-right: 8.8px solid transparent;
+    border-bottom: 15px solid #023047;
+  }
+
+  .RimToUc {
+    transform: translateY(228px);
+    margin-left: 18%;
+  }
+
+  .RimToUc .rectangle {
+    height: 15px;
+  }
+
+  /**********************************************/
+  .RimBusDonnees .rectangle {
+    height: 15px;
+  }
+
+  .BusDonnees {
+    transform: translateY(60%);
+  }
   
+  /**********************************************/
 
+  .Ri {
+    width: 60%;
+    transform: translateX(18%);
+  }
+
+  .Ri .ri , .Ri .ri4 {
+    padding: 3% 8.5%;
+    text-align: center;
+  }
+  
+  /**********************************************/
+  .PileBus .rectangle {
+    width: 14.5px;
+    height: 30%;
+  }
+
+  .UcBusDonnees .rectangle {
+    height: 22px;
+    width: 14px;
+  }
+
+  .UcBusDonnees {
+    transform: translateY(97.5%);
+    margin-left: 95%;
+  }
+
+  /**********************************************/
+  .UalBusDonnees .rectangle {
+    height:20.5px;
+  }
+
+  .UalBusDonnees {
+    transform: translateY(100%);
+  }
+
+   .UcToRi {
+    left: 45.5%;
+
+  }
+
+   .UcToRi .rectangle{
+    height:  18%;
+
+  }
+
+  .Flags {
+    margin-top: 110px;
+  }
   
 }
 

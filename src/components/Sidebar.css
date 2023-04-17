@@ -1,4 +1,3 @@
-
 /****************************************** SIDEBAR STYLE ******************************************/
 
 
@@ -15,8 +14,9 @@
   transition: all 0.5s ease;
 }
 .logo svg{
-  margin-top: 15px;
-  margin-left: 5px;
+  position:absolute;
+  top: 20px;
+  left: 7px;
   width: 50px;
   height: 50px;
 }
@@ -47,7 +47,7 @@ position: absolute;
 left: 22px;
 width: 21px;
 height: 21px;
-top: 522px;
+bottom: 22px;
 }
 .exit path, .icon path,.simuicon path{fill: #00A6FB;}.homeicon path{stroke: #00A6FB;}
 .homeicon svg{width: 30px;height: 30px;}
@@ -61,6 +61,3 @@ top: 522px;
 
 
 /***************************************************************************************************/
-
-
-
