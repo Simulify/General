@@ -6,8 +6,7 @@ function UC() {
     return (
         <div class="UC"> 
             <div class="text">
-                <p>Unite de</p>
-                <p>commande</p>
+                <p> UC </p>
             </div> 
             <UcToRi/>
         </div>
