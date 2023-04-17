@@ -1,0 +1,43 @@
+header {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    padding-left: 20px; /* Espace pour la barre latérale */
+    background-color: #fff;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 200px); /* Retrait pour la barre latérale */
+    max-width: 1200px; /* Largeur maximale de la barre de navigation */
+    margin: 0 auto; /* Centrage horizontal */
+  }
+  
+  .logo {
+margin-top: 30px;
+    font-size: 1.9rem;
+  }
+  
+  .nav-icons {
+    display: flex;
+    align-items:self-end;
+  }
+  
+  .notification-icon,
+  .avatar-icon {
+    margin: 0 10px;
+  }
+  
+  .notification-icon i {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .avatar-icon img {
+    width: 20px;
+    height: 20px;
+
+  }
+  

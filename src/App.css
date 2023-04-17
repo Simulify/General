@@ -1,0 +1,26 @@
+.content {
+    width: calc(100% - 200px); /* Retrait pour la barre latérale */
+}
+
+.Menu-container {
+    width: 70%;
+    margin: 170px 0 0 20%; /* Set the top margin to 100px, the left margin to 30%, and the right and bottom margins to 0 */
+    justify-content: center;
+    display: flexbox;
+
+  }
+  .subfiles-exemple {
+    margin-left: 40px;
+  }
+  .file{
+    margin-left: 70px;
+  }
+
+  .two-buttons {
+    display: grid;
+    grid-template-columns: auto auto 1fr 5fr;
+    grid-gap: 10px;
+  }
+  
+  
+  
