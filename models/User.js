@@ -9,10 +9,15 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  password: {
+    type: String,
+    required: true
+  },
   level: {
     type: String,
     required: true,
-    enum: ['beginner', 'intermediate', 'advanced'] // Add an enum validator for the level field
+    enum: ['beginner', 'intermediate', 'advanced'], // Add an enum validator for the level field
+    default: 'beginner'
   },
   createdAt: { // Rename the field to camelCase
     type: Date,
@@ -35,6 +40,4 @@ const userSchema = new mongoose.Schema({
   }]
 });
 
-const User = mongoose.model('User', userSchema);
-
-module.exports.User = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);
