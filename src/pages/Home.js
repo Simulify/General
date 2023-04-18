@@ -18,9 +18,9 @@ function Home () {
           Neumann, ce site est le résultat de notre travail <br />
           durant le projet de deuxième année cycle <br />
           préparatoire</p>
-        <a href="/" className='Dark'><CircleDark/></a>
+        {/* <a href="/" className='Dark'><CircleDark/></a>
         <a href="/" className='Clair1'><CircleClair/></a>
-        <a href="/" className='Clair2'><CircleClair/></a>
+        <a href="/" className='Clair2'><CircleClair/></a> */}
         <a href="./simulation" className="button">Simuler</a>
       </div>
     </div>
