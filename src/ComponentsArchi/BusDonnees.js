@@ -1,7 +1,7 @@
 import React from "react";
 import "../Simulation.css";
 
-function BusDonnees(props) {
+function BusDonnees() {
   return (
     <div className="BusDonnees">
 

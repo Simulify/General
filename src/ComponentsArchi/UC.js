@@ -1,16 +1,10 @@
 import React from "react";
 import "../Simulation.css";
-import UcToRi from "./UcToRi";
 
-function UC() {
+function Uc() {
     return (
-        <div class="UC"> 
-            <div class="text">
-                <p> UC </p>
-            </div> 
-            <UcToRi/>
-        </div>
+        <div className="Uc">  Uc </div>                         
     );
 }
 
-export default UC
+export default Uc

@@ -1,13 +1,13 @@
 import React from 'react';
 import "../Simulation.css";
 
-function RimToRi() {
+function RimBusRi() {
     return (
-        <div className='RimToRi'>
-                <div className="triangleHaut"></div>
+        <div className='RimBusRi'>
+                <div className="triangleGauche"></div>
                 <div className="rectangle"></div>
         </div>
    );
 }
 
-export default RimToRi
+export default RimBusRi

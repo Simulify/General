@@ -1,10 +1,11 @@
 import React from 'react';
 import "../Simulation.css";
+
 function RimBusDonnees() {
     return (
         <div className='RimBusDonnees'>
-            <div class="triangleGauche"></div>
-            <div class="rectangle"></div>
+                <div className="triangleGauche"></div>
+                <div className="rectangle"></div>
         </div>
    );
 }
