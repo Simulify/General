@@ -21,7 +21,7 @@ function Memoire() {
     />
   ));
 
-  return <div className="Memoire">{casesMemoire}</div>;
+  return <div className="Memoire"> {casesMemoire}</div>;
 }
 
 export default Memoire;

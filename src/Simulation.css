@@ -1,261 +1,168 @@
 body {
   margin: 0;
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-  font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-   color: #023047;
+  color: #023047;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  padding: 50px ;
+.Container {
+  padding: 50px;
+  height: 100Vh;
   margin: auto;
-  align-items: start;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: 45Vh auto 50Vh;
+  align-items: flex-start;
 }
 
-/**********************************************/
-.Simulation .h1 {
-  position: absolute;
-  top: 0%;
-  margin-left: 7%;
-}
-
-/*********************************************/
-
-.RegistresEtBus {
-  grid-column: 4 / span 1;
-  position: relative;
-}
-
-.Registre{
+.Registre {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #DCEFFD;
   border: 1px solid #00A6FB;
   border-radius: 5px;
-  margin-bottom: 2px;
+  background-color: #DCEFFD; 
+  width: 100%;
+  margin-bottom: 3px;
 }
 
-.C1 ,.C2, .C3 {
+.Registre .C1, .Registre .C2, .Registre .C3{
+  width: 25%;
+  height: 3Vh;
+  padding: 0.5Vh;
+  text-align: center;
   border-right: 1px solid #00A6FB;
-  padding: 3px 8px;
 }
 
-.C4 {
-  padding: 3px 8px;
+.Registre .C4 {
+  width: 25%;
+  text-align: center;
+  height: 3Vh;
+  padding: 0.5Vh;
 }
 
-.RegBus {
-  height: 100%;
-  position: absolute;
-  right: 32%;
-  top: 99%;
+.Registres {
+  text-align: center;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  width: 100%;
+  height: 40Vh;
+  margin-top: 2px;
 }
 
-.RegBus .triangleHaut, .RegBus .triangleBas {
+.registres {
+  margin-top: 2px;
+}
+
+.RegToBusDonnees {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 18Vh;
+}
+
+.RegToBusDonnees .triangleHaut, .RegToBusDonnees .triangleBas {
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
 }
 
-.RegBus .triangleHaut {
-  border-bottom: 15px solid #023047;
+.RegToBusDonnees .triangleHaut {
+  border-bottom: 20px solid #023047;
 }
 
-.RegBus .triangleBas {
-  border-top: 15px solid #023047;
+.RegToBusDonnees .triangleBas {
+  border-top: 20px solid #023047;
 }
 
-.RegBus .rectangle {
-  width: 14.4px;
-  height: 65%;
+.RegToBusDonnees .rectangle {
+  width: 14px;
+  height: 18Vh;
   border: 1px solid #023047;
 }
-
-.NomReg .nom{
-  padding: 5px;
-  font-size: 15px;
-}
-
-.RegEtNom {
+/**********************************************************************/
+.Pile {
+  grid-column:  4 / 5;
+  grid-row: 1 / 2;
+  text-align: center;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 }
 
-/*********************************************************/
-
-.PileEtBus {
-  grid-column: 6 / span 1;
-  position: relative;
-  border: 1px solid #023047;
-  border-radius: 10px;
+.pile {
+  margin-top: 2px;
+  border: 2px solid #023047;
+  border-radius: 5px;
+  overflow-y: scroll;
+  width: 100%;
+  height: 31Vh;
 }
+
 
 .RegistrePile {
-  width: 100%;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #00A6FB;
-}
-
-.RegistrePile8 {
-  display: flex;
-  justify-content: space-between;
-}
-
-.PileBus {
-  position: absolute;
-  top: 100%;
-  left: 33.5%;
-  height: 68%;
-  transform: translateX(50%);
-}
-
-.PileBus .triangleHaut, .PileBus .triangleBas {
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-}
-
-.PileBus .triangleHaut {
-  border-bottom: 15px solid #023047;
-}
-
-.PileBus .triangleBas {
-  border-top: 15px solid #023047;
-}
-
-.PileBus .rectangle {
-  width: 14px;
-  height: 20%;
-  border: 1px solid #023047;
-}
-
-/*************************************************/
-.COBus {
-  grid-column: 8 / span 1;
-  position: relative;
-}
-
-.CO {
-  border: 1px solid #00A6FB;
-  border-radius: 5px;
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  grid-column: 7 / span 1;
 }
 
-.Co, .Co4 {
-  padding: 5px 10px;
+.RegistrePile .C1, .RegistrePile .C2, .RegistrePile .C3, .RegistrePile .C4 {
+  width: 25%;
+  padding: 2%;
   text-align: center;
+  border-right: 1px solid #023047;
+  border-bottom: 1px solid #023047;
 }
 
-.Co {
-  border-right: 1px solid #00A6FB;
+.pile::-webkit-scrollbar {
+  width: 5px;
+  background-color: #fff;
+  border-radius: 5px;
 }
 
-/*********************************************/
-.BusCo {
-  position: absolute;
-  left: 43%;
-  height: 150%;
+.pile::-webkit-scrollbar-thumb {
+  background-color: #00A6FB;
+  height: 20px;
+  border-radius: 5px;
 }
 
-.BusCo .triangleHaut, .BusCo .triangleBas {
+.PileBusDonnees {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 10Vh; 
+}
+
+.PileBusDonnees .triangleHaut, .PileBusDonnees .triangleBas {
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
 }
 
-.BusCo .triangleHaut {
-  border-bottom: 15px solid #023047;
+.PileBusDonnees .triangleHaut {
+  border-bottom: 20px solid #023047;
 }
 
-.BusCo .triangleBas {
-  border-top: 15px solid #023047;
+.PileBusDonnees .triangleBas {
+  border-top: 20px solid #023047;
 }
 
-.BusCo .rectangle {
-  width: 14.5px;
+.PileBusDonnees .rectangle{
+  width: 14px;
   height: 100%;
   border: 1px solid #023047;
 }
 
-/**********************************************/
-.CoToRam {
-  grid-column: 8 / span 2;
-  width: 185%;
-  position: absolute;
-  transform: translateY(185%);
-  display: flex;
-  align-items: center;
-}
+/*******************************************************************/
 
-.CoToRam .rectangle {
-  width: 100%;
-  height: 30px;
-  border: 1px solid #023047;
-
-}
-
-.CoToRam .triangleDroit {
-  width: 0;
-  height: 0;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-left: 40px solid #023047;
-}
-
-/*************************************************/
-
-.RamBusAdr {
-  position: absolute;
-  transform: translateY(87%);
-  right: 43%;
-}
-
-.RamBusAdr .triangleHaut, .RamBusAdr .triangleBas {
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-}
-
-.RamBusAdr .triangleHaut {
-  border-bottom: 15px solid #023047;
-}
-
-.RamBusAdr .triangleBas {
-  border-top: 15px solid #023047;
-}
-
-.RamBusAdr .rectangle {
-  width: 14.5px;
-  height: 96px;
-  border: 1px solid #023047;
-}
-
-/**************************************************/
 .Memoire {
-  height: 250px;
-  overflow-y: scroll;
-  border: 2px solid #00A6FB;
+  margin-top: 2px;
+  border: 2px solid #023047;
   border-radius: 5px;
+  overflow-y: scroll;
+  width: 70%;
+  text-align: center;
 }
 
 .Memoire::-webkit-scrollbar {
@@ -265,102 +172,242 @@ code {
 }
 
 .Memoire::-webkit-scrollbar-thumb {
-  background-color: #CFEFFF;
+  background-color: #00A6FB;
   height: 20px;
   border-radius: 5px;
 }
 
 .CaseMemoire {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #00A6FB;
-}
-
-.case {
-  border-right: 1px solid #00A6FB;
-  padding: 3px 15px;
-  text-align: center;
-}
-
-/********************************************/
-
-.MemoireRam {
-  grid-column: 10 / span 1;
-  display: flex;
   align-items: center;
-  position: relative;
 }
 
-.Ram, .Flags {
-  width: 30px;
-  border: 1px solid #00A6FB;
+.CaseMemoire .C1, .CaseMemoire .C2, .CaseMemoire .C3, .CaseMemoire .C4 {
+  width: 25%;
+  padding: 2%;
+  text-align: center;
+  border-right: 1px solid #023047;
+  border-bottom: 1px solid #023047;
+}
+
+
+/*******************************************************************/
+.Ram {
+  width: 10%;
+}
+
+.RAM {
+  width: 100%;
+  border: 2px solid #00A6FB;
   border-radius: 5px;
   background-color: #DCEFFD;
 }
 
-.ram {
-  padding: 5px;
+.RAM .ram, .Flag .ram{
+  padding-top: 0.5Vh;
+  padding-bottom: 0.5Vh;
+  text-align: center;
   border-bottom: 1px solid #00A6FB;
-  text-align: center;
 }
 
-.ramf {
-  padding: 5px;
+.RAM .ramf, .Flag .ramf{
+  padding-top: 0.5Vh;
+  padding-bottom: 0.5Vh;
   text-align: center;
 }
-
-/*********************************************/
 
 .Rim {
-  margin-top: 10px;
-  left: 26%;
-  background-color: #DCEFFD;
-  border: 1px solid #00A6FB;
-  border-radius: 5px;
   display: flex;
-  position: absolute;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+  border: 2px solid #00A6FB;
+  border-radius: 5px;
+  margin-top: 5px;
 }
 
-/***********************************************/
+.Rim .ram {
+  border-right: 1px solid #00A6FB;
+  width: 25%;
+  padding: 0.5Vh;
+  text-align: center;
+}
+
+.Rim .ramf {
+  width: 25%;
+  padding: 0.5Vh;
+  text-align: center;
+}
+
+/********************************************************************/
+.MemoireEtRam {
+   grid-column:  8 / 10;
+   grid-row: 1 / 2;
+   display: flex;
+   align-items: center;
+   width: 100%;
+}
+
+.MemoireEtRim {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*******************************************************************/
+.CO {
+  text-align: center;
+  width: 50%;
+}
+
+.Co {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #00A6FB;
+  border-radius: 5px;
+  background-color: #DCEFFD; 
+  width: 100%;
+  margin-top: 2px;
+}
+
+.Co .C1, .Co .C2, .Co .C3{
+  width: 25%;
+  padding: 0.5Vh  ;
+  text-align: center;
+  border-right: 1px solid #00A6FB;
+}
+.Co .C4 {
+  width: 25%;
+  padding: 0.5Vh;
+  text-align: center;
+}
+
+/*******************************************************/
+.CoEtBus {
+  grid-column: 6 / 8;
+  grid-row: 1 / 2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 50Vh;
+}
+
+.BusCoToRam {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 40Vh;
+}
+
+/********************************************************/
+.BusCo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 12Vh;
+}
+
+.RamBusDonnees {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 21Vh;
+
+}
+
+.BusCo .triangleHaut, .BusCo .triangleBas, .RamBusDonnees .triangleHaut, .RamBusDonnees .triangleBas {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.BusCo .triangleHaut, .RamBusDonnees .triangleHaut {
+  border-bottom: 20px solid #023047;
+}
+
+.BusCo .triangleBas, .RamBusDonnees .triangleBas  {
+  border-top: 20px solid #023047;
+}
+
+.BusCo .rectangle{
+  width: 14px;
+  height: 12Vh;
+  border: 1px solid #023047;
+}
+
+.RamBusDonnees .rectangle {
+    width: 14px;
+    height: 21Vh;
+    border: 1px solid #023047;
+}
+
+/*********************************************************/
+
+.CoToRam {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.CoToRam .rectangle {
+  width: 100%;
+  height: 3Vh;
+  border: 1px solid #023047;
+
+}
+
+.CoToRam .triangleDroit {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 30px solid #023047;
+}
+
+/****************************************************************/
 
 .BusDonnees {
-  height: 30px;
-  width: 100%;
-  border: 2px solid #023047;
-  grid-row: 2 / span 1;
-  grid-column: 3 / span 7;
+  grid-row: 2 / 3;
+  grid-column: 2 / 8;
+  border: 2px solid #00A6FB;
   text-align: center;
-  font-size: large;
-  transform: translateY(41%);
-  color: #00A6FB;
-  font-size: 17px;
+  padding: 0.5Vh;
 }
 
-/**************************************************/
+/**************************************************************/
+
+.UalEtEuals {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 95%;
+}
+
+/***************************************************************/
 
 .UAL {
-  height: 100%;
-  grid-row: 2 / span 1;
-  grid-column: 4 / span 2;
-  text-align: center;
-  font-size: large;
-  margin-top: 100px ;
-  position: relative;
+  height: 30Vh
 }
 
 .UAL .ual1 {
-    height: 40%;
+    height: 12Vh;
     border-top: 2px solid #023047;
     border-left: 2px solid #023047;
     border-right: 2px solid #023047;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    text-align: center;
 }
 
 .UAL .ual2 {
   display: flex;
-  height: 70px;
+  height: 8Vh;
 }
 
 .UAL .ual2 .r1 , .UAL .ual2 .r3{
@@ -378,519 +425,347 @@ code {
     border-top: 2px solid #023047;
 }
 
-.UAL .text {
-  position: absolute;
-  left: 50%;
-  top: 15%;
-  transform: translateX(-50%);
-}
+/**************************************************************/
 
 .Euals {
-  grid-row: 3 / span 1;
-  grid-column: 4 / span 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  margin-top: 2%;
 }
 
 .Eual {
   display: flex;
-  border: 1px solid #00A6FB;
-  border-radius: 5px;
   justify-content: space-between;
-  margin-top: 10%;
+  align-items: center;
+  border: 2px solid #00A6FB;
+  border-radius: 5px;
+  width: 30%;
 }
 
 .Eual .eual {
-  padding: 2px;
   border-right: 1px solid #00A6FB;
+  text-align: center;
+  padding: 2%;
+  font-size: 12px;
+  width: 20%;
 }
 
 .Eual .eualf {
-  padding: 2px;
-}
-
-/************************************************/
-.Flags {
-  grid-row: 2 / span 1;
-  grid-column:  3 / span 1;
-  margin-top: 125px;
-}
-/************************************************/
-
-.UC {
-  grid-row: 2 / span 1;
-  grid-column: 7 / span 2;
-  width: 80%;
-  height: 100px;
-  border: 2px solid #00A6FB;
-  border-radius: 10px;
-  transform: translateY(100%);  
-  position: relative;
   text-align: center;
+  padding: 2%;
+  font-size: 12px;
+  width: 20%;
 }
 
-.UC .text {
-  position: absolute;
-  left: 42%;
-  top: 18%;
+.Trait {
+  width: 20%;
+  height: 2px;
+  background-color: #023047;
+  transform-origin: center center;
+  transform: rotate(150deg);
 }
 
-/**********************************************/
-
-.Ri {
-  width: 80%;
-  grid-column: 7 / span 2;
-  grid-row: 3 / span 1;
-  transform: translateY(80%);
+/***************************************************/
+ .Flag{
+  width: 10%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  background-color: #DCEFFD;
-  border: 1px solid #00A6FB;
+  margin-right: 5Vh;
+  margin-top: 5Vh;
+}
+
+.FLAG {
+  width: 100%;
+  border: 2px solid #00A6FB;
+  background-color: #CFEFFF;
   border-radius: 5px;
 }
 
-.Ri .ri {
-  border-right: 1px solid #023047 ;
-  padding: 3% 10%;
-  text-align: center;
-}
-
-.Ri .ri4 {
-  padding: 3% 10%;
-  text-align: center;
-}
-
-.UcToRi {
-  position: absolute;
-  grid-row: 2 / span 1;
-  grid-column: 6 / span 1;
-  top: 102%;
-  left: 45.15%;
-  height: 100%;
-}
-
-.UcToRi .triangleHaut, .UcToRi .triangleBas {
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-}
-
-.UcToRi .triangleHaut {
-  border-bottom: 15px solid #023047;
-}
-
-.UcToRi .triangleBas {
-  border-top: 15px solid #023047;
-}
-
-.UcToRi .rectangle {
-  width: 14.5px;
-  height:  42%;
-  border: 1px solid #023047;
-}
-
-/*********************************************/
-
-.RimToRi {
-  position: absolute;
-  grid-row: 2 / span 1;
-  grid-column: 6 / span 1;
-  top: calc(100% + 43px);
-  left: 50%;
-}
-
-.BusDonneesEual {
-  grid-row: 2 / span 3;
-  grid-column: 6 / span 1;
-  margin-top: 22px;
-  transform: translateX(38%);
-
-}
-
-.RimToRi .triangleHaut, .BusDonneesEual .triangleHaut{
-  width: 0;
-  height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-bottom: 24px solid #023047;
-}
-
-.RimToRi .rectangle {
-  width: 22.5px;
-  height: 217px;
-  border: 1px solid #023047;
-}
-
-/*************************************************/
-
-.RimToUc {
+.UalEtFlag {
+  grid-row: 3 / span 1;
+  grid-column: 2 / 4;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   width: 100%;
+  height: 35Vh;
+}
+
+/***************************************************************/
+
+.Uc {
+  grid-row: 3 / span 1;
+  grid-column: 5 / 6;
+  width: 100%;
+  height: 15Vh;
+  text-align: center;
+  border: 2px solid #023047;
+  border-radius: 10px;
+}
+
+/***************************************************************/
+
+.Ri {
   display: flex;
   align-items: center;
-  grid-row: 2 / span 1;
-  grid-column: 8 / span 3;
-  transform: translateY(285px);
-  margin-left: 18.5%;
+  justify-content: space-between;
+  border: 2px solid #00A6FB;
+  border-radius: 5px;
+  width: 100%;
 }
 
-.RimToUc .triangleGauche, .BusEual .triangleGauche, .RimBusDonnees .triangleGauche {
+.Ri .ram {
+  border-right: 1px solid #00A6FB;
+  width: 25%;
+  padding: 0.5Vh;
+  text-align: center;
+}
+
+.Ri .ramf {
+  width: 25%;
+  padding: 0.5Vh;
+  text-align: center;
+}
+
+/***********************************************************/
+
+.UcEtRi {
+  grid-row: 3 / span 1;
+  grid-column: 5 / 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 50Vh;
+}
+
+.BusUcToRi {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  height: 10Vh;
+}
+
+.BusUcToRi .triangleHaut, .BusUcToRi .triangleBas,
+.UcBusDonnees .triangleHaut, .UcBusDonnees .triangleBas,
+.UalBusDonnees .triangleHaut, .UalBusDonnees .triangleBas{
   width: 0;
   height: 0;
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  border-right: 24px solid #023047;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
 }
 
-.RimToUc .rectangle {
-  width: 57.8%;
-  height: 22.5px;
+.BusUcToRi .triangleHaut, .UcBusDonnees .triangleHaut, .UalBusDonnees .triangleHaut  {
+  border-bottom: 20px solid #023047;
+}
+
+.BusUcToRi .triangleBas, .UcBusDonnees .triangleBas {
+  border-top: 20px solid #023047;
+}
+
+.BusUcToRi .rectangle{
+  width: 14px;
+  height: 100%;
   border: 1px solid #023047;
 }
 
-/*************************************************/
-.UalBusDonnees {
-  left: 50%;
-  grid-row: 2;
-  grid-column: 4;
-  transform: translateY(82%); 
-  margin-left: 56%;
+/***************************************************/
+
+.UcBusDonnees {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 8Vh;
 }
 
-.BusDonneesEual .rectangle{
-  width: 22.5px;
-  height: 243px;
+.UalBusDonnees {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 12Vh;
+}
+
+.UcBusDonnees .rectangle, .UalBusDonnees .rectangle{
+  width: 14px;
+  height: 100%;
   border-top: 1px solid #023047;
   border-right: 1px solid #023047;
   border-left: 1px solid #023047;
 }
 
-.BusDonneesEual {
-  margin-left: 40px;
-  transform: translateY(25px);
-  height: 100%;
+/**********************************************************/
+
+.EualsBusDonnees {
+  height: 35Vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10%;
 }
 
-.UcBusDonnees {
-  grid-row: 2;
-  grid-column: 7;
-  transform: translateY(81%);
-  margin-left: 75%;
-}
-
-.UalBusDonnees .triangleHaut, .UalBusDonnees .triangleBas ,.UcBusDonnees .triangleHaut, .UcBusDonnees .triangleBas{
+.EualsBusDonnees .triangleHaut {
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid #023047;
 }
 
-.UalBusDonnees .triangleHaut ,.UcBusDonnees .triangleHaut {
-  border-bottom: 15px solid #023047;
-}
-
-.UalBusDonnees .triangleBas, .UcBusDonnees .triangleBas {
-  border-top: 15px solid #023047;
-}
-
-.UcBusDonnees .rectangle {
-  width: 14.5px;
-  height: 27px;
+.EualsBusDonnees .rectangle {
+  width: 14px;
+  height: 100%;
   border: 1px solid #023047;
 }
 
-.UalBusDonnees .rectangle {
-  width: 14.5px;
-  height:25px;
-  border: 1px solid #023047;
-}
+/***********************************************************/
 
-/************************************************/
-.BusEual {
-  width: 87.2%;
+.BusEuals {
+  width: 99.5%;
+  height: 5%;
   display: flex;
   align-items: center;
-  grid-row: 3 / span 2;
-  grid-column: 4 / span 3;
-  transform: translateY(250%);
 }
 
-.BusEual .rectangle {
+.BusEuals .triangleGauche {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 20px solid #023047;
+}
+
+.BusEuals .rectangle {
   width: 100%;
-  height: 22px;
+  height: 100%;
   border: 1px solid #023047;
 }
+
+/************************************************************/
+
+.UalEtBus {
+  grid-row: 3 / span 1;
+  grid-column: 2 / 4;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 50Vh;
+}
+
+/***********************************************************/
 
 .RimBusDonnees {
-  width: 100%;
+  grid-row: 2 / span 1;
+  grid-column: 8 / 10;
   display: flex;
   align-items: center;
-  grid-row: 2 / span 2;
-  grid-column: 9 / span 3;
-  transform: translateY(445%);
+  width: 52.6%;
+  height: 14px;
+}
+
+.RimBusDonnees .triangleGauche {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 20px solid #023047;
 }
 
 .RimBusDonnees .rectangle {
-  width: 44.5%;
-  height: 22px;
-  border-bottom: 1px solid #023047;
-  border-top: 1px solid #023047;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #023047;
 }
 
-/************************************************/
+/**************************************************/
 
-@media (min-width: 1370px) and (max-width: 1510px) {
-  .RimBusDonnees .rectangle {
-    width: 43.5%;
+.RimToRi {
+  grid-row: 1 / span 2;
+  grid-column: 9 / 10;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 80%;
+  margin-top: 40VH;
+}
+
+.RimToRi .triangleHaut {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid #023047;
+}
+
+.RimToRi .rectangle {
+  width: 14px;
+  height: 100%;
+  border: 1px solid #023047;
+}
+
+/***************************************************/
+
+.RimBusRi {
+  grid-row: 3 / span 1;
+  grid-column: 6 / 10;
+  display: flex;
+  align-items: center;
+  width: 79.1%;
+  height: 14px;
+  margin-top: 35Vh;
+}
+
+.RimBusRi .triangleGauche {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 20px solid #023047;
+}
+
+.RimBusRi .rectangle {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #023047;
+}
+
+
+@media screen and (min-height: 560px) and (max-height: 695px){
+
+  .PileBusDonnees {
+    height: 9.5Vh;
   }
+
+  .PileBusDonnees .rectangle {
+    width: 13px;
+  }
+
+  .RegToBusDonnees {
+    height: 16.5Vh;
+  }
+
+  .RegToBusDonnees .rectangle {
+    width: 13px;
+  }
+
+  .RamBusDonnees {
+    height: 19Vh;
+}
+
   
-  .BusEual {
-    width: 88.5%;
-  }
 
- .RimToUc .rectangle {
-   width: 56%;
- }
 
- .CoToRam {
-   width: 175.5%;
- }
-
-}
-
-@media (min-width: 1200px) and (max-width: 1370px) {
-  .RimBusDonnees .rectangle {
-    width: 45.5%;
-  }
   
-  .BusEual {
-    width: 88.5%;
-  }
-
-.RimToUc .rectangle {
-  width: 56.8%;
-}
-
-.CoToRam {
-  width: 152%;
-}
-
-.CoToRam .rectangle{
-  height: 20px;
-}
+}  
 
 
-.UAL .ual2 .r1 , .UAL .ual2 .r3{
-  width: 40%;
-}
-
-}
 
 
-@media (min-height: 560px) and (max-height: 600px) {
- 
-  .Co, .Co4 {
-    padding: 3px 10px;
-  }
-    
-  .C1 ,.C2, .C3 {
-    padding: 1px 8px;
-  }
 
-  .C4 {
-    padding: 1px 8px;
-  }
-   
-  /*************************************************/
-  .UAL .ual1 {
-    height: 35%;
-  }
 
-  .UAL .ual2 {
-    height: 20%;
-  }
 
-  .Eual {
-    margin-top: 2%;
-  }
-
-  .Eual .eual, .Eual .eualf {
-    padding: 1px 2px;
-    font-size: 12px;
-  }
-
-  .BusDonneesEual {
-    margin-left: 40px;
-    transform: translateY(30px);
-  }
-  
-  .BusDonneesEual .rectangle{
-    width: 15.5px;
-    height: 190px;
-  }
-  
-  .BusEual {
-    transform: translateY(125%);
-    width: 83.8%;
-  }
-
-  .BusEual .rectangle {
-    height: 15px;
-  }
-
-  /************************************************/
-
-  .Memoire {
-    height: 220px;
-  }
-
-  .case {
-    padding: 2px 12px;
-    text-align: center;
-  }
-
-  /************************************************/
-  .RamBusAdr .rectangle {
-    height: 90px;
-  }
-
-  .RamBusAdr {
-    transform: translateY(78%);
-  }
-
-  /************************************************/
-
-  .CoToRam {
-    transform: translateY(240%);
-  }
-
-  .CoToRam .triangleDroit {
-    width: 0;
-    height: 0;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-left: 30px solid #023047;
-  }
-
-  .ram , .ramf{
-    padding: 1px;
-  }
-  /***********************************************/
-  .RegBus .rectangle {
-    height: 75%;
-    width: 14px;
-  }
-
-  .RegBus {
-    top: 97%;
-  }
-
-  .NomReg .nom{
-    padding: 3px;
-    font-size: 15px;
-  }
-
-  /***********************************************/
-  .BusCo .rectangle {
-    width: 14px;
-    height: 105%;
-  }
-
-  /***********************************************/
-  .UC {
-    height: 75px;
-    transform: translateY(132%);  
-  }
-
-  .RimToRi .rectangle {
-    height: 173px;
-    width: 15px;
-  }
-
-  .RimToRi {
-    left: 55%;
-  }
-
-  .RimToRi .triangleHaut, .BusDonneesEual .triangleHaut{
-    width: 0;
-    height: 0;
-    border-left: 8.8px solid transparent;
-    border-right: 8.8px solid transparent;
-    border-bottom: 15px solid #023047;
-  }
-
-  .RimToUc {
-    transform: translateY(228px);
-    margin-left: 19%;
-  }
-
-  .RimToUc .rectangle {
-    height: 15px;
-  }
-
-  /**********************************************/
-  .RimBusDonnees .rectangle {
-    height: 15px;
-  }
-
-  .BusDonnees {
-    transform: translateY(60%);
-  }
-  
-  /**********************************************/
-
-  .Ri {
-    width: 60%;
-    transform: translateX(18%);
-  }
-
-  .Ri .ri , .Ri .ri4 {
-    padding: 3% 8.5%;
-    text-align: center;
-  }
-  
-  /**********************************************/
-  .PileBus .rectangle {
-    width: 14.5px;
-    height: 30%;
-  }
-
-  .UcBusDonnees .rectangle {
-    height: 22px;
-    width: 14px;
-  }
-
-  .UcBusDonnees {
-    transform: translateY(97.5%);
-    margin-left: 95%;
-  }
-
-  /**********************************************/
-  .UalBusDonnees .rectangle {
-    height:20.5px;
-  }
-
-  .UalBusDonnees {
-    transform: translateY(100%);
-  }
-
-   .UcToRi {
-    left: 45.5%;
-
-  }
-
-   .UcToRi .rectangle{
-    height:  18%;
-
-  }
-
-  .Flags {
-    margin-top: 110px;
-  }
-  
-}
 
 
 

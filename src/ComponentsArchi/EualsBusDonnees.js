@@ -1,13 +1,13 @@
 import React from 'react';
 import "../Simulation.css";
 
-function UalBusDonnees() {
+function EualsBusDonnees() {
     return (
-        <div className='UalBusDonnees'>
+        <div className='EualsBusDonnees'>
                 <div className="triangleHaut"></div>
                 <div className="rectangle"></div>
         </div>
    );
 }
 
-export default UalBusDonnees
+export default EualsBusDonnees

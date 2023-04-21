@@ -1,9 +1,9 @@
 import React from 'react';
 import "../Simulation.css";
 
-function UcToRi() {
+function BusUcToRi() {
     return (
-        <div className='UcToRi'>
+        <div className='BusUcToRi'>
             <div className="triangleHaut"></div>
             <div className="rectangle"></div>
             <div className="triangleBas"></div>
@@ -11,4 +11,4 @@ function UcToRi() {
    );
 }
 
-export default UcToRi
+export default BusUcToRi
