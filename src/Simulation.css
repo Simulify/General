@@ -10,7 +10,7 @@ body {
   margin: auto;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: 45Vh auto 50Vh;
+  grid-template-rows: 45% auto 50%;
   align-items: flex-start;
 }
 
@@ -22,13 +22,12 @@ body {
   border-radius: 5px;
   background-color: #DCEFFD; 
   width: 100%;
+  height: 17%;
   margin-bottom: 3px;
 }
 
 .Registre .C1, .Registre .C2, .Registre .C3{
   width: 25%;
-  height: 3Vh;
-  padding: 0.5Vh;
   text-align: center;
   border-right: 1px solid #00A6FB;
 }
@@ -36,8 +35,6 @@ body {
 .Registre .C4 {
   width: 25%;
   text-align: center;
-  height: 3Vh;
-  padding: 0.5Vh;
 }
 
 .Registres {
@@ -45,19 +42,20 @@ body {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   width: 100%;
-  height: 40Vh;
+  height: 100%;
   margin-top: 2px;
 }
 
 .registres {
   margin-top: 2px;
+  height: 50%;
 }
 
 .RegToBusDonnees {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 18Vh;
+  height: 42%;
 }
 
 .RegToBusDonnees .triangleHaut, .RegToBusDonnees .triangleBas {
@@ -76,8 +74,8 @@ body {
 }
 
 .RegToBusDonnees .rectangle {
-  width: 14px;
-  height: 18Vh;
+  width: 10%;
+  height: 68%;
   border: 1px solid #023047;
 }
 /**********************************************************************/
@@ -131,6 +129,7 @@ body {
   flex-direction: column;
   align-items: center;
   height: 10Vh; 
+  width: 10%;
 }
 
 .PileBusDonnees .triangleHaut, .PileBusDonnees .triangleBas {
@@ -149,7 +148,7 @@ body {
 }
 
 .PileBusDonnees .rectangle{
-  width: 14px;
+  width: 100%;
   height: 100%;
   border: 1px solid #023047;
 }
@@ -162,6 +161,7 @@ body {
   border-radius: 5px;
   overflow-y: scroll;
   width: 70%;
+  height: 31Vh;
   text-align: center;
 }
 
@@ -293,7 +293,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 50Vh;
+  height: 100%;
 }
 
 .BusCoToRam {
@@ -301,7 +301,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 40Vh;
+  height: 100%;
 }
 
 /********************************************************/
@@ -309,14 +309,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 12Vh;
+  height: 33%;
+  width: 5%;
 }
 
 .RamBusDonnees {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 21Vh;
+  height: 58%;
+  width: 5%;
 
 }
 
@@ -336,14 +338,14 @@ body {
 }
 
 .BusCo .rectangle{
-  width: 14px;
-  height: 12Vh;
+  width: 100%;
+  height: 100%;
   border: 1px solid #023047;
 }
 
 .RamBusDonnees .rectangle {
-    width: 14px;
-    height: 21Vh;
+    width: 100%;
+    height: 100%;
     border: 1px solid #023047;
 }
 
@@ -351,13 +353,14 @@ body {
 
 .CoToRam {
   width: 100%;
+  height: 8%;
   display: flex;
   align-items: center;
 }
 
 .CoToRam .rectangle {
   width: 100%;
-  height: 3Vh;
+  height: 100%;
   border: 1px solid #023047;
 
 }
@@ -377,7 +380,7 @@ body {
   grid-column: 2 / 8;
   border: 2px solid #00A6FB;
   text-align: center;
-  padding: 0.5Vh;
+  padding: 0.5%;
 }
 
 /**************************************************************/
@@ -392,11 +395,11 @@ body {
 /***************************************************************/
 
 .UAL {
-  height: 30Vh
+  height: 100%;
 }
 
 .UAL .ual1 {
-    height: 12Vh;
+    height: 60%;
     border-top: 2px solid #023047;
     border-left: 2px solid #023047;
     border-right: 2px solid #023047;
@@ -407,7 +410,7 @@ body {
 
 .UAL .ual2 {
   display: flex;
-  height: 8Vh;
+  height: 40%;
 }
 
 .UAL .ual2 .r1 , .UAL .ual2 .r3{
@@ -490,7 +493,7 @@ body {
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
-  height: 35Vh;
+  height: 70%;
 }
 
 /***************************************************************/
@@ -499,7 +502,7 @@ body {
   grid-row: 3 / span 1;
   grid-column: 5 / 6;
   width: 100%;
-  height: 15Vh;
+  height: 30%;
   text-align: center;
   border: 2px solid #023047;
   border-radius: 10px;
@@ -519,13 +522,13 @@ body {
 .Ri .ram {
   border-right: 1px solid #00A6FB;
   width: 25%;
-  padding: 0.5Vh;
+  padding: 2%;
   text-align: center;
 }
 
 .Ri .ramf {
   width: 25%;
-  padding: 0.5Vh;
+  padding: 2%;
   text-align: center;
 }
 
@@ -538,14 +541,15 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 50Vh;
+  height: 100%;
 }
 
 .BusUcToRi {
   display: flex;
   flex-direction: column;
   align-items: center; 
-  height: 10Vh;
+  height: 20%;
+  width: 10%;
 }
 
 .BusUcToRi .triangleHaut, .BusUcToRi .triangleBas,
@@ -566,7 +570,7 @@ body {
 }
 
 .BusUcToRi .rectangle{
-  width: 14px;
+  width: 100%;
   height: 100%;
   border: 1px solid #023047;
 }
@@ -577,18 +581,27 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 8Vh;
+  height: 15%;
+  width: 10%;
 }
 
 .UalBusDonnees {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 12Vh;
+  height: 35%;
 }
 
-.UcBusDonnees .rectangle, .UalBusDonnees .rectangle{
-  width: 14px;
+.UcBusDonnees .rectangle{
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #023047;
+  border-right: 1px solid #023047;
+  border-left: 1px solid #023047;
+}
+
+.UalBusDonnees .rectangle{
+  width: 8%;
   height: 100%;
   border-top: 1px solid #023047;
   border-right: 1px solid #023047;
@@ -598,11 +611,13 @@ body {
 /**********************************************************/
 
 .EualsBusDonnees {
-  height: 35Vh;
+  height: 100%;
+  width: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-left: 10%;
+  margin-right: 0.4%;
 }
 
 .EualsBusDonnees .triangleHaut {
@@ -614,7 +629,7 @@ body {
 }
 
 .EualsBusDonnees .rectangle {
-  width: 14px;
+  width: 100%;
   height: 100%;
   border: 1px solid #023047;
 }
@@ -622,8 +637,8 @@ body {
 /***********************************************************/
 
 .BusEuals {
-  width: 99.5%;
-  height: 5%;
+  width: 100%;
+  height: 4%;
   display: flex;
   align-items: center;
 }
@@ -650,18 +665,18 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 50Vh;
+  height: 100%;
 }
 
 /***********************************************************/
 
 .RimBusDonnees {
   grid-row: 2 / span 1;
-  grid-column: 8 / 10;
+  grid-column: 8 / 9;
   display: flex;
   align-items: center;
-  width: 52.6%;
-  height: 14px;
+  width: 100%;
+  height: 35%;
 }
 
 .RimBusDonnees .triangleGauche {
@@ -683,11 +698,11 @@ body {
 .RimToRi {
   grid-row: 1 / span 2;
   grid-column: 9 / 10;
-  height: 90%;
+  height: 93.2%;
+  width: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 80%;
   margin-top: 40VH;
 }
 
@@ -700,7 +715,7 @@ body {
 }
 
 .RimToRi .rectangle {
-  width: 14px;
+  width: 100%;
   height: 100%;
   border: 1px solid #023047;
 }
@@ -709,12 +724,12 @@ body {
 
 .RimBusRi {
   grid-row: 3 / span 1;
-  grid-column: 6 / 10;
+  grid-column: 6 / 9;
   display: flex;
   align-items: center;
-  width: 79.1%;
-  height: 14px;
-  margin-top: 35Vh;
+  width: 100%;
+  height: 4%;
+  margin-top: 34.5Vh;
 }
 
 .RimBusRi .triangleGauche {
@@ -732,7 +747,7 @@ body {
 }
 
 
-@media screen and (min-height: 560px) and (max-height: 695px){
+/*@media screen and (min-height: 560px) and (max-height: 695px){
 
   .PileBusDonnees {
     height: 9.5Vh;
@@ -751,14 +766,9 @@ body {
   }
 
   .RamBusDonnees {
-    height: 19Vh;
+    height: 18.5Vh;
 }
-
-  
-
-
-  
-}  
+}*/  
 
 
 
