@@ -8,7 +8,7 @@ function MemoireEtRim() {
     <div className="MemoireEtRim">
         <div>Mémoire</div>
         <Memoire/>
-        <Rim case1="0" case2="0" case3="0" case4="0"/>
+        <Rim nom="Rim" case1="0" case2="0" case3="0" case4="0"/>
     </div>
   );
 }
