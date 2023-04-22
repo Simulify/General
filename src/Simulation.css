@@ -18,23 +18,47 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #00A6FB;
-  border-radius: 5px;
-  background-color: #DCEFFD; 
   width: 100%;
-  height: 17%;
-  margin-bottom: 3px;
+  height: 20%;
 }
 
-.Registre .C1, .Registre .C2, .Registre .C3{
+.Registre .NomReg {
   width: 25%;
+}
+
+.Registre .C1 {
+  width: 20%;
+  padding: 1%;
   text-align: center;
+  background-color: #DCEFFD; 
+  border-top: 2px solid #00A6FB;
+  border-bottom: 2px solid #00A6FB;
+  border-left: 2px solid #00A6FB;
+  border-right: 1px solid #00A6FB;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.Registre .C2, .Registre .C3{
+  width: 20%;
+  padding: 1%;
+  text-align: center;
+  background-color: #DCEFFD; 
+  border-top: 2px solid #00A6FB;
+  border-bottom: 2px solid #00A6FB;
   border-right: 1px solid #00A6FB;
 }
 
 .Registre .C4 {
-  width: 25%;
+  width: 20%;
+  padding: 1%;
   text-align: center;
+  background-color: #DCEFFD; 
+  border-top: 2px solid #00A6FB;
+  border-bottom: 2px solid #00A6FB;
+  border-right: 2px solid #00A6FB;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .Registres {
@@ -75,7 +99,7 @@ body {
 
 .RegToBusDonnees .rectangle {
   width: 10%;
-  height: 68%;
+  height: 100%;
   border: 1px solid #023047;
 }
 /**********************************************************************/
@@ -90,7 +114,7 @@ body {
 
 .pile {
   margin-top: 2px;
-  border: 2px solid #023047;
+  border: 2px solid #00A6FB;
   border-radius: 5px;
   overflow-y: scroll;
   width: 100%;
@@ -114,13 +138,12 @@ body {
 
 .pile::-webkit-scrollbar {
   width: 5px;
-  background-color: #fff;
+  background-color: #CFEFFF;
   border-radius: 5px;
 }
 
 .pile::-webkit-scrollbar-thumb {
-  background-color: #00A6FB;
-  height: 20px;
+  background-color: #023047;
   border-radius: 5px;
 }
 
@@ -157,7 +180,7 @@ body {
 
 .Memoire {
   margin-top: 2px;
-  border: 2px solid #023047;
+  border: 2px solid #00A6FB;
   border-radius: 5px;
   overflow-y: scroll;
   width: 70%;
@@ -167,12 +190,12 @@ body {
 
 .Memoire::-webkit-scrollbar {
   width: 5px;
-  background-color: #fff;
+  background-color: #CFEFFF;
   border-radius: 5px;
 }
 
 .Memoire::-webkit-scrollbar-thumb {
-  background-color: #00A6FB;
+  background-color: #023047;
   height: 20px;
   border-radius: 5px;
 }
@@ -222,19 +245,43 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 60%;
-  border: 2px solid #00A6FB;
   border-radius: 5px;
   margin-top: 5px;
 }
 
-.Rim .ram {
+
+.NomRim {
+  width: 10%;
+}
+
+.Rim .C1 {
+  border-left: 2px solid #00A6FB;
   border-right: 1px solid #00A6FB;
+  border-top: 2px solid #00A6FB;
+  border-bottom: 2px solid #00A6FB;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
   width: 25%;
   padding: 0.5Vh;
   text-align: center;
 }
 
-.Rim .ramf {
+
+.Rim .C2, .Rim .C3 {
+  border-right: 2px solid #00A6FB;
+  border-top: 2px solid #00A6FB;
+  border-bottom: 2px solid #00A6FB;
+  width: 25%;
+  padding: 0.5Vh;
+  text-align: center;
+}
+
+.Rim .C4 {
+  border-top: 2px solid #00A6FB;
+  border-bottom: 2px solid #00A6FB;
+  border-right: 2px solid #00A6FB;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   width: 25%;
   padding: 0.5Vh;
   text-align: center;
@@ -575,21 +622,12 @@ body {
   border: 1px solid #023047;
 }
 
-/***************************************************/
-
 .UcBusDonnees {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 15%;
   width: 10%;
-}
-
-.UalBusDonnees {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 35%;
 }
 
 .UcBusDonnees .rectangle{
@@ -599,6 +637,17 @@ body {
   border-right: 1px solid #023047;
   border-left: 1px solid #023047;
 }
+
+
+/***************************************************/
+
+.UalBusDonnees {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 35%;
+}
+
 
 .UalBusDonnees .rectangle{
   width: 8%;
@@ -675,6 +724,7 @@ body {
   grid-column: 8 / 9;
   display: flex;
   align-items: center;
+  margin-top: 8%;
   width: 100%;
   height: 35%;
 }
@@ -746,29 +796,17 @@ body {
   border: 1px solid #023047;
 }
 
+@media screen and (max-width: 1275px) {
 
-/*@media screen and (min-height: 560px) and (max-height: 695px){
-
-  .PileBusDonnees {
-    height: 9.5Vh;
+  .NomReg {
+    font-size: 60%;
   }
 
-  .PileBusDonnees .rectangle {
-    width: 13px;
+  .NomRegistres {
+    font-size: 85%;
   }
-
-  .RegToBusDonnees {
-    height: 16.5Vh;
-  }
-
-  .RegToBusDonnees .rectangle {
-    width: 13px;
-  }
-
-  .RamBusDonnees {
-    height: 18.5Vh;
+  
 }
-}*/  
 
 
 
