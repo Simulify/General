@@ -1,9 +1,9 @@
 import React from 'react';
 import "../Simulation.css";
 
-function RegBus() {
+function RegToBusDonnees() {
     return (
-        <div className='RegBus'>
+        <div className='RegToBusDonnees'>
                 <div className="triangleHaut"></div>
                 <div className="rectangle"></div>
                 <div className="triangleBas"></div>
@@ -11,4 +11,4 @@ function RegBus() {
    );
 }
 
-export default RegBus
+export default RegToBusDonnees

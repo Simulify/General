@@ -1,13 +1,14 @@
 import React from "react";
 import "../Simulation.css";
 
-function Rim(props) {
+function Rim({nom, case1, case2, case3, case4}) {
   return (
     <div className="Rim">
-      <div className="Co">{props.case1}</div>
-      <div className="Co">{props.case2}</div>
-      <div className="Co">{props.case3}</div>
-      <div className="Co4">{props.case4}</div>
+      <div className="C1">{case1}</div>
+      <div className="C2">{case2}</div>
+      <div className="C3">{case3}</div>
+      <div className="C4">{case4}</div>
+      <span className="NomRim">{nom}</span>
     </div>
   );
 }

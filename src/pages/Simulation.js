@@ -5,7 +5,7 @@ import Container from '../ComponentsArchi/Container';
 function Simulation () {
   return (
     <div className='Simulation'>
-        <Container/>
+      <Container/>
     </div>
   );
 };
