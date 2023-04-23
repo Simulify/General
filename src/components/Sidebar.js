@@ -8,7 +8,7 @@ import { ReactComponent as ExitIcon} from '../SidebarIcons/Exit.svg';
 function Sidebar () {
   return (
     <div className='Sidebar'>
-      <div class="logo"><Logo/></div>
+      <div className="logo"><Logo/></div>
       <ul className='SidebarList'>
         {SidebarData.map((val, key) => {
           return (
@@ -24,7 +24,7 @@ function Sidebar () {
           );
         })}
       </ul>
-      <a class="exit" href="./home"><ExitIcon/></a>
+      <a className="exit" href="./home"><ExitIcon/></a>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 /***************************************** HOME PAGE STYLE *****************************************/
 
-
 .hero {
   display: flex;
   flex-direction: row;
@@ -8,56 +7,93 @@
   height: 100vh;
   width: auto;
 }
+
 h2 {
   position: absolute;
   top: 1%;
   left: 11%;
   color: #023047;
   font-size: xx-large;
-  line-height: 40px;
   font-style: SemiBold;
   text-align: left;
   font-family: Montserrat;
   font-weight: 600;
   line-height: normal;
   font-stretch: normal;
-  text-decoration: none;  
+  text-decoration: none;
 }
+
+
+
+.right {
+  display: flex;
+  justify-content: center; /* center child elements horizontally */
+  align-items: center; /* center child elements vertically */
+}
+
 .right-image svg {
   height: 100vh;
   width: auto;
   position: absolute;
-  top :0px;
-  right: 0px;
-  background: transparent;
+  left: 78.5%;
+  top: 0%;
+  transform: translateX(-50%);
+  z-index: 2;
+  background-color: #FFFFFF;
 }
-.right-image1 svg{
-  height: 35%;
-  width: auto;
+
+.slider2-container {
+  height: 300%;
+  overflow: hidden;
+  z-index: 4;
+}
+
+.current-image {
   position: absolute;
-  top :30%;
-  right : 16%;
-  background: transparent;
+  top: 48%;
+  left: 78%;
+  transform: translate(-50%, -50%);
+  bottom: 0;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 }
+
+.next-image {
+  position: absolute;
+  bottom: -500px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
+}
+
+.previous-image {
+  position: absolute;
+  top: -500px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, top 0.5s ease-in-out;
+}
+
+
 .left {
   position: absolute;
   top: 18%;
   left: 16%;
-  margin-top: 10px;
+  margin-top: 1%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   flex-grow: 0;
 }
+
 .left h1 {
   font-family: Montserrat;
   font-style: bold;
   color: #023047;
-  font-size: xx-large;
+  font-size:  200%;
   line-height: 40px;
   padding: 0px;
-  margin-bottom: 10px;
+  margin-bottom: 1%;
 }
+
 .left p {
   font-family: 'Montserrat';
   font-style: normal;
@@ -66,42 +102,93 @@ h2 {
   line-height: 30px;
   color: #023047;
 }
-.left .Dark svg {
-  position: absolute;
-  top: 290px;
-  width: 20px;
-  height: 20px;
-}
-.left .Clair1 svg {
-  position: absolute;
-  top: 290px;
-  left: 40px;
-  width: 20px;
-  height: 20px;
-}
-.left .Clair2 svg {
-  position: absolute;
-  top: 290px;
-  left: 80px;
-  width: 20px;
-  height: 20px;
-}
 .button {
   width: auto;
   height: auto;
-  margin-top: 20%;
+  margin-top: 10%;
   margin-left: 0;
-  padding: 19px 87px;
+  padding: 2% 8%;
   background: #00A6FB;
   box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 23px 14px rgba(43, 110, 177, 0.05), 0px 10px 10px rgba(43, 110, 177, 0.09), 0px 3px 6px rgba(43, 110, 177, 0.1), 0px 0px 0px rgba(43, 110, 177, 0.1);
   border-radius: 32px;
   font-family: 'Montserrat';
-  font-style: normal;
   font-weight: 600;
-  font-size: 24px;
+  font-size: x-large;
   color: #FFFFFF;
   text-decoration: none;
 }
 
 
 /***************************************************************************************************/
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  width: 300%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex-basis: 33.33%;
+}
+
+.slide:nth-child(1) {
+  animation: slide-in-left 0.5s forwards;
+}
+
+.slide:nth-child(2) {
+  animation: slide-in-right 0.5s forwards;
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+
+.slid.clair1 svg {
+  position: absolute;
+  top: 290px;
+  width: 20px;
+  height: 20px;
+}
+
+.slid.clair2  svg {
+  position: absolute;
+  top: 290px;
+  left: 40px;
+  width: 20px;
+  height: 20px;
+}
+
+.slid.clair3  svg {
+  position: absolute;
+  top: 290px;
+  left: 80px;
+  width: 20px;
+  height: 20px;
+}
+
+.slid.active svg circle{
+  fill-opacity: 1;
+}
+

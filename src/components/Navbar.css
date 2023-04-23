@@ -6,13 +6,17 @@ header {
 
 
 .navbar {
-  display: grid;
+
+   display: grid;
   grid-template-columns: 1fr auto;
  align-items: center;
   width: calc(100%);
   max-width:none;
  margin-top: 0;
  margin-left: 0%;
+
+  
+
 }
 
 h2 {
