@@ -1,9 +1,10 @@
 import React from 'react';
 import '../App.css';
+import Navbar from '../components/Navbar';
 
 
 function Settings () {
-  return <div>HOME PAGE</div>
+  return <div> <Navbar label="Paramètres" /></div>
 };
 
 
