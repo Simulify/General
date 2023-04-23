@@ -10,19 +10,19 @@ import Info from "../Images/Info-circle.svg"
 function Navbar(props) {
   return (
     <header>
-    <div className="navbar">
-      <h2 className="title">{props.label}</h2>
-      <div className="nav-icons">
-        <Link to="/settings">
-          <img className="avatar-icon" src={avatar} alt="Avatar" />
-        </Link>
-        <Link to="/guide">
-          <img
-            className="info-icon"src={Info} alt="info"
-          />
-        </Link>
-      </div>
-    </div>
+   <div className="navbar">
+   <h2 className="title">{props.label}</h2>
+  <div className="nav-icons">
+    <Link to="/settings">
+      <img className="avatar-icon" src={avatar} alt="Avatar" />
+    </Link>
+    <Link to="/guide">
+      <img className="info-icon" src={Info} alt="info" />
+    </Link>
+  </div>
+
+</div>
+
   </header>
   
   );
