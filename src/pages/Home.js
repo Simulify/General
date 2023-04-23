@@ -1,5 +1,6 @@
 import React from 'react';
 import './Home.css';
+import Navbar from '../components/Navbar';
 import { ReactComponent as CircleDark} from '../Images/Ellipse 6.svg';
 import { ReactComponent as CircleClair} from '../Images/Ellipse 7.svg';
 import { ReactComponent as Processor} from '../Images/Group 9.svg';
@@ -8,7 +9,7 @@ import { ReactComponent as Logo} from '../Images/Logo.svg';
 function Home () {
   return (
     <div class="hero">        
-      <h2>Page d'accueil</h2>  
+     <Navbar label="Page d'accueil" />
       <div class="right-image"><Processor/></div>
       <div class="right-image1"><Logo/></div>       
       <div class="left">        

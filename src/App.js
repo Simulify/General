@@ -2,6 +2,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Sidebar from './components/Sidebar';
+
 import Home from './pages/Home';
 import Simulation from './pages/Simulation';
 import Files from './pages/Files';
@@ -17,6 +18,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Sidebar />
+       
         <Routes>
           <Route path='/' element={<Home/>}></Route>
           <Route path='/home' element={<Home/>}></Route>
