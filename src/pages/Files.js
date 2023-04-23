@@ -7,6 +7,11 @@ import Navbar from '../components/Navbar';
 import Loope from '../Images/No Results@3x.svg';
 
 function Files() {
+ 
+   
+  
+  
+    
   const [fileExempleVisible, setFileExempleVisible] = useState(false);
   const [myFilesVisible, setMyFilesVisible] = useState(false);
   const [arithmeticVisible, setArithmeticVisible] = useState(false);
@@ -15,8 +20,23 @@ function Files() {
   const [transferVisible, setTransferVisible] = useState(false);
   const [shiftVisible, setShiftVisible] = useState(false);
 
+  const [fileList, setFileList] = useState([
+    { id: 1, label: 'Mon premier programme' },
+    { id: 2, label: 'Mon deuxieme programme' },
+ 
+  ]);
+  function addFile() {
+    const newFile = { id: fileList.length + 1, label: 'Mon nouveau programme' };
+    setFileList([...fileList, newFile]);
+  }
+  function removeFile(id) {
+    setFileList(fileList.filter((file) => file.id !== id));
+  }
+    
+
   function handleExempleClick() {
     setFileExempleVisible((prevState) => !prevState);
+
   }
 
   function handleMyFilesClick() {
@@ -42,24 +62,27 @@ function Files() {
   function handleShiftClick() {
     setShiftVisible((prevState) => !prevState);
   }
+ 
+  
 
   return (
     <div className="Files">
       <Navbar label="Les fichiers" />
 
       <div className="Menu-container">
-        <div className="menu-trigger-exemple">
+        <div className="menu-trigger-exemple"
+        onClick={handleExempleClick}>
           <FilesButton
             className="Examplebutton"
             label="Exemples"
-            onClick={handleExempleClick}
+            
           />
         </div>
         <div
           className={`Menu-exemples ${fileExempleVisible ? 'show' : ''}`}
         >
-          <div className="subfiles-arithmetic">
-            <SubfilesButton label="Opérations arithmétiques" onClick={handleArithmeticClick} />
+          <div className="subfiles-arithmetic" onClick={handleArithmeticClick}>
+            <SubfilesButton label="Opérations arithmétiques"  />
           </div>
 
           <div className={`file-arithmetic ${arithmeticVisible ? 'show' : ''}`}>
@@ -68,8 +91,8 @@ function Files() {
             <File label="DIV" />
           </div>
 
-          <div className="subfiles-logic">
-            <SubfilesButton label="Logique" onClick={handleLogicClick} />
+          <div className="subfiles-logic" onClick={handleLogicClick}>
+            <SubfilesButton label="Logique"  />
           </div>
 
           <div className={`file-logic ${logicVisible ? 'show' : ''}`}>
@@ -78,8 +101,8 @@ function Files() {
             <File label="NON" />
           </div>
 
-          <div className="subfiles-branching">
-            <SubfilesButton label="Branchement" onClick={handleBranchingClick} />
+          <div className="subfiles-branching" onClick={handleBranchingClick}>
+            <SubfilesButton label="Branchement"  />
           </div>
 
           <div className={`file-branching ${branchingVisible ? 'show' : ''}`}>
@@ -88,8 +111,8 @@ function Files() {
             <File label="SWITCH" />
           </div>
 
-          <div className="subfiles-transfer">
-            <SubfilesButton label="Transfert" onClick={handleTransferClick} />
+          <div className="subfiles-transfer" onClick={handleTransferClick}>
+            <SubfilesButton label="Transfert"  />
           </div>
 
           <div className={`file-transfer ${transferVisible ? 'show' : ''}`}>
@@ -98,8 +121,8 @@ function Files() {
             <File label="RET"/>
           </div>
 
-          <div className="subfiles-shift">
-            <SubfilesButton label="Décalages" onClick={handleShiftClick}/>
+          <div className="subfiles-shift" onClick={handleShiftClick}>
+            <SubfilesButton label="Décalages" />
           </div>
 
           <div className={`file-shift ${shiftVisible ? 'show' : ''}`}>
@@ -110,28 +133,34 @@ function Files() {
 
         <br />
 
-        <div className="second-menu">
-          <div className="menu-trigger-mesFichiers">
-            <FilesButton
-              label="Mes fichiers"
-              onClick={handleMyFilesClick}
-            />
-          </div>
-          <div className={`file-exemple ${myFilesVisible ? 'show' : ''}`}>
-            <File label="Mon premier programme" />
-            <File label="Mon deuxieme programme" />
-            <File label="Mon troisieme programme" />
-            <File label="Mon quatrieme programme" />
-            <File label="Mon cinqieme programme" />
-            <File label="Mon sixieme programme" />
-          </div>
-         
-
-        </div>
+        <div className="second-menu" onClick={handleMyFilesClick}>
+      <div className="menu-trigger-mesFichiers">
+        <FilesButton label="Mes fichiers" />
+      </div>
+      <div className={`file-exemple ${myFilesVisible ? 'show' : ''}`}>
+        {fileList.length > 0 ? (
+          <table>
+            <tbody>
+              {fileList.map((file) => (
+                <tr key={file.id}>
+                  <td>
+                    <File label={file.label} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          myFilesVisible && (
+            <div className='empty'>
+              <img className="Loope" src={Loope} alt="Loopeicon" />
+            </div>
+          )
+        )}
+      </div>
+    </div>
        
-        {!fileExempleVisible && !myFilesVisible && (
-  <img className="Loope" src={Loope} alt="Loopeicon" />
-)}
+     
 
        
       </div>
