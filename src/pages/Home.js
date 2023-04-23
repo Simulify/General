@@ -30,12 +30,12 @@ useEffect(() => {
   return (
     <div className="hero"> 
       <Navbar label="Page d'acceuil" />   
-      <div className="right-image"><Processor/></div>
-      <div className="left">
+      <div className="right">
+        <div className="right-image"><Processor/></div>
       <div className="slider2-container">
-      {currentImage === 0 && <Image1 className="current-image" style={{ width: "13%", height: "auto",top:"16%" }} />}
-      {currentImage === 1 && <Image2 className="current-image" style={{ width: "20%", height: "auto" ,right:"16%"}} />}
-      {currentImage === 2 && <Image3 className="current-image" style={{ width: "20%", height: "auto",right:"15%" }} />}
+      {currentImage === 0 && <Image1 className="current-image" style={{ width: "11%", height: "auto" }} />}
+      {currentImage === 1 && <Image2 className="current-image" style={{ width: "17%", height: "auto" }} />}
+      {currentImage === 2 && <Image3 className="current-image" style={{ width: "17%", height: "auto" }} />}
       {currentImage === 2 && <Image1 className="next-image" />}
       {currentImage === 0 && <Image2 className="next-image" />}
       {currentImage === 1 && <Image3 className="next-image" />}
@@ -43,6 +43,9 @@ useEffect(() => {
       {currentImage === 1 && <Image1 className="previous-image" />}
       {currentImage === 2 && <Image2 className="previous-image" />}
     </div>
+    </div>
+      
+      <div className="left">
       <div className="slider-container">
       <div className="slider">
         <div className="slide">

@@ -23,15 +23,55 @@ h2 {
   text-decoration: none;
 }
 
+
+
+.right {
+  display: flex;
+  justify-content: center; /* center child elements horizontally */
+  align-items: center; /* center child elements vertically */
+}
+
 .right-image svg {
   height: 100vh;
   width: auto;
   position: absolute;
-  left: 56.5%;
+  left: 78.5%;
   top: 0%;
+  transform: translateX(-50%);
   z-index: 2;
   background-color: #FFFFFF;
 }
+
+.slider2-container {
+  height: 300%;
+  overflow: hidden;
+  z-index: 4;
+}
+
+.current-image {
+  position: absolute;
+  top: 48%;
+  left: 78%;
+  transform: translate(-50%, -50%);
+  bottom: 0;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.next-image {
+  position: absolute;
+  bottom: -500px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
+}
+
+.previous-image {
+  position: absolute;
+  top: -500px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, top 0.5s ease-in-out;
+}
+
 
 .left {
   position: absolute;
@@ -48,7 +88,7 @@ h2 {
   font-family: Montserrat;
   font-style: bold;
   color: #023047;
-  font-size: xx-large;
+  font-size:  200%;
   line-height: 40px;
   padding: 0px;
   margin-bottom: 1%;
@@ -124,36 +164,6 @@ h2 {
   }
 }
 
-.slider2-container {
-  height: 300%;
-  overflow: hidden;
-  z-index: 4;
-}
-
-.current-image {
-  position: absolute;
-  top: 14%;
-  right: 20%;
-  bottom: 0;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.next-image {
-  position: absolute;
-  bottom: -500px;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
-}
-
-.previous-image {
-  position: absolute;
-  top: -500px;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out, top 0.5s ease-in-out;
-}
-
-
 
 .slid.clair1 svg {
   position: absolute;
@@ -181,3 +191,4 @@ h2 {
 .slid.active svg circle{
   fill-opacity: 1;
 }
+
