@@ -1,40 +1,42 @@
 header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 100px;
-  padding-left: 20px; /* Espace pour la barre latérale */
+   height: 100px;
   background-color: #fff;
+  z-index: 10;
 }
 
+
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: calc(100% - 10px);
-  max-width: 1200px;
-  margin: 0 auto;
-  z-index: 10;
+
+   display: grid;
+  grid-template-columns: 1fr auto;
+ align-items: center;
+  width: calc(100%);
+  max-width:none;
+ margin-top: 0;
+ margin-left: 0%;
+
+  
+
 }
 
 h2 {
   margin-top: 30px;
+
   color: #023047;
   font-size: 30px;
   font-style: SemiBold;
-  text-align: left;
   font-family: Montserrat;
-  font-weight: 600;
+  font-weight: 1000;
   line-height: normal;
   font-stretch: normal;
   text-decoration: none;
 }
 
+
 .nav-icons {
   display: flex;
   flex-direction: row;
   align-items: center;
-  
 }
 
 .info-icon,
@@ -43,9 +45,9 @@ h2 {
   margin-right: 20px;
 }
 
-.avatar-icon img {
-  width: 15px;
-  height: 15px;
+.avatar-icon {
+  width: 35px;
+  height: 35px;
 }
 
 .info-icon {
@@ -53,8 +55,6 @@ h2 {
   width: 35px;
 }
 
-
 .nav-icons {
-
-  margin-left: auto;
+  justify-self: end;
 }

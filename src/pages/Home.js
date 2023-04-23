@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './Home.css';
 import Navbar from '../components/Navbar';
+
 import { ReactComponent as Image3} from '../Images/slide3.svg';
 import { ReactComponent as Image2} from '../Images/slide2.svg';
+
 import { ReactComponent as CircleClair} from '../Images/Ellipse 7.svg';
 import { ReactComponent as Processor} from '../Images/Group 9.svg';
 import { ReactComponent as Image1} from '../Images/Logo.svg';
@@ -28,6 +30,8 @@ useEffect(() => {
 
 
   return (
+
+
     <div className="hero"> 
       <Navbar label="Page d'acceuil" />   
       <div className="right">
@@ -51,6 +55,7 @@ useEffect(() => {
         <div className="slide">
           <h1>Explorez le plaisir <br /> d'apprendre avec Simulify !</h1>
           <p>Notre site web propose une machine pédagogique <br />
+
           à deux adresses suivant l'architecture de Von <br />
           Neumann, ce site est le résultat de notre travail <br />
           durant le projet de deuxième année cycle <br />
