@@ -8,27 +8,10 @@
   width: auto;
 }
 
-h2 {
-  position: absolute;
-  top: 1%;
-  left: 11%;
-  color: #023047;
-  font-size: xx-large;
-  font-style: SemiBold;
-  text-align: left;
-  font-family: Montserrat;
-  font-weight: 600;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
-}
-
-
-
 .right {
   display: flex;
-  justify-content: center; /* center child elements horizontally */
-  align-items: center; /* center child elements vertically */
+  justify-content: center;
+  align-items: center; 
 }
 
 .right-image svg {
