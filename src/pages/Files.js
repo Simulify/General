@@ -5,6 +5,8 @@ import FilesButton from '../components/FilesButton';
 import File from '../components/File';
 import Navbar from '../components/Navbar';
 import Loope from '../Images/No Results@3x.svg';
+import { Link } from "react-router-dom";
+
 
 function Files() {
  
@@ -86,9 +88,18 @@ function Files() {
           </div>
 
           <div className={`file-arithmetic ${arithmeticVisible ? 'show' : ''}`}>
-            <File label="ADD" />
-            <File label="SUB" />
-            <File label="DIV" />
+          <Link to="/Simulation">
+          <File label="ADD" />
+    </Link>
+    <Link to="/Simulation">
+    <File label="SUB" />
+      </Link>
+      <Link to="/Simulation">
+      <File label="DIV" />
+      </Link>
+           
+           
+           
           </div>
 
           <div className="subfiles-logic" onClick={handleLogicClick}>
@@ -96,9 +107,18 @@ function Files() {
           </div>
 
           <div className={`file-logic ${logicVisible ? 'show' : ''}`}>
-            <File label="ET" />
-            <File label="OU" />
-            <File label="NON" />
+          <Link to="/Simulation">
+          <File label="ET" />
+      </Link>
+      <Link to="/Simulation">
+      <File label="OU" />
+    </Link>
+    <Link to="/Simulation">
+    <File label="NON" />
+    </Link>
+           
+           
+        
           </div>
 
           <div className="subfiles-branching" onClick={handleBranchingClick}>
@@ -106,9 +126,18 @@ function Files() {
           </div>
 
           <div className={`file-branching ${branchingVisible ? 'show' : ''}`}>
-            <File label="IF" />
-            <File label="ELSE" />
-            <File label="SWITCH" />
+          <Link to="/Simulation">
+          <File label="IF" />
+    </Link>
+    <Link to="/Simulation">
+    <File label="ELSE" />
+    </Link>
+    <Link to="/Simulation">
+    <File label="SWITCH" />
+    </Link>
+        
+       
+          
           </div>
 
           <div className="subfiles-transfer" onClick={handleTransferClick}>
@@ -116,9 +145,18 @@ function Files() {
           </div>
 
           <div className={`file-transfer ${transferVisible ? 'show' : ''}`}>
-            <File label="MOV" />
-            <File label="CALL" />
-            <File label="RET"/>
+          <Link to="/Simulation">
+          <File label="MOV" />
+    </Link>
+    <Link to="/Simulation">
+    <File label="CALL" />
+    </Link>
+    <Link to="/Simulation">
+    <File label="RET"/>
+    </Link>
+         
+     
+      
           </div>
 
           <div className="subfiles-shift" onClick={handleShiftClick}>
@@ -126,8 +164,14 @@ function Files() {
           </div>
 
           <div className={`file-shift ${shiftVisible ? 'show' : ''}`}>
-            <File label="SHIFT LEFT" />
-            <File label="SHIFT RIGHT" />
+          <Link to="/Simulation">
+          <File label="SHIFT LEFT" />
+    </Link>
+    <Link to="/Simulation">
+    <File label="SHIFT RIGHT" />
+    </Link>
+        
+           
           </div>
         </div>
 
@@ -142,11 +186,14 @@ function Files() {
           <table>
             <tbody>
               {fileList.map((file) => (
-                <tr key={file.id}>
+                 <Link to="/Simulation">
+                  <tr key={file.id}>
                   <td>
                     <File label={file.label} />
                   </td>
                 </tr>
+                 </Link>
+              
               ))}
             </tbody>
           </table>
