@@ -85,7 +85,7 @@ function Files() {
           className={`Menu-exemples ${fileExempleVisible ? 'show' : ''}`}
         >
           <div className="subfiles-arithmetic" onClick={handleArithmeticClick}>
-            <SubfilesButton label="Opérations arithmétiques"  />
+            <SubfilesButton label="Arithmétiques"  />
           </div>
 
           <div className={`file-arithmetic ${arithmeticVisible ? 'show' : ''}`}>
@@ -128,13 +128,11 @@ function Files() {
 
           <div className={`file-branching ${branchingVisible ? 'show' : ''}`}>
           <Link to="/Simulation">
-          <File label="IF" />
+          <File label="BCV" />
     </Link>
+    
     <Link to="/Simulation">
-    <File label="ELSE" />
-    </Link>
-    <Link to="/Simulation">
-    <File label="SWITCH" />
+    <File label="LOOP" />
     </Link>
         
        
@@ -147,14 +145,10 @@ function Files() {
 
           <div className={`file-transfer ${transferVisible ? 'show' : ''}`}>
           <Link to="/Simulation">
-          <File label="MOV" />
+          <File label="PERMUT" />
     </Link>
-    <Link to="/Simulation">
-    <File label="CALL" />
-    </Link>
-    <Link to="/Simulation">
-    <File label="RET"/>
-    </Link>
+   
+    
          
      
       
