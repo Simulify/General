@@ -1,9 +1,11 @@
 import React from 'react';
 import '../App.css';
+import Navbar from '../components/Navbar';
 
 
 function Guide () {
-  return <div>GUIDE PAGE</div>
+
+  return <div> <Navbar label="Guide" /></div>
 };
 
 

@@ -1,11 +1,13 @@
 import React from 'react';
 import '../App.css';
-
+import Navbar from '../components/Navbar';
 
 
 function Revision () {
  
-  return <div>REVISION PAGE</div>
+  return <div>
+     <Navbar label="Révisions" />
+  </div>
 };
 
 
