@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Home.css';
 import Navbar from '../components/Navbar';
 
+
 import { ReactComponent as Image3} from '../Images/slide3.svg';
 import { ReactComponent as Image2} from '../Images/slide2.svg';
 
@@ -10,6 +11,7 @@ import { ReactComponent as Processor} from '../Images/Group 9.svg';
 import { ReactComponent as Image1} from '../Images/Logo.svg';
 
 function Home () {
+
   const [currentImage, setCurrentImage] = useState(0);
 
 useEffect(() => {  

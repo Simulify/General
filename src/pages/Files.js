@@ -68,6 +68,7 @@ function Files() {
   
 
   return (
+   
     <div className="Files">
       <Navbar label="Les fichiers" />
 
