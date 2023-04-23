@@ -3,11 +3,14 @@ import '../App.css';
 import Navbar from '../components/Navbar';
 
 
+
 function Revision () {
+
+  return(
  
-  return <div>
+   <div>
      <Navbar label="Révisions" />
-  </div>
+  </div>);
 };
 
 
