@@ -7,7 +7,7 @@
     width: auto;
 }
 .guide-image {
-    width: 80%;
+    width: 70%;
     height: auto;
     position: absolute;
     bottom: 15%;
@@ -28,7 +28,6 @@
     font-weight: 500;
     font-size: 80%;
 }
-
 .prev {
     width: auto;
     height: auto;
