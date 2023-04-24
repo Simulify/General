@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import "./style.css"; // import the external CSS file
+import "./Code.css"; // import the external CSS file
 // import img1 from './Ellipse 515.png';
 // import img2 from './Icon.png';
 import { Link } from 'react-router-dom';
@@ -60,7 +60,7 @@ function Code() {
             Compiler
           </button>
           <button style={{position:'',bottom:""}} className="button" id="btn2">
-          <a href='./Simulation' style={{ color:'white' }}> simuler {" > "}</a> 
+          <a href='/code/simulation' style={{ color:'white' }}> simuler {" > "}</a> 
           </button>
         </div>
         <br /> <br /> <br />
