@@ -1,7 +1,5 @@
 /****************************************** SIDEBAR STYLE ******************************************/
 
-
-
 .Sidebar {
   position: absolute;
   width: 65px;
@@ -57,7 +55,6 @@ bottom: 22px;
 .Sidebar #active {cursor:default;background-color: #00A6FB;}
 #active .homeicon path {stroke: #F8F9FA;}
 #active .simuicon path,#active .icon path {fill: #F8F9FA;}
-
 
 
 /***************************************************************************************************/

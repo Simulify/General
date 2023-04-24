@@ -7,13 +7,11 @@
   height: 100vh;
   width: auto;
 }
-
 .right {
   display: flex;
   justify-content: center;
   align-items: center; 
 }
-
 .right-image svg {
   height: 100vh;
   width: auto;
@@ -24,13 +22,11 @@
   z-index: 2;
   background-color: #FFFFFF;
 }
-
 .slider2-container {
   height: 300%;
   overflow: hidden;
   z-index: 4;
 }
-
 .current-image {
   position: absolute;
   top: 48%;
@@ -40,22 +36,18 @@
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
-
 .next-image {
   position: absolute;
   bottom: -500px;
   opacity: 0;
   transition: opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
 }
-
 .previous-image {
   position: absolute;
   top: -500px;
   opacity: 0;
   transition: opacity 0.5s ease-in-out, top 0.5s ease-in-out;
 }
-
-
 .left {
   position: absolute;
   top: 18%;
@@ -66,7 +58,6 @@
   align-items: flex-start;
   flex-grow: 0;
 }
-
 .left h1 {
   font-family: Montserrat;
   font-style: bold;
@@ -76,7 +67,6 @@
   padding: 0px;
   margin-bottom: 1%;
 }
-
 .left p {
   font-family: 'Montserrat';
   font-style: normal;
@@ -100,61 +90,44 @@
   color: #FFFFFF;
   text-decoration: none;
 }
-
-
-/***************************************************************************************************/
-
 .slider-container {
   position: relative;
   overflow: hidden;
 }
-
 .slider {
   display: flex;
   width: 300%;
   transition: transform 0.5s ease-in-out;
 }
-
 .slide {
   flex-basis: 33.33%;
 }
-
 .slide:nth-child(1) {
   animation: slide-in-left 0.5s forwards;
 }
-
 .slide:nth-child(2) {
   animation: slide-in-right 0.5s forwards;
 }
-
 @keyframes slide-in-left {
-  from {
-    transform: translateX(-100%);
-  }
-
-  to {
-    transform: translateX(0);
+  from { 
+    transform: translateX(-100%); 
+  } to { 
+    transform: translateX(0); 
   }
 }
-
 @keyframes slide-in-right {
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(0);
+  from { 
+    transform: translateX(100%); 
+  } to { 
+    transform: translateX(0); 
   }
 }
-
-
 .slid.clair1 svg {
   position: absolute;
   top: 290px;
   width: 20px;
   height: 20px;
 }
-
 .slid.clair2  svg {
   position: absolute;
   top: 290px;
@@ -162,7 +135,6 @@
   width: 20px;
   height: 20px;
 }
-
 .slid.clair3  svg {
   position: absolute;
   top: 290px;
@@ -170,8 +142,9 @@
   width: 20px;
   height: 20px;
 }
-
 .slid.active svg circle{
   fill-opacity: 1;
 }
 
+
+/***************************************************************************************************/
