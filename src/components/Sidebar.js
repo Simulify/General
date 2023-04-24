@@ -14,7 +14,7 @@ function Sidebar () {
       <li 
        key={key} 
        className='row'
-       id={(window.location.pathname === val.link )
+       id={window.location.pathname.startsWith(val.link)
         ||(window.location.pathname ==="/" && val.link === "/home")? 'active' : ''}
        onClick={() => { window.location.pathname = val.link }}> 
        <div>{val.icon}</div>

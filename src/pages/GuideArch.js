@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import './Guide.css';
 
 
-function Guide () {
+function GuideArch () {
  return (
   <div className="hero"> 
    <Navbar label="Guide"/>
@@ -14,4 +14,4 @@ function Guide () {
 };
 
 
-export default Guide;
+export default GuideArch;
