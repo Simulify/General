@@ -1,7 +1,7 @@
 import React from "react";
 import "../Simulation.css";
 
-function Ual() {
+function UAL() {
     return (
         <div className="UAL"> 
             <div className="ual1"> 
@@ -18,4 +18,4 @@ function Ual() {
     );
 }
 
-export default Ual
+export default UAL
