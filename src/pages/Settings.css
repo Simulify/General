@@ -1,0 +1,70 @@
+.Form {
+    margin-left: 100px;
+    
+
+}
+.nav-links  {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    width: 80%;
+    margin-left: 8%;
+
+
+}
+
+.Settingsbar li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+    color: #5784BA;
+}
+
+ 
+
+.MotDePassePage{
+    margin-left: 100px; 
+}
+h1{
+    color: 023047;
+    margin-left: 8%;
+}
+
+.blue-rectangle {
+    background-color: #B6D8F2;
+    height: 100px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    margin-top: 100px;
+    border-radius: 80px 80px 0px 0px;
+  }
+
+  .modifybutton {
+    background-color: white;
+    border: 1px solid #00a6fb;
+    margin-right: 5%;
+    color: #023047; 
+    font-size: 14px;
+    margin-top:4% ;
+    
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .Form svg{
+    width: 200%;
+    margin-top: 120px;
+  }
+
+  @media (max-width: 768px) {
+    .Form svg {
+      margin-top: 130px;
+    }
+  }
