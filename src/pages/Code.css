@@ -1,0 +1,176 @@
+
+body
+{
+    font-family: montserrat;
+}
+.side_bar
+{
+    width: 20px;
+    height: 100%;
+    background-color: aqua;
+}
+.icon
+{
+    display: flex;
+    margin-left: auto;
+    margin-top: 15px;
+}
+.icon span
+{
+    margin-left: 25px;
+    cursor: pointer;
+}
+.mini_nav
+{
+    display: flex;
+
+}
+.box
+{
+    padding:2%;
+    width: 60%;
+    min-height: 200px;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, .2);;
+}
+
+.box div
+{
+    background-color: #99DBFD;
+    width: 10%;
+ border-top-left-radius: 16px;
+ border-bottom-left-radius: 16px;
+display: inline;
+    height: 200px;
+}
+.container
+{
+    display: flex;
+    justify-content: space-around;
+}
+.button
+{
+    border-radius:30px;
+    border-color: transparent;
+    padding: 10px;
+    margin-left: auto;
+   margin-right: auto;
+    cursor: pointer;
+    color: #023047;
+    letter-spacing: 1.5px;
+    font-size: 11px;
+}
+.buttons
+{
+display: flex;
+width: 45%;
+margin-left: auto;
+margin-right: auto;
+justify-content: space-between;
+}
+#btn1:hover
+{
+    filter: drop-shadow(0 0 0.3rem #00A6FB);
+}
+#btn1
+{
+   border-color: #00A6FB; 
+   background-color: white;
+   margin-left: auto;
+   color: #00A6FB;
+   margin-right: auto;
+   
+}
+#btn2
+{
+   background-color: #00A6FB; 
+   color: white;
+   margin-left: auto;
+   margin-right: auto;
+}
+#btn2:hover
+{
+    filter: drop-shadow(0 0 0.3rem #00A6FB);
+
+}
+div.container2
+{
+
+}
+.container2
+{
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+margin-left: 5%;
+height: 200px;
+}
+a
+{
+    margin-bottom: auto;
+
+}
+button#btn2.button
+{
+    margin-left: 25%;
+    margin-bottom: 0%;
+
+}
+button#btn4.button
+{
+    color: white
+
+
+}
+button#btn4.button:hover
+{
+    color: white;
+    filter: drop-shadow(0 0 0.3rem #00A6FB);
+}
+#btn3
+{
+    width: 130px;
+    margin-left: auto;
+   margin-right: auto;
+   color: #00A6FB;
+   background-color: white;
+   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+#btn3:hover
+{
+    filter: drop-shadow(0 0 0.1rem #00A6FB);
+
+}
+.textarea 
+{
+    width: 48%;
+    margin-left: auto;
+    margin-right: auto;
+    resize: none;
+    color: #023047;
+    display: flex;
+    font-size: 15px;
+}
+textarea:focus {
+    outline: none; /* Cette propriété permet de désactiver la bordure */
+    border-color: #00A6FB /* Cette propriété permet de définir la couleur de la bordure */
+  }
+textarea::placeholder
+{
+    color: #023047; 
+    opacity: .7; 
+}
+form button
+{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #00A6FB;
+    color: white;
+    display: block;
+}
+form button:hover
+{
+    filter: drop-shadow(0 0 0.3rem #00A6FB);
+  
+}
