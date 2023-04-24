@@ -1,0 +1,14 @@
+.input-button {
+    background-color: #B6D8F25C;
+    color: #333;
+    width: 70%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    margin-bottom: 1rem;
+    outline: none;
+}
+.input-button::placeholder {
+    color: #999;
+}
