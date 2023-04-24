@@ -8,6 +8,7 @@ import { ReactComponent as CircleClair} from '../Images/Ellipse 7.svg';
 import { ReactComponent as Processor} from '../Images/Group 9.svg';
 
 function Home () {
+
   const [currentImage, setCurrentImage] = useState(0);
   useEffect(() => {  
    const slider = document.querySelector(".slider");

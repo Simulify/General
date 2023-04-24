@@ -6,31 +6,26 @@ header {
 
 
 .navbar {
-
-   display: grid;
-  grid-template-columns: 1fr auto;
- align-items: center;
-  width: calc(100%);
-  max-width:none;
- margin-top: 0;
- margin-left: 0%;
-
-  
-
+  display: grid;
+  grid-template-columns: 2fr auto; /* Adjust the values here */
+  align-items: center;
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+  margin-left: 0%;
 }
 
-h2 {
+.title {
   margin-top: 30px;
-
   color: #023047;
   font-size: 30px;
-  font-style: SemiBold;
+ font-weight: 600;
   font-family: Montserrat;
-  font-weight: 1000;
-  line-height: normal;
+   line-height: normal;
   font-stretch: normal;
   text-decoration: none;
 }
+
 
 
 .nav-icons {
