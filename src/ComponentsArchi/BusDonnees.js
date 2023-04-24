@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Simulation.css";
 
 function BusDonnees() {
-  return (
-    <div className="BusDonnees">
 
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  }
+
+  return (
+    <div className={`BusDonnees ${isClicked ? "boxShadowBlue" : ""}`}
+      onClick={handleClick}>
       Bus de données 
       
     </div>
