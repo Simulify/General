@@ -13,22 +13,22 @@ export const SidebarData = [
     },
     {
         icon : <div className='simuicon'><SimulationIcon /></div>,
-        link : "/simulation",
+        link : "/code",
     },
     {
-        icon : <div className='icon'><FilesIcon /></div>,
+        icon : <div className='filesicon'><FilesIcon /></div>,
         link : "/files",
     },
     {
-        icon : <div className='icon'><RevisionIcon /></div>,
+        icon : <div className='revicon'><RevisionIcon /></div>,
         link : "/revision",
     },
     {
-        icon : <div className='icon'><GuideIcon /></div>,
+        icon : <div className='guideicon'><GuideIcon /></div>,
         link : "/guide",
     },
     {
-        icon : <div className='icon'><SettingsIcon /></div>,
+        icon : <div className='seticon'><SettingsIcon /></div>,
         link : "/settings",
     }
 ]
