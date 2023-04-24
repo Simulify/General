@@ -12,8 +12,6 @@ import Guide from './pages/Guide';
 import Settings from './pages/Settings';
 import ErrorPage from './pages/ErrorPage';
 
-
-
 function App() {
  
 
