@@ -12,7 +12,7 @@ import Guide from './pages/Guide';
 import ArchiGuide from './pages/ArchGuide';
 import Settings from './pages/Settings';
 import ErrorPage from './pages/ErrorPage';
-
+import Code from './pages/Code';
 function App() {
  
 
@@ -24,7 +24,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}></Route>
           <Route path='/home' element={<Home/>}></Route>
-          <Route path='/simulation' element={<Simulation/>}></Route>
+          <Route path='/simulation' element={<Code/>}></Route>
           <Route path='/files' element={<Files/>}></Route>
           <Route path='/revision' element={<Revision/>}></Route>
           <Route path='/guide' element={<Guide/>}></Route>
