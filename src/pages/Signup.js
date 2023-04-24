@@ -3,7 +3,7 @@ import React from "react";
 import "./index_login.css";
 import InputButton from "../Components_login/InputButton";
 import { ReactSVG } from 'react-svg';
-import logo from "./Components_login/logo.svg";
+import logo from "../Components_login/logo.svg";
 import LoginButton from "../Components_login/Button";
 import '../App.css';
 import './Signup.css';

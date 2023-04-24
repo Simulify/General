@@ -1,9 +1,9 @@
 import React from 'react';
 import "./index_login.css";
-import Image from "./Components_login/Image.svg"
+import Image from "../Components_login/Image.svg"
 import { ReactSVG } from "react-svg";
 import InputButton from "../Components_login/InputButton";
-import logo from "./Components_login/logo.svg";
+import logo from "../Components_login/logo.svg";
 import LoginButton from "../Components_login/Button";
 
 function login () {
