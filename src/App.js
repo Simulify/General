@@ -13,6 +13,7 @@ import GuideArch from './pages/GuideArch';
 import Settings from './pages/Settings';
 import ErrorPage from './pages/ErrorPage';
 import Code from './pages/Code';
+import MotDePassePage from './ComponentsSettings/MotDePassePage';
 function App() {
  
 
@@ -31,6 +32,7 @@ function App() {
           <Route path='/guide' element={<Guide/>}></Route>
           <Route path='/guide/architecture' element={<GuideArch/>}></Route>
           <Route path='/settings' element={<Settings/>}></Route>
+          <Route path='/settings/MotDePassePage'  element={<MotDePassePage/>}></Route>
           <Route path='/Login' element={<Login/>}></Route>
           <Route path='/Signup' element={<Signup/>}></Route>
           <Route path='/*' element={<ErrorPage/>}></Route>

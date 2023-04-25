@@ -1,4 +1,4 @@
- /* .App {
+ /* /* .App {
   text-align: center;
 }
 .App-logo {
@@ -30,7 +30,7 @@
   to {
     transform: rotate(360deg);
   }
-}  */
+}  
 
 .ImageClass svg {
   max-width: 100%;
@@ -51,10 +51,8 @@
   flex: 1;
 }
 .Form svg{
-  max-width: 20% ;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  margin-top: 0 px ;
+  max-width: 100% ;
+  margin-top: 0% ;
 }
 .SignUp , .ForgotPass a:visited {
   color: purple ;
@@ -75,4 +73,4 @@
   color: #b23030;
   align-self: flex-start;
   margin-left: auto ;
-}
+} */
