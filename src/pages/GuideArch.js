@@ -9,9 +9,7 @@ function GuideArch () {
    <Navbar label="Guide"/>
    <a href="./instruction-format" className="suiv">Suivant</a>
    <a href="." className="prev">Retour</a>
-   
-
-
+   <h2>Architecture de la machine pédagogique</h2>
 
   </div>
  );

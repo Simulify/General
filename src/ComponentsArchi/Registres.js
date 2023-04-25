@@ -1,6 +1,6 @@
 import React from "react";
 import Registre from "./Registre";
-import "../Simulation.css";
+import "../pages/Simulation.css";
 import RegToBusDonnees from "./RegToBusDonnees";
 
 function Registres() {
