@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './MotDePassePage.css';
+import FormSettings from './FormSettings';
+
 
 function MotDePassePage() {
     const [password, setPassword] = useState('');
@@ -29,7 +31,9 @@ function MotDePassePage() {
     };
 
     return (
+        
         <div className='MotDePassePage'>
+             <FormSettings/>
             <form onSubmit={handleSubmit}>
                 <div className='container'>
                     <div className='Inputs'>

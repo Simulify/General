@@ -11,21 +11,21 @@ function BusCoToRam() {
 
     return (
         <div className="BusCoToRam">
-            <div className={`BusCo ${isClicked ? "boxShadowBlue" : ""}`}
-                onClick={handleClick}>
+            <div className="BusCo" >
                 <div className="triangleHaut"></div>
-                <div className="rectangle"></div>
+                <div className={`rectangle ${isClicked ? "boxShadowBlue" : ""}`}
+                onClick={handleClick}></div>
                 <div className="triangleBas"></div>
             </div>
-            <div className={`CoToRam ${isClicked ? "boxShadowBlue" : ""}`}
-                onClick={handleClick}>
-                <div className="rectangle"></div>
+            <div className="CoToRam">
+                <div className={`rectangle ${isClicked ? "boxShadowBlue" : ""}`}
+                onClick={handleClick}></div>
                 <div className="triangleDroit"></div>
             </div>
-            <div className={`RamBusDonnees ${isClicked ? "boxShadowBlue" : ""}`}
-                onClick={handleClick}>
+            <div className="RamBusDonnees">
                 <div className="triangleHaut"></div> 
-                <div className="rectangle"></div>
+                <div className={`rectangle ${isClicked ? "boxShadowBlue" : ""}`}
+                onClick={handleClick}></div>
                 <div className="triangleBas"></div>
             </div>
         </div>
