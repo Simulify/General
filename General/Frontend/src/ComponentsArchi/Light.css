@@ -1,0 +1,14 @@
+.Light {
+    height: 4%;
+    width: 10%;
+    z-index: 10;
+    border-radius: 10px;
+    background-color: #FFE600;
+    box-shadow: 0 0 5px 4px #FFE600;
+    transform: translate(208px, 205px);
+    opacity: 40%;
+    transition: all 1s ease-in-out;
+  }
+
+
+  

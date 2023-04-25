@@ -1,0 +1,116 @@
+button:hover {
+  cursor: pointer;
+}
+
+.Menu-container {
+  overflow-y: scroll;
+  height: -moz-max-content;
+  height: -webkit-max-content;
+  height: max-content;
+  max-height: calc(90vh - 200px);
+  width: 70%;
+  margin: 70px auto 0 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-trigger-exemple {
+  display: block;
+  margin-bottom: 20px;
+}
+
+ 
+.menu-trigger-mesFichiers {
+  display: block;
+  margin-bottom: 20px;
+}
+
+
+
+
+.file {
+  margin-left: 70px;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Hide scrollbar if not scrolling */
+.Menu-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Toggle visibility of menu examples */
+.Menu-exemples {
+  display: none;
+  margin-left: 40px;
+}
+
+.Menu-exemples.show {
+  display: block;
+  
+}
+
+
+/* Toggle visibility of file examples */
+.file-exemple {
+  display: none;
+}
+
+.file-exemple.show {
+  display: block;
+}
+
+/* Toggle the visibility of subfiles-arithmetic*/
+.file-arithmetic{
+  display: none;
+}
+.file-arithmetic.show{
+  display: block;
+}
+
+/* Toggle the visibility of subfiles-logic*/
+.file-logic{
+  display: none;
+}
+.file-logic.show{
+  display: block;
+}
+/* Toggle the visibility of subfiles-branching*/
+.file-branching{
+  display: none;
+}
+.file-branching.show{
+  display: block;
+}
+
+/* Toggle the visibility of subfiles-transfer*/
+.file-transfer{
+  display: none;
+}
+.file-transfer.show{
+  display: block;
+}
+/* Toggle the visibility of subfiles-decalage*/
+.file-shift{
+  display: none;
+}
+.file-shift.show{
+  display: block;
+}
+
+
+
+.Loope {
+  height: 250px;
+  width: 250px;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
