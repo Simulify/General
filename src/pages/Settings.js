@@ -16,8 +16,8 @@ function Settings() {
     
       <div className='Settings'>
 
-       <h1>Paramètres </h1>
-        <Navbar />
+      
+        <Navbar label ="Paramètres"/>
         <Form/>
         <MotDePassePage/>
         
