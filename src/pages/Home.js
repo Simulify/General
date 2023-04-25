@@ -75,7 +75,7 @@ function Home () {
     <div className={`slid ${currentImage === 1 ? "active" : ""} clair2`}><CircleClair/></div>
     <div className={`slid ${currentImage === 2 ? "active" : ""} clair3`}><CircleClair/></div> 
     <a href="./code" className="simubutton">Simuler</a>
-   </div> 
+   </div>
   </div>
   );
 };

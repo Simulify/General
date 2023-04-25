@@ -80,13 +80,13 @@
   height: auto;
   margin-top: 10%;
   margin-left: 0;
-  padding: 2% 8%;
+  padding: 1.5% 6%;
   background: #00A6FB;
   box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 23px 14px rgba(43, 110, 177, 0.05), 0px 10px 10px rgba(43, 110, 177, 0.09), 0px 3px 6px rgba(43, 110, 177, 0.1), 0px 0px 0px rgba(43, 110, 177, 0.1);
   border-radius: 32px;
   font-family: 'Montserrat';
   font-weight: 600;
-  font-size: x-large;
+  font-size: large;
   color: #FFFFFF;
   text-decoration: none;
 }
@@ -124,23 +124,24 @@
 }
 .slid.clair1 svg {
   position: absolute;
-  top: 290px;
-  width: 20px;
-  height: 20px;
+  top: 70%;
+  left: 0%;
+  width: auto;
+  height: 5%;
 }
 .slid.clair2  svg {
   position: absolute;
-  top: 290px;
-  left: 40px;
-  width: 20px;
-  height: 20px;
+  top: 70%;
+  left: 4%;
+  width: auto;
+  height: 5%;
 }
 .slid.clair3  svg {
   position: absolute;
-  top: 290px;
-  left: 80px;
-  width: 20px;
-  height: 20px;
+  top: 70%;
+  left: 8%;
+  width: auto;
+  height: 5%;
 }
 .slid.active svg circle{
   fill-opacity: 1;

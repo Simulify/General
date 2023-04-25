@@ -22,43 +22,34 @@ body {
   height: 20%;
 }
 
+.registre {
+  display: flex;
+  align-items: center;
+  border: 2px solid #00A6FB;
+  background-color: #DCEFFD; 
+  border-radius: 5px;
+  width: 100%;
+  height: 75%;
+}
+
 .Registre .NomReg {
   width: 25%;
+  height: 75%;
 }
 
-.Registre .C1 {
-  width: 20%;
+.Registre .C1, .Registre .C2, .Registre .C3 {
+  width: 25%;
+  height: 80%;
   padding: 1%;
   text-align: center;
-  background-color: #DCEFFD; 
-  border-top: 2px solid #00A6FB;
-  border-bottom: 2px solid #00A6FB;
-  border-left: 2px solid #00A6FB;
-  border-right: 1px solid #00A6FB;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
-}
-
-.Registre .C2, .Registre .C3{
-  width: 20%;
-  padding: 1%;
-  text-align: center;
-  background-color: #DCEFFD; 
-  border-top: 2px solid #00A6FB;
-  border-bottom: 2px solid #00A6FB;
   border-right: 1px solid #00A6FB;
 }
 
 .Registre .C4 {
-  width: 20%;
+  width: 25%;
+  height: 80%;
   padding: 1%;
   text-align: center;
-  background-color: #DCEFFD; 
-  border-top: 2px solid #00A6FB;
-  border-bottom: 2px solid #00A6FB;
-  border-right: 2px solid #00A6FB;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
 
 .Registres {
@@ -67,7 +58,6 @@ body {
   grid-row: 1 / 2;
   width: 100%;
   height: 100%;
-  margin-top: 2px;
 }
 
 .registres {
@@ -79,7 +69,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 42%;
+  height: 43%;
 }
 
 .RegToBusDonnees .triangleHaut, .RegToBusDonnees .triangleBas {
@@ -243,10 +233,16 @@ body {
 .Rim {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 60%;
-  border-radius: 5px;
   margin-top: 5px;
+}
+
+.rim {
+  display: flex;
+  align-items: center;
+  border: 2px solid #00A6FB;
+  border-radius: 5px;
+  width: 100%;
 }
 
 
@@ -254,34 +250,14 @@ body {
   width: 10%;
 }
 
-.Rim .C1 {
-  border-left: 2px solid #00A6FB;
+.Rim .C1, .Rim .C2, .Rim .C3 {
   border-right: 1px solid #00A6FB;
-  border-top: 2px solid #00A6FB;
-  border-bottom: 2px solid #00A6FB;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
-  width: 25%;
-  padding: 0.5Vh;
-  text-align: center;
-}
-
-
-.Rim .C2, .Rim .C3 {
-  border-right: 2px solid #00A6FB;
-  border-top: 2px solid #00A6FB;
-  border-bottom: 2px solid #00A6FB;
   width: 25%;
   padding: 0.5Vh;
   text-align: center;
 }
 
 .Rim .C4 {
-  border-top: 2px solid #00A6FB;
-  border-bottom: 2px solid #00A6FB;
-  border-right: 2px solid #00A6FB;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
   width: 25%;
   padding: 0.5Vh;
   text-align: center;
@@ -319,6 +295,12 @@ body {
   background-color: #DCEFFD; 
   width: 100%;
   margin-top: 2px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+
+.boxShadowBlue {
+  box-shadow: 0px 0px 16px 10px rgba(0, 166, 251, 0.13), 0px 102px 41px rgba(0, 166, 251, 0.01), 0px 57px 34px rgba(0, 166, 251, 0.05), 0px 25px 25px rgba(0, 166, 251, 0.09), 0px 6px 14px rgba(0, 166, 251, 0.1), 0px 0px 0px rgba(0, 166, 251, 0.1);
 }
 
 .Co .C1, .Co .C2, .Co .C3{

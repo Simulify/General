@@ -1,5 +1,5 @@
 import React from "react";
-import "../Simulation.css";
+import "../pages/Simulation.css";
 
 function RegistrePile({case1, case2, case3, case4}) {
   return (
