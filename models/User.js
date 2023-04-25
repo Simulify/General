@@ -13,13 +13,17 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  picture: {
+    type: String,
+    default: 'https://example.com/default-profile-picture.jpg' // Set the default value to a URL for a default profile image
+  },
   level: {
     type: String,
     required: true,
     enum: ['beginner', 'intermediate', 'advanced'], // Add an enum validator for the level field
     default: 'beginner'
   },
-  createdAt: { // Rename the field to camelCase
+  createdAt: { 
     type: Date,
     default: Date.now
   },
@@ -28,7 +32,7 @@ const userSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    codeHexa: {
+    code: {
       type: String,
       required: true
     },
@@ -36,6 +40,10 @@ const userSchema = new mongoose.Schema({
       type: String,
       required: true,
       enum: ['Exemple', 'Personnel'] // Add an enum validator for the type field
+    },
+    category: {
+      type: String,
+      enum: ['Arithmétiques', 'Logiques', 'Branchements', 'Transfert', 'Décalages'] // Add an enum validator for the category field
     }
   }]
 });
