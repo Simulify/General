@@ -1,8 +1,16 @@
 import React from "react";
 import RegistrePile from "./RegistrePile";
+import { useState } from "react";
 import "../Simulation.css";
 
 function Pile() {
+
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  }
+
   const casesData = [];
 
   // Boucle pour générer les données de chaque case
@@ -22,16 +30,17 @@ function Pile() {
   ));
 
   return <div className="Pile">
-    <div className="NomPile"> Pile </div>
-    <div className="pile">
-        {registrePile}
-    </div>
-    <div className="PileBusDonnees">
-      <div className="triangleHaut"></div>
-      <div className="rectangle"></div>
-      <div className="triangleBas"></div>
-    </div>
-  </div>;
+      <div className="NomPile"> Pile </div>
+      <div className="pile">
+          {registrePile}
+      </div>
+      <div className="PileBusDonnees">
+          <div className="triangleHaut"></div>
+          <div className={`rectangle ${isClicked ? "boxShadowBlue" : ""}`}
+              onClick={handleClick}></div>
+          <div className="triangleBas"></div>
+      </div>
+  </div>
 }
 
 export default Pile;
