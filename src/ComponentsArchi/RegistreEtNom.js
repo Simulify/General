@@ -1,6 +1,6 @@
 import React from "react";
 import Registres from "./Registres";
-import "../Simulation.css";
+import "./Simulation.css";
 
 function RegistreEtNom() {
   return (

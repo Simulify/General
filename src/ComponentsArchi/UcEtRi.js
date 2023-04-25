@@ -1,5 +1,5 @@
 import React from "react";
-import "../Simulation.css";
+import "./Simulation.css";
 import Uc from "./UC";
 import Ri from "./Ri";
 import BusUcToRi from "./BusUcToRi";

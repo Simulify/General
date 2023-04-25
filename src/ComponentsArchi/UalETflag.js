@@ -1,5 +1,5 @@
 import React from "react";
-import "../Simulation.css";
+import "./Simulation.css";
 import Flag from "./Flag";
 import UalEtEuals from "./UalEtEuals";
 import EualsBusDonnees from "./EualsBusDonnees";

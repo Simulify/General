@@ -1,5 +1,5 @@
 import React from 'react';
-import "../Simulation.css";
+import "./Simulation.css";
 
 function RimBusDonnees() {
     return (

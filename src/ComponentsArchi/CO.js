@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../Simulation.css";
+import "./Simulation.css";
 
 function CO({ case1, case2, case3, case4 }) {
   const [isClicked, setIsClicked] = useState(false);

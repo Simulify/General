@@ -1,6 +1,6 @@
 import React from "react";
 import CaseMemoire from "./CaseMemoire";
-import "../Simulation.css";
+import "./Simulation.css";
 
 function Memoire() {
   const casesData = [];
