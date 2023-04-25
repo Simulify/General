@@ -1,11 +1,20 @@
 import React from "react";
+import { useState } from "react";
 import "../Simulation.css";
 
 function Flag({case1, case2, case3, case4}) {
+
+    const [isClicked, setIsClicked] = useState(false);
+
+    const handleClick = () => {
+        setIsClicked(!isClicked);
+    }
+    
     return (
         <div class="Flag"> 
         <div className="NomFlag">Flag</div>
-        <div className="FLAG"> 
+        <div className={`FLAG ${isClicked ? "boxShadowBlue" : ""}`}
+        onClick={handleClick}>
             <div className="ram">{case1}</div>
             <div className="ram">{case2}</div>
             <div className="ram">{case3}</div>
