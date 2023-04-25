@@ -9,6 +9,10 @@ function GuideArch () {
    <Navbar label="Guide"/>
    <a href="./instruction-format" className="suiv">Suivant</a>
    <a href="." className="prev">Retour</a>
+   
+
+
+
   </div>
  );
 };
