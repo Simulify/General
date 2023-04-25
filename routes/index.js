@@ -16,7 +16,6 @@ router.use(session({
   saveUninitialized: true
 }));
 
-
 // Set up Passport middleware
 router.use(passport.initialize());
 router.use(passport.session());
@@ -24,33 +23,51 @@ router.use(passport.session());
 
 
 
-// Initialize Passport middleware
-passport.use(new LocalStrategy(
-  async function(username, password, done) {
-    const user = await User.findOne({ username });
-    if (!user) {
-      return done(null, false, { message: 'Incorrect username.' });
-    }
-    const passwordMatch = await bcrypt.compare(password, user.password);
-    if (!passwordMatch) {
-      return done(null, false, { message: 'Incorrect password.' });
-    }
-    return done(null, user);
+passport.use(new LocalStrategy({
+  usernameField: 'email', // Tell Passport to look for 'email' instead of 'username'
+  passwordField: 'password' // Tell Passport to look for 'password' as usual
+}, async function(email, password, done) {
+  // Look up the user in the database based on their email
+  const user = await User.findOne({ email });
+
+  // If the user doesn't exist, return an error
+  if (!user) {
+    return done(null, false, { message: 'Incorrect email.' });
   }
+
+  // If the user exists, check their password
+  const passwordMatch = await bcrypt.compare(password, user.password);
+
+  // If the password doesn't match, return an error
+  if (!passwordMatch) {
+    return done(null, false, { message: 'Incorrect password.' });
+  }
+
+  // If the password matches, return the user
+  return done(null, user);
+}
 ));
 
+
+
+// Passport serializeUser function
 passport.serializeUser(function(user, done) {
+  // Store the user's id in the session
   done(null, user._id);
 });
 
-
+// Passport deserializeUser function
 passport.deserializeUser(async function(id, done) {
+  // Find the user in the database based on the id stored in the session
   const user = await User.findById(id);
+  // If the user is not found, return an error
   if (!user) {
     return done(new Error('User not found'));
   }
+  // If the user is found, return the user object
   done(null, user);
 });
+
 
 
 
@@ -75,13 +92,13 @@ router.post('/signup', async (req, res) => {
     req.login(user, (err) => {
       if (err) {
         console.error(err);
-        return res.status(500).send({ error: 'Server error1' });
+        return res.status(500).send({ error: 'Server error' });
       }
      
     });
   } catch (err) {
     console.error(err);
-    res.status(500).send({ error: 'Server error2' });
+    res.status(500).send({ error: 'Server error' });
   }
 });
 
@@ -126,8 +143,8 @@ function login(req, res, next) {
         console.error(err);
         return res.status(500).send({ error: 'Server error3' });
       }
-      // Authentication succeeded, redirect to user dashboard
-      return res.redirect('/dashboard');
+      // Authentication succeeded, redirect to user to homepage
+      return res.redirect('/homePage');
     });
   })(req, res, next);
 }
@@ -141,18 +158,20 @@ router.post('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 });
-
 router.get('/homePage', isAuthenticated, async (req, res) => {
   try {
     // Get the current user's information
     const currentUser = req.user;
-    const userId = currentUser._id;
-    console.log('Current user:', currentUser);
+   
 
     // Determine the user's space
-    const user = await User.findById(userId);
+    const user = await User.findById(currentUser);
+    if (!user) {
+      return res.status(404).send({ error: 'User not found' });
+    }
+   
     const userSpace = `/user-space/${user.username}`;
-    console.log('User space:', userSpace);
+  
 
     // Redirect the user to their space
     res.redirect(userSpace);
@@ -163,31 +182,45 @@ router.get('/homePage', isAuthenticated, async (req, res) => {
 });
 
 
-router.get('/user-space/:username', isAuthenticated, (req, res) => {
+
+
+router.get('/user-space/:username', isAuthenticated, async (req, res) => {
   try {
-    // Render the user's dashboard
     const username = req.params.username;
-    res.render('user-dashboard', { username });
+    console.log('Username:', username);
+    const user = await User.findOne({ username });
+    console.log('User:', user);
+    if (!user) {
+      return res.status(404).send({ error: 'User not found' });
+    }
+    const codes = user.codes;
+    console.log('Codes:', codes);
+    res.render('user-homePage', { username, codes });
   } catch (error) {
+    console.error('Error:', error);
     res.status(500).send({ error: 'Server Error' });
   }
 });
 
+
 // Middleware to check if a user is authenticated
+
+
 function isAuthenticated(req, res, next) {
-  console.log(req.isAuthenticated());
-  if (req.isAuthenticated()) {
-    return next();
+  const token = req.headers.authorization && req.headers.authorization.split(' ')[1]; // get the token from the authorization header
+
+  if (!token) {
+    return res.status(401).send({ error: 'Unauthorized' });
   }
-  res.status(401).send({ error: 'Unauthorized' });
+
+  try {
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET); // verify the token using the JWT_SECRET
+    req.user = decodedToken.userId; // add the user ID to the request object
+    return next();
+  } catch (err) {
+    return res.status(401).send({ error: 'Unauthorized' });
+  }
 }
-
-
-
-
-
-
-
 // Define the POST endpoint to create a new user
 router.post('/users', async (req, res) => { //tick
   try {
@@ -201,13 +234,6 @@ router.post('/users', async (req, res) => { //tick
   }
 });
 
-
-
-
-
-
-
-
 // Get all users
 router.get('/users/:userId', async (req, res) => {//tick
   try {
@@ -220,11 +246,63 @@ router.get('/users/:userId', async (req, res) => {//tick
   }
 });
 
+//Update the password
+router.put('/users/:userId/password', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
 
+  const password = user.password;
+    if (!password) {
+          
+
+      return res.status(404).json({ message: 'Picture not found' });
+    }
+
+    // Update the picture 
+    if (req.body.password) {
+      // Hash the password 
+      const saltRounds = 10;
+      const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+      user.password = hashedPassword;
+    }
+    await user.save();
+    res.json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+//Update the username
+router.put('/users/:userId/username', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+  const username = user.username;
+    if (!username) {
+      return res.status(404).json({ message: 'Picture not found' });
+    }
+
+    // Update the username 
+    if (req.body.username) {
+      user.username = req.body.username;
+    }
+    await user.save();
+    res.json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
 
 // Get a user by ID
-router.get('/users', async (req, res) => { //tick
+router.get('/users', async (req, res) => {
   try {
     const userId = req.query.userId;
     const user = await User.findById(userId);
@@ -243,7 +321,7 @@ router.get('/users', async (req, res) => { //tick
 
 
 // Delete a user by ID
-router.delete('/users/:userId', async (req, res) => { //tick
+router.delete('/users/:userId', async (req, res) => { 
   try {
     const userId = req.params.userId;
     const deletedUser = await User.findByIdAndDelete(userId);
@@ -261,9 +339,8 @@ router.delete('/users/:userId', async (req, res) => { //tick
 
 
 
-
-// Create a new code for a user
-router.post('/users/:userId/codes', async (req, res) => { //tick
+//Create a new code for a user
+router.post('/users/:userId/codes', async (req, res) => {
   try {
     const userId = req.params.userId;
     const codeData = req.body;
@@ -276,24 +353,27 @@ router.post('/users/:userId/codes', async (req, res) => { //tick
   }
 });
 
-async function createCode(userId, codeData) { //tick
+async function createCode(userId, codeData) {
   const user = await User.findById(userId);
 
   const newCode = {
     title: codeData.title,
-    codeHexa: codeData.codeHexa,
+    code: codeData.code,
     type: codeData.type,
-    description: codeData.description // Use the new description field
+    category: codeData.category,
+    description: codeData.description,
+    picture: codeData.picture // Include the new picture field
   };
 
   user.codes.push(newCode);
   await user.save();
 
-  return user.codes[user.codes.length - 1]; // Return the newly created code
+  return user.codes[user.codes.length - 1];
 }
 
+
 // Read a code by ID for a user
-router.get('/users/:userId/codes/:codeId', async (req, res) => {//tick
+router.get('/users/:userId/codes/:codeId', async (req, res) => {
   try {
     const userId = req.params.userId;
     const codeId = req.params.codeId;
@@ -307,7 +387,7 @@ router.get('/users/:userId/codes/:codeId', async (req, res) => {//tick
 });
 
 //Read a code 
-async function getCode(userId, codeId) {//tick
+async function getCode(userId, codeId) {
   const user = await User.findById(userId);
 
   const code = user.codes.id(codeId);
@@ -320,7 +400,7 @@ async function getCode(userId, codeId) {//tick
 }
 
 // Update a code by ID
-router.put('/users/:userId/codes/:codeId', async (req, res) => {//tick
+router.put('/users/:userId/codes/:codeId', async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
     if (!user) {
@@ -333,14 +413,17 @@ router.put('/users/:userId/codes/:codeId', async (req, res) => {//tick
     }
 
     // Update the code properties
-    if (req.body.title) {//tick
+    if (req.body.title) {
       code.title = req.body.title;
     }
-    if (req.body.codeHexa) {
-      code.codeHexa = req.body.codeHexa;
+    if (req.body.code) {
+      code.code = req.body.code;
     }
     if (req.body.type) {
       code.type = req.body.type;
+    }
+    if (req.body.category) {
+      code.category = req.body.category;
     }
 
     await user.save();
@@ -351,6 +434,28 @@ router.put('/users/:userId/codes/:codeId', async (req, res) => {//tick
   }
 });
 
+//Update the picture 
+router.put('/users/:userId/picture', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
 
+  const picture = user.picture;
+    if (!picture) {
+      return res.status(404).json({ message: 'Picture not found' });
+    }
 
+    // Update the picture 
+    if (req.body.picture) {
+      user.picture = req.body.picture;
+    }
+    await user.save();
+    res.json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 module.exports=router;
