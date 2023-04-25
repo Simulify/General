@@ -4,7 +4,7 @@ body {
   box-sizing: border-box;
 }
 
-.Container {
+.Simulation .Container {
   padding: 50px;
   height: 100Vh;
   margin: auto;
