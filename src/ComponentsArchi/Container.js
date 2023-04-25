@@ -1,5 +1,5 @@
 import React from "react";
-import "./Simulation.css";
+import "../pages/Simulation.css";
 import Pile from "./Pile";
 import Registres from "./Registres";
 import MemoireEtRam from "./MemoireEtRam";

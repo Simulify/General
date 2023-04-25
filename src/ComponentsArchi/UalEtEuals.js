@@ -1,5 +1,5 @@
 import React from "react";
-import "./Simulation.css";
+import "../pages/Simulation.css";
 import UAL from './Ual';
 import Euals from "./Euals";
 import UalBusDonnees from "./UalBusDonnees";

@@ -1,6 +1,6 @@
 import React from "react";
 import RegistrePile from "./RegistrePile";
-import "./Simulation.css";
+import "../pages/Simulation.css";
 
 function Pile() {
   const casesData = [];
