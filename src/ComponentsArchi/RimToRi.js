@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import "../Simulation.css";
+import "../pages/Simulation.css";
 
 function RimToRi() {
 

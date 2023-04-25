@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../Simulation.css";
+import "../pages/Simulation.css";
 
 function BusCoToRam() {
 

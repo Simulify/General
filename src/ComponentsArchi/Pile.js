@@ -1,7 +1,7 @@
 import React from "react";
 import RegistrePile from "./RegistrePile";
 import { useState } from "react";
-import "../Simulation.css";
+import "../pages/Simulation.css";
 
 function Pile() {
 
