@@ -9,11 +9,6 @@ import { Link } from "react-router-dom";
 
 
 function Files() {
- 
-   
-  
-  
-    
   const [fileExempleVisible, setFileExempleVisible] = useState(false);
   const [myFilesVisible, setMyFilesVisible] = useState(false);
   const [arithmeticVisible, setArithmeticVisible] = useState(false);
@@ -23,8 +18,7 @@ function Files() {
   const [shiftVisible, setShiftVisible] = useState(false);
 
   const [fileList, setFileList] = useState([
-    { id: 1, label: 'Mon premier programme' },
-    { id: 2, label: 'Mon deuxieme programme' },
+   
  
   ]);
   function addFile() {
@@ -89,18 +83,15 @@ function Files() {
           </div>
 
           <div className={`file-arithmetic ${arithmeticVisible ? 'show' : ''}`}>
-          <Link to="/Simulation">
+          <Link to="/code">
           <File label="ADD" />
     </Link>
-    <Link to="/Simulation">
+    <Link to="/code">
     <File label="SUB" />
       </Link>
-      <Link to="/Simulation">
+      <Link to="/code">
       <File label="DIV" />
       </Link>
-           
-           
-           
           </div>
 
           <div className="subfiles-logic" onClick={handleLogicClick}>
@@ -108,13 +99,13 @@ function Files() {
           </div>
 
           <div className={`file-logic ${logicVisible ? 'show' : ''}`}>
-          <Link to="/Simulation">
+          <Link to="/code">
           <File label="ET" />
       </Link>
-      <Link to="/Simulation">
+      <Link to="/code">
       <File label="OU" />
     </Link>
-    <Link to="/Simulation">
+    <Link to="/code">
     <File label="NON" />
     </Link>
            
@@ -127,11 +118,11 @@ function Files() {
           </div>
 
           <div className={`file-branching ${branchingVisible ? 'show' : ''}`}>
-          <Link to="/Simulation">
+          <Link to="/code">
           <File label="BCV" />
     </Link>
     
-    <Link to="/Simulation">
+    <Link to="/code">
     <File label="LOOP" />
     </Link>
         
@@ -144,7 +135,7 @@ function Files() {
           </div>
 
           <div className={`file-transfer ${transferVisible ? 'show' : ''}`}>
-          <Link to="/Simulation">
+          <Link to="/code">
           <File label="PERMUT" />
     </Link>
    
@@ -159,10 +150,10 @@ function Files() {
           </div>
 
           <div className={`file-shift ${shiftVisible ? 'show' : ''}`}>
-          <Link to="/Simulation">
+          <Link to="/code">
           <File label="SHIFT LEFT" />
     </Link>
-    <Link to="/Simulation">
+    <Link to="/code">
     <File label="SHIFT RIGHT" />
     </Link>
         
@@ -181,7 +172,7 @@ function Files() {
           <table>
             <tbody>
               {fileList.map((file) => (
-                 <Link to="/Simulation">
+                 <Link to="/code">
                   <tr key={file.id}>
                   <td>
                     <File label={file.label} />
