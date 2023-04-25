@@ -434,28 +434,5 @@ router.put('/users/:userId/codes/:codeId', async (req, res) => {
   }
 });
 
-//Update the picture 
-router.put('/users/:userId/picture', async (req, res) => {
-  try {
-    const user = await User.findById(req.params.userId);
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
 
-  const picture = user.picture;
-    if (!picture) {
-      return res.status(404).json({ message: 'Picture not found' });
-    }
-
- 
-    if (req.body.picture) {
-      user.picture = req.body.picture;
-    }
-    await user.save();
-    res.json(user);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
 module.exports=router;
