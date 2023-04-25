@@ -447,7 +447,7 @@ router.put('/users/:userId/picture', async (req, res) => {
       return res.status(404).json({ message: 'Picture not found' });
     }
 
-    // Update the picture 
+ 
     if (req.body.picture) {
       user.picture = req.body.picture;
     }
