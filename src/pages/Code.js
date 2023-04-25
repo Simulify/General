@@ -11,10 +11,10 @@ function Code() {
     let time_compile=0;
     let nb = 1;
     let time_simule=0;
-    form.addEventListener('keydown', ()=>{
+    form.addEventListener('keydown', ()=>
+    {
         let nb_lignes=document.createElement('div');
         nb++;
-
     })
     simuler.addEventListener('click',()=>
     {
@@ -55,6 +55,8 @@ function Code() {
             </span>
           </div>
         </div>
+        <div className='hugecontainer'>
+       <div className='Bigcontainer'>
         <div className="buttons">
           <button className="button" id="btn1">
             Compiler
@@ -62,33 +64,45 @@ function Code() {
           <button style={{position:'',bottom:""}} className="button" id="btn2">
           <a href='/code/simulation' style={{ color:'white' }}> simuler {" > "}</a> 
           </button>
+          <button className="button" id="btn4">
+              Mes programmes
+            </button>
         </div>
         <br /> <br /> <br />
         <div className="container">
-          <div style={{ width: "35%" }}></div>
           <textarea
             style={{ resize: "none", border: "2px solid #00A6FB" }}
             className="box"
             placeholder="Veuillez saisir votre code"
+          ></textarea> 
+           <textarea
+            style={{ resize: "none", border: "2px solid #00A6FB" }}
+            className="box"
+            placeholder="Veuillez saisir votre code"
           ></textarea>
-          <div style={{ width: "30%" }} className="container2">
-            <button className="button" id="btn2">
-              Sauvegarder
-            </button>
-            <button className="button" id="btn3">
-              Exemples
-            </button>
-            <button className="button" id="btn4">
-              Mes programmes
-            </button>
-          </div>
-        </div>
+           </div> 
+            
+             </div>
+
+       
         <br /> <br />
+        
         <form id="myForm">
           <br />
         </form>
         <script src="myscripts.js"></script>      
       </div>
+      
+      <div className="container2">
+           <button className="button" id="btn2" >
+              Sauvegarder
+            </button>
+           
+            <button className="button" id="btn3">
+              Exemples
+            </button>
+
+          </div> </div>
     );
 }
 export default Code;
