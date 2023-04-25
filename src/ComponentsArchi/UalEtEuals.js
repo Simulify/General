@@ -1,6 +1,6 @@
 import React from "react";
 import "../Simulation.css";
-import UAL from './UAL';
+import UAL from './Ual';
 import Euals from "./Euals";
 import UalBusDonnees from "./UalBusDonnees";
 

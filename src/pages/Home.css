@@ -124,23 +124,24 @@
 }
 .slid.clair1 svg {
   position: absolute;
-  top: 290px;
-  width: 20px;
-  height: 20px;
+  top: 70%;
+  left: 0%;
+  width: auto;
+  height: 5%;
 }
 .slid.clair2  svg {
   position: absolute;
-  top: 290px;
-  left: 40px;
-  width: 20px;
-  height: 20px;
+  top: 70%;
+  left: 4%;
+  width: auto;
+  height: 5%;
 }
 .slid.clair3  svg {
   position: absolute;
-  top: 290px;
-  left: 80px;
-  width: 20px;
-  height: 20px;
+  top: 70%;
+  left: 8%;
+  width: auto;
+  height: 5%;
 }
 .slid.active svg circle{
   fill-opacity: 1;
