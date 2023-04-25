@@ -1,6 +1,11 @@
-.Form {
-    margin-left: 100px;
+.FormSettings {
+    margin-left: 10%;
     
+
+}
+
+.MotDePassePage .FormSettings{
+  margin-left: 0%;
 
 }
 .nav-links  {
@@ -24,7 +29,8 @@
  
 
 .MotDePassePage{
-    margin-left: 100px; 
+  margin-top: 15%;
+    margin-left: 10%; 
 }
 
 
@@ -32,6 +38,7 @@
     background-color: #B6D8F2;
     height: 100px;
     width: 80%;
+    margin-left: 0%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -55,9 +62,9 @@
     cursor: pointer;
   }
 
-  .Form svg{
-    width: 200%;
-    margin-top: 120px;
+  .FormSettings svg{
+    width: 25%;
+    margin-top: 100px;
   }
 
   @media (max-width: 768px) {

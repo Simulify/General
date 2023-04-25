@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import Form from "../ComponentsSettings/Form";
+import FormSettings from "../ComponentsSettings/FormSettings";
 import "./Settings.css";
 
 import MotDePassePage from '../ComponentsSettings/MotDePassePage';
@@ -18,8 +18,10 @@ function Settings() {
 
       
         <Navbar label ="Paramètres"/>
-        <Form/>
-        <MotDePassePage/>
+        <FormSettings/>
+        
+
+        <a href="/Settings/MotDePassePage" className="mdp">Mot De Passe </a>
         
         
 
