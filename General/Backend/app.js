@@ -23,7 +23,6 @@ connectDB();
 app.use(express.json());
 
 
-
 // Use the indexRoutes module for all other requests
 app.use('/', indexRoutes);
 
