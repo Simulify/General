@@ -14,6 +14,7 @@ import Settings from './pages/Settings';
 import ErrorPage from './pages/ErrorPage';
 import Code from './pages/Code';
 import MotDePassePage from './ComponentsSettings/MotDePassePage';
+import GuideInstr from './pages/GuideInstr';
 function App() {
  
 
@@ -31,6 +32,7 @@ function App() {
           <Route path='/revision' element={<Revision/>}></Route>
           <Route path='/guide' element={<Guide/>}></Route>
           <Route path='/guide/architecture' element={<GuideArch/>}></Route>
+          <Route path='/guide/instruction-format' element={<GuideInstr/>}></Route>
           <Route path='/settings' element={<Settings/>}></Route>
           <Route path='/settings/MotDePassePage'  element={<MotDePassePage/>}></Route>
           <Route path='/Login' element={<Login/>}></Route>
