@@ -14,6 +14,10 @@ import Settings from './pages/Settings';
 import ErrorPage from './pages/ErrorPage';
 import Code from './pages/Code';
 import MotDePassePage from './ComponentsSettings/MotDePassePage';
+import RessourcePage from './pages/RessourcePage';
+import Videos from './pages/Videos';
+import Livres from './pages/Livres';
+import Sites from './pages/Sites';
 function App() {
  
 
@@ -29,6 +33,10 @@ function App() {
           <Route path='/code/simulation' element={<Simulation/>}></Route>
           <Route path='/files' element={<Files/>}></Route>
           <Route path='/revision' element={<Revision/>}></Route>
+          <Route path='/revision/ressources' element={<RessourcePage/>}></Route>
+          <Route path='/revision/ressource/videos' element={<Videos/>}></Route>
+          <Route path='/revision/ressources/livres' element={<Livres/>}></Route>
+          <Route path='/revision/ressources/sites' element={<Sites/>}></Route>
           <Route path='/guide' element={<Guide/>}></Route>
           <Route path='/guide/architecture' element={<GuideArch/>}></Route>
           <Route path='/settings' element={<Settings/>}></Route>

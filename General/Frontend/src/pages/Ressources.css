@@ -1,0 +1,70 @@
+.RessourcePage {
+    width: 100vw;
+}
+
+.ContainerRessources {
+    box-sizing: border-box;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+}
+
+.Livres, .Sites  {
+    display: flex;
+    align-items: center;
+    background-color: #00A6FB;
+    box-shadow: 27px 30px 16px rgba(36, 84, 132, 0.01), 15px 17px 14px rgba(36, 84, 132, 0.05), 7px 7px 10px rgba(36, 84, 132, 0.09), 2px 2px 6px rgba(36, 84, 132, 0.1), 0px 0px 0px rgba(36, 84, 132, 0.1);
+    border-radius: 16px;
+    width: 60%;
+    color: #F8F9FA;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.Videos {
+    display: flex;
+    align-items: center;
+    background-color: #00A6FB;
+    box-shadow: 27px 30px 16px rgba(36, 84, 132, 0.01), 15px 17px 14px rgba(36, 84, 132, 0.05), 7px 7px 10px rgba(36, 84, 132, 0.09), 2px 2px 6px rgba(36, 84, 132, 0.1), 0px 0px 0px rgba(36, 84, 132, 0.1);
+    border-radius: 16px;
+    width: 60%;
+    color: #F8F9FA;
+    padding: 15px 20px;
+    text-decoration: none;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.ButtonRessources {
+    color: #fff;
+    font-weight: 600;
+    font-size: 50;  
+    padding-top: 4px;  
+}
+
+.VideoIcone {
+    width: 20px;
+    padding-left: 4%;
+    padding-right: 2%;
+}
+
+.LivresIcone {
+    width: 20px;
+    padding-left: 4%;
+    padding-right: 3%;
+}
+
+.SitesIcone {
+    width: 20px;
+    padding-left: 4%;
+    padding-right: 3%;
+}
+
+
+
+
+
+

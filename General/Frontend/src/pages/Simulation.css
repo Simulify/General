@@ -1,10 +1,5 @@
-body {
-  margin: 0;
-  color: #023047;
-  box-sizing: border-box;
-}
-
 .Simulation .Container {
+  color: #023047;
   padding: 50px;
   height: 100Vh;
   margin: auto;
@@ -38,18 +33,22 @@ body {
 }
 
 .Registre .C1, .Registre .C2, .Registre .C3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 25%;
   height: 80%;
   padding: 1%;
-  text-align: center;
   border-right: 1px solid #00A6FB;
 }
 
 .Registre .C4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 25%;
   height: 80%;
   padding: 1%;
-  text-align: center;
 }
 
 .Registres {
@@ -69,7 +68,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 43%;
+  height: 42.25%;
 }
 
 .RegToBusDonnees .triangleHaut, .RegToBusDonnees .triangleBas {
@@ -164,7 +163,7 @@ body {
 
 .PileBusDonnees .rectangle{
   width: 100%;
-  height: 100%;
+  height: 1000%;
   border: 1px solid #023047;
   transition: box-shadow 0.3s ease-in-out;
 }
