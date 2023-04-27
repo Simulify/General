@@ -5,6 +5,7 @@ import { ReactSVG } from "react-svg";
 import InputButton from "../Components_login/InputButton";
 import logo from "../Components_login/logo.svg";
 import LoginButton from "../Components_login/Button";
+import { Link } from "react-router-dom";
 
 function login() {
     return (
@@ -20,9 +21,12 @@ function login() {
                     <a href=" #link " target=" _blank " >forgot password </a>
                 </div>
                 <LoginButton text="connexion " />
+                <Link to="/signup">
                 <div className=" SignUp ">
-                    <a href=" #link " target=" _blank " > Sign up</a>
+                    <a  href=" " target=" _blank " > Sign up</a>
                 </div>
+      </Link>
+                
             </div>
         </div>
     )

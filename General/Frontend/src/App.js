@@ -18,6 +18,7 @@ import RessourcePage from './pages/RessourcePage';
 import Videos from './pages/Videos';
 import Livres from './pages/Livres';
 import Sites from './pages/Sites';
+import GuideInstr from './pages/GuideInstr';
 function App() {
  
 
@@ -39,6 +40,7 @@ function App() {
           <Route path='/revision/ressources/sites' element={<Sites/>}></Route>
           <Route path='/guide' element={<Guide/>}></Route>
           <Route path='/guide/architecture' element={<GuideArch/>}></Route>
+          <Route path='/guide/instruction-format' element={<GuideInstr/>}></Route>
           <Route path='/settings' element={<Settings/>}></Route>
           <Route path='/settings/MotDePassePage'  element={<MotDePassePage/>}></Route>
           <Route path='/Login' element={<Login/>}></Route>
