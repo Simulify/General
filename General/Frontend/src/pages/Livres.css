@@ -1,9 +1,9 @@
-.LivresPage {
+.LivresPage, .SitesPage, .VideoPage {
     height: 100Vh;
     width: 100vw;
 }
 
-.containerLivres {
+.containerLivres, .containerSites, .containerVideos {
     overflow-y: scroll;
     height: 80%;
     width: 100%;
@@ -49,7 +49,7 @@
     width: 25px;
 }
 
-.containerLivres span {
+.containerLivres span, .containerSites span, .containerVideos span {
     padding-left: 20px;
     color: #F8F9FA;
     height: 100%;

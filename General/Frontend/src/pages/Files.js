@@ -20,10 +20,6 @@ function Files() {
   const [shiftVisible, setShiftVisible] = useState(false);
 
 
- 
-
-
-    //
      // Load the fileList state from localStorage, or use an empty array if it doesn't exist
   const [fileList, setFileList] = useState(
     JSON.parse(localStorage.getItem('fileList')) || []
@@ -78,7 +74,7 @@ function Files() {
 
   return (
     
-   
+  
     <div className="Files">
 
       <Navbar label="Les fichiers" />
@@ -129,8 +125,6 @@ function Files() {
     <File label="NON" />
     </Link>
            
-           
-        
           </div>
 
           <div className="subfiles-branching" onClick={handleBranchingClick}>
@@ -145,9 +139,7 @@ function Files() {
     <Link to="/code">
     <File label="LOOP" />
     </Link>
-        
-       
-          
+         
           </div>
 
           <div className="subfiles-transfer" onClick={handleTransferClick}>

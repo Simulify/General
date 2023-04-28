@@ -54,9 +54,7 @@ function LanguePage() {
                     </div>
                 </div>
             </div>
-
-
-
+            
         </div>
     );
 }
