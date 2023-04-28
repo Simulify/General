@@ -1,10 +1,18 @@
+.fileLign{
+
+  display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: left;
+    
+}
 .File-button {
+  height: 50px;
     background-color: #fff;
     font-size: 13px;
     font-weight: Bold;
     font-family: Montserrat;
     width: 600px;
-    height: 50px;
     border: none;
     color: #023047;
     padding: 10px;
@@ -16,8 +24,15 @@
     justify-content: left;
     padding: 10px 20px;
   }
+  .File-delete-button{
+    border-style: none;
+    background-color: #fff;
+  }
   
   .file{
     height: 80%;
+  }
+  .can{
+    height: 50%;
   }
   

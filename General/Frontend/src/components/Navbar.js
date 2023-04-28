@@ -14,7 +14,6 @@ function Navbar(props) {
    <h2 className="title">{props.label}</h2>
   <div className="nav-icons">
     <Link to="/Login">
-      
       <img className="avatar-icon" src={avatar} alt="Avatar" />
     </Link>
     <Link to="/guide">
