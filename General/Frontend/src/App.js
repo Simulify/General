@@ -16,7 +16,7 @@ import Code from './pages/Code';
 import MotDePassePage from './ComponentsSettings/MotDePassePage';
 import RessourcePage from './pages/RessourcePage';
 import Videos from './pages/Videos';
-import Livres from './pages/Livres';
+import LivresPage from './pages/LivresPage';
 import Sites from './pages/Sites';
 import GuideInstr from './pages/GuideInstr';
 function App() {
@@ -36,7 +36,7 @@ function App() {
           <Route path='/revision' element={<Revision/>}></Route>
           <Route path='/revision/ressources' element={<RessourcePage/>}></Route>
           <Route path='/revision/ressource/videos' element={<Videos/>}></Route>
-          <Route path='/revision/ressources/livres' element={<Livres/>}></Route>
+          <Route path='/revision/ressources/livres' element={<LivresPage/>}></Route>
           <Route path='/revision/ressources/sites' element={<Sites/>}></Route>
           <Route path='/guide' element={<Guide/>}></Route>
           <Route path='/guide/architecture' element={<GuideArch/>}></Route>

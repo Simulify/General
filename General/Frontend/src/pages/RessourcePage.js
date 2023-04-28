@@ -11,13 +11,13 @@ function RessourcePage () {
   return(
    <div className='RessourcePage'>
         <Navbar label="Ressources"/>
-        <div className='ContainerRessources'>
 
+        <div className='ContainerRessources'>
             <div className='Videos'>
-                <Videos className='VideoIcone'/> 
-                <a href="/revision/ressources/vidéos" className='ButtonRessources'>Vidéos</a>
+                 <Videos className='VideoIcone'/> 
+                 <a href="/revision/ressources/vidéos" className='ButtonRessources'>Vidéos</a>
             </div>
-            
+                
             <div className='Livres'>
                 <Livres className='LivresIcone'/>
                 <a href="/revision/ressources/livres" className='ButtonRessources'>Livres</a>
@@ -27,7 +27,6 @@ function RessourcePage () {
                 <Sites className='SitesIcone'/>
                 <a href="/revision/ressources/sites" className='ButtonRessources'>Sites</a>
             </div>
-
      </div>
 
   </div>);
