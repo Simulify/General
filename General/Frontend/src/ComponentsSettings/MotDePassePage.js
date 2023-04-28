@@ -35,7 +35,7 @@ function MotDePassePage() {
         <div className='MotDePassePage'>
              <FormSettings/>
             <form onSubmit={handleSubmit}>
-                <div className='container'>
+                <div className='containerSettings'>
                     <div className='Inputs'>
                         <div className='MotDePasse'>
                             <label htmlFor='confirmPassword'>Nouveau mot de passe</label>
@@ -57,7 +57,7 @@ function MotDePassePage() {
                             />
                         </div>
                     </div>
-                    <div className='buttons'>
+                    <div className='TwoButtons'>
                         <button className='sauvegarder' type='submit'>
                             Sauvegarder
                         </button>
