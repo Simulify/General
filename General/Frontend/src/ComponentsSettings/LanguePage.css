@@ -1,0 +1,9 @@
+.LangueForm{
+    margin-left: 15%;
+
+}
+.LangueContainer{
+    display: flex;
+    flex-direction: column;
+    
+}

@@ -70,11 +70,9 @@
   }
 }
 
-.Settingsbar {
-  margin-top: 100px;
-}
 
-.containerSettings {
+
+.containerMotDePasse {
   margin: 0px;
   display: flex;
   justify-content: space-between;
