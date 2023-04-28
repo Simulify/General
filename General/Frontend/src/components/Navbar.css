@@ -18,9 +18,9 @@ header {
   margin-top: 3%;
   color: #023047;
   font-size: 30px;
- font-weight: 600;
+  font-weight: 600;
   font-family: Montserrat;
-   line-height: normal;
+  line-height: normal;
   font-stretch: normal;
   text-decoration: none;
 }
@@ -30,10 +30,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-
 }
-
-
 
 .avatar-icon {
   width: 2.2em;
@@ -42,15 +39,8 @@ header {
   margin-right: 1em;
 }
 
-
-
 .info-icon {
   height: 2.0em;
   width: 2.0em;
   margin-right: 2em;
 }
-
-
-
-
-
