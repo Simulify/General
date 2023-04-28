@@ -9,8 +9,8 @@ function GuideArch() {
     <div className="heroarch">
       <Navbar label="Guide" />
       <Arch className='Architecture'/>
-      <a href="./instruction-format" className="suiv">Suivant</a>
-      <a href="." className="prev">Retour</a>
+      <a href="/guide/instruction-format" className="suiv">Suivant</a>
+      <a href="/guide" className="prev">Retour</a>
       <h2 className='h2'>Architecture de la machine pédagogique</h2>
       <p className='p1title'>Les composants :</p>
       <p className='p1'>Une pile qui servira pour sauvegarder le contexte d'un programme interrompu.</p>
