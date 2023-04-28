@@ -9,11 +9,15 @@ function LivresPage () {
 
   const [isRotated, setIsRotated] = useState(false);
   const [rotateAngle, setRotateAngle] = useState(0);
+  const [showDescription, setShowDescription] = useState(false);
+
 
   const handleButtonClick = () => {
     setIsRotated(!isRotated);
     setRotateAngle(isRotated ? 0 : 90);
+    setShowDescription(!setShowDescription);
   };
+
 
 
   return(
@@ -29,10 +33,19 @@ function LivresPage () {
                     <Fleche className='fleche1' style={{ transform: `rotate(${rotateAngle}deg)` }}/>
               </div>
 
-              <div className='livre2' onClick={handleButtonClick}>
-                    <span> Livre 2 </span>
-                    <Fleche className='fleche2' style={{ transform: `rotate(${rotateAngle}deg)` }}/>
+              <div className='Livre2EtDescription' onClick={handleButtonClick}>
+                  <div className='livre2'> 
+                        <span> Livre 2 </span>
+                        <Fleche className='fleche2' style={{ transform: `rotate(${rotateAngle}deg)` }}/>
+                  </div>
+                  <div className={`Description ${showDescription ? "Afficher" : "NonAfficher"}`}>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, </p>
+                        <p>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+                   </div>
+                   
               </div>
+                 
 
               <div className='livre3' onClick={handleButtonClick} >
                     <span> Livre 3 </span>
@@ -43,12 +56,13 @@ function LivresPage () {
                     <span> Livre 4 </span>
                     <Fleche className='fleche4' style={{ transform: `rotate(${rotateAngle}deg)` }}/>
               </div>
+
           </div>
 
-     </div>
+        </div>
 
-  </div>);
-};
+    </div>); 
+}
 
 
-export default LivresPage;
+export default LivresPage

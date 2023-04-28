@@ -11,8 +11,17 @@
     padding-right: 10%;
 }
 
+.NonAfficher {
+    display: none;
+}
+
+.Afficher {
+    display: block;
+}
+ 
 .LesLivres {
     height: 100%;
+    overflow-y: scroll;
 }
 
 .livre1, .livre2, .livre3, .livre4 {

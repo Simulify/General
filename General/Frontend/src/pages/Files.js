@@ -13,12 +13,6 @@ import { Link } from "react-router-dom";
 function Files() {
   
 
-
-
-
-
-
-
   const [fileExempleVisible, setFileExempleVisible] = useState(false);
   const [myFilesVisible, setMyFilesVisible] = useState(false);
   const [arithmeticVisible, setArithmeticVisible] = useState(false);
