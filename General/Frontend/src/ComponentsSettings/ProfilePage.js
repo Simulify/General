@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import FormSettings from './FormSettings';
+import Navbar from '../components/Navbar';
 
 function ProfilePage() {
     const [email, setEmail] = useState('');
@@ -21,7 +22,8 @@ function ProfilePage() {
 
     return (
         <div className="ProfilePage">
-            <FormSettings />
+            <Navbar label='Parametres'/>
+            <FormSettings/>
             <form onSubmit={handleSubmit}>
                 <div className='ProfileContainer'>
                     <div className='inputs'>

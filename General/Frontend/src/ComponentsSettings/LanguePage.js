@@ -5,6 +5,8 @@ import { ReactSVG } from "react-svg";
 import "./LanguePage.css";
 import france from "../Images/france.svg";
 import unitedStates from "../Images/united-states-of-america.svg";
+import Navbar from "../components/Navbar";
+
 
 function LanguePage() {
     const { i18n } = useTranslation();
@@ -15,6 +17,7 @@ function LanguePage() {
 
     return (
         <div className=" LanguePage ">
+
             <FormSettings />
             <div className="LangueForm">
                 <h3>Selectionner votre langue :</h3>
@@ -31,6 +34,10 @@ function LanguePage() {
             </div>
 
 
+
+            <Navbar label='Parametres'/>
+            <FormSettings/>
+            
         </div>
     );
 }
