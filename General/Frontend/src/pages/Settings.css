@@ -1,13 +1,8 @@
 .FormSettings {
   margin-left: 10%;
-
-
 }
 
-.MotDePassePage .FormSettings   {
-  margin-left: 0%;
 
-}
 
 .nav-links {
   display: flex;
@@ -27,14 +22,6 @@
   position: relative;
   color: #5784BA;
 }
-
-
-
-.MotDePassePage {
-  margin-top: 15%;
-  margin-left: 10%;
-}
-
 
 
 /* .ProfilePage{
@@ -92,6 +79,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-left: 10%;
 
 
 
@@ -107,11 +95,6 @@
 
 
 
-@media (min-width: 768px) {
-  .containerSettings {
-    flex-wrap: wrap;
-  }
-}
 
 input {
   width: 100%;
