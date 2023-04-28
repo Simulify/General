@@ -4,10 +4,11 @@ import "./Code.css"; // import the external CSS file
 // import img2 from './Icon.png';
 import Navbar from '../components/Navbar';
 import Button from '../components/Buttonn'
+import next from '../Images/next.svg'
 const ButoStyle={
   background: '#00A6FB',
 position:'absolute',
-width:'192px',
+width:'184px',
 'grid-area':'sauv'
 }
 function Code() {
@@ -25,18 +26,18 @@ function Code() {
         let nb_lignes=document.createElement('div');
         nb++;
     })
-    simuler.addEventListener('click',()=>
-    {
-        console.log(form.value);
-        form.value='';
-        // location.reload();
-            checkorder();
-    })
-    compile.addEventListener('click',()=>
-    {
-       time_compile=Date.now();
-       checkorder();
-    })
+    // simuler.addEventListener('click',()=>
+    // {
+    //     console.log(form.value);
+    //     form.value='';
+    //     // location.reload();
+    //         checkorder();
+    // })
+    // compile.addEventListener('click',()=>
+    // {
+    //    time_compile=Date.now();
+    //    checkorder();
+    // })
     function checkorder()
     {
         if(time_compile>time_simule)
@@ -72,10 +73,7 @@ function Code() {
   }, []); // This empty array as a second argument ensures that the effect is only run once when the component mounts
     return(
       <div>
-        <div className="mini_nav">
-          <div className="side_bar"></div>
           <Navbar label="Simulation" />
-        </div>
         <br></br>         <br></br>
         <br></br>
         <div className='hugecontainer'>
@@ -94,7 +92,7 @@ function Code() {
             className="box"
             placeholder="Veuillez saisir votre code en mnémonique"
           ></textarea> 
-          <h4>
+          <h4 style={{color:"#023047"}}>
             Ou bien
             </h4>
            <textarea
@@ -108,12 +106,15 @@ function Code() {
         <script src="myscripts.js"></script>      
       </div>
       
-      <div className="container2">
-           <button className="button" id="btn1" >
-           Compiler            </button>          
-            <button className="button" id="btn2">
-            <a href='/code/simulation' style={{ color:'white' }}>       Simuler  {" > "}  </a>          </button>
-          </div>
+      <div className="container2">    
+      <Button id="btn1" text="Compiler" style={{ fontSize: '16px', background: '#F8F9FA', color: '#023047',border:'1px solid #00A6FB',padding: '12px 24px'}}></Button>
+      <div id="btn2" >
+        Simuler
+        <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0.454505 1.2045C0.893845 0.765165 1.60616 0.765165 2.0455 1.2045L8.0455 7.2045C8.48483 7.64384 8.48483 8.35616 8.0455 8.7955L2.0455 14.7955C1.60616 15.2348 0.893845 15.2348 0.454505 14.7955C0.015165 14.3562 0.015165 13.6438 0.454505 13.2045L5.65901 8L0.454505 2.7955C0.015165 2.35616 0.015165 1.64384 0.454505 1.2045Z" fill="#F8F9FA"/>
+</svg>
+      </div>
+      </div>
           <br></br>
           <br></br>
           <div className='compiled'>

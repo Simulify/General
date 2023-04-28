@@ -5,12 +5,6 @@ body
     /* position: relative; */
 }
 
-.side_bar
-{
-    width: 20px;
-    height: 100%;
-    background-color: aqua;
-}
 div.buttons
 {
     margin-top: 0px;
@@ -18,9 +12,9 @@ div.buttons
     margin: 0px;
     left: -24%;
     display: grid;
-    grid-template-columns: 24% 24% 24%;
+    grid-template-columns: 28% 28% 28%;
     grid-template-areas: "sauv exem prgrm";
-    grid-gap: 36%;
+    grid-gap: 30%;
 }
 
 .icon
@@ -43,10 +37,7 @@ div.buttons
     margin-left: 25px;
     cursor: pointer;
 }
-.mini_nav
-{
-    display: flex;
-}
+
 .box
 {
     padding:2%;
@@ -88,20 +79,40 @@ width: 30%;
 }
 #btn1
 {
-    border-color:  #00A6FB;
-   background-color: white;
+
    margin-left: auto;
-   color: #023047;
-   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
    margin-right: auto;
    
 }
 #btn2
 {
-   background-color: #00A6FB; 
-   color: white;
+   
    margin-left: auto;
    margin-right: auto;
+   display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 10px;
+    width: 184px;
+    height: 20px;
+    margin-left: 24px;
+    cursor: pointer;
+    background: #00A6FB;
+    box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 3px 6px rgba(43, 110, 177, 0.1);
+    border-radius: 30px;
+    width: 100px;
+    height: 18px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #F8F9FA;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
 }
 #btn2:hover
 {
@@ -114,10 +125,14 @@ display: flex;
 justify-content: space-between;
 flex-direction: row;
 flex-wrap: nowrap;
+margin-top: 56px;
+margin-bottom: 24px;
 }
 .container2
 {
 display: flex;
+position: relative;
+right:6%;
 flex-direction: row;
 margin-top: 30px;
 width: 300px;
@@ -157,6 +172,7 @@ margin-right: auto;
 resize: none;
 color: #023047;
 font-size: 15px;
+position: absolute;
 
 }
 textarea:focus 
