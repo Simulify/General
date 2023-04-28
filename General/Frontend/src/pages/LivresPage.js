@@ -26,22 +26,22 @@ function LivresPage () {
 
               <div className='livre1' onClick={handleButtonClick}>
                     <span> Livre 1 </span>
-                    <Fleche className='fleche' style={{ transform: `rotate(${rotateAngle}deg)` }}/>
+                    <Fleche className='fleche1' style={{ transform: `rotate(${rotateAngle}deg)` }}/>
               </div>
 
               <div className='livre2' onClick={handleButtonClick}>
                     <span> Livre 2 </span>
-                    <Fleche className='fleche' style={{ transform: `rotate(${rotateAngle}deg)` }}/>
+                    <Fleche className='fleche2' style={{ transform: `rotate(${rotateAngle}deg)` }}/>
               </div>
 
               <div className='livre3' onClick={handleButtonClick} >
                     <span> Livre 3 </span>
-                    <Fleche className='fleche' style={{ transform: `rotate(${rotateAngle}deg)` }}/>
+                    <Fleche className='fleche3' style={{ transform: `rotate(${rotateAngle}deg)` }}/>
               </div>
 
               <div className='livre4' onClick={handleButtonClick}>
                     <span> Livre 4 </span>
-                    <Fleche className='fleche' style={{ transform: `rotate(${rotateAngle}deg)` }}/>
+                    <Fleche className='fleche4' style={{ transform: `rotate(${rotateAngle}deg)` }}/>
               </div>
           </div>
 
