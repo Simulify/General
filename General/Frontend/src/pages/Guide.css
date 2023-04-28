@@ -1,4 +1,5 @@
 /******************************************** GUIDE STYLE ********************************************/
+
 .hero {
     display: flex;
     flex-direction: row;
@@ -52,6 +53,9 @@
     font-family: 'Montserrat';
     font-weight: 500;
     font-size: 80%;
+}
+.suiv:hover, .prev:hover{
+  filter: drop-shadow(0 0 0.15rem #00A6FB);
 }
 
 
@@ -138,12 +142,111 @@
   top: 78%;
 }
 .heroarch .Architecture {
-  transform: scale(0.63);
+  width: 27%;
+  height: auto;
   position: absolute;
-  top: 5%;
-  left: 56.7%;
+  left: 64.5%;
+  top: 20%;
 }
 
 
 /********************************* INSTRUCTION FORMAT PAGE STYLE *************************************/
 
+.heroinstr .h2,.heroform .h2{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 550;
+  font-size: 140%;
+  line-height: 39px;
+  color: #023047;
+  position: absolute;
+  left: 10%;
+  top: 11%;
+}
+.heroform{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.heroform .Formatinst {
+  position: absolute;
+  top: 18%;
+  width: 60%;
+}
+.heroform .text {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 90%;
+  line-height: 160%;
+  color: #023047;
+  position: absolute;
+  top: 45%;
+  display: flex;
+  align-items: flex-start;
+  width: 42%;
+  padding: 2% 4%;
+  background: #99DBFD;
+  box-shadow: 0px 67px 27px rgba(112, 158, 205, 0.01), 0px 38px 23px rgba(112, 158, 205, 0.05), 0px 17px 17px rgba(112, 158, 205, 0.09), 0px 4px 9px rgba(112, 158, 205, 0.1), 0px 0px 0px rgba(112, 158, 205, 0.1);
+  border-radius: 20px;
+}
+
+
+/************************************ INSTRUCTIONS PAGE STYLE ****************************************/
+
+.heroinstr{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.arth, .log, .shrt, .brch, .dtrs, .inout {
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 100%;
+  line-height: 160%;
+  color: #FFFFFF;
+  filter: drop-shadow(0px 51px 20px rgba(65, 112, 159, 0.01)) drop-shadow(0px 29px 17px rgba(65, 112, 159, 0.05)) drop-shadow(0px 13px 13px rgba(65, 112, 159, 0.09)) drop-shadow(0px 3px 7px rgba(65, 112, 159, 0.1)) drop-shadow(0px 0px 0px rgba(65, 112, 159, 0.1));
+  position: absolute;
+  padding: 1% 3% 1%;
+  background-color: #00A6FB;
+  border-radius: 17px;
+  display: flex;
+  align-items: flex-start;
+  width: 45%;
+}
+.arth{top: 23%;}
+.log{top: 33.5%;}
+.shrt{top: 44%;}
+.brch{top: 54.5%;}
+.dtrs{top: 65%;}
+.inout{top: 75.5%;}
+.heroinstr .prev{left: 80%;}
+
+
+/********************************* ARETHMETIC INSTRUCTIONS STYLE *************************************/
+
+table {
+  border-collapse: collapse;
+  table-layout: auto;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  margin: 0 auto;
+}
+td, th {
+  border: 1px solid #00A6FB;
+  padding: 8px;
+}
+thead th {
+  border: 1px solid #00A6FB;
+  padding: 8px;
+  font-weight: 600;
+  font-size: 100%;
+}
+tbody td {
+  text-align: left;
+}

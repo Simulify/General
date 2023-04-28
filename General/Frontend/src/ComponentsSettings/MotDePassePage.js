@@ -35,38 +35,40 @@ function MotDePassePage() {
             <Navbar label='Parametres'/>
             <FormSettings/>
             <form onSubmit={handleSubmit}>
-            <div className='containerSettings'>
-                <div className='Inputs'>
-                    <div className='MotDePasse'>
-                        <label htmlFor='confirmPassword'>Nouveau mot de passe</label>
-                        <input
-                            type='password'
-                            value={password}
-                            onChange={handlePasswordChange}
-                            placeholder='Mot de passe'
-                        />
+                <div className='containerSettings'>
+                    <div className='Inputs'>
+                        <div className='MotDePasse'>
+                            <label htmlFor='confirmPassword'>Nouveau mot de passe</label>
+                            <input
+                                type='password'
+                                value={password}
+                                onChange={handlePasswordChange}
+                                placeholder='Mot de passe'
+                            />
+                        </div>
+                        <div className='ConfirmerMotDePasse'>
+                            <label htmlFor='confirmPassword'>Confirmer votre mot de passe:</label>
+                            <input
+                                type='password'
+                                value={confirmPassword}
+
+                                onChange={handleConfirmPasswordChange}
+                                placeholder='Confirmer votre mot de passe'
+                            />
+                        </div>
                     </div>
-                    <div className='ConfirmerMotDePasse'>
-                        <label htmlFor='confirmPassword'>Confirmer votre mot de passe:</label>
-                        <input
-                            type='password'
-                            value={confirmPassword}
-                            onChange={handleConfirmPasswordChange}
-                            placeholder='Confirmer votre mot de passe'/>
+                    <div className='TwoButtons'>
+                        <button className='sauvegarder' type='submit'>
+                            Sauvegarder
+                        </button>
+                        <button className='annuler' type='button' onClick={handleCancel}>
+                            Annuler
+                        </button>
                     </div>
                 </div>
-                <div className='TwoButtons'>
-                    <button className='sauvegarder' type='submit'>
-                        Sauvegarder
-                    </button>
-                    <button className='annuler' type='button' onClick={handleCancel}>
-                        Annuler
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
     );
 }
 
-export default MotDePassePage;
+export default MotDePassePage
