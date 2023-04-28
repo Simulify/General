@@ -142,11 +142,11 @@
   top: 78%;
 }
 .heroarch .Architecture {
-  width: 22rem;
-  height: auto;
+  width: auto;
+  height: 60vh;
   position: absolute;
-  left: 47rem;
-  top: 7rem;
+  left: 65vw;
+  top: 20vh;
 }
 
 
