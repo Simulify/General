@@ -87,14 +87,16 @@ function Code() {
         {/************************* */}
        
         <div className="container">
+         <div className='side'></div>
           <textarea 
             style={{ resize: "none", border: "1px solid #00A6FB" , position:'relative',left:'-4%',fontSize: '16px'}}
             className="box"
             placeholder="Veuillez saisir votre code en mnémonique"
           ></textarea> 
-          <h4 style={{color:"#023047",position:'relative',right:'14px'}}>
+          {/* <h4 style={{color:"#023047",position:'relative',right:'14px'}}>
             Ou bien
-            </h4>
+            </h4> */}
+          <div className='side' style={{marginRight:'-8px'}}></div>
            <textarea
             style={{ resize: "none", border: "1px solid #00A6FB",fontSize: '16px' }}
             className="box"

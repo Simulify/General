@@ -16,7 +16,14 @@ div.buttons
     grid-template-areas: "sauv exem prgrm";
     grid-gap: 30%;
 }
-
+.side{
+background-color: #99DBFD;
+width: 36px;
+height: 256px;
+margin-right: 32px;
+background: #99DBFD;
+border-radius: 8px 0px 0px 8px;
+}
 .icon
 {
     display: flex;
@@ -44,7 +51,7 @@ div.buttons
     width: 40%;
     min-height: 200px;
     background-color: #F8F9FA;
-    border-radius: 10px;
+    border-radius: 0px 10px 10px 0px;
     filter: drop-shadow(82px 37px 36px rgba(170, 204, 238, 0.01)) drop-shadow(46px 21px 30px rgba(170, 204, 238, 0.05)) drop-shadow(20px 9px 22px rgba(170, 204, 238, 0.09)) drop-shadow(5px 2px 12px rgba(170, 204, 238, 0.1)) drop-shadow(0px 0px 0px rgba(170, 204, 238, 0.1));
 }
 .box div
