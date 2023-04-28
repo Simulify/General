@@ -4,7 +4,6 @@ header {
   z-index: 10;
 }
 
-
 .navbar {
   display: grid;
   grid-template-columns: 2fr auto; /* Adjust the values here */
@@ -25,8 +24,6 @@ header {
   font-stretch: normal;
   text-decoration: none;
 }
-
-
 
 .nav-icons {
   display: flex;
