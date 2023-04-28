@@ -85,24 +85,23 @@ function Code() {
         <Button text="Mes programmes" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'184px','grid-area':'prgrm'}}></Button>
         </div>
         {/************************* */}
-        <br /> <br /> <br /> <br></br>
+       
         <div className="container">
           <textarea 
-            style={{ resize: "none", border: "1px solid #00A6FB" }}
+            style={{ resize: "none", border: "1px solid #00A6FB" , position:'relative',left:'-4%',fontSize: '16px'}}
             className="box"
             placeholder="Veuillez saisir votre code en mnémonique"
           ></textarea> 
-          <h4 style={{color:"#023047"}}>
+          <h4 style={{color:"#023047",position:'relative',right:'14px'}}>
             Ou bien
             </h4>
            <textarea
-            style={{ resize: "none", border: "1px solid #00A6FB" }}
+            style={{ resize: "none", border: "1px solid #00A6FB",fontSize: '16px' }}
             className="box"
             placeholder="Veuillez saisir votre code en hexa"
           ></textarea>
            </div>             
              </div>      
-        <br /> <br />
         <script src="myscripts.js"></script>      
       </div>
       
@@ -115,8 +114,6 @@ function Code() {
 </svg>
       </div>
       </div>
-          <br></br>
-          <br></br>
           <div className='compiled'>
           </div>
           <hr>
