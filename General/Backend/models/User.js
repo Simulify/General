@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  profileUrl: {
+    type: String,
+    default: ''
+  },
   picture: {
     type: String,
     default: 'https://example.com/default-profile-picture.jpg' // Set the default value to a URL for a default profile image

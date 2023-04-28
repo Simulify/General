@@ -4,7 +4,7 @@ import "./SignUpPage.css";
 import InputButton from "../Components_login/InputButton";
 import { ReactSVG } from 'react-svg';
 import logo from "../Components_login/logo.svg";
-
+import SignLogButton from "../Components_login/SignLogButton";
 import { Link } from "react-router-dom";
 
 
@@ -26,17 +26,17 @@ function Signup () {
       password,
     })
     .then(response => {
-     
+      console.log(email);
       console.log(response.data);
     })
     .catch(error => {
-   
+      console.log(username);
       console.error(error);
     });
   };
 
   return (
-    <div className="Container2">
+    <div className="Singupcontainer">
       <div className="Form2">
         <ReactSVG src={logo} />
         <InputButton
@@ -68,14 +68,17 @@ function Signup () {
           value={confirmPassword}
           onChange={e => setConfirmPassword(e.target.value)}
         />
+        <SignLogButton label="S'inscrire" onClick={handleSignUp} />
+     </div>
        
-        <button onClick={handleSignUp}>S'inscrire</button>
-        <br></br>
+        
+ 
         <div className="Login">
-      <span>Avez-vous déjà un compte ? </span>
-        <Link to="/login">Connexion</Link>
-      </div>
-      </div>
+        
+          <span>Avez-vous déjà un compte ? </span>
+          <Link to="/login">Connexion</Link>
+        </div>
+     
       
     </div>
   );

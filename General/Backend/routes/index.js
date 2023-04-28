@@ -8,6 +8,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const LocalStrategy = require('passport-local').Strategy;
+const crypto = require('crypto');
 dotenv.config({ path: './config/config.env' }); // Loading environment variables from .env file
 
 router.use(session({
@@ -85,8 +86,12 @@ router.post('/signup', async (req, res) => {
     // Hash the password and create a new user
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-    const user = new User({ username, email, password: hashedPassword });
-    await user.save();
+        // Generate a unique URL for the user
+        const userId = crypto.randomBytes(16).toString('hex');
+        const url = crypto.createHash('sha256').update(userId).digest('hex');
+     // Create a new user
+     const user = new User({ username, email, password: hashedPassword, profileUrl:url });
+     await user.save();
 
     // Log in the new user and redirect to the user's dashboard
     req.login(user, (err) => {
@@ -94,7 +99,7 @@ router.post('/signup', async (req, res) => {
         console.error(err);
         return res.status(500).send({ error: 'Server error' });
       }
-     
+      res.redirect(`/Home/${url}`);
     });
   } catch (err) {
     console.error(err);
@@ -121,8 +126,11 @@ router.post('/login', async (req, res) => {
     // Generate a JWT token
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
 
-    // Send back the token
-    return res.status(200).send({ token });
+    // Determine the user's space
+    const userSpace = `/user-space/${user.username}`;
+
+    // Send back the token and redirect URL
+    return res.status(200).send({ token, redirectUrl: userSpace });
 
   } catch (err) {
     console.error(err);
@@ -151,7 +159,8 @@ function login(req, res, next) {
 
 // Log in a user
 router.post('/login', login);
-
+// Log in a user after sign up
+router.post('/signup', login);
 
 // Log out a user
 router.post('/logout', (req, res) => {
@@ -222,7 +231,7 @@ function isAuthenticated(req, res, next) {
   }
 }
 // Define the POST endpoint to create a new user
-router.post('/users', async (req, res) => { //tick
+router.post('/users', async (req, res) => { 
   try {
     const user = new User(req.body);
     await user.save();
