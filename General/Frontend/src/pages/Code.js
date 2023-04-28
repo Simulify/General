@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
+import { useState } from 'react';
+import { useRef } from 'react';
 import "./Code.css"; // import the external CSS file
 // import img1 from './Ellipse 515.png';
 // import img2 from './Icon.png';
 import Navbar from '../components/Navbar';
 import Button from '../components/Buttonn'
+import Side from '../components/side'
 import next from '../Images/next.svg'
 const ButoStyle={
   background: '#00A6FB',
@@ -12,6 +15,19 @@ width:'184px',
 'grid-area':'sauv'
 }
 function Code() {
+    const [numLines, setNumLines] = useState(1);
+    
+    const HandleChange=(event)=> {
+      const value = event.target.value;
+      console.log(value)
+      const newLines = (value.match(/\n/g) || []).length + 1;
+      setNumLines(newLines);
+      const childElement = document.createElement('div');
+      childElement.innerHTML =`${newLines}`
+      childElement.className="number"
+      Side.appendChild(childElement)
+    }
+      
   useEffect(() => {
     var form=document.querySelector('textarea');
     var simuler=document.getElementById('btn2');
@@ -87,12 +103,13 @@ function Code() {
         {/************************* */}
        
         <div className="container">
-         <div className='side'></div>
-          <textarea 
+         <Side></Side>
+          <textarea onChange={HandleChange}
             style={{ resize: "none", border: "1px solid #00A6FB" , position:'relative',left:'-4%',fontSize: '16px'}}
             className="box"
             placeholder="Veuillez saisir votre code en mnémonique"
           ></textarea> 
+          <p>Number of lines: {numLines}</p>
           {/* <h4 style={{color:"#023047",position:'relative',right:'14px'}}>
             Ou bien
             </h4> */}

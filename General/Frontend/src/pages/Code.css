@@ -16,14 +16,7 @@ div.buttons
     grid-template-areas: "sauv exem prgrm";
     grid-gap: 30%;
 }
-.side{
-background-color: #99DBFD;
-width: 36px;
-height: 256px;
-margin-right: 32px;
-background: #99DBFD;
-border-radius: 8px 0px 0px 8px;
-}
+
 .icon
 {
     display: flex;
