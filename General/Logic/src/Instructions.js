@@ -344,18 +344,18 @@ static PUSH(pile, mot) {
   // }
 
 
-  static CMP(a,b,Flags){
-    let x= a.entier;
-    let y= b.entier;
-    let k
-    if (x<y) { k=-1}
-    if (x==y) { k=0}
-    if (x>y) { k=1}
-    Flags.Zero(k)
-    Flags.Parity(k.toString(2).padStart(16,"0"))
-    Flags.Negatif(k)
-    return k
-  }
+  // static CMP(a,b,Flags){
+  //   let x= a.entier;
+  //   let y= b.entier;
+  //   let k
+  //   if (x<y) { k=-1}
+  //   if (x==y) { k=0}
+  //   if (x>y) { k=1}
+  //   Flags.Zero(k)
+  //   Flags.Parity(k.toString(2).padStart(16,"0"))
+  //   Flags.Negatif(k)
+  //   return k
+  // }
 
 // la méthode slice a le mm effet que la fonction extrairechaine en SFSD
 // C.slice(x,y) retourne la chaine de caractère à partir de caractère n°X jusqu'à Y
