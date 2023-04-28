@@ -14,8 +14,7 @@
   flex-direction: column;
   align-items: center;
   margin-left: 0%;
-
-  width: 55%;
+  width: 50%;
   
 }
 
@@ -24,11 +23,12 @@
 
 .Login {
   align-self: center;
-
+margin-top: 0.5rem;
   font-size: small;
   font-family: Montserrat;
+ 
 }
 
-.Container2 a {
+.Login a {
   color: #00A6FB;
 }

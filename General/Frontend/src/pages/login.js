@@ -45,7 +45,8 @@ function Login() {
     return (
         <div className="Containerlogin">
           <div className='illustration'>
-          <ReactSVG src={Image} />
+          <img src={Image} alt='illustration'/>
+
           </div>
               
            
