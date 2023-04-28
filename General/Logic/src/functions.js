@@ -297,7 +297,7 @@ function detectOp(op1,reg) {
         if (op1[1]!=",") {console.log("erreur , attendue apres *")}
         else {
             if (!isNaN(op1.slice(2,op1.length))) {
-            return {value:parseInt(op1.slice(2,op1.length-1),10).toString(2).padStart(16,"0").toString(2),kind:2}
+            return {value:parseInt(op1.slice(2,op1.length),10).toString(2).padStart(16,"0").toString(2),kind:2}
         } else if (op1[op1.length-1]=="H") {
             return {value:parseInt(op1.slice(2,op1.length-1),16).toString(2).padStart(16,"0").toString(2),kind:2}
         }
@@ -318,4 +318,141 @@ function detectOp(op1,reg) {
         return { value:reg.indexOf(op1).toString(2).padStart(3,"0"),kind:3}
     }
     else{return -1}
+}
+
+export function BinToMnem(mots) {
+    let Instructions=[]
+    for (let index = 0; index < mots.length; index++) {
+        const element = mots[index]
+            const cop = element.slice(0, 6)
+            const mod = element.slice(6, 9)
+            const r1 = element.slice(9, 12)
+            const r2 = element.slice(12, 16)
+            let Instr=`${Coprnd[parseInt(cop,2)]} `
+            if ((parseInt(cop,2)<12 && parseInt(cop,2)>5)||parseInt(cop,2)==0||parseInt(cop,2)==1||parseInt(cop,2)==4||parseInt(cop,2)==22) {
+                Instr=Instr+`${reg[parseInt(r1,2)]} `
+                if (parseInt(mod,2)==0) {
+                    index++ 
+                    let imm=parseInt(mots[index],2).toString(16)
+                    Instr=Instr+imm
+                }
+                else if(parseInt(mod,2)==1){
+                   index++ 
+                    let drct=parseInt(mots[index],2).toString(16)
+                    Instr=Instr+`[${drct}]`
+                }
+                else if(parseInt(mod,2)==2){
+                   index++ 
+                    let indrct=parseInt(mots[index],2).toString(16)
+                    Instr=Instr+`*,${indrct}`
+                }
+                else if(parseInt(mod,2)==3){
+                   
+                   Instr=Instr+`${reg[parseInt(r2,2)]}`
+                }
+                else if(parseInt(mod,2)==4){
+                   
+                   Instr=Instr+"[BX]"
+                }
+                else if(parseInt(mod,2)==5){
+                   
+                   Instr=Instr+"[SI]"
+                }
+                else if(parseInt(mod,2)==6){
+                   
+                   Instr=Instr+"[BX+SI]"
+                }
+                else if(parseInt(mod,2)==7){
+                   
+                   Instr=Instr+`[${reg[parseInt(r2,2)]}]`
+                }
+            }
+            else if(parseInt(cop,2)==2 ||parseInt(cop,2)==3 || parseInt(cop,2)==5 || (parseInt(cop,2)>=23&& parseInt(cop,2)<=24)){
+   
+               if (parseInt(mod,2)==0) {
+                    index++ 
+                    let imm=parseInt(mots[index],2).toString(16)
+                    Instr=Instr+imm
+                }
+                else if(parseInt(mod,2)==1){
+                   index++ 
+                    let drct=parseInt(mots[index],2).toString(16)
+                    Instr=Instr+`[${drct}]`
+                }
+                else if(parseInt(mod,2)==2){
+                   index++ 
+                    let indrct=parseInt(mots[index],2).toString(16)
+                    Instr=Instr+`*,${indrct}`
+                }
+                else if(parseInt(mod,2)==3){
+                   
+                   Instr=Instr+`${reg[parseInt(r2,2)]}`
+                }
+                else if(parseInt(mod,2)==4){
+                   
+                   Instr=Instr+"[BX]"
+                }
+                else if(parseInt(mod,2)==5){
+                   
+                   Instr=Instr+"[SI]"
+                }
+                else if(parseInt(mod,2)==6){
+                   
+                   Instr=Instr+"[BX+SI]"
+                }
+                else if(parseInt(mod,2)==7){
+                   
+                   Instr=Instr+`[${reg[parseInt(r2,2)]}]`
+                }
+            }
+            else if(parseInt(cop,2)==25 ||parseInt(cop,2)==26 ||parseInt(cop,2)==12 ){
+               Instr=Instr+`${reg[parseInt(r1,2)]}`
+            }
+            else if(parseInt(cop,2)>=13&&parseInt(cop,2)<=16){
+   
+                if(parseInt(mod,2)==1){
+                  index++ 
+                   let drct=parseInt(mots[index],2).toString(16)
+                   Instr=Instr+`[${drct}] ${parseInt(r2,2).toString(16)}`
+               }
+               else if(parseInt(mod,2)==2){
+                  index++ 
+                   let indrct=parseInt(mots[index],2).toString(16)
+                   Instr=Instr+`*,${indrct} ${parseInt(r2,2).toString(16)}`
+               }
+               else if(parseInt(mod,2)==3){
+                  
+                  Instr=Instr+`${reg[parseInt(r1,2)]} ${parseInt(r2,2).toString(16)}`
+               }
+               else if(parseInt(mod,2)==4){
+                  
+                  Instr=Instr+"[BX]"+` ${parseInt(r2,2).toString(16)}`
+               }
+               else if(parseInt(mod,2)==5){
+                  
+                  Instr=Instr+"[SI]"+` ${parseInt(r2,2).toString(16)}`
+               }
+               else if(parseInt(mod,2)==6){
+                  
+                  Instr=Instr+"[BX+SI]"+` ${parseInt(r2,2).toString(16)}`
+               }
+               else if(parseInt(mod,2)==7){
+                  
+                  Instr=Instr+`[${reg[parseInt(r1,2)]}] ${parseInt(r2,2).toString(16)}`
+               }
+            }
+            else if(parseInt(cop,2)==17){
+               index++ 
+               Instr=`LOOP ${parseInt(mots[index],2).toString(16)}`
+            }
+            else if(parseInt(cop,2)==19 ||parseInt(cop,2)==18){
+               index++ 
+               Instr=Instr+`${parseInt(r2,2).toString(16)} ${parseInt(mots[index],2).toString(16)}`
+            }
+            else if(parseInt(cop,2)==20 ||parseInt(cop,2)==21){
+               Instr=Instr+`${parseInt(r2,2).toString(16)}`
+            }
+            Instructions.push(Instr)
+    }
+   return Instructions
 }

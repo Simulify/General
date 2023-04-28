@@ -3,13 +3,15 @@ body
 {
     font-family: montserrat;
 }
+h1{
+    color: #023047;
+}
 .side_bar
 {
     width: 20px;
     height: 100%;
     background-color: aqua;
 }
-
 div.buttons
 {
     margin-top: 0px;
@@ -41,39 +43,37 @@ div.buttons
 .box
 {
     padding:2%;
-    width: 40%;
+    width: 35%;
     min-height: 200px;
     background-color: white;
-    border-radius: 16px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, .2);;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, .2);
 }
-
 .box div
 {
-    background-color: #99DBFD;
-    width: 10%;
- border-top-left-radius: 16px;
- border-bottom-left-radius: 16px;
+background-color: #99DBFD;
+width: 10%;
+border-top-left-radius: 16px;
+border-bottom-left-radius: 16px;
 display: inline;
-    height: 200px;
+height: 200px;
 }
-
 .button
 {
     border-radius:30px;
     border-color: transparent;
-    padding: 10px;
+    padding: 8px;
     margin-left: auto;
     margin-right: auto;
     cursor: pointer;
     color: #023047;
-    letter-spacing: 1.5px;
-    font-size: 11px;
+    letter-spacing: 1.7px;
+    font-size: 10px;
 }
 .buttons
 {
 display: flex;
-width: 80%;
+width: 30%;
 }
 #btn1:hover
 {
@@ -81,10 +81,11 @@ width: 80%;
 }
 #btn1
 {
-   border-color: #00A6FB; 
+    border-color:  #00A6FB;
    background-color: white;
    margin-left: auto;
-   color: #00A6FB;
+   color: #023047;
+   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
    margin-right: auto;
    
 }
@@ -97,10 +98,8 @@ width: 80%;
 }
 #btn2:hover
 {
-    filter: drop-shadow(0 0 0.3rem #00A6FB);
-
+filter: drop-shadow(0 0 0.3rem #00A6FB);
 }
-
 .container
 {
 width: 70%;
@@ -114,34 +113,17 @@ flex-wrap: nowrap;
 display: flex;
 flex-direction: row;
 margin-top: 30px;
-width: 100vw;
+width: 300px;
+margin-left: auto;
+margin-right: 12%;
+justify-content: flex-start;
 }
 a
 {
     margin-bottom: auto;
 
 }
-button#btn3.button
-{
-    width: 106.588px;
-}
-button#btn1.button
-{
-    width: 106.588px;
-}
-button#btn2.button
-{
-    margin-bottom: 0%;
-    width: 106.588px;
-}
-button#btn4.button
-{
-    color: white;
-    background-color: #00A6FB;
-    
 
-
-}
 button#btn4.button:hover
 {
     color: white;
@@ -152,9 +134,9 @@ button#btn4.button:hover
     width: 130px;
     margin-left: auto;
    margin-right: auto;
-   color: #00A6FB;
+   color: #023047;
    background-color: white;
-   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
 }
 #btn3:hover
 {
@@ -162,33 +144,26 @@ button#btn4.button:hover
 
 }
 .textarea 
-{    margin-left: auto;
-    margin-right: auto;
-    resize: none;
-    color: #023047;
-    font-size: 15px;
+{   
+margin-left: auto;
+margin-right: auto;
+resize: none;
+color: #023047;
+font-size: 15px;
 }
-
-textarea:focus {
-    outline: none; /* Cette propriété permet de désactiver la bordure */
-    border-color: #00A6FB /* Cette propriété permet de définir la couleur de la bordure */
-  }
+textarea:focus 
+{
+outline: none; /* Cette propriété permet de désactiver la bordure */
+border-color: #00A6FB /* Cette propriété permet de définir la couleur de la bordure */
+}
 textarea::placeholder
 {
     color: #023047; 
-    opacity: .7; 
 }
-form button
+hr
 {
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #00A6FB;
-    color: white;
-    display: block;
-}
-form button:hover
-{
-    filter: drop-shadow(0 0 0.3rem #00A6FB);
+width:40%;
+border-color: #00A6FB;
 }
 .Bigcontainer
 {
@@ -196,4 +171,40 @@ form button:hover
     align-items: center;
     flex-direction: column;
     width: 100%;
+}
+/* 1230px */
+@media  (min-width: 900px) and (max-width:1200px)
+{
+    .buttons
+    {
+        width: 40%;
+    }
+    hr 
+    {
+        width:40%;
+    }
+}
+h4
+{
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #023047;
+}
+@media  (max-width:900px)
+{
+    .buttons
+    {
+        width: 60%;
+    }
+    hr 
+    {
+        width: 50%;
+    }   
+}
+.compiled
+{
+    margin-left:  65%;
+    width: 50%;
+    font-size: 15px;
+    margin-right: auto;
 }

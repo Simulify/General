@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './MotDePassePage.css';
 import FormSettings from './FormSettings';
+import Navbar from '../components/Navbar';
 
 
 function MotDePassePage() {
@@ -31,43 +31,41 @@ function MotDePassePage() {
     };
 
     return (
-        
         <div className='MotDePassePage'>
-             <FormSettings/>
+            <Navbar label='Parametres'/>
+            <FormSettings/>
             <form onSubmit={handleSubmit}>
-                <div className='container'>
-                    <div className='Inputs'>
-                        <div className='MotDePasse'>
-                            <label htmlFor='confirmPassword'>Nouveau mot de passe</label>
-                            <input
-                                type='password'
-                                value={password}
-                                onChange={handlePasswordChange}
-                                placeholder='Mot de passe'
-                            />
-                        </div>
-                        <div className='ConfirmerMotDePasse'>
-                            <label htmlFor='confirmPassword'>Confirmer votre mot de passe:</label>
-                            <input
-                                type='password'
-                                value={confirmPassword}
-
-                                onChange={handleConfirmPasswordChange}
-                                placeholder='Confirmer votre mot de passe'
-                            />
-                        </div>
+            <div className='containerSettings'>
+                <div className='Inputs'>
+                    <div className='MotDePasse'>
+                        <label htmlFor='confirmPassword'>Nouveau mot de passe</label>
+                        <input
+                            type='password'
+                            value={password}
+                            onChange={handlePasswordChange}
+                            placeholder='Mot de passe'
+                        />
                     </div>
-                    <div className='buttons'>
-                        <button className='sauvegarder' type='submit'>
-                            Sauvegarder
-                        </button>
-                        <button className='annuler' type='button' onClick={handleCancel}>
-                            Annuler
-                        </button>
+                    <div className='ConfirmerMotDePasse'>
+                        <label htmlFor='confirmPassword'>Confirmer votre mot de passe:</label>
+                        <input
+                            type='password'
+                            value={confirmPassword}
+                            onChange={handleConfirmPasswordChange}
+                            placeholder='Confirmer votre mot de passe'/>
                     </div>
                 </div>
-            </form>
-        </div>
+                <div className='TwoButtons'>
+                    <button className='sauvegarder' type='submit'>
+                        Sauvegarder
+                    </button>
+                    <button className='annuler' type='button' onClick={handleCancel}>
+                        Annuler
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
     );
 }
 

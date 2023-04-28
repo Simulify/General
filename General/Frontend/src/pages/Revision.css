@@ -17,22 +17,28 @@
 }
 
 .ButtonRevision {
+        /*L'effet*/
         background: linear-gradient(108.74deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.06) 100%);
         box-shadow: 0px 0px 50px -25px rgba(128, 122, 122, 0.5);
         backdrop-filter: blur(15px);
-        border-radius: 50px;
+        /*Borders*/
         border: 1px solid #00A6FB;
         border-radius: 30px;
         height: 100%;
         width: 100%;
+        /*Font*/
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 700;
         font-size: 100%;
-        text-align: center;
+        /*Position*/
         position: absolute;
         top: 0;
         left: 0; 
+        /*Centrer le texte*/
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: #023047;
 }
 
@@ -70,7 +76,3 @@
     }
   }
   
-  
-.ColeurJaune {
-    background-color: #FFF502;
-}
