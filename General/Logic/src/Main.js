@@ -18,7 +18,7 @@ import UAL from './UAL.js';
 import UniteCommandes from './UniteCommandes.js';
 import mot_mem from './mot_mem.js';
 import Machine from './Machine.js';
-import { Compile, Coprnd, Decoup, reg } from './functions.js';
+import { BinToMnem, Compile, Coprnd, Decoup, reg } from './functions.js';
 const mot16 = new Mot16("0000000000000000");
 const mot = new Mot16("0000001000000111");
 const flags = new Flags(new Mot16("0000000000000000"));
@@ -42,11 +42,14 @@ let mem =new Array(65536)
 for (let index = 0; index < mem.length; index++) {
     mem[index]=new mot_mem(index,"0000000000000000")
 }
-let text =`MOV CX 2
+let text =`MOV ACC 2
+ICI: SUB ACC 1
+CMP ACC 0
+BCF 6 ICI
 STOP`
 let phrases = Decoup(text)
 console.log(phrases)
-// at the end i'll have phrases which 2D array each element 
+ //at the end i'll have phrases which 2D array each element 
 //is an array of decomposed words of a phrase
 phrases=Compile(phrases)
 console.log(phrases)
@@ -75,32 +78,17 @@ const machine = new Machine(Acc,ri,si,dx,bx,co,cx,rIM,rAM,busAdr,busData,flags,u
 const UC = new UniteCommandes(null,null,null,null);
 UC.execute(machine);
 console.log(machine.ACC,machine.pile,machine.CX,machine.DX,machine.BX)
-// let mo=""
-// let mots=[]
-// for (let index = 0; index < bin.length; index++) {
-//     const element = bin[index]
-//     if (element==",") {
-//         mots.push(mo)
-//         mo=""
-//     } else {
-//         mo=mo+element
-//     }
-// }
-// for (let index = 0; index < mots.length; index++) {
-//     const element = mots[index]
-//         const cop = element.slice(0, 6)
-//         const mod = element.slice(6, 9)
-//         const r1 = element.slice(9, 12)
-//         const r2 = element.slice(12, 16)
-//         let Instr=`${Coprnd[parseInt(cop,2)]} `
-//         if (parseInt(cop,2)<11 ||parseInt(cop,2)==22) {
-//             Instr=Instr+`${reg[parseInt(r1,2)]} `
-//             if (parseInt(mod,2)==0) {
-//                 index++ 
-//                 let imm=parseInt(mots[index],2).toString(16)
-//                 Instr=Instr+imm
-//             }
-//         }
-//         console.log(Instr)
-        
-// }
+console.log(machine.memoire.memory[0])
+//  let mo=""
+//  let mots=[]
+//  for (let index = 0; index < bin.length; index++) {
+//      const element = bin[index]
+//      if (element==",") {
+//          mots.push(mo)
+//          mo=""
+//      } else {
+//          mo=mo+element
+//      }
+//  }
+//  mots.push(mo)
+ 

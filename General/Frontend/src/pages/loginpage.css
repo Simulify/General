@@ -1,15 +1,8 @@
 .Containerlogin {
     display: flex;   
     align-items: flex-end;
-    flex-direction: row-reverse;
-    
+    flex-direction: row-reverse; 
   }
-  
-  /* .ImageClass {
-    flex: 1;
-    max-width: 10%;
-  height: auto;
-  } */
   
   .FormLogin {
     flex: 1;
@@ -17,7 +10,6 @@
     flex-direction: column;
     align-items: center;
     margin-left: 0%;
-    
     height: 100vh; 
   }
   
@@ -32,37 +24,10 @@
   }
   
   
-  .button-1,
-  .button-2 {
-    background-color: #B6D8F25C;
-    color: #333;
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
-    margin-bottom: 1rem;
-    outline: none;
-  }
+ 
   
-  .button-1::placeholder,
-  .button-2::placeholder {
-    color: #999;
-  }
   
-  .LoginButton {
-    background-color: #00A6FB;
-    color: aliceblue;
-   
-    padding: 8px;
-    border-radius: 8px;
-    border: none;
-    font-size: 14px;
-
-    margin: 40%;
-    outline: none;
-    
-  }
+ 
   
   
   

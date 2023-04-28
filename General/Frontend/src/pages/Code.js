@@ -2,7 +2,14 @@ import React, { useEffect } from 'react';
 import "./Code.css"; // import the external CSS file
 // import img1 from './Ellipse 515.png';
 // import img2 from './Icon.png';
-import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Button from '../components/Buttonn'
+const ButoStyle={
+  background: '#00A6FB',
+position:'absolute',
+width:'192px',
+'grid-area':'sauv'
+}
 function Code() {
   useEffect(() => {
     var form=document.querySelector('textarea');
@@ -67,23 +74,19 @@ function Code() {
       <div>
         <div className="mini_nav">
           <div className="side_bar"></div>
-          <h1 style={{ display: "inline", marginTop: "15px",marginLeft:"60px" }}>Simulation</h1>
-    
+          <Navbar label="Simulation" />
         </div>
         <br></br>         <br></br>
         <br></br>
         <div className='hugecontainer'>
        <div className='Bigcontainer'>
+       {/* buttons in top *************** */}
         <div className="buttons">
-          <button className="button" id="btn2">
-Sauvegarder          </button>
-          <button style={{position:'',bottom:""}} className="button" id="btn3">
-          Exemples 
-          </button>
-          <button className="button" id="btn3">
-              Mes programmes
-            </button>
+        <Button text="Sauvegarder" style={ButoStyle}></Button>
+        <Button text="Exemples" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'184px','grid-area':'exem'}}></Button>
+        <Button text="Mes programmes" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'184px','grid-area':'prgrm'}}></Button>
         </div>
+        {/************************* */}
         <br /> <br /> <br /> <br></br>
         <div className="container">
           <textarea 
