@@ -1,4 +1,3 @@
-
 .nav-links {
   display: flex;
   align-items: center;
@@ -15,7 +14,11 @@
   color: #5784BA;
 }
 
-.MotDePassePage, .ProfilePage, .ModePage, .LanguePage, .Settings {
+.MotDePassePage,
+.ProfilePage,
+.ModePage,
+.LanguePage,
+.Settings {
   margin-left: 10%;
 }
 
@@ -62,19 +65,14 @@
   margin-bottom: 50px;
 }
 
-.containerSettings {
+.containerSettings , .ProfileContainer , .LangueContainer , .ModeContainer {
   margin: 0px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.ProfileContainer{
-  margin: 0px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
+
 
 @media (min-width: 768px) {
   .containerSettings {
@@ -98,11 +96,15 @@ input {
 }
 
 .ProfilePage .Inputs {
-    width: 40%;
+  width: 40%;
 }
 
 .MotDePassePage .Inputs {
-    width: 22%;
+  width: 22%;
+}
+
+.LanguePage .Inputs {
+  width: 30%;
 }
 
 .Inputs {
@@ -114,13 +116,12 @@ input {
 
 .sauvegarder {
   height: 40px;
-  
   margin-left: 10px;
   margin-right: 0px;
-  padding: 0 20px; 
+  padding: 0 20px;
   background: #00A6FB;
   border-radius: 30px;
-  border: none; 
+  border: none;
   color: #F8F9FA;
 }
 
@@ -140,7 +141,7 @@ input {
   filter: drop-shadow(0 0 0.3rem #00A6FB);
 }
 
-.sauvegarder:hover{
+.sauvegarder:hover {
   filter: drop-shadow(0 0 0.3rem #00A6FB);
 }
 
@@ -154,8 +155,67 @@ input {
 
 }
 
+.LangueForm .TwoButtons{
+  margin-top: 17.5%;
+
+}
+
 label {
   font-family: Montserrat;
   font-size: 16px;
   color: #023047
 }
+
+
+
+
+
+
+.FranceButton {
+  background: #00A6FB;
+  border-radius: 8px;
+  color: #F8F9FA;
+  border: none;
+  height: 50px;
+  
+  margin-top: 1%;
+  font-size: 14px;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+
+}
+
+.UsaButton {
+
+  background: rgba(182, 216, 242, 0.36);
+  border-radius: 8px;
+  border: none;
+  color: #023047;
+  font-family: 'Montserrat', sans-serif;
+  height: 50px;
+  margin-bottom: 2%;
+  margin-top: 12%;
+  font-size: 14px;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+
+}
+
+.france ,.unitedStates {
+  margin-right: 10px;
+}
+
+.LangueLabel{
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 29px;
+color: #023047;
+}
+
