@@ -7,10 +7,9 @@ import "../ComponentsSettings/MotDePassePage.css";
 function Settings() {
 
   return (
-
     <div className='Settings'>
       <Navbar label="Paramètres" />
-      <FormSettings />
+      <FormSettings/>
     </div>
 
   );
