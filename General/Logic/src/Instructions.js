@@ -284,33 +284,39 @@ static PUSH(pile, mot) {
 
   static  MOV(source,destination,Machine)
   {
+    let dest
     if(source instanceof CO )
     {
       Machine.bus_adresse.transferer(Machine.CO,Machine.bus_donnes)
       Machine.bus_donnes.transferer(Machine.bus_donnes.information,destination)
+      dest =destination.value.mot
     }
     else if(destination instanceof CO )
     {
       Machine.bus_donnes.transferer(source,Machine.bus_adresse)
       Machine.bus_adresse.transferer(Machine.bus_adresse.information,Machine.CO)
+      dest =destination.value.mot
     }
     else if(destination instanceof mot_mem)
     {
-      Machine.RAM.recevoir(destination.adresse)
+      Machine.RAM.value.setMot(destination.adresse.toString(2).padStart(16,"0"))
       Machine.bus_donnes.transferer(source.value,Machine.RIM)
       Machine.memoire.ecriture(Machine.RAM,Machine.RIM)
+      dest =Machine.RIM.value.mot
     }
     else if(source instanceof mot_mem){
       Machine.RAM.recevoir(source.adresse)
       Machine.memoire.lecture(Machine.RAM,Machine.RIM)
       destination.value=Machine.RIM.value
+      dest =destination.value.mot
     }
     else
     {
       Machine.bus_donnes.transferer(source,destination)
+      dest =destination.value.mot
     }
     Machine.Flags.Zero(source.value.entier)
-    Machine.Flags.Parity(destination.value.mot)
+    Machine.Flags.Parity(dest)
   }
 
   static BCV (n,Flags){
@@ -338,18 +344,18 @@ static PUSH(pile, mot) {
   // }
 
 
-  static CMP(a,b,Flags){
-    let x= a.entier;
-    let y= b.entier;
-    let k
-    if (x<y) { k=-1}
-    if (x==y) { k=0}
-    if (x>y) { k=1}
-    Flags.Zero(k)
-    Flags.Parity(k.toString(2).padStart(16,"0"))
-    Flags.Negatif(k)
-    return k
-  }
+  // static CMP(a,b,Flags){
+  //   let x= a.entier;
+  //   let y= b.entier;
+  //   let k
+  //   if (x<y) { k=-1}
+  //   if (x==y) { k=0}
+  //   if (x>y) { k=1}
+  //   Flags.Zero(k)
+  //   Flags.Parity(k.toString(2).padStart(16,"0"))
+  //   Flags.Negatif(k)
+  //   return k
+  // }
 
 // la méthode slice a le mm effet que la fonction extrairechaine en SFSD
 // C.slice(x,y) retourne la chaine de caractère à partir de caractère n°X jusqu'à Y
