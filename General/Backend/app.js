@@ -23,7 +23,6 @@ connectDB();
 app.use(express.json());
 
 
-
 // Use the indexRoutes module for all other requests
 app.use('/', indexRoutes);
 
@@ -31,8 +30,8 @@ app.use('/', indexRoutes);
 module.exports = app;
 
 // Start the server on the specified port (or 3000 if not specified)
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Server is running on port 3000');
+app.listen(process.env.PORT, () => {
+  console.log('Server is running on port 3001');
 });
 
 

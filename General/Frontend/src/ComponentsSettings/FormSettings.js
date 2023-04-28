@@ -6,8 +6,8 @@ function FormSettings() {
     return (
         <div className=" FormSettings ">
           <div className="blue-rectangle">
-          <ReactSVG src={Userpic}/>
-          <button className="modifybutton">Modifier</button>
+               <ReactSVG src={Userpic}/>
+               <button className="modifybutton">Modifier</button>
           </div>  
           <Settingsbar />
         </div>

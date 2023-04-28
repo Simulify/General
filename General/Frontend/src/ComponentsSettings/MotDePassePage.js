@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './MotDePassePage.css';
 import FormSettings from './FormSettings';
+import Navbar from '../components/Navbar';
 
 
 function MotDePassePage() {
@@ -31,11 +31,11 @@ function MotDePassePage() {
     };
 
     return (
-        
         <div className='MotDePassePage'>
-             <FormSettings/>
+            <Navbar label='Parametres'/>
+            <FormSettings/>
             <form onSubmit={handleSubmit}>
-                <div className='container'>
+                <div className='containerSettings'>
                     <div className='Inputs'>
                         <div className='MotDePasse'>
                             <label htmlFor='confirmPassword'>Nouveau mot de passe</label>
@@ -57,7 +57,7 @@ function MotDePassePage() {
                             />
                         </div>
                     </div>
-                    <div className='buttons'>
+                    <div className='TwoButtons'>
                         <button className='sauvegarder' type='submit'>
                             Sauvegarder
                         </button>
@@ -71,4 +71,4 @@ function MotDePassePage() {
     );
 }
 
-export default MotDePassePage;
+export default MotDePassePage

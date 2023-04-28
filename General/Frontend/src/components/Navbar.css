@@ -1,17 +1,16 @@
 header {
-   height: 100px;
+  height: 100px;
   background-color: #fff;
   z-index: 10;
 }
 
-
 .navbar {
   display: grid;
-  grid-template-columns: 2fr auto; /* Adjust the values here */
+  grid-template-columns: auto  auto; 
   align-items: center;
   width: 93%;
   max-width: none;
-  margin-top: 0;
+  margin-top: 0%;
   margin-left: 0%;
 }
 
@@ -27,29 +26,32 @@ header {
 }
 
 
-
 .nav-icons {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: flex-end;
+
 }
 
-.info-icon,
-.avatar-icon {
-  margin-top: 30x;
-  margin-right: 20px;
-}
+
 
 .avatar-icon {
-  width: 35px;
-  height: 35px;
+  width: 2.2em;
+  height: 2.2em;
+  margin-left: 1em;
+  margin-right: 1em;
 }
+
+
 
 .info-icon {
-  height: 35px;
-  width: 35px;
+  height: 2.0em;
+  width: 2.0em;
+  margin-right: 2em;
 }
 
-.nav-icons {
-  justify-self: end;
-}
+
+
+
+
