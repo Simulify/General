@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import '../pages/Files.css';
 import SubfilesButton from '../components/SubfilesButton';
 import FilesButton from '../components/FilesButton';
@@ -8,15 +8,7 @@ import Loope from '../Images/No Results@3x.svg';
 import { Link } from "react-router-dom";
 
 
-
-
 function Files() {
-  
-
-
-
-
-
 
 
   const [fileExempleVisible, setFileExempleVisible] = useState(false);
@@ -27,19 +19,31 @@ function Files() {
   const [transferVisible, setTransferVisible] = useState(false);
   const [shiftVisible, setShiftVisible] = useState(false);
 
-  const [fileList, setFileList] = useState([
-   
+
  
-  ]);
+
+
+    //
+     // Load the fileList state from localStorage, or use an empty array if it doesn't exist
+  const [fileList, setFileList] = useState(
+    JSON.parse(localStorage.getItem('fileList')) || []
+  );
+
+  // Save the fileList state to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('fileList', JSON.stringify(fileList));
+  }, [fileList]);
+
   function addFile() {
     const newFile = { id: fileList.length + 1, label: 'Mon nouveau programme' };
     setFileList([...fileList, newFile]);
   }
+
   function removeFile(id) {
     setFileList(fileList.filter((file) => file.id !== id));
   }
-    
 
+//
   function handleExempleClick() {
    
     setFileExempleVisible((prevState) => !prevState);
@@ -73,9 +77,14 @@ function Files() {
   
 
   return (
+    
    
     <div className="Files">
+
       <Navbar label="Les fichiers" />
+      <button onClick={addFile}>Add File</button>
+      <button onClick={() => removeFile(3)}>Remove File with ID 3</button>
+      <button onClick={addFile}>Add File</button>
 
       <div className="Menu-container">
         <div className="menu-trigger-exemple"
@@ -183,20 +192,21 @@ function Files() {
           <table>
             <tbody>
               {fileList.map((file) => (
-                 <Link to="/code">
-                  <tr key={file.id}>
+                <tr key={file.id}>
                   <td>
-                    <File label={file.label} />
+                    <File
+                      label={file.label}
+                      onClick={() => console.log('File clicked')}
+                      onDelete={() => removeFile(file.id)}
+                    />
                   </td>
                 </tr>
-                 </Link>
-              
               ))}
             </tbody>
           </table>
         ) : (
           myFilesVisible && (
-            <div className='empty'>
+            <div className="empty">
               <img className="Loope" src={Loope} alt="Loopeicon" />
             </div>
           )

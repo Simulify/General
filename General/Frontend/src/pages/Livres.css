@@ -4,6 +4,7 @@
 }
 
 .containerLivres {
+    overflow-y: scroll;
     height: 80%;
     width: 100%;
     padding-top: 2%;
@@ -11,11 +12,7 @@
     padding-right: 10%;
 }
 
-.LesLivres {
-    height: 100%;
-}
-
-.livre1, .livre2, .livre3, .livre4 {
+.livre {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -27,6 +24,31 @@
     cursor: pointer;
 }
 
+.Description {
+    padding-left: 10%;
+    display: block;
+}
+
+
+.Description .lien {
+    display: flex;
+    align-items: center;
+    margin-left: 60%;
+    margin-bottom: 20px;
+}
+
+.lien a {
+    color: #00A6FB;
+    font-weight: 600;
+    font-size: large;
+    display: block;
+    margin-left: 10px;
+}
+
+.LienIcone {
+    width: 25px;
+}
+
 .containerLivres span {
     padding-left: 20px;
     color: #F8F9FA;
@@ -35,6 +57,7 @@
     font-weight: 600;
     font-size: 100%;
 }
+
 .fleche {
     width: 9px;
     padding-right: 5px;
