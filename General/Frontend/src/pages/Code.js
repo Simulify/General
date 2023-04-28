@@ -3,6 +3,7 @@ import "./Code.css"; // import the external CSS file
 // import img1 from './Ellipse 515.png';
 // import img2 from './Icon.png';
 import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 function Code() {
   useEffect(() => {
     var form=document.querySelector('textarea');
@@ -67,8 +68,7 @@ function Code() {
       <div>
         <div className="mini_nav">
           <div className="side_bar"></div>
-          <h1 style={{ display: "inline", marginTop: "15px",marginLeft:"60px" }}>Simulation</h1>
-    
+          <Navbar label="Simulation" />
         </div>
         <br></br>         <br></br>
         <br></br>

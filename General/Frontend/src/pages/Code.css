@@ -3,6 +3,9 @@ body
 {
     font-family: montserrat;
 }
+h1{
+    color: #023047;
+}
 .side_bar
 {
     width: 20px;
