@@ -9,10 +9,10 @@ import Info from "../Images/Info-circle.svg"
 
 function Navbar(props) {
   return (
-    <header>
+   <header>
    <div className="navbar">
    <h2 className="title">{props.label}</h2>
-  <div className="nav-icons">
+   <div className="nav-icons">
     <Link to="/Login">
       
       <img className="avatar-icon" src={avatar} alt="Avatar" />

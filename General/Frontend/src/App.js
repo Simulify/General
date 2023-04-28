@@ -14,6 +14,10 @@ import Settings from './pages/Settings';
 import ErrorPage from './pages/ErrorPage';
 import Code from './pages/Code';
 import MotDePassePage from './ComponentsSettings/MotDePassePage';
+import RessourcePage from './pages/RessourcePage';
+import Videos from './pages/Videos';
+import LivresPage from './pages/LivresPage';
+import Sites from './pages/Sites';
 import ProfilePage from './ComponentsSettings/ProfilePage';
 import LanguePage from './ComponentsSettings/LanguePage';
 import ModePage from './ComponentsSettings/ModePage';
@@ -34,6 +38,10 @@ function App() {
           <Route path='/code/simulation' element={<Simulation/>}></Route>
           <Route path='/files' element={<Files/>}></Route>
           <Route path='/revision' element={<Revision/>}></Route>
+          <Route path='/revision/ressources' element={<RessourcePage/>}></Route>
+          <Route path='/revision/ressource/videos' element={<Videos/>}></Route>
+          <Route path='/revision/ressources/livres' element={<LivresPage/>}></Route>
+          <Route path='/revision/ressources/sites' element={<Sites/>}></Route>
           <Route path='/guide' element={<Guide/>}></Route>
           <Route path='/guide/architecture' element={<GuideArch/>}></Route>
           <Route path='/guide/instruction-format' element={<GuideInstr/>}></Route>
