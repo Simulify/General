@@ -14,6 +14,9 @@ import Settings from './pages/Settings';
 import ErrorPage from './pages/ErrorPage';
 import Code from './pages/Code';
 import MotDePassePage from './ComponentsSettings/MotDePassePage';
+import GuideForm from './pages/GuideForm';
+import GuideInstr from './pages/GuideInstr';
+import GuideInstrArth from './pages/GuideInstrArth';
 import RessourcePage from './pages/RessourcePage';
 import Videos from './pages/Videos';
 import LivresPage from './pages/LivresPage';
@@ -21,7 +24,6 @@ import Sites from './pages/Sites';
 import ProfilePage from './ComponentsSettings/ProfilePage';
 import LanguePage from './ComponentsSettings/LanguePage';
 import ModePage from './ComponentsSettings/ModePage';
-import GuideInstr from './pages/GuideInstr';
 
 function App() {
  
@@ -29,7 +31,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-    
        <Sidebar/>
         <Routes>
           <Route path='/' element={<Home/>}></Route>
@@ -44,7 +45,9 @@ function App() {
           <Route path='/revision/ressources/sites' element={<Sites/>}></Route>
           <Route path='/guide' element={<Guide/>}></Route>
           <Route path='/guide/architecture' element={<GuideArch/>}></Route>
-          <Route path='/guide/instruction-format' element={<GuideInstr/>}></Route>
+          <Route path='/guide/instruction-format' element={<GuideForm/>}></Route>
+          <Route path='/guide/instructions' element={<GuideInstr/>}></Route>
+          <Route path='/guide/instructions/arithmetic' element={<GuideInstrArth/>}></Route>
           <Route path='/settings' element={<Settings/>}></Route>
           <Route path='/settings/ProfilePage'  element={<ProfilePage/>}></Route>
           <Route path='/settings/MotDePassePage'  element={<MotDePassePage/>}></Route>
