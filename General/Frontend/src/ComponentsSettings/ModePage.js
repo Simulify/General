@@ -1,9 +1,12 @@
 import React from "react";
+import FormSettings from "./FormSettings";
+import Navbar from "../components/Navbar";
 
 function ModePage() {
     return (
         <div className=" ModePage ">
-            <h1> Mode Page  </h1>
+            <Navbar label='Parametres'/>
+            <FormSettings/>
             
         </div>
 

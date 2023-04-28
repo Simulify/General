@@ -1,11 +1,12 @@
 import React from "react";
-import Form from "./FormSettings";
+import FormSettings from "./FormSettings";
+import Navbar from "../components/Navbar";
 
 function LanguePage() {
     return (
         <div className=" LanguePage ">
-            <Form/>
-            <h1> Langue page  </h1>
+            <Navbar label='Parametres'/>
+            <FormSettings/>
             
         </div>
 

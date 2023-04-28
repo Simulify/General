@@ -3,10 +3,11 @@ function Settingsbar() {
         <div className="Settingsbar">
             
             <ul className="nav-links">
-                <li>profile </li>
-                <li >mot de passe</li>
-                <li> langue </li>
-                <li> mode </li>
+            <li ><a href="/Settings/ProfilePage" className="Profile">Profile</a></li>
+                <li><a href="/Settings/MotDePassePage" className="mdp">Mot De Passe </a> </li>
+                
+                <li><a href="/Settings/LanguePage" className="Langue">Langue </a></li>
+                <li> <a href="/Settings/ModePage" className="Mode">Mode </a></li>
             </ul>
         </div>
 

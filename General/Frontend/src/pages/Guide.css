@@ -1,3 +1,4 @@
+/******************************************** GUIDE STYLE ********************************************/
 .hero {
     display: flex;
     flex-direction: row;
@@ -6,12 +7,20 @@
     height: 100vh;
     width: auto;
 }
+
+
+/************************************* HOME PAGE GUIDE STYLE *****************************************/
+
 .guide-image {
     width: 70%;
     height: auto;
     position: absolute;
     bottom: 15%;
 }
+
+
+/****************************************** BUTTONS STYLE ********************************************/
+
 .suiv {
     width: auto;
     height: auto;
@@ -43,7 +52,11 @@
     font-family: 'Montserrat';
     font-weight: 500;
     font-size: 80%;
-} 
+}
+
+
+/************************************* ARCHITECTURE PAGE STYLE ***************************************/
+
 .heroarch .h2{
     font-family: 'Montserrat';
     font-style: normal;
@@ -53,7 +66,7 @@
     color: #023047;
     position: absolute;
     left: 10%;
-    top: 10%;
+    top: 11.5%;
 }
 .heroarch .p1title{
     font-family: 'Montserrat';
@@ -64,7 +77,7 @@
     color: #023047;
     position: absolute;
     left: 10%;
-    top: 18%;
+    top: 19%;
 }
 .heroarch .p1{
     font-family: 'Montserrat';
@@ -75,7 +88,7 @@
     color: #023047;
     position: absolute;
     left: 10%;
-    top: 25%;
+    top: 26%;
 }
 .heroarch .p2title{
     font-family: 'Montserrat';
@@ -86,84 +99,51 @@
     color: #023047;
     position: absolute;
     left: 10%;
-    top: 36%;
+    top: 34%;
 }
-/* .regs{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    left: 10%;
-    top: 42%;
-    gap: 100%;
+.regs {
+  display: flex;
+  flex-direction: column;
 }
-.regs li{
-    width: 70%;
-    height: auto;
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;    
+.r1, .r2, .r3, .r4, .r5, .r6, .r7 {display: flex;}
+.r1 span, .r2 span, .r3 span, .r4 span, .r5 span, .r6 span, .r7 span {
+  position: absolute;
+  left: 12%;
+  font-size: 90%;
+}
+.regs li svg {
+  height: auto;
+  width: 12px;
+  position: absolute;
+  left: 10%;
+  margin-top: 0.35%;
+  box-shadow: -2px 20px 8px rgba(38, 45, 52, 0.01), -1px 11px 7px rgba(38, 45, 52, 0.05), 0px 5px 5px rgba(38, 45, 52, 0.09), 0px 1px 3px rgba(38, 45, 52, 0.1), 0px 0px 0px rgba(38, 45, 52, 0.1);
+}
+.r1 svg,.r1 span{top: 45%;}
+.r2 svg,.r2 span{top: 50%;}
+.r3 svg,.r3 span{top: 55%;}
+.r4 svg,.r4 span{top: 60%;}
+.r5 svg,.r5 span{top: 65%;}
+.r6 svg,.r6 span{top: 70%;}
+.r7 svg,.r7 span{top: 75%;}
+.heroarch .p2{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 100%;
+  line-height: 170%;
+  color: #023047;
+  position: absolute;
+  left: 10%;
+  top: 78%;
+}
+.heroarch .Architecture {
+  transform: scale(0.63);
+  position: absolute;
+  top: 5%;
+  left: 56.7%;
+}
 
-  }
 
-.r1 svg{
-    position: absolute;
-    left: 0;
-}
-.r2 svg{
-    position: absolute;
-    left: 0;
-}.r3 svg{
-    position: absolute;
-    left: 0;
-}.r4 svg{
-    position: absolute;
-    left: 0;
-} 
-ul.regs {
-    list-style-type: none; /* Remove default bullet points 
-    margin: 0;
-    position: absolute;
-    left: 50%;
-    padding: 0;
-  }
-  
-  ul.regs li {
-    margin-bottom: 0%;
-    display: flex;
-    align-items: center; /* Add a gap of 10px between each item 
-  }
-  
-  ul.regs li .Point {
-    display: block; /* Set the point to display as a block element 
-  }
-  .Point {
-    width: 10px;
-    height: 10px;
-    fill: black;
-    margin-right: 10px;
-  }*/
-  .regs {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-  }
-  
-  .r1, .r2, .r3, .r4, .r5, .r6, .r7 {
-    display: flex;
-    
-  }
-  
-  .r1 span, .r2 span, .r3 span, .r4 span, .r5 span, .r6 span, .r7 span {
-    display: inline-flex;
-    align-items: center;
-    margin-bottom: 25px;
-    margin-left: 5px;
-  }
-  
-  .r1 svg {
-    height: auto;
-    width: 12px;
-  }
-  
+/********************************* INSTRUCTION FORMAT PAGE STYLE *************************************/
+

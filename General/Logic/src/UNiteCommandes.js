@@ -108,7 +108,6 @@ class UniteCommandes{
             var busData=Machine.bus_donnes
             var Mem=Machine.memoire
             var RI=Machine.RI
-            busAdr.transferer(busData.transferer(Machine[reg[parseInt(C,2)]],busAdr),Machine.RAM)
             busData.transferer(Machine[reg[parseInt(C,2)]],busAdr)
             busAdr.transferer( busAdr,Machine.RAM)
             Mem.lecture(Machine.RAM,Machine.RIM)
@@ -148,10 +147,21 @@ class UniteCommandes{
         var RI=Machine.RI
         // treating instructions from ADD to CMP in UAL
         /****************************************** */
-        if (parseInt(this.Cop,2)<11) {
+        if (parseInt(this.Cop,2)<2 || parseInt(this.Cop,2)==4 || (parseInt(this.Cop,2)>=6 && parseInt(this.Cop,2)<=10 )) {
             Machine.UAL.UAL2=this.Mode[parseInt(this.Mod,2)](Machine,this.reg,this.C).value
             Machine.UAL.UAL1=Machine[this.reg[parseInt(this.R1,2)]].value
             Machine[this.reg[parseInt(this.R1,2)]].value=new Mot16 (Machine.UAL.executer(this.Coprnd[parseInt(this.Cop,2)],Machine.Flags))
+        }
+        else if(parseInt(this.Cop,2)==2 || parseInt(this.Cop,2)==3 || parseInt(this.Cop,2)==5){
+            
+            Machine.UAL.UAL1=this.Mode[parseInt(this.Mod,2)](Machine,this.reg,this.C).value
+            Machine.UAL.UAL2=Machine[this.reg[parseInt(this.R1,2)]].value
+            
+            Machine[this.reg[parseInt(this.R1,2)]].value=new Mot16 (Machine.UAL.executer(this.Coprnd[parseInt(this.Cop,2)],Machine.Flags))
+            let mM = new mot_mem(Machine.RAM.value.entier,new Mot16("0000000000000000"))
+            if (parseInt(this.Mod,2)==1 || parseInt(this.Mod,2)==2 || parseInt(this.Mod,2)>=4) {
+                Instructions.MOV(Machine[this.reg[parseInt(this.R1,2)]],mM,Machine)
+            }
         }
         else if(parseInt(this.Cop,2)==11){
             Machine.UAL.UAL2=this.Mode[parseInt(this.Mod,2)](Machine,this.reg,this.C).value
