@@ -1,9 +1,10 @@
 import React from "react";
+import FormSettings from "./FormSettings";
 
 function ModePage() {
     return (
         <div className=" ModePage ">
-            <h1> Mode Page  </h1>
+            <FormSettings/>
             
         </div>
 
