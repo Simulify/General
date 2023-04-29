@@ -1,7 +1,7 @@
 import React from "react";
 import "./File.css";
 import file from "../Images/File.svg";
-import can from '../Images/can2.svg';
+import can from '../Images/Trash.svg';
 
 function File(props) {
   return ( 

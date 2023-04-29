@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../App.css';
 import '../pages/RessourcesExplication.css';
 import { ReactComponent as FlecheConcept } from "../Images/FlecheConcept.svg";
 

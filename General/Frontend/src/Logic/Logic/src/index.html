@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea rows="10" cols="50" id="myTextarea"></textarea>
+    <button onclick="getValue()">compile</button>
+<script>
+let text=""
+  let here =[]
+  let element=""
+  function getValue() {
+      text =document.getElementById("myTextarea").value
+       for (let index = 0; index <= text.length; index++) {
+      if(text.charAt(index)=="\n"){
+          here.push(element)
+          element=""
+          
+      }
+      else{element = element+text.charAt(index);}
+         
+      }
+      here.push(element)
+      console.log(here)
+      return true
+  }
+  </script>
+<!-- <script>
+  let array =[]
+  const textarea = document.getElementById("myTextarea");
+  let previousSelectionStart = textarea.selectionStart;
+  let here=0
+  textarea.addEventListener("input", function() {
+    console.log(array)
+    const text = textarea.value;
+    const currentSelectionStart = textarea.selectionStart;
+    let line=""
+    if (currentSelectionStart === previousSelectionStart + 1) {
+      const addedLetter = text.charAt(previousSelectionStart);
+      console.log(`Added letter: ${addedLetter}`);
+      if (addedLetter=="\n"){
+        for (let index = here; index < currentSelectionStart-1; index++) {
+          line=line+text.charAt(index)
+        }
+        console.log( line )
+        array.push(line)
+        line=""
+        here=currentSelectionStart
+      }
+    } else if (currentSelectionStart === previousSelectionStart - 1) {
+      const deletedLetter = text.charAt(previousSelectionStart - 1);
+      console.log(`Deleted letter: ${deletedLetter}`);
+    }
+    previousSelectionStart = currentSelectionStart;
+  });
+</script> -->
+<!-- <script src="Main.js"></script> -->
+</body>
+
+</html>
