@@ -7,7 +7,7 @@ import FileNoDelete from '../components/FileNoDelete';
 import Navbar from '../components/Navbar';
 import Loope from '../Images/No Results@3x.svg';
 import { Link } from "react-router-dom";
-
+import Code from '../pages/Code';
 
 function Files() {
 
@@ -41,9 +41,7 @@ function Files() {
   }
   
 
-  function removeAllFiles() {
-    setFileList([]);
-  }
+ 
   
 
   function handleExempleClick() {
@@ -85,7 +83,7 @@ function Files() {
 
       <Navbar label="Les fichiers" />
     
-      <button onClick={() => removeFile(1)}>Remove File with ID 1</button>
+      
 
       <button onClick={addFile}>Add File</button>
 
@@ -188,7 +186,9 @@ function Files() {
   </div>
 
   <div className={`file-perso ${myFilesVisible ? 'show' : ''}`}>
+  
     {fileList.length > 0 ? (
+       
       <ul>
         {fileList.map((file) => (
           <li key={file.id}>

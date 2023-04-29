@@ -14,7 +14,10 @@ position:'absolute',
 width:'184px',
 'grid-area':'sauv'
 }
-function Code() {
+function Code({ addFile }) {
+  function handlesave() {
+    addFile();
+  }
     const [numLines, setNumLines] = useState(1);
     
     const HandleChange=(event)=> {
@@ -96,7 +99,7 @@ function Code() {
        <div className='Bigcontainer'>
        {/* buttons in top *************** */}
         <div className="buttons">
-        <Button text="Sauvegarder" style={ButoStyle}></Button>
+        <Button onClick={handlesave} text="Sauvegarder" style={ButoStyle}></Button>
         <Button text="Exemples" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'184px','grid-area':'exem'}}></Button>
         <Button text="Mes programmes" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'184px','grid-area':'prgrm'}}></Button>
         </div>
