@@ -229,24 +229,28 @@
 /********************************* ARETHMETIC INSTRUCTIONS STYLE *************************************/
 
 table {
-  border-collapse: collapse;
-  table-layout: auto;
+   border-collapse: collapse;
+  /*table-layout: initial;*/
   position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%); 
-  margin: 0 auto;
+  top: 14vh;
+  left: 30vh;
+  margin: 0 auto; 
 }
 td, th {
-  border: 1px solid #00A6FB;
-  padding: 8px;
+  border: 0.2vh solid #00A6FB;
+  padding: 1vh;
 }
 thead th {
-  border: 1px solid #00A6FB;
-  padding: 8px;
+  border: 0.2vh solid #00A6FB;
+  padding: 1vh;
   font-weight: 600;
-  font-size: 100%;
+  font-size: 3.2vh;
 }
 tbody td {
+  text-align: center;
+  font-size: 2.8vh;
+}
+.t2, .lft{
   text-align: left;
 }
+.t2{font-weight: 600;}
