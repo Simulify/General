@@ -3,7 +3,7 @@ import '../App.css';
 import FormSettings from "../ComponentsSettings/FormSettings";
 import "./Settings.css";
 import Navbar from '../components/Navbar';
-import "../ComponentsSettings/MotDePassePage.css";
+
 function Settings() {
 
   return (

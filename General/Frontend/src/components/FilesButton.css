@@ -21,14 +21,10 @@
   align-items: center;
   
 }
-
- 
-
-  .sup{
-    margin-top: 3px;
-    height: 70%;
-  }
-  .can {
-    justify-self: end; 
-  }
-  
+.sup{
+  margin-top: 3px;
+  height: 70%;
+}
+.can {
+  justify-self: end; 
+}

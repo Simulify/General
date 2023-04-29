@@ -3,7 +3,6 @@ header {
   z-index: 10;
   background-color: #FFFFFF;
 }
-
 .navbar {
   display: grid;
   grid-template-columns: auto  auto; 
@@ -13,7 +12,6 @@ header {
   margin-top: 0;
   margin-left: 0;
 }
-
 .title {
   margin-top: 4vh;
   color: #023047;
@@ -24,23 +22,21 @@ header {
   font-stretch: normal;
   text-decoration: none;
 }
-
 .nav-icons {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
 }
-
 .avatar-icon {
   width: 2.5vw;
-  height: 7vh;
+  height: 5vh;
   margin-left: 1vw;
   margin-right: 1vw;
+  background-color: #FFFFFF;
 }
-
 .info-icon {
-  height: 7vh;
+  height: 5vh;
   width: 2.5vw;
   margin-right: 3.1vw;
 }
