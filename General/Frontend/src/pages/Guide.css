@@ -26,33 +26,33 @@
     width: auto;
     height: auto;
     position: absolute;
-    bottom: 6%;
-    left: 80%;
-    padding: 1% 3.5%;
+    bottom: 6vh;
+    left: 80vw;
+    padding: 2.2vh 3.5vw;
     background: #00A6FB;
     box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 3px 6px rgba(43, 110, 177, 0.1);    
     color: #FFFFFF;
-    border: 1px solid #00A6FB;
-    border-radius: 20px;
+    border: 0.2vh solid #00A6FB;
+    border-radius: 2vw;
     font-family: 'Montserrat';
     font-weight: 500;
-    font-size: 80%;
+    font-size: 2.2vh;
 }
 .prev {
     width: auto;
     height: auto;
     position: absolute;
-    bottom: 6%;
-    left: 66%;
-    padding: 1% 3.5%;
+    bottom: 6vh;
+    left: 66.5vw;
+    padding: 2.2vh 3.5vw;
     background: #F8F9FA;
     box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 3px 6px rgba(43, 110, 177, 0.1);
     color: #00A6FB;
-    border: 1px solid #00A6FB;
-    border-radius: 20px;
+    border: 0.2vh solid #00A6FB;
+    border-radius: 2vw;
     font-family: 'Montserrat';
     font-weight: 500;
-    font-size: 80%;
+    font-size: 2.2vh;
 }
 .suiv:hover, .prev:hover{
   filter: drop-shadow(0 0 0.15rem #00A6FB);
