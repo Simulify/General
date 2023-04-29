@@ -179,10 +179,12 @@
 
 /************************************ INSTRUCTIONS PAGE STYLE ****************************************/
 
-.heroinstr{
+.heroinstr {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 .arth, .log, .shrt, .brch, .dtrs, .inout {
   text-decoration: none;
@@ -213,12 +215,8 @@
 /********************************* ARETHMETIC INSTRUCTIONS STYLE *************************************/
 
 table {
-   border-collapse: collapse;
-  /*table-layout: initial;*/
-  position: absolute;
-  top: 14vh;
-  left: 30vh;
-  margin: 0 auto; 
+  border-collapse: collapse;
+  margin-bottom: 10vh; 
 }
 td, th {
   border: 0.2vh solid #00A6FB;
@@ -231,10 +229,8 @@ thead th {
   font-size: 3.2vh;
 }
 tbody td {
-  text-align: center;
+  text-align: left;
   font-size: 2.8vh;
 }
-.t2, .lft{
-  text-align: left;
-}
-.t2{font-weight: 600;}
+.t{text-align: center;}
+
