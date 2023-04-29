@@ -11,15 +11,14 @@
   display: flex;
   justify-content: center;
   align-items: center; 
-  background-color: #00A6FB;
   width: 50vw;
 }
 .right-image svg {
-  height: 100vh;
-  width: 44vw;
+  height: 105vh;
+  width: 48vw;
   position: absolute;
-  left: 78.5vw;
-  top: 0;
+  left: 77vw;
+  bottom: 0.2vh;
   transform: translateX(-50%);
   z-index: 2;
   background-color: #FFFFFF;
@@ -31,8 +30,8 @@
 }
 .current-image {
   position: absolute;
-  top: 48%;
-  left: 78%;
+  top: 46vh;
+  left: 77vw;
   transform: translate(-50%, -50%);
   bottom: 0;
   opacity: 1;
