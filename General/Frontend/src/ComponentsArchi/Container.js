@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 import "../pages/Simulation.css";
 import Pile from "./Pile";
 import Registres from "./Registres";
@@ -14,15 +14,15 @@ import Light from "./Light";
 import Commencer from "./Commencer";
 import Arreter from "./Arreter";
 function Container() {
-  useEffect(()=>
-  {
-    var el=document.querySelector('.ButtonExecution');
-    el.addEventListener('click',()=>
-    {
-      var el2=document.querySelector('.LightMove')
-      el2.classList.add('Light');
-    })
-  })
+  // useEffect(()=>
+  // {
+  //   var el=document.querySelector('.ButtonExecution');
+  //   el.addEventListener('click',()=>
+  //   {
+  //     var el2=document.querySelector('.LightMove')
+  //     el2.classList.add('Light');
+  //   })
+  // })
   return (
     <div className="Container">
         <Registres/>
