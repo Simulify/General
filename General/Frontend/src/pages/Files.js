@@ -20,7 +20,7 @@ function Files() {
   const [shiftVisible, setShiftVisible] = useState(false);
 
 
-     // Load the fileList state from localStorage, or use an empty array if it doesn't exist
+     //Load the fileList state from localStorage, or use an empty array if it doesn't exist
   const [fileList, setFileList] = useState(
     JSON.parse(localStorage.getItem('fileList')) || []
   );
@@ -39,7 +39,7 @@ function Files() {
     setFileList(fileList.filter((file) => file.id !== id));
   }
 
-//
+
   function handleExempleClick() {
    
     setFileExempleVisible((prevState) => !prevState);
@@ -78,8 +78,8 @@ function Files() {
     <div className="Files">
 
       <Navbar label="Les fichiers" />
-      <button onClick={addFile}>Add File</button>
-      <button onClick={() => removeFile(3)}>Remove File with ID 3</button>
+    
+      <button onClick={() => removeFile(1)}>Remove File with ID 3</button>
       <button onClick={addFile}>Add File</button>
 
       <div className="Menu-container">
@@ -175,36 +175,35 @@ function Files() {
 
         <br />
 
-        <div className="second-menu" onClick={handleMyFilesClick}>
-      <div className="menu-trigger-mesFichiers">
-        <FilesButton label="Mes fichiers" />
+         <div className="second-menu" onClick={handleMyFilesClick}>
+        <div className="menu-trigger-mesFichiers">
+          <FilesButton label="Mes fichiers" />
+        </div>
+        <div className={`file-exemple ${myFilesVisible ? 'show' : ''}`}>
+          {fileList.length > 0 ? (
+            <table>
+              <tbody>
+                {fileList.map((file) => (
+                  <tr key={file.id}>
+                    <td>
+                      <File
+                        label={file.label}
+                        onClick={() => console.log('File clicked')}
+                        onDelete={() => removeFile(file.id)}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : null}
+        </div>
       </div>
-      <div className={`file-exemple ${myFilesVisible ? 'show' : ''}`}>
-        {fileList.length > 0 ? (
-          <table>
-            <tbody>
-              {fileList.map((file) => (
-                <tr key={file.id}>
-                  <td>
-                    <File
-                      label={file.label}
-                      onClick={() => console.log('File clicked')}
-                      onDelete={() => removeFile(file.id)}
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          myFilesVisible && (
-            <div className="empty">
-              <img className="Loope" src={Loope} alt="Loopeicon" />
-            </div>
-          )
-        )}
-      </div>
-    </div>
+      {myFilesVisible && fileList.length === 0 && (
+        <div className="empty">
+          <img className="Loope" src={Loope} alt="Loopeicon" />
+        </div>
+      )}
        
      
 

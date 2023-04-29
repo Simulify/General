@@ -8,17 +8,19 @@ button:hover {
   height: -webkit-max-content;
   height: max-content;
   max-height: calc(90vh - 200px);
-  width: 70%;
-  margin: 70px auto 0 250px;
+  width: 90%;
+  margin: 90px auto 10px 250px;
   display: flex;
   flex-direction: column;
 }
 
 .menu-trigger-exemple {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 2%;
 }
-
+.subfiles-arithmetic , .subfiles-logic , .subfiles-branching , .subfiles-transfer, .subfiles-shift {
+  margin-bottom: 2%;
+}
  
 .menu-trigger-mesFichiers {
   display: block;
@@ -105,12 +107,11 @@ button:hover {
 
 
 
+
 .Loope {
   height: 250px;
   width: 250px;
-  position: absolute;
   top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-

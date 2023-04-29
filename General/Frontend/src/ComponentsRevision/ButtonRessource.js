@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../App.css';
+
 import '../pages/RessourcesExplication.css';
 import { ReactComponent as Fleche } from "../Images/Caret right.svg";
 import { ReactComponent as Lien } from "../Images/Lien.svg";
