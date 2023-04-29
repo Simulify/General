@@ -1,8 +1,8 @@
 import React from 'react';
 import '../App.css';
-import './Livres.css';
+import './RessourcesExplication.css';
 import Navbar from '../components/Navbar';
-import ButtonLivre from '../ComponentsRevision/ButtonLivre';
+import ButtonRessource from '../ComponentsRevision/ButtonRessource';
 
 function VideoPage() {
 
@@ -12,10 +12,10 @@ function VideoPage() {
 
            <Navbar label="Videos"/>
            <div className='containerVideos'>
-               <ButtonLivre label="Video 1" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
-               <ButtonLivre label="Video 2" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
-               <ButtonLivre label="Video 3" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
-               <ButtonLivre label="Video 4" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>       
+               <ButtonRessource label="Video 1" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
+               <ButtonRessource label="Video 2" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
+               <ButtonRessource label="Video 3" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
+               <ButtonRessource label="Video 4" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>       
            </div>
 
      </div>); 
