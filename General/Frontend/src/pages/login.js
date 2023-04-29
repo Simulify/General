@@ -74,9 +74,9 @@ function Login() {
                
                 <Link to="/signup">
                 <div className=" SignUp ">
-                  <span> Don’t have an account yet ?  </span>
+                  <span> Vous n'avez pas un compte ?  </span>
                
-                    <a  href=" " target=" _blank " > Sign Up  </a>
+                    <a  href=" " target=" _blank " > S'inscrire  </a>
                 </div>
               
       </Link>
