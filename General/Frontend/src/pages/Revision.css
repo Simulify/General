@@ -11,8 +11,8 @@
 }
 
 .Quiz, .Explication, .Ressources {
-    height: 45%;
-    width: 25%;
+    height: 42vh;
+    width: 17vw;
     position: relative;
 }
 
@@ -22,15 +22,15 @@
         box-shadow: 0px 0px 50px -25px rgba(128, 122, 122, 0.5);
         backdrop-filter: blur(15px);
         /*Borders*/
-        border: 1px solid #00A6FB;
-        border-radius: 30px;
-        height: 100%;
-        width: 100%;
+        border: 0.2vh solid #00A6FB;
+        border-radius: 3vw;
+        height: 45vh;
+        width: 17.5vw;
         /*Font*/
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 700;
-        font-size: 100%;
+        font-size: 3vh;
         /*Position*/
         position: absolute;
         top: 0;
@@ -44,27 +44,27 @@
 
  .RessourcesImg {
     position: absolute;
-    width: 30%;
-    height: 50%;
-    top: -25%;
-    left: 80%;
+    width: 5vw;
+    height: 11vh;
+    bottom : 38vh;
+    left: 15vw;
 }
 
 .LampeImg {
     position: absolute;
-    width: 30%;
-    height: 50%;
-    top: 55%;
-    left: -15%; 
+    width: 5vw;
+    height: 17vh;
+    top: 29vh;
+    right: 14.5vw;
 }
 
 .ExplicationImg {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    top: -47%;
-    left: -20%; 
-    animation: rotation 4s linear infinite;
+  position: absolute;
+  width: 9vw;
+  height: 18vh;
+  bottom : 32vh;
+  right: 12vw; 
+  animation: rotation 4s linear infinite;
 }
 
   @keyframes rotation {
