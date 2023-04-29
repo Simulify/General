@@ -35,4 +35,6 @@
   .can{
     height: 50%;
   }
-  
+  .can:hover {
+    cursor: pointer;
+  }

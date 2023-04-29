@@ -3,6 +3,7 @@ import '../pages/Files.css';
 import SubfilesButton from '../components/SubfilesButton';
 import FilesButton from '../components/FilesButton';
 import File from '../components/File';
+import FileNoDelete from '../components/FileNoDelete';
 import Navbar from '../components/Navbar';
 import Loope from '../Images/No Results@3x.svg';
 import { Link } from "react-router-dom";
@@ -38,7 +39,12 @@ function Files() {
   function removeFile(id) {
     setFileList(fileList.filter((file) => file.id !== id));
   }
+  
 
+  function removeAllFiles() {
+    setFileList([]);
+  }
+  
 
   function handleExempleClick() {
    
@@ -79,7 +85,8 @@ function Files() {
 
       <Navbar label="Les fichiers" />
     
-      <button onClick={() => removeFile(1)}>Remove File with ID 3</button>
+      <button onClick={() => removeFile(1)}>Remove File with ID 1</button>
+
       <button onClick={addFile}>Add File</button>
 
       <div className="Menu-container">
@@ -100,13 +107,13 @@ function Files() {
 
           <div className={`file-arithmetic ${arithmeticVisible ? 'show' : ''}`}>
           <Link to="/code">
-          <File label="ADD" />
+          <FileNoDelete label="ADD" />
     </Link>
     <Link to="/code">
-    <File label="SUB" />
+    <FileNoDelete label="SUB" />
       </Link>
       <Link to="/code">
-      <File label="DIV" />
+      <FileNoDelete label="DIV" />
       </Link>
           </div>
 
@@ -116,13 +123,13 @@ function Files() {
 
           <div className={`file-logic ${logicVisible ? 'show' : ''}`}>
           <Link to="/code">
-          <File label="ET" />
+          <FileNoDelete label="ET" />
       </Link>
       <Link to="/code">
-      <File label="OU" />
+      <FileNoDelete label="OU" />
     </Link>
     <Link to="/code">
-    <File label="NON" />
+    <FileNoDelete label="NON" />
     </Link>
            
           </div>
@@ -133,11 +140,11 @@ function Files() {
 
           <div className={`file-branching ${branchingVisible ? 'show' : ''}`}>
           <Link to="/code">
-          <File label="BCV" />
+          <FileNoDelete label="BCV" />
     </Link>
     
     <Link to="/code">
-    <File label="LOOP" />
+    <FileNoDelete label="LOOP" />
     </Link>
          
           </div>
@@ -148,7 +155,7 @@ function Files() {
 
           <div className={`file-transfer ${transferVisible ? 'show' : ''}`}>
           <Link to="/code">
-          <File label="PERMUT" />
+          <FileNoDelete label="PERMUT" />
     </Link>
    
     
@@ -163,10 +170,10 @@ function Files() {
 
           <div className={`file-shift ${shiftVisible ? 'show' : ''}`}>
           <Link to="/code">
-          <File label="SHIFT LEFT" />
+          <FileNoDelete label="SHIFT LEFT" />
     </Link>
     <Link to="/code">
-    <File label="SHIFT RIGHT" />
+    <FileNoDelete label="SHIFT RIGHT" />
     </Link>
         
            
@@ -176,37 +183,31 @@ function Files() {
        
 
         <div className="second-menu">
-  <div className="menu-trigger-mesFichiers"   onClick={handleMyFilesClick} >
+  <div className="menu-trigger-mesFichiers" onClick={handleMyFilesClick}>
     <FilesButton label="Mes fichiers" />
-    </div>
+  </div>
 
-<div className={`file-exemple ${myFilesVisible ? 'show' : ''}`}>
-  {fileList.length > 0 ? (
-    <table>
-      <tbody>
+  <div className={`file-perso ${myFilesVisible ? 'show' : ''}`}>
+    {fileList.length > 0 ? (
+      <ul>
         {fileList.map((file) => (
-          <tr key={file.id}>
-            <td>
-              <File
-                label={file.label} 
-              />
-            </td>
-          </tr>
+          <li key={file.id}>
+             
+             <File label={file.label} onClick={() => console.log("Button clicked")} onDelete={() => removeFile(1)} />
+
+             
+   
+           
+          </li>
         ))}
-      </tbody>
-    </table>
-  ) : null}
-
-{myFilesVisible && fileList.length === 0 && (
-  
-    <img className="Loope" src={Loope} alt="Loopeicon" />
-
-)}
+      </ul>
+    ) : null}
+    {myFilesVisible && fileList.length === 0 && (
+      <img className="Loope" src={Loope} alt="Loopeicon" />
+    )}
+  </div>
 </div>
-     
-     
-       
-      </div>
+
       </div>
       </div>
 

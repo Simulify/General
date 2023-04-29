@@ -2,14 +2,16 @@ import React from "react";
 import "./File.css";
 import file from "../Images/File.svg";
 import can from '../Images/Trash.svg';
+import { Link } from "react-router-dom";
 
 function File(props) {
   return ( 
     <div className="fileLign">
-      <button className="File-button" onClick={props.onClick}>
+      <Link to="/code"><button className="File-button" >
         <img className="file" src={file} alt="fileicon"></img>
         {props.label}
-      </button>
+      </button></Link>
+      
       <img className="can" src={can} alt="deleteIcon" onClick={props.onDelete}></img>
     </div>
   );
