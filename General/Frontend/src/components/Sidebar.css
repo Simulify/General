@@ -1,9 +1,8 @@
 /****************************************** SIDEBAR STYLE ******************************************/
-
 .Sidebar {
   position: absolute;
-  width: 65px;
-  height: 100%;
+  width: 5.8vw;
+  height: 100vh;
   top: 0;
   display: flex;
   flex-direction: column;
@@ -16,43 +15,44 @@
 
 .logo svg{
   position:absolute;
-  top: 20px;
-  left: 7px;
-  width: 50px;
-  height: 50px;
+  top: 2vh;
+  left: 1.5vw;
+  width: 2.5vw;
+  height: auto;
 }
 .Sidebar ul {
   position:absolute;
-  top: 14%;
+  top: 10vh;
   left: auto;
   height: auto;
   padding: 0;
   width: 100%;
 }
 .Sidebar ul li{
-  width:  75%;
-  height: 50px;
-  margin-top: 2.5vh;
-  margin-left: 10%;
+  width:  3.8vw;
+  height: 8.2vh;
+  margin-top: 2vh;
+  margin-left: 1vw;
   list-style-type: none;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease;
-  border-radius: 16px;
+  border-radius: 3vh;
 }
 .Sidebar a svg{
 position: absolute;
-left: 22px;
-width: 21px;
-height: 21px;
-bottom: 22px;
+left: 2vw;
+bottom: 3.2vh;
+width: 1.7vw;
+height: auto;
 }
 .exit path,.filesicon path,.simuicon path,.revicon path,.guideicon path,.seticon path{fill: #00A6FB;}
 .homeicon path{stroke: #00A6FB;}
-.simuicon svg,.filesicon svg,.revicon svg,.guideicon svg,.seticon svg{margin-left: 15%;width: 70%;height: auto;} 
-.homeicon svg{margin-left: 15%;width: 70%;height: auto;}
+.simuicon svg,.filesicon svg,.guideicon svg,.seticon svg{width: 1.7vw;height: auto;} 
+.revicon svg{width: 1.6vw;height: auto;}
+.homeicon svg{width: 2vw;height: auto;}
 .Sidebar ul li:hover{cursor: pointer;background-color: #CFEFFF;transition: all 0.3s ease;}
 .Sidebar #active {cursor:default;background-color: #00A6FB;}
 #active .homeicon path {stroke: #F8F9FA;}

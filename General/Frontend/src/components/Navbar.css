@@ -1,23 +1,23 @@
 header {
-  height: 100px;
-  background-color: #fff;
+  height: 10vh;
   z-index: 10;
+  background-color: #FFFFFF;
 }
 
 .navbar {
   display: grid;
   grid-template-columns: auto  auto; 
   align-items: center;
-  width: 93%;
+  width: 92vw;
   max-width: none;
-  margin-top: 0%;
-  margin-left: 0%;
+  margin-top: 0;
+  margin-left: 0;
 }
 
 .title {
-  margin-top: 3%;
+  margin-top: 4vh;
   color: #023047;
-  font-size: 30px;
+  font-size: 5vh;
   font-weight: 600;
   font-family: Montserrat;
   line-height: normal;
@@ -33,14 +33,15 @@ header {
 }
 
 .avatar-icon {
-  width: 2.2em;
-  height: 2.2em;
-  margin-left: 1em;
-  margin-right: 1em;
+  width: 2.5vw;
+  height: 5vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  background-color: #FFFFFF;
 }
 
 .info-icon {
-  height: 2.0em;
-  width: 2.0em;
-  margin-right: 2em;
+  height: 5vh;
+  width: 2.5vw;
+  margin-right: 3.1vw;
 }

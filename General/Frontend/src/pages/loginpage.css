@@ -18,7 +18,7 @@
   }
   
   .FormLogin {
-    margin-top: 5%;
+    margin-top: 6vh;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -28,8 +28,7 @@
     
   }
   .SignUp {
-    margin-top: 2rem;
-    font-size: 14px;
+    font-size: small;
   }
   button{
     transform: scale(1.1); 
