@@ -1,13 +1,11 @@
 .fileLign{
-
   display: grid;
-    grid-template-columns: auto auto;
-    align-items: center;
-  
-    
+  grid-template-columns: auto auto;
+  align-items: center;
 }
 .File-button {
   height: 50px;
+
     background-color: #fff;
     font-size: 13px;
     font-weight: Bold;

@@ -5,6 +5,7 @@ import can from '../Images/Trash.svg';
 import { Link } from "react-router-dom";
 
 function File(props) {
+
   return ( 
     <div className="fileLign">
       <Link to="/code"><button className="File-button" >
@@ -15,6 +16,8 @@ function File(props) {
       <img className="can" src={can} alt="deleteIcon" onClick={props.onDelete}></img>
     </div>
   );
+
 }
+
 
 export default File;

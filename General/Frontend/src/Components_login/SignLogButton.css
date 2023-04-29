@@ -1,26 +1,25 @@
 .SignLogButton {
-    width: 26vw;
-    height: 7.5vh;
-    margin: 3vh;
-    bottom: 6vh;
-    left: 80vw;
-    background: #00A6FB;
-    box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 3px 6px rgba(43, 110, 177, 0.1);
-    color: #FFFFFF;
-    border: 0.1vh solid #00A6FB;
-    border-radius: 5px;
-    font-family: Montserrat;
-    font-weight: 600;
-    font-size: 2.3vh;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    display: inline-block;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .SignLogButton:hover {
-    background: #0091EA;
-    border: 0.1vh solid #0091EA;
-    box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 8px 16px rgba(43, 110, 177, 0.2);
-  }
+  width: 26vw;
+  height: 7.5vh;
+  margin: 3vh;
+  bottom: 6vh;
+  left: 80vw;
+  background: #00A6FB;
+  box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 3px 6px rgba(43, 110, 177, 0.1);
+  color: #FFFFFF;
+  border: 0.1vh solid #00A6FB;
+  border-radius: 5px;
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 2.3vh;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+}
+.SignLogButton:hover {
+  background: #0091EA;
+  border: 0.1vh solid #0091EA;
+  box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 8px 16px rgba(43, 110, 177, 0.2);
+}

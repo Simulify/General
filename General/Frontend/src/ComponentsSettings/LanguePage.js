@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import FormSettings from "./FormSettings";
 import { useTranslation } from 'react-i18next';
 import { ReactSVG } from "react-svg";
-import "./LanguePage.css";
 import france from "../Images/france.svg";
 import unitedStates from "../Images/united-states-of-america.svg";
 import Navbar from "../components/Navbar";
@@ -30,13 +29,15 @@ function LanguePage() {
             <Navbar label='Parametres' />
             <FormSettings />
             <div className="LangueForm">
-            <label className="LangueLabel">Selectionner votre langue :</label>
+                <label className="LangueLabel">Selectionner votre langue :</label>
                 <div className="LangueContainer">
                     <div className="Inputs">
+                        
                         <button className='UsaButton' onClick={() => handleLanguageChange('en')}>
                             <ReactSVG src={unitedStates} className="unitedStates" />
                             <span className="EnglishLabel">English</span>
                         </button>
+
                         <button className='FranceButton' onClick={() => handleLanguageChange('fr')}>
                             <ReactSVG src={france} className="france" />
                             <span className="FrenchLabel">Français</span>

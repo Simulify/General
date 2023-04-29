@@ -1,22 +1,18 @@
-  .InputButton {
-    display: flex;
-    flex-direction: column;
-    
-  }
-  
-  .input-button {
-    background-color: #b6d8f2;
-    color: #242323;
-    width: 27vw;
-    height: 7vh;
-    border-radius: 1.2vh;
-    border: none;
-    font-size: 2.3vh;
-    margin-bottom: 0.5vh;
-    outline: none;
-  }
-  
-  .input-button::placeholder {
-    color: #999;
-  }
-  
+.InputButton {
+  display: flex;
+  flex-direction: column;
+}
+.input-button {
+  background-color: #b6d8f2;
+  color: #242323;
+  width: 27vw;
+  height: 7vh;
+  border-radius: 1.2vh;
+  border: none;
+  font-size: 2.3vh;
+  margin-bottom: 0.5vh;
+  outline: none;
+}
+.input-button::placeholder {
+  color: #999;
+}
