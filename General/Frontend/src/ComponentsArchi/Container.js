@@ -11,10 +11,12 @@ import RimBusDonnees from "./RimBusDonnees";
 import RimToRi from "./RimToRi";
 import RimBusRi from "./RimBusRi";
 import Light from "./Light";
+import Commencer from "./Commencer";
+import Arreter from "./Arreter";
 function Container() {
   useEffect(()=>
   {
-    var el=document.querySelector('.Container');
+    var el=document.querySelector('.ButtonExecution');
     el.addEventListener('click',()=>
     {
       var el2=document.querySelector('.LightMove')
@@ -34,6 +36,8 @@ function Container() {
         <RimToRi/>
         <RimBusRi/>
         <Light/>
+        <Commencer/>
+        <Arreter/>
     </div>
    
   );
