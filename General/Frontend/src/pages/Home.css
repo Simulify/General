@@ -11,13 +11,15 @@
   display: flex;
   justify-content: center;
   align-items: center; 
+  background-color: #00A6FB;
+  width: 50vw;
 }
 .right-image svg {
   height: 100vh;
-  width: auto;
+  width: 44vw;
   position: absolute;
   left: 78.5vw;
-  top: 0%;
+  top: 0;
   transform: translateX(-50%);
   z-index: 2;
   background-color: #FFFFFF;
