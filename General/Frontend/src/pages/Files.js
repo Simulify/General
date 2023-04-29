@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 
 function Files() {
 
+
   const [fileExempleVisible, setFileExempleVisible] = useState(false);
   const [myFilesVisible, setMyFilesVisible] = useState(false);
   const [arithmeticVisible, setArithmeticVisible] = useState(false);
@@ -19,11 +20,7 @@ function Files() {
   const [shiftVisible, setShiftVisible] = useState(false);
 
 
- 
-
-
-    //
-     // Load the fileList state from localStorage, or use an empty array if it doesn't exist
+     //Load the fileList state from localStorage, or use an empty array if it doesn't exist
   const [fileList, setFileList] = useState(
     JSON.parse(localStorage.getItem('fileList')) || []
   );
@@ -42,7 +39,7 @@ function Files() {
     setFileList(fileList.filter((file) => file.id !== id));
   }
 
-//
+
   function handleExempleClick() {
    
     setFileExempleVisible((prevState) => !prevState);
@@ -77,12 +74,12 @@ function Files() {
 
   return (
     
-   
+  
     <div className="Files">
 
       <Navbar label="Les fichiers" />
-      <button onClick={addFile}>Add File</button>
-      <button onClick={() => removeFile(3)}>Remove File with ID 3</button>
+    
+      <button onClick={() => removeFile(1)}>Remove File with ID 3</button>
       <button onClick={addFile}>Add File</button>
 
       <div className="Menu-container">
@@ -128,8 +125,6 @@ function Files() {
     <File label="NON" />
     </Link>
            
-           
-        
           </div>
 
           <div className="subfiles-branching" onClick={handleBranchingClick}>
@@ -144,9 +139,7 @@ function Files() {
     <Link to="/code">
     <File label="LOOP" />
     </Link>
-        
-       
-          
+         
           </div>
 
           <div className="subfiles-transfer" onClick={handleTransferClick}>
@@ -180,48 +173,45 @@ function Files() {
           </div>
         </div>
 
-        <br />
+       
 
-        <div className="second-menu" onClick={handleMyFilesClick}>
-      <div className="menu-trigger-mesFichiers">
-        <FilesButton label="Mes fichiers" />
-      </div>
-      <div className={`file-exemple ${myFilesVisible ? 'show' : ''}`}>
-        {fileList.length > 0 ? (
-          <table>
-            <tbody>
-              {fileList.map((file) => (
-                <tr key={file.id}>
-                  <td>
-                    <File
-                      label={file.label}
-                      onClick={() => console.log('File clicked')}
-                      onDelete={() => removeFile(file.id)}
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          myFilesVisible && (
-            <div className="empty">
-              <img className="Loope" src={Loope} alt="Loopeicon" />
-            </div>
-          )
-        )}
-      </div>
+        <div className="second-menu">
+  <div className="menu-trigger-mesFichiers"   onClick={handleMyFilesClick} >
+    <FilesButton label="Mes fichiers" />
     </div>
-       
-     
 
+<div className={`file-exemple ${myFilesVisible ? 'show' : ''}`}>
+  {fileList.length > 0 ? (
+    <table>
+      <tbody>
+        {fileList.map((file) => (
+          <tr key={file.id}>
+            <td>
+              <File
+                label={file.label} 
+              />
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  ) : null}
+
+{myFilesVisible && fileList.length === 0 && (
+  
+    <img className="Loope" src={Loope} alt="Loopeicon" />
+
+)}
+</div>
+     
+     
        
       </div>
-
-
+      </div>
+      </div>
 
       
-    </div>
+   
   );
 }
 

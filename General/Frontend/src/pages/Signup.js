@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import "./SignUpPage.css";
 import InputButton from "../Components_login/InputButton";
 import { ReactSVG } from 'react-svg';
 import logo from "../Components_login/logo.svg";
-import LoginButton from "../Components_login/Button";
+import SignLogButton from "../Components_login/SignLogButton";
 import { Link } from "react-router-dom";
 
 
@@ -11,50 +12,43 @@ function Signup () {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSignUp = () => {
+    if (!username || !email || !password || !confirmPassword) {
+      console.log('All fields are required');
+      return;
+    }
     console.log('handleSignUp called');
-    fetch('/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username,
-        email,
-        password
-      })
+    axios.post('/signup', {
+      username,
+      email,
+      password,
     })
-    .then(res => res.json())
-    .then(data => {
-      // Handle response from the server
-      console.log(data);
-     
+    .then(response => {
+      console.log(email);
+      console.log(response.data);
     })
-    .catch(err => {
-        console.log('handleSignUp called');
-      console.error(err);
+    .catch(error => {
+      console.log(username);
+      console.error(error);
     });
   };
-  const handleSubmit = (e) => {
-    console.log('handleSubmit called');
-    debugger; // pause execution here
-    e.preventDefault(); // Prevent default form submission behavior
-    handleSignUp();
-  };
-  
-  
+
   return (
-    <div className="Container2">
+    <div className="Singupcontainer">
       <div className="Form2">
         <ReactSVG src={logo} />
         <InputButton
-          className="button-1"
-          placeholder="Nom d'utilisateur "
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-        />
-         <InputButton
+  className="button-1"
+  placeholder="Nom d'utilisateur "
+  value={username}
+  onChange={e => {
+    console.log("Username changed: ", e.target.value);
+    setUsername(e.target.value);
+  }}
+/>
+        <InputButton
           className="button-3"
           placeholder="Email "
           value={email}
@@ -62,25 +56,32 @@ function Signup () {
         />
         <InputButton
           className="button-2"
-          placeholder="mot de passe "
+          placeholder="Mot de passe "
           type="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-       <InputButton
+        <InputButton
           className="button-2"
-          placeholder="verifier le mot de passe "
+          placeholder="Confirmer Mot de passe "
           type="password"
+          value={confirmPassword}
+          onChange={e => setConfirmPassword(e.target.value)}
         />
-        <LoginButton text="S'incrire " onClick={handleSubmit} />
+        <SignLogButton label="S'inscrire" onClick={handleSignUp} />
+     </div>
+       
+        
+ 
         <div className="Login">
-         
+        
+          <span >Avez-vous déjà un compte ? </span>
           <Link to="/login">
-          <a href=" " target="_blank">
-            Avez vous deja un compte ? Connexion</a> 
-      </Link>
+          <a  href=" " target=" _blank " > Connexion  </a>
+            </Link>
         </div>
-      </div>
+     
+      
     </div>
   );
 }

@@ -8,25 +8,24 @@ import { ReactComponent as CircleClair} from '../Images/Ellipse 7.svg';
 import { ReactComponent as Processor} from '../Images/Group 9.svg';
 
 function Home () {
-
-  const [currentImage, setCurrentImage] = useState(0);
-  useEffect(() => {  
-   const slider = document.querySelector(".slider");
-   const interval = setInterval(() => {
-    setCurrentImage(prevImage => {
-      if (prevImage === 2) {
-       slider.style.transform = `translateX(0%)`;
-       return 0;
-      } else {
-       slider.style.transform = `translateX(-${(prevImage + 1) * 33.33}%)`;
-       return prevImage + 1;
-      }
-    });
-   }, 3000);
-   return () => clearInterval(interval);
-  }, []);
+ const [currentImage, setCurrentImage] = useState(0);
+ useEffect(() => {  
+  const slider = document.querySelector(".slider");
+  const interval = setInterval(() => {
+   setCurrentImage(prevImage => {
+    if (prevImage === 2) {
+     slider.style.transform = `translateX(0%)`;
+     return 0;
+    } else {
+     slider.style.transform = `translateX(-${(prevImage + 1) * 33.33}%)`;
+     return prevImage + 1;
+    }
+   });
+  }, 3000);
+  return () => clearInterval(interval);
+ }, []);
   
-  return (
+ return (
   <div className="hero"> 
    <Navbar label="Page d'acceuil"/>   
    <div className="right">
@@ -77,7 +76,7 @@ function Home () {
     <a href="./code" className="simubutton">Simuler</a>
    </div>
   </div>
-  );
+ );
 };
 
 

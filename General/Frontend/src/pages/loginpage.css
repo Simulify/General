@@ -1,68 +1,48 @@
 .Containerlogin {
     display: flex;   
-    align-items: flex-end;
-    flex-direction: row-reverse;
+    flex-direction: row-reverse; 
+    align-items: center;
+    
+  }
+  span {
+    color: black;
+  }
+  .illustration{
+    height: 98vh; 
+    width: 100vh;
+  }
+  .illustration img {
+    
+    transform: scale(1.4); /* increases the size of the image by 20% */
     
   }
   
-  /* .ImageClass {
-    flex: 1;
-    max-width: 10%;
-  height: auto;
-  } */
-  
   .FormLogin {
+    margin-top: 6vh;
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 0%;
-    
     height: 100vh; 
-  }
   
-  .ForgotPass,
+    
+  }
   .SignUp {
-    margin-top: 1rem;
-    font-size: 14px;
+    font-size: small;
+  }
+  button{
+    transform: scale(1.1); 
   }
   
   .SignUp a {
     color: #00A6FB;
   }
+ 
+ 
+ 
   
   
-  .button-1,
-  .button-2 {
-    background-color: #B6D8F25C;
-    color: #333;
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
-    margin-bottom: 1rem;
-    outline: none;
-  }
-  
-  .button-1::placeholder,
-  .button-2::placeholder {
-    color: #999;
-  }
-  
-  .LoginButton {
-    background-color: #00A6FB;
-    color: aliceblue;
-   
-    padding: 8px;
-    border-radius: 8px;
-    border: none;
-    font-size: 14px;
-
-    margin: 40%;
-    outline: none;
-    
-  }
+ 
   
   
   

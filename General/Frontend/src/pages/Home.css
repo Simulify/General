@@ -11,13 +11,14 @@
   display: flex;
   justify-content: center;
   align-items: center; 
+  width: 50vw;
 }
 .right-image svg {
-  height: 100vh;
-  width: auto;
+  height: 105vh;
+  width: 48vw;
   position: absolute;
-  left: 78.5%;
-  top: 0%;
+  left: 77vw;
+  bottom: 0.2vh;
   transform: translateX(-50%);
   z-index: 2;
   background-color: #FFFFFF;
@@ -29,8 +30,8 @@
 }
 .current-image {
   position: absolute;
-  top: 48%;
-  left: 78%;
+  top: 46vh;
+  left: 77vw;
   transform: translate(-50%, -50%);
   bottom: 0;
   opacity: 1;
@@ -51,7 +52,7 @@
 .left {
   position: absolute;
   top: 18%;
-  left: 16%;
+  left: 12.5vw;
   margin-top: 1%;
   display: flex;
   flex-direction: column;
@@ -62,31 +63,29 @@
   font-family: Montserrat;
   font-style: bold;
   color: #023047;
-  font-size:  200%;
-  line-height: 40px;
+  font-size:  4.5vh;
+  line-height: 6vh;
   padding: 0px;
-  margin-bottom: 1%;
+  margin-bottom: 1vh;
 }
 .left p {
   font-family: 'Montserrat';
   font-style: normal;
   margin: 0;
-  font-size: large;
-  line-height: 30px;
+  font-size: 2.8vh;
+  line-height: 4.8vh;
   color: #023047;
 }
 .simubutton {
-  width: auto;
-  height: auto;
-  margin-top: 10%;
+  margin-top: 15vh;
   margin-left: 0;
-  padding: 1.5% 6%;
+  padding: 2.5vh 4.5vw;
   background: #00A6FB;
   box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 23px 14px rgba(43, 110, 177, 0.05), 0px 10px 10px rgba(43, 110, 177, 0.09), 0px 3px 6px rgba(43, 110, 177, 0.1), 0px 0px 0px rgba(43, 110, 177, 0.1);
   border-radius: 32px;
   font-family: 'Montserrat';
   font-weight: 600;
-  font-size: large;
+  font-size: 2.8vh;
   color: #FFFFFF;
   text-decoration: none;
 }
@@ -124,24 +123,24 @@
 }
 .slid.clair1 svg {
   position: absolute;
-  top: 70%;
-  left: 0%;
-  width: auto;
-  height: 5%;
+  top: 43.5vh;
+  left: 0vw;
+  width: 1.8vw;
+  height: 3.2vh;
 }
 .slid.clair2  svg {
   position: absolute;
-  top: 70%;
-  left: 4%;
-  width: auto;
-  height: 5%;
+  top: 43.5vh;
+  left: 3.5vw;
+  width: 1.8vw;
+  height: 3.2vh;
 }
 .slid.clair3  svg {
   position: absolute;
-  top: 70%;
-  left: 8%;
-  width: auto;
-  height: 5%;
+  top: 43.5vh;
+  left: 7vw;
+  width: 1.8vw;
+  height: 3.2vh;
 }
 .slid.active svg circle{
   fill-opacity: 1;

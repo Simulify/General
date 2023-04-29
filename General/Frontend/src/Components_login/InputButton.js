@@ -1,23 +1,19 @@
-import React from "react" ; 
-import "./InputButton.css"; 
+import React from "react";
+import "./InputButton.css";
 
-function InputButton (props){
-const handleButtonClick = () => {
-    //  button click logic 
-    console.log("Button clicked!");
-  };
-
-    return (
-        <div className="InputButton">
-      <input
-       type="input" 
-       onClick={handleButtonClick} 
-       placeholder={props.placeholder}
-       className="input-button"
+function InputButton(props) {
+ return (
+  <div className="InputButton">
+    <input
+      type={props.type}
+      placeholder={props.placeholder}
+      className="input-button"
+      value={props.value}
+      onChange={props.onChange}
     />
-    </div> 
-    )
+  </div>
+ );
 }
 
 
-export default InputButton
+export default InputButton;
