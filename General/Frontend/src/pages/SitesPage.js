@@ -1,8 +1,8 @@
 import React from 'react';
 import '../App.css';
-import './Livres.css';
+import './RessourcesExplication.css';
 import Navbar from '../components/Navbar';
-import ButtonLivre from '../ComponentsRevision/ButtonLivre';
+import ButtonRessource from '../ComponentsRevision/ButtonRessource';
 
 function SitesPage () {
 
@@ -13,10 +13,10 @@ function SitesPage () {
            <Navbar label="Sites"/>
 
            <div className='containerSites'>
-                  <ButtonLivre label="Site 1" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
-                  <ButtonLivre label="Site 2" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
-                  <ButtonLivre label="Site 3" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
-                  <ButtonLivre label="Site 4" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>       
+                  <ButtonRessource label="Site 1" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
+                  <ButtonRessource label="Site 2" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
+                  <ButtonRessource label="Site 3" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
+                  <ButtonRessource label="Site 4" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>       
            </div>
 
      </div>); 

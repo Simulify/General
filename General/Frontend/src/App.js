@@ -21,6 +21,7 @@ import RessourcePage from './pages/RessourcePage';
 import LivresPage from './pages/LivresPage';
 import VideoPage from './pages/VideoPage';
 import SitesPage from './pages/SitesPage';
+import ExplicationsPage from './pages/ExplicationsPage';
 import ProfilePage from './ComponentsSettings/ProfilePage';
 import LanguePage from './ComponentsSettings/LanguePage';
 import ModePage from './ComponentsSettings/ModePage';
@@ -43,6 +44,7 @@ function App() {
           <Route path='/revision/ressources/livres' element={<LivresPage/>}></Route>
           <Route path='/revision/ressources/sites' element={<SitesPage/>}></Route>
           <Route path='/revision/ressource/videos' element={<VideoPage/>}></Route>
+          <Route path='/revision/explication' element={<ExplicationsPage/>}></Route>
           <Route path='/guide' element={<Guide/>}></Route>
           <Route path='/guide/architecture' element={<GuideArch/>}></Route>
           <Route path='/guide/instruction-format' element={<GuideForm/>}></Route>

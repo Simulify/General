@@ -1,8 +1,8 @@
 import React from 'react';
 import '../App.css';
-import './Livres.css';
+import './RessourcesExplication.css';
 import Navbar from '../components/Navbar';
-import ButtonLivre from '../ComponentsRevision/ButtonLivre';
+import ButtonRessource from '../ComponentsRevision/ButtonRessource';
 
 function LivresPage () {
 
@@ -13,10 +13,10 @@ function LivresPage () {
            <Navbar label="Livres"/>
 
            <div className='containerLivres'>
-                  <ButtonLivre label="Livre 1" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
-                  <ButtonLivre label="Livre 2" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
-                  <ButtonLivre label="Livre 3" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
-                  <ButtonLivre label="Livre 4" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>       
+                  <ButtonRessource label="Livre 1" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
+                  <ButtonRessource label="Livre 2" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
+                  <ButtonRessource label="Livre 3" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
+                  <ButtonRessource label="Livre 4" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>       
            </div>
 
      </div>); 

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import '../App.css';
-import '../pages/Livres.css';
+import '../pages/RessourcesExplication.css';
 import { ReactComponent as Fleche } from "../Images/Caret right.svg";
 import { ReactComponent as Lien } from "../Images/Lien.svg";
 
-function ButtonLivre({ label, p1, p2, p3 }) {
+function ButtonRessource
+({ label, p1, p2, p3 }) {
 
   const [isRotated, setIsRotated] = useState(false);
   const [rotateAngle, setRotateAngle] = useState(0);
@@ -17,8 +18,9 @@ function ButtonLivre({ label, p1, p2, p3 }) {
   };
 
   return (
-    <div className={`ButtonLivre ${showDescription ? 'expanded' : ''}`} onClick={handleButtonClick}>
-      <div className='livre'>
+    <div className={`ButtonRessource
+     ${showDescription ? 'expanded' : ''}`} onClick={handleButtonClick}>
+      <div className='BUTTON'>
         <span> {label} </span>
         <Fleche className='fleche' style={{ transform: `rotate(${rotateAngle}deg)` }} />
       </div>
@@ -35,4 +37,5 @@ function ButtonLivre({ label, p1, p2, p3 }) {
     </div>);
 }
 
-export default ButtonLivre;
+export default ButtonRessource
+;
