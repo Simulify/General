@@ -3,7 +3,7 @@
   display: grid;
     grid-template-columns: auto auto;
     align-items: center;
-    justify-content: left;
+  
     
 }
 .File-button {

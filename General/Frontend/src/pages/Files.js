@@ -173,47 +173,45 @@ function Files() {
           </div>
         </div>
 
-        <br />
-
-         <div className="second-menu" onClick={handleMyFilesClick}>
-        <div className="menu-trigger-mesFichiers">
-          <FilesButton label="Mes fichiers" />
-        </div>
-        <div className={`file-exemple ${myFilesVisible ? 'show' : ''}`}>
-          {fileList.length > 0 ? (
-            <table>
-              <tbody>
-                {fileList.map((file) => (
-                  <tr key={file.id}>
-                    <td>
-                      <File
-                        label={file.label}
-                        onClick={() => console.log('File clicked')}
-                        onDelete={() => removeFile(file.id)}
-                      />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : null}
-        </div>
-      </div>
-      {myFilesVisible && fileList.length === 0 && (
-        <div className="empty">
-          <img className="Loope" src={Loope} alt="Loopeicon" />
-        </div>
-      )}
        
+
+        <div className="second-menu">
+  <div className="menu-trigger-mesFichiers"   onClick={handleMyFilesClick} >
+    <FilesButton label="Mes fichiers" />
+    </div>
+
+<div className={`file-exemple ${myFilesVisible ? 'show' : ''}`}>
+  {fileList.length > 0 ? (
+    <table>
+      <tbody>
+        {fileList.map((file) => (
+          <tr key={file.id}>
+            <td>
+              <File
+                label={file.label} 
+              />
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  ) : null}
+
+{myFilesVisible && fileList.length === 0 && (
+  
+    <img className="Loope" src={Loope} alt="Loopeicon" />
+
+)}
+</div>
      
-
+     
        
       </div>
-
-
+      </div>
+      </div>
 
       
-    </div>
+   
   );
 }
 

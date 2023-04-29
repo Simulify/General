@@ -7,31 +7,24 @@ button:hover {
   height: -moz-max-content;
   height: -webkit-max-content;
   height: max-content;
-  max-height: calc(90vh - 200px);
-  width: 90%;
-  margin: 90px auto 10px 250px;
-  display: flex;
-  flex-direction: column;
+  max-height: calc(90vh - 20vh);
+  width: 100%;
+  display: grid;
+  grid-template-columns:1fr;
+  justify-items: center;
+  margin-top: 5%;
 }
 
 .menu-trigger-exemple {
-  display: block;
-  margin-bottom: 2%;
+  margin-bottom: 1%;
 }
 .subfiles-arithmetic , .subfiles-logic , .subfiles-branching , .subfiles-transfer, .subfiles-shift {
+  margin-top: 2%;
   margin-bottom: 2%;
 }
  
 .menu-trigger-mesFichiers {
-  display: block;
-  margin-bottom: 20px;
-}
-
-
-
-
-.file {
-  margin-left: 70px;
+  margin-bottom: 2%;
 }
 
 .navbar {
@@ -48,46 +41,47 @@ button:hover {
 
 /* Toggle visibility of menu examples */
 .Menu-exemples {
+  display: grid;
+  grid-template-columns: auto auto;
   display: none;
-  margin-left: 40px;
+
 }
 
 .Menu-exemples.show {
   display: block;
+ margin-left: 3%;
   
 }
 
 
-/* Toggle visibility of file examples */
-.file-exemple {
-  display: none;
-}
-
-.file-exemple.show {
-  display: block;
-}
 
 /* Toggle the visibility of subfiles-arithmetic*/
 .file-arithmetic{
   display: none;
+
 }
 .file-arithmetic.show{
   display: block;
+  margin-left: 4%;
 }
 
 /* Toggle the visibility of subfiles-logic*/
 .file-logic{
   display: none;
+
 }
 .file-logic.show{
   display: block;
+  margin-left: 4%;
 }
 /* Toggle the visibility of subfiles-branching*/
 .file-branching{
   display: none;
+  
 }
 .file-branching.show{
   display: block;
+  margin-left: 4%;
 }
 
 /* Toggle the visibility of subfiles-transfer*/
@@ -96,6 +90,7 @@ button:hover {
 }
 .file-transfer.show{
   display: block;
+  margin-left: 4%;
 }
 /* Toggle the visibility of subfiles-decalage*/
 .file-shift{
@@ -103,6 +98,20 @@ button:hover {
 }
 .file-shift.show{
   display: block;
+  margin-left: 4%;
+}
+
+
+
+/* Toggle visibility of file examples */
+.file-exemple {
+  display: grid;
+  display: none;
+}
+
+.file-exemple.show {
+  display: grid;
+ margin-left: 3%;
 }
 
 
@@ -111,7 +120,6 @@ button:hover {
 .Loope {
   height: 250px;
   width: 250px;
-  top: 75%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 0 auto;
 }
+
