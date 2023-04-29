@@ -29,7 +29,7 @@ function ButtonExplication
           <p>{p2}</p>
           <p>{p3}</p>
           <div className='lien'>
-            <a href='/code' > Simuler </a>
+            <a href='/code/simulation' > Simuler </a>
           </div>
         </div> : null}
     </div>);

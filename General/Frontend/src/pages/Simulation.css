@@ -808,6 +808,63 @@
   
 }
 
+/*************************************************/
+.ButtonExecution, .ButtonStop {
+  grid-row: 3;
+  grid-column: 9 / span 2;
+  margin-left: 25%;
+}
+
+.ButtonStop {
+  margin-top: 25%;
+}
+
+.ButtonExecution button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  background-color: #00A6FB;
+  color: #fff;
+  border: none;
+  box-shadow: 27px 30px 16px rgba(36, 84, 132, 0.01), 15px 17px 14px rgba(36, 84, 132, 0.05), 7px 7px 10px rgba(36, 84, 132, 0.09), 2px 2px 6px rgba(36, 84, 132, 0.1), 0px 0px 0px rgba(36, 84, 132, 0.1);
+  border-radius: 16px;
+}
+
+.ButtonExecution button {
+  padding: 4% 8%;
+}
+
+.ButtonStop button {
+  padding: 4% 10.5%;
+  border-radius: 16px;
+}
+
+.ButtonStop .confirmerButton{
+  padding: 4% 6.5%;
+  border-radius: 18px;
+}
+
+
+.ButtonStop .Confirmer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ButtonStop .confirmerButton, .ButtonStop button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #00A6FB;
+  border: 1px solid #00A6FB;
+  font-weight: 400;
+  box-shadow: 27px 30px 16px rgba(36, 84, 132, 0.01), 15px 17px 14px rgba(36, 84, 132, 0.05), 7px 7px 10px rgba(36, 84, 132, 0.09), 2px 2px 6px rgba(36, 84, 132, 0.1), 0px 0px 0px rgba(36, 84, 132, 0.1);
+}
+
+
+
 
 
 
