@@ -17,6 +17,11 @@ import MotDePassePage from './ComponentsSettings/MotDePassePage';
 import GuideForm from './pages/GuideForm';
 import GuideInstr from './pages/GuideInstr';
 import GuideInstrArth from './pages/GuideInstrArth';
+import GuideInstrLog from './pages/GuideInstrLog';
+import GuideInstrShrt from './pages/GuideInstrShrt';
+import GuideInstrBrch from './pages/GuideInstrBrch';
+import GuideInstrDtrs from './pages/GuideInstrDtrs';
+import GuideInstrInout from './pages/GuideInstrInout';
 import RessourcePage from './pages/RessourcePage';
 import LivresPage from './pages/LivresPage';
 import VideoPage from './pages/VideoPage';
@@ -50,6 +55,11 @@ function App() {
           <Route path='/guide/instruction-format' element={<GuideForm/>}></Route>
           <Route path='/guide/instructions' element={<GuideInstr/>}></Route>
           <Route path='/guide/instructions/arithmetic' element={<GuideInstrArth/>}></Route>
+          <Route path='/guide/instructions/logic' element={<GuideInstrLog/>}></Route>
+          <Route path='/guide/instructions/shift-rotation' element={<GuideInstrShrt/>}></Route>
+          <Route path='/guide/instructions/branch' element={<GuideInstrBrch/>}></Route>
+          <Route path='/guide/instructions/in-out' element={<GuideInstrInout/>}></Route>
+          <Route path='/guide/instructions/data-transfer' element={<GuideInstrDtrs/>}></Route>
           <Route path='/settings' element={<Settings/>}></Route>
           <Route path='/settings/ProfilePage'  element={<ProfilePage/>}></Route>
           <Route path='/settings/MotDePassePage'  element={<MotDePassePage/>}></Route> 

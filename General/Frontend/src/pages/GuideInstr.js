@@ -13,7 +13,7 @@ function GuideInstr() {
       <a href="/guide/instructions/shift-rotation" className="shrt">Instructions de décalage et rotation</a>
       <a href="/guide/instructions/branch" className="brch">Instructions de branchement</a>
       <a href="/guide/instructions/data-transfer" className="dtrs">Instructions de transfert de données</a>
-      <a href="/guide/instructions/in-out" className="inout">Instructions d'entrée/sortie</a>
+      <a href="/guide/instructions/in-out" className="inout">Instructions d'entrée/sortie et arrêt de programme</a>
     </div>
   );
 }
