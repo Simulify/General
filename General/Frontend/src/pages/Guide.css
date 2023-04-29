@@ -190,25 +190,24 @@
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
-  font-size: 100%;
-  line-height: 160%;
+  font-size: 2.9vh;
   color: #FFFFFF;
   filter: drop-shadow(0px 51px 20px rgba(65, 112, 159, 0.01)) drop-shadow(0px 29px 17px rgba(65, 112, 159, 0.05)) drop-shadow(0px 13px 13px rgba(65, 112, 159, 0.09)) drop-shadow(0px 3px 7px rgba(65, 112, 159, 0.1)) drop-shadow(0px 0px 0px rgba(65, 112, 159, 0.1));
   position: absolute;
-  padding: 1% 3% 1%;
+  padding: 2.6vh 3vw 2.6vh;
   background-color: #00A6FB;
-  border-radius: 17px;
+  border-radius: 3vh;
   display: flex;
   align-items: flex-start;
-  width: 45%;
+  width: 45vw;
 }
-.arth{top: 23%;}
-.log{top: 33.5%;}
-.shrt{top: 44%;}
-.brch{top: 54.5%;}
-.dtrs{top: 65%;}
-.inout{top: 75.5%;}
-.heroinstr .prev{left: 80%;}
+.arth{top: 23vh;}
+.log{top: 33.5vh;}
+.shrt{top: 44vh;}
+.brch{top: 54.5vh;}
+.dtrs{top: 65vh;}
+.inout{top: 75.5vh;}
+.heroinstr .prev{left: 80vw;}
 
 
 /********************************* ARETHMETIC INSTRUCTIONS STYLE *************************************/
