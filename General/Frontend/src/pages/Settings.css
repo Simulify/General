@@ -107,12 +107,20 @@ input {
   width: 30%;
 }
 
+.ModePage .Inputs {
+  width: 30%;
+
+}
+
 .Inputs {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   margin-bottom: 0%;
 }
+
+
+
 
 .sauvegarder {
   height: 40px;
@@ -156,6 +164,10 @@ input {
 }
 
 .LangueForm .TwoButtons{
+  margin-top: 17.5%;
+
+}
+.ModeForm .TwoButtons{
   margin-top: 17.5%;
 
 }
@@ -205,11 +217,48 @@ label {
 
 }
 
-.france ,.unitedStates {
+.LightButton{
+
+  
+  background: #00A6FB;
+  border-radius: 8px;
+  border: none;
+  color: #F8F9FA;
+  font-family: 'Montserrat', sans-serif;
+  height: 50px;
+  margin-bottom: 2%;
+  margin-top: 12%;
+  font-size: 14px;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  width: 100%;
+
+}
+
+.DarkButton{
+
+  background: rgba(182, 216, 242, 0.36);
+  border-radius: 8px;
+  color: #023047;
+  border: none;
+  height: 50px;
+  
+  margin-top: 1%;
+  font-size: 14px;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+}
+
+.france ,.unitedStates ,.Moon ,.Sun {
   margin-right: 10px;
 }
 
-.LangueLabel{
+
+.LangueLabel , .ModeLabel  {
 
 font-family: 'Montserrat';
 font-style: normal;
