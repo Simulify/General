@@ -68,7 +68,7 @@ for (let i = 0; i < phrases.length; i++) {
                     else {
                         let obj=detectOp(element[2],reg)
                         if (obj==-1) {
-                            console.log(erreur)
+                            //console.log(erreur)
                         } else {
                             instr=`${v.toString(2).padStart(6,"0")}${obj.kind.toString(2).padStart(3,"0")}`
                             
@@ -161,7 +161,7 @@ for (let i = 0; i < phrases.length; i++) {
                     else {
                         let obj=detectOp(element[1],reg)
                         if (obj==-1) {
-                            console.log(erreur)
+                           // console.log(erreur)
                         } else {
                             instr=`${v.toString(2).padStart(6,"0")}${obj.kind.toString(2).padStart(3,"0")}`
                             

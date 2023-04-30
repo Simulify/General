@@ -2,17 +2,55 @@
 body
 {
     font-family: montserrat;
+    overflow-y: scroll;
     /* position: relative; */
+}
+.side{
+    background-color: #99DBFD;
+    width: 36px;
+    height: 256px;
+    margin-right: 32px;
+    background: #99DBFD;
+    border-radius: 8px 0px 0px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 20px;
+    gap: 0px;
+    }
+    .number{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #F8F9FA;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    }
+.base{
+    width: 36px;
+    height: 16px;
+    background-color: #FFE600;
+    color:#023047;
+    padding: 4px 19px;
+    text-align: center;
+    position: relative;
+    left: 66px;
+    border-radius: 8px 0px 0px 0px;
+    font-size: 13px;
 }
 div.buttons
 {
     position: relative;
     margin: 0;
-    right: 15vw;
+    right: 22vw;
     display: grid;
-    grid-template-columns: 10vh 10vh 10vh;
+    grid-template-columns: 10vw 10vw 10vw;
     grid-template-areas: "sauv exem prgrm";
-    grid-gap: 15vw;
+    grid-gap:7vw;
     background-color: #00A6FB;
 }
 .icon
@@ -124,21 +162,22 @@ display: flex;
 justify-content: space-between;
 flex-direction: row;
 flex-wrap: nowrap;
-margin-top: 120px;
+margin-top: 84px;
 margin-bottom: 24px;
 }
 .container2
 {
 display: flex;
 position: relative;
-right:6%;
+right:9vw;
 flex-direction: row;
-margin-top: 30px;
+margin-top: 8px;
 width: 300px;
 margin-left: auto;
 margin-right: 12%;
 justify-content: flex-start;
 }
+
 a
 {
     margin-bottom: auto;
@@ -170,7 +209,7 @@ margin-left: auto;
 margin-right: auto;
 resize: none;
 color: #023047;
-font-size: 36px;
+font-size: 24px;
 }
 textarea:focus 
 {
