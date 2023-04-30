@@ -15,6 +15,7 @@ function Signup () {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSignUp = () => {
+    console.log('handleSignUp called');
     if (!username || !email || !password || !confirmPassword) {
       console.log('All fields are required');
       return;
@@ -68,14 +69,12 @@ function Signup () {
           value={confirmPassword}
           onChange={e => setConfirmPassword(e.target.value)}
         />
-        <SignLogButton label="S'inscrire" onClick={handleSignUp} />
+        <SignLogButton className="SignLogButton1" label="S'inscrire" onClick={handleSignUp} />
      </div>
        
-        
- 
         <div className="Login">
         
-          <span >Avez-vous déjà un compte ? </span>
+          <span>Avez-vous déjà un compte ? </span>
           <Link to="/login">
           <a  href=" " target=" _blank " > Connexion  </a>
             </Link>

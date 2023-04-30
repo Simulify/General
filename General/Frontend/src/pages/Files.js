@@ -20,6 +20,8 @@ function Files() {
   const [transferVisible, setTransferVisible] = useState(false);
   const [shiftVisible, setShiftVisible] = useState(false);
   const [fileExempleVisible, setFileExempleVisible] = useState(false);
+  const fileValue="Programme";
+  const newFileLabel="New file";
 
      //Load the fileList state from localStorage, or use an empty array if it doesn't exist
   const [fileList, setFileList] = useState(
@@ -168,8 +170,6 @@ function Files() {
     <Link to="/code">
     <FileNoDelete label="SHIFT RIGHT" />
     </Link>
-        
-           
           </div>
         </div>
         <div className="second-menu">
@@ -184,12 +184,7 @@ function Files() {
       <ul>
         {fileList.map((file) => (
           <li key={file.id}>
-             
-             <File label={file.label} onClick={() => console.log("Button clicked")} onDelete={() => removeFile(1)} />
-
-             
-   
-           
+            <File label={file.label} value={fileValue} onDelete={() => removeFile(2)} />
           </li>
         ))}
       </ul>
