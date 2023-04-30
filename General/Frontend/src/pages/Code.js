@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useRef } from 'react';
+import { Compile, Decoup } from '../Logic/Logic/src/functions.js';
 import "./Code.css"; // import the external CSS file
 // import img1 from './Ellipse 515.png';
 // import img2 from './Icon.png';
@@ -11,26 +12,31 @@ import next from '../Images/next.svg'
 const ButoStyle={
   background: '#00A6FB',
 position:'absolute',
-width:'184px',
-'grid-area':'sauv'
+width:'148px',
+gridArea:'sauv'
 }
-function Code({ addFile }) {
-  function handlesave() {
-    addFile();
-  }
-    const [numLines, setNumLines] = useState(1);
-    
-    const HandleChange=(event)=> {
-      const value = event.target.value;
-      console.log(value)
-      const newLines = (value.match(/\n/g) || []).length + 1;
-      setNumLines(newLines);
-      const childElement = document.createElement('div');
-      childElement.innerHTML =`${newLines}`
-      childElement.className="number"
-      Side.appendChild(childElement)
+
+function Code() {
+  const [base,setBase]=useState("")
+  const handleClick1= (event)=>{
+    if (event.target.textContent=="HEX") {
+      event.target.textContent="BIN"
     }
-      
+    else{event.target.textContent="HEX"}
+  }
+    const handleClick=(event)=> {
+     
+      console.log( Compile(Decoup(textareaValue)))
+    }
+    const [textareaValue, setTextareaValue] = useState("");
+    const [textareaValue1, setTextareaValue1] = useState("");
+    const handleTextareaChange = (event) => {
+      setTextareaValue(event.target.value);
+    };
+    const handleTextareaChange1 = (event) => {
+      setTextareaValue1(event.target.value);
+    };
+   
   useEffect(() => {
     var form=document.querySelector('textarea');
     var simuler=document.getElementById('btn2');
@@ -99,36 +105,24 @@ function Code({ addFile }) {
        <div className='Bigcontainer'>
        {/* buttons in top *************** */}
         <div className="buttons">
-        <Button onClick={handlesave} text="Sauvegarder" style={ButoStyle}></Button>
-        <Button text="Exemples" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'184px','grid-area':'exem'}}></Button>
-        <Button text="Mes programmes" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'184px','grid-area':'prgrm'}}></Button>
+
+        <Button text="Sauvegarder" style={ButoStyle}></Button>
+        <Button link="/files" text="Fichiers" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'148px',gridArea:'exem'}}></Button>
+
         </div>
         {/************************* */}
        
         <div className="container">
-         <Side></Side>
-          <textarea onChange={HandleChange}
-            style={{ resize: "none", border: "1px solid #00A6FB" , position:'relative',left:'-4%',fontSize: '16px'}}
-            className="box"
-            placeholder="Veuillez saisir votre code en mnémonique"
-          ></textarea> 
-          <p>Number of lines: {numLines}</p>
-          {/* <h4 style={{color:"#023047",position:'relative',right:'14px'}}>
-            Ou bien
-            </h4> */}
-          <div className='side' style={{marginRight:'-8px'}}></div>
-           <textarea
-            style={{ resize: "none", border: "1px solid #00A6FB",fontSize: '16px' }}
-            className="box"
-            placeholder="Veuillez saisir votre code en hexa"
-          ></textarea>
+         <Side textareaValue={textareaValue} handleTextareaChange={handleTextareaChange}></Side>
+         <div className="base" onClick={handleClick1}>BIN</div>
+         <Side textareaValue={textareaValue1} handleTextareaChange={handleTextareaChange1}></Side>
            </div>             
              </div>      
         <script src="myscripts.js"></script>      
       </div>
       
       <div className="container2">    
-      <Button id="btn1" text="Compiler" style={{ fontSize: '16px', background: '#F8F9FA', color: '#023047',border:'1px solid #00A6FB',padding: '12px 24px'}}></Button>
+      <Button onClick={handleClick} id="btn1" text="Compiler" style={{ fontSize: '16px', background: '#F8F9FA', color: '#023047',border:'1px solid #00A6FB',padding: '12px 24px'}}></Button>
       <div id="btn2" >
         Simuler
         <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">

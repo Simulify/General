@@ -1,4 +1,5 @@
 .Simulation .Container {
+  position: relative;
   color: #023047;
   padding: 50px;
   height: 100Vh;
