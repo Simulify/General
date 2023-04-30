@@ -10,9 +10,11 @@ import UcEtRi from "./UcEtRi";
 import RimBusDonnees from "./RimBusDonnees";
 import RimToRi from "./RimToRi";
 import RimBusRi from "./RimBusRi";
-import Light from "./Light";
 import Commencer from "./Commencer";
 import Arreter from "./Arreter";
+import LightCo from "./LightCo";
+import LightRim from "./LightRim";
+
 function Container() {
   // useEffect(()=>
   // {
@@ -35,9 +37,10 @@ function Container() {
         <RimBusDonnees/>
         <RimToRi/>
         <RimBusRi/>
-        <Light/>
+        <LightCo/>
         <Commencer/>
         <Arreter/>
+        <LightRim/>
     </div>
    
   );
