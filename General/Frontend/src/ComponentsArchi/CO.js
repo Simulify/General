@@ -1,20 +1,11 @@
 import React, { useState } from "react";
 import "../pages/Simulation.css";
 
-function CO(props) {
+function CO({case1, case2, case3, case4}) {
   const [isClicked, setIsClicked] = useState(false);
-  const [case1, setCase1] = useState(props.case1);
-  const [case2, setCase2] = useState(props.case2);
-  const [case3, setCase3] = useState(props.case3);
-  const [case4, setCase4] = useState(props.case4);
 
   const handleClick = () => {
     setIsClicked(!isClicked);
-    // Modify the values of the props
-    setCase1("New Value 1");
-    setCase2("New Value 2");
-    setCase3("New Value 3");
-    setCase4("New Value 4");
   };
 
   return (
