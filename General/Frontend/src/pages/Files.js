@@ -12,14 +12,14 @@ import Code from '../pages/Code';
 function Files() {
 
 
-  const [fileExempleVisible, setFileExempleVisible] = useState(false);
+  
   const [myFilesVisible, setMyFilesVisible] = useState(false);
   const [arithmeticVisible, setArithmeticVisible] = useState(false);
   const [logicVisible, setLogicVisible] = useState(false);
   const [branchingVisible, setBranchingVisible] = useState(false);
   const [transferVisible, setTransferVisible] = useState(false);
   const [shiftVisible, setShiftVisible] = useState(false);
-
+  const [fileExempleVisible, setFileExempleVisible] = useState(false);
 
      //Load the fileList state from localStorage, or use an empty array if it doesn't exist
   const [fileList, setFileList] = useState(
@@ -155,11 +155,6 @@ function Files() {
           <Link to="/code">
           <FileNoDelete label="PERMUT" />
     </Link>
-   
-    
-         
-     
-      
           </div>
 
           <div className="subfiles-shift" onClick={handleShiftClick}>
@@ -177,9 +172,6 @@ function Files() {
            
           </div>
         </div>
-
-       
-
         <div className="second-menu">
   <div className="menu-trigger-mesFichiers" onClick={handleMyFilesClick}>
     <FilesButton label="Mes fichiers" />
