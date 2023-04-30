@@ -10,30 +10,24 @@ function LightRim() {
 
     moveButton.addEventListener('click', () => {
 
-      const initialPosition = box.getBoundingClientRect();
-      const finalPosition = document.querySelector('.RimBusRi .rectangle ').getBoundingClientRect();
-      const dy = finalPosition.top - initialPosition.top;
-      const dx = 0;
+      let initialPosition = box.getBoundingClientRect();
+      let finalPosition = document.querySelector('.RimBusRi .rectangle ').getBoundingClientRect();
+      let dy = finalPosition.top - initialPosition.top;
+      let dx = 0;
       setTimeout(() => {
         box.style.transform = `translate(${dx}px, ${dy}px)`;
-      }, 5000); 
+      }, 2500); 
 
       const finalPosition2 = document.querySelector('.RimBusRi .triangleGauche ').getBoundingClientRect();
-      const dy2 = dy;
       const dx2 = finalPosition2.left - initialPosition.left;
     
       setTimeout(() => {
-        box.style.transform = `translate(${dx2}px, ${dy2}px)`;
-      }, 6000); 
+        box.style.transform = `translate(${dx2}px, ${dy}px)`;
+      }, 3500); 
 
       setTimeout(() => {
         document.querySelector('.Ri').classList.add("boxShadowBlue");
-        box.classList.add(".LightRemove");
-      }, 7000); 
-
-
-
-
+      }, 4500);
    
     }); 
   }, []);
