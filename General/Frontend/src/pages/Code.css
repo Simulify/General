@@ -31,16 +31,15 @@ body
     }
 div.buttons
 {
-    margin-top: 0px;
     position: relative;
-    margin: 0px;
-    left: -24%;
+    margin: 0;
+    right: 15vw;
     display: grid;
-    grid-template-columns: 28% 28% 28%;
+    grid-template-columns: 10vh 10vh 10vh;
     grid-template-areas: "sauv exem prgrm";
-    grid-gap: 30%;
+    grid-gap: 15vw;
+    background-color: #00A6FB;
 }
-
 .icon
 {
     display: flex;
@@ -49,7 +48,8 @@ div.buttons
 }
 .Bigcontainer
 {
-    width: 80%;
+    width: 80vw;
+    height: auto;
 }
 .hugecontainer
 {
@@ -221,7 +221,7 @@ position: relative;
     width: 100%;
 }
 /* 1230px */
-@media  (min-width: 900px) and (max-width:1200px)
+/* @media  (min-width: 900px) and (max-width:1200px)
 {
     .buttons
     {
@@ -231,14 +231,14 @@ position: relative;
     {
         width:40%;
     }
-}
+} */
 h4
 {
     margin-top: auto;
     margin-bottom: auto;
     color: #023047;
 }
-@media  (max-width:900px)
+/* @media  (max-width:900px)
 {
     .buttons
     {
@@ -248,7 +248,7 @@ h4
     {
         width: 50%;
     }   
-}
+} */
 .compiled
 {
     margin-left:  65%;

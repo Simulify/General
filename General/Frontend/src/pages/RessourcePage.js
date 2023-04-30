@@ -15,7 +15,7 @@ function RessourcePage () {
         <div className='ContainerRessources'>
             <div className='Videos'>
                  <Videos className='VideoIcone'/> 
-                 <a href="/revision/ressources/vidéos" className='ButtonRessources'>Vidéos</a>
+                 <a href="/revision/ressource/videos" className='ButtonRessources'>Vidéos</a>
             </div>
                 
             <div className='Livres'>

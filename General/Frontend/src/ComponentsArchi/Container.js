@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 import "../pages/Simulation.css";
 import Pile from "./Pile";
 import Registres from "./Registres";
@@ -11,16 +11,18 @@ import RimBusDonnees from "./RimBusDonnees";
 import RimToRi from "./RimToRi";
 import RimBusRi from "./RimBusRi";
 import Light from "./Light";
+import Commencer from "./Commencer";
+import Arreter from "./Arreter";
 function Container() {
-  useEffect(()=>
-  {
-    var el=document.querySelector('.Container');
-    el.addEventListener('click',()=>
-    {
-      var el2=document.querySelector('.LightMove')
-      el2.classList.add('Light');
-    })
-  })
+  // useEffect(()=>
+  // {
+  //   var el=document.querySelector('.ButtonExecution');
+  //   el.addEventListener('click',()=>
+  //   {
+  //     var el2=document.querySelector('.LightMove')
+  //     el2.classList.add('Light');
+  //   })
+  // })
   return (
     <div className="Container">
         <Registres/>
@@ -34,6 +36,8 @@ function Container() {
         <RimToRi/>
         <RimBusRi/>
         <Light/>
+        <Commencer/>
+        <Arreter/>
     </div>
    
   );

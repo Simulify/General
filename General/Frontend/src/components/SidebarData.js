@@ -7,28 +7,28 @@ import { ReactComponent as GuideIcon} from '../SidebarIcons/Guide.svg';
 import { ReactComponent as SettingsIcon} from '../SidebarIcons/Setting.svg';
 
 export const SidebarData = [
-    {
-        icon : <div className='homeicon'><HomeIcon /></div>,
-        link : "/home",
-    },
-    {
-        icon : <div className='simuicon'><SimulationIcon /></div>,
-        link : "/code",
-    },
-    {
-        icon : <div className='filesicon'><FilesIcon /></div>,
-        link : "/files",
-    },
-    {
-        icon : <div className='revicon'><RevisionIcon /></div>,
-        link : "/revision",
-    },
-    {
-        icon : <div className='guideicon'><GuideIcon /></div>,
-        link : "/guide",
-    },
-    {
-        icon : <div className='seticon'><SettingsIcon /></div>,
-        link : "/settings",
-    }
+  {
+    icon : <div className='homeicon'><HomeIcon /></div>,
+    link : "/home",
+  },
+  {
+    icon : <div className='simuicon'><SimulationIcon /></div>,
+    link : "/code",
+  },
+  {
+    icon : <div className='filesicon'><FilesIcon /></div>,
+    link : "/files",
+  },
+  {
+    icon : <div className='revicon'><RevisionIcon /></div>,
+    link : "/revision",
+  },
+  {
+    icon : <div className='guideicon'><GuideIcon /></div>,
+    link : "/guide",
+  },
+  {
+    icon : <div className='seticon'><SettingsIcon /></div>,
+    link : "/settings",
+  }
 ]
