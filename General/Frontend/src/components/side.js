@@ -1,13 +1,12 @@
 import React from "react";
 import "./side.css";
 import { Link } from "react-router-dom";
-
-function Side(props) {
-    return(
-        <div className='side'>
-          <div className='number'>1</div>
-         </div>
-        
-    );
+    class Side extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            newElement: 1,
+          };
+        }
 }
 export default Side

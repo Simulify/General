@@ -4,7 +4,31 @@ body
     font-family: montserrat;
     /* position: relative; */
 }
-
+.side{
+    background-color: #99DBFD;
+    width: 36px;
+    height: 256px;
+    margin-right: 32px;
+    background: #99DBFD;
+    border-radius: 8px 0px 0px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 20px;
+    gap: 0px;
+    }
+    .number{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #F8F9FA;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    }
 div.buttons
 {
     margin-top: 0px;

@@ -19,13 +19,9 @@ function Code() {
     
     const HandleChange=(event)=> {
       const value = event.target.value;
-      console.log(value)
       const newLines = (value.match(/\n/g) || []).length + 1;
       setNumLines(newLines);
-      const childElement = document.createElement('div');
-      childElement.innerHTML =`${newLines}`
-      childElement.className="number"
-      Side.appendChild(childElement)
+      Side.setState({ elements: [...Side.state.elements, newLines] });
     }
       
   useEffect(() => {
@@ -103,7 +99,11 @@ function Code() {
         {/************************* */}
        
         <div className="container">
-         <Side></Side>
+         <div className='side'>
+         {Side.state.elements.map((element) => (
+            <div className='number' key={element}>{element}</div>
+          ))}
+         </div>
           <textarea onChange={HandleChange}
             style={{ resize: "none", border: "1px solid #00A6FB" , position:'relative',left:'-4%',fontSize: '16px'}}
             className="box"
