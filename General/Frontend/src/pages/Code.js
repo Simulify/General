@@ -15,6 +15,7 @@ position:'absolute',
 width:'148px',
 gridArea:'sauv'
 }
+
 function Code() {
   const [base,setBase]=useState("")
   const handleClick1= (event)=>{
@@ -104,8 +105,10 @@ function Code() {
        <div className='Bigcontainer'>
        {/* buttons in top *************** */}
         <div className="buttons">
+
         <Button text="Sauvegarder" style={ButoStyle}></Button>
         <Button link="/files" text="Fichiers" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'148px',gridArea:'exem'}}></Button>
+
         </div>
         {/************************* */}
        

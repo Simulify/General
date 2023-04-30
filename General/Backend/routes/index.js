@@ -48,9 +48,6 @@ passport.use(new LocalStrategy({
   return done(null, user);
 }
 ));
-
-
-
 // Passport serializeUser function
 passport.serializeUser(function(user, done) {
   // Store the user's id in the session
@@ -92,15 +89,6 @@ router.post('/signup', async (req, res) => {
      // Create a new user
      const user = new User({ username, email, password: hashedPassword, profileUrl:url });
      await user.save();
-
-    // Log in the new user and redirect to the user's dashboard
-    req.login(user, (err) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).send({ error: 'Server error' });
-      }
-      res.redirect(`/Home/${url}`);
-    });
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: 'Server error' });

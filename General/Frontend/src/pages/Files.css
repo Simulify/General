@@ -104,22 +104,25 @@ button:hover {
 
 
 /* Toggle visibility of file examples */
-.file-exemple {
-  display: grid;
+.file-perso {
   display: none;
 }
 
-.file-exemple.show {
-  display: grid;
- margin-left: 3%;
+.file-perso.show {
+  display: block;
+  margin-left: 4%;
 }
 
+.file-exemple table td {
+  border: none;
+  
+}
 
 
 
 .Loope {
-  height: 250px;
-  width: 250px;
-  margin: 0 auto;
+  height: 18rem;
+  width: 20rem;
+ margin-left: 25%;
 }
 
