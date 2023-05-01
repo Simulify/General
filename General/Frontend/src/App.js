@@ -35,8 +35,6 @@ import FAQ from './pages/FAQ';
 function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  
   function handleReset() {
     localStorage.removeItem('isAuthenticated');
     setIsAuthenticated(false);
