@@ -221,14 +221,14 @@
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.RAM .ram, .Flag .ram{
+.RAM .ram1, .RAM .ram2, .RAM .ram3, .Flag .ram{
   padding-top: 0.5Vh;
   padding-bottom: 0.5Vh;
   text-align: center;
   border-bottom: 1px solid #00A6FB;
 }
 
-.RAM .ramf, .Flag .ramf{
+.RAM .ram4, .Flag .ramf{
   padding-top: 0.5Vh;
   padding-bottom: 0.5Vh;
   text-align: center;

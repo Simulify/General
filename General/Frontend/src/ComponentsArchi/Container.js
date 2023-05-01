@@ -27,7 +27,8 @@ function Container() {
   //     el2.classList.add('Light');
   //   })
   // })
-  return (
+
+    return (
     <div className="Container">
         <Registres/>
         <Pile/>
@@ -39,7 +40,7 @@ function Container() {
         <RimBusDonnees/>
         <RimToRi/>
         <RimBusRi/>
-        <LightCo destination=".CoToRam" destination2=".Ram"/>
+        <LightCo destination=".CoToRam .rectangle" destination2=".Ram .ram2"/>
         <Commencer/>
         <Arreter/>
         <LightRim/>

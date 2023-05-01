@@ -1,11 +1,11 @@
-.LightCo, .LightRim, .LightRiUc, .LightRimRam {
-    height: 4%;
+.Light, .LightCo, .LightRim, .LightRiUc, .LightRimRam {
+    height: 5%;
     width: 5%;
     z-index: 10;
     border-radius: 10px;
     background-color: #FFE600;
     box-shadow: 0 0 5px 4px #FFE600;
-    opacity: 40%;
+    opacity: 30%;
     transition: all 1s ease-in-out;
   }
 
