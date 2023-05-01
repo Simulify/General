@@ -39,7 +39,7 @@ function Container() {
         <RimBusDonnees/>
         <RimToRi/>
         <RimBusRi/>
-        <LightCo destination=".CoToRam"/>
+        <LightCo destination=".CoToRam" destination2=".Ram"/>
         <Commencer/>
         <Arreter/>
         <LightRim/>
