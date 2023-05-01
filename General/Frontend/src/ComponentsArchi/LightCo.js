@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function LightCo({ destination, destination2 }) {
+function LightCo({destination, destination2 }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {

@@ -15,10 +15,10 @@ function Ram({case1, case2, case3, case4}) {
       <div className="NomRam">Ram</div>
       <div className={`RAM ${isClicked ? "boxShadowBlue" : ""}`}
     onClick={handleClick}>
-        <div className="ram">{case1}</div>
-        <div className="ram">{case2}</div>
-        <div className="ram">{case3}</div>
-        <div className="ramf">{case4}</div>
+        <div className="ram1">{case1}</div>
+        <div className="ram2">{case2}</div>
+        <div className="ram3">{case3}</div>
+        <div className="ram4">{case4}</div>
       </div>
       
     </div>
