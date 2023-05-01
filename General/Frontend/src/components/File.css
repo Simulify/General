@@ -5,29 +5,37 @@
 }
 .File-button {
   height: 50px;
-  background-color: #fff;
-  font-size: 13px;
-  font-weight: Bold;
-  font-family: Montserrat;
-  width: 600px;
-  border: none;
-  color: #023047;
-  padding: 10px;
-  border-radius: 12px;
-  display: grid;
-  grid-template-columns: auto auto 5fr;
-  grid-gap: 10px;
-  align-items: center;
-  justify-content: left;
-  padding: 10px 20px;
-}
-.File-delete-button{
-  border-style: none;
-  background-color: #fff;
-}
-.file{
-  height: 80%;
-}
-.can{
-  height: 50%;
-}
+    background-color: #fff;
+    font-size: 13px;
+    font-weight: Bold;
+    font-family: Montserrat;
+    width: 600px;
+    border: none;
+    color: #023047;
+    padding: 10px;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: auto auto 5fr;
+    grid-gap: 10px;
+    align-items: center;
+    justify-content: left;
+    padding: 10px 20px;
+  }
+  .File-delete-button{
+    border-style: none;
+    background-color: #fff;
+  }
+  
+  .file{
+    height: 80%;
+  }
+  .can{
+    height: 50%;
+  }
+  .can:hover {
+    cursor: pointer;
+  }
+
+
+
+  
