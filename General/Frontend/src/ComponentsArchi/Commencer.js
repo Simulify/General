@@ -1,6 +1,5 @@
 import React, { useState} from 'react';
 import "../pages/Simulation.css";
-import LightRim from './LightRim';
 
 function Commencer() {
 
@@ -9,7 +8,6 @@ function Commencer() {
     const startAnimation = () => {
       // Logique pour démarrer l'animation
       setIsRunning(true);
-      <LightRim/>
     };
   
     const pauseAnimation = () => {

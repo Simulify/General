@@ -13,7 +13,7 @@ function Registre({nom, case1, case2, case3, case4}) {
   return (
     <div className="Registre">
       <span className="NomReg">{nom}</span>
-      <div className={`registre ${isClicked ? "boxShadowBlue" : ""}`}
+      <div className={`registre ${isClicked ? "boxShadowBlue" : ""}`} id={nom}
           onClick={handleClick}>
           <div className="C1">{case1}</div>
           <div className="C2">{case2}</div>
