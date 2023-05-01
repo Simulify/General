@@ -118,7 +118,7 @@ router.post('/login', async (req, res) => {
     const userSpace = `/user-space/${user.username}`;
 
     // Send back the token and redirect URL
-    return res.status(200).send({ token, redirectUrl: userSpace });
+    return res.status(200).send({ token, redirectUrl: userSpace,user });
 
   } catch (err) {
     console.error(err);
@@ -356,11 +356,11 @@ async function createCode(userId, codeData) {
 
   const newCode = {
     title: codeData.title,
-    code: codeData.code,
-    type: codeData.type,
-    category: codeData.category,
-    description: codeData.description,
-    picture: codeData.picture // Include the new picture field
+    codeHexa: codeData.codeHexa,
+    codeMemo:codeData.codeMemo,
+    compiled:codeData.compiled,
+  
+    
   };
 
   user.codes.push(newCode);
@@ -414,16 +414,16 @@ router.put('/users/:userId/codes/:codeId', async (req, res) => {
     if (req.body.title) {
       code.title = req.body.title;
     }
-    if (req.body.code) {
-      code.code = req.body.code;
+    if (req.body.codeHexa) {
+      code.codeHexa = req.body.codeHexa;
     }
-    if (req.body.type) {
-      code.type = req.body.type;
+    if (req.body.codeMemo) {
+      code.codeMemo = req.body.codeMemo;
     }
-    if (req.body.category) {
-      code.category = req.body.category;
+    if (req.body.compiled) {
+      code.compiled = req.body.compiled;
     }
-
+  
     await user.save();
     res.json(code);
   } catch (err) {
@@ -431,6 +431,53 @@ router.put('/users/:userId/codes/:codeId', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
+
+// Read files for a user
+router.get('/users/:userId/files', async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    const files = user.codes;
+
+    console.log('Files found:', files);
+    res.status(200).send(files);
+  } catch (err) {
+    console.error('Failed to find files:', err);
+    res.status(404).send({ error: err.message });
+  }
+});
+
+router.delete('/users/:userId/codes/:codeId', async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const codeId = req.params.codeId;
+    const user = await User.findById(userId);
+
+    // Find index of the code to be removed
+    const codeIndex = user.codes.findIndex(code => code._id == codeId);
+
+    if (codeIndex === -1) {
+      // Code not found
+      res.status(404).send('Code not found');
+    } else {
+      // Remove the code from the user's codes array
+      user.codes.splice(codeIndex, 1);
+      await user.save();
+
+      res.status(204).send(); // No Content
+    }
+  } catch (err) {
+    console.error('Failed to delete code:', err);
+    res.status(500).send(err);
+  }
+});
+
 
 
 module.exports=router;

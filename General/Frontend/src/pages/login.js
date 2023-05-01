@@ -8,10 +8,12 @@ import InputButton from '../Components_login/InputButton';
 import logo from '../Components_login/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
 
-function Login({ setIsAuthenticated }) {
+function Login({ setIsAuthenticated,setCurrentUser,currentUser }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+
 
   useEffect(() => {
     const isAuthenticated = localStorage.getItem('isAuthenticated');
@@ -19,6 +21,7 @@ function Login({ setIsAuthenticated }) {
       setIsAuthenticated(true);
     }
   }, []);
+
 
   const handleLogin = () => {
     if (!email || !password) {
@@ -39,6 +42,9 @@ function Login({ setIsAuthenticated }) {
         localStorage.setItem('username', username);
         localStorage.setItem('isAuthenticated', true);
         setIsAuthenticated(true);
+        localStorage.setItem('currentUser', JSON.stringify(response.data.user));
+        console.log('currentUser:', response.data.user);
+        console.log('currentUser_id:', response.data.user._id);
         navigate(`/user-space/${localStorage.getItem('username')}`);
       })
       .catch((error) => {

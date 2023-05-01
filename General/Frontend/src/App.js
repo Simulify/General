@@ -36,17 +36,16 @@ function App() {
   
 
   const [isAuthenticated, setIsAuthenticated] = useState(false); //une variable qui est mise à jour au login & logout
-
+  const [currentUser, setCurrentUser] = useState(localStorage.getItem('user') || null);
   
   function handleReset() {
     localStorage.removeItem('isAuthenticated');
-    localStorage.removeItem('userId');
+    localStorage.removeItem('user');
     setIsAuthenticated(false);
   }
   function PrivateRoute({ children }) {
     const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-    const userId = localStorage.getItem('userId');
-    
+    const currentUser = JSON.parse(localStorage.getItem('user'));
     return isAuthenticated ? (
       <React.Fragment>{children}</React.Fragment>
     ) : (
@@ -54,22 +53,19 @@ function App() {
     );
   }
   
-  
-
-  
-  
  return (
   <div className="App">
     <BrowserRouter>
     <Sidebar onReset={handleReset} />
      <Routes>
+      
       <Route path='/' element={<Home/>}></Route>
       <Route path='/home' element={<Home/>}></Route>
       <Route path='/code' element={<Code/>}></Route>
       <Route path='/code/simulation' element={<Simulation/>}></Route>
-      <Route path="/files/*" element={<PrivateRoute><Routes><Route path="/" element={<Files />} /></Routes></PrivateRoute>}/>
+      <Route path="/files/*" element={<PrivateRoute currentUser={currentUser}><Files currentUser={currentUser} /></PrivateRoute>} />
+      <Route path="/files/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<Files currentUser={currentUser} />} /></Routes></PrivateRoute>} />
 <Route path="/settings/*" element={<PrivateRoute><Routes><Route path="/" element={<Settings />} /></Routes></PrivateRoute>}/>
-<Route path="/files/:id" element={<PrivateRoute><Routes><Route path="/" element={<Files />} /></Routes></PrivateRoute>} />
 <Route path="/settings/:id" element={<PrivateRoute><Routes><Route path="/" element={<Settings />} /></Routes></PrivateRoute>} />
       <Route path='/settings/ProfilePage'  element={<ProfilePage/>}></Route>
       <Route path='/settings/MotDePassePage'  element={<MotDePassePage/>}></Route> 
@@ -92,7 +88,7 @@ function App() {
       <Route path='/guide/instructions/in-out' element={<GuideInstrInout/>}></Route>
       <Route path='/guide/instructions/data-transfer' element={<GuideInstrDtrs/>}></Route>
       <Route path='/faq' element={<FAQ/>}></Route>
-      <Route path='/login' element={<Login setIsAuthenticated={setIsAuthenticated}/>}></Route>
+      <Route path='/login' element={<Login setIsAuthenticated={setIsAuthenticated} setCurrentUser={setCurrentUser}/>}></Route>
       <Route path='/signup' element={<Signup/>}></Route>
       <Route path='/*' element={<ErrorPage/>}></Route>
      </Routes>
