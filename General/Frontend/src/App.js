@@ -30,6 +30,7 @@ import ExplicationsPage from './pages/ExplicationsPage';
 import ProfilePage from './ComponentsSettings/ProfilePage';
 import LanguePage from './ComponentsSettings/LanguePage';
 import ModePage from './ComponentsSettings/ModePage';
+import FAQ from './pages/FAQ';
 
 function App() {
 
@@ -81,7 +82,7 @@ function App() {
       <Route path='/guide/instructions/branch' element={<GuideInstrBrch/>}></Route>
       <Route path='/guide/instructions/in-out' element={<GuideInstrInout/>}></Route>
       <Route path='/guide/instructions/data-transfer' element={<GuideInstrDtrs/>}></Route>
-
+      <Route path='/faq' element={<FAQ/>}></Route>
       <Route path='/login' element={<Login setIsAuthenticated={setIsAuthenticated}/>}></Route>
       <Route path='/signup' element={<Signup/>}></Route>
       <Route path='/*' element={<ErrorPage/>}></Route>
