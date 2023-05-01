@@ -1,51 +1,45 @@
-import React, { useEffect } from 'react';
-import './Light.css';
-import '../pages/Simulation.css'
+import React, { useEffect, useState } from 'react';
 
-function LightCo() {
+function LightCo({destination, destination2 }) {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    var box = document.querySelector('.LightCo');
-    
-    const moveButton = document.querySelector('.ButtonExecution');
-
-    moveButton.addEventListener('click', () => {
-
-      document.querySelector('.Co').classList.add("boxShadowBlue");
-      document.querySelector('.BusCo .rectangle').classList.add(".RegColor");
-      
+    const moveElementHorizontale = () => {
+      const box = document.querySelector('.LightCo');
       const initialPosition = box.getBoundingClientRect();
-      const finalPosition = document.querySelector('.CoToRam').getBoundingClientRect();
-      const dx = 0;
-      const dy = finalPosition.top - initialPosition.top;
-      box.style.transform = `translate(${dx}px, ${dy}px)`;
+      const finalPosition = document.querySelector(destination).getBoundingClientRect();
+      const dx = finalPosition.right - initialPosition.right;
+      setPosition((prevPosition) => ({ ...prevPosition, x: dx }));
+    };
 
-    /**********************************************/
-      const dy2 = dy;
-      const finalPosition2 = document.querySelector('.Ram').getBoundingClientRect();
-      const dx2 = finalPosition2.left - initialPosition.left;
+    const moveElementVerticale = () => {
+      const box = document.querySelector('.LightCo');
+      const initialPosition = box.getBoundingClientRect();
+      const finalPosition = document.querySelector(destination2).getBoundingClientRect();
+      const dy = finalPosition.bottom - initialPosition.bottom;
+      setPosition((prevPosition) => ({ ...prevPosition, y: dy }));
+    };
 
-      setTimeout(() => {
-        box.style.transform = `translate(${dx2}px, ${dy2}px)`;
-      }, 1000); 
+    moveElementVerticale();
 
-      setTimeout(() => {
-        document.querySelector('.RAM').classList.add("boxShadowBlue");
-      }, 2000); 
+    setTimeout(() => {
+       moveElementHorizontale();
+    }, 1000);
 
-    /*********************************************/
 
-      // function ComponentA(props) {
-      //   return <div>{props.value}</div>;
-      // }
-    
-
-    }); 
-  }, []);
+    // Nettoyage des ressources
+    return () => {
+      // Ajoutez ici le nettoyage des ressources si nécessaire
+    };
+  }, [destination, destination2]);
 
   return (
     <div
-      className="LightCo"/>
+      className="LightCo"
+      style={{
+        transform: `translate(${position.x}px, ${position.y}px)`,
+      }}
+    />
   );
 }
 
