@@ -24,7 +24,7 @@
   cursor: pointer;
   font-weight: 500;
   font-size: 1.4vw;
-  padding: 3.1vh 0vh;
+  padding: 3.3vh 0vh;
   background-color: #FFFFFF;
   transition: background-color 0.2s ease-in-out;
   color: #023047;
@@ -63,7 +63,7 @@
   left: 52vw;
   display: flex;
   width: 35vw;
-  height: 46vh;
+  height: 45vh;
   padding-left: 6vw;
   padding-top: 13vh;
   background: #DDEBF4;
