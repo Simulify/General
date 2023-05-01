@@ -7,4 +7,4 @@ function Uc() {
     );
 }
 
-export default Uc
+export default Uc;
