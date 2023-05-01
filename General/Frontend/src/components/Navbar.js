@@ -13,7 +13,7 @@ function Navbar(props) {
     <Link to="/login">
      <img className="avatar-icon" src={avatar} alt="Avatar" />
     </Link>
-    <Link to="/guide">
+    <Link to="/faq">
      <img className="info-icon" src={Info} alt="info" />
     </Link>
    </div>
