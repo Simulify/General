@@ -17,6 +17,7 @@ import LightRimRam from "./LightRimRam";
 import AcctoBD from "./ACCtoBD";
 import LightCoRam from "./LightCoRam";
 import LightRimUc from "./LightRimUc";
+import LightRegPile from './LightRegPile';
 
 function Container() {
   // useEffect(()=>
@@ -36,6 +37,7 @@ function Container() {
         <CoEtBus/>
         <BusDonnees/>
         <MemoireEtRam/>
+        <LightRegPile/>
         <UalEtBus/>
         <UcEtRi/>
         <RimBusDonnees/>

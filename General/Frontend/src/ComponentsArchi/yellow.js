@@ -157,3 +157,32 @@ export function RimToUc(myRef, setCoor, coor) {
 
  }
 
+ export function RegPile(myRef,setCoor,coor){
+  useEffect(() => {
+  
+      const x1 =0;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      let x2 =0;
+      let y2 = document.querySelector('.BusDonnees').getBoundingClientRect().top;
+      MyFun(1000,x2,y2,myRef.current.getBoundingClientRect().left,y1,setCoor)
+       x2 = document.querySelector('.Pile').getBoundingClientRect().left;
+      
+      MyFun(2000,x2,y2,x1,y1,setCoor);
+      
+      y2 = document.querySelector('.Pile').getBoundingClientRect().bottom +200 ;
+      y1 = document.querySelector('.BusDonnees').getBoundingClientRect().bottom ;
+      MyFun(3000,x2,y2,x1,y1,setCoor)
+      
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},800)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+  
+}
