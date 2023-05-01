@@ -36,15 +36,18 @@ function Login({ setIsAuthenticated }) {
         console.log(response.data);
         localStorage.setItem('token', response.data.token);
         const username = email.split('@')[0];
+        localStorage.setItem('username', username);
         localStorage.setItem('isAuthenticated', true);
         setIsAuthenticated(true);
-        navigate('/user-space/' + username);
+        navigate(`/user-space/${localStorage.getItem('username')}`);
       })
       .catch((error) => {
         console.log(email);
         console.error(error);
       });
   };
+  
+  
 
   return (
     <div className="Containerlogin">

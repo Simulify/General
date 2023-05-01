@@ -32,23 +32,30 @@ import LanguePage from './ComponentsSettings/LanguePage';
 import ModePage from './ComponentsSettings/ModePage';
 
 function App() {
+  
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false); //une variable qui est mise à jour au login & logout
 
   
   function handleReset() {
     localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userId');
     setIsAuthenticated(false);
   }
   function PrivateRoute({ children }) {
     const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-  console.log(isAuthenticated);
+    const userId = localStorage.getItem('userId');
+    
     return isAuthenticated ? (
       <React.Fragment>{children}</React.Fragment>
     ) : (
       <Navigate to="/login" replace />
     );
   }
+  
+  
+
+  
   
  return (
   <div className="App">
@@ -60,7 +67,9 @@ function App() {
       <Route path='/code' element={<Code/>}></Route>
       <Route path='/code/simulation' element={<Simulation/>}></Route>
       <Route path="/files/*" element={<PrivateRoute><Routes><Route path="/" element={<Files />} /></Routes></PrivateRoute>}/>
-      <Route path="/settings/*" element={<PrivateRoute><Routes><Route path="/" element={<Settings />} /></Routes></PrivateRoute>}/>
+<Route path="/settings/*" element={<PrivateRoute><Routes><Route path="/" element={<Settings />} /></Routes></PrivateRoute>}/>
+<Route path="/files/:id" element={<PrivateRoute><Routes><Route path="/" element={<Files />} /></Routes></PrivateRoute>} />
+<Route path="/settings/:id" element={<PrivateRoute><Routes><Route path="/" element={<Settings />} /></Routes></PrivateRoute>} />
       <Route path='/settings/ProfilePage'  element={<ProfilePage/>}></Route>
       <Route path='/settings/MotDePassePage'  element={<MotDePassePage/>}></Route> 
       <Route path='/settings/LanguePage'  element={<LanguePage/>}></Route>

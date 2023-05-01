@@ -14,6 +14,7 @@ import Commencer from "./Commencer";
 import Arreter from "./Arreter";
 import LightCo from "./LightCo";
 import LightRim from "./LightRim";
+import LightRiUc from "./LightRiUc";
 
 function Container() {
   // useEffect(()=>
@@ -37,10 +38,11 @@ function Container() {
         <RimBusDonnees/>
         <RimToRi/>
         <RimBusRi/>
-        <LightCo/>
+        <LightCo />
         <Commencer/>
         <Arreter/>
         <LightRim/>
+        <LightRiUc/>
     </div>
    
   );

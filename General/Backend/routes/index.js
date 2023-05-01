@@ -155,7 +155,7 @@ router.post('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 });
-router.get('/homePage', isAuthenticated, async (req, res) => {
+router.get('/home', isAuthenticated, async (req, res) => {
   try {
     // Get the current user's information
     const currentUser = req.user;
@@ -181,23 +181,24 @@ router.get('/homePage', isAuthenticated, async (req, res) => {
 
 
 
-router.get('/user-space/:username', isAuthenticated, async (req, res) => {
+router.get('/user-space/:id', isAuthenticated, async (req, res) => {
   try {
-    const username = req.params.username;
-    console.log('Username:', username);
-    const user = await User.findOne({ username });
+    const id = req.params.id;
+    console.log('User ID:', id);
+    const user = await User.findById(id);
     console.log('User:', user);
     if (!user) {
       return res.status(404).send({ error: 'User not found' });
     }
     const codes = user.codes;
     console.log('Codes:', codes);
-    res.render('user-homePage', { username, codes });
+    res.render('user-homePage', { username: user.username, codes });
   } catch (error) {
     console.error('Error:', error);
     res.status(500).send({ error: 'Server Error' });
   }
 });
+
 
 
 // Middleware to check if a user is authenticated

@@ -16,13 +16,11 @@ width:'148px',
 gridArea:'sauv'
 }
 
-
 function Code() {
   const [base,setBase]=useState("")
   const handleClick1= (event)=>{
     if (event.target.textContent=="HEX") {
       event.target.textContent="BIN"
-
     }
     else{event.target.textContent="HEX"}
   }
