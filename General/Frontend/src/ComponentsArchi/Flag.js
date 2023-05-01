@@ -11,7 +11,7 @@ function Flag({case1, case2, case3, case4}) {
     }
     
     return (
-        <div class="Flag"> 
+        <div className="Flag"> 
         <div className="NomFlag">Flag</div>
         <div className={`FLAG ${isClicked ? "boxShadowBlue" : ""}`}
         onClick={handleClick}>

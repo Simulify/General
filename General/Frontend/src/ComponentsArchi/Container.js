@@ -15,6 +15,7 @@ import Arreter from "./Arreter";
 import LightCo from "./LightCo";
 import LightRim from "./LightRim";
 import LightRiUc from "./LightRiUc";
+import LightRimRam from "./LightRimRam";
 
 function Container() {
   // useEffect(()=>
@@ -26,7 +27,8 @@ function Container() {
   //     el2.classList.add('Light');
   //   })
   // })
-  return (
+
+    return (
     <div className="Container">
         <Registres/>
         <Pile/>
@@ -38,11 +40,12 @@ function Container() {
         <RimBusDonnees/>
         <RimToRi/>
         <RimBusRi/>
-        <LightCo />
+        <LightCo destination=".CoToRam .rectangle" destination2=".Ram .ram2"/>
         <Commencer/>
         <Arreter/>
         <LightRim/>
         <LightRiUc/>
+        <LightRimRam />
     </div>
    
   );
