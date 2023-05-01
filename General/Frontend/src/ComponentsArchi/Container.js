@@ -15,6 +15,7 @@ import Arreter from "./Arreter";
 import LightCo from "./LightCo";
 import LightRim from "./LightRim";
 import LightRiUc from "./LightRiUc";
+import LightRimRam from "./LightRimRam";
 
 function Container() {
   // useEffect(()=>
@@ -38,11 +39,12 @@ function Container() {
         <RimBusDonnees/>
         <RimToRi/>
         <RimBusRi/>
-        <LightCo />
+        <LightCo destination=".CoToRam"/>
         <Commencer/>
         <Arreter/>
         <LightRim/>
         <LightRiUc/>
+        <LightRimRam />
     </div>
    
   );
