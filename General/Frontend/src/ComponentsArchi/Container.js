@@ -12,12 +12,13 @@ import RimToRi from "./RimToRi";
 import RimBusRi from "./RimBusRi";
 import Commencer from "./Commencer";
 import Arreter from "./Arreter";
-// import LightRiUc from "./LightRiUc";
 import LightRimRam from "./LightRimRam";
 import AcctoBD from "./ACCtoBD";
 import LightCoRam from "./LightCoRam";
 import LightRimUc from "./LightRimUc";
 import LightRegPile from './LightRegPile';
+import LightCoPile from "./LightCoPile";
+import LightCoUal from "./LightCoUal";
 
 function Container() {
   // useEffect(()=>
@@ -43,13 +44,14 @@ function Container() {
         <RimBusDonnees/>
         <RimToRi/>
         <RimBusRi/>
-        {/* <LightCo destination=".CoToRam .rectangle" destination2=".Ram .ram2"/> */}
         <Commencer/>
         <Arreter/>
-        <LightRimRam/> 
-        <AcctoBD/>
-        <LightCoRam/>
-        <LightRimUc/>
+        <LightRimRam time={0}/>
+        <AcctoBD time={0}/>
+        <LightCoRam time={0}/>
+        <LightRimUc time = {0} />
+        <LightCoPile time={0}/>
+        <LightCoUal time={0}/>
     </div>
    
   );
