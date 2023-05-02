@@ -37,7 +37,7 @@ function Container() {
         <CoEtBus/>
         <BusDonnees/>
         <MemoireEtRam/>
-        <LightRegPile/>
+        <LightRegPile  time={0}/>
         <UalEtBus/>
         <UcEtRi/>
         <RimBusDonnees/>
@@ -49,7 +49,7 @@ function Container() {
         <LightRimRam/> 
         <AcctoBD/>
         <LightCoRam/>
-        <LightRimUc/>
+        <LightRimUc />
     </div>
    
   );
