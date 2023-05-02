@@ -59,9 +59,7 @@ function Code(props) {
     var form=document.querySelector('textarea');
     var simuler=document.getElementById('btn2');
     var compile=document.getElementById('btn1')
-    let time_compile=0;
     let nb = 1;
-    let time_simule=0;
     let txt=document.createTextNode('compilé ');
     
     form.addEventListener('keydown', ()=>

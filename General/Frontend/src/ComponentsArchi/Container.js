@@ -48,7 +48,6 @@ function Container(props) {
         <Arreter/>
 
         <LightRimRam time={0}/>
-        <AcctoBusDonnees  time={0}/>
         <LightCoRam time={0}/>
         <LightRimUc time = {0} />
         <LightCoPile time={0}/>
