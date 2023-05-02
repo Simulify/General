@@ -207,9 +207,8 @@ async function removeFile(id) {
     {fileList.length > 0 ? (
       <ul>
         {fileList.map((file) => (
-          <li key={file.id}>
-            <File label={file.label} codeHexa={file.codeHexa} codeMemo={file.codeMemo} compiled={file.compiled}  onDelete={() => removeFile(file.id)} />
-
+      <li key={file.id}>
+            <File id={file.id} label={file.label} codeHexa={file.codeHexa} codeMemo={file.codeMemo} compiled={file.compiled}  onDelete={() => removeFile(file.id)}   />
           </li>
         ))}
       </ul>
