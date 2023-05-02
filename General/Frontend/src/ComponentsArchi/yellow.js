@@ -25,7 +25,7 @@ export function RegToB(myRef,setCoor,coor){
         MyFun(3000,x2,y2,x1,y1,setCoor)
         y2=document.querySelector('.BusEuals').getBoundingClientRect().top
         MyFun(4000,x2,y2,x1,y1,setCoor)
-        x2=document.querySelector('#Eual2 #eual0 ').getBoundingClientRect().left
+        x2=document.querySelector('#Eual1 #eual0 ').getBoundingClientRect().left
         MyFun(5000,x2,y2,x1,y1,setCoor)
       }, []);
       useEffect(() => {

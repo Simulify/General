@@ -16,8 +16,9 @@ import LightCo from "./LightCo";
 import LightRim from "./LightRim";
 import LightRiUc from "./LightRiUc";
 import LightRimRam from "./LightRimRam";
+import ABCD from "./ACCtoBD";
 
-function Container() {
+function Container(props) {
   // useEffect(()=>
   // {
   //   var el=document.querySelector('.ButtonExecution');
@@ -34,7 +35,7 @@ function Container() {
         <CoEtBus/>
         <BusDonnees/>
         <MemoireEtRam/>
-        <UalEtBus/>
+        <UalEtBus case={props.case}/>
         <UcEtRi/>
         <RimBusDonnees/>
         <RimToRi/>
@@ -45,6 +46,7 @@ function Container() {
         <LightRim/>
         <LightRiUc/>
         <LightRimRam />
+       
     </div>
    
   );

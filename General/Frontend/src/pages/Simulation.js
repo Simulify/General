@@ -1,14 +1,18 @@
 import React from 'react';
 import './Simulation.css';
-
+import ABCD from '../ComponentsArchi/ACCtoBD';
 import Container from '../ComponentsArchi/Container';
 
-function Simulation () {
+function Simulation (props) {
 
   return (
   
     <div className='Simulation'>
-      <Container/>
+      {props.elements.map((element) => (
+          <div>
+          {element}
+          </div>))}
+      <Container case={props.case}/>
     </div>
   );
 };

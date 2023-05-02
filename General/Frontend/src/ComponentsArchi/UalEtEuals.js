@@ -4,12 +4,12 @@ import UAL from './Ual';
 import Euals from "./Euals";
 import UalBusDonnees from "./UalBusDonnees";
 
-function UalEtEuals() {
+function UalEtEuals(props) {
     return (
         <div className="UalEtEuals"> 
           <UalBusDonnees/>
           <UAL/>
-          <Euals/>
+          <Euals case={props.case}/>
         </div>
     );
 }

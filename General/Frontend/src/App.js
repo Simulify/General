@@ -30,7 +30,7 @@ import ExplicationsPage from './pages/ExplicationsPage';
 import ProfilePage from './ComponentsSettings/ProfilePage';
 import LanguePage from './ComponentsSettings/LanguePage';
 import ModePage from './ComponentsSettings/ModePage';
-
+import { Sim } from './pages/Sim';
 function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -57,8 +57,8 @@ function App() {
      <Routes>
       <Route path='/' element={<Home/>}></Route>
       <Route path='/home' element={<Home/>}></Route>
-      <Route path='/code' element={<Code/>}></Route>
-      <Route path='/code/simulation' element={<Simulation/>}></Route>
+      <Route path='/code' element={<Sim></Sim>}></Route>
+      <Route path='/code/simulation' element={<Sim></Sim>}></Route>
       <Route path="/files/*" element={<PrivateRoute><Routes><Route path="/" element={<Files />} /></Routes></PrivateRoute>}/>
       <Route path="/settings/*" element={<PrivateRoute><Routes><Route path="/" element={<Settings />} /></Routes></PrivateRoute>}/>
       <Route path='/settings/ProfilePage'  element={<ProfilePage/>}></Route>
