@@ -354,11 +354,17 @@ router.post('/users/:userId/codes', async (req, res) => {
 async function createCode(userId, codeData) {
   const user = await User.findById(userId);
 
+  const existingCode = user.codes.find(code => code.title === codeData.title);
+
+  if (existingCode) {
+    throw new Error('A code with this title already exists.');
+  }
+
   const newCode = {
     title: codeData.title,
     codeHexa: codeData.codeHexa,
-    codeMemo:codeData.codeMemo,
-    compiled:codeData.compiled,
+    codeMemo: codeData.codeMemo,
+    compiled: codeData.compiled,
   };
 
   user.codes.push(newCode);
@@ -403,25 +409,31 @@ router.put('/users/:userId/codes/:codeId', async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    const code = user.codes.id(req.params.codeId);
+    const codeId = req.params.codeId;
+    const newTitle = req.body.title;
+    const newCodeHexa = req.body.codeHexa;
+    const newCodeMemo = req.body.codeMemo;
+    const newCompiled = req.body.compiled;
+
+    // Find the existing code by title
+    const existingCode = user.codes.find(code => code.title === newTitle);
+
+    // Check if the existing code has the same id as the updated code
+    if (existingCode && existingCode._id.toString() !== codeId) {
+      return res.status(409).json({ message: 'A code with this title already exists.' });
+    }
+
+    const code = user.codes.id(codeId);
     if (!code) {
       return res.status(404).json({ message: 'Code not found' });
     }
 
     // Update the code properties
-    if (req.body.title) {
-      code.title = req.body.title;
-    }
-    if (req.body.codeHexa) {
-      code.codeHexa = req.body.codeHexa;
-    }
-    if (req.body.codeMemo) {
-      code.codeMemo = req.body.codeMemo;
-    }
-    if (req.body.compiled) {
-      code.compiled = req.body.compiled;
-    }
-  
+    code.title = newTitle;
+    code.codeHexa = newCodeHexa;
+    code.codeMemo = newCodeMemo;
+    code.compiled = newCompiled;
+
     await user.save();
     res.json(code);
   } catch (err) {
@@ -429,6 +441,9 @@ router.put('/users/:userId/codes/:codeId', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
+
+
 
 
 // Read files for a user

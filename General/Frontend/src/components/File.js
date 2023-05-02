@@ -9,15 +9,16 @@ function File(props) {
 
   
   const handleClick = () => {
+    localStorage.setItem('storedCode.id', props.id);
+    console.log(`storedCode.id: ${props.id}`);
     localStorage.setItem('filecodeHexa', props.codeHexa);
     console.log(`filecodeHexa: ${props.codeHexa}`);
     localStorage.setItem('filecodeMemo', props.codeMemo);
     console.log(`filecodeMemo: ${props.codeMemo}`);
     localStorage.setItem('filecompiled', props.compiled);
     console.log(`filecompiled: ${props.compiled}`);
-    localStorage.setItem('buttonClicked', `true`);
+    localStorage.setItem('buttonClicked', "true");
     console.log("buttonClicked:", localStorage.getItem("buttonClicked"));
-
   };
   return ( 
     <div className="fileLign">
@@ -27,6 +28,7 @@ function File(props) {
           {props.label}
         </button>
       </Link>
+      
       <p style={{display: 'none'}}>{props.codeHexa}</p>
       <p style={{display: 'none'}}>{props.codeMemo}</p>
       {props.compiled && <p style={{display: 'none'}}>Compiled</p>}
