@@ -62,7 +62,7 @@
   top: 22vh;
   left: 52vw;
   display: flex;
-  width: 35vw;
+  width: 30vw;
   height: 45vh;
   padding-left: 6vw;
   padding-top: 13vh;
@@ -75,6 +75,3 @@
 .reponse.active {
   display: block;
 }
-
-    
-      

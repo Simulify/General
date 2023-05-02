@@ -9,19 +9,19 @@ import Simulation from './pages/Simulation';
 import Files from './pages/Files';
 import Revision from './pages/Revision';
 import Guide from './pages/Guide';
-import GuideArch from './pages/GuideArch';
+import GuideArch from './ComponentsGuide/GuideArch';
+import GuideForm from './ComponentsGuide/GuideForm';
+import GuideInstr from './ComponentsGuide/GuideInstr';
+import GuideInstrArth from './ComponentsGuide/GuideInstrArth';
+import GuideInstrLog from './ComponentsGuide/GuideInstrLog';
+import GuideInstrShrt from './ComponentsGuide/GuideInstrShrt';
+import GuideInstrBrch from './ComponentsGuide/GuideInstrBrch';
+import GuideInstrDtrs from './ComponentsGuide/GuideInstrDtrs';
+import GuideInstrInout from './ComponentsGuide/GuideInstrInout';
 import Settings from './pages/Settings';
 import ErrorPage from './pages/ErrorPage';
 import Code from './pages/Code';
 import MotDePassePage from './ComponentsSettings/MotDePassePage';
-import GuideForm from './pages/GuideForm';
-import GuideInstr from './pages/GuideInstr';
-import GuideInstrArth from './pages/GuideInstrArth';
-import GuideInstrLog from './pages/GuideInstrLog';
-import GuideInstrShrt from './pages/GuideInstrShrt';
-import GuideInstrBrch from './pages/GuideInstrBrch';
-import GuideInstrDtrs from './pages/GuideInstrDtrs';
-import GuideInstrInout from './pages/GuideInstrInout';
 import RessourcePage from './pages/RessourcePage';
 import LivresPage from './pages/LivresPage';
 import VideoPage from './pages/VideoPage';
@@ -35,9 +35,11 @@ import FAQ from './pages/FAQ';
 function App() {
   
 
+
   const [isAuthenticated, setIsAuthenticated] = useState(false); //une variable qui est mise à jour au login & logout
   const [currentUser, setCurrentUser] = useState(localStorage.getItem('user') || null);
   
+
   function handleReset() {
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('user');
