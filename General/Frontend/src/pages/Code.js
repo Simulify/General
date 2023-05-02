@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import axios from 'axios';
+
+
 import { useRef } from 'react';
 import { Compile, Decoup } from '../Logic/Logic/src/functions.js';
 import "./Code.css"; // import the external CSS file
@@ -97,6 +100,33 @@ function Code() {
   })
 
   }, []); // This empty array as a second argument ensures that the effect is only run once when the component mounts
+  
+
+  
+  const saveFile = (textareaValue,textareaValue1) => { // this function saves the file to the database 
+    console.log(textareaValue);
+    console.log(textareaValue1);
+    const file = {
+      
+      "title": "test save",
+      "codeHexa": textareaValue,
+      "codeMemo": textareaValue1,
+      "compiled": "true",
+    };
+    const storedUser = JSON.parse(localStorage.getItem("currentUser"));
+    console.log('currentUser:', storedUser);
+    console.log('currentUser_id:', storedUser._id);
+    axios
+      .post(`/users/${storedUser._id}/codes`, file)
+      .then((response) => {
+       
+        console.log("API call successful:", response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  
     return(
       <div>
           <Navbar label="Simulation" />
@@ -107,7 +137,7 @@ function Code() {
        {/* buttons in top *************** */}
         <div className="buttons">
 
-        <Button text="Sauvegarder" style={ButoStyle}></Button>
+        <Button text="Sauvegarder" style={ButoStyle} onClick={() => saveFile(textareaValue,textareaValue1)} ></Button>
         <Button link="/files" text="Fichiers" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'148px',gridArea:'exem'}}></Button>
 
         </div>
@@ -133,7 +163,7 @@ function Code() {
 </svg>
       </div></Link>
       </div>
-          <div className='compiled'>
+          <div className='compiled' >
           </div>
           <hr>
           </hr> </div>

@@ -7,9 +7,10 @@ import FileNoDelete from '../components/FileNoDelete';
 import Navbar from '../components/Navbar';
 import Loope from '../Images/No Results@3x.svg';
 import { Link } from "react-router-dom";
-import Code from '../pages/Code';
+import axios from 'axios';
 
-function Files() {
+
+function Files({ isAuthenticated, setIsAuthenticated, currentUser, setCurrentUser }) {
 
 
   
@@ -21,27 +22,52 @@ function Files() {
   const [shiftVisible, setShiftVisible] = useState(false);
   const [fileExempleVisible, setFileExempleVisible] = useState(false);
   const fileValue="Programme";
-  const newFileLabel="New file";
-
-     //Load the fileList state from localStorage, or use an empty array if it doesn't exist
-  const [fileList, setFileList] = useState(
-    JSON.parse(localStorage.getItem('fileList')) || []
-  );
-
-  // Save the fileList state to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem('fileList', JSON.stringify(fileList));
-  }, [fileList]);
-
-  function addFile() {
-    const newFile = { id: fileList.length + 1, label: 'Mon nouveau programme' };
-    setFileList([...fileList, newFile]);
-  }
-
-  function removeFile(id) {
-    setFileList(fileList.filter((file) => file.id !== id));
-  }
   
+
+ 
+  
+
+   
+  const [files, setFiles] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const storedUser = JSON.parse(localStorage.getItem("currentUser"));
+        console.log('currentUser:', storedUser);
+        console.log('currentUser_id:', storedUser._id);
+        const response = await axios.get(`/users/${storedUser._id}/files`);
+        setFiles(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+  
+
+const [fileList, setFileList] = useState([]);
+
+useEffect(() => {
+  setFileList(files.map((file) => ({ id: file._id, label: file.title })));
+}, [files]);
+
+async function removeFile(id) {
+  try {
+    console.log(`Removing file with ID ${id}`);
+    const storedUser = JSON.parse(localStorage.getItem("currentUser"));
+    await axios.delete(`/users/${storedUser._id}/codes/${id}`);
+    setFileList(fileList.filter((file) => file.id !== id));
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+
+
+
+ 
 
  
   
@@ -87,7 +113,7 @@ function Files() {
     
       
 
-      <button onClick={addFile}>Add File</button>
+    
 
       <div className="Menu-container">
         <div className="menu-trigger-exemple"
@@ -104,7 +130,6 @@ function Files() {
           <div className="subfiles-arithmetic" onClick={handleArithmeticClick}>
             <SubfilesButton label="Arithmétiques"  />
           </div>
-
           <div className={`file-arithmetic ${arithmeticVisible ? 'show' : ''}`}>
           <Link to="/code">
           <FileNoDelete label="ADD" />
@@ -180,20 +205,21 @@ function Files() {
   <div className={`file-perso ${myFilesVisible ? 'show' : ''}`}>
   
     {fileList.length > 0 ? (
-       
       <ul>
         {fileList.map((file) => (
           <li key={file.id}>
-            <File label={file.label} value={fileValue} onDelete={() => removeFile(2)} />
+            <File label={file.label} value={fileValue} onDelete={() => removeFile(file.id)} />
           </li>
         ))}
       </ul>
     ) : null}
+
     {myFilesVisible && fileList.length === 0 && (
       <img className="Loope" src={Loope} alt="Loopeicon" />
     )}
   </div>
 </div>
+
 
       </div>
       </div>
