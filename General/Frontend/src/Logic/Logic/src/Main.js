@@ -15,7 +15,7 @@ import bus_donnees from './bus_donnes.js';
 import memoire from './memoire.js';
 import Pile from './Pile.js';
 import UAL from './UAL.js';
-import UniteCommandes from './UniteCommandes.js';
+import UniteCommandes from './UNiteCommandes.js';
 import mot_mem from './mot_mem.js';
 import Machine from './Machine.js';
 import { BinToMnem, Compile, Coprnd, Decoup, reg } from './functions.js';

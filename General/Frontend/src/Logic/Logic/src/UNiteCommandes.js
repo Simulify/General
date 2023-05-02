@@ -157,7 +157,7 @@ class UniteCommandes{
         if (parseInt(this.Cop,2)<2 || parseInt(this.Cop,2)==4 || (parseInt(this.Cop,2)>=6 && parseInt(this.Cop,2)<=10 )) {
             Machine.UAL.UAL2=this.Mode[parseInt(this.Mod,2)](Machine,this.reg,this.C).value
             if(parseInt(this.R1,2)==0){
-                elements.push(<ABCD></ABCD>)
+                elements.push(<ABCD time={0}></ABCD>)
                setElements(elements)
                setTimeout(()=>{
                here[0]=(Machine[this.reg[parseInt(this.R1,2)]].value.hexa[0])
