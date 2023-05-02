@@ -12,11 +12,13 @@ import RimToRi from "./RimToRi";
 import RimBusRi from "./RimBusRi";
 import Commencer from "./Commencer";
 import Arreter from "./Arreter";
-import LightCo from "./LightCo";
-import LightRim from "./LightRim";
-import LightRiUc from "./LightRiUc";
 import LightRimRam from "./LightRimRam";
 import ABCD from "./ACCtoBD";
+import LightCoRam from "./LightCoRam";
+import LightRimUc from "./LightRimUc";
+import LightRegPile from './LightRegPile';
+import LightCoPile from "./LightCoPile";
+import LightCoUal from "./LightCoUal";
 
 function Container(props) {
   // useEffect(()=>
@@ -28,7 +30,8 @@ function Container(props) {
   //     el2.classList.add('Light');
   //   })
   // })
-  return (
+
+    return (
     <div className="Container">
         <Registres/>
         <Pile/>
@@ -36,17 +39,21 @@ function Container(props) {
         <BusDonnees/>
         <MemoireEtRam/>
         <UalEtBus case={props.case}/>
+        <LightRegPile/>
         <UcEtRi/>
         <RimBusDonnees/>
         <RimToRi/>
         <RimBusRi/>
-        <LightCo destination=".CoToRam"/>
         <Commencer/>
         <Arreter/>
-        <LightRim/>
-        <LightRiUc/>
-        <LightRimRam />
-       
+
+        <LightRimRam time={0}/>
+        <AcctoBD time={0}/>
+        <LightCoRam time={0}/>
+        <LightRimUc time = {0} />
+        <LightCoPile time={0}/>
+        <LightCoUal time={0}/>
+
     </div>
    
   );

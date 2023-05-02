@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Light.css';
 import { MyFun } from './yellow';
-import { RimRam } from './yellow';
+import { CoRam } from './yellow';
 
-function LightRimRam({time}) {
+function LightCoRam({time}) {
   const [coor, setCoor] = useState([]);
   const myRef = useRef(null);
-  RimRam(time, myRef,setCoor,coor)
+  CoRam(time, myRef,setCoor,coor)
 
-  return <div className='LightRimRam' ref={myRef} />;
+  return <div className='LightCoRam' ref={myRef} />;
 }
 
-export default LightRimRam;
+export default LightCoRam;

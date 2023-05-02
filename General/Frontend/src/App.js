@@ -9,19 +9,19 @@ import Simulation from './pages/Simulation';
 import Files from './pages/Files';
 import Revision from './pages/Revision';
 import Guide from './pages/Guide';
-import GuideArch from './pages/GuideArch';
+import GuideArch from './ComponentsGuide/GuideArch';
+import GuideForm from './ComponentsGuide/GuideForm';
+import GuideInstr from './ComponentsGuide/GuideInstr';
+import GuideInstrArth from './ComponentsGuide/GuideInstrArth';
+import GuideInstrLog from './ComponentsGuide/GuideInstrLog';
+import GuideInstrShrt from './ComponentsGuide/GuideInstrShrt';
+import GuideInstrBrch from './ComponentsGuide/GuideInstrBrch';
+import GuideInstrDtrs from './ComponentsGuide/GuideInstrDtrs';
+import GuideInstrInout from './ComponentsGuide/GuideInstrInout';
 import Settings from './pages/Settings';
 import ErrorPage from './pages/ErrorPage';
 import Code from './pages/Code';
 import MotDePassePage from './ComponentsSettings/MotDePassePage';
-import GuideForm from './pages/GuideForm';
-import GuideInstr from './pages/GuideInstr';
-import GuideInstrArth from './pages/GuideInstrArth';
-import GuideInstrLog from './pages/GuideInstrLog';
-import GuideInstrShrt from './pages/GuideInstrShrt';
-import GuideInstrBrch from './pages/GuideInstrBrch';
-import GuideInstrDtrs from './pages/GuideInstrDtrs';
-import GuideInstrInout from './pages/GuideInstrInout';
 import RessourcePage from './pages/RessourcePage';
 import LivresPage from './pages/LivresPage';
 import VideoPage from './pages/VideoPage';
@@ -31,18 +31,25 @@ import ProfilePage from './ComponentsSettings/ProfilePage';
 import LanguePage from './ComponentsSettings/LanguePage';
 import ModePage from './ComponentsSettings/ModePage';
 import { Sim } from './pages/Sim';
+import FAQ from './pages/FAQ';
+
 function App() {
-
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   
+
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false); //une variable qui est mise à jour au login & logout
+  const [currentUser, setCurrentUser] = useState(localStorage.getItem('user') || null);
+  
+
   function handleReset() {
     localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('user');
     setIsAuthenticated(false);
+    localStorage.setItem("buttonClicked", "false");
   }
   function PrivateRoute({ children }) {
     const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-  console.log(isAuthenticated);
+    const currentUser = JSON.parse(localStorage.getItem('user'));
     return isAuthenticated ? (
       <React.Fragment>{children}</React.Fragment>
     ) : (
@@ -55,12 +62,15 @@ function App() {
     <BrowserRouter>
     <Sidebar onReset={handleReset} />
      <Routes>
+      
       <Route path='/' element={<Home/>}></Route>
       <Route path='/home' element={<Home/>}></Route>
       <Route path='/code' element={<Sim></Sim>}></Route>
       <Route path='/code/simulation' element={<Sim></Sim>}></Route>
-      <Route path="/files/*" element={<PrivateRoute><Routes><Route path="/" element={<Files />} /></Routes></PrivateRoute>}/>
-      <Route path="/settings/*" element={<PrivateRoute><Routes><Route path="/" element={<Settings />} /></Routes></PrivateRoute>}/>
+      <Route path="/files/*" element={<PrivateRoute currentUser={currentUser}><Files currentUser={currentUser} /></PrivateRoute>} />
+      <Route path="/files/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<Files currentUser={currentUser} />} /></Routes></PrivateRoute>} />
+<Route path="/settings/*" element={<PrivateRoute><Routes><Route path="/" element={<Settings />} /></Routes></PrivateRoute>}/>
+<Route path="/settings/:id" element={<PrivateRoute><Routes><Route path="/" element={<Settings />} /></Routes></PrivateRoute>} />
       <Route path='/settings/ProfilePage'  element={<ProfilePage/>}></Route>
       <Route path='/settings/MotDePassePage'  element={<MotDePassePage/>}></Route> 
       <Route path='/settings/LanguePage'  element={<LanguePage/>}></Route>
@@ -81,8 +91,8 @@ function App() {
       <Route path='/guide/instructions/branch' element={<GuideInstrBrch/>}></Route>
       <Route path='/guide/instructions/in-out' element={<GuideInstrInout/>}></Route>
       <Route path='/guide/instructions/data-transfer' element={<GuideInstrDtrs/>}></Route>
-
-      <Route path='/login' element={<Login setIsAuthenticated={setIsAuthenticated}/>}></Route>
+      <Route path='/faq' element={<FAQ/>}></Route>
+      <Route path='/login' element={<Login setIsAuthenticated={setIsAuthenticated} setCurrentUser={setCurrentUser}/>}></Route>
       <Route path='/signup' element={<Signup/>}></Route>
       <Route path='/*' element={<ErrorPage/>}></Route>
      </Routes>

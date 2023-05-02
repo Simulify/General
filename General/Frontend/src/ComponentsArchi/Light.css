@@ -1,3 +1,4 @@
+
 .Light{
   height: 10px;
   width: 10px;
@@ -8,22 +9,25 @@
   opacity: 40%;
   transition: all 1s ease-in-out;
 }
-/* .LightCo, .LightRim, .LightRiUc, .LightRimRam {
+/* 
+.Light, .LightCoRam, .LightRimRam, .LightRimUc , .LightRegPile, .LightCoPile, .LightCoUal{
+
     height: 4%;
     width: 5%;
     z-index: 10;
     border-radius: 10px;
     background-color: #FFE600;
     box-shadow: 0 0 5px 4px #FFE600;
-    opacity: 40%;
+    opacity: 0%;
     transition: all 1s ease-in-out;
   }
+ 
 
-.LightCo {
+/* .LightCo {
     grid-row: 1 / span 1;
     grid-column: 7 / span 1;
     width: 5%;
-}
+} 
 
 .LightRim, .LightRimRam  {
      grid-row: 1 / span 1;
@@ -39,10 +43,8 @@
   margin-top: 170%;
 }
 
-
 .LightRemove {
   opacity: 0;
 }
-
 
    */
