@@ -25,6 +25,7 @@ export function RegToB(time,myRef,setCoor,coor){
         x2=document.querySelector('.EualsBusDonnees .triangleHaut').getBoundingClientRect().left +8;
         MyFun(time + 4000,x2,y2,x1,y1,setCoor)
         y2=document.querySelector('.BusEuals').getBoundingClientRect().top
+
         MyFun(time + 5000,x2,y2,x1,y1,setCoor)
         x2=document.querySelector('#Eual2 #eual0 ').getBoundingClientRect().left
         MyFun(time + 6000,x2,y2,x1,y1,setCoor)

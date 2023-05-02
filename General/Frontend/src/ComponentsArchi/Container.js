@@ -13,14 +13,14 @@ import RimBusRi from "./RimBusRi";
 import Commencer from "./Commencer";
 import Arreter from "./Arreter";
 import LightRimRam from "./LightRimRam";
-import AcctoBD from "./ACCtoBD";
+import ABCD from "./ACCtoBD";
 import LightCoRam from "./LightCoRam";
 import LightRimUc from "./LightRimUc";
 import LightRegPile from './LightRegPile';
 import LightCoPile from "./LightCoPile";
 import LightCoUal from "./LightCoUal";
 
-function Container() {
+function Container(props) {
   // useEffect(()=>
   // {
   //   var el=document.querySelector('.ButtonExecution');
@@ -38,20 +38,22 @@ function Container() {
         <CoEtBus/>
         <BusDonnees/>
         <MemoireEtRam/>
+        <UalEtBus case={props.case}/>
         <LightRegPile/>
-        <UalEtBus/>
         <UcEtRi/>
         <RimBusDonnees/>
         <RimToRi/>
         <RimBusRi/>
         <Commencer/>
         <Arreter/>
+
         <LightRimRam time={0}/>
         <AcctoBD time={0}/>
         <LightCoRam time={0}/>
         <LightRimUc time = {0} />
         <LightCoPile time={0}/>
         <LightCoUal time={0}/>
+
     </div>
    
   );

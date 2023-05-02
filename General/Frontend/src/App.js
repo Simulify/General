@@ -30,6 +30,7 @@ import ExplicationsPage from './pages/ExplicationsPage';
 import ProfilePage from './ComponentsSettings/ProfilePage';
 import LanguePage from './ComponentsSettings/LanguePage';
 import ModePage from './ComponentsSettings/ModePage';
+import { Sim } from './pages/Sim';
 import FAQ from './pages/FAQ';
 
 function App() {
@@ -64,8 +65,8 @@ function App() {
       
       <Route path='/' element={<Home/>}></Route>
       <Route path='/home' element={<Home/>}></Route>
-      <Route path='/code' element={<Code/>}></Route>
-      <Route path='/code/simulation' element={<Simulation/>}></Route>
+      <Route path='/code' element={<Sim></Sim>}></Route>
+      <Route path='/code/simulation' element={<Sim></Sim>}></Route>
       <Route path="/files/*" element={<PrivateRoute currentUser={currentUser}><Files currentUser={currentUser} /></PrivateRoute>} />
       <Route path="/files/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<Files currentUser={currentUser} />} /></Routes></PrivateRoute>} />
 <Route path="/settings/*" element={<PrivateRoute><Routes><Route path="/" element={<Settings />} /></Routes></PrivateRoute>}/>

@@ -13,6 +13,7 @@ import Button from '../components/Buttonn'
 import Side from '../components/side'
 import next from '../Images/next.svg'
 import { Link } from 'react-router-dom';
+
 const ButoStyle={
   background: '#00A6FB',
 position:'absolute',
@@ -20,7 +21,7 @@ width:'148px',
 gridArea:'sauv'
 }
 
-function Code() {
+function Code(props) {
   const [base,setBase]=useState("")
   const handleClick1= (event)=>{
     if (event.target.textContent=="HEX") {
@@ -28,10 +29,7 @@ function Code() {
     }
     else{event.target.textContent="HEX"}
   }
-    const handleClick=(event)=> {
-     
-      console.log( Compile(Decoup(textareaValue)))
-    }
+    
     const [textareaValue, setTextareaValue] = useState("");
     const [textareaValue1, setTextareaValue1] = useState("");
     const handleTextareaChange = (event) => {
@@ -65,13 +63,15 @@ function Code() {
     let nb = 1;
     let time_simule=0;
     let txt=document.createTextNode('compilé ');
-   
+    
     form.addEventListener('keydown', ()=>
     {
         let nb_lignes=document.createElement('div');
         nb++;
-    }
-    )
+
+    })
+   
+
     // simuler.addEventListener('click',()=>
     // {
     //     console.log(form.value);
@@ -175,9 +175,9 @@ function Code() {
       </div>
       
       <div className="container2">    
-      <Button onClick={handleClick} id="btn1" text="Compiler" style={{ fontSize: '16px', background: '#F8F9FA', color: '#023047',border:'1px solid #00A6FB',padding: '12px 24px'}}></Button>
+      <Button onClick={props.handleClick} id="btn1" text="Compiler" style={{ fontSize: '16px', background: '#F8F9FA', color: '#023047',border:'1px solid #00A6FB',padding: '12px 24px'}}></Button>
       <Link to="/code/Simulation">
-      <div id="btn2" >
+      <div id="btn2" onClick={props.handleToggle} >
         
         Simuler
         <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">

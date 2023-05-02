@@ -20,7 +20,7 @@ transferer(source,destination)
     {
         if(source instanceof bus_adresses)
         {
-            destination.recevoir(bus_adresse.envoyer());
+            destination.recevoir(bus_adresses.envoyer());
         }
         if(destination instanceof bus_adresses)
         {
