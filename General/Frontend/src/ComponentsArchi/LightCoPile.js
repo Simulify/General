@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Light.css';
 import { MyFun } from './yellow';
-import { CoRam } from './yellow';
+import { CoPile } from './yellow';
 
-function LightCoRam({time}) {
+function LightCoPile({time}) {
   const [coor, setCoor] = useState([]);
   const myRef = useRef(null);
-  CoRam(time, myRef,setCoor,coor)
+  CoPile(time, myRef,setCoor,coor)
 
-  return <div className='LightCoRam' ref={myRef} />;
+  return <div className='LightCoPile' ref={myRef} />;
 }
 
-export default LightCoRam;
+export default LightCoPile;

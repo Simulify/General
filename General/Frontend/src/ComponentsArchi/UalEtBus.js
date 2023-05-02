@@ -3,10 +3,10 @@ import "../pages/Simulation.css";
 import BusEuals from "./BusEuals";
 import UalETflag from "./UalETflag";
 
-function UalEtBus() {
+function UalEtBus(props) {
     return (
         <div className="UalEtBus">
-            <UalETflag/>
+            <UalETflag case={props.case}/>
             <BusEuals/>
            
         </div>

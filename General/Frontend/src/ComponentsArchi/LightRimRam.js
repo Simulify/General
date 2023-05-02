@@ -3,10 +3,10 @@ import './Light.css';
 import { MyFun } from './yellow';
 import { RimRam } from './yellow';
 
-function LightRimRam() {
+function LightRimRam({time}) {
   const [coor, setCoor] = useState([]);
   const myRef = useRef(null);
-  RimRam(myRef,setCoor,coor)
+  RimRam(time, myRef,setCoor,coor)
 
   return <div className='LightRimRam' ref={myRef} />;
 }

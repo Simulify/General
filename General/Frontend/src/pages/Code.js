@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import axios from 'axios';
+
+
 import { useRef } from 'react';
 import { Compile, Decoup } from '../Logic/Logic/src/functions.js';
 import "./Code.css"; // import the external CSS file
@@ -10,6 +13,7 @@ import Button from '../components/Buttonn'
 import Side from '../components/side'
 import next from '../Images/next.svg'
 import { Link } from 'react-router-dom';
+
 const ButoStyle={
   background: '#00A6FB',
 position:'absolute',
@@ -17,7 +21,7 @@ width:'148px',
 gridArea:'sauv'
 }
 
-function Code() {
+function Code(props) {
   const [base,setBase]=useState("")
   const handleClick1= (event)=>{
     if (event.target.textContent=="HEX") {
@@ -25,10 +29,7 @@ function Code() {
     }
     else{event.target.textContent="HEX"}
   }
-    const handleClick=(event)=> {
-     
-      console.log( Compile(Decoup(textareaValue)))
-    }
+    
     const [textareaValue, setTextareaValue] = useState("");
     const [textareaValue1, setTextareaValue1] = useState("");
     const handleTextareaChange = (event) => {
@@ -39,6 +40,38 @@ function Code() {
     };
    
   useEffect(() => {
+   
+    console.log("buttonClicked:", localStorage.getItem("buttonClicked"));
+    const storedTextareaValue = localStorage.getItem("textareaValue");
+    const storedTextareaValue1 = localStorage.getItem("textareaValue1");
+    const buttonClicked = localStorage.getItem("buttonClicked");
+    if (buttonClicked === null) {
+      localStorage.setItem("buttonClicked", "false");
+    }
+    if (buttonClicked === "true") {
+      setTextareaValue(storedTextareaValue || "");
+      setTextareaValue1(storedTextareaValue1 || "");
+      console.log("ani ndkhol");
+    }
+    localStorage.setItem("buttonClicked", "false");
+
+    
+    var form=document.querySelector('textarea');
+    var simuler=document.getElementById('btn2');
+    var compile=document.getElementById('btn1')
+    let time_compile=0;
+    let nb = 1;
+    let time_simule=0;
+    let txt=document.createTextNode('compilé ');
+    
+    form.addEventListener('keydown', ()=>
+    {
+        let nb_lignes=document.createElement('div');
+        nb++;
+
+    })
+   
+
     // simuler.addEventListener('click',()=>
     // {
     //     console.log(form.value);
@@ -125,6 +158,36 @@ codes[1].readonly=false;
 
 )
   }, []); // This empty array as a second argument ensures that the effect is only run once when the component mounts
+  
+
+  
+  const saveFile = (textareaValue,textareaValue1) => { // this function saves the file to the database 
+    console.log(textareaValue);
+    console.log(textareaValue1);
+    localStorage.setItem('textareaValue', textareaValue);
+    localStorage.setItem('textareaValue1', textareaValue1);
+    const file = {
+      "title": "final test",
+      "codeHexa": textareaValue,
+      "codeMemo": textareaValue1,
+      "compiled": "true",
+    };
+    const storedUser = JSON.parse(localStorage.getItem("currentUser"));
+    console.log('currentUser:', storedUser);
+    console.log('currentUser_id:', storedUser._id);
+    axios
+      .post(`/users/${storedUser._id}/codes`, file)
+      .then((response) => {
+       
+        console.log("API call successful:", response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  
+
+  
     return(
       <div>
           <Navbar label="Simulation" />
@@ -135,7 +198,7 @@ codes[1].readonly=false;
        {/* buttons in top *************** */}
         <div className="buttons">
 
-        <Button text="Sauvegarder" style={ButoStyle}></Button>
+        <Button text="Sauvegarder" style={ButoStyle} onClick={() => saveFile(textareaValue,textareaValue1)} ></Button>
         <Button link="/files" text="Fichiers" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'148px',gridArea:'exem'}}></Button>
 
         </div>
@@ -151,9 +214,9 @@ codes[1].readonly=false;
       </div>
       
       <div className="container2">    
-      <Button onClick={handleClick} id="btn1" text="Compiler" style={{ fontSize: '16px', background: '#F8F9FA', color: '#023047',border:'1px solid #00A6FB',padding: '12px 24px'}}></Button>
+      <Button onClick={props.handleClick} id="btn1" text="Compiler" style={{ fontSize: '16px', background: '#F8F9FA', color: '#023047',border:'1px solid #00A6FB',padding: '12px 24px'}}></Button>
       <Link to="/code/Simulation">
-      <div id="btn2" >
+      <div id="btn2" onClick={props.handleToggle} >
         
         Simuler
         <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -161,7 +224,7 @@ codes[1].readonly=false;
 </svg>
       </div></Link>
       </div>
-          <div className='compiled'>
+          <div className='compiled' >
           </div>
           {/* <input>
             Veuillez entrer un titre pour votre programme
