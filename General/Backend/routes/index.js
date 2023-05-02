@@ -359,8 +359,6 @@ async function createCode(userId, codeData) {
     codeHexa: codeData.codeHexa,
     codeMemo:codeData.codeMemo,
     compiled:codeData.compiled,
-  
-    
   };
 
   user.codes.push(newCode);
