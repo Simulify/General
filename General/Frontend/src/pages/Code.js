@@ -42,6 +42,22 @@ function Code() {
     };
    
   useEffect(() => {
+   
+    console.log("buttonClicked:", localStorage.getItem("buttonClicked"));
+    const storedTextareaValue = localStorage.getItem("textareaValue");
+    const storedTextareaValue1 = localStorage.getItem("textareaValue1");
+    const buttonClicked = localStorage.getItem("buttonClicked");
+    if (buttonClicked === null) {
+      localStorage.setItem("buttonClicked", "false");
+    }
+    if (buttonClicked === "true") {
+      setTextareaValue(storedTextareaValue || "");
+      setTextareaValue1(storedTextareaValue1 || "");
+      console.log("ani ndkhol");
+    }
+    localStorage.setItem("buttonClicked", "false");
+
+    
     var form=document.querySelector('textarea');
     var simuler=document.getElementById('btn2');
     var compile=document.getElementById('btn1')
@@ -54,7 +70,8 @@ function Code() {
     {
         let nb_lignes=document.createElement('div');
         nb++;
-    })
+    }
+    )
     // simuler.addEventListener('click',()=>
     // {
     //     console.log(form.value);
@@ -99,6 +116,8 @@ function Code() {
 
   })
 
+  
+
   }, []); // This empty array as a second argument ensures that the effect is only run once when the component mounts
   
 
@@ -106,9 +125,10 @@ function Code() {
   const saveFile = (textareaValue,textareaValue1) => { // this function saves the file to the database 
     console.log(textareaValue);
     console.log(textareaValue1);
+    localStorage.setItem('textareaValue', textareaValue);
+    localStorage.setItem('textareaValue1', textareaValue1);
     const file = {
-      
-      "title": "test save",
+      "title": "final test",
       "codeHexa": textareaValue,
       "codeMemo": textareaValue1,
       "compiled": "true",
@@ -126,6 +146,8 @@ function Code() {
         console.error(error);
       });
   };
+  
+
   
     return(
       <div>

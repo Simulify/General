@@ -44,6 +44,7 @@ function App() {
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('user');
     setIsAuthenticated(false);
+    localStorage.setItem("buttonClicked", "false");
   }
   function PrivateRoute({ children }) {
     const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';

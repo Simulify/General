@@ -21,7 +21,7 @@ function Files({ isAuthenticated, setIsAuthenticated, currentUser, setCurrentUse
   const [transferVisible, setTransferVisible] = useState(false);
   const [shiftVisible, setShiftVisible] = useState(false);
   const [fileExempleVisible, setFileExempleVisible] = useState(false);
-  const fileValue="Programme";
+ 
   
 
  
@@ -49,7 +49,7 @@ function Files({ isAuthenticated, setIsAuthenticated, currentUser, setCurrentUse
 const [fileList, setFileList] = useState([]);
 
 useEffect(() => {
-  setFileList(files.map((file) => ({ id: file._id, label: file.title })));
+  setFileList(files.map((file) => ({ id: file._id, label: file.title, codeHexa: file.codeHexa,codeMemo:file.codeMemo,compiled:file.compiled })));
 }, [files]);
 
 async function removeFile(id) {
@@ -208,7 +208,8 @@ async function removeFile(id) {
       <ul>
         {fileList.map((file) => (
           <li key={file.id}>
-            <File label={file.label} value={fileValue} onDelete={() => removeFile(file.id)} />
+            <File label={file.label} codeHexa={file.codeHexa} codeMemo={file.codeMemo} compiled={file.compiled}  onDelete={() => removeFile(file.id)} />
+
           </li>
         ))}
       </ul>
