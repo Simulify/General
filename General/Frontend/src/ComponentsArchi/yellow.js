@@ -159,25 +159,22 @@ export function RimToUc(time, myRef, setCoor, coor) {
 
  }
 
- /**************************************************************************/
 
- export function RegPile(myRef,setCoor,coor){
+
+ export function RegPile(time,myRef,setCoor,coor){
   useEffect(() => {
-  
-      let x1 = myRef.current.getBoundingClientRect().left;
+      let x1 =myRef.current.getBoundingClientRect().left;
       let y1 = myRef.current.getBoundingClientRect().top;
-
-      let x2 =document.querySelector('.registre').getBoundingClientRect().left;
-      let y2 = document.querySelector('.registre').getBoundingClientRect().top;
-      MyFun(1000,x2,y2,myRef.current.getBoundingClientRect().left,y1,setCoor)
-      //  x2 = document.querySelector('.Pile').getBoundingClientRect().left;
-      
-      // MyFun(2000,x2,y2,x1,y1,setCoor);
-      
-      // y2 = document.querySelector('.Pile').getBoundingClientRect().bottom +200 ;
-      // y1 = document.querySelector('.BusDonnees').getBoundingClientRect().bottom ;
-      // MyFun(3000,x2,y2,x1,y1,setCoor)
-      
+      let x2 =document.querySelector('.registres').getBoundingClientRect().left;
+      let y2 = document.querySelector('.registres').getBoundingClientRect().top;
+      MyFun(time,x2+70,y2,x1,y1,setCoor)
+      y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
+      x2=document.querySelector('.registres').getBoundingClientRect().left;
+      MyFun(time+2000,x2+70,y2,x1,y1,setCoor);
+      x2=document.querySelector('.pile').getBoundingClientRect().left;
+      MyFun(time+4000,x2+70,y2,x1,y1,setCoor);
+      y2 = document.querySelector('.pile').getBoundingClientRect().top;
+      MyFun(time+5000,x2+70,y2,x1,y1,setCoor);
     }, []);
     useEffect(() => {
       if (coor.length === 2) {
