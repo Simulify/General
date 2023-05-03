@@ -33,7 +33,7 @@ import { BinToMnem, Compile, Coprnd, Decoup, reg } from '../Logic/Logic/src/func
 import ABCD from '../ComponentsArchi/ACCtoBD';
 import { render } from 'react-dom';
 const mot16 = new Mot16("0000000000000000");
-const mot = new Mot16("0000001000000111");
+const mot = new Mot16("0000000000000111");
 const flags = new Flags(new Mot16("0000000000000000"));
 const Acc = new ACC(mot);
 const bx = new BX(new Mot16("0000000000000000"));
@@ -63,6 +63,8 @@ export function Sim(params) {
     const [showPageOne, setShowPageOne] = useState(false);
     const [comp,setComp]=useState(false)
     const [elements,setElements]=useState([])
+    const[hexx,setHexx]=useState([])
+    const[coo,setCoo]=useState([0,0,0,0,0])
     const updateElem = (newelement) => {
         setElements([...elements,newelement]);
         console.log(elements)
@@ -71,21 +73,25 @@ export function Sim(params) {
     const[ax,setACC]=useState([0,0,0,0,""])
     const handleToggle = () => {
         setShowPageOne(true)
-            if(comp){UC.Execute(machine,document.querySelector('.Container'),updateElem,elements,setACC,ax)
+            if(comp){UC.Execute(machine,document.querySelector('.Container'),updateElem,elements,setACC,ax,coo,setCoo)
         console.log(ax)}
             
         
     }
-    const handleClick = (event) => {
+   
+    const HandleClick = (event) => {
         let phrases = Compile(Decoup(document.querySelector('textarea').value))
         setComp(true)
         let adr = 0
         let arr = []
+        
         for (let index = 0; index < phrases.length; index++) {
             const element = phrases[index]
             if (Array.isArray(element)) {
                 for (let i = 0; i < element.length; i++) {
                     let value = element[i];
+                    hexx.push(parseInt(value,2).toString(16).padStart(4,"0"))
+                    setHexx(hexx)
                     const motmem = new mot_mem(adr, value)
                     arr.push(motmem)
                     adr = adr + 1
@@ -93,18 +99,24 @@ export function Sim(params) {
             }
             else {
                 arr.push(new mot_mem(adr, element))
+                hexx.push(parseInt(element,2).toString(16).padStart(4,"0"))
+                setHexx(hexx)
                 adr = adr + 1
             }
-
         }
-       
+       for (let index = 0; index < hexx.length; index++) {
+        const element = hexx[index];
+        hexx[index]=element.split("")
+       }
+       setHexx(hexx)
         mem.splice(0, arr.length, ...arr)
          Memoire = new memoire(mem)
          machine = new Machine(Acc, ri, si, dx, bx, co, cx, rIM, rAM, busAdr, busData, flags, uAl, Memoire, pile);
         console.log(machine)
+        console.log(hexx)
     }
     return (
-        <>{showPageOne ? <Simulation case={ax} elements={elements} /> : <Code handleToggle={handleToggle} handleClick={handleClick} />}
+        <>{showPageOne ? <Simulation case={ax} memoire={hexx} Co={coo} elements={elements} /> : <Code handleToggle={handleToggle} handleClick={HandleClick} />}
             
         </>
     )

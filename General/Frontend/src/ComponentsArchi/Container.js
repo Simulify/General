@@ -35,9 +35,9 @@ function Container(props) {
     <div className="Container">
         <Registres/>
         <Pile/>
-        <CoEtBus/>
+        <CoEtBus Co={props.Co}/>
         <BusDonnees/>
-        <MemoireEtRam/>
+        <MemoireEtRam memoire={props.memoire}/>
         <UalEtBus case={props.case}/>
         <LightRegPile/>
         <UcEtRi/>
@@ -47,12 +47,12 @@ function Container(props) {
         <Commencer/>
         <Arreter/>
 
-        <LightRimRam time={0}/>
+        {/* <LightRimRam time={0}/>
         <AcctoBD time={0}/>
         <LightCoRam time={0}/>
         <LightRimUc time = {0} />
         <LightCoPile time={0}/>
-        <LightCoUal time={0}/>
+        <LightCoUal time={0}/> */}
 
     </div>
    

@@ -12,7 +12,7 @@ function Simulation (props) {
           <div>
           {element}
           </div>))}
-      <Container case={props.case}/>
+      <Container case={props.case} memoire={props.memoire} Co={props.Co}/>
     </div>
   );
 };
