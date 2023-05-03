@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-
-
 import { useRef } from 'react';
 import { Compile, Decoup } from '../Logic/Logic/src/functions.js';
 import "./Code.css"; // import the external CSS file
@@ -28,7 +26,6 @@ function Code(props) {
     }
     else{event.target.textContent="HEX"}
   }
-    
     const [textareaValue, setTextareaValue] = useState("");
     const [textareaValue1, setTextareaValue1] = useState("");
     const handleTextareaChange = (event) => {
@@ -39,10 +36,12 @@ function Code(props) {
     };
    
   useEffect(() => {
-   
+   //---------Loading the content of a file clicked"----------------
     console.log("buttonClicked:", localStorage.getItem("buttonClicked"));
-    const storedTextareaValue = localStorage.getItem("textareaValue");
-    const storedTextareaValue1 = localStorage.getItem("textareaValue1");
+    const storedTextareaValue = localStorage.getItem("filecodeHexa");
+    const storedTitle = localStorage.getItem("title");
+    console.log("storedTitle :",storedTitle);
+    const storedTextareaValue1 = localStorage.getItem("filecodeMemo");
     const buttonClicked = localStorage.getItem("buttonClicked");
     if (buttonClicked === null) {
       localStorage.setItem("buttonClicked", "false");
@@ -53,7 +52,7 @@ function Code(props) {
       console.log("ani ndkhol");
     }
     localStorage.setItem("buttonClicked", "false");
-    
+       //----------------------------------
     var form=document.querySelector('textarea');
     var simuler=document.getElementById('btn2');
     var compile=document.getElementById('btn1')
@@ -119,7 +118,7 @@ codes[1].readonly=false;
   console.log(codes[0].readonly);
   if(clicked===false && codes[0].value!=='')
     {
-     
+
        codes[0].readonly=false;
        codes[1].readonly=true;
        clicked=true;
@@ -141,14 +140,10 @@ codes[1].readonly=false;
   console.log(codes[1].readonly);
   if(clicked===false && codes[1].value!=='')
   {
-    
      codes[1].readonly=false;
      codes[0].readonly=true;
      clicked=true; 
   }
-
-
- 
 }
   
 
@@ -156,33 +151,73 @@ codes[1].readonly=false;
   }, []); // This empty array as a second argument ensures that the effect is only run once when the component mounts
   
 
-  
-  const saveFile = (textareaValue,textareaValue1) => { // this function saves the file to the database 
+  const saveFile = (textareaValue, textareaValue1) => {
     console.log(textareaValue);
     console.log(textareaValue1);
     localStorage.setItem('textareaValue', textareaValue);
     localStorage.setItem('textareaValue1', textareaValue1);
+    const storedTitle = localStorage.getItem("title");
+  
+    // check if the storedTitle is "ET"
+    if (storedTitle === "ET" || storedTitle === "OU" || storedTitle === "NON" || storedTitle === "ADD" || storedTitle === "SUB"|| storedTitle === "DIV"|| storedTitle === "BCV" || storedTitle === "LOOP" || storedTitle === "PERMUT" || storedTitle === "SHIFT LEFT"|| storedTitle === "SHIFT RIGHT") {
+      return;
+    }
+  
     const file = {
-      "title": "final test",
+      "title": storedTitle, 
       "codeHexa": textareaValue,
       "codeMemo": textareaValue1,
-      "compiled": "true",
+      
     };
     const storedUser = JSON.parse(localStorage.getItem("currentUser"));
     console.log('currentUser:', storedUser);
     console.log('currentUser_id:', storedUser._id);
+    const storedCodeId = localStorage.getItem("storedCode.id");
+    console.log("storedCode.id:",storedCodeId);
+  
+    // Check if there is already a code with the same title for the current user
     axios
-      .post(`/users/${storedUser._id}/codes`, file)
+      .get(`/users/${storedUser._id}/codes/${storedCodeId}`)
       .then((response) => {
-       
-        console.log("API call successful:", response);
+        const existingCode = response.data.title === file.title ? response.data : undefined;
+        let exist = false;
+        if (existingCode !== undefined) {
+          exist = true;
+        }
+        console.log ("existingCode:", existingCode);
+  
+        if (exist === true) {
+          axios
+            .put(`/users/${storedUser._id}/codes/${storedCodeId}`, file)
+            .then((response) => {
+              console.log("API call successful:", response);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        } else {
+          axios
+            .post(`/users/${storedUser._id}/codes`, file)
+            .then((response) => {
+              console.log("API call successful:", response);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        }
       })
       .catch((error) => {
         console.error(error);
+        axios
+          .post(`/users/${storedUser._id}/codes`, file)
+          .then((response) => {
+            console.log("API call successful:", response);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       });
   };
-  
-
   
     return(
       <div>
@@ -193,12 +228,10 @@ codes[1].readonly=false;
        <div className='Bigcontainer'>
        {/* buttons in top *************** */}
         <div className="buttons">
-
         <Button text="Sauvegarder" style={ButoStyle} onClick={() => saveFile(textareaValue,textareaValue1)} ></Button>
         <Button link="/files" text="Fichiers" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'148px',gridArea:'exem'}}></Button>
-
         </div>
-        {/************************* */}
+        {/**************************/}
        
         <div className="container">
          <Side textareaValue={textareaValue} handleTextareaChange={handleTextareaChange}></Side>

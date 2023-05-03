@@ -4,17 +4,33 @@ import file from "../Images/File.svg";
 import { Link } from "react-router-dom";
 
 function FileNoDelete(props) {
+    
+  const handleClick = () => {
+    localStorage.setItem('title', props.label);
+    console.log(`label: ${props.label}`);
+    localStorage.setItem('filecodeHexa', props.codeHexa);
+    console.log(`filecodeHexa: ${props.codeHexa}`);
+    localStorage.setItem('filecodeMemo', props.codeMemo);
+    console.log(`filecodeMemo: ${props.codeMemo}`);
+    localStorage.setItem('buttonClicked', "true");
+    console.log("buttonClicked:", localStorage.getItem("buttonClicked"));
+  };
   return ( 
     <div className="fileLign">
-      <button className="File-button" onClick={props.onClick}>
       <Link to="/code">
-        <img className="file" src={file} alt="fileicon"></img>
-        </Link>
-        {props.label}
-      </button>
-      {props.value && <p style={{display: 'none'}}>{props.value}</p>}
+        <button className="File-button" onClick={handleClick}>
+          <img className="file" src={file} alt="fileicon"></img>
+          {props.label}
+        </button>
+      </Link>
+      <p style={{display: 'none'}}>{props.codeHexa}</p>
+      <p style={{display: 'none'}}>{props.codeMemo}</p>
     </div>
   );
 }
 
 export default FileNoDelete;
+
+
+
+
