@@ -21,15 +21,6 @@ import LightCoPile from "./LightCoPile";
 import LightCoUal from "./LightCoUal";
 
 function Container(props) {
-  // useEffect(()=>
-  // {
-  //   var el=document.querySelector('.ButtonExecution');
-  //   el.addEventListener('click',()=>
-  //   {
-  //     var el2=document.querySelector('.LightMove')
-  //     el2.classList.add('Light');
-  //   })
-  // })
 
     return (
     <div className="Container">
@@ -46,7 +37,6 @@ function Container(props) {
         <RimBusRi/>
         <Commencer/>
         <Arreter/>
-
         <LightRimRam time={0}/>
         <LightCoRam time={0}/>
         <LightRimUc time = {0} />
