@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-
-
 import { useRef } from 'react';
 import { Compile, Decoup } from '../Logic/Logic/src/functions.js';
 import "./Code.css"; // import the external CSS file
@@ -29,7 +27,6 @@ function Code(props) {
     }
     else{event.target.textContent="HEX"}
   }
-    
     const [textareaValue, setTextareaValue] = useState("");
     const [textareaValue1, setTextareaValue1] = useState("");
     const handleTextareaChange = (event) => {
@@ -42,8 +39,10 @@ function Code(props) {
   useEffect(() => {
    //---------Loading the content of a file clicked"----------------
     console.log("buttonClicked:", localStorage.getItem("buttonClicked"));
-    const storedTextareaValue = localStorage.getItem("textareaValue");
-    const storedTextareaValue1 = localStorage.getItem("textareaValue1");
+    const storedTextareaValue = localStorage.getItem("filecodeHexa");
+    const storedTitle = localStorage.getItem("title");
+    console.log("storedTitle :",storedTitle);
+    const storedTextareaValue1 = localStorage.getItem("filecodeMemo");
     const buttonClicked = localStorage.getItem("buttonClicked");
     if (buttonClicked === null) {
       localStorage.setItem("buttonClicked", "false");
@@ -121,7 +120,7 @@ codes[1].readonly=false;
   console.log(codes[0].readonly);
   if(clicked===false && codes[0].value!=='')
     {
-     
+
        codes[0].readonly=false;
        codes[1].readonly=true;
        clicked=true;
@@ -143,14 +142,10 @@ codes[1].readonly=false;
   console.log(codes[1].readonly);
   if(clicked===false && codes[1].value!=='')
   {
-    
      codes[1].readonly=false;
      codes[0].readonly=true;
      clicked=true; 
   }
-
-
- 
 }
   
 
@@ -163,11 +158,18 @@ codes[1].readonly=false;
     console.log(textareaValue1);
     localStorage.setItem('textareaValue', textareaValue);
     localStorage.setItem('textareaValue1', textareaValue1);
+    const storedTitle = localStorage.getItem("title");
+  
+    // check if the storedTitle is "ET"
+    if (storedTitle === "ET" || storedTitle === "OU" || storedTitle === "NON" || storedTitle === "ADD" || storedTitle === "SUB"|| storedTitle === "DIV"|| storedTitle === "BCV" || storedTitle === "LOOP" || storedTitle === "PERMUT" || storedTitle === "SHIFT LEFT"|| storedTitle === "SHIFT RIGHT") {
+      return;
+    }
+  
     const file = {
-      "title": "wwwwww",
+      "title": storedTitle, 
       "codeHexa": textareaValue,
       "codeMemo": textareaValue1,
-      "compiled": "true",
+      
     };
     const storedUser = JSON.parse(localStorage.getItem("currentUser"));
     console.log('currentUser:', storedUser);
@@ -185,7 +187,7 @@ codes[1].readonly=false;
           exist = true;
         }
         console.log ("existingCode:", existingCode);
-        
+  
         if (exist === true) {
           axios
             .put(`/users/${storedUser._id}/codes/${storedCodeId}`, file)
@@ -219,8 +221,6 @@ codes[1].readonly=false;
       });
   };
   
-
-  
     return(
       <div>
           <Navbar label="Simulation" />
@@ -230,12 +230,10 @@ codes[1].readonly=false;
        <div className='Bigcontainer'>
        {/* buttons in top *************** */}
         <div className="buttons">
-
         <Button text="Sauvegarder" style={ButoStyle} onClick={() => saveFile(textareaValue,textareaValue1)} ></Button>
         <Button link="/files" text="Fichiers" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'148px',gridArea:'exem'}}></Button>
-
         </div>
-        {/************************* */}
+        {/**************************/}
        
         <div className="container">
          <Side textareaValue={textareaValue} handleTextareaChange={handleTextareaChange}></Side>
