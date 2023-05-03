@@ -3,10 +3,10 @@ import './Light.css';
 import { MyFun } from './yellow';
 import { RegPile } from './yellow';
 
-function LightRegPile() {
+function LightRegPile({time}) {
   const [coor, setCoor] = useState([]);
   const myRef = useRef(null);
-  RegPile(myRef,setCoor,coor);
+  RegPile(time,myRef,setCoor,coor);
 
   return <div className='LightRegPile' ref={myRef} />;
 }

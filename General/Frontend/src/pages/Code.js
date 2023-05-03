@@ -59,9 +59,7 @@ function Code(props) {
     var form=document.querySelector('textarea');
     var simuler=document.getElementById('btn2');
     var compile=document.getElementById('btn1')
-    let time_compile=0;
     let nb = 1;
-    let time_simule=0;
     let txt=document.createTextNode('compilé ');
     
     form.addEventListener('keydown', ()=>
@@ -84,40 +82,79 @@ function Code(props) {
     //    time_compile=Date.now();
     //    checkorder();
     // })
-    function checkorder()
-    {
-        if(time_compile>time_simule)
-        {
-           var compiled=document.querySelector('.compiled');
-           compiled.textContent='compiled';
-            console.log('le code a été bien compilé');  
+    // function checkorder()
+    // {
+    //     if(time_compile>time_simule)
+    //     {
+    //        var compiled=document.querySelector('.compiled');
+    //        compiled.textContent='compiled';
+    //         console.log('le code a été bien compilé');  
 
-        }
-        else
-        {
-       throw new Error('Veuillez compiler le code avant la simulation')   
-        }
-    } 
+    //     }
+    //     else
+    //     {
+    //    throw new Error('Veuillez compiler le code avant la simulation')   
+    //     }
+    // } 
+    let time_compile=0;
+    let time_simule=0;
   var codes=document.getElementsByTagName('textarea');
-  codes[0].addEventListener('click',()=>
-  {
-    console.log(codes[0].disabled);
+let clicked=false;
+codes[0].readonly=false;
+codes[1].readonly=false;
 
-    codes[0].readonly=false; 
-    codes[1].readonly=true;
+  // codes[0].addEventListener('click',()=>
+  // {
+  //   if(!clicked)
+  //   {
+  //     codes[0].readonly=false; 
+  //     codes[1].readonly=true;
+  //     clicked=true;
+  //     console.log(codes[0].readonly);
+  //   }
+   
+  // })
+
+
+  codes[0].addEventListener('click',()=>{
+  codes[0].select();
+  console.log(codes[0].readonly);
+  if(clicked===false && codes[0].value!=='')
+    {
+     
+       codes[0].readonly=false;
+       codes[1].readonly=true;
+       clicked=true;
+    }
+  })
+
+
+  codes[0].addEventListener('input', () => {
+    if(codes[0].readonly===true && codes[1].value!=='') {
+      codes[0].value='';
+    }  
+    })
+  codes[1].addEventListener('input', () => {
+  if(codes[1].readonly===true && codes[0].value!=='' ) {
     codes[1].value='';
+  }
   })
-  codes[1].addEventListener('click',()=>
+  codes[1].addEventListener('click',()=>{
+  console.log(codes[1].readonly);
+  if(clicked===false && codes[1].value!=='')
   {
-    codes[1].readonly=false;
-    codes[0].readonly=true;
-    codes[0].value='';
-    console.log(codes[1].disabled);
+    
+     codes[1].readonly=false;
+     codes[0].readonly=true;
+     clicked=true; 
+  }
 
-  })
 
+ 
+}
   
 
+)
   }, []); // This empty array as a second argument ensures that the effect is only run once when the component mounts
   
 
@@ -222,6 +259,9 @@ function Code(props) {
       </div>
           <div className='compiled' >
           </div>
+          {/* <input>
+            Veuillez entrer un titre pour votre programme
+          </input> */}
           <hr>
           </hr> </div>
     );

@@ -39,7 +39,7 @@ function Container(props) {
         <BusDonnees/>
         <MemoireEtRam/>
         <UalEtBus case={props.case}/>
-        <LightRegPile/>
+        <LightRegPile  time={0}/>
         <UcEtRi/>
         <RimBusDonnees/>
         <RimToRi/>
@@ -48,11 +48,10 @@ function Container(props) {
         <Arreter/>
 
         <LightRimRam time={0}/>
-        <AcctoBD time={0}/>
         <LightCoRam time={0}/>
         <LightRimUc time = {0} />
         <LightCoPile time={0}/>
-        <LightCoUal time={0}/>
+        <LightCoUal time={0} />
 
     </div>
    
