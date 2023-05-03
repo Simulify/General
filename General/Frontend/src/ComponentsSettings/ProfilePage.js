@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import FormSettings from './FormSettings';
 import Navbar from '../components/Navbar';
+import "../pages/Settings.css" ; 
+
+import InputButton from '../Components_login/InputButton';
 
 function ProfilePage() {
     const [email, setEmail] = useState('');
@@ -29,7 +32,7 @@ function ProfilePage() {
                     <div className='inputs'>
                         <div className="Email">
                             <label htmlFor="email">E-mail</label>
-                            <input
+                            <InputButton
                                 type="email"
                                 id="email"
                                 value={email}
@@ -38,11 +41,12 @@ function ProfilePage() {
                         </div>
                         <div className="Username">
                             <label htmlFor="username">Nom d'utilisateur</label>
-                            <input
+                            <InputButton
                                 type="text"
                                 id="username"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
+                                
                             />
                         </div>
                     </div>

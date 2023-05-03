@@ -1,17 +1,63 @@
+
+
+.Settingsbar {
+  position: relative;
+}
+
+.Settingsbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #00A6FB;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 10px;
+  padding: 15px;
   width: 80%;
   margin-left: 8%;
+  color: var(--light-dark-blue);
 }
 
-.Settingsbar li {
-  list-style: none;
-  padding: 0 20px;
+.nav-links a {
   position: relative;
-  color: #5784BA;
+  color: #5784ba;
+}
+
+.nav-links a::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #252e46;
+  transition: width 0.3s;
+  z-index: 2;
+}
+
+.nav-links a.active {
+  color: #00A6FB;
+}
+
+.nav-links a.active::before {
+  width: 100%;
+}
+
+.nav-links a:hover::before,
+.nav-links a:focus::before {
+  width: 50%;
+}
+
+.nav-links a:focus ~ .Settingsbar::after {
+  transform: scaleX(1);
 }
 
 .MotDePassePage,
@@ -20,11 +66,13 @@
 .LanguePage,
 .Settings {
   margin-left: 10%;
+  background-color: var(--background-color);
+  
 }
 
 .blue-rectangle {
-  background-color: #B6D8F2;
-  height: 100px;
+  background-color: var(--light-dark-blue);
+  height: 120px;
   width: 80%;
   margin-left: 0%;
   display: flex;
@@ -38,7 +86,7 @@
 }
 
 .modifybutton {
-  background-color: white;
+  background-color: var( --white-to-light);
   border: 1px solid #00a6fb;
   margin-right: 5%;
   color: #023047;
@@ -50,8 +98,9 @@
 }
 
 .FormSettings svg {
-  width: 25%;
-  margin-top: 100px;
+  width: 12%;
+  margin-top: 120px;
+  margin-left: 8%;
 }
 
 @media (max-width: 768px) {
@@ -61,15 +110,23 @@
 }
 
 .Settingsbar {
-  margin-top: 140px;
+  margin-top: 160px;
   margin-bottom: 50px;
+  padding: 0px 25px;
 }
 
-.containerSettings , .ProfileContainer , .LangueContainer , .ModeContainer {
+.containerSettings,
+.ProfileContainer,
+.LangueContainer,
+.ModeContainer {
   margin: 0px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+.LangueContainer,
+.ModeContainer {
+  margin-left: 2%;
 }
 
 
@@ -127,7 +184,7 @@ input {
   margin-left: 10px;
   margin-right: 10px;
   padding: 0 20px;
-  background: #00A6FB;
+  background:var( --blue);
   border-radius: 30px;
   border: none;
   color: #F8F9FA;
@@ -137,7 +194,7 @@ input {
   height: 40px;
   margin-right: 0px;
   margin-left: 10px;
-  background: #F8F9FA;
+  background: var( --light-dark);
   padding: 0 20px;
   border: 1px solid #00A6FB;
   box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 3px 6px rgba(43, 110, 177, 0.1);
@@ -156,20 +213,41 @@ input {
 .TwoButtons {
   display: flex;
   flex-direction: row;
-  margin-top: 20%;
+  
   width: 30%;
-  margin-right: 10%;
+  
   justify-content: flex-end;
 
+  position: fixed;
+  bottom: 5%;
+  right: 10%;
+  
 }
 
-.LangueForm .TwoButtons{
-  margin-top: 17.5%;
+
+.LangueForm{
+position: relative;
+  height: 100vh;
+  overflow: hidden;
+  }
+.LangueForm .TwoButtons {
+  position: fixed;
+  bottom: 5%;
+  right: 10%;
 
 }
-.ModeForm .TwoButtons{
-  margin-top: 17.5%;
 
+.ModeForm {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.ModeForm .TwoButtons {
+  position: fixed;
+  bottom: 5%;
+  right: 10%;
+  
 }
 
 label {
@@ -189,14 +267,15 @@ label {
   color: #F8F9FA;
   border: none;
   height: 50px;
-  
+  margin-left: 0px;
   margin-top: 5%;
   font-size: 14px;
   width: 100%;
   font-family: 'Montserrat', sans-serif;
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: center;
+  
 
 }
 
@@ -212,14 +291,14 @@ label {
   margin-top: 12%;
   font-size: 14px;
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: center;
 
 }
 
-.LightButton{
+.LightButton {
 
-  
+
   background: #00A6FB;
   border-radius: 8px;
   border: none;
@@ -230,41 +309,52 @@ label {
   margin-top: 12%;
   font-size: 14px;
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
 
 }
+.LightModeLabel{
+  color: #F8F9FA;
+}
 
-.DarkButton{
+.DarkButton {
 
   background: rgba(182, 216, 242, 0.36);
   border-radius: 8px;
   color: #023047;
   border: none;
   height: 50px;
-  
+
   margin-top: 5%;
   font-size: 14px;
   width: 100%;
   font-family: 'Montserrat', sans-serif;
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: center;
 }
 
-.france ,.unitedStates ,.Moon ,.Sun {
+.france,
+.unitedStates,
+.Moon,
+.Sun {
   margin-right: 10px;
 }
 
 
-.LangueLabel , .ModeLabel  {
+.LangueLabel,
+.ModeLabel {
 
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 29px;
-color: #023047;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 29px;
+  color:var(--dark-to-light);
+  margin-left: 1%;
 }
+ body{
+background-color:  var(--background-color);
+ }
 

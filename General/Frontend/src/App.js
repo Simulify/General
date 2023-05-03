@@ -1,3 +1,5 @@
+
+import './pages/ColorsVar.css'; 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Sidebar from './components/Sidebar';
@@ -29,6 +31,7 @@ import ExplicationsPage from './pages/ExplicationsPage';
 import ProfilePage from './ComponentsSettings/ProfilePage';
 import LanguePage from './ComponentsSettings/LanguePage';
 import ModePage from './ComponentsSettings/ModePage';
+
 
 function App() {
  return (
