@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import React, {useState,useEffect} from 'react';
+
+import './pages/ColorsVar.css'; 
 import './App.css';
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
