@@ -42,11 +42,7 @@ const userSchema = new mongoose.Schema({
     codeMemo: {
       type: String,
     },
-    compiled:{
-      type:Boolean,
-      required:true,
-      default:false
-    },
+   
 
    
   }]

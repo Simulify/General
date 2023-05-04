@@ -24,30 +24,22 @@ import LightUalCo from "./LightUalCo";
 import LightRimEual1 from "./LightRimEual1";
 
 function Container(props) {
-  // useEffect(()=>
-  // {
-  //   var el=document.querySelector('.ButtonExecution');
-  //   el.addEventListener('click',()=>
-  //   {
-  //     var el2=document.querySelector('.LightMove')
-  //     el2.classList.add('Light');
-  //   })
-  // })
 
     return (
     <div className="Container">
-        <Registres case={props.case}/>
+        <Registres/>
         <Pile/>
-        <CoEtBus case={props.case}/>
+        <CoEtBus/>
         <BusDonnees/>
-        <MemoireEtRam case={props.case}/>
+        <MemoireEtRam/>
         <UalEtBus case={props.case}/>
-        <UcEtRi case={props.case}/>
+        <UcEtRi/>
         <RimBusDonnees/>
         <RimToRi/>
         <RimBusRi/>
         <Commencer/>
         <Arreter/>
+
 
         {/* <LightRegPile time = {0}/>
         <LightRimRam time = {0}/>
@@ -58,6 +50,7 @@ function Container(props) {
         <LightPileCo time={0}/> */}
         {/* <LightUalCo time={0}/> */}
         <LightRimEual1 time={0}/>
+
 
     </div>
    

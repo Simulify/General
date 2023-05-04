@@ -270,3 +270,26 @@ h4
     font-size: 15px;
     margin-right: auto;
 }
+.Title 
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    resize: none;
+    border-radius: 20px;
+    border: 1px solid #00A6FB; ;
+  height:35px;
+    font-size: 20px;
+    min-width: 20%  ;
+    padding: 10px;
+}
+.Title::placeholder
+{
+    font-size: 15px;
+    opacity: .8;
+}
+.Title:focus
+{
+    filter: drop-shadow(0 0 0.1rem #00A6FB);
+    font-size: 15px;
+} 

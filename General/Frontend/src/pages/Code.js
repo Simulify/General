@@ -1,18 +1,15 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-
-
 import { useRef } from 'react';
 import { Compile, Decoup } from '../Logic/Logic/src/functions.js';
 import "./Code.css"; // import the external CSS file
-// import img1 from './Ellipse 515.png';
-// import img2 from './Icon.png';
 import Navbar from '../components/Navbar';
 import Button from '../components/Buttonn'
 import Side from '../components/side'
 import next from '../Images/next.svg'
 import { Link } from 'react-router-dom';
+import Title from '../components/Title' ;
 
 const ButoStyle={
   background: '#00A6FB',
@@ -29,7 +26,6 @@ function Code(props) {
     }
     else{event.target.textContent="HEX"}
   }
-    
     const [textareaValue, setTextareaValue] = useState("");
     const [textareaValue1, setTextareaValue1] = useState("");
     const handleTextareaChange = (event) => {
@@ -42,8 +38,10 @@ function Code(props) {
   useEffect(() => {
    //---------Loading the content of a file clicked"----------------
     console.log("buttonClicked:", localStorage.getItem("buttonClicked"));
-    const storedTextareaValue = localStorage.getItem("textareaValue");
-    const storedTextareaValue1 = localStorage.getItem("textareaValue1");
+    const storedTextareaValue = localStorage.getItem("filecodeHexa");
+    const storedTitle = localStorage.getItem("title");
+    console.log("storedTitle :",storedTitle);
+    const storedTextareaValue1 = localStorage.getItem("filecodeMemo");
     const buttonClicked = localStorage.getItem("buttonClicked");
     if (buttonClicked === null) {
       localStorage.setItem("buttonClicked", "false");
@@ -54,8 +52,7 @@ function Code(props) {
       console.log("ani ndkhol");
     }
     localStorage.setItem("buttonClicked", "false");
-   
-    //----------------------------------
+       //----------------------------------
     var form=document.querySelector('textarea');
     var simuler=document.getElementById('btn2');
     var compile=document.getElementById('btn1')
@@ -121,7 +118,7 @@ codes[1].readonly=false;
   console.log(codes[0].readonly);
   if(clicked===false && codes[0].value!=='')
     {
-     
+
        codes[0].readonly=false;
        codes[1].readonly=true;
        clicked=true;
@@ -143,14 +140,10 @@ codes[1].readonly=false;
   console.log(codes[1].readonly);
   if(clicked===false && codes[1].value!=='')
   {
-    
      codes[1].readonly=false;
      codes[0].readonly=true;
      clicked=true; 
   }
-
-
- 
 }
   
 
@@ -163,11 +156,18 @@ codes[1].readonly=false;
     console.log(textareaValue1);
     localStorage.setItem('textareaValue', textareaValue);
     localStorage.setItem('textareaValue1', textareaValue1);
+    const storedTitle = localStorage.getItem("title");
+  
+    // check if the storedTitle is "ET"
+    if (storedTitle === "ET" || storedTitle === "OU" || storedTitle === "NON" || storedTitle === "ADD" || storedTitle === "SUB"|| storedTitle === "DIV"|| storedTitle === "BCV" || storedTitle === "LOOP" || storedTitle === "PERMUT" || storedTitle === "SHIFT LEFT"|| storedTitle === "SHIFT RIGHT") {
+      return;
+    }
+  
     const file = {
-      "title": "final test 1",
+      "title": storedTitle, 
       "codeHexa": textareaValue,
       "codeMemo": textareaValue1,
-      "compiled": "true",
+      
     };
     const storedUser = JSON.parse(localStorage.getItem("currentUser"));
     console.log('currentUser:', storedUser);
@@ -185,7 +185,7 @@ codes[1].readonly=false;
           exist = true;
         }
         console.log ("existingCode:", existingCode);
-        
+  
         if (exist === true) {
           axios
             .put(`/users/${storedUser._id}/codes/${storedCodeId}`, file)
@@ -219,8 +219,6 @@ codes[1].readonly=false;
       });
   };
   
-
-  
     return(
       <div>
           <Navbar label="Simulation" />
@@ -230,12 +228,10 @@ codes[1].readonly=false;
        <div className='Bigcontainer'>
        {/* buttons in top *************** */}
         <div className="buttons">
-
         <Button text="Sauvegarder" style={ButoStyle} onClick={() => saveFile(textareaValue,textareaValue1)} ></Button>
         <Button link="/files" text="Fichiers" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'148px',gridArea:'exem'}}></Button>
-
         </div>
-        {/************************* */}
+        {/**************************/}
        
         <div className="container">
          <Side textareaValue={textareaValue} handleTextareaChange={handleTextareaChange}></Side>
@@ -249,19 +245,21 @@ codes[1].readonly=false;
       <div className="container2">    
       <Button onClick={props.handleClick} id="btn1" text="Compiler" style={{ fontSize: '16px', background: '#F8F9FA', color: '#023047',border:'1px solid #00A6FB',padding: '12px 24px'}}></Button>
       <Link to="/code/Simulation">
+        
       <div id="btn2" onClick={props.handleToggle} >
         
         Simuler
         <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          
 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.454505 1.2045C0.893845 0.765165 1.60616 0.765165 2.0455 1.2045L8.0455 7.2045C8.48483 7.64384 8.48483 8.35616 8.0455 8.7955L2.0455 14.7955C1.60616 15.2348 0.893845 15.2348 0.454505 14.7955C0.015165 14.3562 0.015165 13.6438 0.454505 13.2045L5.65901 8L0.454505 2.7955C0.015165 2.35616 0.015165 1.64384 0.454505 1.2045Z" fill="#F8F9FA"/>
 </svg>
+
       </div></Link>
       </div>
           <div className='compiled' >
           </div>
-          {/* <input>
-            Veuillez entrer un titre pour votre programme
-          </input> */}
+          <br></br>
+   <Title></Title>
           <hr>
           </hr> </div>
     );
