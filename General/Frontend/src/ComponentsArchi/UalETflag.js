@@ -8,7 +8,7 @@ function UalETflag(props) {
     return (
         <div className="UalEtFlag"> 
             <Flag case1="0" case2="0" case3="0" case4="0"/>
-            <UalEtEuals case={props.case}/>
+            <UalEtEuals case1={props.case1} case2={props.case2}/>
             <EualsBusDonnees/>
         </div>
     );

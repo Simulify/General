@@ -8,7 +8,7 @@ function MemoireEtRim(props) {
     <div className="MemoireEtRim">
         <div>Mémoire</div>
         <Memoire memoire={props.memoire}/>
-        <Rim nom="Rim" case1="0" case2="0" case3="0" case4="0"/>
+        <Rim Rim={props.Rim} nom="RIM"/>
     </div>
   );
 }

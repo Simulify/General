@@ -37,11 +37,11 @@ function Container(props) {
         <Pile/>
         <CoEtBus Co={props.Co}/>
         <BusDonnees/>
-        <MemoireEtRam memoire={props.memoire}/>
-        <UalEtBus case={props.case}/>
+        <MemoireEtRam memoire={props.memoire} Ram={props.Ram} Rim={props.Rim} />
+        <UalEtBus case1={props.case1} case2={props.case2}/>
         <LightRegPile/>
-        <UcEtRi/>
-        <RimBusDonnees/>
+        <UcEtRi RI={props.RI}/>
+        <RimBusDonnees />
         <RimToRi/>
         <RimBusRi/>
         <Commencer/>

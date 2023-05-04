@@ -6,8 +6,8 @@ import MemoireEtRim from "./MemoireEtRim";
 function MemoireEtRam(props) {
   return (
     <div className="MemoireEtRam">
-        <Ram case1="0" case2="0" case3="0" case4="0"/>
-        <MemoireEtRim memoire={props.memoire}/>
+        <Ram Ram={props.Ram}/>
+        <MemoireEtRim memoire={props.memoire} Rim={props.Rim}/>
     </div>
   );
 }

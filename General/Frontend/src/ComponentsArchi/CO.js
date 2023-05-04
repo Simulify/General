@@ -1,36 +1,25 @@
 import React, { useState } from "react";
 import "../pages/Simulation.css";
 
-class CO extends React.Component {
-  constructor(){
-    super();
-    this.state={
-      isClicked: false,
-      Co:'0000'
-    };
-  }
- setState({isClicked:isClicked,Co:Co}){
-  this.isClicked=isClicked
-  this.Co=Co
- }
- handleClick = () => {
-    this.setState({isClicked:true})
+function CO(props) {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(!isClicked);
   };
-render(){
-   return (
+
+  return (
     <div className="CO">
       <div>CO</div>
-      <div className={`Co ${this.isClicked ? "boxShadowBlue" : ""}`}
-      onClick={this.handleClick}>
-        <div className="C1">{this.Co[0]}</div>
-        <div className="C2">{this.Co[1]}</div>
-        <div className="C3">{this.Co[2]}</div>
-        <div className="C4">{this.Co[3]}</div>
+      <div className={`Co ${isClicked ? "boxShadowBlue" : ""}`}
+      onClick={handleClick}>
+        <div className="C1">{props.Co[0]}</div>
+        <div className="C2">{props.Co[1]}</div>
+        <div className="C3">{props.Co[2]}</div>
+        <div className="C4">{props.Co[3]}</div>
       </div>
     </div>
   );
-}
- 
 }
 
 export default CO;

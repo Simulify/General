@@ -6,7 +6,7 @@ import BusCoToRam from './BusCoToRam';
 function CoEtBus(props) {
     return (
         <div className='CoEtBus'>
-            <CO  />
+            <CO  Co={props.Co}  />
             <BusCoToRam/>
         </div>
    );
