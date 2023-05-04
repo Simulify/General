@@ -25,7 +25,7 @@ body
     font-weight: 600;
     font-size: 14px;
     line-height: 20px;
-    color: #F8F9FA;
+    color: var(--white-to-light);
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -51,7 +51,7 @@ div.buttons
     grid-template-columns: 10vw 10vw 10vw;
     grid-template-areas: "sauv exem prgrm";
     grid-gap:7vw;
-    background-color: #00A6FB;
+    background-color: var(--blue);
 }
 .icon
 {
@@ -80,7 +80,7 @@ div.buttons
     padding:2%;
     width: 40%;
     min-height: 200px;
-    background-color: #F8F9FA;
+    background-color: var(--white-to-light);
     border-radius: 0px 10px 10px 0px;
     filter: drop-shadow(82px 37px 36px rgba(170, 204, 238, 0.01)) drop-shadow(46px 21px 30px rgba(170, 204, 238, 0.05)) drop-shadow(20px 9px 22px rgba(170, 204, 238, 0.09)) drop-shadow(5px 2px 12px rgba(170, 204, 238, 0.1)) drop-shadow(0px 0px 0px rgba(170, 204, 238, 0.1));
 }
@@ -208,8 +208,9 @@ button#btn4.button:hover
 margin-left: auto;
 margin-right: auto;
 resize: none;
-color: #023047;
+color: var(--dark-to-light);
 font-size: 24px;
+background-color: (var(--white-to-light));
 }
 textarea:focus 
 {
@@ -218,7 +219,7 @@ border-color: #00A6FB /* Cette propriété permet de définir la couleur de la b
 }
 textarea::placeholder
 {
-    color: #023047; 
+    color: var(--dark-to-light); 
 }
 hr
 {
@@ -250,7 +251,7 @@ h4
 {
     margin-top: auto;
     margin-bottom: auto;
-    color: #023047;
+    color: var(--dark-to-light);
 }
 /* @media  (max-width:900px)
 {
