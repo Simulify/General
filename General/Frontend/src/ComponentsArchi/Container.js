@@ -13,12 +13,13 @@ import RimBusRi from "./RimBusRi";
 import Commencer from "./Commencer";
 import Arreter from "./Arreter";
 import LightRimRam from "./LightRimRam";
-import ABCD from "./ACCtoBD";
 import LightCoRam from "./LightCoRam";
 import LightRimUc from "./LightRimUc";
 import LightRegPile from './LightRegPile';
 import LightCoPile from "./LightCoPile";
 import LightCoUal from "./LightCoUal";
+import LightPileReg from "./LightPileReg";
+import LightRimReg from "./LightRimReg";
 
 function Container(props) {
 
@@ -31,6 +32,8 @@ function Container(props) {
         <MemoireEtRam/>
         <UalEtBus case={props.case}/>
         <LightRegPile  time={0}/>
+        <LightPileReg  time={0}/>
+        <LightRimReg time={0}/>
         <UcEtRi/>
         <RimBusDonnees/>
         <RimToRi/>
@@ -42,7 +45,6 @@ function Container(props) {
         <LightRimUc time = {0} />
         <LightCoPile time={0}/>
         <LightCoUal time={0} />
-
     </div>
    
   );
