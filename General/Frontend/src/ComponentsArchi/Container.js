@@ -19,6 +19,9 @@ import LightRimUc from "./LightRimUc";
 import LightRegPile from './LightRegPile';
 import LightCoPile from "./LightCoPile";
 import LightCoUal from "./LightCoUal";
+import LightPileCo from "./LightPileCo";
+import LightUalCo from "./LightUalCo";
+import LightRimEual1 from "./LightRimEual1";
 
 function Container(props) {
 
@@ -30,18 +33,24 @@ function Container(props) {
         <BusDonnees/>
         <MemoireEtRam/>
         <UalEtBus case={props.case}/>
-        <LightRegPile  time={0}/>
         <UcEtRi/>
         <RimBusDonnees/>
         <RimToRi/>
         <RimBusRi/>
         <Commencer/>
         <Arreter/>
-        <LightRimRam time={0}/>
-        <LightCoRam time={0}/>
-        <LightRimUc time = {0} />
-        <LightCoPile time={0}/>
-        <LightCoUal time={0} />
+
+
+        {/* <LightRegPile time = {0}/>
+        <LightRimRam time = {0}/>
+        <LightCoRam time = {0}/>
+        <LightRimUc time = {0}/>
+        <LightCoPile time = {0}/>
+        <LightCoUal time = {0}/> 
+        <LightPileCo time={0}/> */}
+        {/* <LightUalCo time={0}/> */}
+        <LightRimEual1 time={0}/>
+
 
     </div>
    

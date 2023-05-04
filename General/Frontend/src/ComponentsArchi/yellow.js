@@ -157,33 +157,8 @@ export function RimToUc(time, myRef, setCoor, coor) {
         }
       }, [coor]);
  }
- export function RegPile(time,myRef,setCoor,coor){
-  useEffect(() => {
-      let x1 =myRef.current.getBoundingClientRect().left;
-      let y1 = myRef.current.getBoundingClientRect().top;
-      let x2 =document.querySelector('.RegToBusDonnees').getBoundingClientRect().left;
-      let y2 = document.querySelector('.RegToBusDonnees ').getBoundingClientRect().top;
-      MyFun(time,x2+70,y2,x1,y1,setCoor);
-      y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
-      x2=document.querySelector('.registres').getBoundingClientRect().left;
-      MyFun(time+2000,x2+70,y2,x1,y1,setCoor);
-      x2=document.querySelector('.pile').getBoundingClientRect().left;
-      MyFun(time+4000,x2+70,y2,x1,y1,setCoor);
-      y2 = document.querySelector('.pile').getBoundingClientRect().top;
-      MyFun(time+5000,x2+70,y2+100,x1,y1,setCoor);
-    }, []);
-    useEffect(() => {
-      if (coor.length === 2) {
-        setTimeout(()=>{myRef.current.style.opacity='60%'},800)
-      }
-    }, [coor]);
-    useEffect(() => {
-      if (coor.length === 2) {
-        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
-      }
-    }, [coor]);
-  
-}
+
+
 /*******************************************************************/ 
 
 export function PileReg(time,myRef,setCoor,coor){
@@ -294,4 +269,147 @@ export function CoUal(time,myRef,setCoor,coor) {
     }, [coor]);
 
 }
+
+/***************************************************************/
+
+export function PileCo(time,myRef,setCoor,coor) {
+
+  useEffect(() => {
+
+    const x1 = myRef.current.getBoundingClientRect().left;
+    const y1 = myRef.current.getBoundingClientRect().top;
+    let x2 = document.querySelector('.PileBusDonnees .triangleHaut').getBoundingClientRect().left;
+    let y2 = document.querySelector('.PileBusDonnees .triangleHaut').getBoundingClientRect().top;
+
+    MyFun(time,x2,y2,x1,y1,setCoor);
+
+    y2 = document.querySelector('.BusDonnees').getBoundingClientRect().top;
+    MyFun(time,x2,y2,x1,y1,setCoor);
+
+    x2 = document.querySelector('.RamBusDonnees').getBoundingClientRect().left;
+    MyFun(time + 2000,x2,y2,x1,y1,setCoor);
+
+    y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
+    MyFun(time + 4000, x2, y2, x1, y1, setCoor);
+
+    y2 = document.querySelector('.BusCo .triangleHaut').getBoundingClientRect().top
+    MyFun(time + 6000,x2,y2,x1,y1,setCoor);
+
+}, []);
+    
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+
+}
+
+/*****************************************************************/
+
+export function UalCo(time,myRef,setCoor,coor) {
+
+  useEffect(() => {
+
+    const x1 = myRef.current.getBoundingClientRect().left;
+    const y1 = myRef.current.getBoundingClientRect().top;
+    let x2 = document.querySelector('.BusEuals .triangleGauche').getBoundingClientRect().left;
+    let y2 = document.querySelector('.BusEuals .triangleGauche').getBoundingClientRect().top;
+    MyFun(time,x2,y2,x1,y1,setCoor);
+
+    x2 = document.querySelector('.EualsBusDonnees .rectangle').getBoundingClientRect().left;
+
+    MyFun(time + 2000,x2,y2,x1,y1,setCoor);
+
+    y2 = document.querySelector('.BusDonnees').getBoundingClientRect().top;
+    MyFun(time + 3000,x2,y2,x1,y1,setCoor);
+
+    x2 = document.querySelector('.RamBusDonnees').getBoundingClientRect().left;
+    MyFun(time + 4000,x2,y2,x1,y1,setCoor);
+
+    y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
+    MyFun(time + 5000, x2, y2, x1, y1, setCoor);
+
+    y2 = document.querySelector('.BusCo .triangleHaut').getBoundingClientRect().top
+    MyFun(time + 6000,x2,y2,x1,y1,setCoor);
+
+}, []);
+    
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+
+}
+
+/*****************************************************************/
+
+export function RimEual1(time,myRef,setCoor,coor) {
+
+  useEffect(() => {
+
+    const x1 = myRef.current.getBoundingClientRect().left;
+    const y1 = myRef.current.getBoundingClientRect().top;
+    let x2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().left;
+    let y2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().top;
+    MyFun(time ,x2,y2,x1,y1,setCoor);
+
+    y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
+
+    MyFun(time + 2000,x2,y2,x1,y1,setCoor);
+
+    x2 = document.querySelector('.RimBusDonnees .triangleGauche').getBoundingClientRect().left;
+    MyFun(time + 3000,x2,y2,x1,y1,setCoor);
+
+    x2 = document.querySelector('.EualsBusDonnees').getBoundingClientRect().left;
+    MyFun(time + 4000,x2,y2,x1,y1,setCoor);
+
+    y2 = document.querySelector('.BusEuals .rectangle').getBoundingClientRect().top;
+    MyFun(time + 5000, x2, y2, x1, y1, setCoor);
+
+    x2 = document.querySelector('#Eual1 #eual0').getBoundingClientRect().left
+    MyFun(time + 6000,x2,y2,x1,y1,setCoor);
+
+}, []);
+    
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+
+}
+
+/*****************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
 
