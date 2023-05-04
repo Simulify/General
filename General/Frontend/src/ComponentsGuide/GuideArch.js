@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import './Guide.css';
+import '../pages/Guide.css';
 import { ReactComponent as Point } from '../Images/point.svg';
 import { ReactComponent as Arch } from '../Images/arch.svg';
 

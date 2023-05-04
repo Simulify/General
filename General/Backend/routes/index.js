@@ -48,9 +48,6 @@ passport.use(new LocalStrategy({
   return done(null, user);
 }
 ));
-
-
-
 // Passport serializeUser function
 passport.serializeUser(function(user, done) {
   // Store the user's id in the session
@@ -92,15 +89,6 @@ router.post('/signup', async (req, res) => {
      // Create a new user
      const user = new User({ username, email, password: hashedPassword, profileUrl:url });
      await user.save();
-
-    // Log in the new user and redirect to the user's dashboard
-    req.login(user, (err) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).send({ error: 'Server error' });
-      }
-      res.redirect(`/Home/${url}`);
-    });
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: 'Server error' });
@@ -130,7 +118,7 @@ router.post('/login', async (req, res) => {
     const userSpace = `/user-space/${user.username}`;
 
     // Send back the token and redirect URL
-    return res.status(200).send({ token, redirectUrl: userSpace });
+    return res.status(200).send({ token, redirectUrl: userSpace,user });
 
   } catch (err) {
     console.error(err);
@@ -167,7 +155,7 @@ router.post('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 });
-router.get('/homePage', isAuthenticated, async (req, res) => {
+router.get('/home', isAuthenticated, async (req, res) => {
   try {
     // Get the current user's information
     const currentUser = req.user;
@@ -193,23 +181,24 @@ router.get('/homePage', isAuthenticated, async (req, res) => {
 
 
 
-router.get('/user-space/:username', isAuthenticated, async (req, res) => {
+router.get('/user-space/:id', isAuthenticated, async (req, res) => {
   try {
-    const username = req.params.username;
-    console.log('Username:', username);
-    const user = await User.findOne({ username });
+    const id = req.params.id;
+    console.log('User ID:', id);
+    const user = await User.findById(id);
     console.log('User:', user);
     if (!user) {
       return res.status(404).send({ error: 'User not found' });
     }
     const codes = user.codes;
     console.log('Codes:', codes);
-    res.render('user-homePage', { username, codes });
+    res.render('user-homePage', { username: user.username, codes });
   } catch (error) {
     console.error('Error:', error);
     res.status(500).send({ error: 'Server Error' });
   }
 });
+
 
 
 // Middleware to check if a user is authenticated
@@ -365,13 +354,17 @@ router.post('/users/:userId/codes', async (req, res) => {
 async function createCode(userId, codeData) {
   const user = await User.findById(userId);
 
+  const existingCode = user.codes.find(code => code.title === codeData.title);
+
+  if (existingCode) {
+    throw new Error('A code with this title already exists.');
+  }
+
   const newCode = {
     title: codeData.title,
-    code: codeData.code,
-    type: codeData.type,
-    category: codeData.category,
-    description: codeData.description,
-    picture: codeData.picture // Include the new picture field
+    codeHexa: codeData.codeHexa,
+    codeMemo: codeData.codeMemo,
+   
   };
 
   user.codes.push(newCode);
@@ -416,24 +409,30 @@ router.put('/users/:userId/codes/:codeId', async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    const code = user.codes.id(req.params.codeId);
+    const codeId = req.params.codeId;
+    const newTitle = req.body.title;
+    const newCodeHexa = req.body.codeHexa;
+    const newCodeMemo = req.body.codeMemo;
+    const newCompiled = req.body.compiled;
+
+    // Find the existing code by title
+    const existingCode = user.codes.find(code => code.title === newTitle);
+
+    // Check if the existing code has the same id as the updated code
+    if (existingCode && existingCode._id.toString() !== codeId) {
+      return res.status(409).json({ message: 'A code with this title already exists.' });
+    }
+
+    const code = user.codes.id(codeId);
     if (!code) {
       return res.status(404).json({ message: 'Code not found' });
     }
 
     // Update the code properties
-    if (req.body.title) {
-      code.title = req.body.title;
-    }
-    if (req.body.code) {
-      code.code = req.body.code;
-    }
-    if (req.body.type) {
-      code.type = req.body.type;
-    }
-    if (req.body.category) {
-      code.category = req.body.category;
-    }
+    code.title = newTitle;
+    code.codeHexa = newCodeHexa;
+    code.codeMemo = newCodeMemo;
+
 
     await user.save();
     res.json(code);
@@ -442,6 +441,56 @@ router.put('/users/:userId/codes/:codeId', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
+
+
+
+
+// Read files for a user
+router.get('/users/:userId/files', async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    const files = user.codes;
+
+    console.log('Files found:', files);
+    res.status(200).send(files);
+  } catch (err) {
+    console.error('Failed to find files:', err);
+    res.status(404).send({ error: err.message });
+  }
+});
+
+router.delete('/users/:userId/codes/:codeId', async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const codeId = req.params.codeId;
+    const user = await User.findById(userId);
+
+    // Find index of the code to be removed
+    const codeIndex = user.codes.findIndex(code => code._id == codeId);
+
+    if (codeIndex === -1) {
+      // Code not found
+      res.status(404).send('Code not found');
+    } else {
+      // Remove the code from the user's codes array
+      user.codes.splice(codeIndex, 1);
+      await user.save();
+
+      res.status(204).send(); // No Content
+    }
+  } catch (err) {
+    console.error('Failed to delete code:', err);
+    res.status(500).send(err);
+  }
+});
+
 
 
 module.exports=router;

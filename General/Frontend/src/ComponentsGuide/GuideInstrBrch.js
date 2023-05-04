@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import './Guide.css';
+import '../pages/Guide.css';
 
 function GuideInstrBrch() {
  return (

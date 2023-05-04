@@ -36,19 +36,15 @@ const userSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    code: {
+    codeHexa: {
       type: String,
-      required: true
     },
-    type: {
+    codeMemo: {
       type: String,
-      required: true,
-      enum: ['Exemple', 'Personnel'] // Add an enum validator for the type field
     },
-    category: {
-      type: String,
-      enum: ['Arithmétiques', 'Logiques', 'Branchements', 'Transfert', 'Décalages'] // Add an enum validator for the category field
-    }
+   
+
+   
   }]
 });
 

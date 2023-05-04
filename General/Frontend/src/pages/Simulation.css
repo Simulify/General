@@ -1,4 +1,5 @@
 .Simulation .Container {
+  position: relative;
   color: #023047;
   padding: 50px;
   height: 100Vh;
@@ -220,14 +221,14 @@
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.RAM .ram, .Flag .ram{
+.RAM .ram1, .RAM .ram2, .RAM .ram3, .Flag .ram{
   padding-top: 0.5Vh;
   padding-bottom: 0.5Vh;
   text-align: center;
   border-bottom: 1px solid #00A6FB;
 }
 
-.RAM .ramf, .Flag .ramf{
+.RAM .ram4, .Flag .ramf{
   padding-top: 0.5Vh;
   padding-bottom: 0.5Vh;
   text-align: center;
@@ -435,6 +436,9 @@
 }
 
 .UAL .ual1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 60%;
     border-top: 2px solid #023047;
     border-left: 2px solid #023047;
@@ -537,6 +541,9 @@
 /***************************************************************/
 
 .Uc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   grid-row: 3 / span 1;
   grid-column: 5 / 6;
   width: 100%;
@@ -861,6 +868,11 @@
   border: 1px solid #00A6FB;
   font-weight: 400;
   box-shadow: 27px 30px 16px rgba(36, 84, 132, 0.01), 15px 17px 14px rgba(36, 84, 132, 0.05), 7px 7px 10px rgba(36, 84, 132, 0.09), 2px 2px 6px rgba(36, 84, 132, 0.1), 0px 0px 0px rgba(36, 84, 132, 0.1);
+}
+
+/*********************************************/
+.RegColor {
+  background-color: #CFEFFF;
 }
 
 

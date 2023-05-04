@@ -1,16 +1,11 @@
 import React from "react";
-import "./File.css";
+import "./FileNoDelete.css";
 import file from "../Images/File.svg";
-import can from '../Images/Trash.svg';
 import { Link } from "react-router-dom";
 
-function File(props) {
-
-
-  
+function FileNoDelete(props) {
+    
   const handleClick = () => {
-    localStorage.setItem('storedCode.id', props.id);
-    console.log(`storedCode.id: ${props.id}`);
     localStorage.setItem('title', props.label);
     console.log(`label: ${props.label}`);
     localStorage.setItem('filecodeHexa', props.codeHexa);
@@ -28,13 +23,14 @@ function File(props) {
           {props.label}
         </button>
       </Link>
-      
       <p style={{display: 'none'}}>{props.codeHexa}</p>
       <p style={{display: 'none'}}>{props.codeMemo}</p>
-      
-      <img className="can" src={can} alt="deleteIcon" onClick={props.onDelete}></img>
     </div>
   );
 }
 
-export default File;
+export default FileNoDelete;
+
+
+
+

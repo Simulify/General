@@ -17,7 +17,7 @@ export const SidebarData = [
   },
   {
     icon : <div className='filesicon'><FilesIcon /></div>,
-    link : "/files",
+    link: `/files/${localStorage.getItem('username')}`,
   },
   {
     icon : <div className='revicon'><RevisionIcon /></div>,
@@ -29,6 +29,6 @@ export const SidebarData = [
   },
   {
     icon : <div className='seticon'><SettingsIcon /></div>,
-    link : "/settings",
+    link: `/settings`,
   }
 ]

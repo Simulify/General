@@ -3,8 +3,12 @@ import './Sidebar.css';
 import {SidebarData} from './SidebarData';
 import { ReactComponent as Logo } from '../SidebarIcons/Logo.svg';
 import { ReactComponent as ExitIcon} from '../SidebarIcons/Exit.svg';
+import { Link } from 'react-router-dom';
 
-function Sidebar () {
+function Sidebar (props) {
+    const handleReset = () => {
+        props.onReset();
+      };
  return (
   <div className='Sidebar'>
    <div className="logo"><Logo/></div>
@@ -22,7 +26,7 @@ function Sidebar () {
      );
     })}
    </ul>
-   <a className="exit" href="./home"><ExitIcon/></a>
+   <Link to="/home" className="exit" onClick={handleReset}><ExitIcon/></Link>
   </div>
  );
 };
