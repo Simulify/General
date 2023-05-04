@@ -1,7 +1,11 @@
 
+<<<<<<< HEAD
+.Light  , .LightRegPile , .LightPileReg , .LightRimReg{
+=======
 
 .Light, .LightCoRam, .LightRimRam, .LightRimUc , .LightRegPile, .LightCoPile, .LightCoUal, .LightPileCo, .LightUalCo, .LightRimEual1{
 
+>>>>>>> b5c31d4510e048ce61e75af7d069ca6c65d612b9
   height: 10px;
   width: 10px;
   z-index: 10;
@@ -11,8 +15,14 @@
   opacity: 40%;
   transition: all 1s ease-in-out;
 }
+<<<<<<< HEAD
+/* 
+,.LightCoRam, .LightRimRam, .LightRimUc , .LightRegPile, .LightCoPile, .LightCoUa
+.Light, .LightCoRam, .LightRimRam, .LightRimUc , .LightRegPile, .LightCoPile, .LightCoUal{
+=======
 
 /* .LightCoRam, .LightRimRam, .LightRimUc , .LightRegPile, .LightCoPile, .LightCoUal, .LightPileCo, .LightUalCo{
+>>>>>>> b5c31d4510e048ce61e75af7d069ca6c65d612b9
 
     height: 4%;
     width: 5%;
