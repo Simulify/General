@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../pages/Simulation.css";
 
-function CO({case1, case2, case3, case4}) {
+function CO(props) {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
@@ -9,17 +9,18 @@ function CO({case1, case2, case3, case4}) {
   };
 
   return (
-    <div className="CO">
-      <div>CO</div>
-      <div className={`Co ${isClicked ? "boxShadowBlue" : ""}`}
-      onClick={handleClick}>
-        <div className="C1">{case1}</div>
-        <div className="C2">{case2}</div>
-        <div className="C3">{case3}</div>
-        <div className="C4">{case4}</div>
+
+      <div className="CO">
+        <div>CO</div>
+        <div className={`Co ${isClicked ? "boxShadowBlue" : ""}`}
+        onClick={handleClick}>
+          <div className="C1">{props.Co[0]}</div>
+          <div className="C2">{props.Co[1]}</div>
+          <div className="C3">{props.Co[2]}</div>
+          <div className="C4">{props.Co[3]}</div>
+        </div>
       </div>
-    </div>
-  );
+    );
 }
 
 export default CO;

@@ -26,7 +26,7 @@
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.1.0",
-    "mongoose": "^7.0.1",
+    "mongoose": "^7.1.0",
     "nodemon": "^2.0.21",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",

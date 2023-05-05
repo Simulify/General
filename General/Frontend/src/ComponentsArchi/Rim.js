@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "../pages/Simulation.css";
 
-function Rim({nom, case1, case2, case3, case4}) {
+function Rim(props) {
 
   const [isClicked, setIsClicked] = useState(false);
 
@@ -14,12 +14,12 @@ function Rim({nom, case1, case2, case3, case4}) {
     <div className="Rim">
       <div className={`rim ${isClicked ? "boxShadowBlue" : ""}`}
           onClick={handleClick}>
-          <div className="C1">{case1}</div>
-          <div className="C2">{case2}</div>
-          <div className="C3">{case3}</div>
-          <div className="C4">{case4}</div>
+          <div className="C1">{props.Rim[0]}</div>
+          <div className="C2">{props.Rim[1]}</div>
+          <div className="C3">{props.Rim[2]}</div>
+          <div className="C4">{props.Rim[3]}</div>
       </div>
-      <span className="NomRim">{nom}</span>
+      <span className="NomRim">{props.nom}</span>
     </div>
   );
 }

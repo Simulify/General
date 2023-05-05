@@ -2,11 +2,15 @@ import React from "react";
 import CaseMemoire from "./CaseMemoire";
 import "../pages/Simulation.css";
 
-function Memoire() {
+function Memoire(props) {
   const casesData = [];
 
   // Boucle pour générer les données de chaque case
-  for (let i = 0; i < 6885; i++) {
+  let i
+  for (i = 0; i < props.memoire.length; i++) {
+    casesData.push({ case1: (props.memoire)[i][0], case2: (props.memoire)[i][1], case3: (props.memoire)[i][2], case4: (props.memoire)[i][3] });
+  }
+  for ( i = props.memoire.length; i < 6885; i++) {
     casesData.push({ case1: "0", case2: "0", case3: "0", case4: "0" });
   }
 

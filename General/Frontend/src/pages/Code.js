@@ -9,7 +9,7 @@ import Button from '../components/Buttonn'
 import Side from '../components/side'
 import next from '../Images/next.svg'
 import { Link } from 'react-router-dom';
-import Title from '../components/Title' ;
+import Title from '../components/Title2.js' ;
 
 const ButoStyle={
   background: '#00A6FB',
@@ -204,7 +204,7 @@ codes[1].readonly=false;
             });
         } else {
           axios
-            .post(`/users/${storedUser._id}/codes`, file) //creating new file 
+            .post(`/users/${storedUser._id}/codes`, file) //creating new code
             .then((response) => {
               console.log("API call successful:", response);
             })

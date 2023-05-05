@@ -1,12 +1,13 @@
+
 import React from "react";
 import Settingsbar from "./Settingsbar";
 import { ReactSVG } from "react-svg";
-import Userpic from "../Images/Userpic.svg";
+import navbarpic from "../Images/navbarpic.svg";
 function FormSettings() {
     return (
         <div className=" FormSettings ">
           <div className="blue-rectangle">
-               <ReactSVG src={Userpic}/>
+               <ReactSVG src={navbarpic}/>
                <button className="modifybutton">Modifier</button>
           </div>  
           <Settingsbar />
