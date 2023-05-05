@@ -13,7 +13,7 @@ import axios from 'axios';
 function Files({ isAuthenticated, setIsAuthenticated, currentUser, setCurrentUser }) {
 
 
-  
+  //the variables of the visibility of hte files and folders ... by default it's at false util click
   const [myFilesVisible, setMyFilesVisible] = useState(false);
   const [arithmeticVisible, setArithmeticVisible] = useState(false);
   const [logicVisible, setLogicVisible] = useState(false);
@@ -21,22 +21,15 @@ function Files({ isAuthenticated, setIsAuthenticated, currentUser, setCurrentUse
   const [transferVisible, setTransferVisible] = useState(false);
   const [shiftVisible, setShiftVisible] = useState(false);
   const [fileExempleVisible, setFileExempleVisible] = useState(false);
- 
-  
-
- 
-  
-
-   
   const [files, setFiles] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
+ //---------------------------------------------------------------------
+  useEffect(() => { // when we load the page we fetch data of the current user stored
+    const fetchData = async () => { 
       try {
-        const storedUser = JSON.parse(localStorage.getItem("currentUser"));
+        const storedUser = JSON.parse(localStorage.getItem("currentUser")); // we get the current user
         console.log('currentUser:', storedUser);
         console.log('currentUser_id:', storedUser._id);
-        const response = await axios.get(`/users/${storedUser._id}/files`);
+        const response = await axios.get(`/users/${storedUser._id}/files`); // when get the files of the user
         setFiles(response.data);
       } catch (error) {
         console.error(error);
@@ -46,37 +39,27 @@ function Files({ isAuthenticated, setIsAuthenticated, currentUser, setCurrentUse
   }, []);
   
 
-const [fileList, setFileList] = useState([]);
+const [fileList, setFileList] = useState([]); // we create the list of personal files
 
 
-useEffect(() => {
+useEffect(() => { //effect that add files in the list 
   setFileList(files.map((file) => ({ id: file._id, label: file.title, codeHexa: file.codeHexa,codeMemo:file.codeMemo })));
 }, [files]);
 
-async function removeFile(id) {
+async function removeFile(id) { // removes files based on their _id 
   try {
     console.log(`Removing file with ID ${id}`);
     const storedUser = JSON.parse(localStorage.getItem("currentUser"));
-    await axios.delete(`/users/${storedUser._id}/codes/${id}`);
+    await axios.delete(`/users/${storedUser._id}/codes/${id}`); //Delete request to the database
     setFileList(fileList.filter((file) => file.id !== id));
   } catch (error) {
     console.error(error);
   }
 }
-
-
-
-
-
- 
-
- 
-  
-
+//------------------- The functions that make the toggle effect on click----------------------
   function handleExempleClick() {
    
     setFileExempleVisible((prevState) => !prevState);
-
   }
 
   function handleMyFilesClick() {
@@ -102,7 +85,7 @@ async function removeFile(id) {
   function handleShiftClick() {
     setShiftVisible((prevState) => !prevState);
   }
- 
+//---------------------------------------------------------
   
 
   return (
@@ -111,11 +94,6 @@ async function removeFile(id) {
     <div className="Files">
 
       <Navbar label="Les fichiers" />
-    
-      
-
-    
-
       <div className="Menu-container">
         <div className="menu-trigger-exemple"
         onClick={handleExempleClick}>

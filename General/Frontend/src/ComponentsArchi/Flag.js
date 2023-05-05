@@ -3,7 +3,7 @@ import { useState } from "react";
 import "../pages/Simulation.css";
 import FlagBusDonnees from "./FlagBusDonnees";
 
-function Flag({case1, case2, case3, case4}) {
+function Flag(props) {
 
     const [isClicked, setIsClicked] = useState(false);
 
@@ -17,10 +17,12 @@ function Flag({case1, case2, case3, case4}) {
         <div className="NomFlag">Flag</div>
         <div className={`FLAG ${isClicked ? "boxShadowBlue" : ""}`}
         onClick={handleClick}>
-            <div id={`flag${case1}`} className="ram">{case1}</div>
-            <div id={`flag${case2}`} className="ram">{case2}</div>
-            <div id={`flag${case3}`} className="ram">{case3}</div>
-            <div id={`flag${case4}`} className="ramf">{case4}</div>
+
+            <div className="ram">{props.Con[0]}</div>
+            <div className="ram">{props.Con[1]}</div>
+            <div className="ram">{props.Con[2]}</div>
+            <div className="ramf">{props.Con[3]}</div>
+
         </div>
         </div>
     );

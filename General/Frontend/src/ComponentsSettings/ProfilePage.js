@@ -22,7 +22,6 @@ function ProfilePage() {
         //  add cancel logic 
         console.log('Cancelled');
     };
-
     return (
         <div className="ProfilePage">
             <Navbar label='Parametres'/>
