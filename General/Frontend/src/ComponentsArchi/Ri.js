@@ -11,7 +11,7 @@ function Ri(props) {
   };
 
   return (
-    <div className={`Ri ${isClicked ? "boxShadowBlue" : ""}`}
+    <div id="Ri" className={className=`Ri ${isClicked ? "boxShadowBlue" : ""}`}
     onClick={handleClick}>
           <div className="ram">{props.RI[0]}</div>
           <div className="ram">{props.RI[1]}</div>

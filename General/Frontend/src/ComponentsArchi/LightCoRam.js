@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Light.css';
-import { MyFun } from './yellow';
 import { CoRam } from './yellow';
 
 function LightCoRam({time}) {
