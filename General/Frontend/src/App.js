@@ -23,6 +23,7 @@ import GuideInstrInout from './ComponentsGuide/GuideInstrInout';
 import Settings from './pages/Settings';
 import ErrorPage from './pages/ErrorPage';
 import Code from './pages/Code';
+import Syntaxe from './pages/Syntaxe';
 import MotDePassePage from './ComponentsSettings/MotDePassePage';
 import RessourcePage from './pages/RessourcePage';
 import LivresPage from './pages/LivresPage';
@@ -66,6 +67,8 @@ function App() {
      <Routes>
       <Route path='/' element={<Home/>}></Route>
       <Route path='/home' element={<Home/>}></Route>
+      <Route path='/code/programmation-syntaxe' element={<Syntaxe/>}></Route>
+      <Route path="/settings/*" element={<PrivateRoute><Routes><Route path="/" element={<Settings />} /></Routes></PrivateRoute>}/>
       <Route path='/code' element={<Sim></Sim>}></Route>
       <Route path='/code/simulation' element={<Sim></Sim>}></Route>
       <Route path="/files/*" element={<PrivateRoute currentUser={currentUser}><Files currentUser={currentUser} /></PrivateRoute>} />
