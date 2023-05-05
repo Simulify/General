@@ -39,12 +39,12 @@ function Container(props) {
 
     return (
     <div className="Container">
-        <Registres/>
-        <Pile/>
+        <Registres ACC={props.ACC} SI={props.SI} DI={props.DI} BX={props.BX} CX={props.CX}/>
+        <Pile Pile={props.Pile}/>
         <CoEtBus Co={props.Co}/>
         <BusDonnees/>
         <MemoireEtRam memoire={props.memoire} Ram={props.Ram} Rim={props.Rim} />
-        <UalEtBus case1={props.case1} case2={props.case2}/>
+        <UalEtBus case1={props.case1} case2={props.case2} Flags={props.Flags}/>
         <UcEtRi RI={props.RI}/>
         <RimBusDonnees />
         <RimBusDonnees/>

@@ -713,6 +713,7 @@ export function RegRim(time,myRef,setCoor,coor) {
     MyFun(time + 5000,x2,y2,x1,y1,setCoor);
 
     y2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().top;
+
     MyFun(time + 6000,x2,y2,x1,y1,setCoor);
 
     setTimeout(() => {

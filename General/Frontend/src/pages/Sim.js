@@ -33,6 +33,9 @@ import Machine from '../Logic/Logic/src/Machine.js';
 import { BinToMnem, Compile, Coprnd, Decoup, reg } from '../Logic/Logic/src/functions.js';
 import ACCUal from '../ComponentsArchi/LightACCUal';
 import { render } from 'react-dom';
+import LightCoRam from '../ComponentsArchi/LightCoRam';
+import LightRimEual1 from '../ComponentsArchi/LightRimEual1';
+import LightRimUc from '../ComponentsArchi/LightRimUc';
 export function Sim() {
     /// initialisation des instances de classes
 const mot16 = new Mot16("0000000000000000");
@@ -54,22 +57,61 @@ const pile = new Pile(arr1, 0)
 const ual1 = new Mot16("0000000000000000")
 const ual2 = new Mot16("0000000000000000")
 const uAl = new UAL(ual1, ual2);
+const uc=new UniteCommandes(null, null, null, null)
 let mem = new Array(65536)
 let [Memoire,setMemoire]=useState(new memoire(mem))
 
-let [machine,setMachine]=useState(new Machine(Acc, ri, si, dx, bx, co, cx, rIM, rAM, busAdr, busData, flags, uAl, Memoire, pile))
+let [machine,setMachine]=useState(new Machine(uc,Acc, ri, si, dx, bx, co, cx, rIM, rAM, busAdr, busData, flags, uAl, Memoire, pile))
 
-const UC = new UniteCommandes(null, null, null, null);     
+//const UC = new UniteCommandes(null, null, null, null);     
 for (let index = 0; index < mem.length; index++) {
     mem[index] = new mot_mem(index, "0000000000000000")
 }
 //*************************************************************************** */
     const [showPageOne, setShowPageOne] = useState(false); // to determine which page to show
     const [comp,setComp]=useState(false) // yo determine if code is compiled or no
-    const[coo,setCoo]=useState("0000")
-    const[ramm,setR]=useState("0000")
-    const[rimm,setRimm]=useState("0000")
-    const[rii,setRii]=useState("0000")
+    
+    const ramm = useRef("0000")
+    const rimm=useRef("0000")
+    const rii=useRef("0000")
+    const ual=useRef("0000")
+    const uall=useRef("0000")
+    const acc=useRef(Acc.value.hexa)
+    const si1=useRef("0000")
+    const dx1=useRef("0000")
+    const bx1=useRef("0000")
+    const cx1=useRef("0000")
+    const flags1=useRef("0000")
+    const pile1=useRef([])
+    const[time,setTime]=useState(1000)
+    const timeRef = useRef(0);
+    const coo=useRef("0000")
+    const table=useRef([])
+    const tableR=useRef([])
+    const tableR2=useRef([])
+    const tableR3=useRef([])
+    const tableAc=useRef([])
+    const tableUal=useRef([])
+    const tableUal2=useRef([])
+    const tableSi=useRef([])
+    const tableDx=useRef([])
+    const tableBx=useRef([])
+    const tableCx=useRef([])
+    const tableFlags=useRef([])
+    const tablePile=useRef([])
+    let [fo,setFo]=useState("0000")//poyr co
+    let [fo1,setFo1]=useState("0000")//pour ram
+    let [fo2,setFo2]=useState("0000")//pour rim
+    let [fo3,setFo3]=useState("0000")//pour ual
+    let [fo4,setFo4]=useState(Acc.value.hexa)//pour acc
+    let [fo5,setFo5]=useState("0000")//pour ual
+    let [fo6,setFo6]=useState("0000")//pour uall
+    let [fo7,setFo7]=useState("0000")//pour si
+    let [fo8,setFo8]=useState("0000")//pour dx
+    let [fo9,setFo9]=useState("0000")//pour bx  
+    let [fo10,setFo10]=useState("0000")//pour cx
+    let [fo11,setFo11]=useState("0000")//pour flags
+    let [fo12,setFo12]=useState([])//pour pile
     const HandleClick = (event) => {
         let phrases = Compile(Decoup(document.querySelector('textarea').value))
         setComp(true)
@@ -103,22 +145,40 @@ for (let index = 0; index < mem.length; index++) {
         mem.splice(0, arr.length, ...arr)
          let Mem = new memoire(mem)
          setMemoire(Mem)
-         setMachine(new Machine(Acc, ri, si, dx, bx, co, cx, rIM, rAM, busAdr, busData, flags, uAl, Memoire, pile))
+         setMachine(new Machine(uc,Acc, ri, si, dx, bx, co, cx, rIM, rAM, busAdr, busData, flags, uAl, Memoire, pile))
         console.log(machine)
         console.log(hexx)
     }
 /*********************************************** */
-const Traiter=(Machine,UC)=>{
+const Traiter=(Machine,time,elements)=>{
     let Co=Machine.CO
     let busAdr=Machine.bus_adresse
     let busData=Machine.bus_donnes
     let Mem=Machine.memoire
    var RI=Machine.RI
-   let here=[]
+   let here
+   let som=0
    // treating instructions from ADD to CMP in UAL
    /****************************************** */
-   if (parseInt(UC.Cop,2)<2 || parseInt(UC.Cop,2)==4 || (parseInt(UC.Cop,2)>=6 && parseInt(UC.Cop,2)<=10 )) {
-       Machine.UAL.UAL2=Mode[parseInt(UC.Mod,2)](Machine,UC.reg,UC.C).value
+   if (parseInt(Machine.UC.Cop,2)<2 || parseInt(Machine.UC.Cop,2)==4 || (parseInt(Machine.UC.Cop,2)>=6 && parseInt(Machine.UC.Cop,2)<=10 )) {
+       Machine.UAL.UAL2=Mode[parseInt(Machine.UC.Mod,2)](Machine,Machine.UC.reg,Machine.UC.C,time).value
+       Machine.UAL.UAL1=Machine[Machine.UC.reg[parseInt(Machine.UC.R1,2)]].value
+       tableUal.current.push(Machine.UAL.UAL2.hexa)
+       tableUal2.current.push(Machine.UAL.UAL1.hexa)
+       console.log(time)
+      setElements([...elements,<LightRimEual1 time={timeRef.current}></LightRimEual1>])
+      timeRef.current += 9000
+      setTimeout(()=>{
+        here=document.querySelector("#Eual1")
+        here.className="Eual boxShadowBlue"
+        here=document.querySelector("#Eual2")
+        here.className="Eual boxShadowBlue"
+        ual.current=Machine.UAL.UAL2.hexa
+        uall.current=Machine.UAL.UAL1.hexa
+        setFo5(Machine.UAL.UAL2.hexa)
+        setFo6(Machine.UAL.UAL1.hexa)
+      },timeRef.current)
+      timeRef.current += 1000
        // if(parseInt(UC.R1,2)==0){
        //     elements.push(<ABCD></ABCD>)
        //    setElements(elements)
@@ -142,42 +202,56 @@ const Traiter=(Machine,UC)=>{
        //    setACC(here1)
        //    },9000)
        // }
-       Machine.UAL.UAL1=Machine[UC.reg[parseInt(UC.R1,2)]].value
-       Machine[UC.reg[parseInt(UC.R1,2)]].value=new Mot16 (Machine.UAL.executer(UC.Coprnd[parseInt(UC.Cop,2)],Machine.Flags))
+       setTimeout(()=>{
+        here.className="Eual"
+        here=document.querySelector("#Eual1")
+        here.className="Eual"
+        here=document.querySelector(".UAL")
+        here.className="UAL boxShadowBlue"
+       },timeRef.current)
+       timeRef.current += 2000
+       Machine[Machine.UC.reg[parseInt(Machine.UC.R1,2)]].value=new Mot16 (Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop,2)],Machine.Flags))
+       tableAc.current.push(Machine[Machine.UC.reg[parseInt(Machine.UC.R1,2)]].value.hexa)
+       setTimeout(()=>{
+        acc.current=tableAc.current.shift()
+        setFo4(acc.current)
+       },timeRef.current)
+       timeRef.current += 1000
+       
    }
-   else if(parseInt(UC.Cop,2)==2 || parseInt(UC.Cop,2)==3 || parseInt(UC.Cop,2)==5){
+   else if(parseInt(Machine.UC.Cop,2)==2 || parseInt(Machine.UC.Cop,2)==3 || parseInt(Machine.UC.Cop,2)==5){
        
-       Machine.UAL.UAL1=Mode[parseInt(UC.Mod,2)](Machine,UC.reg,UC.C).value
-       Machine.UAL.UAL2=Machine[UC.reg[parseInt(UC.R1,2)]].value
+       Machine.UAL.UAL1=Mode[parseInt(Machine.UC.Mod,2)](Machine,Machine.UC.reg,Machine.UC.C).value
+       Machine.UAL.UAL2=Machine[Machine.UC.reg[parseInt(Machine.UC.R1,2)]].value
        
-       Machine[UC.reg[parseInt(UC.R1,2)]].value=new Mot16 (Machine.UAL.executer(UC.Coprnd[parseInt(UC.Cop,2)],Machine.Flags))
+       Machine[Machine.UC.reg[parseInt(Machine.UC.R1,2)]].value=new Mot16 (Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop,2)],Machine.Flags))
        let mM = new mot_mem(Machine.RAM.value.entier,new Mot16("0000000000000000"))
-       if (parseInt(UC.Mod,2)==1 || parseInt(UC.Mod,2)==2 || parseInt(UC.Mod,2)>=4) {
-           Instructions.MOV(Machine[UC.reg[parseInt(UC.R1,2)]],mM,Machine)
+       if (parseInt(Machine.UC.Mod,2)==1 || parseInt(Machine.UC.Mod,2)==2 || parseInt(Machine.UC.Mod,2)>=4) {
+           Instructions.MOV(Machine[Machine.UC.reg[parseInt(Machine.UC.R1,2)]],mM,Machine)
        }
    }
-   else if(parseInt(UC.Cop,2)==11){
-       Machine.UAL.UAL2=Mode[parseInt(UC.Mod,2)](Machine,UC.reg,UC.C).value
-       Machine.UAL.UAL1=Machine[UC.reg[parseInt(UC.R1,2)]].value
-       Machine.UAL.executer(UC.Coprnd[parseInt(UC.Cop,2)],Machine.Flags)
+   else if(parseInt(Machine.UC.Cop,2)==11){
+       Machine.UAL.UAL2=Mode[parseInt(Machine.UC.Mod,2)](Machine,Machine.UC.reg,Machine.UC.C).value
+       Machine.UAL.UAL1=Machine[Machine.UC.reg[parseInt(Machine.UC.R1,2)]].value
+       Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop,2)],Machine.Flags)
    }
    //***************************************************** */
    //treating RAZ
-   else if(parseInt(UC.Cop,2)==12){
-       Instructions.RAZ(Machine[UC.reg[parseInt(UC.R1,2)]].value,Machine.Flags)
+   else if(parseInt(Machine.UC.Cop,2)==12){
+       Instructions.RAZ(Machine[Machine.UC.reg[parseInt(Machine.UC.R1,2)]].value,Machine.Flags)
    }
    //***************************************************** */
    // treating instructions from SHL to ROR 
-   else if (parseInt(UC.Cop,2)>=13 && parseInt(UC.Cop,2)<17){
-       let i= new Mot16(UC.C)
+   else if (parseInt(Machine.UC.Cop,2)>=13 && parseInt(Machine.UC.Cop,2)<17){
+       let i= new Mot16(Machine.UC.C.padStart(16,"0"))
        Machine.UAL.UAL2=i
-       Machine.UAL.UAL1=Machine[UC.reg[parseInt(UC.R1,2)]].value
-       Machine[UC.reg[parseInt(UC.R1,2)]].value =new Mot16(Machine.UAL.executer(UC.Coprnd[parseInt(UC.Cop,2)],Machine.Flags))
+       Machine.UAL.UAL1=Machine[Machine.UC.reg[parseInt(Machine.UC.R1,2)]].value
+       Machine[Machine.UC.reg[parseInt(Machine.UC.R1,2)]].value =new Mot16(Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop,2)],Machine.Flags))
    }
    //***************  LOOP UNTIL CX==0 ***************** */
-   else if(parseInt(UC.Cop,2)==17)
+   else if(parseInt(Machine.UC.Cop,2)==17)
    {
-       let op=Mode[0](Machine,UC.reg,UC.C).value
+       let op=Mode[0](Machine,Machine.UC.reg,Machine.UC.C).value
        if (Machine.CX.value.entier==0) {
            //Co.incCO()
        } else {
@@ -187,69 +261,101 @@ const Traiter=(Machine,UC)=>{
        }
    }
    /** BCV */
-   else if(parseInt(UC.Cop,2)==18){
-       let op2=Mode[0](Machine,UC.reg,UC.C).value
-       let op1=parseInt(UC.C,2)
+   else if(parseInt(Machine.UC.Cop,2)==18){
+       let op2=Mode[0](Machine,Machine.UC.reg,Machine.UC.C).value
+       let op1=parseInt(Machine.UC.C,2)
        if (Instructions.BCV(op1,Machine.Flags)) {
            Co.value= new Mot16(Instructions.DEC(op2,new Flags(new Mot16("0000000000000000"))))
        }
    }
    /**BCF */
-   else if (parseInt(UC.Cop,2)==19){
-       let op2=Mode[0](Machine,UC.reg,UC.C).value
-       let op1=parseInt(UC.C,2)
+   else if (parseInt(Machine.UC.Cop,2)==19){
+       let op2=Mode[0](Machine,Machine.UC.reg,Machine.UC.C).value
+       let op1=parseInt(Machine.UC.C,2)
        if (Instructions.BCF(op1,Machine.Flags)) {
            Co.value= new Mot16(Instructions.DEC(op2,new Flags(new Mot16("0000000000000000"))))
        }
    }
-   else if (parseInt(UC.Cop,2)==20){
+   else if (parseInt(Machine.UC.Cop,2)==20){
        Machine.ACC=Instructions.ENT(Machine.Flags)
    }
-   else if (parseInt(UC.Cop,2)==21){
+   else if (parseInt(Machine.UC.Cop,2)==21){
        Instructions.SOR(Machine.ACC.value)
    }
    /**MOV */
-   else if(parseInt(UC.Cop,2)==22){
-       Instructions.MOV(Mode[parseInt(UC.Mod,2)](Machine,UC.reg,UC.C),Machine[UC.reg[parseInt(UC.R1,2)]],Machine)
+   else if(parseInt(Machine.UC.Cop,2)==22){
+       Instructions.MOV(Mode[parseInt(Machine.UC.Mod,2)](Machine,Machine.Machine.UC.reg,Machine.UC.C),Machine[Machine.UC.reg[parseInt(Machine.UC.R1,2)]],Machine)
        
    }
-   else if(parseInt(UC.Cop,2)==23){
-       Instructions.CHM(Mode[parseInt(UC.Mod,2)](Machine,UC.reg,UC.C).value,Machine)
+   else if(parseInt(Machine.UC.Cop,2)==23){
+       Instructions.CHM(Mode[parseInt(Machine.UC.Mod,2)](Machine,Machine.UC.reg,Machine.UC.C).value,Machine)
    }
-   else if(parseInt(UC.Cop,2)==24){
-       Instructions.RGM(Mode[parseInt(UC.Mod,2)](Machine,UC.reg,UC.C).value,Machine)
+   else if(parseInt(Machine.UC.Cop,2)==24){
+       Instructions.RGM(Mode[parseInt(Machine.UC.Mod,2)](Machine,Machine.UC.reg,Machine.UC.C).value,Machine)
    }
    /**PUSH/POP */
-   else if(parseInt(UC.Cop,2)==25){
-       let op=Machine[UC.reg[parseInt(UC.R1,2)]].value
+   else if(parseInt(Machine.UC.Cop,2)==25){
+       let op=Machine[Machine.UC.reg[parseInt(Machine.UC.R1,2)]].value
        Instructions.PUSH(Machine.pile,op)
    }
-   else if(parseInt(UC.Cop,2)==26){
-       let op=Machine[UC.reg[parseInt(UC.R1,2)]]
+   else if(parseInt(Machine.UC.Cop,2)==26){
+       let op=Machine[Machine.UC.reg[parseInt(Machine.UC.R1,2)]]
        Machine.bus_donnes.transferer(Instructions.POP(Machine.pile),op)
    }
    
 }
 /***********************************888888888888888 */
-let Mode=[function Imm(Machine,reg,C) {
+let Mode=[function Imm(Machine,reg,C,time,elements) {
     var Co=Machine.CO
     var busAdr=Machine.bus_adresse
     var busData=Machine.bus_donnes
     var Mem=Machine.memoire
     var RI=Machine.RI
-        Co.incCO()
+    let blue
+    let som=0
+        Co.incCO()//incrementer le compteur ordinal
+        table.current.push(Machine.CO.value.hexa)
+        console.log(table.current)
         setTimeout(()=>{
-            setCoo([machine.CO.value.hexa[0],machine.CO.value.hexa[1],machine.CO.value.hexa[2],machine.CO.value.hexa[3]])
-        },6000)
-        busAdr.transferer(Co,Machine.RAM)
+            coo.current=table.current.shift()
+            setFo(coo.current)
+            console.log(table.current,coo.current)
+            blue=document.querySelector(".Co")
+            blue.className="Co boxShadowBlue"
+        },timeRef.current)
+        timeRef.current += 1000
+        
+        busAdr.transferer(Co,Machine.RAM)//transferer l'adresse du compteur ordinal dans le bus d'adresse vers le RAM
+        tableR.current.push(Machine.RAM.value.hexa)
         setTimeout(()=>{
-            setR([machine.RAM.value.hexa[0],machine.RAM.value.hexa[1],machine.RAM.value.hexa[2],machine.RAM.value.hexa[3]])
-        },4000)
-        Mem.lecture(Machine.RAM,Machine.RIM)
+            blue.className="Co"
+            setElements([...elements,<LightCoRam time={timeRef.current}></LightCoRam>])
+        },timeRef.current)
+        timeRef.current += 8000
         setTimeout(()=>{
-            setRimm([machine.RIM.value.hexa[0],machine.RIM.value.hexa[1],machine.RIM.value.hexa[2],machine.RIM.value.hexa[3]])
-        },4000)
-        return Machine.RIM
+            blue=document.querySelector(".RAM")
+            blue.className="RAM boxShadowBlue"
+            ramm.current=tableR.current.shift()
+            setFo1(ramm.current)
+        },timeRef.current)
+        timeRef.current += 1000
+        setTimeout(()=>{
+            blue.className="RAM"
+            blue=document.querySelector(".Memoire")
+            blue.className="Memoire boxShadowBlue"
+        },timeRef.current)
+        timeRef.current += 1000
+        Mem.lecture(Machine.RAM,Machine.RIM)//lecture de la valeur de l'adresse du compteur ordinal dans le RAM et le mettre dans le RIM
+        tableR2.current.push(Machine.RIM.value.hexa)
+        setTimeout(()=>{
+            blue.className="Memoire"
+            blue=document.querySelector(".rim")
+            blue.className="rim boxShadowBlue"
+            rimm.current=tableR2.current.shift()
+            setFo2(rimm.current)
+        },timeRef.current)
+        timeRef.current += 1000
+        return Machine.RIM //retourner la valeur de l'adresse du compteur ordinal
     },function Drct(Machine,reg,C) {
         var Co=Machine.CO
         var busAdr=Machine.bus_adresse
@@ -257,9 +363,9 @@ let Mode=[function Imm(Machine,reg,C) {
         var Mem=Machine.memoire
         var RI=Machine.RI
         Co.incCO()
-        setCoo([Co.value.hexa[0],Co.value.hexa[1],Co.value.hexa[2],Co.value.hexa[3]])
+        coo.current=Co.value.hexa
         busAdr.transferer(Co,Machine.RAM)
-        setR(Machine.RAM.hexx)
+        //setR(Machine.RAM.hexx)
         Mem.lecture(Machine.RAM,Machine.RIM)
         busData.transferer(Machine.RIM,busAdr)
         busAdr.transferer( busAdr,Machine.RAM)
@@ -275,16 +381,16 @@ let Mode=[function Imm(Machine,reg,C) {
         var Mem=Machine.memoire
         var RI=Machine.RI
         Co.incCO()
-        setCoo([Co.value.hexa[0],Co.value.hexa[1],Co.value.hexa[2],Co.value.hexa[3]])
+        coo.current=Co.value.hexa
         busAdr.transferer(Co,Machine.RAM)
         setTimeout(()=>{
-            setR([machine.RAM.value.hexa[0],machine.RAM.value.hexa[1],machine.RAM.value.hexa[2],machine.RAM.value.hexa[3]])
+           // setR([machine.RAM.value.hexa[0],machine.RAM.value.hexa[1],machine.RAM.value.hexa[2],machine.RAM.value.hexa[3]])
         },4000)
         Mem.lecture(Machine.RAM,Machine.RIM)
         busData.transferer(Machine.RIM,busAdr)
         busAdr.transferer( busAdr,Machine.RAM)
         setTimeout(()=>{
-            setR([machine.RAM.value.hexa[0],machine.RAM.value.hexa[1],machine.RAM.value.hexa[2],machine.RAM.value.hexa[3]])
+           // setR([machine.RAM.value.hexa[0],machine.RAM.value.hexa[1],machine.RAM.value.hexa[2],machine.RAM.value.hexa[3]])
         },4000)
         //here i'm assuming that transfer operation will return the data it's transferring
         Mem.lecture(Machine.RAM,Machine.RIM)
@@ -306,7 +412,7 @@ let Mode=[function Imm(Machine,reg,C) {
         busData.transferer(Machine.BX,busAdr)
         busAdr.transferer( busAdr,Machine.RAM)
         setTimeout(()=>{
-            setR([machine.RAM.value.hexa[0],machine.RAM.value.hexa[1],machine.RAM.value.hexa[2],machine.RAM.value.hexa[3]])
+           // setR([machine.RAM.value.hexa[0],machine.RAM.value.hexa[1],machine.RAM.value.hexa[2],machine.RAM.value.hexa[3]])
         },4000)
         Mem.lecture(Machine.RAM,Machine.RIM)
         //busData.transferer(Machine.RIM.envoyer(),Machine.UAL.UAL1.recevoir())
@@ -346,62 +452,161 @@ let Mode=[function Imm(Machine,reg,C) {
     }]
     /**************************************************************************** */
     const [elements,setElements]=useState([])
+    let blue
+    let som=0
     const[hexx,setHexx]=useState([])
-      
-    const[ual,setUAL]=useState("0000")
-    const[uall,setUALL]=useState("0000")
     const HandleToggle = () => {
         setShowPageOne(true)
+        setTimeout(()=>{
             if(comp){
-                co.RAZ()
-                console.log(machine)
-            machine.bus_adresse.transferer(co,machine.RAM)
+                co.RAZ()//RAZ co=0
+                table.current.push(co.value.hexa)
+                console.log(table.current)
+                setTimeout(()=>{
+                    coo.current=table.current.shift()
+                    setFo(coo.current)
+                    blue=document.querySelector(".Co")
+                    console.log(blue)
+                    blue.className="Co boxShadowBlue"
+                },timeRef.current)
+                timeRef.current += 1000
+                
+                machine.bus_adresse.transferer(machine.CO,machine.RAM)//co->RAM
+                tableR.current.push(machine.RAM.value.hexa)
+                setTimeout(()=>{
+                    blue.className="Co"
+                    setElements([...elements,<LightCoRam time={timeRef.current}></LightCoRam>])
+                },timeRef.current)
+                timeRef.current += 8000
+
+                setTimeout(()=>{
+                    blue=document.querySelector(".RAM")
+                    blue.className="RAM boxShadowBlue"
+                    ramm.current=tableR.current.shift()
+            setFo1(ramm.current)
+                },timeRef.current)
+                timeRef.current += 1000
+                setTimeout(()=>{
+                    blue.className="RAM"
+                    blue=document.querySelector(".Memoire")
+                    blue.className="Memoire boxShadowBlue"
+                },timeRef.current)
+                timeRef.current += 1000
+                machine.memoire.lecture(machine.RAM,machine.RIM)//lecture 
+                tableR2.current.push(machine.RIM.value.hexa)
+                setTimeout(()=>{
+                    blue.className="Memoire"
+                    blue=document.querySelector(".rim")
+                    blue.className="rim boxShadowBlue"
+                    rimm.current=tableR2.current.shift()
+                    setFo2(rimm.current)
+                },timeRef.current)
+                timeRef.current += 1000
+            
+            
+                setTimeout(()=>{
+                    blue.className="rim"
+                    setElements([...elements,<LightRimUc time={time}></LightRimUc>])
+                },timeRef.current)
+                timeRef.current += 8000
+            machine.bus_donnes.transferer(machine.RIM,machine.RI)//rim->ri
+            tableR3.current.push(machine.RI.value.hexa)
             setTimeout(()=>{
-                setR([machine.RAM.value.hexa[0],machine.RAM.value.hexa[1],machine.RAM.value.hexa[2],machine.RAM.value.hexa[3]])
-            },4000)
-            machine.memoire.lecture(machine.RAM,machine.RIM)
-            setTimeout(()=>{
-                setRimm([machine.RIM.value.hexa[0],machine.RIM.value.hexa[1],machine.RIM.value.hexa[2],machine.RIM.value.hexa[3]])
-            },4000)
-            machine.bus_donnes.transferer(machine.RIM,machine.RI)
-            setTimeout(()=>{
-                setRii([machine.RI.value.hexa[0],machine.RI.value.hexa[1],machine.RI.value.hexa[2],machine.RI.value.hexa[3]])
-            },6000)
-            let Arr=machine.RI.decode();
-            UC.Cop=Arr[0];UC.Mod=Arr[1];UC.R1=Arr[2];UC.C=Arr[3]
+                rii.current=tableR3.current.shift()
+                setFo3(rii.current)
+                blue=document.querySelector(".UcEtRi")
+                blue.className="UcEtRi boxShadowBlue"
+            },timeRef.current)
+            timeRef.current += 1000
+            let Arr=machine.RI.decode();//decode la donnee de ri
+            machine.UC=new UniteCommandes(Arr[0],Arr[1],Arr[2],Arr[3])
+            
+            setMachine(machine)
             //Co.incCO()
             let here
-        while (parseInt(UC.Cop,2)!=27) {
-            //console.log("here",parseInt(UC.Cop,2))
-            Traiter(machine,UC)
-            machine.CO.incCO()
+            console.log(coo.current)
+        while (parseInt(machine.UC.Cop,2)!=27) {
+            console.log("here",parseInt(machine.UC.Cop,2))
             setTimeout(()=>{
-                setCoo([machine.CO.value.hexa[0],machine.CO.value.hexa[1],machine.CO.value.hexa[2],machine.CO.value.hexa[3]])
-            },6000)
-            
-            machine.bus_adresse.transferer(machine.CO,machine.RAM)
+                blue.className="UcEtRi"
+            },timeRef.current)
+            timeRef.current += 1000
+            console.log(timeRef.current)
+            Traiter(machine,time,elements)
+            setMachine(machine)
+            machine.CO.incCO()//inc co
+            table.current.push( machine.CO.value.hexa)
+            console.log(table.current)
+            console.log(coo.current)
             setTimeout(()=>{
-                setR([machine.RAM.value.hexa[0],machine.RAM.value.hexa[1],machine.RAM.value.hexa[2],machine.RAM.value.hexa[3]])
-            },4000)
-            machine.memoire.lecture(machine.RAM,machine.RIM)
+                coo.current=table.current.shift()
+                setFo(coo.current)
+                console.log(table.current)
+                blue=document.querySelector(".Co")
+                blue.className="Co boxShadowBlue"
+            },timeRef.current)
+            timeRef.current += 1000
+            machine.bus_adresse.transferer(machine.CO,machine.RAM)//co->RAM
+            tableR.current.push(machine.RAM.value.hexa)
             setTimeout(()=>{
-                setRimm([machine.RIM.value.hexa[0],machine.RIM.value.hexa[1],machine.RIM.value.hexa[2],machine.RIM.value.hexa[3]])
-            },4000)
-            machine.bus_donnes.transferer(machine.RIM,machine.RI)
+                blue.className="Co"
+                setElements([...elements,<LightCoRam time={timeRef.current}></LightCoRam>])
+            },timeRef.current)
+            timeRef.current += 8000
             setTimeout(()=>{
-                setRii([machine.RI.value.hexa[0],machine.RI.value.hexa[1],machine.RI.value.hexa[2],machine.RI.value.hexa[3]])
-            },6000)
-            Arr=machine.RI.decode()
-            UC.Cop=Arr[0];UC.Mod=Arr[1];UC.R1=Arr[2];UC.C=Arr[3]
+                blue=document.querySelector(".RAM")
+                blue.className="RAM boxShadowBlue"
+                ramm.current=tableR.current.shift()
+                setFo1(ramm.current)
+            },timeRef.current)
+            timeRef.current += 1000
+            setTimeout(()=>{
+                blue.className="RAM"
+                blue=document.querySelector(".Memoire")
+                blue.className="Memoire boxShadowBlue"
+            },timeRef.current)
+            timeRef.current += 1000
+            machine.memoire.lecture(machine.RAM,machine.RIM)//lecture
+            tableR2.current.push(machine.RIM.value.hexa)
+            setTimeout(()=>{
+                blue.className="Memoire"
+                blue=document.querySelector(".rim")
+                blue.className="rim boxShadowBlue"
+                rimm.current=tableR2.current.shift()
+                setFo2(rimm.current)
+            },timeRef.current)
+            timeRef.current += 1000
+        
+        
+            setTimeout(()=>{
+                blue.className="rim"
+                setElements([...elements,<LightRimUc time={timeRef.current}></LightRimUc>])
+            },timeRef.current)
+            timeRef.current += 8000
+        machine.bus_donnes.transferer(machine.RIM,machine.RI)//rim->ri
+        tableR3.current.push(machine.RI.value.hexa)
+        setTimeout(()=>{
+            rii.current=tableR3.current.shift()
+                setFo3(rii.current)
+            blue=document.querySelector(".UcEtRi")
+            blue.className="UcEtRi boxShadowBlue"
+        },timeRef.current)
+        timeRef.current += 2000
+        setTimeout(()=>{
+            blue.className="UcEtRi"
+        },timeRef.current)
+            Arr=machine.RI.decode()//decode la donnee de ri
+            machine.UC=new UniteCommandes(Arr[0],Arr[1],Arr[2],Arr[3])
         }
         console.log(machine)}
-            
+    },2000)
         
     }
-   
-   
+    
     return (
-        <>{showPageOne ? <Simulation case1={ual} case2={uall} memoire={hexx} Co={coo} elements={elements} Ram={ramm} Rim={rimm} RI={rii}/> : <Code handleToggle={HandleToggle} handleClick={HandleClick} />}
+        <>{showPageOne ? <Simulation case1={fo5} case2={fo6} memoire={hexx} Co={fo}
+         elements={elements} Ram={fo1} Rim={fo2} RI={fo3} Pile={fo12}
+          ACC={fo4} SI={fo7} DI={fo8} BX={fo9} Flags={fo11} CX={fo10}/> : <Code handleToggle={HandleToggle} handleClick={HandleClick} />}
             
         </>
     )
