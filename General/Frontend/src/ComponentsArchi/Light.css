@@ -3,7 +3,7 @@
 
 .Light, .LightCoRam, .LightRimRam, .LightRimUc , .LightRegPile, .LightCoPile, .LightCoUal,
 .LightPileCo, .LightUalCo, .LightRimEual1, .LightEual1Rim, .LightRegRim, .LightRegUal, .LightUalReg,
-.LightFlagPile, .LightPileFlag, .LightFlagUal{
+.LightFlagPile, .LightPileFlag, .LightFlagUal ,.LighPileBx ,.LightPileAcc ,.LightPileCX ,.LightRimBx,.LightCxPile ,.LightBxPile ,.LightDxPile ,.LightAccPile,.LightSiPile{
 
   height: 10px;
   width: 10px;
