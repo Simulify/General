@@ -157,7 +157,6 @@ export function RimToUc(time, myRef, setCoor, coor) {
         }
       }, [coor]);
  }
-<<<<<<< HEAD
  export function RegPile(time,myRef,setCoor,coor){
   useEffect(() => {
       let x1 =myRef.current.getBoundingClientRect().left;
@@ -195,11 +194,9 @@ export function RimToUc(time, myRef, setCoor, coor) {
   
 }
 /*********************************************************************************************/ 
-=======
 
 
 /*******************************************************************/ 
->>>>>>> b5c31d4510e048ce61e75af7d069ca6c65d612b9
 
 export function PileReg(time,myRef,setCoor,coor){
   useEffect(() => {
