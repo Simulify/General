@@ -31,7 +31,7 @@ import UniteCommandes from '../Logic/Logic/src/UNiteCommandes.js';
 import mot_mem from '../Logic/Logic/src/mot_mem.js';
 import Machine from '../Logic/Logic/src/Machine.js';
 import { BinToMnem, Compile, Coprnd, Decoup, reg } from '../Logic/Logic/src/functions.js';
-import ABCD from '../ComponentsArchi/ACCtoBD';
+import ABCD from '../ComponentsArchi/LightACCUal';
 import { render } from 'react-dom';
 export function Sim() {
     /// initialisation des instances de classes
