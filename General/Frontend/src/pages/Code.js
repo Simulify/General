@@ -11,6 +11,7 @@ import next from '../Images/next.svg'
 import { Link } from 'react-router-dom';
 import Title from '../components/Title2' ;
 import Title2 from '../components/Title2';
+import SimulerBtn from '../components/SimulerBtn';
 
 const ButoStyle={
   background: '#00A6FB',
@@ -21,12 +22,13 @@ gridArea:'sauv'
 
 function Code(props) {
   const [base,setBase]=useState("")
-  const handleClick1= (event)=>{
-    if (event.target.textContent=="HEX") {
-      event.target.textContent="BIN"
-    }
-    else{event.target.textContent="HEX"}
-  }
+  // const handleClick1= (event)=>{
+  //   if (event.target.textContent=="HEX") 
+  //   {
+  //     event.target.textContent="BIN"
+  //   }
+  //   else{event.target.textContent="HEX"}
+  // }
     const [textareaValue, setTextareaValue] = useState("");
     const [textareaValue1, setTextareaValue1] = useState("");
     const handleTextareaChange = (event) => {
@@ -53,102 +55,71 @@ function Code(props) {
       console.log("ani ndkhol");
     }
     localStorage.setItem("buttonClicked", "false");
-       //----------------------------------
-    var form=document.querySelector('textarea');
-    var simuler=document.getElementById('btn2');
-    var compile=document.getElementById('btn1')
-    let nb = 1;
-    let txt=document.createTextNode('compilé ');
-    
-    form.addEventListener('keydown', ()=>
+
+
+       //-----------------------------------------------------------------------------------------------//
+              //--------------------------------------------------------------------------------//
+       //-----------------------------------------------------------------------------------------------//
+
+  
+   var simuler=document.querySelector('#btn2');
+   let compiled=false;
+   simuler.addEventListener('click',()=>
+   {
+    if(compiled===false)
     {
-        let nb_lignes=document.createElement('div');
-        nb++;
-
-    })
-   
-
-    // simuler.addEventListener('click',()=>
-    // {
-    //     console.log(form.value);
-    //     form.value='';
-    //     // location.reload();
-    //         checkorder();
-    // })
-    // compile.addEventListener('click',()=>
-    // {
-    //    time_compile=Date.now();
-    //    checkorder();
-    // })
-    // function checkorder()
-    // {
-    //     if(time_compile>time_simule)
-    //     {
-    //        var compiled=document.querySelector('.compiled');
-    //        compiled.textContent='compiled';
-    //         console.log('le code a été bien compilé');  
-
-    //     }
-    //     else
-    //     {
-    //    throw new Error('Veuillez compiler le code avant la simulation')   
-    //     }
-    // } 
-    let time_compile=0;
-    let time_simule=0;
-  var codes=document.getElementsByTagName('textarea');
-let clicked=false;
-codes[0].readonly=false;
-codes[1].readonly=false;
-
-  // codes[0].addEventListener('click',()=>
-  // {
-  //   if(!clicked)
-  //   {
-  //     codes[0].readonly=false; 
-  //     codes[1].readonly=true;
-  //     clicked=true;
-  //     console.log(codes[0].readonly);
-  //   }
-   
-  // })
-
-
-  codes[0].addEventListener('click',()=>{
-  codes[0].select();
-  console.log(codes[0].readonly);
-  if(clicked===false && codes[0].value!=='')
-    {
-
-       codes[0].readonly=false;
-       codes[1].readonly=true;
-       clicked=true;
+      throw new Error ('compile first');
     }
-  })
-
-
-  codes[0].addEventListener('input', () => {
-    if(codes[0].readonly===true && codes[1].value!=='') {
-      codes[0].value='';
-    }  
-    })
-  codes[1].addEventListener('input', () => {
-  if(codes[1].readonly===true && codes[0].value!=='' ) {
-    codes[1].value='';
-  }
-  })
-  codes[1].addEventListener('click',()=>{
-  console.log(codes[1].readonly);
-  if(clicked===false && codes[1].value!=='')
-  {
-     codes[1].readonly=false;
-     codes[0].readonly=true;
-     clicked=true; 
-  }
-}
+   })
   
 
-)
+   let binary='';
+    var codes=document.getElementsByTagName('textarea');
+    let compiler=document.querySelector('.container2 .button');
+    /***********************************    CONERSION EN BINAIRE   ***************** */
+    compiler.addEventListener('click',()=>
+    {
+    compiled=true;
+    binary=codes[1].value.split('\n');
+    console.log(binary);
+    for(let i=0;i<binary.length;i++)
+    {
+      binary[i]= parseInt(binary[i],16).toString(2);  
+    }
+    binary.length=binary.length-1;
+    console.log(binary);
+    })
+
+
+  codes[0].addEventListener('click', () => {
+    if( codes[1].value!=='') {
+      codes[0].readOnly = true;
+      codes[1].readOnly = false;
+      codes[0].value='';
+    }
+    else  
+    {
+      codes[0].readOnly = false;
+      codes[1].readOnly = true;
+
+    } 
+    })
+  codes[1].addEventListener('click', () => 
+  {
+  if(codes[0].value!=='' ) 
+  {
+    codes[1].readOnly=true;
+    codes[0].readOnly = false;
+    codes[1].value= '';
+  }
+  else
+  {
+    codes[1].readOnly = false;
+    codes[0].readOnly = true;    
+  }
+
+  })
+  
   }, []); // This empty array as a second argument ensures that the effect is only run once when the component mounts
   
 
@@ -219,6 +190,7 @@ codes[1].readonly=false;
           });
       });
   };
+
   
     return(
       <div>
@@ -236,7 +208,7 @@ codes[1].readonly=false;
        
         <div className="container">
          <Side textareaValue={textareaValue} handleTextareaChange={handleTextareaChange}></Side>
-         <div className="base" onClick={handleClick1}>BIN</div>
+         <div className="base" >HEX</div>
          <Side textareaValue={textareaValue1} handleTextareaChange={handleTextareaChange1}></Side>
            </div>             
              </div>      
@@ -247,15 +219,16 @@ codes[1].readonly=false;
       <Button onClick={props.handleClick} id="btn1" text="Compiler" style={{ fontSize: '16px', background: '#F8F9FA', color: '#023047',border:'1px solid #00A6FB',padding: '12px 24px'}}></Button>
       <Link to="/code/Simulation">
         
-      <div id="btn2" onClick={props.handleToggle} >
-        
-        Simuler
-        <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div id="btn2" onClick={props.handleToggle} >
           
-<path fill-rule="evenodd" clip-rule="evenodd" d="M0.454505 1.2045C0.893845 0.765165 1.60616 0.765165 2.0455 1.2045L8.0455 7.2045C8.48483 7.64384 8.48483 8.35616 8.0455 8.7955L2.0455 14.7955C1.60616 15.2348 0.893845 15.2348 0.454505 14.7955C0.015165 14.3562 0.015165 13.6438 0.454505 13.2045L5.65901 8L0.454505 2.7955C0.015165 2.35616 0.015165 1.64384 0.454505 1.2045Z" fill="#F8F9FA"/>
-</svg>
-
-      </div></Link>
+          Simuler
+          <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.454505 1.2045C0.893845 0.765165 1.60616 0.765165 2.0455 1.2045L8.0455 7.2045C8.48483 7.64384 8.48483 8.35616 8.0455 8.7955L2.0455 14.7955C1.60616 15.2348 0.893845 15.2348 0.454505 14.7955C0.015165 14.3562 0.015165 13.6438 0.454505 13.2045L5.65901 8L0.454505 2.7955C0.015165 2.35616 0.015165 1.64384 0.454505 1.2045Z" fill="#F8F9FA"/>
+  </svg>
+  
+        </div></Link>
+      {/* <SimulerBtn></SimulerBtn> */}
       </div>
           <div className='compiled' >
           </div>
