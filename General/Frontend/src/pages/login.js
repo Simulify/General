@@ -9,13 +9,11 @@ import logo from '../Components_login/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Login({ setIsAuthenticated,setCurrentUser,currentUser }) {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState('');
+  const navigate = useNavigate(); 
+  const [email, setEmail] = useState(''); 
   const [password, setPassword] = useState('');
 
-
-
-  useEffect(() => {
+  useEffect(() => { // sets the varible to true when user logs in 
     const isAuthenticated = localStorage.getItem('isAuthenticated');
     if (isAuthenticated) {
       setIsAuthenticated(true);
@@ -23,29 +21,29 @@ function Login({ setIsAuthenticated,setCurrentUser,currentUser }) {
   }, []);
 
 
-  const handleLogin = () => {
-    if (!email || !password) {
+  const handleLogin = () => {  
+    if (!email || !password) { //checks the presence of the email & password
       console.log('All fields are required');
       return;
     }
     console.log('handleSignUp called');
     axios
-      .post('/login', {
+      .post('/login', { // we post the user's data to the database 
         email,
         password,
       })
       .then((response) => {
         console.log(email);
         console.log(response.data);
-        localStorage.setItem('token', response.data.token);
-        const username = email.split('@')[0];
+        localStorage.setItem('token', response.data.token); // we get the token of the identification 
+        const username = email.split('@')[0]; //we get the user's space name from the email 
         localStorage.setItem('username', username);
         localStorage.setItem('isAuthenticated', true);
         setIsAuthenticated(true);
         localStorage.setItem('currentUser', JSON.stringify(response.data.user));
         console.log('currentUser:', response.data.user);
         console.log('currentUser_id:', response.data.user._id);
-        navigate(`/user-space/${localStorage.getItem('username')}`);
+        navigate(`/home`); // we redirect to home to indicate the successful login 
       })
       .catch((error) => {
         console.log(email);
