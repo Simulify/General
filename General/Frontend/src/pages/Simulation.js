@@ -4,10 +4,14 @@ import ACCUal from '../ComponentsArchi/LightACCUal';
 import Container from '../ComponentsArchi/Container';
 
 function Simulation (props) {
-
+   
+  function toggle() {
+    var blur = document.getElementById('blur');
+    blur.classList.toggle('.avtive');
+  }
   return (
   
-    <div className='Simulation'>
+    <div className='Simulation' id='blur'>
       {props.elements.map((element) => (
           <div>
           {element}
