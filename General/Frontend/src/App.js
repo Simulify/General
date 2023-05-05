@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
+
+import './pages/ColorsVar.css'; 
 import './App.css';
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
@@ -31,18 +33,26 @@ import ExplicationsPage from './pages/ExplicationsPage';
 import ProfilePage from './ComponentsSettings/ProfilePage';
 import LanguePage from './ComponentsSettings/LanguePage';
 import ModePage from './ComponentsSettings/ModePage';
+import { Sim } from './pages/Sim';
 import FAQ from './pages/FAQ';
 
 function App() {
+  
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false); //une variable qui est mise à jour au login & logout
+  const [currentUser, setCurrentUser] = useState(localStorage.getItem('user') || null);
+  
+
   function handleReset() {
     localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('user');
     setIsAuthenticated(false);
+    localStorage.setItem("buttonClicked", "false");
   }
   function PrivateRoute({ children }) {
     const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-  console.log(isAuthenticated);
+    const currentUser = JSON.parse(localStorage.getItem('user'));
     return isAuthenticated ? (
       <React.Fragment>{children}</React.Fragment>
     ) : (
@@ -57,11 +67,13 @@ function App() {
      <Routes>
       <Route path='/' element={<Home/>}></Route>
       <Route path='/home' element={<Home/>}></Route>
-      <Route path='/code' element={<Code/>}></Route>
       <Route path='/code/programmation-syntaxe' element={<Syntaxe/>}></Route>
-      <Route path='/code/simulation' element={<Simulation/>}></Route>
-      <Route path="/files/*" element={<PrivateRoute><Routes><Route path="/" element={<Files />} /></Routes></PrivateRoute>}/>
       <Route path="/settings/*" element={<PrivateRoute><Routes><Route path="/" element={<Settings />} /></Routes></PrivateRoute>}/>
+      <Route path='/code' element={<Sim></Sim>}></Route>
+      <Route path='/code/simulation' element={<Sim></Sim>}></Route>
+      <Route path="/files/*" element={<PrivateRoute currentUser={currentUser}><Files currentUser={currentUser} /></PrivateRoute>} />
+      <Route path="/files/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<Files currentUser={currentUser} />} /></Routes></PrivateRoute>} />
+      <Route path='/settings' element={<Settings/>}></Route>
       <Route path='/settings/ProfilePage'  element={<ProfilePage/>}></Route>
       <Route path='/settings/MotDePassePage'  element={<MotDePassePage/>}></Route> 
       <Route path='/settings/LanguePage'  element={<LanguePage/>}></Route>
@@ -83,7 +95,7 @@ function App() {
       <Route path='/guide/instructions/in-out' element={<GuideInstrInout/>}></Route>
       <Route path='/guide/instructions/data-transfer' element={<GuideInstrDtrs/>}></Route>
       <Route path='/faq' element={<FAQ/>}></Route>
-      <Route path='/login' element={<Login setIsAuthenticated={setIsAuthenticated}/>}></Route>
+      <Route path='/login' element={<Login setIsAuthenticated={setIsAuthenticated} setCurrentUser={setCurrentUser}/>}></Route>
       <Route path='/signup' element={<Signup/>}></Route>
       <Route path='/*' element={<ErrorPage/>}></Route>
      </Routes>

@@ -5,7 +5,7 @@ class Mot16 {
     constructor(valeur) {
         this.mot = valeur
         this.entier=parseInt((this.mot), 2)
-        this.hexa=(this.entier).toString(16)
+        this.hexa=(this.entier).toString(16).padStart(4,"0")
         // aren't we supposed to add decimal and hexa here
     }
 
@@ -19,7 +19,7 @@ class Mot16 {
     setMot(valeur) {
         this.mot = valeur;
         this.entier=parseInt((this.mot), 2)
-        this.hexa=(this.entier).toString(16)
+        this.hexa=(this.entier).toString(16).padStart(4,"0")
     }
 }
 

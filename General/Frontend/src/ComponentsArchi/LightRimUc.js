@@ -3,10 +3,10 @@ import './Light.css';
 import { MyFun } from './yellow';
 import { RimToUc } from './yellow';
 
-function LightRimUc() {
+function LightRimUc({time}) {
   const [coor, setCoor] = useState([]);
   const myRef = useRef(null);
-  RimToUc(myRef,setCoor,coor)
+  RimToUc(time, myRef,setCoor,coor)
 
   return <div className='LightRimUc' ref={myRef} />;
 }

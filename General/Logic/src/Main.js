@@ -76,7 +76,7 @@ const Memoire = new memoire(mem)
 
 const machine = new Machine(Acc,ri,si,dx,bx,co,cx,rIM,rAM,busAdr,busData,flags,uAl,Memoire,pile);
 const UC = new UniteCommandes(null,null,null,null);
-UC.execute(machine);
+UC.Execute(machine);
 console.log(machine.ACC,machine.pile,machine.CX,machine.DX,machine.BX)
 console.log(machine.memoire.memory[0])
 //  let mo=""
