@@ -48,20 +48,15 @@ export function ACCUal(time,myRef,setCoor,coor){
     
         const x1 = myRef.current.getBoundingClientRect().left;
         const y1 = myRef.current.getBoundingClientRect().top;
-        let x2 = document.querySelector('#Acc').getBoundingClientRect().left;
-        let y2 = document.querySelector('#Acc').getBoundingClientRect().top;
+        let x2 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().left;
+        let y2 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().top;
         MyFun(time,x2,y2,x1,y1,setCoor)
 
-        x2 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().left+10;
-        y2 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().top;
+        y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
         MyFun(time + 2000,x2,y2,x1,y1,setCoor)
 
-        x2 = document.querySelector('.RegToBusDonnees .triangleBas').getBoundingClientRect().left;
-        y2 = document.querySelector('.RegToBusDonnees .triangleBas').getBoundingClientRect().top +30;
-        MyFun(time + 3000,x2,y2,x1,y1,setCoor)
-
-        x2=document.querySelector('.EualsBusDonnees .triangleHaut').getBoundingClientRect().left +8;
-        MyFun(time + 4000,x2,y2,x1,y1,setCoor)
+        x2=document.querySelector('.EualsBusDonnees .triangleHaut').getBoundingClientRect().left;
+        MyFun(time + 3500,x2,y2,x1,y1,setCoor)
 
         y2=document.querySelector('.BusEuals').getBoundingClientRect().top
         MyFun(time + 5000,x2,y2,x1,y1,setCoor)
@@ -106,7 +101,7 @@ export function CoRam(time, myRef, setCoor, coor) {
 
       const x1 = myRef.current.getBoundingClientRect().left;
       const y1 = myRef.current.getBoundingClientRect().top;
-      let x2 = document.querySelector('.BusCo .triangleHaut').getBoundingClientRect().left;
+      let x2 = document.querySelector('.BusCo .rectangle').getBoundingClientRect().left;
       let y2 = document.querySelector('.BusCo .triangleHaut').getBoundingClientRect().top;
       MyFun(time, x2,y2,x1,y1,setCoor);
 
@@ -152,7 +147,7 @@ export function RimRam(time, myRef, setCoor, coor) {
 
       const x1 = myRef.current.getBoundingClientRect().left;
       const y1 = myRef.current.getBoundingClientRect().top;
-      let x2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().left;
+      let x2 = document.querySelector('.RimToRi .rectangle').getBoundingClientRect().left;
       let y2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().top;
       MyFun(time,x2,y2,x1,y1,setCoor);
 
@@ -162,7 +157,7 @@ export function RimRam(time, myRef, setCoor, coor) {
       x2 = document.querySelector('.RimBusDonnees').getBoundingClientRect().left;
       MyFun(time + 3000,x2,y2,x1,y1,setCoor);
 
-      x2 = document.querySelector('.RamBusDonnees .triangleHaut').getBoundingClientRect().left;
+      x2 = document.querySelector('.RamBusDonnees .rectangle').getBoundingClientRect().left;
       MyFun(time + 4000, x2, y2, x1, y1, setCoor);
 
       y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
@@ -207,20 +202,24 @@ export function RimToUc(time, myRef, setCoor, coor) {
 
       const x1 = myRef.current.getBoundingClientRect().left;
       const y1 = myRef.current.getBoundingClientRect().top;
-      let x2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().left;
+      let x2 = document.querySelector('.RimToRi .rectangle').getBoundingClientRect().left;
       let y2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().top;
 
       MyFun(time,x2,y2,x1,y1,setCoor);
 
       y2 = document.querySelector('.RimBusRi .rectangle').getBoundingClientRect().top;
-      MyFun(time + 2000,x2,y2,x1,y1,setCoor);
+      MyFun(time + 1500,x2,y2,x1,y1,setCoor);
 
       x2 = document.querySelector('.RimBusRi .triangleGauche').getBoundingClientRect().left;
-      MyFun(time + 3000,x2,y2,x1,y1,setCoor);
+      MyFun(time + 2500,x2,y2,x1,y1,setCoor);
+
+      setTimeout(() => {
+        myRef.current.style.opacity='0%'
+      }, 4000);
 
       setTimeout(() => {
         document.querySelector('.Ri').classList.add('boxShadowBlue');
-      }, 4000);
+      }, 4500);
   
       setTimeout(() => {
         document.querySelector('.Ri').classList.remove('boxShadowBlue');
@@ -228,13 +227,20 @@ export function RimToUc(time, myRef, setCoor, coor) {
   
       x2 = document.querySelector('.BusUcToRi').getBoundingClientRect().left;
       MyFun(time + 5500, x2, y2, x1, y1, setCoor);
+
+      y2 = document.querySelector('.BusUcToRi .triangleBas').getBoundingClientRect().top;
+      MyFun(time + 6000, x2, y2, x1, y1, setCoor);
+      
+      setTimeout(() => {
+        myRef.current.style.opacity='60%'
+      }, 6500);
   
       y2 = document.querySelector('.BusUcToRi, triangleHaut').getBoundingClientRect().top;
-      MyFun(time + 6000, x2, y2, x1, y1, setCoor);
+      MyFun(time + 7000, x2, y2, x1, y1, setCoor);
 
       setTimeout(() => {
         document.querySelector('.Uc').classList.add('boxShadowBlue');
-      }, 7000);
+      }, 7500);
   
       setTimeout(() => {
         document.querySelector('.Uc').classList.remove('boxShadowBlue');
@@ -248,7 +254,7 @@ export function RimToUc(time, myRef, setCoor, coor) {
       
       useEffect(() => {
         if (coor.length === 2) {
-          setTimeout(()=>{myRef.current.style.opacity='60%'},1000)
+          setTimeout(()=>{myRef.current.style.opacity='60%'},800)
         }
       }, [coor]);
 
@@ -258,6 +264,8 @@ export function RimToUc(time, myRef, setCoor, coor) {
         }
       }, [coor]);
  }
+
+ /**********************************************************************************/
 
  export function RegPile(time,myRef,setCoor,coor){
   useEffect(() => {
@@ -354,6 +362,7 @@ export function RimReg(time,myRef,setCoor,coor){
 
 
 /*******************************************************************************************/
+/*Déplacement de Co vers la pile*/
 
 export function CoPile(time,myRef,setCoor,coor) {
 
@@ -361,12 +370,12 @@ export function CoPile(time,myRef,setCoor,coor) {
 
     const x1 = myRef.current.getBoundingClientRect().left;
     const y1 = myRef.current.getBoundingClientRect().top;
-    let x2 = document.querySelector('.BusCo .triangleHaut').getBoundingClientRect().left;
+    let x2 = document.querySelector('.BusCo .rectangle').getBoundingClientRect().left;
     let y2 = document.querySelector('.BusCo .triangleHaut').getBoundingClientRect().top;
 
     MyFun(time,x2,y2,x1,y1,setCoor);
 
-    y2 = document.querySelector('.BusDonnees').getBoundingClientRect().top;
+    y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
     MyFun(time + 3000,x2,y2,x1,y1,setCoor);
 
     x2 = document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().left;
@@ -412,12 +421,12 @@ export function CoUal(time,myRef,setCoor,coor) {
 
     const x1 = myRef.current.getBoundingClientRect().left;
     const y1 = myRef.current.getBoundingClientRect().top;
-    let x2 = document.querySelector('.BusCo .triangleHaut').getBoundingClientRect().left;
+    let x2 = document.querySelector('.BusCo .rectangle').getBoundingClientRect().left;
     let y2 = document.querySelector('.BusCo .triangleHaut').getBoundingClientRect().top;
 
     MyFun(time,x2,y2,x1,y1,setCoor);
 
-    y2 = document.querySelector('.BusDonnees').getBoundingClientRect().top;
+    y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
     MyFun(time + 2500,x2,y2,x1,y1,setCoor);
 
     x2 = document.querySelector('.EualsBusDonnees .rectangle').getBoundingClientRect().left;
@@ -471,10 +480,10 @@ export function PileCo(time,myRef,setCoor,coor) {
 
     MyFun(time,x2,y2,x1,y1,setCoor);
 
-    y2 = document.querySelector('.BusDonnees').getBoundingClientRect().top;
+    y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
     MyFun(time + 2000,x2,y2,x1,y1,setCoor);
 
-    x2 = document.querySelector('.RamBusDonnees').getBoundingClientRect().left;
+    x2 = document.querySelector('.RamBusDonnees .rectangle').getBoundingClientRect().left;
     MyFun(time + 4000,x2,y2,x1,y1,setCoor);
 
     y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
@@ -528,7 +537,7 @@ export function UalCo(time,myRef,setCoor,coor) {
 
     MyFun(time + 2000,x2,y2,x1,y1,setCoor);
 
-    y2 = document.querySelector('.BusDonnees').getBoundingClientRect().top;
+    y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
     MyFun(time + 3000,x2,y2,x1,y1,setCoor);
 
     x2 = document.querySelector('.RamBusDonnees').getBoundingClientRect().left;
@@ -577,19 +586,16 @@ export function RimEual1(time,myRef,setCoor,coor) {
 
     const x1 = myRef.current.getBoundingClientRect().left;
     const y1 = myRef.current.getBoundingClientRect().top;
-    let x2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().left;
+    let x2 = document.querySelector('.RimToRi .rectangle').getBoundingClientRect().left;
     let y2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().top;
     MyFun(time ,x2,y2,x1,y1,setCoor);
 
-    y2 = document.querySelector('.EualsBusDonnees .rectangle').getBoundingClientRect().top;
+    y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
 
     MyFun(time + 2000,x2,y2,x1,y1,setCoor);
 
-    x2 = document.querySelector('.BusDonnees').getBoundingClientRect().left;
-    MyFun(time + 3000,x2,y2,x1,y1,setCoor);
-
-    x2 = document.querySelector('.EualsBusDonnees').getBoundingClientRect().left;
-    MyFun(time + 4000,x2,y2,x1,y1,setCoor);
+    x2 = document.querySelector('.EualsBusDonnees .rectangle').getBoundingClientRect().left;
+    MyFun(time + 3500,x2,y2,x1,y1,setCoor);
 
     y2 = document.querySelector('.BusEuals .rectangle').getBoundingClientRect().top;
     MyFun(time + 5000, x2, y2, x1, y1, setCoor);
@@ -701,7 +707,7 @@ export function RegRim(time,myRef,setCoor,coor) {
     MyFun(time + 2000,x2,y2,x1,y1,setCoor);
 
     x2 = document.querySelector('.RimBusDonnees  .triangleGauche').getBoundingClientRect().left;
-    MyFun(time + 3000,x2,y2,x1,y1,setCoor);
+    MyFun(time + 4000,x2,y2,x1,y1,setCoor);
 
     x2 = document.querySelector('.RimToRi .rectangle').getBoundingClientRect().left;
     MyFun(time + 5000,x2,y2,x1,y1,setCoor);
@@ -750,15 +756,14 @@ export function RegUal(time,myRef,setCoor,coor){
       let y2 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().top;
       MyFun(time ,x2,y2,x1,y1,setCoor)
 
-      x2 = document.querySelector('.RegToBusDonnees .triangleBas').getBoundingClientRect().left;
-      y2 = document.querySelector('.RegToBusDonnees .triangleBas').getBoundingClientRect().top;
+      y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
       MyFun(time + 2000 ,x2,y2,x1,y1,setCoor)
 
       x2=document.querySelector('.EualsBusDonnees .triangleHaut').getBoundingClientRect().left;
       MyFun(time + 3000,x2,y2,x1,y1,setCoor)
 
       y2=document.querySelector('.BusEuals').getBoundingClientRect().top
-      MyFun(time + 5000,x2,y2,x1,y1,setCoor)
+      MyFun(time + 4500,x2,y2,x1,y1,setCoor)
 
       x2=document.querySelector('#Eual1 #eual2').getBoundingClientRect().left
       MyFun(time + 6000,x2,y2,x1,y1,setCoor)
@@ -799,7 +804,7 @@ export function UalReg(time,myRef,setCoor,coor){
   
     const x1 = myRef.current.getBoundingClientRect().left;
     const y1 = myRef.current.getBoundingClientRect().top;
-    let x2 = document.querySelector('#Eual1 #eual0').getBoundingClientRect().left;
+    let x2 = document.querySelector('#Eual1 #eual2').getBoundingClientRect().left;
     let y2 = document.querySelector('.BusEuals .triangleGauche').getBoundingClientRect().top;
     MyFun(time ,x2,y2,x1,y1,setCoor);
 
@@ -807,7 +812,7 @@ export function UalReg(time,myRef,setCoor,coor){
 
     MyFun(time + 2500,x2,y2,x1,y1,setCoor);
 
-    y2 = document.querySelector('.BusDonnees').getBoundingClientRect().top;
+    y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
     MyFun(time + 3500,x2,y2,x1,y1,setCoor);
 
     x2=document.querySelector('.RegToBusDonnees .triangleBas').getBoundingClientRect().left;
@@ -998,8 +1003,8 @@ export function UalFlag(time,myRef,setCoor,coor){
     const x1 = myRef.current.getBoundingClientRect().left;
     const y1 = myRef.current.getBoundingClientRect().top;
     let x2 = document.querySelector('#Eual1 #eual2').getBoundingClientRect().left;
-    let y2 = document.querySelector('.BusEuals .rectangleGauche').getBoundingClientRect().top;
-    MyFun(time ,x2,y2,x1,y1,setCoor);
+    let y2 = document.querySelector('.BusEuals .rectangle').getBoundingClientRect().top;
+    MyFun(time,x2,y2,x1,y1,setCoor);
 
     x2 = document.querySelector('.EualsBusDonnees .rectangle').getBoundingClientRect().left;
 
