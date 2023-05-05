@@ -8,7 +8,7 @@
   }
   .File-button {
     height: 50px;
-      background-color: #fff;
+      background-color: #F8F9FA;
       font-size: 13px;
       font-weight: Bold;
       font-family: Montserrat;
@@ -26,7 +26,7 @@
     }
     .File-delete-button{
       border-style: none;
-      background-color: #fff;
+      background-color: #F8F9FA;
     }
     
     .file{
