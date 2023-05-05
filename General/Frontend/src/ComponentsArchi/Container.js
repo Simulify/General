@@ -1,4 +1,4 @@
-// import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "../pages/Simulation.css";
 import Pile from "./Pile";
 import Registres from "./Registres";
@@ -33,9 +33,27 @@ import LightPileFlag from "./LightPileFlag";
 import LightFlagUal from "./LightFlagUal";
 import LightACCUal from "./LightACCUal";
 import LightUalFlag from "./LightUalFlag";
+import FinSimulation from "./FinSimulation";
+
 
 
 function Container(props) {
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleStop = () => {
+    setShowPopup(true);
+  }
+
+  // const openModal = document.querySelectorAll('[data-target]')
+  // const overlay = document.getElementById('overlay')
+
+  // openModal.forEach(button => {
+  //   button.addEventListener('click', () => {
+  //     const modal= document.querySelector(button.datset.madalTarget)
+  //     openModal(modal)
+  //   })
+  // })
 
     return (
     <div className="Container">
@@ -51,10 +69,18 @@ function Container(props) {
         <RimToRi/>
         <RimBusRi/>
         <Commencer/>
-        <Arreter/>
+        <Arreter onClick={handleStop} />
+        {showPopup && (
+        <div className="overlay">
+              <FinSimulation/>
+        </div>
+      )}
 
-        {/* <LightCoRam time = {0}/>  */}
-        {/* <LightRimRam time = {0}/> */}
+        {/* <FinSimulation id="modal"/>
+        <div id="overlay"></div> */}
+
+        {/* <LightCoRam time = {0}/>  */} {/* avec shadow à la destination*/}
+        {/* <LightRimRam time = {0}/> */} {/* avec shadow à la destination*/}
         {/* <LightRimUc time = {0}/>  */}
         {/* <LightCoPile time = {0}/> */}
         {/* <LightCoUal time = {0}/>  */}
