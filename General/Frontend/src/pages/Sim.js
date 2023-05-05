@@ -74,15 +74,15 @@ for (let index = 0; index < mem.length; index++) {
     const ramm = useRef("0000")
     const rimm=useRef("0000")
     const rii=useRef("0000")
-    const[ual,setUAL]=useState("0000")
-    const[uall,setUALL]=useState("0000")
+    const ual=useRef("0000")
+    const uall=useRef("0000")
     const acc=useRef(Acc.value.hexa)
-    const[si1,setSI]=useState("0000")
-    const[dx1,setDX]=useState("0000")
-    const[bx1,setBX]=useState("0000")
-    const[cx1,setCX]=useState("0000")
-    const[flags1,setFlags]=useState("0000")
-    const[pile1,setPile]=useState([])
+    const si1=useRef("0000")
+    const dx1=useRef("0000")
+    const bx1=useRef("0000")
+    const cx1=useRef("0000")
+    const flags1=useRef("0000")
+    const pile1=useRef([])
     const[time,setTime]=useState(1000)
     const timeRef = useRef(0);
     const coo=useRef("0000")
@@ -91,11 +91,27 @@ for (let index = 0; index < mem.length; index++) {
     const tableR2=useRef([])
     const tableR3=useRef([])
     const tableAc=useRef([])
-    let [fo,setFo]=useState("0000")
-    let [fo1,setFo1]=useState("0000")
-    let [fo2,setFo2]=useState("0000")
-    let [fo3,setFo3]=useState("0000")
-    let [fo4,setFo4]=useState(Acc.value.hexa)
+    const tableUal=useRef([])
+    const tableUal2=useRef([])
+    const tableSi=useRef([])
+    const tableDx=useRef([])
+    const tableBx=useRef([])
+    const tableCx=useRef([])
+    const tableFlags=useRef([])
+    const tablePile=useRef([])
+    let [fo,setFo]=useState("0000")//poyr co
+    let [fo1,setFo1]=useState("0000")//pour ram
+    let [fo2,setFo2]=useState("0000")//pour rim
+    let [fo3,setFo3]=useState("0000")//pour ual
+    let [fo4,setFo4]=useState(Acc.value.hexa)//pour acc
+    let [fo5,setFo5]=useState("0000")//pour ual
+    let [fo6,setFo6]=useState("0000")//pour uall
+    let [fo7,setFo7]=useState("0000")//pour si
+    let [fo8,setFo8]=useState("0000")//pour dx
+    let [fo9,setFo9]=useState("0000")//pour bx  
+    let [fo10,setFo10]=useState("0000")//pour cx
+    let [fo11,setFo11]=useState("0000")//pour flags
+    let [fo12,setFo12]=useState([])//pour pile
     const HandleClick = (event) => {
         let phrases = Compile(Decoup(document.querySelector('textarea').value))
         setComp(true)
@@ -147,6 +163,8 @@ const Traiter=(Machine,time,elements)=>{
    if (parseInt(Machine.UC.Cop,2)<2 || parseInt(Machine.UC.Cop,2)==4 || (parseInt(Machine.UC.Cop,2)>=6 && parseInt(Machine.UC.Cop,2)<=10 )) {
        Machine.UAL.UAL2=Mode[parseInt(Machine.UC.Mod,2)](Machine,Machine.UC.reg,Machine.UC.C,time).value
        Machine.UAL.UAL1=Machine[Machine.UC.reg[parseInt(Machine.UC.R1,2)]].value
+       tableUal.current.push(Machine.UAL.UAL2.hexa)
+       tableUal2.current.push(Machine.UAL.UAL1.hexa)
        console.log(time)
       setElements([...elements,<LightRimEual1 time={timeRef.current}></LightRimEual1>])
       timeRef.current += 9000
@@ -155,8 +173,10 @@ const Traiter=(Machine,time,elements)=>{
         here.className="Eual boxShadowBlue"
         here=document.querySelector("#Eual2")
         here.className="Eual boxShadowBlue"
-        setUAL(Machine.UAL.UAL2.hexa)
-        setUALL(Machine.UAL.UAL1.hexa)
+        ual.current=Machine.UAL.UAL2.hexa
+        uall.current=Machine.UAL.UAL1.hexa
+        setFo5(Machine.UAL.UAL2.hexa)
+        setFo6(Machine.UAL.UAL1.hexa)
       },timeRef.current)
       timeRef.current += 1000
        // if(parseInt(UC.R1,2)==0){
@@ -584,9 +604,9 @@ let Mode=[function Imm(Machine,reg,C,time,elements) {
     }
     
     return (
-        <>{showPageOne ? <Simulation case1={ual} case2={uall} memoire={hexx} Co={fo}
-         elements={elements} Ram={fo1} Rim={fo2} RI={fo3} Pile={pile1}
-          ACC={fo4} SI={si1} DI={dx1} BX={bx1} Flags={flags1} CX={cx1}/> : <Code handleToggle={HandleToggle} handleClick={HandleClick} />}
+        <>{showPageOne ? <Simulation case1={fo5} case2={fo6} memoire={hexx} Co={fo}
+         elements={elements} Ram={fo1} Rim={fo2} RI={fo3} Pile={fo12}
+          ACC={fo4} SI={fo7} DI={fo8} BX={fo9} Flags={fo11} CX={fo10}/> : <Code handleToggle={HandleToggle} handleClick={HandleClick} />}
             
         </>
     )
