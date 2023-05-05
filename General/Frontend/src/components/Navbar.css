@@ -1,7 +1,7 @@
 header {
   height: 10vh;
   z-index: 10;
-  background-color: #FFFFFF;
+  background-color:var(--background-color);
 }
 .navbar {
   display: grid;
@@ -14,7 +14,7 @@ header {
 }
 .title {
   margin-top: 4vh;
-  color: #023047;
+  color: var( --dark-to-light);
   font-size: 5vh;
   font-weight: 600;
   font-family: Montserrat;

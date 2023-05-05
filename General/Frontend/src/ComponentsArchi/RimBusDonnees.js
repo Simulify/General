@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import "../pages/Simulation.css";
 
-function RimBusDonnees() {
+function RimBusDonnees(props) {
 
     const [isClicked, setIsClicked] = useState(false);
 
