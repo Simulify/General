@@ -1,6 +1,6 @@
 import React from 'react';
 import './Simulation.css';
-import ABCD from '../ComponentsArchi/LightACCUal';
+import ACCUal from '../ComponentsArchi/LightACCUal';
 import Container from '../ComponentsArchi/Container';
 
 function Simulation (props) {
