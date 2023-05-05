@@ -48,8 +48,9 @@ function Files({ isAuthenticated, setIsAuthenticated, currentUser, setCurrentUse
 
 const [fileList, setFileList] = useState([]);
 
+
 useEffect(() => {
-  setFileList(files.map((file) => ({ id: file._id, label: file.title, codeHexa: file.codeHexa,codeMemo:file.codeMemo,compiled:file.compiled })));
+  setFileList(files.map((file) => ({ id: file._id, label: file.title, codeHexa: file.codeHexa,codeMemo:file.codeMemo })));
 }, [files]);
 
 async function removeFile(id) {
@@ -132,13 +133,13 @@ async function removeFile(id) {
           </div>
           <div className={`file-arithmetic ${arithmeticVisible ? 'show' : ''}`}>
           <Link to="/code">
-          <FileNoDelete label="ADD" />
+          <FileNoDelete label="ADD" codeHexa="azerty" codeMemo="azerty "  />
     </Link>
     <Link to="/code">
-    <FileNoDelete label="SUB" />
+    <FileNoDelete label="SUB" codeHexa="azerty" codeMemo="azerty "  />
       </Link>
       <Link to="/code">
-      <FileNoDelete label="DIV" />
+      <FileNoDelete label="DIV" codeHexa="azerty" codeMemo="azerty " />
       </Link>
           </div>
 
@@ -148,13 +149,13 @@ async function removeFile(id) {
 
           <div className={`file-logic ${logicVisible ? 'show' : ''}`}>
           <Link to="/code">
-          <FileNoDelete label="ET" />
+          <FileNoDelete label="ET" codeHexa="azerty" codeMemo="azerty "/>
       </Link>
       <Link to="/code">
-      <FileNoDelete label="OU" />
+      <FileNoDelete label="OU" codeHexa="azerty" codeMemo="azerty " />
     </Link>
     <Link to="/code">
-    <FileNoDelete label="NON" />
+    <FileNoDelete label="NON" codeHexa="azerty" codeMemo="azerty " />
     </Link>
            
           </div>
@@ -165,11 +166,11 @@ async function removeFile(id) {
 
           <div className={`file-branching ${branchingVisible ? 'show' : ''}`}>
           <Link to="/code">
-          <FileNoDelete label="BCV" />
+          <FileNoDelete label="BCV" codeHexa="azerty" codeMemo="azerty " />
     </Link>
     
     <Link to="/code">
-    <FileNoDelete label="LOOP" />
+    <FileNoDelete label="LOOP" codeHexa="azerty" codeMemo="azerty " />
     </Link>
          
           </div>
@@ -180,7 +181,7 @@ async function removeFile(id) {
 
           <div className={`file-transfer ${transferVisible ? 'show' : ''}`}>
           <Link to="/code">
-          <FileNoDelete label="PERMUT" />
+          <FileNoDelete label="PERMUT" codeHexa="azerty" codeMemo="azerty "  />
     </Link>
           </div>
 
@@ -190,10 +191,10 @@ async function removeFile(id) {
 
           <div className={`file-shift ${shiftVisible ? 'show' : ''}`}>
           <Link to="/code">
-          <FileNoDelete label="SHIFT LEFT" />
+          <FileNoDelete label="SHIFT LEFT" codeHexa="azerty" codeMemo="azerty "  />
     </Link>
     <Link to="/code">
-    <FileNoDelete label="SHIFT RIGHT" />
+    <FileNoDelete label="SHIFT RIGHT" codeHexa="azerty" codeMemo="azerty " />
     </Link>
           </div>
         </div>
@@ -208,7 +209,7 @@ async function removeFile(id) {
       <ul>
         {fileList.map((file) => (
       <li key={file.id}>
-            <File id={file.id} label={file.label} codeHexa={file.codeHexa} codeMemo={file.codeMemo} compiled={file.compiled}  onDelete={() => removeFile(file.id)}   />
+            <File id={file.id} label={file.label} codeHexa={file.codeHexa} codeMemo={file.codeMemo}  onDelete={() => removeFile(file.id)}   />
           </li>
         ))}
       </ul>

@@ -62,15 +62,13 @@ function App() {
     <BrowserRouter>
     <Sidebar onReset={handleReset} />
      <Routes>
-      
       <Route path='/' element={<Home/>}></Route>
       <Route path='/home' element={<Home/>}></Route>
       <Route path='/code' element={<Sim></Sim>}></Route>
       <Route path='/code/simulation' element={<Sim></Sim>}></Route>
       <Route path="/files/*" element={<PrivateRoute currentUser={currentUser}><Files currentUser={currentUser} /></PrivateRoute>} />
       <Route path="/files/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<Files currentUser={currentUser} />} /></Routes></PrivateRoute>} />
-<Route path="/settings/*" element={<PrivateRoute><Routes><Route path="/" element={<Settings />} /></Routes></PrivateRoute>}/>
-<Route path="/settings/:id" element={<PrivateRoute><Routes><Route path="/" element={<Settings />} /></Routes></PrivateRoute>} />
+      <Route path='/settings' element={<Settings/>}></Route>
       <Route path='/settings/ProfilePage'  element={<ProfilePage/>}></Route>
       <Route path='/settings/MotDePassePage'  element={<MotDePassePage/>}></Route> 
       <Route path='/settings/LanguePage'  element={<LanguePage/>}></Route>

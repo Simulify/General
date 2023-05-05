@@ -364,7 +364,7 @@ async function createCode(userId, codeData) {
     title: codeData.title,
     codeHexa: codeData.codeHexa,
     codeMemo: codeData.codeMemo,
-    compiled: codeData.compiled,
+   
   };
 
   user.codes.push(newCode);
@@ -432,7 +432,7 @@ router.put('/users/:userId/codes/:codeId', async (req, res) => {
     code.title = newTitle;
     code.codeHexa = newCodeHexa;
     code.codeMemo = newCodeMemo;
-    code.compiled = newCompiled;
+
 
     await user.save();
     res.json(code);

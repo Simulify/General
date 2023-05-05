@@ -30,25 +30,16 @@ import LightPileFlag from "./LightPileFlag";
 import LightFlagUal from "./LightFlagUal";
 
 function Container(props) {
-  // useEffect(()=>
-  // {
-  //   var el=document.querySelector('.ButtonExecution');
-  //   el.addEventListener('click',()=>
-  //   {
-  //     var el2=document.querySelector('.LightMove')
-  //     el2.classList.add('Light');
-  //   })
-  // })
 
     return (
     <div className="Container">
-        <Registres case={props.case}/>
+        <Registres/>
         <Pile/>
-        <CoEtBus case={props.case}/>
+        <CoEtBus/>
         <BusDonnees/>
-        <MemoireEtRam case={props.case}/>
+        <MemoireEtRam/>
         <UalEtBus case={props.case}/>
-        <UcEtRi case={props.case}/>
+        <UcEtRi/>
         <RimBusDonnees/>
         <RimToRi/>
         <RimBusRi/>

@@ -257,7 +257,6 @@ export function RimToUc(time, myRef, setCoor, coor) {
           myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
         }
       }, [coor]);
-
  }
 
 /*************************************************************************************************/
