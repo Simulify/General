@@ -13,23 +13,21 @@ import RimBusRi from "./RimBusRi";
 import Commencer from "./Commencer";
 import Arreter from "./Arreter";
 import LightRimRam from "./LightRimRam";
-import ABCD from "./ACCtoBD";
 import LightCoRam from "./LightCoRam";
 import LightRimUc from "./LightRimUc";
 import LightRegPile from './LightRegPile';
 import LightCoPile from "./LightCoPile";
 import LightCoUal from "./LightCoUal";
 
+import LightPileReg from "./LightPileReg";
+import LightRimReg from "./LightRimReg";
+
+import LightPileCo from "./LightPileCo";
+import LightUalCo from "./LightUalCo";
+import LightRimEual1 from "./LightRimEual1";
+
+
 function Container(props) {
-  // useEffect(()=>
-  // {
-  //   var el=document.querySelector('.ButtonExecution');
-  //   el.addEventListener('click',()=>
-  //   {
-  //     var el2=document.querySelector('.LightMove')
-  //     el2.classList.add('Light');
-  //   })
-  // })
 
     return (
     <div className="Container">
@@ -39,20 +37,13 @@ function Container(props) {
         <BusDonnees/>
         <MemoireEtRam memoire={props.memoire} Ram={props.Ram} Rim={props.Rim} />
         <UalEtBus case1={props.case1} case2={props.case2}/>
-        <LightRegPile/>
         <UcEtRi RI={props.RI}/>
         <RimBusDonnees />
+        <RimBusDonnees/>
         <RimToRi/>
         <RimBusRi/>
         <Commencer/>
         <Arreter/>
-
-        {/* <LightRimRam time={0}/>
-        <AcctoBD time={0}/>
-        <LightCoRam time={0}/>
-        <LightRimUc time = {0} />
-        <LightCoPile time={0}/>
-        <LightCoUal time={0}/> */}
 
     </div>
    

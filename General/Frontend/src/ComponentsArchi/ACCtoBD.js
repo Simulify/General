@@ -3,6 +3,8 @@ import { Yellow } from './yellow';
 import './Light.css';
 import { MyFun } from './yellow';
 import { RegToB } from './yellow';
+
+
 function ABCD({time}) {
   const [coor, setCoor] = useState([]);
   const myRef = useRef(null);

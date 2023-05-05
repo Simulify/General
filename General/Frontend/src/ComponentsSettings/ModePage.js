@@ -1,9 +1,11 @@
+
 import React, { useState, useEffect } from "react";
 import FormSettings from "./FormSettings";
 import Navbar from "../components/Navbar";
 import { ReactSVG } from "react-svg";
 import Moon from "../Images/Moon.svg";
 import Sun from "../Images/Sun.svg";
+
 
 const ModePage = () => {
     const [formValue, setFormValue] = useState("");

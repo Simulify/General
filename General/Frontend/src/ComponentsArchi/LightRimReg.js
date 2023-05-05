@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Light.css';
 import { MyFun } from './yellow';
-import { RegPile } from './yellow';
+import { RimReg } from './yellow';
 
-function LightRegPile({time}) {
+function LightRimReg({time}) {
   const [coor, setCoor] = useState([]);
   const myRef = useRef(null);
-  RegPile(time,myRef,setCoor,coor);
+  RimReg(time,myRef,setCoor,coor);
 
-  return <div className='LightRegPile' ref={myRef} />;
+  return <div className='LightRimReg' ref={myRef} />;
 }
 
-export default LightRegPile;
+export default LightRimReg;
