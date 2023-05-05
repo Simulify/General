@@ -3,7 +3,7 @@ import RegistrePile from "./RegistrePile";
 import { useState } from "react";
 import "../pages/Simulation.css";
 
-function Pile() {
+function Pile(props) {
 
   const [isClicked, setIsClicked] = useState(false);
 
@@ -14,7 +14,11 @@ function Pile() {
   const casesData = [];
 
   // Boucle pour générer les données de chaque case
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < props.Pile.length; i++) {
+    const element = props.Pile[i];
+    casesData.push({ case1: element[0], case2: element[1], case3: element[2], case4: element[3], });
+  }
+  for (let i = props.Pile.length; i < 20; i++) {
     casesData.push({ case1: "0", case2: "0", case3: "0", case4: "0" });
   }
 

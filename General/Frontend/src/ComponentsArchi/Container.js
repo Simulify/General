@@ -31,6 +31,8 @@ import LightUalReg from "./LightUalReg";
 import LightFlagPile from "./LightFlagPile";
 import LightPileFlag from "./LightPileFlag";
 import LightFlagUal from "./LightFlagUal";
+import LightACCUal from "./LightACCUal";
+import LightUalFlag from "./LightUalFlag";
 import LightPileAcc from "./LightPileAcc";
 import LightPileBx from "./LightPileBx";
 import LightPileCX from "./LightPileCx";
@@ -48,12 +50,12 @@ function Container(props) {
 
     return (
     <div className="Container">
-        <Registres/>
-        <Pile/>
+        <Registres ACC={props.ACC} SI={props.SI} DI={props.DI} BX={props.BX} CX={props.CX}/>
+        <Pile Pile={props.Pile}/>
         <CoEtBus Co={props.Co}/>
         <BusDonnees/>
         <MemoireEtRam memoire={props.memoire} Ram={props.Ram} Rim={props.Rim} />
-        <UalEtBus case1={props.case1} case2={props.case2}/>
+        <UalEtBus case1={props.case1} case2={props.case2} Flags={props.Flags}/>
         <UcEtRi RI={props.RI}/>
         <RimBusDonnees />
         <RimBusDonnees/>
@@ -76,23 +78,26 @@ function Container(props) {
         <RimBusRi/>
         <Commencer/>
         <Arreter/>
-        <LightCoRam time = {0}/> 
+
+        <LightCoRam time = {0}/>  
                         {/* <LightPileReg time = {0}/>                 */}
-        <LightRimRam time = {0}/>
-        <LightRimUc time = {0}/>
-        {/* <LightCoPile time = {0}/>*/}
-        {/* <LightCoUal time = {0}/> */}
-        {/* <LightPileCo time={0}/>  */}
-        {/* <LightUalCo time={0}/>   */}
-        {/* <LightRimEual1 time={0}/> */}
+        <LightRimRam time = {0}/>>
+        <LightRimUc time = {0}/> 
+        {/* <LightCoPile time = {0}/> */}
+        {/* <LightCoUal time = {0}/>  */}
+        {/* <LightPileCo time={0}/>   */}
+        {/* <LightUalCo time={0}/>    */}
+        {/* <LightRimEual1 time={0}/>  */}
         {/* <LightEual1Rim time={0}/> */}
-        {/* <ABCD time={0} reg="#ACC" ></ABCD>  */}
-        {/* <LightRegRim time={0}/> */}
-        {/* <LightRegUal time={0}/> */}
-        {/* <LightUalReg time={0}/> */}
+        {/* <LightACCUal time={0}/>   */}
+        {/* <LightRegRim time={0}/>   */}
+        {/* <LightRegUal time={0}/>   */}
+        {/* <LightUalReg time={0}/>   */}
         {/* <LightFlagPile time={0}/> */}
         {/* <LightPileFlag time={0}/> */}
-         {/* <LightFlagUal time={0}/> */}
+         {/* <LightFlagUal time={0}/>  */}
+        {/* <LightUalFlag time={0}/>  */}
+        
     </div>
    
   );
