@@ -65,7 +65,7 @@ function Container(props) {
         {/* <LightUalReg time={0}/> */}
         {/* <LightFlagPile time={0}/> */}
         {/* <LightPileFlag time={0}/> */}
-        <LightFlagUal time={0}/>
+        {/* <LightFlagUal time={0}/> */}
     </div>
    
   );

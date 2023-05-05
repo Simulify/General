@@ -12,7 +12,7 @@ function Rim(props) {
 
   return (
     <div className="Rim">
-      <div id="Rim" className={className=`rim ${isClicked ? "boxShadowBlue" : ""}`}
+      <div className={`rim ${isClicked ? "boxShadowBlue" : ""}`}
           onClick={handleClick}>
           <div className="C1">{props.Rim[0]}</div>
           <div className="C2">{props.Rim[1]}</div>
