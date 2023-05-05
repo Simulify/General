@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "../pages/Simulation.css";
 
-function Ri({case1, case2, case3, case4}) {
+function Ri({className, case1, case2, case3, case4}) {
 
   const [isClicked, setIsClicked] = useState(false);
 
@@ -11,7 +11,7 @@ function Ri({case1, case2, case3, case4}) {
   };
 
   return (
-    <div className={`Ri ${isClicked ? "boxShadowBlue" : ""}`}
+    <div id="Ri" className={className=`Ri ${isClicked ? "boxShadowBlue" : ""}`}
     onClick={handleClick}>
           <div className="ram">{case1}</div>
           <div className="ram">{case2}</div>

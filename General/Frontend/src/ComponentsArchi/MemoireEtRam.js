@@ -3,11 +3,11 @@ import "../pages/Simulation.css";
 import Ram from "./Ram";
 import MemoireEtRim from "./MemoireEtRim";
 
-function MemoireEtRam() {
+function MemoireEtRam(props) {
   return (
     <div className="MemoireEtRam">
-        <Ram case1="0" case2="0" case3="0" case4="0"/>
-        <MemoireEtRim/>
+        <Ram className={props.case[4]} case1={props.case[0]} case2={props.case[1]} case3={props.case[2]} case4={props.case[3]}/>
+        <MemoireEtRim case={props.case}/>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "../pages/Simulation.css";
 
-function Ram({case1, case2, case3, case4}) {
+function Ram({className, case1, case2, case3, case4}) {
 
   const [isClicked, setIsClicked] = useState(false);
 
@@ -13,12 +13,12 @@ function Ram({case1, case2, case3, case4}) {
   return (
     <div className="Ram">
       <div className="NomRam">Ram</div>
-      <div className={`RAM ${isClicked ? "boxShadowBlue" : ""}`}
+      <div id="Ram" className={className=`RAM ${isClicked ? "boxShadowBlue" : ""}`}
     onClick={handleClick}>
-        <div className="ram1">{case1}</div>
-        <div className="ram2">{case2}</div>
-        <div className="ram3">{case3}</div>
-        <div className="ram4">{case4}</div>
+        <div id={`ram${case1}`} className="ram1">{case1}</div>
+        <div id={`ram${case2}`} className="ram2">{case2}</div>
+        <div id={`ram${case3}`} className="ram3">{case3}</div>
+        <div id={`ram${case4}`} className="ram4">{case4}</div>
       </div>
       
     </div>

@@ -7,9 +7,9 @@ import EualsBusDonnees from "./EualsBusDonnees";
 function UalETflag(props) {
     return (
         <div className="UalEtFlag"> 
-            <Flag case1="0" case2="0" case3="0" case4="0"/>
+            <Flag className={props.case[4]} case1={props.case[0]} case2={props.case[1]} case3={props.case[2]} case4={props.case[3]}/>
             <UalEtEuals case={props.case}/>
-            <EualsBusDonnees/>
+            <EualsBusDonnees />
         </div>
     );
 }

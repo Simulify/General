@@ -3,10 +3,10 @@ import "../pages/Simulation.css";
 import CO from './CO';
 import BusCoToRam from './BusCoToRam';
 
-function CoEtBus() {
+function CoEtBus(props) {
     return (
         <div className='CoEtBus'>
-            <CO  case1="1" case2="0"  case3="2"  case4="0" />
+            <CO className={props.case[4]} case1={props.case[0]} case2={props.case[1]}  case3={props.case[2]}  case4={props.case[3]} />
             <BusCoToRam/>
         </div>
    );

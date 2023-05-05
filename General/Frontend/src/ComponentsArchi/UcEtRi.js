@@ -5,13 +5,13 @@ import Ri from "./Ri";
 import BusUcToRi from "./BusUcToRi";
 import UcBusDonnees from "./UcBusDonnees";
 
-function UcEtRi() {
+function UcEtRi(props) {
     return (
         <div className="UcEtRi">
             <UcBusDonnees/>
             <Uc/> 
             <BusUcToRi/>
-            <Ri case1="0" case2="0" case3="0" case4="0"/>
+            <Ri className={props.case[4]} case1={props.case[0]} case2={props.case[1]} case3={props.case[2]} case4={props.case[3]}/>
         </div>
     );
 }
