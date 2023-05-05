@@ -12,15 +12,13 @@ function Ram(props) {
 
   return (
     <div className="Ram">
-      <div className="NomRam">Ram</div>
-      <div id="Ram" className={className=`RAM ${isClicked ? "boxShadowBlue" : ""}`}
-    onClick={handleClick}>
-        <div className="ram1">{props.Ram[0]}</div>
-        <div className="ram2">{props.Ram[1]}</div>
-        <div className="ram3">{props.Ram[2]}</div>
-        <div className="ram4">{props.Ram[3]}</div>
-      </div>
-      
+    <div className="NomRam">Ram</div>
+    <div className={`RAM ${isClicked ? "boxShadowBlue" : ""}`}>
+          <div className="ram1">{props.Ram[0]}</div>
+          <div className="ram2">{props.Ram[1]}</div>
+          <div className="ram3">{props.Ram[2]}</div>
+          <div className="ram4">{props.Ram[3]}</div>
+      </div>   
     </div>
   );
 }

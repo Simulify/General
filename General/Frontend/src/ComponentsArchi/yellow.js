@@ -66,7 +66,7 @@ export function ACCUal(time,myRef,setCoor,coor){
         y2=document.querySelector('.BusEuals').getBoundingClientRect().top
         MyFun(time + 5000,x2,y2,x1,y1,setCoor)
 
-        x2=document.querySelector('#Eual1 #eual0').getBoundingClientRect().left
+        x2=document.querySelector('#Eual1 #eual2').getBoundingClientRect().left
         MyFun(time + 6000,x2,y2,x1,y1,setCoor)
 
         setTimeout(() => {
@@ -297,11 +297,6 @@ export function RimToUc(time, myRef, setCoor, coor) {
 }
 /*********************************************************************************************/ 
 
-
-
-/*******************************************************************/ 
-
-
 export function PileReg(time,myRef,setCoor,coor){
   useEffect(() => {
       let x1 =myRef.current.getBoundingClientRect().left;
@@ -358,7 +353,7 @@ export function RimReg(time,myRef,setCoor,coor){
 }
 
 
-/****************************************************************/
+/*******************************************************************************************/
 
 export function CoPile(time,myRef,setCoor,coor) {
 
@@ -431,7 +426,7 @@ export function CoUal(time,myRef,setCoor,coor) {
     y2 = document.querySelector('.BusEuals .rectangle').getBoundingClientRect().top;
     MyFun(time + 5000, x2, y2, x1, y1, setCoor);
 
-    x2 = document.querySelector('#Eual1 #eual0').getBoundingClientRect().left;
+    x2 = document.querySelector('#Eual1 #eual2').getBoundingClientRect().left;
     MyFun(time + 6000,x2,y2,x1,y1,setCoor);
 
     setTimeout(() => {
@@ -525,7 +520,7 @@ export function UalCo(time,myRef,setCoor,coor) {
 
     const x1 = myRef.current.getBoundingClientRect().left;
     const y1 = myRef.current.getBoundingClientRect().top;
-    let x2 = document.querySelector('#Eual1 #eual0').getBoundingClientRect().left;
+    let x2 = document.querySelector('#Eual1 #eual2').getBoundingClientRect().left;
     let y2 = document.querySelector('.BusEuals .triangleGauche').getBoundingClientRect().top;
     MyFun(time,x2,y2,x1,y1,setCoor);
 
@@ -599,7 +594,7 @@ export function RimEual1(time,myRef,setCoor,coor) {
     y2 = document.querySelector('.BusEuals .rectangle').getBoundingClientRect().top;
     MyFun(time + 5000, x2, y2, x1, y1, setCoor);
 
-    x2 = document.querySelector('#Eual1 #eual0').getBoundingClientRect().left
+    x2 = document.querySelector('#Eual1 #eual2').getBoundingClientRect().left
     MyFun(time + 6000,x2,y2,x1,y1,setCoor);
 
     setTimeout(() => {
@@ -640,7 +635,7 @@ export function Eual1Rim(time,myRef,setCoor,coor) {
 
     const x1 = myRef.current.getBoundingClientRect().left;
     const y1 = myRef.current.getBoundingClientRect().top;
-    let x2 = document.querySelector('#Eual1 #eual0').getBoundingClientRect().left;
+    let x2 = document.querySelector('#Eual1 #eual2').getBoundingClientRect().left;
     let y2 = document.querySelector('.BusEuals .triangleGauche').getBoundingClientRect().top;
     MyFun(time ,x2,y2,x1,y1,setCoor);
 
@@ -765,7 +760,7 @@ export function RegUal(time,myRef,setCoor,coor){
       y2=document.querySelector('.BusEuals').getBoundingClientRect().top
       MyFun(time + 5000,x2,y2,x1,y1,setCoor)
 
-      x2=document.querySelector('#Eual1 #eual0').getBoundingClientRect().left
+      x2=document.querySelector('#Eual1 #eual2').getBoundingClientRect().left
       MyFun(time + 6000,x2,y2,x1,y1,setCoor)
 
       setTimeout(() => {
@@ -963,7 +958,7 @@ export function FlagUal(time,myRef,setCoor,coor){
     y2=document.querySelector('.BusEuals .rectangle').getBoundingClientRect().top;
     MyFun(time + 5000,x2,y2,x1,y1,setCoor);
 
-    x2 = document.querySelector('#Eual1 #eual0').getBoundingClientRect().left;
+    x2 = document.querySelector('#Eual1 #eual2').getBoundingClientRect().left;
     MyFun(time + 6000,x2,y2,x1,y1,setCoor);
 
     setTimeout(() => {
@@ -1002,7 +997,7 @@ export function UalFlag(time,myRef,setCoor,coor){
   
     const x1 = myRef.current.getBoundingClientRect().left;
     const y1 = myRef.current.getBoundingClientRect().top;
-    let x2 = document.querySelector('#Eual1 #eual0').getBoundingClientRect().left;
+    let x2 = document.querySelector('#Eual1 #eual2').getBoundingClientRect().left;
     let y2 = document.querySelector('.BusEuals .rectangleGauche').getBoundingClientRect().top;
     MyFun(time ,x2,y2,x1,y1,setCoor);
 
