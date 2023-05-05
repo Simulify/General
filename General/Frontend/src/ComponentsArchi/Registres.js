@@ -8,11 +8,11 @@ function Registres() {
     <div className="Registres">
         <div className="NomRegistres">Registres</div>
         <div className="registres">
-            <Registre nom="Bx" case1="0" case2="0" case3="0" case4="0"/>
-            <Registre nom="Cx" case1="0" case2="0" case3="0" case4="0"/>
-            <Registre nom="Dx" case1="0" case2="0" case3="0" case4="0"/>
-            <Registre nom="Si" case1="0" case2="0" case3="0" case4="0"/>
-            <Registre nom="Acc" case1="0" case2="0" case3="0" case4="0"/>
+            <Registre className="Bx" nom="BX" case1="0" case2="0" case3="0" case4="0"/>
+            <Registre className="Cx" nom="CX" case1="0" case2="0" case3="0" case4="0"/>
+            <Registre className="Dx" nom="DX" case1="0" case2="0" case3="0" case4="0"/>
+            <Registre className="Si"nom="SI" case1="0" case2="0" case3="0" case4="0"/>
+            <Registre className="Acc" nom="ACC" case1="0" case2="0" case3="0" case4="0"/>
         </div>
         <RegToBusDonnees/>
     </div>
