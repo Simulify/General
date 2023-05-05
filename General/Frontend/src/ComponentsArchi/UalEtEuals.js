@@ -9,7 +9,7 @@ function UalEtEuals(props) {
         <div className="UalEtEuals"> 
           <UalBusDonnees/>
           <UAL/>
-          <Euals case={props.case}/>
+          <Euals case1={props.case1} case2={props.case2}/>
         </div>
     );
 }
