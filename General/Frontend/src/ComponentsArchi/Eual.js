@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "../pages/Simulation.css";
 
-function Eual({className,nom,case1, case2, case3, case4}) {
+function Eual(props) {
 
     const [isClicked, setIsClicked] = useState(false);
 
@@ -11,12 +11,12 @@ function Eual({className,nom,case1, case2, case3, case4}) {
     }
 
     return (
-        <div id={`Eual${nom}`} className={`Eual ${className} ${isClicked ? "boxShadowBlue" : ""}`}
+        <div id={`Eual${props.nom}`} className={`Eual ${isClicked ? "boxShadowBlue" : ""}`}
         onClick={handleClick}>
-            <div className="eual">{case1}</div>
-            <div id={`eual${case2}`} className="eual">{case2}</div>
-            <div className="eual">{case3}</div>
-            <div className="eualf">{case4}</div>
+            <div className="eual">{props.case[0]}</div>
+            <div id={`eual2`} className="eual">{props.case[1]}</div>
+            <div className="eual">{props.case[2]}</div>
+            <div className="eualf">{props.case[3]}</div>
         </div>
     );
 }

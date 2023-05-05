@@ -11,7 +11,7 @@ function UcEtRi(props) {
             <UcBusDonnees/>
             <Uc/> 
             <BusUcToRi/>
-            <Ri className={props.case[4]} case1={props.case[0]} case2={props.case[1]} case3={props.case[2]} case4={props.case[3]}/>
+            <Ri RI={props.RI}/>
         </div>
     );
 }

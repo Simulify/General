@@ -259,8 +259,106 @@ export function RimToUc(time, myRef, setCoor, coor) {
       }, [coor]);
  }
 
-/*************************************************************************************************/
-/*Déplacement de Co vers la pile*/
+ export function RegPile(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      let x2 =document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+      let y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+ /***/     setTimeout(() => {
+        document.querySelector('.RegToBusDonnees .rectangle').classList.add('boxShadowBlue');
+ /***/     }, time+1000);
+
+      y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
+
+
+      MyFun(time+2000,x2,y2,x1,y1,setCoor);
+  /***/    setTimeout(() => {
+        document.querySelector('.RegToBusDonnees .rectangle').classList.add('boxShadowBlue');
+    /***/  }, time+3000);
+     /***/ document.querySelector('.RegToBusDonnees .rectangle').classList.remove('boxShadowBlue');
+      x2=document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().left;
+      MyFun(time+4000,x2,y2,x1,y1,setCoor);
+      y2 = document.querySelector('.PileBusDonnees .triangleHaut').getBoundingClientRect().top;
+      MyFun(time+5000,x2,y2,x1,y1,setCoor);
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+  
+}
+/*********************************************************************************************/ 
+
+
+
+/*******************************************************************/ 
+
+
+export function PileReg(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      let x2 =document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().left;
+      let y2 = document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
+       MyFun(time+2000,x2,y2,x1,y1,setCoor);
+       x2=document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+      MyFun(time+4000,x2,y2,x1,y1,setCoor);
+      y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+       MyFun(time+5000,x2,y2,x1,y1,setCoor);
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+}
+/**********************************************************************/
+
+
+
+export function RimReg(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      let x2 =document.querySelector('.Rim .C3').getBoundingClientRect().left;
+      let y2 = document.querySelector('.Rim ').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.RimBusDonnees').getBoundingClientRect().top;
+     MyFun(time+2000,x2,y2,x1,y1,setCoor);
+       x2=document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+  MyFun(time+4000,x2,y2,x1,y1,setCoor);
+       y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+     MyFun(time+5000,x2,y2,x1,y1,setCoor);
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+}
+
+
+/****************************************************************/
 
 export function CoPile(time,myRef,setCoor,coor) {
 

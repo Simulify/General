@@ -10,3 +10,30 @@ body {
 }
 
 
+:root[data-theme="light"] {
+
+  --background-color: #F8F9FA;
+  --light-dark: #F8F9FA;
+  --blue: #00A6FB;
+  --light-dark-blue: #B6D8F2;
+  --yellow: #FFE600;
+  --white-to-light:  #F8F9FA; 
+}
+
+:root[data-theme="dark"] {
+
+  --background-color: #171720;
+  --light-dark: #252E46;
+  --blue: #B2E4FD;
+  --light-dark-blue: #252E46;
+  --yellow: #FFE600;
+  --white-to-light:#B2E4FD;
+}
+
+body{
+  background-color:  var(--background-color);
+}
+
+.App{
+  background-color: var(--background-color);
+}
