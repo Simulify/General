@@ -446,7 +446,7 @@ export function RimEual1(time,myRef,setCoor,coor) {
     y2 = document.querySelector('.BusEuals .rectangle').getBoundingClientRect().top;
     MyFun(time + 5000, x2, y2, x1, y1, setCoor);
 
-    x2 = document.querySelector('#Eual1 #eual0').getBoundingClientRect().left
+    x2 = document.querySelector('#Eual1').getBoundingClientRect().left
     MyFun(time + 6000,x2,y2,x1,y1,setCoor);
 
 }, []);
