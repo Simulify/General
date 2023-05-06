@@ -19,40 +19,48 @@ function Settingsbar() {
       <ul className="nav-links">
         <li>
           <Link
+
              to={`/settings/Userprofile/${localStorage.getItem('username')}`}
             className={activeLink === "ProfilePage" ? "active" : ""}
+
             onClick={handleLinkClick}
-            data-link="ProfilePage"
+            data-link="Userprofile"
           >
             Profile
           </Link>
         </li>
         <li>
           <Link
+
             to={`/settings/Userpassword/${localStorage.getItem('username')}`}
             className={activeLink === "MotDePassePage" ? "active" : ""}
+
             onClick={handleLinkClick}
-            data-link="MotDePassePage"
+            data-link="Userpassword"
           >
-            Mot De Passe
+            Mot de passe
           </Link>
         </li>
         <li>
           <Link
+
             to={`/settings/Userlanguage/${localStorage.getItem('username')}`}
             className={activeLink === "LanguePage" ? "active" : ""}
+
             onClick={handleLinkClick}
-            data-link="LanguePage"
+            data-link="Userlanguage"
           >
             Langue
           </Link>
         </li>
         <li>
           <Link
+
              to={`/settings/Usermode/${localStorage.getItem('username')}`}
             className={activeLink === "ModePage" ? "active" : ""}
+
             onClick={handleLinkClick}
-            data-link="ModePage"
+            data-link="Usermode"
           >
             Mode
           </Link>

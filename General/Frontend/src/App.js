@@ -73,6 +73,7 @@ function App() {
       <Route path='/code/simulation' element={<Sim></Sim>}></Route>
       <Route path="/files/*" element={<PrivateRoute currentUser={currentUser}><Files currentUser={currentUser} /></PrivateRoute>} />
       <Route path="/files/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<Files currentUser={currentUser} />} /></Routes></PrivateRoute>} />
+
       {/*  changes are done here */ }
       <Route path="/settings/*" element={<PrivateRoute currentUser={currentUser}><Settings currentUser={currentUser} /></PrivateRoute>} />
       <Route path="/settings/Userprofile/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<ProfilePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
@@ -80,6 +81,7 @@ function App() {
       <Route path="/settings/Usermode/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<ModePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
       <Route path="/settings/Userlanguage/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<LanguePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
      
+
       <Route path='/revision' element={<Revision/>}></Route>
       <Route path='/revision/ressources' element={<RessourcePage/>}></Route>
       <Route path='/revision/ressources/livres' element={<LivresPage/>}></Route>
