@@ -24,6 +24,7 @@
   width: 80%;
   margin-left: 8%;
   color: var(--light-dark-blue);
+  transition: opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
 }
 
 .nav-links a {
@@ -67,6 +68,7 @@
 .Settings {
   margin-left: 10%;
   background-color: var(--background-color);
+  transition: opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
   
 }
 
@@ -150,6 +152,7 @@ input {
   width: 100%;
   font-family: 'Montserrat', sans-serif;
   color: rgba(0, 0, 0, 0.36);
+  transition: opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
 }
 
 .ProfilePage .inputButton {

@@ -86,7 +86,7 @@
   font-family: 'Montserrat';
   font-weight: 600;
   font-size: 2.8vh;
-  color: #FFFFFF;
+  color: var(--background-color);
   text-decoration: none;
 }
 .slider-container {

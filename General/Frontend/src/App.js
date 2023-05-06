@@ -74,10 +74,10 @@ function App() {
       <Route path="/files/*" element={<PrivateRoute currentUser={currentUser}><Files currentUser={currentUser} /></PrivateRoute>} />
       <Route path="/files/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<Files currentUser={currentUser} />} /></Routes></PrivateRoute>} />
       <Route path='/settings' element={<Settings/>}></Route>
-      <Route path='/settings/ProfilePage'  element={<ProfilePage/>}></Route>
-      <Route path='/settings/MotDePassePage'  element={<MotDePassePage/>}></Route> 
-      <Route path='/settings/LanguePage'  element={<LanguePage/>}></Route>
-      <Route path='/settings/ModePage'  element={<ModePage/>}></Route>
+      <Route path='/settings/Userprofile'  element={<ProfilePage/>}></Route>
+      <Route path='/settings/Userpassword'  element={<MotDePassePage/>}></Route> 
+      <Route path='/settings/Userlanguage'  element={<LanguePage/>}></Route>
+      <Route path='/settings/Usermode'  element={<ModePage/>}></Route>
       <Route path='/revision' element={<Revision/>}></Route>
       <Route path='/revision/ressources' element={<RessourcePage/>}></Route>
       <Route path='/revision/ressources/livres' element={<LivresPage/>}></Route>
