@@ -477,7 +477,7 @@
   margin-top: 2%;
 }
 
-.Eual {
+.Eual1 , .Eual2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -487,7 +487,7 @@
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.Eual .eual {
+.Eual1 .eual, .Eual2 .eual {
   border-right: 1px solid #00A6FB;
   text-align: center;
   padding: 2%;
@@ -495,7 +495,7 @@
   width: 20%;
 }
 
-.Eual .eualf {
+.Eual1 .eualf, .Eual2 .eualf {
   text-align: center;
   padding: 2%;
   font-size: 12px;
@@ -837,30 +837,11 @@
   border: none;
   box-shadow: 27px 30px 16px rgba(36, 84, 132, 0.01), 15px 17px 14px rgba(36, 84, 132, 0.05), 7px 7px 10px rgba(36, 84, 132, 0.09), 2px 2px 6px rgba(36, 84, 132, 0.1), 0px 0px 0px rgba(36, 84, 132, 0.1);
   border-radius: 16px;
-}
-
-.ButtonExecution button {
   padding: 4% 8%;
+
 }
 
 .ButtonStop button {
-  padding: 4% 10.5%;
-  border-radius: 16px;
-}
-
-.ButtonStop .confirmerButton{
-  padding: 4% 6.5%;
-  border-radius: 18px;
-}
-
-
-.ButtonStop .Confirmer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.ButtonStop .confirmerButton, .ButtonStop button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -869,6 +850,9 @@
   border: 1px solid #00A6FB;
   font-weight: 400;
   box-shadow: 27px 30px 16px rgba(36, 84, 132, 0.01), 15px 17px 14px rgba(36, 84, 132, 0.05), 7px 7px 10px rgba(36, 84, 132, 0.09), 2px 2px 6px rgba(36, 84, 132, 0.1), 0px 0px 0px rgba(36, 84, 132, 0.1);
+  border-radius: 16px;
+  padding: 4% 10.5%;
+
 }
 
 /*********************************************/
@@ -889,6 +873,65 @@
   height: 100%;
   transition: box-shadow 0.3s ease-in-out;  
 }
+
+/*******************************************************************************************/
+
+/* L'element qui permet à la page de devenir floue  */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(182, 216, 242, 0.48);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*La fenetre qui sera afficher lorsqu'on clique sur le button arreter*/
+
+.FinSimulation {
+  width: 25%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #F8F9FA;
+  box-shadow: 0px 157px 63px rgba(52, 65, 76, 0.01), 0px 88px 53px rgba(52, 65, 76, 0.05), 0px 39px 39px rgba(52, 65, 76, 0.09), 0px 10px 22px rgba(52, 65, 76, 0.1), 0px 0px 0px rgba(52, 65, 76, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out; /* Ajouter une animation de transition */
+  z-index: 1000; /* Au dessus de l'overlay */
+  opacity: 1;    /* Afficher l'élément */
+}
+
+/*Le button fin*/
+
+.buttonFin {
+  width: 80%;
+  height: 80%;
+  cursor: pointer;
+}
+
+.FinSimulation h2 {
+  padding-top: 5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

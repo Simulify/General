@@ -9,8 +9,7 @@ import Button from '../components/Buttonn'
 import Side from '../components/side'
 import next from '../Images/next.svg'
 import { Link } from 'react-router-dom';
-import Title from '../components/Title2' ;
-import Title2 from '../components/Title2';
+import Title from '../components/Title2.js' ;
 
 const ButoStyle={
   background: '#00A6FB',
@@ -260,7 +259,7 @@ codes[1].readonly=false;
           <div className='compiled' >
           </div>
           <br></br>
-   <Title2></Title2>
+   <Title></Title>
           <hr>
           </hr> </div>
     );

@@ -12,6 +12,8 @@ export function MyFun(time,x2,y2,x1,y1,setCoor) {
       }, time);
   }
 
+
+ 
 /**************************** Exlpication des fonctions utilisées ****************************/
 
 /*Mouvement de l'ACC vers l'UAL*/
@@ -105,23 +107,31 @@ export function CoRam(time, myRef, setCoor, coor) {
       let y2 = document.querySelector('.BusCo .triangleHaut').getBoundingClientRect().top;
       MyFun(time, x2,y2,x1,y1,setCoor);
 
+      setTimeout(() => {
+        document.querySelector('.Co').classList.add('boxShadowBlue');
+      }, 2000);
+
+      setTimeout(() => {
+        document.querySelector('.Co').classList.remove('boxShadowBlue');
+      }, 3000);
+
       y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
-      MyFun(time + 3000,x2,y2,x1,y1,setCoor);
+      MyFun(time + 4000,x2,y2,x1,y1,setCoor);
        
       x2 = document.querySelector('.CoToRam .triangleDroit').getBoundingClientRect().left;
-      MyFun(time + 5000, x2, y2, x1, y1, setCoor);
+      MyFun(time + 5500, x2, y2, x1, y1, setCoor);
 
       setTimeout(() => {
         document.querySelector('.RAM').classList.add('boxShadowBlue');
-      }, 6000);
+      }, 7000);
 
       setTimeout(() => {
         document.querySelector('.RAM').classList.remove('boxShadowBlue');
-      }, 8000);
+      }, 8500);
 
       setTimeout(() => {
         myRef.current.style.opacity='0%'
-      }, 8500);  
+      }, 9500);  
 
   }, []);
       
@@ -151,32 +161,40 @@ export function RimRam(time, myRef, setCoor, coor) {
       let y2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().top;
       MyFun(time,x2,y2,x1,y1,setCoor);
 
+      setTimeout(() => {
+        document.querySelector('.rim').classList.add('boxShadowBlue');
+      }, 2000);
+
+      setTimeout(() => {
+        document.querySelector('.rim').classList.remove('boxShadowBlue');
+      }, 2500);
+
       y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
-      MyFun(time + 2000,x2,y2,x1,y1,setCoor);
+      MyFun(time + 3500,x2,y2,x1,y1,setCoor);
 
       x2 = document.querySelector('.RimBusDonnees').getBoundingClientRect().left;
-      MyFun(time + 3000,x2,y2,x1,y1,setCoor);
+      MyFun(time + 4500,x2,y2,x1,y1,setCoor);
 
       x2 = document.querySelector('.RamBusDonnees .rectangle').getBoundingClientRect().left;
-      MyFun(time + 4000, x2, y2, x1, y1, setCoor);
+      MyFun(time + 5500, x2, y2, x1, y1, setCoor);
 
       y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
-      MyFun(time + 5000, x2, y2, x1, y1, setCoor);
+      MyFun(time + 6500, x2, y2, x1, y1, setCoor);
 
       x2 = document.querySelector('.CoToRam .triangleDroit').getBoundingClientRect().left;
-      MyFun(time + 6000, x2, y2, x1, y1, setCoor);
+      MyFun(time + 7500, x2, y2, x1, y1, setCoor);
 
       setTimeout(() => {
         document.querySelector('.RAM').classList.add('boxShadowBlue');
-      }, 7000);
+      }, 8500);
 
       setTimeout(() => {
         document.querySelector('.RAM').classList.remove('boxShadowBlue');
-      }, 8000);
+      }, 9000);
 
       setTimeout(() => {
         myRef.current.style.opacity='0%'
-      }, 8500);  
+      }, 9500);  
 
   }, []);
       
@@ -265,8 +283,8 @@ export function RimToUc(time, myRef, setCoor, coor) {
       }, [coor]);
  }
 
- /**********************************************************************************/
 
+ /************************************************************************************** */
  export function RegPile(time,myRef,setCoor,coor){
   useEffect(() => {
       let x1 =myRef.current.getBoundingClientRect().left;
@@ -274,22 +292,71 @@ export function RimToUc(time, myRef, setCoor, coor) {
       let x2 =document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
       let y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
       MyFun(time,x2,y2,x1,y1,setCoor);
- /***/     setTimeout(() => {
-        document.querySelector('.RegToBusDonnees .rectangle').classList.add('boxShadowBlue');
- /***/     }, time+1000);
-
       y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
 
 
       MyFun(time+2000,x2,y2,x1,y1,setCoor);
-  /***/    setTimeout(() => {
-        document.querySelector('.RegToBusDonnees .rectangle').classList.add('boxShadowBlue');
-    /***/  }, time+3000);
-     /***/ document.querySelector('.RegToBusDonnees .rectangle').classList.remove('boxShadowBlue');
       x2=document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().left;
       MyFun(time+4000,x2,y2,x1,y1,setCoor);
       y2 = document.querySelector('.PileBusDonnees .triangleHaut').getBoundingClientRect().top;
       MyFun(time+5000,x2,y2,x1,y1,setCoor);
+      setTimeout(() => {
+        document.querySelector('.Pile').classList.add('boxShadowBlue');
+      }, 6000);
+
+      setTimeout(() => {
+        document.querySelector('.Registres').classList.remove('boxShadowBlue');
+      }, 8000);
+
+      setTimeout(() => {
+        myRef.current.style.opacity='0%'
+      }, 8500);
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+  
+}
+ /************************************************************************************** */
+export function CxPile(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      setTimeout(() => {
+        document.querySelector('#CX').classList.add('boxShadowBlue');
+
+      }, time);
+      let x2 =document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+      let y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
+      MyFun(time+2000,x2,y2,x1,y1,setCoor);
+      setTimeout(() => {
+        document.querySelector('#CX').classList.remove('boxShadowBlue');
+
+      }, time +3000);
+      x2=document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().left;
+      MyFun(time+4000,x2,y2,x1,y1,setCoor);
+      y2 = document.querySelector('.PileBusDonnees .triangleHaut').getBoundingClientRect().top;
+      MyFun(time+5000,x2,y2,x1,y1,setCoor);
+      setTimeout(() => {
+        document.querySelector('.pile').classList.add('boxShadowBlue');
+      }, 6000);
+
+      setTimeout(() => {
+        document.querySelector('.pile').classList.remove('boxShadowBlue');
+      }, 8000);
+
+      setTimeout(() => {
+        myRef.current.style.opacity='0%'
+      }, 8500);
     }, []);
     useEffect(() => {
       if (coor.length === 2) {
@@ -304,6 +371,190 @@ export function RimToUc(time, myRef, setCoor, coor) {
   
 }
 /*********************************************************************************************/ 
+export function BxPile(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      setTimeout(() => {
+        document.querySelector('#BX').classList.add('boxShadowBlue');
+
+      }, time);
+      let x2 =document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+      let y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
+      MyFun(time+2000,x2,y2,x1,y1,setCoor);
+      setTimeout(() => {
+        document.querySelector('#BX').classList.remove('boxShadowBlue');
+
+      }, time +3000);
+      x2=document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().left;
+      MyFun(time+4000,x2,y2,x1,y1,setCoor);
+      y2 = document.querySelector('.PileBusDonnees .triangleHaut').getBoundingClientRect().top;
+      MyFun(time+5000,x2,y2,x1,y1,setCoor);
+      setTimeout(() => {
+        document.querySelector('.pile').classList.add('boxShadowBlue');
+      }, 6000);
+
+      setTimeout(() => {
+        document.querySelector('.pile').classList.remove('boxShadowBlue');
+      }, 8000);
+
+      setTimeout(() => {
+        myRef.current.style.opacity='0%'
+      }, 8500);
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+  
+}
+/************************************************************************************** */
+export function DxPile(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      setTimeout(() => {
+        document.querySelector('#DX').classList.add('boxShadowBlue');
+
+      }, time);
+      let x2 =document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+      let y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
+      MyFun(time+2000,x2,y2,x1,y1,setCoor);
+      setTimeout(() => {
+        document.querySelector('#DX').classList.remove('boxShadowBlue');
+
+      }, time +3000);
+      x2=document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().left;
+      MyFun(time+4000,x2,y2,x1,y1,setCoor);
+      y2 = document.querySelector('.PileBusDonnees .triangleHaut').getBoundingClientRect().top;
+      MyFun(time+5000,x2,y2,x1,y1,setCoor);
+      setTimeout(() => {
+        document.querySelector('.pile').classList.add('boxShadowBlue');
+      }, 6000);
+
+      setTimeout(() => {
+        document.querySelector('.pile').classList.remove('boxShadowBlue');
+      }, 8000);
+
+      setTimeout(() => {
+        myRef.current.style.opacity='0%'
+      }, 8500);
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+  
+}
+/************************************************************************************** */
+export function AccPile(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      setTimeout(() => {
+        document.querySelector('#ACC').classList.add('boxShadowBlue');
+
+      }, time);
+      let x2 =document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+      let y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
+      MyFun(time+2000,x2,y2,x1,y1,setCoor);
+      setTimeout(() => {
+        document.querySelector('#ACC').classList.remove('boxShadowBlue');
+
+      }, time +3000);
+      x2=document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().left;
+      MyFun(time+4000,x2,y2,x1,y1,setCoor);
+      y2 = document.querySelector('.PileBusDonnees .triangleHaut').getBoundingClientRect().top;
+      MyFun(time+5000,x2,y2,x1,y1,setCoor);
+      setTimeout(() => {
+        document.querySelector('.pile').classList.add('boxShadowBlue');
+      }, 6000);
+
+      setTimeout(() => {
+        document.querySelector('.pile').classList.remove('boxShadowBlue');
+      }, 8000);
+
+      setTimeout(() => {
+        myRef.current.style.opacity='0%'
+      }, 8500);
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+  
+}
+/************************************************************************************** */
+export function SiPile(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      setTimeout(() => {
+        document.querySelector('#SI').classList.add('boxShadowBlue');
+
+      }, time);
+      let x2 =document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+      let y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
+      MyFun(time+2000,x2,y2,x1,y1,setCoor);
+      setTimeout(() => {
+        document.querySelector('#SI').classList.remove('boxShadowBlue');
+
+      }, time +3000);
+      x2=document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().left;
+      MyFun(time+4000,x2,y2,x1,y1,setCoor);
+      y2 = document.querySelector('.PileBusDonnees .triangleHaut').getBoundingClientRect().top;
+      MyFun(time+5000,x2,y2,x1,y1,setCoor);
+      setTimeout(() => {
+        document.querySelector('.pile').classList.add('boxShadowBlue');
+      }, 6000);
+
+      setTimeout(() => {
+        document.querySelector('.pile').classList.remove('boxShadowBlue');
+      }, 8000);
+
+      setTimeout(() => {
+        myRef.current.style.opacity='0%'
+      }, 8500);
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+  
+}
+/*******************************************************************/ 
 
 export function PileReg(time,myRef,setCoor,coor){
   useEffect(() => {
@@ -315,9 +566,23 @@ export function PileReg(time,myRef,setCoor,coor){
       y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
        MyFun(time+2000,x2,y2,x1,y1,setCoor);
        x2=document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
-      MyFun(time+4000,x2,y2,x1,y1,setCoor);
+      MyFun(time+4500,x2,y2,x1,y1,setCoor);
       y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
-       MyFun(time+5000,x2,y2,x1,y1,setCoor);
+       MyFun(time+6000,x2,y2,x1,y1,setCoor);
+       setTimeout(() => {
+        document.querySelector('#BX').classList.add('boxShadowBlue');
+      }, 7000);
+  
+      setTimeout(() => {
+        document.querySelector('#BX').classList.remove('boxShadowBlue');
+      }, 8000);
+
+      setTimeout(() => {
+        myRef.current.style.opacity='0%'
+      }, 8500);  
+
+
+
     }, []);
     useEffect(() => {
       if (coor.length === 2) {
@@ -331,10 +596,212 @@ export function PileReg(time,myRef,setCoor,coor){
     }, [coor]);
 }
 /**********************************************************************/
+export function PileBx(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      let x2 =document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().left;
+      let y2 = document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
+       MyFun(time+2000,x2,y2,x1,y1,setCoor);
+       x2=document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+      MyFun(time+4500,x2,y2,x1,y1,setCoor);
+      y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+       MyFun(time+6000,x2,y2,x1,y1,setCoor);
+       setTimeout(() => {
+        document.querySelector('#BX').classList.add('boxShadowBlue');
+      }, 7000);
+  
+      setTimeout(() => {
+        document.querySelector('#BX').classList.remove('boxShadowBlue');
+      }, 8000);
+
+      setTimeout(() => {
+        myRef.current.style.opacity='0%'
+      }, 8500);  
 
 
 
-export function RimReg(time,myRef,setCoor,coor){
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+}
+
+/**********************************************************************/
+export function PileCx(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      let x2 =document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().left;
+      let y2 = document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
+       MyFun(time+2000,x2,y2,x1,y1,setCoor);
+       x2=document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+      MyFun(time+4500,x2,y2,x1,y1,setCoor);
+      y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+       MyFun(time+6000,x2,y2,x1,y1,setCoor);
+       setTimeout(() => {
+        document.querySelector('#CX').classList.add('boxShadowBlue');
+      }, 7000);
+  
+      setTimeout(() => {
+        document.querySelector('#CX').classList.remove('boxShadowBlue');
+      }, 8000);
+
+      setTimeout(() => {
+        myRef.current.style.opacity='0%'
+      }, 8500);  
+
+
+
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+}
+/**********************************************************************/
+export function PileDx(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      let x2 =document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().left;
+      let y2 = document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
+       MyFun(time+2000,x2,y2,x1,y1,setCoor);
+       x2=document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+      MyFun(time+4500,x2,y2,x1,y1,setCoor);
+      y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+       MyFun(time+6000,x2,y2,x1,y1,setCoor);
+       setTimeout(() => {
+        document.querySelector('#DX').classList.add('boxShadowBlue');
+      }, 7000);
+  
+      setTimeout(() => {
+        document.querySelector('#DX').classList.remove('boxShadowBlue');
+      }, 8000);
+
+      setTimeout(() => {
+        myRef.current.style.opacity='0%'
+      }, 8500);  
+
+
+
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+}
+/**********************************************************************/
+export function PileSi(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      let x2 =document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().left;
+      let y2 = document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
+       MyFun(time+2000,x2,y2,x1,y1,setCoor);
+       x2=document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+      MyFun(time+4500,x2,y2,x1,y1,setCoor);
+      y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+       MyFun(time+6000,x2,y2,x1,y1,setCoor);
+       setTimeout(() => {
+        document.querySelector('#SI').classList.add('boxShadowBlue');
+      }, 7000);
+  
+      setTimeout(() => {
+        document.querySelector('#SI').classList.remove('boxShadowBlue');
+      }, 8000);
+
+      setTimeout(() => {
+        myRef.current.style.opacity='0%'
+      }, 8500);  
+
+
+
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+}
+
+/*******************************************************************/ 
+
+export function PileAcc(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      let x2 =document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().left;
+      let y2 = document.querySelector('.PileBusDonnees .rectangle').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.BusDonnees').getBoundingClientRect().top;
+       MyFun(time+2000,x2,y2,x1,y1,setCoor);
+       x2=document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+      MyFun(time+4500,x2,y2,x1,y1,setCoor);
+      y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+       MyFun(time+6000,x2,y2,x1,y1,setCoor);
+       setTimeout(() => {
+        document.querySelector('#ACC').classList.add('boxShadowBlue');
+      }, 7000);
+  
+      setTimeout(() => {
+        document.querySelector('#ACC').classList.remove('boxShadowBlue');
+      }, 8000);
+
+      setTimeout(() => {
+        myRef.current.style.opacity='0%'
+      }, 8500);  
+
+
+
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+}
+/************************************************** */
+
+
+export function RimBx(time,myRef,setCoor,coor){
   useEffect(() => {
       let x1 =myRef.current.getBoundingClientRect().left;
       let y1 = myRef.current.getBoundingClientRect().top;
@@ -347,6 +814,178 @@ export function RimReg(time,myRef,setCoor,coor){
   MyFun(time+4000,x2,y2,x1,y1,setCoor);
        y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
      MyFun(time+5000,x2,y2,x1,y1,setCoor);
+     setTimeout(() => {
+      document.querySelector('#BX').classList.add('boxShadowBlue');
+    }, 7000);
+
+    setTimeout(() => {
+      document.querySelector('#BX').classList.remove('boxShadowBlue');
+    }, 8000);
+
+    setTimeout(() => {
+      myRef.current.style.opacity='0%'
+    }, 8500);  
+
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+}
+/************************************************** */
+
+
+export function RimCx(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      let x2 =document.querySelector('.Rim .C3').getBoundingClientRect().left;
+      let y2 = document.querySelector('.Rim ').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.RimBusDonnees').getBoundingClientRect().top;
+     MyFun(time+2000,x2,y2,x1,y1,setCoor);
+       x2=document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+  MyFun(time+4000,x2,y2,x1,y1,setCoor);
+       y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+     MyFun(time+5000,x2,y2,x1,y1,setCoor);
+     setTimeout(() => {
+      document.querySelector('#CX').classList.add('boxShadowBlue');
+    }, 7000);
+
+    setTimeout(() => {
+      document.querySelector('#CX').classList.remove('boxShadowBlue');
+    }, 8000);
+
+    setTimeout(() => {
+      myRef.current.style.opacity='0%'
+    }, 8500);  
+
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+}
+/************************************************** */
+
+
+export function RimDx(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      let x2 =document.querySelector('.Rim .C3').getBoundingClientRect().left;
+      let y2 = document.querySelector('.Rim ').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.RimBusDonnees').getBoundingClientRect().top;
+     MyFun(time+2000,x2,y2,x1,y1,setCoor);
+       x2=document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+  MyFun(time+4000,x2,y2,x1,y1,setCoor);
+       y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+     MyFun(time+5000,x2,y2,x1,y1,setCoor);
+     setTimeout(() => {
+      document.querySelector('#DX').classList.add('boxShadowBlue');
+    }, 7000);
+
+    setTimeout(() => {
+      document.querySelector('#DX').classList.remove('boxShadowBlue');
+    }, 8000);
+
+    setTimeout(() => {
+      myRef.current.style.opacity='0%'
+    }, 8500);  
+
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+}
+/************************************************** */
+
+
+export function RimAcc(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      let x2 =document.querySelector('.Rim .C3').getBoundingClientRect().left;
+      let y2 = document.querySelector('.Rim ').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.RimBusDonnees').getBoundingClientRect().top;
+     MyFun(time+2000,x2,y2,x1,y1,setCoor);
+       x2=document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+  MyFun(time+4000,x2,y2,x1,y1,setCoor);
+       y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+     MyFun(time+5000,x2,y2,x1,y1,setCoor);
+     setTimeout(() => {
+      document.querySelector('#ACC').classList.add('boxShadowBlue');
+    }, 7000);
+
+    setTimeout(() => {
+      document.querySelector('#ACC').classList.remove('boxShadowBlue');
+    }, 8000);
+
+    setTimeout(() => {
+      myRef.current.style.opacity='0%'
+    }, 8500);  
+
+    }, []);
+    useEffect(() => {
+      if (coor.length === 2) {
+        setTimeout(()=>{myRef.current.style.opacity='60%'},time + 1000)
+      }
+    }, [coor]);
+    useEffect(() => {
+      if (coor.length === 2) {
+        myRef.current.style.transform = `translate(${coor[0]}px, ${coor[1]}px)`;
+      }
+    }, [coor]);
+}
+/************************************************** */
+
+
+export function RimSi(time,myRef,setCoor,coor){
+  useEffect(() => {
+      let x1 =myRef.current.getBoundingClientRect().left;
+      let y1 = myRef.current.getBoundingClientRect().top;
+      let x2 =document.querySelector('.Rim .C3').getBoundingClientRect().left;
+      let y2 = document.querySelector('.Rim ').getBoundingClientRect().top;
+      MyFun(time,x2,y2,x1,y1,setCoor);
+      y2=document.querySelector('.RimBusDonnees').getBoundingClientRect().top;
+     MyFun(time+2000,x2,y2,x1,y1,setCoor);
+       x2=document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+  MyFun(time+4000,x2,y2,x1,y1,setCoor);
+       y2 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().top;
+     MyFun(time+5000,x2,y2,x1,y1,setCoor);
+     setTimeout(() => {
+      document.querySelector('#SI').classList.add('boxShadowBlue');
+    }, 7000);
+
+    setTimeout(() => {
+      document.querySelector('#SI').classList.remove('boxShadowBlue');
+    }, 8000);
+
+    setTimeout(() => {
+      myRef.current.style.opacity='0%'
+    }, 8500);  
+
     }, []);
     useEffect(() => {
       if (coor.length === 2) {

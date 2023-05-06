@@ -24,11 +24,12 @@
   width: 80%;
   margin-left: 8%;
   color: var(--light-dark-blue);
+  transition: opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
 }
 
 .nav-links a {
   position: relative;
-  color: #5784ba;
+  color: var(--settingsNav);
 }
 
 .nav-links a::before {
@@ -38,7 +39,7 @@
   left: 0;
   width: 0%;
   height: 2px;
-  background-color: #252e46;
+  background-color:var( --dark-to-light);
   transition: width 0.3s;
   z-index: 2;
 }
@@ -67,6 +68,7 @@
 .Settings {
   margin-left: 10%;
   background-color: var(--background-color);
+  transition: opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
   
 }
 
@@ -143,13 +145,22 @@ input {
   margin-top: 2%;
   border: none;
   border-radius: 5px;
-  background-color: #b6d8f2;
+  background-color: var(--input);
   opacity: 0.36;
   padding: 0 10px;
   font-size: 14px;
   width: 100%;
   font-family: 'Montserrat', sans-serif;
   color: rgba(0, 0, 0, 0.36);
+  transition: opacity 0.5s ease-in-out, bottom 0.5s ease-in-out;
+}
+
+.ProfilePage .inputButton {
+  background-color: var(--input);
+}
+
+.MotDePassePage .inputButton {
+  background-color: var(--input);
 }
 
 .ProfilePage .Inputs {
@@ -187,7 +198,7 @@ input {
   background:var( --blue);
   border-radius: 30px;
   border: none;
-  color: #F8F9FA;
+  color: var(--background-color);
 }
 
 .annuler {
@@ -196,9 +207,10 @@ input {
   margin-left: 10px;
   background: var( --light-dark);
   padding: 0 20px;
-  border: 1px solid #00A6FB;
+  border: 1px solid var(--dark-to-light);
   box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 3px 6px rgba(43, 110, 177, 0.1);
   border-radius: 30px;
+  color: var(--dark-to-light);
 
 }
 
@@ -253,7 +265,7 @@ position: relative;
 label {
   font-family: Montserrat;
   font-size: 16px;
-  color: #023047
+  color: var(--dark-to-light); 
 }
 
 
@@ -262,7 +274,7 @@ label {
 
 
 .FranceButton {
-  background: #00A6FB;
+  background: var( --blue);
   border-radius: 8px;
   color: #F8F9FA;
   border: none;
@@ -284,7 +296,7 @@ label {
   background: rgba(182, 216, 242, 0.36);
   border-radius: 8px;
   border: none;
-  color: #023047;
+  color: var(--dark-to-light);
   font-family: 'Montserrat', sans-serif;
   height: 50px;
   margin-bottom: 2%;
@@ -299,10 +311,10 @@ label {
 .LightButton {
 
 
-  background: #00A6FB;
+  background: var( --blue);
   border-radius: 8px;
   border: none;
-  color: #F8F9FA;
+  color:var(--background-color);
   font-family: 'Montserrat', sans-serif;
   height: 50px;
   margin-bottom: 2%;
@@ -322,7 +334,7 @@ label {
 
   background: rgba(182, 216, 242, 0.36);
   border-radius: 8px;
-  color: #023047;
+  color:var(--dark-to-light);
   border: none;
   height: 50px;
 
