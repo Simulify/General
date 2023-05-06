@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-
 function Settingsbar() {
   const location = useLocation();
   const [activeLink, setActiveLink] = useState(getActiveLink(location.pathname));
-
   function getActiveLink(pathname) {
     // Extract the last part of the pathname as the active link
     const parts = pathname.split("/");
