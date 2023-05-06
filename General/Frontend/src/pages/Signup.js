@@ -5,10 +5,10 @@ import InputButton from "../Components_login/InputButton";
 import { ReactSVG } from 'react-svg';
 import logo from "../Components_login/logo.svg";
 import SignLogButton from "../Components_login/SignLogButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 
-
-function Signup () {
+function Signup (setIsAuthenticated,setCurrentUser,currentUser) {
+  const navigate = useNavigate(); 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,10 +16,11 @@ function Signup () {
 
   const handleSignUp = () => {
     console.log('handleSignUp called');
-    if (!username || !email || !password || !confirmPassword) {
-      console.log('All fields are required');
+    if (!(username && email && password && confirmPassword) || password !== confirmPassword) {
+      console.log('All fields are required and passwords must match');
       return;
     }
+    
     console.log('handleSignUp called');
     axios.post('/signup', {
       username,
@@ -29,11 +30,34 @@ function Signup () {
     .then(response => {
       console.log(email);
       console.log(response.data);
+      axios
+      .post('/login', { // we post the user's data to the database 
+        email,
+        password,
+      })
+      .then((response) => {
+        console.log(email);
+        console.log(response.data);
+        localStorage.setItem('token', response.data.token); // we get the token of the identification 
+        const username = email.split('@')[0]; //we get the user's space name from the email 
+        localStorage.setItem('username', username);
+        localStorage.setItem('isAuthenticated', true);
+        localStorage.setItem('currentUser', JSON.stringify(response.data.user));
+        console.log('currentUser:', response.data.user);
+        console.log('currentUser_id:', response.data.user._id);
+        navigate(`/home`); // we redirect to home to indicate the successful login 
+      })
+      .catch((error) => {
+        console.log(email);
+        console.error(error);
+      });
+     
     })
     .catch(error => {
       console.log(username);
       console.error(error);
     });
+   
   };
 
   return (

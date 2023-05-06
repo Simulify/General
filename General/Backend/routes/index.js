@@ -89,6 +89,7 @@ router.post('/signup', async (req, res) => {
      // Create a new user
      const user = new User({ username, email, password: hashedPassword, profileUrl:url });
      await user.save();
+     return res.status(200).send({ user });
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: 'Server error' });
@@ -232,17 +233,19 @@ router.post('/users', async (req, res) => {
   }
 });
 
-// Get all users
-router.get('/users/:userId', async (req, res) => {//tick
+// Get a single user by ID
+router.get('/users/:userId', async (req, res) => {
   try {
-    const users = await User.find();
-    console.log('All users retrieved:', users);
-    res.status(200).send(users);
+    const userId = req.params.userId;
+    const user = await User.findById(userId);
+    console.log('User retrieved:', user);
+    res.status(200).send(user);
   } catch (err) {
-    console.error('Failed to retrieve users:', err);
+    console.error('Failed to retrieve user:', err);
     res.status(500).send(err);
   }
 });
+
 
 //Update the password
 router.put('/users/:userId/password', async (req, res) => {
@@ -251,7 +254,6 @@ router.put('/users/:userId/password', async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-
   const password = user.password;
     if (!password) {
           
@@ -259,7 +261,7 @@ router.put('/users/:userId/password', async (req, res) => {
       return res.status(404).json({ message: 'Picture not found' });
     }
 
-    // Update the picture 
+    // Update the password 
     if (req.body.password) {
       // Hash the password 
       const saltRounds = 10;
@@ -298,6 +300,30 @@ router.put('/users/:userId/username', async (req, res) => {
   }
 });
 
+// Update the email
+router.put('/users/:userId/email', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const email = user.email;
+    if (!email) {
+      return res.status(404).json({ message: 'Email not found' });
+    }
+
+    // Update the email
+    if (req.body.email) {
+      user.email = req.body.email;
+    }
+    await user.save();
+    res.json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
 // Get a user by ID
 router.get('/users', async (req, res) => {
