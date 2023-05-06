@@ -236,7 +236,10 @@ codes[1].readonly=false;
        {/* buttons in top *************** */}
         <div className="buttons">
         <Button text="Sauvegarder" style={ButoStyle} onClick={() => saveFile(textareaValue,textareaValue1,textAreaTitle)} ></Button>
-        <Button link="/files" text="Fichiers" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'148px',gridArea:'exem'}}></Button>
+        <Button 
+        link="/files" 
+        text="Fichiers" 
+        style={{background: 'var(--light-dark)',color:'var(--dark-to-light)',position:'absolute',width:'148px',gridArea:'exem'}}></Button>
         </div>
         <Title textareaValue={textAreaTitle} handleTextareaChange={handleTextareaChangeTitle}></Title>
         {/**************************/}
