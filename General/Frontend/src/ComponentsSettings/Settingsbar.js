@@ -21,40 +21,40 @@ function Settingsbar() {
       <ul className="nav-links">
         <li>
           <Link
-            to="/Settings/ProfilePage"
-            className={activeLink === "ProfilePage" ? "active" : ""}
+            to="/Settings/Userprofile"
+            className={activeLink === "Userprofile" ? "active" : ""}
             onClick={handleLinkClick}
-            data-link="ProfilePage"
+            data-link="Userprofile"
           >
             Profile
           </Link>
         </li>
         <li>
           <Link
-            to="/Settings/MotDePassePage"
-            className={activeLink === "MotDePassePage" ? "active" : ""}
+            to="/Settings/Userpassword"
+            className={activeLink === "Userpassword" ? "active" : ""}
             onClick={handleLinkClick}
-            data-link="MotDePassePage"
+            data-link="Userpassword"
           >
-            Mot De Passe
+            Mot de passe
           </Link>
         </li>
         <li>
           <Link
-            to="/Settings/LanguePage"
-            className={activeLink === "LanguePage" ? "active" : ""}
+            to="/Settings/Userlanguage"
+            className={activeLink === "Userlanguage" ? "active" : ""}
             onClick={handleLinkClick}
-            data-link="LanguePage"
+            data-link="Userlanguage"
           >
             Langue
           </Link>
         </li>
         <li>
           <Link
-            to="/Settings/ModePage"
-            className={activeLink === "ModePage" ? "active" : ""}
+            to="/Settings/Usermode"
+            className={activeLink === "Usermode" ? "active" : ""}
             onClick={handleLinkClick}
-            data-link="ModePage"
+            data-link="Usermode"
           >
             Mode
           </Link>
