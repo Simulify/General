@@ -38,6 +38,7 @@ import LightUalFlag from "./LightUalFlag";
 function Container(props) {
 
     return (
+      
     <div className="Container">
         <Registres ACC={props.ACC} SI={props.SI} DI={props.DI} BX={props.BX} CX={props.CX}/>
         <Pile Pile={props.Pile}/>
@@ -53,7 +54,7 @@ function Container(props) {
         <Commencer/>
         <Arreter/>
 
-        {/* <LightCoRam time = {0}/>  */}
+         {/* <LightCoRam time = {0}/>  */}
         {/* <LightRimRam time = {0}/> */}
         {/* <LightRimUc time = {0}/>  */}
         {/* <LightCoPile time = {0}/> */}
