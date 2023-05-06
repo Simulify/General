@@ -10,6 +10,7 @@ function InputButton(props) {
       className="input-button"
       value={props.value}
       onChange={props.onChange}
+      readOnly={props.readOnly}
     />
   </div>
  );
@@ -17,3 +18,4 @@ function InputButton(props) {
 
 
 export default InputButton;
+

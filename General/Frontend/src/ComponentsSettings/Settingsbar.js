@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-
 function Settingsbar() {
   const location = useLocation();
   const [activeLink, setActiveLink] = useState(getActiveLink(location.pathname));
-
   function getActiveLink(pathname) {
     // Extract the last part of the pathname as the active link
     const parts = pathname.split("/");
@@ -21,40 +19,48 @@ function Settingsbar() {
       <ul className="nav-links">
         <li>
           <Link
-            to="/Settings/ProfilePage"
+
+             to={`/settings/Userprofile/${localStorage.getItem('username')}`}
             className={activeLink === "ProfilePage" ? "active" : ""}
+
             onClick={handleLinkClick}
-            data-link="ProfilePage"
+            data-link="Userprofile"
           >
             Profile
           </Link>
         </li>
         <li>
           <Link
-            to="/Settings/MotDePassePage"
+
+            to={`/settings/Userpassword/${localStorage.getItem('username')}`}
             className={activeLink === "MotDePassePage" ? "active" : ""}
+
             onClick={handleLinkClick}
-            data-link="MotDePassePage"
+            data-link="Userpassword"
           >
-            Mot De Passe
+            Mot de passe
           </Link>
         </li>
         <li>
           <Link
-            to="/Settings/LanguePage"
+
+            to={`/settings/Userlanguage/${localStorage.getItem('username')}`}
             className={activeLink === "LanguePage" ? "active" : ""}
+
             onClick={handleLinkClick}
-            data-link="LanguePage"
+            data-link="Userlanguage"
           >
             Langue
           </Link>
         </li>
         <li>
           <Link
-            to="/Settings/ModePage"
+
+             to={`/settings/Usermode/${localStorage.getItem('username')}`}
             className={activeLink === "ModePage" ? "active" : ""}
+
             onClick={handleLinkClick}
-            data-link="ModePage"
+            data-link="Usermode"
           >
             Mode
           </Link>
