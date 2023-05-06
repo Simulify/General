@@ -1,14 +1,32 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import FormSettings from "./FormSettings";
 import Navbar from "../components/Navbar";
 import "../pages/Settings.css";
 import InputButton from "../Components_login/InputButton";
+import axios from "axios";
 
 function ProfilePage() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const storedUser = JSON.parse(localStorage.getItem("currentUser"));
+        console.log('currentUser:', storedUser);
+        console.log('currentUser_id:', storedUser._id);
+        const response = await axios.get(`/users/${storedUser._id}`);
+        const user = response.data;
+        setEmail(user.email);
+        setUsername(user.username);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+  
+  
   const handleModify = () => {
     setIsEditing(true);
   };
@@ -26,6 +44,23 @@ function ProfilePage() {
     });
     setIsEditing(false);
   };
+  const handleClick = async () => {
+    try {
+      const storedUser = JSON.parse(localStorage.getItem("currentUser"));
+      console.log('currentUser:', storedUser);
+      console.log('currentUser_id:', storedUser._id);
+      const response = await axios.put(`/users/${storedUser._id}/username`, { username });
+      const response1 = await axios.put(`/users/${storedUser._id}/email`, { email });
+      const updatedUser = response.data;
+      const updatedUser1 = response1.data;
+      setUsername(updatedUser.username);
+      setEmail(updatedUser1.email);
+      setIsEditing(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
 
   return (
     <div className="ProfilePage">
@@ -42,7 +77,7 @@ function ProfilePage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 readOnly={!isEditing} 
-                placeholer='email'
+                placeholer='Email'
               />
             </div>
             <div className="Username">
@@ -53,14 +88,14 @@ function ProfilePage() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 readOnly={!isEditing} 
-                placeholer='nom d utilisateur'
+                placeholer='Nom d utilisateur'
               />
             </div>
           </div>
         </div>
         {isEditing && (
           <div className="TwoButtons">
-            <button className="sauvegarder" type="submit">
+            <button className="sauvegarder" type="submit" onClick={handleClick}>
               Sauvegarder
             </button>
             <button className="annuler" type="button" onClick={handleCancel}>

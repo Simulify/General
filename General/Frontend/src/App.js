@@ -73,11 +73,15 @@ function App() {
       <Route path='/code/simulation' element={<Sim></Sim>}></Route>
       <Route path="/files/*" element={<PrivateRoute currentUser={currentUser}><Files currentUser={currentUser} /></PrivateRoute>} />
       <Route path="/files/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<Files currentUser={currentUser} />} /></Routes></PrivateRoute>} />
-      <Route path='/settings' element={<Settings/>}></Route>
-      <Route path='/settings/Userprofile'  element={<ProfilePage/>}></Route>
-      <Route path='/settings/Userpassword'  element={<MotDePassePage/>}></Route> 
-      <Route path='/settings/Userlanguage'  element={<LanguePage/>}></Route>
-      <Route path='/settings/Usermode'  element={<ModePage/>}></Route>
+
+      {/*  changes are done here */ }
+      <Route path="/settings/*" element={<PrivateRoute currentUser={currentUser}><Settings currentUser={currentUser} /></PrivateRoute>} />
+      <Route path="/settings/Userprofile/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<ProfilePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
+      <Route path="/settings/Userpassword/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<MotDePassePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
+      <Route path="/settings/Usermode/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<ModePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
+      <Route path="/settings/Userlanguage/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<LanguePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
+     
+
       <Route path='/revision' element={<Revision/>}></Route>
       <Route path='/revision/ressources' element={<RessourcePage/>}></Route>
       <Route path='/revision/ressources/livres' element={<LivresPage/>}></Route>
