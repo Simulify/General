@@ -5,7 +5,7 @@ import '../pages/Guide.css';
 function GuideInstr() {
  return (
   <div className="heroinstr">
-    <Navbar label="Guide" />
+    <Navbar label="Guide"/>
     <a href="/guide/instruction-format" className="prev">Retour</a>
     <h2 className='h2'>Jeu d'instructions</h2>
     <a href="/guide/instructions/arithmetic" className="arth">Instructions arithmétiques</a>

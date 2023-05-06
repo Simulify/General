@@ -1,5 +1,7 @@
 /***************************************** HOME PAGE STYLE *****************************************/
-
+.no-overflow {
+  overflow: hidden;
+}
 .hero {
   display: flex;
   flex-direction: row;
@@ -21,7 +23,7 @@
   bottom: 0.2vh;
   transform: translateX(-50%);
   z-index: 2;
-  background-color: #FFFFFF;
+  background-color: #F8F9FA;
 }
 .slider2-container {
   height: 300%;
