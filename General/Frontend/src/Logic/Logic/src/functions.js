@@ -321,6 +321,7 @@ function detectOp(op1,reg) {
 }
 
 export function BinToMnem(mots) {
+    //takes mots which aan array of binary instructions and returns an array of mnemonics
     let Instructions=[]
     for (let index = 0; index < mots.length; index++) {
         const element = mots[index]
@@ -456,3 +457,24 @@ export function BinToMnem(mots) {
     }
    return Instructions
 }
+
+
+export function binaryToHexadecimal(binaryString) {
+    // Vérifier que la chaîne de caractères ne contient que des 0 et 1
+    if (/^[01]+$/.test(binaryString)) {
+      // Ajouter des zéros à gauche pour compléter jusqu'à un multiple de 4
+      while (binaryString.length % 4 !== 0) {
+        binaryString = '0' + binaryString;
+      }
+      // Convertir chaque groupe de 4 caractères binaires en un caractère hexadécimal
+      let hexString = '';
+      for (let i = 0; i < binaryString.length; i += 4) {
+        let binaryGroup = binaryString.substr(i, 4);
+        let hexDigit = parseInt(binaryGroup, 2).toString(16).toUpperCase();
+        hexString += hexDigit;
+      }
+      return hexString.padStart(4, '0');
+    // } else {
+    //   throw new Error('La chaîne de caractères ne représente pas un nombre binaire valide.');
+    // }
+  }}
