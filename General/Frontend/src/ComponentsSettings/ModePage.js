@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import FormSettings from "./FormSettings";
 import Navbar from "../components/Navbar";
@@ -9,14 +8,25 @@ import Sun from "../Images/Sun.svg";
 
 const ModePage = () => {
     const [formValue, setFormValue] = useState("");
+    const [isEditing, setIsEditing] = useState(false);
+    const [modeDisabled, setModeDisabled] = useState(true);
+
+    const handleModify = () => {
+        setIsEditing(true);
+        setModeDisabled(false);
+    };
 
     const handleSave = (event) => {
         event.preventDefault();
         console.log("Form value saved:", formValue);
+        setIsEditing(false);
+        setModeDisabled(true);
     };
 
     const handleCancel = () => {
         setFormValue("");
+        setIsEditing(false);
+        setModeDisabled(true);
     };
 
     const [darkMode, setDarkMode] = useState(
@@ -47,34 +57,41 @@ const ModePage = () => {
     return (
         <div className="ModePage">
             <Navbar label="Parametres" />
-            <FormSettings />
+            <FormSettings handleModify={handleModify} handleSave={handleSave} handleCancel={handleCancel} isEditing={isEditing} />
             <div className="ModeForm">
                 <label className="ModeLabel">Selectionner un mode  :</label>
                 <div className="ModeContainer">
 
                     <div className="Inputs">
                         <div className={`theme-switch ${darkMode ? 'dark' : 'light'}`}>
-                            <button className="LightButton " onClick={setLightTheme}>
+                            <button 
+                            className="LightButton " 
+                            onClick={setLightTheme}
+                            disabled={modeDisabled} >
                             <ReactSVG src={Sun} className="Sun" />
                             <span className="LightModeLabel">Light Mode </span>
                             </button>
 
 
-                            <button className="DarkButton " onClick={setDarkTheme}>
+                            <button className="DarkButton " 
+                            onClick={setDarkTheme}
+                            disabled={modeDisabled} >
                             <ReactSVG src={Moon} className="Moon" />
                             <span className="DarkModeLabel">Dark Mode </span>
                             </button>
 
                         </div>
                     </div>
-                    <div className='TwoButtons'>
-                        <button className='sauvegarder' type='submit' onClick={handleSave}>
-                            Sauvegarder
-                        </button>
-                        <button className='annuler' type='button' onClick={handleCancel}>
-                            Annuler
-                        </button>
-                    </div>
+                    {isEditing && (
+                        <div className="TwoButtons">
+                            <button className="sauvegarder" type="submit" onClick={handleSave}>
+                                Sauvegarder
+                            </button>
+                            <button className="annuler" type="button" onClick={handleCancel}>
+                                Annuler
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

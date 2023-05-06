@@ -6,6 +6,11 @@ import InputButton from '../Components_login/InputButton';
 function MotDePassePage() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleModify = () => {
+    setIsEditing(true);
+  };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
@@ -22,6 +27,7 @@ function MotDePassePage() {
 
     console.log('Password:', password);
     console.log('Confirm Password:', confirmPassword);
+    setIsEditing(false);
   };
 
   const handleCancel = () => {
@@ -33,7 +39,7 @@ function MotDePassePage() {
   return (
     <div className='MotDePassePage'>
       <Navbar label='Parametres' />
-      <FormSettings />
+      <FormSettings isEditing={isEditing} handleModify={handleModify} />
       <form onSubmit={handleSubmit}>
         <div className='containerSettings'>
           <div className='Inputs'>
@@ -44,6 +50,7 @@ function MotDePassePage() {
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder='Mot de passe'
+                readOnly={!isEditing} 
               />
             </div>
             <div className='ConfirmerMotDePasse'>
@@ -53,17 +60,20 @@ function MotDePassePage() {
                 value={confirmPassword}
                 onChange={handleConfirmPasswordChange}
                 placeholder='Confirmer votre mot de passe'
+                readOnly={!isEditing} 
               />
             </div>
           </div>
-          <div className='TwoButtons'>
-            <button className='sauvegarder' type='submit'>
+          {isEditing && (
+          <div className="TwoButtons">
+            <button className="sauvegarder" type="submit">
               Sauvegarder
             </button>
-            <button className='annuler' type='button' onClick={handleCancel}>
+            <button className="annuler" type="button" onClick={handleCancel}>
               Annuler
             </button>
           </div>
+        )}
         </div>
       </form>
     </div>
