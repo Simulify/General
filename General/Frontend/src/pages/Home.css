@@ -21,7 +21,7 @@
   bottom: 0.2vh;
   transform: translateX(-50%);
   z-index: 2;
-  background-color: #FFFFFF;
+  background-color:var(--background-color);
 }
 .slider2-container {
   height: 300%;
@@ -62,7 +62,7 @@
 .left h1 {
   font-family: Montserrat;
   font-style: bold;
-  color: #023047;
+  color:var( --dark-to-light);
   font-size:  4.5vh;
   line-height: 6vh;
   padding: 0px;
@@ -74,13 +74,13 @@
   margin: 0;
   font-size: 2.8vh;
   line-height: 4.8vh;
-  color: #023047;
+  color:var( --dark-to-light);
 }
 .simubutton {
   margin-top: 15vh;
   margin-left: 0;
   padding: 2.5vh 4.5vw;
-  background: #00A6FB;
+  background: var(--blue);
   box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 23px 14px rgba(43, 110, 177, 0.05), 0px 10px 10px rgba(43, 110, 177, 0.09), 0px 3px 6px rgba(43, 110, 177, 0.1), 0px 0px 0px rgba(43, 110, 177, 0.1);
   border-radius: 32px;
   font-family: 'Montserrat';

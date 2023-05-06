@@ -6,6 +6,9 @@
     --yellow: #FFE600;
     --white-to-light: #F8F9FA;
     --dark-to-light:#023047; 
+    --input: #B6D8F2 ; 
+    --settingsNav : #5784BA ; 
+
   }
   
   :root[data-theme="dark"] {
@@ -16,5 +19,7 @@
     --yellow: #FFE600;
     --white-to-light: #B2E4FD;
     --dark-to-light : #77D1FF; 
+    --input:#B2E4FD ; 
+    --settingsNav : #77D1FF ;
   }
    
