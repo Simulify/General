@@ -1,7 +1,7 @@
 
 
+.Light, .Light1, .LightCoRam, .LightRimRam, .LightRimUc , .LightRegPile, .LightCoPile, .LightCoUal,
 
-.Light, .LightCoRam, .LightRimRam, .LightRimUc , .LightRegPile, .LightCoPile, .LightCoUal,
 .LightPileCo, .LightUalCo, .LightRimEual1, .LightEual1Rim, .LightRegRim, .LightRegUal, .LightUalReg,
 .LightFlagPile, .LightPileFlag, .LightFlagUal, .LightUalFlag ,.LighPileBx ,.LightPileAcc ,.LightPileCX ,.LightRimBx,.LightCxPile ,.LightBxPile ,.LightDxPile ,.LightAccPile,.LightSiPile{
 
@@ -12,7 +12,7 @@
   background-color: #FFE600;
   box-shadow: 0 0 5px 4px #FFE600;
   opacity: 0%;
-  transition: all 1s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 /* 
 ,.LightCoRam, .LightRimRam, .LightRimUc , .LightRegPile, .LightCoPile, .LightCoUa

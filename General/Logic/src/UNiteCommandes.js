@@ -28,6 +28,7 @@ class UniteCommandes{
         var Mem=Machine.memoire
         var RI=Machine.RI
             Co.incCO()
+            
             busAdr.transferer(Co,Machine.RAM)
             Mem.lecture(Machine.RAM,Machine.RIM)
             return Machine.RIM

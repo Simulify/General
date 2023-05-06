@@ -67,6 +67,7 @@ function Container(props) {
   // })
 
     return (
+      
     <div className="Container">
         <Registres ACC={props.ACC} SI={props.SI} DI={props.DI} BX={props.BX} CX={props.CX}/>
         <Pile Pile={props.Pile}/>
@@ -89,6 +90,9 @@ function Container(props) {
         </div>
         )}
 
+
+         {/* <LightCoRam time = {0}/>  */}
+
         {/* Les tests */}
         
         {/* <LightCoRam time = {0}/>  */} {/* avec shadow à la destination*/}
@@ -96,6 +100,7 @@ function Container(props) {
         {/* <LightRimUc time = {0}/>  */}
         {/* <LightCoRam time = {0}/>  */}
         {/* <LightPileReg time = {0}/>*/}
+
         {/* <LightRimRam time = {0}/> */}
         {/* <LightRimUc time = {0}/>  */}
         {/* <LightCoPile time = {0}/> */}
