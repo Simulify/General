@@ -8,7 +8,7 @@ function MotDePassePage() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isEditing, setIsEditing] = useState(false);
-
+ 
   const handleModify = () => {
     setIsEditing(true);
   };
@@ -46,6 +46,8 @@ function MotDePassePage() {
         const updatedUser = response.data;
         setPassword(updatedUser.password);
         setIsEditing(false);
+        setPassword("");
+        setConfirmPassword("");
       }
       else {
         console.log("The password must match the confirmed one");
