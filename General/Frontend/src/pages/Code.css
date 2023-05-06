@@ -105,6 +105,7 @@ height: 200px;
     letter-spacing: 1.7px;
     font-size: 10px;
 }
+
 .buttons
 {
 display: flex;
@@ -274,23 +275,27 @@ h4
 .Title 
 {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 32%;
     resize: none;
     border-radius: 20px;
     border: 1px solid #00A6FB; ;
-  height:35px;
-    font-size: 20px;
-    min-width: 20%  ;
+    height: 1em;
+    line-height: 1em; 
+    font-size: 16px;
+    width: 25%; 
     padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .Title::placeholder
 {
     font-size: 15px;
-    opacity: .8;
+    opacity: 0.8;
 }
 .Title:focus
 {
+    outline: none;
     filter: drop-shadow(0 0 0.1rem #00A6FB);
     font-size: 15px;
 } 

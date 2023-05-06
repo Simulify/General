@@ -6,7 +6,7 @@ import UalETflag from "./UalETflag";
 function UalEtBus(props) {
     return (
         <div className="UalEtBus">
-            <UalETflag case={props.case}/>
+            <UalETflag case1={props.case1} case2={props.case2} Flags={props.Flags}/>
             <BusEuals/>
            
         </div>

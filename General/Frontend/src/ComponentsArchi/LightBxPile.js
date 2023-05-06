@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Light.css';
 import { MyFun } from './yellow';
-import { RegPile } from './yellow';
+import { BxPile } from './yellow';
 
-function LightRegPile({time}) {
+function LightBxPile({time}) {
   const [coor, setCoor] = useState([]);
   const myRef = useRef(null);
-  RegPile(time,myRef,setCoor,coor);
-
-  return <div className='LightRegPile' ref={myRef} />;
+  BxPile(time,myRef,setCoor,coor);
+  return <div className='LightBxPile' ref={myRef} />;
 }
 
-export default LightRegPile;
+export default LightBxPile;

@@ -1,7 +1,8 @@
 
 class Machine{
-  constructor(ACC,RI,SI,DX,BX,CO,CX,RIM,RAM,bus_adresse,bus_donnes,flags,uAL,mem,pile)
+  constructor(UC,ACC,RI,SI,DX,BX,CO,CX,RIM,RAM,bus_adresse,bus_donnes,flags,uAL,mem,pile)
   {
+    this.UC=UC
     this.ACC=ACC
     this.RI=RI
     this.SI=SI

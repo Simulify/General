@@ -1,12 +1,24 @@
-import React from "react";
 import "../pages/Code";
 
-function Title2() {
+function Title(props) {
+   
+ 
+  const handleKeyUp = (event) => {
+    if (event.key === "Enter") {
+      props.handleTextareaChange(event);
+    }
+
+  };
+    
+     
     return (
-        <textarea className='Title' placeholder='Veuillez entrez le titre du programme'>
+        <textarea  value={props.textareaValue} 
+        onKeyUp={handleKeyUp}
+        onChange={props.handleTextareaChange}
+        className='Title' placeholder='Veuillez saisir le titre du programme'>
 
         </textarea>
     );
 }
 
-export default Title2;
+export default Title;
