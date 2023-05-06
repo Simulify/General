@@ -21,8 +21,10 @@ function Settingsbar() {
       <ul className="nav-links">
         <li>
           <Link
-            to="/Settings/Userprofile"
-            className={activeLink === "Userprofile" ? "active" : ""}
+
+             to={`/settings/Userprofile/${localStorage.getItem('username')}`}
+            className={activeLink === "ProfilePage" ? "active" : ""}
+
             onClick={handleLinkClick}
             data-link="Userprofile"
           >
@@ -31,8 +33,10 @@ function Settingsbar() {
         </li>
         <li>
           <Link
-            to="/Settings/Userpassword"
-            className={activeLink === "Userpassword" ? "active" : ""}
+
+            to={`/settings/Userpassword/${localStorage.getItem('username')}`}
+            className={activeLink === "MotDePassePage" ? "active" : ""}
+
             onClick={handleLinkClick}
             data-link="Userpassword"
           >
@@ -41,8 +45,10 @@ function Settingsbar() {
         </li>
         <li>
           <Link
-            to="/Settings/Userlanguage"
-            className={activeLink === "Userlanguage" ? "active" : ""}
+
+            to={`/settings/Userlanguage/${localStorage.getItem('username')}`}
+            className={activeLink === "LanguePage" ? "active" : ""}
+
             onClick={handleLinkClick}
             data-link="Userlanguage"
           >
@@ -51,8 +57,10 @@ function Settingsbar() {
         </li>
         <li>
           <Link
-            to="/Settings/Usermode"
-            className={activeLink === "Usermode" ? "active" : ""}
+
+             to={`/settings/Usermode/${localStorage.getItem('username')}`}
+            className={activeLink === "ModePage" ? "active" : ""}
+
             onClick={handleLinkClick}
             data-link="Usermode"
           >
