@@ -13,7 +13,7 @@ function Memoire(props) {
   for ( i = props.memoire.length; i < 6885; i++) {
     casesData.push({ case1: "0", case2: "0", case3: "0", case4: "0" });
   }
-
+  casesData[props.mot[1]] = { case1: props.mot[0][1], case2: props.mot[0][2], case3: props.mot[0][3], case4: props.mot[0][4]}
   // Boucle pour générer les composants CaseMemoire avec les données générées
   const casesMemoire = casesData.map((data, index) => (
     <CaseMemoire
