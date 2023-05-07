@@ -57,7 +57,7 @@ function Side(props) {
           fontSize: "16px",
         }}
         className="box"
-        placeholder="Veuillez saisir votre code en mnémonique"
+        placeholder="Veuillez saisir votre code en Hexadécimale"
       ></textarea>
       <div className="dot" style={{background:`${color}`}}></div>
     </>

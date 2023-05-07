@@ -150,6 +150,7 @@ width: 30%;
     flex: none;
     order: 0;
     flex-grow: 0;
+    visibility: hidden;
 }
 #btn2:hover
 {
@@ -203,6 +204,10 @@ button#btn4.button:hover
     filter: drop-shadow(0 0 0.1rem #00A6FB);
 
 }
+div.container div 
+{
+    width:40%;
+}
 .textarea 
 {   
 margin-left: auto;
@@ -210,6 +215,12 @@ margin-right: auto;
 resize: none;
 color: #023047;
 font-size: 24px;
+width: 100%;
+min-height: 300px;
+border-color: #00A6FB;
+border-top-right-radius: 8px;
+border-bottom-right-radius: 8px;
+padding: 20px;
 }
 textarea:focus 
 {
@@ -219,6 +230,7 @@ border-color: #00A6FB /* Cette propriété permet de définir la couleur de la b
 textarea::placeholder
 {
     color: #023047; 
+    font-size: 15px;
 }
 hr
 {
@@ -233,6 +245,14 @@ position: relative;
     align-items: center;
     flex-direction: column;
     width: 100%;
+}
+div.container  div.hex
+{
+    width: 100%;
+    text-align: center;
+    background-color: #FFE600;
+    margin-left: auto;
+   border-top-left-radius: 8px;;
 }
 /* 1230px */
 /* @media  (min-width: 900px) and (max-width:1200px)
@@ -270,6 +290,11 @@ h4
     font-size: 15px;
     margin-right: auto;
 }
+.body
+{
+    top: 0px;
+    left: 0px;
+}
 .Title 
 {
     display: block;
@@ -278,18 +303,74 @@ h4
     resize: none;
     border-radius: 20px;
     border: 1px solid #00A6FB; ;
-  height:35px;
+    height:35px;
     font-size: 20px;
-    min-width: 20%  ;
+    min-width: 60%  ;
+    max-width: 60%  ;
     padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 15px;
+    overflow: hidden;
 }
 .Title::placeholder
 {
     font-size: 15px;
     opacity: .8;
 }
-.Title:focus
+#pop_up
 {
-    filter: drop-shadow(0 0 0.1rem #00A6FB);
-    font-size: 15px;
-} 
+    border-radius: 15px;
+   background-color: white;  
+  width: 500px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;   
+    display: flex;
+   position: fixed;
+    top: 40%;
+    left: 35%;
+    z-index: 10;
+visibility: hidden;  
+filter: drop-shadow(0 0 0.225rem #00A6FB);
+
+}
+.hide_bg
+{
+    filter: blur(23px);
+}
+#submit
+{
+    position: absolute;
+    width: 80px;
+    box-sizing: border-box;
+    height: 20px;
+    right: 10%;
+    bottom: 10%;
+    background-color: #00A6FB;
+    border: transparent;
+    color: white;
+    padding: 5px;
+    box-sizing: content-box;
+    border-radius: 15px;
+}
+div.container  div.blue_box
+{
+min-height: 300px;
+background-color: #99DBFD;
+width: 60px;
+border-top-left-radius: 8px;
+border-bottom-left-radius: 8px;
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+justify-content: center;
+}
+div.container > div
+{
+    display: flex;
+    flex-direction: row;
+
+}

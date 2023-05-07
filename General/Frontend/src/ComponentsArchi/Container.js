@@ -81,7 +81,7 @@ function Container(props) {
 
         <LightCoRam time = {0}/>  
                         {/* <LightPileReg time = {0}/>                 */}
-        <LightRimRam time = {0}/>>
+        <LightRimRam time = {0}/>
         <LightRimUc time = {0}/> 
         {/* <LightCoPile time = {0}/> */}
         {/* <LightCoUal time = {0}/>  */}
