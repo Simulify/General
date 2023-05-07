@@ -3,6 +3,11 @@ const express = require('express');
 
 // Create an instance of the app
 const app = express();
+//cors part
+const cors = require('cors');
+
+// Enable CORS for all routes
+app.use(cors());
 
 // Import the dotenv library for loading environment variables
 const dotenv = require('dotenv');

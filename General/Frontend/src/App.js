@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import React, {useState,useEffect} from 'react';
+import React, {useState} from 'react';
 
 import './pages/ColorsVar.css'; 
 import './App.css';
@@ -35,6 +35,8 @@ import LanguePage from './ComponentsSettings/LanguePage';
 import ModePage from './ComponentsSettings/ModePage';
 import { Sim } from './pages/Sim';
 import FAQ from './pages/FAQ';
+import Quiz from './pages/Quiz';
+import QuizApp from './pages/QuizApp';
 
 function App() {
   
@@ -80,14 +82,14 @@ function App() {
       <Route path="/settings/Userpassword/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<MotDePassePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
       <Route path="/settings/Usermode/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<ModePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
       <Route path="/settings/Userlanguage/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<LanguePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
-     
-
       <Route path='/revision' element={<Revision/>}></Route>
       <Route path='/revision/ressources' element={<RessourcePage/>}></Route>
       <Route path='/revision/ressources/livres' element={<LivresPage/>}></Route>
       <Route path='/revision/ressources/sites' element={<SitesPage/>}></Route>
       <Route path='/revision/ressource/videos' element={<VideoPage/>}></Route>
       <Route path='/revision/explication' element={<ExplicationsPage/>}></Route>
+      <Route path='/revision/quiz' element={<QuizApp/>}></Route>
+      <Route path="/revision/quiz/:category" element={<Quiz />} />
       <Route path='/guide' element={<Guide/>}></Route>
       <Route path='/guide/architecture' element={<GuideArch/>}></Route>
       <Route path='/guide/instruction-format' element={<GuideForm/>}></Route>

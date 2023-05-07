@@ -8,7 +8,12 @@ import { ReactComponent as CircleClair} from '../Images/Ellipse 7.svg';
 import { ReactComponent as Processor} from '../Images/Group 9.svg';
 
 function Home () {
- const [currentImage, setCurrentImage] = useState(0);
+  const [currentImage, setCurrentImage] = useState(0);
+ const handleClick = (index) => {
+    setCurrentImage(index);
+    const slider = document.querySelector(".slider");
+    slider.style.transform = `translateX(-${index * 33.33}%)`;
+ }
  useEffect(() => {  
   const slider = document.querySelector(".slider");
   const interval = setInterval(() => {
@@ -24,6 +29,10 @@ function Home () {
   }, 3000);
   return () => clearInterval(interval);
  }, []);
+ useEffect(() => {
+  document.body.classList.add('no-overflow');
+  return () => document.body.classList.remove('no-overflow');
+}, []);
   
  return (
   <div className="hero"> 
@@ -70,9 +79,10 @@ function Home () {
       </div>
      </div>
     </div>
-    <div className={`slid ${currentImage === 0 ? "active" : ""} clair1`}><CircleClair/></div>
-    <div className={`slid ${currentImage === 1 ? "active" : ""} clair2`}><CircleClair/></div>
-    <div className={`slid ${currentImage === 2 ? "active" : ""} clair3`}><CircleClair/></div> 
+    <div className={`slid ${currentImage === 0 ? "active" : ""} clair1`} onClick={() => handleClick(0)}><CircleClair/></div>
+    <div className={`slid ${currentImage === 1 ? "active" : ""} clair2`} onClick={() => handleClick(1)}><CircleClair/></div>
+    <div className={`slid ${currentImage === 2 ? "active" : ""} clair3`} onClick={() => handleClick(2)}><CircleClair/></div> 
+
     <a href="./code" className="simubutton">Simuler</a>
    </div>
   </div>

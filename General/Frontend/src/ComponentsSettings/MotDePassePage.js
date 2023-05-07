@@ -8,7 +8,7 @@ function MotDePassePage() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isEditing, setIsEditing] = useState(false);
-
+ 
   const handleModify = () => {
     setIsEditing(true);
   };
@@ -42,10 +42,12 @@ function MotDePassePage() {
       console.log('currentUser:', storedUser);
       console.log('currentUser_id:', storedUser._id);
       if (password===confirmPassword){
-        const response = await axios.put(`/users/${storedUser._id}/password`, { password });
+        const response = await axios.put(`https://simulify.onrender.com/users/${storedUser._id}/password`, { password });
         const updatedUser = response.data;
         setPassword(updatedUser.password);
         setIsEditing(false);
+        setPassword("");
+        setConfirmPassword("");
       }
       else {
         console.log("The password must match the confirmed one");
