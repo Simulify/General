@@ -911,23 +911,71 @@ export function Sim() {
             }, timeRef.current)
                 
             timeRef.current += 1000
-            Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value = new Mot16(Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)], Machine.Flags))
-
+            let val =  Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value = new Mot16(Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)], Machine.Flags))
+            
             tableAc.current.push(Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value.hexa)
             tableFlags.current.push(Machine.Flags.flags.hexa)
 
+            switch (parseInt(Machine.UC.R1, 2)) {
+                case 0:
+                    tableAc.current.push(val.hexa)
             setTimeout(() => {
                 acc.current = tableAc.current.shift()
-                flags1.current = tableFlags.current.shift()
                 setFo4(acc.current)
+            }, timeRef.current)
+                    break;
+            case 1:
+                tableBx.current.push(val.hexa)
+                setTimeout(() => {
+                    bx1.current = tableBx.current.shift()
+                    setFo9(bx1.current)
+                }, timeRef.current)
+                break;
+            case 2:
+                tableCx.current.push(val.hexa)
+                setTimeout(() => {
+                    cx1.current = tableCx.current.shift()
+                    setFo10(bx1.current)
+                }, timeRef.current)
+                break;
+            case 3:
+                tableDx.current.push(val.hexa)
+                setTimeout(() => {
+                    dx1.current = tableDx.current.shift()
+                    setFo8(dx1.current)
+                }, timeRef.current)
+                break;
+            case 4:
+                tableSi.current.push(val.hexa)
+                setTimeout(() => {
+                    si1.current = tableSi.current.shift()
+                    setFo7(si1.current)
+                }, timeRef.current)
+                break;
+            case 5:
+                table.current.push(val.hexa)
+                setTimeout(() => {
+                    coo.current = table.current.shift()
+                    setFo(coo.current)
+                }, timeRef.current)
+                break;
+                default:
+                    break;
+            }
+            
+            timeRef.current += 1000
+
+        
+            setTimeout(() => {
+                flags1.current = tableFlags.current.shift()
                 setFo11(flags1.current)
             }, timeRef.current)
             
 
             timeRef.current += 1000
-
-    /**********************************************************************************************************/
         }
+    /**********************************************************************************************************/
+        
         //***************  LOOP UNTIL CX==0 ***************** */
         else if (parseInt(Machine.UC.Cop, 2) == 17) {
             let op = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
