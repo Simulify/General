@@ -15,7 +15,7 @@ function ProfilePage() {
         const storedUser = JSON.parse(localStorage.getItem("currentUser"));
         console.log('currentUser:', storedUser);
         console.log('currentUser_id:', storedUser._id);
-        const response = await axios.get(`/users/${storedUser._id}`);
+        const response = await axios.get(`https://simulify.onrender.com/users/${storedUser._id}`);
         const user = response.data;
         setEmail(user.email);
         setUsername(user.username);
@@ -49,8 +49,8 @@ function ProfilePage() {
       const storedUser = JSON.parse(localStorage.getItem("currentUser"));
       console.log('currentUser:', storedUser);
       console.log('currentUser_id:', storedUser._id);
-      const response = await axios.put(`/users/${storedUser._id}/username`, { username });
-      const response1 = await axios.put(`/users/${storedUser._id}/email`, { email });
+      const response = await axios.put(`https://simulify.onrender.com/users/${storedUser._id}/username`, { username });
+      const response1 = await axios.put(`https://simulify.onrender.com/users/${storedUser._id}/email`, { email });
       const updatedUser = response.data;
       const updatedUser1 = response1.data;
       setUsername(updatedUser.username);

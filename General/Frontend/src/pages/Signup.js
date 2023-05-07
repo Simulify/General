@@ -22,7 +22,7 @@ function Signup (setIsAuthenticated,setCurrentUser,currentUser) {
     }
     
     console.log('handleSignUp called');
-    axios.post('/signup', {
+    axios.post('https://simulify.onrender.com/signup', {
       username,
       email,
       password,
@@ -31,7 +31,7 @@ function Signup (setIsAuthenticated,setCurrentUser,currentUser) {
       console.log(email);
       console.log(response.data);
       axios
-      .post('/login', { // we post the user's data to the database 
+      .post('https://simulify.onrender.com/login', { // we post the user's data to the database 
         email,
         password,
       })
