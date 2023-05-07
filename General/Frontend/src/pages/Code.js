@@ -267,7 +267,7 @@ codes[1].readonly=false;
           <div className='compiled' >
           </div>
           <br></br>
-   <Title></Title>
+ 
           <hr>
           </hr> </div>
     );
