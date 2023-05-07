@@ -7,27 +7,27 @@ import { ReactComponent as Fleche } from '../Images/Dropdown.svg';
 const questions = [
   {
     id: 1,
-    question: "Question1",
-    reponse: "Réponse1."
+    question: "Qu'est-ce que Simulify et comment ça fonctionne ?",
+    reponse: "Simulify est une plateforme pédagogique basée sur l'architecture de Von Neumann qui permet d'apprendre la structure machine"
   },
   {
     id: 2,
-    question: "Question2",
-    reponse: "Réponse2."
+    question: "Quelles sont les fonctionnalités offertes par Simulify ?",
+    reponse: "Simulify vous permet d'écrire, simuler et visualiser vos programmes de manière interactive."
   },
   {
     id: 3,
-    question: "Question3",
-    reponse: "Réponse3."
+    question: " Quelles ressources complémentaires sont disponibles sur Simulify ?",
+    reponse: "Sur Simulify, vous trouverez des ressources complémentaires telles que des explications détaillées, des simulations graphiques pour faciliter la compréhension des concepts difficiles, ainsi que des quiz interactifs pour tester vos connaissances."
   },
   {
     id: 4,
-    question: "Question4",
-    reponse: "Réponse4."
+    question: "Comment puis-je créer un compte sur Simulify et me connecter à mon compte ?",
+    reponse: "Pour créer un compte sur Simulify, cliquez sur l'icone utilisateur en haut à droite et remplissez le formulaire d'inscription avec vos informations."
   },
   {
     id: 5,
-    question: "Question5",
+    question: "Qui sommes nous ?",
     reponse: "Réponse5."
   }
 ];
