@@ -29,7 +29,7 @@ function Files({ isAuthenticated, setIsAuthenticated, currentUser, setCurrentUse
         const storedUser = JSON.parse(localStorage.getItem("currentUser")); // we get the current user
         console.log('currentUser:', storedUser);
         console.log('currentUser_id:', storedUser._id);
-        const response = await axios.get(`/users/${storedUser._id}/files`); // when get the files of the user
+        const response = await axios.get(`https://simulify.onrender.com/users/${storedUser._id}/files`); // when get the files of the user
         setFiles(response.data);
       } catch (error) {
         console.error(error);
@@ -50,7 +50,7 @@ async function removeFile(id) { // removes files based on their _id
   try {
     console.log(`Removing file with ID ${id}`);
     const storedUser = JSON.parse(localStorage.getItem("currentUser"));
-    await axios.delete(`/users/${storedUser._id}/codes/${id}`); //Delete request to the database
+    await axios.delete(`https://simulify.onrender.com/users/${storedUser._id}/codes/${id}`); //Delete request to the database
     setFileList(fileList.filter((file) => file.id !== id));
   } catch (error) {
     console.error(error);
@@ -93,7 +93,7 @@ async function removeFile(id) { // removes files based on their _id
   
     <div className="Files">
 
-      <Navbar label="Les fichiers" />
+      <Navbar label="Les fichier" />
       <div className="Menu-container">
         <div className="menu-trigger-exemple"
         onClick={handleExempleClick}>
