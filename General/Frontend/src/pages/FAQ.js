@@ -28,7 +28,7 @@ const questions = [
   {
     id: 5,
     question: "Qui sommes nous ?",
-    reponse: "Réponse5."
+    reponse: "Nous sommes actuellemnt 6 étudiantes en 2CP à ESI Alger et les réalisatrices du site web simulify dans le cadre de notre projet 2CP encadré par Mr Dahamni et Mme Charabi, que nous souhaitons que Simulify vous srea utile pour vos études : Alismail Dyna , Dinari Yasmine , Auoinine Lylia , Malek Amina , Rezzoug Aicha et Dehili Hind "
   }
 ];
 
