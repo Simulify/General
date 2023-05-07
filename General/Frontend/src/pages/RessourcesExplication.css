@@ -56,6 +56,12 @@
     margin-bottom: 20px;
 }
 
+.ButtonExplication p{
+    color: var(--dark-to-light);
+}
+p{
+    color: var(--dark-to-light);  
+}
 .ButtonExplication .lien a {
     color: #00A6FB;
     width: 100%;
