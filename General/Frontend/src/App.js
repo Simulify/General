@@ -80,8 +80,6 @@ function App() {
       <Route path="/settings/Userpassword/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<MotDePassePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
       <Route path="/settings/Usermode/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<ModePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
       <Route path="/settings/Userlanguage/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<LanguePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
-     
-
       <Route path='/revision' element={<Revision/>}></Route>
       <Route path='/revision/ressources' element={<RessourcePage/>}></Route>
       <Route path='/revision/ressources/livres' element={<LivresPage/>}></Route>
