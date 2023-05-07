@@ -128,9 +128,6 @@ class UAL {
             console.log(`UAL2 fct = ${this.UAL2.getMot()}`)
             let resCMP = Instructions.CMP(this.UAL1, this.UAL2,Flags)
             return resCMP
-
-        case 'RAZ':
-            let resRAZ = Instructions.RAZ(this.UAL1,Flags);
         break;
 
         default:
