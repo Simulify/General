@@ -12,7 +12,7 @@ function Registres(props) {
             <Registre nom="Bx" Con={props.BX}/>
             <Registre nom="Cx" Con={props.CX}/>
             <Registre nom="Dx" Con={props.DI}/>
-            <Registre nom="Si" Con={props.BX} />
+            <Registre nom="Si" Con={props.SI} />
             <Registre nom="Acc" Con={props.ACC}/>
 
 
