@@ -7,7 +7,7 @@ function MemoireEtRim(props) {
   return (
     <div className="MemoireEtRim">
         <div>Mémoire</div>
-        <Memoire memoire={props.memoire}/>
+        <Memoire memoire={props.memoire}  mot={props.mot}/>
         <Rim Rim={props.Rim} nom="RIM"/>
     </div>
   );

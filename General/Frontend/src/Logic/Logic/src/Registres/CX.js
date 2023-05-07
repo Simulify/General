@@ -12,7 +12,7 @@ class CX extends Registres {
 DecCX(){
   const flags= new Flags(new Mot16("000000000000"))
   this.value=new Mot16(Instructions.DEC(this.value,flags))
-   
+   console.log("hereeee")
 }
 }//classe  
 export default CX;

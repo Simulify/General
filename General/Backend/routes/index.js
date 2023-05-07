@@ -390,7 +390,6 @@ async function createCode(userId, codeData) {
     title: codeData.title,
     codeHexa: codeData.codeHexa,
     codeMemo: codeData.codeMemo,
-   
   };
 
   user.codes.push(newCode);
@@ -439,7 +438,7 @@ router.put('/users/:userId/codes/:codeId', async (req, res) => {
     const newTitle = req.body.title;
     const newCodeHexa = req.body.codeHexa;
     const newCodeMemo = req.body.codeMemo;
-    const newCompiled = req.body.compiled;
+  
 
     // Find the existing code by title
     const existingCode = user.codes.find(code => code.title === newTitle);

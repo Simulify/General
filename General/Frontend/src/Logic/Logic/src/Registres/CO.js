@@ -14,7 +14,7 @@ class CO extends Registres {
   }
 
   RAZ(){ 
-     this.value=Instructions.RAZ(this.value,new Flags(new Mot16("0000000000000000")))
+     this.value=new Mot16("0000000000000000")
   }
 }
 
