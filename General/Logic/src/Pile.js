@@ -1,27 +1,31 @@
-
 class Pile {
+    // Constructeur qui prend une pile et un nombre de mots en entrée
     constructor(pile, nbrMot) {
-        this.pile = pile;
-        this.nbrMot = nbrMot;
+      this.pile = pile;
+      this.nbrMot = nbrMot;
     }
 
-    /*Getter*/
+    // Méthode qui retourne le nombre de mots
     getNbrMot() {
-        return this.nbrMot;
+      return this.nbrMot;
     }
-
-    /*Setters*/
-
+  
+    // Méthode qui permet de définir le nombre de mots
     setNbrMot(nbrMot) {
-        this.nbrMot = nbrMot;
-    } 
-    PUSH(mot)
-    {
-        this.pile.push(mot)
+      this.nbrMot = nbrMot;
     }
-    POP()
-    {
-        return this.pile.pop()
+  
+    // Méthode qui ajoute un mot à la pile
+    PUSH(mot) {
+      this.pile.push(mot)
     }
-}
-export default Pile;
+  
+    // Méthode qui retire un mot de la pile
+    POP() {
+      return this.pile.pop()
+    }
+  }
+  
+  // Exportation de la classe Pile
+  export default Pile;
+  
