@@ -18,7 +18,7 @@
     justify-content: space-between;
     width: 70%;
     padding: 20px;
-    background-color: #00A6FB;
+    background-color: var(--blue);
     margin-bottom: 10px;
     border-radius: 15px;
     cursor: pointer;
@@ -38,7 +38,7 @@
 }
 
 .ButtonRessource .lien a {
-    color: #00A6FB;
+    color: var(--blue);
     font-weight: 600;
     font-size: large;
     display: block;
@@ -46,7 +46,7 @@
 }
 
 .ButtonExplication .lien {
-    background: #F8F9FA;
+    background: var(--background-color);
     border: 1px solid #00A6FB;
     box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 10px 10px rgba(43, 110, 177, 0.09), 0px 3px 6px rgba(43, 110, 177, 0.1), 0px 0px 0px rgba(43, 110, 177, 0.1);
     border-radius: 32px;
@@ -56,6 +56,12 @@
     margin-bottom: 20px;
 }
 
+.ButtonExplication p{
+    color: var(--dark-to-light);
+}
+p{
+    color: var(--dark-to-light);  
+}
 .ButtonExplication .lien a {
     color: #00A6FB;
     width: 100%;
@@ -71,7 +77,7 @@
 
 .containerLivres span, .containerSites span, .containerVideos span, .containerExplication span {
     padding-left: 20px;
-    color: #F8F9FA;
+    color: var(--light-dark-blue);
     height: 100%;
     width: 100%;
     font-weight: 600;
@@ -87,3 +93,34 @@
     width: 14px;
     padding-right: 5px;
 }
+
+.ButtonExplication {
+    position: relative;
+    overflow: hidden;
+  }
+  .ButtonExplication p {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    margin-right: 30%; /* add a 10px right margin */
+    animation: slide-in 0.5s ease-out;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    margin-bottom: 2%;
+  }
+  
+  @keyframes slide-in {
+    from {
+      left: -100%;
+      opacity: 0;
+    }
+    to {
+      left: 0%;
+      opacity: 1;
+    }
+  }
+  .containerExplication {
+    overflow-y: scroll;
+    max-height: 70vh;
+  }
+ 

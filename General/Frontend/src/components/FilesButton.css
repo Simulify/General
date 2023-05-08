@@ -1,10 +1,10 @@
 .Files-button {
-  background-color:  #00A6FB;
+  background-color:  var(--blue);
   border-width: 1px;
   border-style: none;
   width: 740px;
   height: 50px;
-  color: #fff;
+  color: var(--light-dark);
   font-size: 20px;
   font-weight: Bold;
   font-family: Montserrat;
