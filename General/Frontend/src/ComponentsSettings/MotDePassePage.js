@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 import InputButton from '../Components_login/InputButton'; 
 import axios from 'axios';
 
-function MotDePassePage() {
+function MotDePassePage(props) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isEditing, setIsEditing] = useState(false);
@@ -59,7 +59,7 @@ function MotDePassePage() {
   
   return (
     <div className='MotDePassePage'>
-      <Navbar label='Parametres' />
+      <Navbar label='Parametres'  isAuthenticated={props.isAuthenticated} />
       <FormSettings isEditing={isEditing} handleModify={handleModify} />
       <form onSubmit={handleSubmit}>
         <div className='containerSettings'>

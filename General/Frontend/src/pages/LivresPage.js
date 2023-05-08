@@ -4,10 +4,10 @@ import './RessourcesExplication.css';
 import Navbar from '../components/Navbar';
 import ButtonRessource from '../ComponentsRevision/ButtonRessource';
 
-function LivresPage () {
+function LivresPage (props) {
  return(
   <div className='LivresPage'>
-     <Navbar label="Livres"/>
+     <Navbar label="Livres"  isAuthenticated={props.isAuthenticated}/>
     <div className='containerLivres'>
        <ButtonRessource label="Livre 1" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
        <ButtonRessource label="Livre 2" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>

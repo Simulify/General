@@ -12,16 +12,10 @@ import next from '../Images/next.svg'
 import { Link } from 'react-router-dom';
 import Btn_simule from '../components/Btn_simuler2.js';
 import Title from '../components/Title2.js';
-const ButoStyle=
-{
 
-background: '#00A6FB',
-position:'absolute',
-width:'148px',
-gridArea:'sauv'
-}
 
 function Code(props) {
+  const isAuthenticated=props.isAuthenticated;
   const [base,setBase]=useState("")
   // const handleClick1= (event)=>{
   //   if (event.target.textContent=="HEX") 
@@ -360,7 +354,7 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
     const storedTitle = localStorage.getItem("textAreaTitle"); // we put in stored title the stored data title
     
     // check if the storedTitle is an exemple => not allow saving
-    if (storedTitle === "ET" || storedTitle === "OU" || storedTitle === "NON" || storedTitle === "ADD" || storedTitle === "SUB"|| storedTitle === "DIV"|| storedTitle === "BCV" || storedTitle === "LOOP" || storedTitle === "PERMUT" || storedTitle === "SHIFT LEFT"|| storedTitle === "SHIFT RIGHT") {
+    if (storedTitle === "Maximum de deux nombres" || storedTitle === "Somme des entiers de 1 à 10" || storedTitle === "Factorielle d'un nombre" || storedTitle === "XOR( OU exclusif ) avec la pile" || storedTitle === "Reste de division euclidienne"|| storedTitle === "Permutation du contenu de 2 mot mémoire"|| storedTitle === "Rotation et décalage") {
       return;
     }
   
@@ -424,14 +418,23 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
     return(
       <div >
         <div className='body'>
-          <Navbar label="Simulation" />
+          <Navbar label="Simulation" isAuthenticated={props.isAuthenticated} />
         <br></br>         <br></br>
         <br></br>
         <div className='hugecontainer'>
        <div className='Bigcontainer'>
-        <div className="buttons">
-        <Button className='sauvegarder1' text="Sauvegarder"  style={ButoStyle}  ></Button>
-        <Button link="/files" text="Fichiers" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'100%',gridArea:'exem'}}></Button>
+       <div className="buttons" style={{ display: isAuthenticated ? 'block' : 'none' }}>
+       <Button
+  className='sauvegarder1'
+  text="Sauvegarder"
+  style={{
+    background: '#F8F9FA', color: '#023047', position: 'relative', width: '148px',
+    cursor: 'pointer',
+    gridArea: 'sauv'
+  }}
+></Button>
+
+          <Button link="/files" text="Fichiers" style={{ background: '#F8F9FA', color: '#023047', position: 'absolute', width: '148px', gridArea: 'exem' }}></Button>
         </div>
    <div className="container">
       <div>
@@ -469,9 +472,9 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
        
           </div>
           <div id='pop_up'>
-            <Title></Title>
+           <Title textareaValue={textAreaTitle} handleTextareaChange={handleTextareaChangeTitle}></Title>
            <br></br>
-           <button id='submit'> 
+           <button id='submit'  onClick={() => saveFile(localStorage.getItem('textareaValue'),localStorage.getItem('textareaValue1'),textAreaTitle)}  > 
                Soumettre
            </button>
           </div>
