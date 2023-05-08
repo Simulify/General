@@ -7,32 +7,38 @@ import { ReactComponent as Fleche } from '../Images/Dropdown.svg';
 const questions = [
   {
     id: 1,
-    question: "Qu'est-ce que Simulify et comment ça fonctionne ?",
-    reponse: "Simulify est une plateforme pédagogique basée sur l'architecture de Von Neumann qui permet d'apprendre la structure machine"
+    question: (<div className="q1">Qu'est-ce que Simulify et comment ça fonctionne ?</div>),
+    reponse: (
+      <div>Simulify est une plateforme pédagogique basée sur l'architecture de Von Neumann qui permet d'apprendre la structure machine
+      </div>)
   },
   {
     id: 2,
-    question: "Quelles sont les fonctionnalités offertes par Simulify ?",
-    reponse: "Simulify vous permet d'écrire, simuler et visualiser vos programmes de manière interactive."
+    question: (<div className="q2">Quelles sont les fonctionnalités offertes par Simulify ?</div>),
+    reponse: (<div >Simulify est une plateforme pédagogique basée sur l'architecture de Von Neumann qui permet d'apprendre la structure machine</div>)
   },
   {
     id: 3,
-    question: " Quelles ressources complémentaires sont disponibles sur Simulify ?",
-    reponse: "Sur Simulify, vous trouverez des ressources complémentaires telles que des explications détaillées, des simulations graphiques pour faciliter la compréhension des concepts difficiles, ainsi que des quiz interactifs pour tester vos connaissances."
+    question: (
+      <div className="q3">Quelles ressources complémentaires sont disponibles <br/>sur Simulify ?</div>),
+    reponse: (<div>Sur Simulify, vous trouverez des ressources complémentaires telles que des explications détaillées, des simulations graphiques pour faciliter la compréhension des concepts difficiles, ainsi que des quiz interactifs pour tester vos connaissances.
+    </div>)
   },
   {
     id: 4,
-    question: "Comment puis-je créer un compte sur Simulify et me connecter à mon compte ?",
-    reponse: "Pour créer un compte sur Simulify, cliquez sur l'icone utilisateur en haut à droite et remplissez le formulaire d'inscription avec vos informations."
+    question: (
+      <div className="q4">Comment puis-je créer un compte sur Simulify et me <br/> connecter à mon compte ?</div>),
+    reponse: (<div>Pour créer un compte sur Simulify, cliquez sur l'icone utilisateur en haut à droite et remplissez le formulaire d'inscription avec vos informations.
+    </div>)
   },
   {
     id: 5,
-    question: "Qui sommes nous ?",
-    reponse: "Réponse5."
+    question: (<div className="q5">Qui sommes nous ?</div>),
+    reponse: (<div>Réponse5.</div>)
   }
 ];
 
-export default function FAQ() {
+export default function FAQ(props) {
   const [reponseVisible, setReponseVisible] = useState(null);
   const handleClickQuestion = (id) => {
     if (reponseVisible === id) {
@@ -46,7 +52,7 @@ export default function FAQ() {
 
  return (
   <div className="FAQ">
-    <Navbar label="Aide"/>
+    <Navbar label="Aide"  isAuthenticated={props.isAuthenticated}/>
     <p className='p'>Vous avez des questions? Vous pouvez retrouver leurs réponses dans notre FAQ.</p>
 
     <div className="questions">
@@ -57,7 +63,7 @@ export default function FAQ() {
        onClick={() => handleClickQuestion(id)}>
         <Point className="point"/>
         {question}
-        <Fleche className="fleche"/>
+        <Fleche className={`fleche ${id}`} />
       </div>
      ))}
     </div>
