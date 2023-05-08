@@ -114,14 +114,36 @@ function Code(props) {
     //       document.getElementById('blue_box_1').appendChild(div);
     //     }
     // });
-    function countLines() {
+    function countLines() 
+    {
+      console.log('A LINTERIEUR DE LA FONCTION' );
       const value = codes[0].value;
       const newlines = value.match(/\n/g);
       const count = newlines ? newlines.length + 1 : 1;
-      console.log('Number of lines:', count);
+return count ;    }
 
-    }
-    codes[0].addEventListener('input', countLines);
+    let x = 0;
+    codes[0].addEventListener('keyup',(e)=>
+    {
+      if(e.key==="Enter")
+      {
+        let nv_x=countLines();
+        if(nv_x>x)
+        {
+          let last_child=codes[0].lastChild;
+       if (last_child.textContent!==nv_x)
+       {
+        let span = document.createElement('span');
+                
+        span.textContent=nv_x;
+              document.getElementById('blue_box_1').appendChild(span);
+              x=nv_x;
+       }
+          
+        }
+      }
+     
+    });
     
   //   codes[1].addEventListener('keyup', (e)=>
   //   {
@@ -196,11 +218,11 @@ for(let i=0;i<arr.length;i++)
  arr[i]=parseInt(arr[i],2).toString(16);
  if(i!==arr.length-1)
  {
-  hexa=hexa+arr[i]+'\n';
+  hexa=hexa+arr[i].padStart(4,0)+'\n';
  }
  else
  {
-  hexa=hexa+arr[i];
+  hexa=hexa+arr[i].padStart(4,0);
  }
 }
 codes[1].value=hexa;
@@ -407,14 +429,11 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
         <br></br>
         <div className='hugecontainer'>
        <div className='Bigcontainer'>
-       {/* buttons in top *************** */}
         <div className="buttons">
         <Button className='sauvegarder1' text="Sauvegarder"  style={ButoStyle}  ></Button>
         <Button link="/files" text="Fichiers" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'100%',gridArea:'exem'}}></Button>
         </div>
-        {/**************************/} 
    <div className="container">
-         {/* <Side className="textarea" textareaValue={textareaValue} handleTextareaChange={handleTextareaChange}></Side> */}
       <div>
       <div className='blue_box' id='blue_box_1'> </div>
            <textarea className="textarea" placeholder='Veuillez saisir le code en mnémonique'></textarea>
@@ -423,9 +442,7 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
          <div className='blue_box'  id='blue_box_2'>
       <div className='hex'>Hex</div>          
       </div>  <textarea className="textarea" placeholder='Veuillez saisir le code en Hexa'></textarea>
-         </div>         {/* <div className="base" >HEX</div> */}
-         {/* <Side className="textarea" textareaValue={textareaValue1} handleTextareaChange={handleTextareaChange1}></Side> */}
-        
+         </div>         
            </div>             
              </div>      
         <script src="myscripts.js"></script>      
@@ -452,8 +469,6 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
        
           </div>
           <div id='pop_up'>
-          {/* <textarea className='Title' placeholder='Veuillez entrez le titre du programme' >
-           </textarea> */}
             <Title></Title>
            <br></br>
            <button id='submit'> 
