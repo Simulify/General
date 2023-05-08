@@ -12,8 +12,10 @@ import next from '../Images/next.svg'
 import { Link } from 'react-router-dom';
 import Btn_simule from '../components/Btn_simuler2.js';
 import Title from '../components/Title2.js';
-const ButoStyle={
-  background: '#00A6FB',
+const ButoStyle=
+{
+
+background: '#00A6FB',
 position:'absolute',
 width:'148px',
 gridArea:'sauv'
@@ -28,32 +30,50 @@ function Code(props) {
   //   }
   //   else{event.target.textContent="HEX"}
   // }
-    const [textareaValue, setTextareaValue] = useState("");
-    const [textareaValue1, setTextareaValue1] = useState("");
-    const handleTextareaChange = (event) => {
-      setTextareaValue(event.target.value);
-    };
-    const handleTextareaChange1 = (event) => {
-      setTextareaValue1(event.target.value);
-    };
+ 
+  const [textareaValue, setTextareaValue] = useState("");
+  const [textareaValue1, setTextareaValue1] = useState("");
+  const [textAreaTitle, setTextAreaTitle] = useState("");
+
+  
+  const handleTextareaChange = (event) => {
+    setTextareaValue(event.target.value);
+  };
+  const handleTextareaChange1 = (event) => {
+    setTextareaValue1(event.target.value);
+  };
+  const handleTextareaChangeTitle = (event) => {
+    setTextAreaTitle(event.target.value);
+  };
    
   useEffect(() => {
-   //---------Loading the content of a file clicked"----------------
-    console.log("buttonClicked:", localStorage.getItem("buttonClicked"));
-    const storedTextareaValue = localStorage.getItem("filecodeHexa");
-    const storedTitle = localStorage.getItem("title");
-    console.log("storedTitle :",storedTitle);
-    const storedTextareaValue1 = localStorage.getItem("filecodeMemo");
-    const buttonClicked = localStorage.getItem("buttonClicked");
-    if (buttonClicked === null) {
-      localStorage.setItem("buttonClicked", "false");
-    }
-    if (buttonClicked === "true") {
-      setTextareaValue(storedTextareaValue || "");
-      setTextareaValue1(storedTextareaValue1 || "");
-      console.log("ani ndkhol");
-    }
-    localStorage.setItem("buttonClicked", "false");
+  //we load the stored data is the button of the file has been clicked
+  
+  const storedTextareaValue = localStorage.getItem("filecodeHexa");// load the data in hexa
+  const storedTitle = localStorage.getItem("title"); // load the title of the file
+  const storedTextareaValue1 = localStorage.getItem("filecodeMemo"); // load the data with mémonique
+  console.log("in cide",storedTextareaValue1);
+  const buttonClicked = localStorage.getItem("buttonClicked");
+  if (buttonClicked === null) {
+    localStorage.setItem("buttonClicked", "false"); // if the button is not click we put it at false
+  }
+  if (buttonClicked === "true") 
+  { //if button clicked we set the values of the fields with stored data
+    
+    setTextareaValue(storedTextareaValue || "");
+    setTextareaValue1(storedTextareaValue1 || "");
+    setTextAreaTitle(storedTitle || "");
+    console.log('im getting in ');
+    console.log("hyu 1111 avant le stockage du programme ",storedTextareaValue1);  
+    document.getElementsByTagName('textarea')[0].readOnly=false;
+    // console.log(document.getElementsByTagName('textarea')[0]);
+    
+    document.getElementsByTagName('textarea')[0].value=storedTextareaValue;
+    document.getElementsByTagName('textarea')[0].value=storedTextareaValue1;
+  console.log(document.getElementsByTagName('textarea')[0].value==="visible")  ;
+
+  }
+  localStorage.setItem("buttonClicked", "false"); // we reput it at false until the next click
 
 
        //-----------------------------------------------------------------------------------------------//
@@ -85,7 +105,7 @@ function Code(props) {
     
     // let nb=0;
     // codes[0].addEventListener('keydown', (e) => {
-    //     if (e.keyCode === 13) 
+    //     if (e.key === "Enter") 
     //     {
     //       nb++;
     //       let div = document.createElement('div');
@@ -94,6 +114,14 @@ function Code(props) {
     //       document.getElementById('blue_box_1').appendChild(div);
     //     }
     // });
+    function countLines() {
+      const value = codes[0].value;
+      const newlines = value.match(/\n/g);
+      const count = newlines ? newlines.length + 1 : 1;
+      console.log('Number of lines:', count);
+
+    }
+    codes[0].addEventListener('input', countLines);
     
   //   codes[1].addEventListener('keyup', (e)=>
   //   {
@@ -174,7 +202,6 @@ for(let i=0;i<arr.length;i++)
  {
   hexa=hexa+arr[i];
  }
- console.log(arr[i] + ' la boucle numero'+i);
 }
 codes[1].value=hexa;
 }
@@ -183,6 +210,23 @@ codes[1].value=hexa;
     
   
 
+
+           /************************************************************************************************* */
+ /*************************************** LIMITER LE NOMBRE DE CARACTERES DANS LE TITRE  ****************************************** */
+
+ document.querySelector('.Title').addEventListener('input', (e)=>
+{
+const max=50;
+if(e.target.value.length>max)
+ {
+  e.target.value=e.target.value.slice(0,max);
+ }
+})
+
+/*********************************************************************************************************************************/
+
+
+ 
     
                      /************************************************************************************************* */
 /******************************************************** POP UP IN ****************************************************************** */
@@ -202,12 +246,6 @@ codes[1].value=hexa;
     }
    }
    );
-   document.querySelector('.Title').addEventListener('input', ()=>
-   {
-   if (document.querySelector('.Title').value)
-   {}
-   })
-
 
  /************************************************************************************************* */
 /**************************************************************************************************/
@@ -276,25 +314,40 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
   }, []); // This empty array as a second argument ensures that the effect is only run once when the component mounts
   
 
-  const saveFile = (textareaValue, textareaValue1) => {
-    console.log(textareaValue);
-    console.log(textareaValue1);
-    localStorage.setItem('textareaValue', textareaValue);
-    localStorage.setItem('textareaValue1', textareaValue1);
-    const storedTitle = localStorage.getItem("title");
-  
-    // check if the storedTitle is "ET"
-    if (storedTitle === "ET" || storedTitle === "OU" || storedTitle === "NON" || storedTitle === "ADD" || storedTitle === "SUB"|| storedTitle === "DIV"|| storedTitle === "BCV" || storedTitle === "LOOP" || storedTitle === "PERMUT" || storedTitle === "SHIFT LEFT"|| storedTitle === "SHIFT RIGHT") 
-    {
+  useEffect(() => 
+  {
+    // Assign textareaValue to codes[0].value
+    const codes = document.getElementsByTagName('textarea');
+    codes[0].readOnly=false;
+    console.log('a linterieur de save'+ codes[0].value);
+    codes[0].value = codes[0].value;
+    console.log("douka",codes[0].value);
+  }, [textareaValue]);
+  const saveFile = (textareaValue, textareaValue1,textAreaTitle) => { 
+ 
+
+    console.log("before save textareaValue",textareaValue);
+    console.log("before save textareaValue",textareaValue1);
+    localStorage.setItem('textareaValue', document.getElementsByTagName('textarea')[0].value); // save data with mémonique
+    localStorage.setItem('textareaValue1', document.getElementsByTagName('textarea')[1].value);
+
+    console.log('the value FROM LOCAL STORAGE'+ localStorage.getItem('textareaValue'));
+    console.log('the value LOCAL STORAGE'+ localStorage.getItem('textareaValue1'));
+
+    localStorage.setItem('textAreaTitle', textAreaTitle); // save title of the file
+    const storedTitle = localStorage.getItem("textAreaTitle"); // we put in stored title the stored data title
+    
+    // check if the storedTitle is an exemple => not allow saving
+    if (storedTitle === "ET" || storedTitle === "OU" || storedTitle === "NON" || storedTitle === "ADD" || storedTitle === "SUB"|| storedTitle === "DIV"|| storedTitle === "BCV" || storedTitle === "LOOP" || storedTitle === "PERMUT" || storedTitle === "SHIFT LEFT"|| storedTitle === "SHIFT RIGHT") {
       return;
     }
   
-    const file = {
-      "title": storedTitle, 
-      "codeHexa": textareaValue,
-      "codeMemo": textareaValue1,
+    const file = { // we init the fields of the object code 
+      "title": storedTitle,  
+      "codeHexa": localStorage.getItem('textareaValue1'),
+      "codeMemo": localStorage.getItem('textareaValue'),
     };
-    const storedUser = JSON.parse(localStorage.getItem("currentUser"));
+    const storedUser = JSON.parse(localStorage.getItem("currentUser")); // we get the current user & his _id
     console.log('currentUser:', storedUser);
     console.log('currentUser_id:', storedUser._id);
     const storedCodeId = localStorage.getItem("storedCode.id");
@@ -302,33 +355,27 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
   
     // Check if there is already a code with the same title for the current user
     axios
-
       .get(`https://simulify.onrender.com/users/${storedUser._id}/codes/${storedCodeId}`) //access the code itself
-
       .then((response) => {
         const existingCode = response.data.title === file.title ? response.data : undefined;
         let exist = false;
-        if (existingCode !== undefined) {
+        if (existingCode !== undefined) { //if existing title we update else we create a new one 
           exist = true;
         }
         console.log ("existingCode:", existingCode);
   
         if (exist === true) {
           axios
-
             .put(`https://simulify.onrender.com/users/${storedUser._id}/codes/${storedCodeId}`, file) //updating the file
-
             .then((response) => {
-              console.log("API call successful:", response);
+              console.log("API call successful:", response); 
             })
             .catch((error) => {
               console.error(error);
             });
         } else {
           axios
-
             .post(`https://simulify.onrender.com/users/${storedUser._id}/codes`, file) //creating new code
-
             .then((response) => {
               console.log("API call successful:", response);
             })
@@ -348,6 +395,7 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
             console.error(error);
           });
       });
+      
   };
 
   
