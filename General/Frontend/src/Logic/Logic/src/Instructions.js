@@ -328,7 +328,7 @@ static PUSH(pile, mot) {
   }
 
   static BCV (n,Flags){
-    let b=false
+    let b = false
     if ((n == 0) || (Flags.getBit(n)== '1')){
       b = true
     }
