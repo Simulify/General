@@ -36,8 +36,15 @@
   
   .SignUp a {
     color: #00A6FB;
+    
   }
  
+  .illustration img {
+    width: 90%;
+    animation: slide 3s ease-in-out infinite;
+    
+    
+  }  
  
  
   
