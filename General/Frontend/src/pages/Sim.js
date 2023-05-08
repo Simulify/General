@@ -33,13 +33,15 @@ import mot_mem from '../Logic/Logic/src/mot_mem.js';
 import Machine from '../Logic/Logic/src/Machine.js';
 import "../ComponentsArchi/Light.css"
 import { CoRam } from '../ComponentsArchi/yellow';
-import { BinToMnem, Compile, Coprnd, Decoup, reg } from '../Logic/Logic/src/functions.js';
+import { BinToMnem, Compile, Coprnd, Decoup, ErreurReg, ErreurSyntax, NombreMots, operandeNonValide, reg } from '../Logic/Logic/src/functions.js';
 import ACCUal from '../ComponentsArchi/LightACCUal';
 import { render } from 'react-dom';
 import LightCoRam from '../ComponentsArchi/LightCoRam';
 import LightRimEual1 from '../ComponentsArchi/LightRimEual1';
 import LightRimUc from '../ComponentsArchi/LightRimUc';
 import { MyFun } from '../ComponentsArchi/yellow';
+//import { operandeNonValide } from '../Logic/Logic/src/functions.js';
+import { ErreurCop } from '../Logic/Logic/src/functions.js';
 export function Sim() {
     function isBinary(value) {
         return /^[01]+$/.test(value);
@@ -149,10 +151,18 @@ export function Sim() {
     };
 
     /*On découpe le texte en phrases*/
-
+    let msg
     const HandleClick = (event) => {
-        let phrases = Compile(Decoup(document.querySelector('textarea').value))
-        setComp(true)
+        try{
+            let phrases=[]
+            phrases = Compile(Decoup(document.querySelector('textarea').value))
+            console.log(phrases[phrases.length - 1])
+            if (phrases[phrases.length - 1] != "0110110000000000") {
+                throw new ErreurSyntax("Erreur Syntaxique : Le programme doit se terminer par l'instruction STOP")
+            }
+                
+            
+            setComp(true)
         let adr = 0
         let arr = []
 
@@ -168,6 +178,7 @@ export function Sim() {
                     arr.push(motmem)
                     adr = adr + 1
                 }
+                console.log(hexx)
             }
             else {
                 arr.push(new mot_mem(adr, element))
@@ -187,9 +198,24 @@ export function Sim() {
         let Mem = new memoire(mem)
         setMemoire(Mem)
         setMachine(new Machine(uc, Acc, ri, si, dx, bx, co, cx, rIM, rAM, busAdr, busData, flags, uAl, Memoire, pile))
-        console.log(machine)
+        console.log(machine,hexx[hexx.length-1])
+        // if(hexx[hexx.length-1]!=){
+        //     throw new ErreurSyntax("Erreur Syntaxique : Le programme doit se terminer par l'instruction STOP")
+        //     setComp(false)
+        // }
         console.log(hexx)
-    }
+        }
+        
+        catch (error) {
+            
+            const msg = error.message;
+            console.log(msg);
+            setComp(false);
+            }
+        
+        
+
+    }   
 
     /******************************************************************************************************/
 
