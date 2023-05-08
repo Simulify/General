@@ -88,11 +88,11 @@ async function removeFile(id) { // removes files based on their _id
           
           <Link to="/code">
           <FileNoDelete label="Maximum de deux nombres" codeHexa="" codeMemo="MOV BX 5678H
-MOV AX BX
-CMP AX 1234H
+MOV ACC BX
+CMP ACC 1234H
 BCV 02 L1
 MOV BX 1234H
-L1: MOV AX BX
+L1: MOV ACC BX
 SOR
 STOP" />
     </Link>
@@ -100,7 +100,7 @@ STOP" />
     <FileNoDelete label="Somme des entiers de 1 à 10" codeHexa="" codeMemo="MOV AX 0
 MOV CX 10
 MOV BX 1
-L1: ADD AX BX
+L1: ADD ACC BX
 INC BX
 LOOP L1
 SOR 
@@ -108,8 +108,8 @@ STOP"  />
       </Link>
       <Link to="/code">
       <FileNoDelete label="Factorielle d'un nombre" codeHexa="" codeMemo="ENT AX
-MOV CX AX
-L1: MUL AX CX
+MOV CX ACC
+L1: MUL ACC CX
 DEC CX
 CMP CX 00
 BCF 00 L1
@@ -122,8 +122,8 @@ PUSH BX
 MOV BX 56H
 PUSH BX
 POP BX
-POP AX
-XOR AX BX
+POP ACC
+XOR ACC BX
 SOR
 STOP"/>
       </Link>
@@ -134,10 +134,10 @@ MOV BX 7H
 MOV DX 0H
 DIV: CMP AX BX 
 BCV 4 EXIT
-SUB AX BX 
+SUB ACC BX 
 INC DX 
 BCF 0 DIV
-EXIT: MOV AX DX
+EXIT: MOV ACC DX
 SOR"/>
     </Link>
     <Link to="/code">
@@ -146,26 +146,26 @@ MOV DX 10H
 MOV SI 7H
 MOV BX 20H
 MOV CX 4H
-CHM AX [BX + SI] 
+CHM ACC [BX + SI] 
 MOV DX AX
-CHM AX *CX
+CHM ACC *CX
 RGM [BX + SI] 
-MOV AX DX
+MOV ACC DX
 RGM *CX
 STOP"  />
     </Link>
     <Link to="/code">
           <FileNoDelete label="Rotation et décalage" codeHexa="" codeMemo="MOV AX 8
-SHL AX 3
+SHL ACC 3
 SOR
-MOV AX 7
-SHR AX 4
+MOV ACC 7
+SHR ACC 4
 SOR
-MOV AX 32
-ROR AX 5
+MOV ACC 32
+ROR ACC 5
 SOR
-MOV AX 24
-ROL AX 10
+MOV ACC 24
+ROL ACC 10
 SOR
 STOP"  />
     </Link>
