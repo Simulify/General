@@ -300,8 +300,15 @@ static PUSH(pile, mot) {
     else if(destination instanceof mot_mem)
     {
       Machine.RAM.value.setMot(destination.adresse.toString(2).padStart(16,"0"))
-      Machine.bus_donnes.transferer(source.value,Machine.RIM)
+      if (source instanceof Mot16) {
+        Machine.bus_donnes.transferer(source,Machine.RIM)
+      }
+      else{
+        Machine.bus_donnes.transferer(source.value,Machine.RIM)
+      }
+      
       Machine.memoire.ecriture(Machine.RAM,Machine.RIM)
+      
       dest =Machine.RIM.value.mot
     }
     else if(source instanceof mot_mem){
@@ -315,7 +322,8 @@ static PUSH(pile, mot) {
       Machine.bus_donnes.transferer(source,destination)
       dest =destination.value.mot
     }
-    Machine.Flags.Zero(source.value.entier)
+    
+    Machine.Flags.Zero(dest.entier)
     Machine.Flags.Parity(dest)
   }
 
