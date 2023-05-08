@@ -267,7 +267,9 @@ codes[1].readonly=false;
           <br></br>
    <Title></Title>
           <hr>
-          </hr> </div>
+          </hr> 
+          <div className='erreur'></div>
+          </div>
     );
 }
 export default Code;

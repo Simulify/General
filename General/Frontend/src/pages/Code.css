@@ -5,6 +5,14 @@ body
     overflow-y: scroll;
     /* position: relative; */
 }
+.erreur{
+    color: red;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-top: 5px;
+    position: relative;
+    left: 15%;
+}
 .side{
     background-color: #99DBFD;
     width: 36px;
