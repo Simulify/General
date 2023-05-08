@@ -177,7 +177,9 @@ codes[1].readonly=false;
   
     // Check if there is already a code with the same title for the current user
     axios
-      .get(`/users/${storedUser._id}/codes/${storedCodeId}`)
+
+      .get(`https://simulify.onrender.com/users/${storedUser._id}/codes/${storedCodeId}`) //access the code itself
+
       .then((response) => {
         const existingCode = response.data.title === file.title ? response.data : undefined;
         let exist = false;
@@ -188,7 +190,9 @@ codes[1].readonly=false;
   
         if (exist === true) {
           axios
-            .put(`/users/${storedUser._id}/codes/${storedCodeId}`, file)
+
+            .put(`https://simulify.onrender.com/users/${storedUser._id}/codes/${storedCodeId}`, file) //updating the file
+
             .then((response) => {
               console.log("API call successful:", response);
             })
@@ -197,7 +201,9 @@ codes[1].readonly=false;
             });
         } else {
           axios
-            .post(`/users/${storedUser._id}/codes`, file)
+
+            .post(`https://simulify.onrender.com/users/${storedUser._id}/codes`, file) //creating new code
+
             .then((response) => {
               console.log("API call successful:", response);
             })
@@ -209,7 +215,7 @@ codes[1].readonly=false;
       .catch((error) => {
         console.error(error);
         axios
-          .post(`/users/${storedUser._id}/codes`, file)
+          .post(`https://simulify.onrender.com/users/${storedUser._id}/codes`, file)
           .then((response) => {
             console.log("API call successful:", response);
           })
