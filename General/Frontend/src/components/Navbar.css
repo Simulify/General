@@ -35,6 +35,7 @@ header {
   margin-right: 1vw;
   background-color: var(--background-color);
   color: var(--dark-to-light);
+  fill:var(--dark-to-light);
 }
 .info-icon {
   height: 5vh;
