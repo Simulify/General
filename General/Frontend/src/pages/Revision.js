@@ -10,7 +10,7 @@ function Revision () {
 
   return(
    <div className='Revision'>
-     <Navbar label="Révisions"/>
+     <Navbar label="Révision"/>
      <div className='ContainerRevision'>
 
         <div className='Explication'>

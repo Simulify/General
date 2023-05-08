@@ -22,10 +22,10 @@
 }
 .categories li {
   list-style: none;
-  margin: 1vh;
-  margin-left: 1vw;
+  margin: 1.5vh;
+  margin-left: 1.5vw;
   text-align: center;
-  width: 30vw;
+  width: 28vw;
   margin-right: 3vw;
 }
 .category-button {
@@ -94,8 +94,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 40vw;
-  padding: 7vh;
+  width: 45vw;
+  padding: 5vh;
   gap: 4.7vh;
   margin-top: 25vh ;
   background-color: #F8F9FA;
