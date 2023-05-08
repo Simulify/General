@@ -6,7 +6,7 @@ import france from "../Images/france.svg";
 import unitedStates from "../Images/united-states-of-america.svg";
 import Navbar from "../components/Navbar";
 
-function LanguePage() {
+function LanguePage(props) {
     const { i18n } = useTranslation();
     const [language, setLanguage] = useState(i18n.language);
     const [isEditing, setIsEditing] = useState(false);
@@ -41,7 +41,7 @@ function LanguePage() {
 
     return (
         <div className="LanguePage">
-            <Navbar label='Parametres' />
+            <Navbar label='Parametres' isAuthenticated={props.isAuthenticated} />
             <FormSettings handleModify={handleModify} handleSave={handleSave} handleCancel={handleCancel} isEditing={isEditing} />
             <div className="LangueForm">
                 <label className="LangueLabel">Selectionner votre langue :</label>

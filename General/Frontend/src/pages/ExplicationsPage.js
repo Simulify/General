@@ -4,9 +4,9 @@ import './RessourcesExplication.css';
 import Navbar from '../components/Navbar';
 import ButtonExplication from '../ComponentsRevision/ButtonExplication';
 
-function ExplicationsPage() {
+function ExplicationsPage(props) {
   return (
-    <div className='ExplicationsPage'>
+    <div className='ExplicationsPage' isAuthenticated={props.isAuthenticated}>
       <Navbar label="Explications" />
       <div className='containerExplication'>
         <ButtonExplication label="Pipeline" p1="Le pipeline est un concept important dans les microprocesseurs modernes, y compris le 8086. En termes simples, le pipeline est une technique de traitement des instructions qui permet au processeur d'exécuter plusieurs instructions simultanément, en les divisant en plusieurs étapes.
