@@ -71,7 +71,7 @@ async function removeFile(id) { // removes files based on their _id
   
     <div className="Files">
 
-      <Navbar label="Les fichier"  isAuthenticated={props.isAuthenticated}/>
+      <Navbar label="Les fichiers"  isAuthenticated={props.isAuthenticated}/>
       <div className="Menu-container">
         <div className="menu-trigger-exemple"
         onClick={handleExempleClick}>
