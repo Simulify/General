@@ -1,17 +1,8 @@
-
 body
 {
     font-family: montserrat;
     overflow-y: scroll;
     /* position: relative; */
-}
-.erreur{
-    color: red;
-    font-size: 14px;
-    margin-left: 10px;
-    margin-top: 5px;
-    position: relative;
-    left: 15%;
 }
 .side{
     background-color: #99DBFD;
@@ -33,7 +24,7 @@ body
     font-weight: 600;
     font-size: 14px;
     line-height: 20px;
-    color: var(--white-to-light);
+    color: #F8F9FA;
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -59,7 +50,7 @@ div.buttons
     grid-template-columns: 10vw 10vw 10vw;
     grid-template-areas: "sauv exem prgrm";
     grid-gap:7vw;
-    background-color: var(--blue);
+    background-color: #00A6FB;
 }
 .icon
 {
@@ -88,7 +79,7 @@ div.buttons
     padding:2%;
     width: 40%;
     min-height: 200px;
-    background-color: var(--white-to-light);
+    background-color: #F8F9FA;
     border-radius: 0px 10px 10px 0px;
     filter: drop-shadow(82px 37px 36px rgba(170, 204, 238, 0.01)) drop-shadow(46px 21px 30px rgba(170, 204, 238, 0.05)) drop-shadow(20px 9px 22px rgba(170, 204, 238, 0.09)) drop-shadow(5px 2px 12px rgba(170, 204, 238, 0.1)) drop-shadow(0px 0px 0px rgba(170, 204, 238, 0.1));
 }
@@ -113,7 +104,6 @@ height: 200px;
     letter-spacing: 1.7px;
     font-size: 10px;
 }
-
 .buttons
 {
 display: flex;
@@ -159,6 +149,7 @@ width: 30%;
     flex: none;
     order: 0;
     flex-grow: 0;
+    visibility: hidden;
 }
 #btn2:hover
 {
@@ -212,14 +203,23 @@ button#btn4.button:hover
     filter: drop-shadow(0 0 0.1rem #00A6FB);
 
 }
+div.container div 
+{
+    width:40%;
+}
 .textarea 
 {   
 margin-left: auto;
 margin-right: auto;
 resize: none;
-color: var(--dark-to-light);
+color: #023047;
 font-size: 24px;
-background-color: (var(--white-to-light));
+width: 100%;
+min-height: 300px;
+border-color: #00A6FB;
+border-top-right-radius: 8px;
+border-bottom-right-radius: 8px;
+padding: 20px;
 }
 textarea:focus 
 {
@@ -228,7 +228,8 @@ border-color: #00A6FB /* Cette propriété permet de définir la couleur de la b
 }
 textarea::placeholder
 {
-    color: var(--dark-to-light); 
+    color: #023047; 
+    font-size: 15px;
 }
 hr
 {
@@ -243,6 +244,14 @@ position: relative;
     align-items: center;
     flex-direction: column;
     width: 100%;
+}
+div.container  div.hex
+{
+    width: 100%;
+    text-align: center;
+    background-color: #FFE600;
+    margin-left: auto;
+   border-top-left-radius: 8px;;
 }
 /* 1230px */
 /* @media  (min-width: 900px) and (max-width:1200px)
@@ -260,7 +269,7 @@ h4
 {
     margin-top: auto;
     margin-bottom: auto;
-    color: var(--dark-to-light);
+    color: #023047;
 }
 /* @media  (max-width:900px)
 {
@@ -280,30 +289,94 @@ h4
     font-size: 15px;
     margin-right: auto;
 }
+.body
+{
+    top: 0px;
+    left: 0px;
+}
 .Title 
 {
     display: block;
-    margin-left: 32%;
+    margin-left: auto;
+    margin-right: auto;
     resize: none;
     border-radius: 20px;
     border: 1px solid #00A6FB; ;
-    height: 1em;
-    line-height: 1em; 
-    font-size: 16px;
-    width: 25%; 
+    height:35px;
+    font-size: 20px;
+    min-width: 60%  ;
+    max-width: 60%  ;
     padding: 10px;
-    white-space: nowrap;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 15px;
     overflow: hidden;
-    text-overflow: ellipsis;
 }
 .Title::placeholder
 {
     font-size: 15px;
-    opacity: 0.8;
+    opacity: .8;
 }
-.Title:focus
+#pop_up
 {
-    outline: none;
-    filter: drop-shadow(0 0 0.1rem #00A6FB);
-    font-size: 15px;
-} 
+    border-radius: 15px;
+   background-color: white;  
+  width: 40%;
+    height: 250px;
+    margin-left: -2%;
+    margin-right: 0%;
+
+    display: flex;
+   position: fixed;
+    top: 30%;
+    left: 35%;
+    z-index: 10;
+visibility: hidden;  
+filter: drop-shadow(0 0 0.225rem #00A6FB);
+
+}
+.hide_bg
+{
+    filter: blur(23px);
+}
+#submit
+{
+    position: absolute;
+    width: 80px;
+    box-sizing: border-box;
+    height: 20px;
+    right: 10%;
+    bottom: 10%;
+    background-color: #00A6FB;
+    border: transparent;
+    color: white;
+    padding: 5px;
+    box-sizing: content-box;
+    border-radius: 15px;
+}
+div.container  div.blue_box
+{
+min-height: 300px;
+background-color: #99DBFD;
+width: 60px;
+border-top-left-radius: 8px;
+border-bottom-left-radius: 8px;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
+div.container > div
+{
+    display: flex;
+    flex-direction: row;
+}
+@media (max-width: 700px)
+{
+    #pop_up
+    {
+        width: 60%;
+        margin-left: -13%;
+    }
+}

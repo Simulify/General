@@ -58,7 +58,7 @@ export var Coprnd=["ADD","SUB","INC","DEC","MUL","NOT",
             "MOV","CHM","RGM","PUSH","POP","STOP"]
 export var  reg=["ACC","BX","CX","DX","SI","CO"]
 
-export function Compile(phrases) {
+export function Compile(phrases) { 
     let Coprnd=["ADD","SUB","INC","DEC","MUL","NOT",
     "AND","OR","NAND","NOR","XOR",
     "CMP","RAZ","SHL","SHR","ROL",

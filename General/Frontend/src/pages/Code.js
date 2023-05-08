@@ -1,16 +1,17 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { useRef } from 'react';
-import { Compile, Decoup } from '../Logic/Logic/src/functions.js';
+import { Compile, Decoup,BinToMnem } from '../Logic/Logic/src/functions.js';
 import "./Code.css"; // import the external CSS file
 import Navbar from '../components/Navbar';
 import Button from '../components/Buttonn'
 import Side from '../components/side'
 import next from '../Images/next.svg'
 import { Link } from 'react-router-dom';
-import Title from '../components/Title2.js' ;
-
+import Btn_simule from '../components/Btn_simuler2.js';
+import Title from '../components/Title2.js';
 const ButoStyle={
   background: '#00A6FB',
 position:'absolute',
@@ -20,12 +21,13 @@ gridArea:'sauv'
 
 function Code(props) {
   const [base,setBase]=useState("")
-  const handleClick1= (event)=>{
-    if (event.target.textContent=="HEX") {
-      event.target.textContent="BIN"
-    }
-    else{event.target.textContent="HEX"}
-  }
+  // const handleClick1= (event)=>{
+  //   if (event.target.textContent=="HEX") 
+  //   {
+  //     event.target.textContent="BIN"
+  //   }
+  //   else{event.target.textContent="HEX"}
+  // }
     const [textareaValue, setTextareaValue] = useState("");
     const [textareaValue1, setTextareaValue1] = useState("");
     const handleTextareaChange = (event) => {
@@ -52,102 +54,225 @@ function Code(props) {
       console.log("ani ndkhol");
     }
     localStorage.setItem("buttonClicked", "false");
-       //----------------------------------
-    var form=document.querySelector('textarea');
-    var simuler=document.getElementById('btn2');
-    var compile=document.getElementById('btn1')
-    let nb = 1;
-    let txt=document.createTextNode('compilé ');
-    
-    form.addEventListener('keydown', ()=>
-    {
-        let nb_lignes=document.createElement('div');
-        nb++;
 
-    })
-   
 
-    // simuler.addEventListener('click',()=>
-    // {
-    //     console.log(form.value);
-    //     form.value='';
-    //     // location.reload();
-    //         checkorder();
-    // })
-    // compile.addEventListener('click',()=>
-    // {
-    //    time_compile=Date.now();
-    //    checkorder();
-    // })
-    // function checkorder()
-    // {
-    //     if(time_compile>time_simule)
-    //     {
-    //        var compiled=document.querySelector('.compiled');
-    //        compiled.textContent='compiled';
-    //         console.log('le code a été bien compilé');  
+       //-----------------------------------------------------------------------------------------------//
+              //--------------------------------------------------------------------------------\\
+       //-----------------------------------------------------------------------------------------------//
 
-    //     }
-    //     else
-    //     {
-    //    throw new Error('Veuillez compiler le code avant la simulation')   
-    //     }
-    // } 
-    let time_compile=0;
-    let time_simule=0;
-  var codes=document.getElementsByTagName('textarea');
-let clicked=false;
-codes[0].readonly=false;
-codes[1].readonly=false;
-
-  // codes[0].addEventListener('click',()=>
-  // {
-  //   if(!clicked)
+  
+  //  var simuler=document.querySelector('#btn2');
+  //  let compiled=false;
+  //  simuler.addEventListener('click',()=>
+  //  {
+  //   if(compiled===false)
   //   {
-  //     codes[0].readonly=false; 
-  //     codes[1].readonly=true;
-  //     clicked=true;
-  //     console.log(codes[0].readonly);
+  //     localStorage.setItem("compiled", "false");
+  //     throw new Error ('compile first');
   //   }
-   
-  // })
-
-
-  codes[0].addEventListener('click',()=>{
-  codes[0].select();
-  console.log(codes[0].readonly);
-  if(clicked===false && codes[0].value!=='')
-    {
-
-       codes[0].readonly=false;
-       codes[1].readonly=true;
-       clicked=true;
-    }
-  })
-
-
-  codes[0].addEventListener('input', () => {
-    if(codes[0].readonly===true && codes[1].value!=='') {
-      codes[0].value='';
-    }  
-    })
-  codes[1].addEventListener('input', () => {
-  if(codes[1].readonly===true && codes[0].value!=='' ) {
-    codes[1].value='';
-  }
-  })
-  codes[1].addEventListener('click',()=>{
-  console.log(codes[1].readonly);
-  if(clicked===false && codes[1].value!=='')
-  {
-     codes[1].readonly=false;
-     codes[0].readonly=true;
-     clicked=true; 
-  }
-}
+  //   else
+  //   {
+  //     localStorage.setItem("compiled", "true")
+  //   }
+  //  })
   
 
-)
+   let binary='';
+    var codes=document.getElementsByTagName('textarea');
+    let compiler=document.querySelector('.container2 .button');
+
+    /***************************************************************************************/
+    
+    // let nb=0;
+    // codes[0].addEventListener('keydown', (e) => {
+    //     if (e.keyCode === 13) 
+    //     {
+    //       nb++;
+    //       let div = document.createElement('div');
+    //       let txt = document.createTextNode(nb);
+    //       div.appendChild(txt);
+    //       document.getElementById('blue_box_1').appendChild(div);
+    //     }
+    // });
+    
+  //   codes[1].addEventListener('keyup', (e)=>
+  //   {
+  //  if (e.keyCode===13)
+  //  { i++;
+  //   console.log(i);
+  //  }
+  //   })
+
+  /****************************************   RENDRE LE BOUTTON SIMULER VISIBLE    ********************************************************/
+    compiler.addEventListener('click',()=>
+    {
+      if(codes[0].value!=='' || codes[1].value!=='')
+      {
+      document.querySelector('#btn2').style.visibility='visible';
+      }
+      console.log(codes[0].value);
+    });
+
+
+
+
+      /****************************************    CONERSION DE L'HEXA VERS MNEMONIQUE      ***********************************/
+      /****************************************   RENDRE LE MNEMONIQUE DANS CODES [1]    ********************************************************/
+      let mnemonique='';
+    compiler.addEventListener('click',()=>
+    {
+      if(codes[0].value==='' || codes[1].value!=='')
+      {
+      document.querySelector('#btn2').style.visibility='visible';
+      binary=codes[1].value.split('\n');
+      if(codes[1].readOnly===false)
+      {
+        mnemonique = ''; // Reset the mnemonique variable
+        for(let i=0;i<binary.length;i++)
+        {
+          binary[i]= parseInt(binary[i],16).toString(2);  
+          if(binary[i].length<16)
+          {
+              binary[i]= binary[i].padStart(16,0);    
+          }
+        }
+        console.log(binary);
+        for(let i=0;i<BinToMnem(binary).length;i++)
+        {
+          if(i!==BinToMnem(binary).length-1)
+          {
+            mnemonique+=BinToMnem(binary)[i] + '\n';
+          }
+          else
+          {
+            mnemonique+=BinToMnem(binary)[i] ;
+          }
+        }
+        console.log(mnemonique);
+        codes[0].value=mnemonique;
+      }
+ /**************************************           DU MNEMONIQUE VERS L'HEXA DECIMALE          ********************************************************** */     
+      }
+      else if (codes[0].value!=='' && codes[1].value==="")
+      {
+        let parties = Compile(Decoup(codes[0].value));
+console.log('resultat de parties'+ parties) ; 
+let hexa='';
+console.log(hexa);
+console.log(typeof(hexa)==='string');
+let arr=parties.toString().split(',');
+console.log(arr);
+
+for(let i=0;i<arr.length;i++)
+{
+ arr[i]=parseInt(arr[i],2).toString(16);
+ if(i!==arr.length-1)
+ {
+  hexa=hexa+arr[i]+'\n';
+ }
+ else
+ {
+  hexa=hexa+arr[i];
+ }
+ console.log(arr[i] + ' la boucle numero'+i);
+}
+codes[1].value=hexa;
+}
+})
+/*************************************** FIN CONVERSION DU MNEMONIQUE VERS L'HEXA ******************************************************************* */
+    
+  
+
+    
+                     /************************************************************************************************* */
+/******************************************************** POP UP IN ****************************************************************** */
+
+    document.querySelector('.buttons .button').addEventListener('click',()=>
+    {
+    document.querySelector('.body').classList.add('hide_bg');
+    document.querySelector('#pop_up').style.visibility="visible";
+    })
+   document.querySelector('#submit').addEventListener('click',()=>
+   {
+    if (document.querySelector('.Title').value!=='')
+    {
+      document.querySelector('#pop_up').style.visibility="hidden";
+      document.querySelector('.body').classList.remove('hide_bg');
+      // document.querySelector('.Title').value='';
+    }
+   }
+   );
+   document.querySelector('.Title').addEventListener('input', ()=>
+   {
+   if (document.querySelector('.Title').value)
+   {}
+   })
+
+
+ /************************************************************************************************* */
+/**************************************************************************************************/
+if( codes[1].readOnly === false && codes[0].readOnly === true) 
+{
+  codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+  codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+
+}
+else if( codes[0].readOnly === false && codes[1].readOnly === true)
+{
+  codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+  codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+}
+else 
+{  codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+}
+
+  codes[0].addEventListener('click', () => 
+  {
+
+    if( codes[1].value!=='' ) 
+    {
+      // codes[0].readOnly = true;
+      codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+      codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+
+      codes[1].readOnly = false;     
+       codes[0].readOnly = true;
+
+    }
+
+    else  
+     {
+      codes[0].readOnly = false;
+      codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+
+      codes[1].readOnly = true;
+      codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+
+    }
+
+  })
+  codes[1].addEventListener('click', () => 
+  {
+  if(codes[0].value!=='' ) 
+  {
+    
+  codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+  codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+    codes[1].readOnly=true;
+    codes[0].readOnly = false;
+  }
+  else
+  {
+    codes[1].readOnly = false;
+    codes[0].readOnly = true;    
+    codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+    codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+
+
+  }
+  }) 
+  
   }, []); // This empty array as a second argument ensures that the effect is only run once when the component mounts
   
 
@@ -159,7 +284,8 @@ codes[1].readonly=false;
     const storedTitle = localStorage.getItem("title");
   
     // check if the storedTitle is "ET"
-    if (storedTitle === "ET" || storedTitle === "OU" || storedTitle === "NON" || storedTitle === "ADD" || storedTitle === "SUB"|| storedTitle === "DIV"|| storedTitle === "BCV" || storedTitle === "LOOP" || storedTitle === "PERMUT" || storedTitle === "SHIFT LEFT"|| storedTitle === "SHIFT RIGHT") {
+    if (storedTitle === "ET" || storedTitle === "OU" || storedTitle === "NON" || storedTitle === "ADD" || storedTitle === "SUB"|| storedTitle === "DIV"|| storedTitle === "BCV" || storedTitle === "LOOP" || storedTitle === "PERMUT" || storedTitle === "SHIFT LEFT"|| storedTitle === "SHIFT RIGHT") 
+    {
       return;
     }
   
@@ -167,7 +293,6 @@ codes[1].readonly=false;
       "title": storedTitle, 
       "codeHexa": textareaValue,
       "codeMemo": textareaValue1,
-      
     };
     const storedUser = JSON.parse(localStorage.getItem("currentUser"));
     console.log('currentUser:', storedUser);
@@ -224,9 +349,11 @@ codes[1].readonly=false;
           });
       });
   };
+
   
     return(
-      <div>
+      <div >
+        <div className='body'>
           <Navbar label="Simulation" />
         <br></br>         <br></br>
         <br></br>
@@ -234,40 +361,58 @@ codes[1].readonly=false;
        <div className='Bigcontainer'>
        {/* buttons in top *************** */}
         <div className="buttons">
-        <Button text="Sauvegarder" style={ButoStyle} onClick={() => saveFile(textareaValue,textareaValue1)} ></Button>
-        <Button link="/files" text="Fichiers" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'148px',gridArea:'exem'}}></Button>
+        <Button className='sauvegarder1' text="Sauvegarder"  style={ButoStyle}  ></Button>
+        <Button link="/files" text="Fichiers" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'100%',gridArea:'exem'}}></Button>
         </div>
-        {/**************************/}
-       
-        <div className="container">
-         <Side textareaValue={textareaValue} handleTextareaChange={handleTextareaChange}></Side>
-         <div className="base" onClick={handleClick1}>BIN</div>
-         <Side textareaValue={textareaValue1} handleTextareaChange={handleTextareaChange1}></Side>
+        {/**************************/} 
+   <div className="container">
+         {/* <Side className="textarea" textareaValue={textareaValue} handleTextareaChange={handleTextareaChange}></Side> */}
+      <div>
+      <div className='blue_box' id='blue_box_1'> </div>
+           <textarea className="textarea" placeholder='Veuillez saisir le code en mnémonique'></textarea>
+         </div>
+      <div>
+         <div className='blue_box'  id='blue_box_2'>
+      <div className='hex'>Hex</div>          
+      </div>  <textarea className="textarea" placeholder='Veuillez saisir le code en Hexa'></textarea>
+         </div>         {/* <div className="base" >HEX</div> */}
+         {/* <Side className="textarea" textareaValue={textareaValue1} handleTextareaChange={handleTextareaChange1}></Side> */}
+        
            </div>             
              </div>      
         <script src="myscripts.js"></script>      
       </div>
-      
+    
       <div className="container2">    
       <Button onClick={props.handleClick} id="btn1" text="Compiler" style={{ fontSize: '16px', background: '#F8F9FA', color: '#023047',border:'1px solid #00A6FB',padding: '12px 24px'}}></Button>
       <Link to="/code/Simulation">
-        
-      <div id="btn2" onClick={props.handleToggle} >
-        
-        Simuler
-        <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          
-<path fill-rule="evenodd" clip-rule="evenodd" d="M0.454505 1.2045C0.893845 0.765165 1.60616 0.765165 2.0455 1.2045L8.0455 7.2045C8.48483 7.64384 8.48483 8.35616 8.0455 8.7955L2.0455 14.7955C1.60616 15.2348 0.893845 15.2348 0.454505 14.7955C0.015165 14.3562 0.015165 13.6438 0.454505 13.2045L5.65901 8L0.454505 2.7955C0.015165 2.35616 0.015165 1.64384 0.454505 1.2045Z" fill="#F8F9FA"/>
-</svg>
+        <div id="btn2" onClick={props.handleToggle}>
+          Simuler
+          <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.454505 1.2045C0.893845 0.765165 1.60616 0.765165 2.0455 1.2045L8.0455 7.2045C8.48483 7.64384 8.48483 8.35616 8.0455 8.7955L2.0455 14.7955C1.60616 15.2348 0.893845 15.2348 0.454505 14.7955C0.015165 14.3562 0.015165 13.6438 0.454505 13.2045L5.65901 8L0.454505 2.7955C0.015165 2.35616 0.015165 1.64384 0.454505 1.2045Z" fill="#F8F9FA"/>
+  </svg>
+  
+        </div></Link>
 
-      </div></Link>
       </div>
           <div className='compiled' >
           </div>
           <br></br>
-   <Title></Title>
           <hr>
-          </hr> 
+          </hr>
+       
+          </div>
+          <div id='pop_up'>
+          {/* <textarea className='Title' placeholder='Veuillez entrez le titre du programme' >
+           </textarea> */}
+            <Title></Title>
+           <br></br>
+           <button id='submit'> 
+               Soumettre
+           </button>
+          </div>
+           
           <div className='erreur'></div>
           </div>
     );
