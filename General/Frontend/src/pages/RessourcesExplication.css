@@ -93,3 +93,34 @@ p{
     width: 14px;
     padding-right: 5px;
 }
+
+.ButtonExplication {
+    position: relative;
+    overflow: hidden;
+  }
+  .ButtonExplication p {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    margin-right: 30%; /* add a 10px right margin */
+    animation: slide-in 0.5s ease-out;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    margin-bottom: 2%;
+  }
+  
+  @keyframes slide-in {
+    from {
+      left: -100%;
+      opacity: 0;
+    }
+    to {
+      left: 0%;
+      opacity: 1;
+    }
+  }
+  .containerExplication {
+    overflow-y: scroll;
+    max-height: 70vh;
+  }
+ 
