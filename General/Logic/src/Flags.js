@@ -52,14 +52,16 @@ class Flags {
 
     Overflow(resultat){
         if(resultat > 65535) { // si le résultat dépasse la valeur maximale possible sur 16 bits
-            this.miseAjourFlag(11); // mettre à jour le flag de débordement
+            this.miseAjourFlag(11,'1'); // mettre à jour le flag de débordement
+        }else{
+            this.miseAjourFlag(11,'0');
         }
     }
 
-    miseAjourFlag(pos){
+    miseAjourFlag(pos,n){
         let p = 16 - pos; // calculer la position du bit à mettre à jour
         let newflag = this.flags.getMot().split(''); // convertir le mot de flags en tableau de caractères
-        newflag[p] = '1'; // mettre à jour le bit à la position p
+        newflag[p] = n; // mettre à jour le bit à la position p
         let flag = newflag.join(''); // convertir le tableau de caractères en mot de flags
         this.flags.setMot(flag); // Mettre à jour la contenu du registre avec le nouveau mot
     }

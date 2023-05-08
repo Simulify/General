@@ -93,7 +93,7 @@ async function removeFile(id) { // removes files based on their _id
   
     <div className="Files">
 
-      <Navbar label="Les fichier" />
+      <Navbar label="Les fichiers" />
       <div className="Menu-container">
         <div className="menu-trigger-exemple"
         onClick={handleExempleClick}>

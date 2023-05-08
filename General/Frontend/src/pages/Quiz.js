@@ -76,7 +76,7 @@ const Quiz = () => {
   }
  return (
   <div className="quiz-container">
-  <Navbar label="Quiz"/>
+  <Navbar label={`Quiz > ${category}`} />
   <h1 >{quizzes[currentQuestion].question}</h1>
   <ul className="quizs">
     {quizzes[currentQuestion].options.map((option) => (

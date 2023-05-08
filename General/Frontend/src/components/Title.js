@@ -16,6 +16,7 @@ function Title(props) {
         onKeyUp={handleKeyUp}
         onChange={props.handleTextareaChange}
         className='Title' placeholder='Veuillez saisir le titre du programme'>
+
         </textarea>
     );
 }
