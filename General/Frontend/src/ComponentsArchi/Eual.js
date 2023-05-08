@@ -11,7 +11,7 @@ function Eual(props) {
     }
 
     return (
-        <div id={`Eual${props.nom}`} className={`Eual ${isClicked ? "boxShadowBlue" : ""}`}
+        <div id={`Eual${props.nom}`} className={`Eual${props.nom} ${isClicked ? "boxShadowBlue" : ""}`}
         onClick={handleClick}>
             <div className="eual">{props.case[0]}</div>
             <div id={`eual2`} className="eual">{props.case[1]}</div>

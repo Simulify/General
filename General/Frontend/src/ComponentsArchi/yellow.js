@@ -12,6 +12,8 @@ export function MyFun(time,x2,y2,x1,y1,setCoor) {
       }, time);
   }
 
+
+ 
 /**************************** Exlpication des fonctions utilisées ****************************/
 
 /*Mouvement de l'ACC vers l'UAL*/
@@ -105,23 +107,31 @@ export function CoRam(time, myRef, setCoor, coor) {
       let y2 = document.querySelector('.BusCo .triangleHaut').getBoundingClientRect().top;
       MyFun(time, x2,y2,x1,y1,setCoor);
 
+      setTimeout(() => {
+        document.querySelector('.Co').classList.add('boxShadowBlue');
+      }, 2000);
+
+      setTimeout(() => {
+        document.querySelector('.Co').classList.remove('boxShadowBlue');
+      }, 3000);
+
       y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
-      MyFun(time + 3000,x2,y2,x1,y1,setCoor);
+      MyFun(time + 4000,x2,y2,x1,y1,setCoor);
        
       x2 = document.querySelector('.CoToRam .triangleDroit').getBoundingClientRect().left;
-      MyFun(time + 5000, x2, y2, x1, y1, setCoor);
+      MyFun(time + 5500, x2, y2, x1, y1, setCoor);
 
       setTimeout(() => {
         document.querySelector('.RAM').classList.add('boxShadowBlue');
-      }, 6000);
+      }, 7000);
 
       setTimeout(() => {
         document.querySelector('.RAM').classList.remove('boxShadowBlue');
-      }, 8000);
+      }, 8500);
 
       setTimeout(() => {
         myRef.current.style.opacity='0%'
-      }, 8500);  
+      }, 9500);  
 
   }, []);
       
@@ -151,32 +161,40 @@ export function RimRam(time, myRef, setCoor, coor) {
       let y2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().top;
       MyFun(time,x2,y2,x1,y1,setCoor);
 
+      setTimeout(() => {
+        document.querySelector('.rim').classList.add('boxShadowBlue');
+      }, 2000);
+
+      setTimeout(() => {
+        document.querySelector('.rim').classList.remove('boxShadowBlue');
+      }, 2500);
+
       y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
-      MyFun(time + 2000,x2,y2,x1,y1,setCoor);
+      MyFun(time + 3500,x2,y2,x1,y1,setCoor);
 
       x2 = document.querySelector('.RimBusDonnees').getBoundingClientRect().left;
-      MyFun(time + 3000,x2,y2,x1,y1,setCoor);
+      MyFun(time + 4500,x2,y2,x1,y1,setCoor);
 
       x2 = document.querySelector('.RamBusDonnees .rectangle').getBoundingClientRect().left;
-      MyFun(time + 4000, x2, y2, x1, y1, setCoor);
+      MyFun(time + 5500, x2, y2, x1, y1, setCoor);
 
       y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
-      MyFun(time + 5000, x2, y2, x1, y1, setCoor);
+      MyFun(time + 6500, x2, y2, x1, y1, setCoor);
 
       x2 = document.querySelector('.CoToRam .triangleDroit').getBoundingClientRect().left;
-      MyFun(time + 6000, x2, y2, x1, y1, setCoor);
+      MyFun(time + 7500, x2, y2, x1, y1, setCoor);
 
       setTimeout(() => {
         document.querySelector('.RAM').classList.add('boxShadowBlue');
-      }, 7000);
+      }, 8500);
 
       setTimeout(() => {
         document.querySelector('.RAM').classList.remove('boxShadowBlue');
-      }, 8000);
+      }, 9000);
 
       setTimeout(() => {
         myRef.current.style.opacity='0%'
-      }, 8500);  
+      }, 9500);  
 
   }, []);
       

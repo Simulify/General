@@ -29,7 +29,7 @@
     bottom: 6vh;
     left: 80vw;
     padding: 2.2vh 3.5vw;
-    background: #00A6FB;
+    background: var(--blue);
     box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 3px 6px rgba(43, 110, 177, 0.1);    
     color: #FFFFFF;
     border: 0.2vh solid #00A6FB;
@@ -45,7 +45,7 @@
     bottom: 6vh;
     left: 66.5vw;
     padding: 2.2vh 3.5vw;
-    background: #F8F9FA;
+    background: var(--background-color);
     box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 3px 6px rgba(43, 110, 177, 0.1);
     color: #00A6FB;
     border: 0.2vh solid #00A6FB;
@@ -66,7 +66,7 @@
   font-style: normal;
   font-weight: 550;
   font-size: 2vw;
-  color: #023047;
+  color: var(--dark-to-light);
   position: absolute;
   left: 10vw;
   top: 10vh;
@@ -76,7 +76,7 @@
     font-style: normal;
     font-weight: 550;
     font-size: 1.5vw;
-    color: #023047;
+    color:var(--dark-to-light);
     position: absolute;
     left: 10vw;
     top: 20vh;
@@ -86,7 +86,7 @@
     font-style: normal;
     font-weight: 500;
     font-size: 1.35vw;
-    color: #023047;
+    color:var(--dark-to-light);
     position: absolute;
     left: 10vw;
     top: 26vh;
@@ -96,7 +96,7 @@
     font-style: normal;
     font-weight: 550;
     font-size: 1.5vw;
-    color: #023047;
+    color: var(--dark-to-light);
     position: absolute;
     left: 10vw;
     top: 36vh;

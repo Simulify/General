@@ -11,7 +11,7 @@ import Side from '../components/side'
 import next from '../Images/next.svg'
 import { Link } from 'react-router-dom';
 import Btn_simule from '../components/Btn_simuler2.js';
-
+import Title from '../components/Title2.js';
 const ButoStyle={
   background: '#00A6FB',
 position:'absolute',
@@ -81,16 +81,49 @@ function Code(props) {
     var codes=document.getElementsByTagName('textarea');
     let compiler=document.querySelector('.container2 .button');
 
-    /*************************************    CONERSION EN BINAIRE   ************************/
     /***************************************************************************************/
-    let mnemonique='';
+    
+    let nb=0;
+    codes[0].addEventListener('keydown', (e) => {
+        if (e.keyCode === 13) 
+        {
+          nb++;
+          let div = document.createElement('div');
+          let txt = document.createTextNode(nb);
+          div.appendChild(txt);
+          document.getElementById('blue_box_1').appendChild(div);
+        }
+    });
+    
+  //   codes[1].addEventListener('keyup', (e)=>
+  //   {
+  //  if (e.keyCode===13)
+  //  { i++;
+  //   console.log(i);
+  //  }
+  //   })
 
+  /****************************************   RENDRE LE BOUTTON SIMULER VISIBLE    ********************************************************/
     compiler.addEventListener('click',()=>
     {
-      if(codes[0].value!=='' && codes[1].value!=='')
+      if(codes[0].value!=='' || codes[1].value!=='')
       {
       document.querySelector('#btn2').style.visibility='visible';
       }
+      console.log(codes[0].value);
+    });
+
+
+
+
+      /****************************************    CONERSION DE L'HEXA VERS MNEMONIQUE      ***********************************/
+      /****************************************   RENDRE LE MNEMONIQUE DANS CODES [1]    ********************************************************/
+      let mnemonique='';
+    compiler.addEventListener('click',()=>
+    {
+      if(codes[0].value==='' || codes[1].value!=='')
+      {
+      document.querySelector('#btn2').style.visibility='visible';
       binary=codes[1].value.split('\n');
       if(codes[1].readOnly===false)
       {
@@ -103,18 +136,55 @@ function Code(props) {
               binary[i]= binary[i].padStart(16,0);    
           }
         }
+        console.log(binary);
         for(let i=0;i<BinToMnem(binary).length;i++)
         {
-          mnemonique+=BinToMnem(binary)[i] + '\n';
+          if(i!==BinToMnem(binary).length-1)
+          {
+            mnemonique+=BinToMnem(binary)[i] + '\n';
+          }
+          else
+          {
+            mnemonique+=BinToMnem(binary)[i] ;
+          }
         }
+        console.log(mnemonique);
         codes[0].value=mnemonique;
       }
-    })
+ /**************************************           DU MNEMONIQUE VERS L'HEXA DECIMALE          ********************************************************** */     
+      }
+      else if (codes[0].value!=='' && codes[1].value==="")
+      {
+        let parties = Compile(Decoup(codes[0].value));
+console.log('resultat de parties'+ parties) ; 
+let hexa='';
+console.log(hexa);
+console.log(typeof(hexa)==='string');
+let arr=parties.toString().split(',');
+console.log(arr);
+
+for(let i=0;i<arr.length;i++)
+{
+ arr[i]=parseInt(arr[i],2).toString(16);
+ if(i!==arr.length-1)
+ {
+  hexa=hexa+arr[i]+'\n';
+ }
+ else
+ {
+  hexa=hexa+arr[i];
+ }
+ console.log(arr[i] + ' la boucle numero'+i);
+}
+codes[1].value=hexa;
+}
+})
+/*************************************** FIN CONVERSION DU MNEMONIQUE VERS L'HEXA ******************************************************************* */
     
   
 
     
-    /************************************************************************************************* */
+                     /************************************************************************************************* */
 /******************************************************** POP UP IN ****************************************************************** */
 
     document.querySelector('.buttons .button').addEventListener('click',()=>
@@ -124,7 +194,6 @@ function Code(props) {
     })
    document.querySelector('#submit').addEventListener('click',()=>
    {
-
     if (document.querySelector('.Title').value!=='')
     {
       document.querySelector('#pop_up').style.visibility="hidden";
@@ -135,13 +204,28 @@ function Code(props) {
    );
    document.querySelector('.Title').addEventListener('input', ()=>
    {
-   
+   if (document.querySelector('.Title').value)
+   {}
    })
 
 
  /************************************************************************************************* */
 /**************************************************************************************************/
+if( codes[1].readOnly === false && codes[0].readOnly === true) 
+{
+  codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+  codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
 
+}
+else if( codes[0].readOnly === false && codes[1].readOnly === true)
+{
+  codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+  codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+}
+else 
+{  codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+}
 
   codes[0].addEventListener('click', () => 
   {
@@ -149,14 +233,22 @@ function Code(props) {
     if( codes[1].value!=='' ) 
     {
       // codes[0].readOnly = true;
-      codes[1].readOnly = false;
-      codes[0].readOnly = true;
+      codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+      codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+
+      codes[1].readOnly = false;     
+       codes[0].readOnly = true;
+
     }
 
     else  
      {
       codes[0].readOnly = false;
+      codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+
       codes[1].readOnly = true;
+      codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+
     }
 
   })
@@ -164,6 +256,9 @@ function Code(props) {
   {
   if(codes[0].value!=='' ) 
   {
+    
+  codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+  codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
     codes[1].readOnly=true;
     codes[0].readOnly = false;
   }
@@ -171,6 +266,10 @@ function Code(props) {
   {
     codes[1].readOnly = false;
     codes[0].readOnly = true;    
+    codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+    codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+
+
   }
   }) 
   
@@ -256,19 +355,20 @@ function Code(props) {
        <div className='Bigcontainer'>
        {/* buttons in top *************** */}
         <div className="buttons">
-        <Button className='sauvegarder1' text="Sauvegarder" style={ButoStyle} onClick={() => saveFile(textareaValue,textareaValue1)} ></Button>
-        <Button link="/files" text="Fichiers" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'148px',gridArea:'exem'}}></Button>
+        <Button className='sauvegarder1' text="Sauvegarder"  style={ButoStyle}  ></Button>
+        <Button link="/files" text="Fichiers" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'100%',gridArea:'exem'}}></Button>
         </div>
         {/**************************/} 
    <div className="container">
          {/* <Side className="textarea" textareaValue={textareaValue} handleTextareaChange={handleTextareaChange}></Side> */}
       <div>
-      <div className='blue_box'> fzejsn </div>
+      <div className='blue_box' id='blue_box_1'> </div>
            <textarea className="textarea" placeholder='Veuillez saisir le code en mnémonique'></textarea>
          </div>
       <div>
-         <div className='blue_box'>
-      <div className='hex'>Hex</div>          </div>  <textarea className="textarea" placeholder='Veuillez saisir le code en Hexa'></textarea>
+         <div className='blue_box'  id='blue_box_2'>
+      <div className='hex'>Hex</div>          
+      </div>  <textarea className="textarea" placeholder='Veuillez saisir le code en Hexa'></textarea>
          </div>         {/* <div className="base" >HEX</div> */}
          {/* <Side className="textarea" textareaValue={textareaValue1} handleTextareaChange={handleTextareaChange1}></Side> */}
         
@@ -289,7 +389,6 @@ function Code(props) {
   
         </div></Link>
 
-{/* <Btn_simule></Btn_simule>       */}
       </div>
           <div className='compiled' >
           </div>
@@ -299,15 +398,15 @@ function Code(props) {
        
           </div>
           <div id='pop_up'>
-          <textarea className='Title' placeholder='Veuillez entrez le titre du programme' >
-           </textarea>
+          {/* <textarea className='Title' placeholder='Veuillez entrez le titre du programme' >
+           </textarea> */}
+            <Title></Title>
            <br></br>
            <button id='submit'> 
                Soumettre
            </button>
           </div>
            </div>
-         
     );
 }
 export default Code;

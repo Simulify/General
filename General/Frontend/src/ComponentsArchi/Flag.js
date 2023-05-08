@@ -18,10 +18,10 @@ function Flag(props) {
         <div className={`FLAG ${isClicked ? "boxShadowBlue" : ""}`}
         onClick={handleClick}>
 
-            <div className="ram">{props.Con[0]}</div>
-            <div className="ram">{props.Con[1]}</div>
-            <div className="ram">{props.Con[2]}</div>
-            <div className="ramf">{props.Con[3]}</div>
+            <div className="ram">{props.Flags[0]}</div>
+            <div className="ram">{props.Flags[1]}</div>
+            <div className="ram">{props.Flags[2]}</div>
+            <div className="ramf">{props.Flags[3]}</div>
 
         </div>
         </div>
