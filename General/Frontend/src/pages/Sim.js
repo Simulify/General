@@ -42,7 +42,7 @@ import LightRimUc from '../ComponentsArchi/LightRimUc';
 import { MyFun } from '../ComponentsArchi/yellow';
 //import { operandeNonValide } from '../Logic/Logic/src/functions.js';
 import { ErreurCop } from '../Logic/Logic/src/functions.js';
-export function Sim() {
+export function Sim(props) {
     function isBinary(value) {
         return /^[01]+$/.test(value);
       }

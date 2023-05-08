@@ -15,11 +15,7 @@ function Files(props) {
 
   //the variables of the visibility of hte files and folders ... by default it's at false util click
   const [myFilesVisible, setMyFilesVisible] = useState(false);
-  const [arithmeticVisible, setArithmeticVisible] = useState(false);
-  const [logicVisible, setLogicVisible] = useState(false);
-  const [branchingVisible, setBranchingVisible] = useState(false);
-  const [transferVisible, setTransferVisible] = useState(false);
-  const [shiftVisible, setShiftVisible] = useState(false);
+
   const [fileExempleVisible, setFileExempleVisible] = useState(false);
   const [files, setFiles] = useState([]);
  //---------------------------------------------------------------------
@@ -66,25 +62,7 @@ async function removeFile(id) { // removes files based on their _id
     setMyFilesVisible((prevState) => !prevState);
   }
 
-  function handleArithmeticClick() {
-    setArithmeticVisible((prevState) => !prevState);
-  }
 
-  function handleLogicClick() {
-    setLogicVisible((prevState) => !prevState);
-  }
-
-  function handleBranchingClick() {
-    setBranchingVisible((prevState) => !prevState);
-  }
-
-  function handleTransferClick() {
-    setTransferVisible((prevState) => !prevState);
-  }
-
-  function handleShiftClick() {
-    setShiftVisible((prevState) => !prevState);
-  }
 //---------------------------------------------------------
   
 
