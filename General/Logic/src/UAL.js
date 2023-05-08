@@ -1,155 +1,150 @@
-import Mot16 from './Mot16.js';
-import Instructions from './Instructions.js';
+// Importe les modules nécessaires
+import Instructions from './Instructions.js'; 
+
 class UAL {
-    constructor(UAL1, UAL2) {
-      this.UAL1 = UAL1;
-      this.UAL2 = UAL2;
-    }
-  
-    // Définition du setters et getters pour UAL1 et UAL2
-    getUAL1() {
-      return this.UAL1;
-    }
-  
-    setUAL1(operande1) {
-      this.UAL1 = operande1;
-    }
-  
-    getUAL2() {
-      return this.UAL2;
-    }
-  
-    setUAL2(operande2) {
-      this.UAL2 = operande2;
-    }
-  
-    // RAZ XOR
-    executer(instruction,Flags) {
-    switch (instruction) {
-        case 'ADD':
+  constructor(UAL1, UAL2) { // Initialise les deux opérandes UAL1 et UAL2
+    this.UAL1 = UAL1;
+    this.UAL2 = UAL2;
+  }
+
+  // Getter et setter pour UAL1
+  getUAL1() {
+    return this.UAL1;
+  }
+  setUAL1(operande1) {
+    this.UAL1 = operande1;
+  }
+
+  // Getter et setter pour UAL2
+  getUAL2() {
+    return this.UAL2;
+  }
+  setUAL2(operande2) {
+    this.UAL2 = operande2;
+  }
+
+  // Méthode pour exécuter une instruction donnée avec les opérandes actuels
+  executer(instruction, Flags) {
+    switch (instruction) { // Commence une instruction switch pour vérifier quelle opération est demandée
+        case 'ADD': // le cas de ADD(addition), appelle à la méthode ADD d'Instructions
             console.log(`UAL1 = ${this.UAL1.getMot()}`);
             console.log(`UAL2 = ${this.UAL2.getMot()}`);
             let resADD = Instructions.ADD(this.UAL1, this.UAL2,Flags);
-            return resADD;
+            return resADD;// elle retourne la résultat de l'addition
         break;
 
-        case 'SUB':
+        case 'SUB': // le cas de SUB(soustraction), appelle à la méthode SUB d'Instructions
             console.log(`UAL1 = ${this.UAL1.getMot()}`);
             console.log(`UAL2 = ${this.UAL2.getMot()}`);
             let resSUB = Instructions.SUB(this.UAL1, this.UAL2,Flags);
-            return resSUB;
+            return resSUB;// elle retourne la résultat de la soustraction
         break;
 
-        case 'INC':
+        case 'INC': // le cas de INC(incrémentation), appelle à la méthode INC d'Instructions
             console.log(`UAL1 = ${this.UAL1.getMot()}`);
             let resINC = Instructions.INC(this.UAL1,Flags);
-            return resINC;
+            return resINC; // elle retourne la résultat de l'incrémentation
         break;
         
-        case 'DEC':
+        case 'DEC': // le cas de DEC(décrémentation), appelle à la méthode DEC d'Instructions
             console.log(`UAL1 = ${this.UAL1.getMot()}`);
             let resDEC = Instructions.DEC(this.UAL1,Flags);
-            return resDEC;
+            return resDEC; // elle retourne la résultat de l'décrémentation
         break;
 
-        case 'MUL':
+        case 'MUL': // le cas de MUL(multiplication), appelle à la méthode MUL d'Instructions
             console.log(`UAL1 = ${this.UAL1.getMot()}`);
             console.log(`UAL2 = ${this.UAL2.getMot()}`);
             let resMUL = Instructions.MUL(this.UAL1,this.UAL2,Flags);
-            return resMUL;
+            return resMUL; // elle retourne la résultat de la multiplication
         break;
 
-        case "AND":
+        case "AND": // le cas de AND(et logique), appelle à la méthode AND d'Instructions
             console.log(`UAL1 fct= ${this.UAL1.getMot()}`);
             console.log(`UAL2 fct= ${this.UAL2.getMot()}`);
             let resET = Instructions.AND(this.UAL1, this.UAL2,Flags);
-            return resET;
+            return resET;// elle retourne la résultat du et logique
         break;
-        case "NAND":
+
+        case "NAND": // le cas de NAND(non et logique), appelle à la méthode NAND d'Instructions
             console.log(`UAL1 fct= ${this.UAL1.getMot()}`);
             console.log(`UAL2 fct= ${this.UAL2.getMot()}`);
             let resNAND = Instructions.NAND(this.UAL1, this.UAL2,Flags);
-            return resNAND;
+            return resNAND; // elle retourne la résultat du non et logique
         break;
-        case "OR":
+
+        case "OR": // le cas de OU(ou logique), appelle à la méthode OU d'Instructions
             console.log(`UAL1 fct = ${this.UAL1.getMot()}`);
             console.log(`UAL2 fct = ${this.UAL2.getMot()}`);
             let resOU = Instructions.OR(this.UAL1, this.UAL2,Flags);
-            return resOU;
-        break;
-        case "NOR":
-            console.log(`UAL1 fct = ${this.UAL1.getMot()}`);
-            console.log(`UAL2 fct = ${this.UAL2.getMot()}`);
-            let resOR = Instructions.NOR(this.UAL1, this.UAL2,Flags);
-            return resOR;
-        break;
-        case 'NOT':
-            console.log(`UAL1 fct = ${this.UAL1.getMot()}`);
-            let resNON = Instructions.NOT(this.UAL1,Flags);
-            return resNON;
+            return resOU; // elle retourne la résultat du ou logique
         break;
 
-        case 'XOR':
+        case "NOR": // le cas de NOR(non ou logique), appelle à la méthode NOR d'Instructions
+            console.log(`UAL1 fct = ${this.UAL1.getMot()}`);
+            console.log(`UAL2 fct = ${this.UAL2.getMot()}`);
+            let resNOR = Instructions.NOR(this.UAL1, this.UAL2,Flags);
+            return resNOR; // elle retourne la résultat du non ou logique
+        break;
+
+        case 'NOT': // le cas de NOT(non logique), appelle à la méthode NOT d'Instructions
+            console.log(`UAL1 fct = ${this.UAL1.getMot()}`);
+            let resNON = Instructions.NOT(this.UAL1,Flags);
+            return resNON; // elle retourne la résultat du non logique
+        break;
+
+        case 'XOR': // le cas de XOR(ou exclusif), appelle à la méthode XOR d'Instructions
             console.log(`UAL1 fct = ${this.UAL1.getMot()}`);
             console.log(`UAL2 fct = ${this.UAL2.getMot()}`);
             let resXOR = Instructions.XOR(this.UAL1, this.UAL2,Flags);
-            return resXOR;
+            return resXOR; // elle retourne la résultat du ou exclusif
         break;
 
-        case 'SHL':
+        case 'SHL': // le cas de SHL(décalage gauche), appelle à la méthode SHL d'Instructions
             console.log(`UAL1 fct = ${this.UAL1.getMot()}`);
             console.log(`UAL2 fct = ${this.UAL2.getMot()}`);
             let resSHL = Instructions.SHL(this.UAL1, this.UAL2,Flags);
-            return resSHL;
+            return resSHL; // elle retourne la résultat du décalage gauche
         break;
 
-        case 'SHR':
+        case 'SHR': // le cas de SHR(décalage droite), appelle à la méthode SHR d'Instructions
             console.log(`UAL1 fct = ${this.UAL1.getMot()}`);
             console.log(`UAL2 fct = ${this.UAL2.getMot()}`);
             let resSHR = Instructions.SHR(this.UAL1, this.UAL2,Flags);
-            return resSHR;
+            return resSHR; // elle retourne la résultat du décalage droite
         break;
 
-        case 'ROL':
+        case 'ROL': // le cas de ROL(rotation gauche), appelle à la méthode ROL d'Instructions
             console.log(`UAL1 fct = ${this.UAL1.getMot()}`);
             console.log(`UAL2 fct = ${this.UAL2.getMot()}`);
             let resROL = Instructions.ROL(this.UAL1, this.UAL2,Flags);
-            return resROL;
+            return resROL; // elle retourne la résultat du rotation gauche
         break;
 
-        case 'ROR':
+        case 'ROR': // le cas de ROR(rotation droite), appelle à la méthode ROR d'Instructions
             console.log(`UAL1 fct = ${this.UAL1.getMot()}`);
             console.log(`UAL2 fct = ${this.UAL2.getMot()}`);
             let resROR = Instructions.ROR(this.UAL1, this.UAL2,Flags);
-            return resROR;
+            return resROR; // elle retourne la résultat du rotation droite
         break;
-        case "CMP":
+
+        case "CMP": // le cas de CMP(comparaison logique), appelle à la méthode CMP d'Instructions
             console.log(`UAL1 fct = ${this.UAL1.getMot()}`)
             console.log(`UAL2 fct = ${this.UAL2.getMot()}`)
             let resCMP = Instructions.CMP(this.UAL1, this.UAL2,Flags)
-            return resCMP
-
-        case 'RAZ':
-            let resRAZ = Instructions.RAZ(this.UAL1,Flags);
+            return resCMP; // elle retourne la résultat du comparaison logique
         break;
 
-        default:
+        case 'RAZ': // le cas de RAZ(remise à zéro), appelle à la méthode RAZ d'Instructions
+            let resRAZ = Instructions.RAZ(this.UAL1,Flags);
+            return resRAZ; // elle retourne la résultat du remise à zéro(0 normalement)
+        break; 
+
+        default: // le cas d'une autre instruction qui n'a été pas définie
           console.log("Instruction non définie.");
         break;
     }
-    }
+  }
 }
 
-// let ual = new UAL("1010101010101010", "1111110");
-// console.log(`UAL1 = ${ual.getUAL1().getMot()}`);
-// console.log(`UAL2 = ${ual.getUAL2().getMot()}`);
-// let resADD = ual.executer("XOR");
-// console.log(`UAL1 + UAL2 = ${resADD}`);
-
-// ual.setUAL1(new Mot16("1110011100111001"));
-// ual.setUAL2(new Mot16("0110"));
-// console.log(`UAL1 = ${ual.getUAL1().getMot()}`);
-// console.log(`UAL2 = ${ual.getUAL2().getMot()}`);
-// let resADD2 = ual.executer("OU");
-// console.log(`UAL1 + UAL2 = ${resADD2}`);
-export default UAL
+export default UAL;

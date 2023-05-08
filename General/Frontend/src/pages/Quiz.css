@@ -1,0 +1,279 @@
+.quizz{
+  margin: auto;
+}
+.quizz .p{
+  color: #023047;
+  position: absolute;
+  left: 15vw;
+  top: 14vh;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 3.3vh;
+}
+.categories{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin-left: 16vw ;
+  margin-right: 16vw ;
+  margin-top: 16vh ;
+  margin-bottom: 16vw ;
+}
+.categories li {
+  list-style: none;
+  margin: 1vh;
+  margin-left: 1vw;
+  text-align: center;
+  width: 30vw;
+  margin-right: 3vw;
+}
+.category-button {
+  background: #F8F9FA;
+  border: 0.17vh solid #00A6FB;
+  border-radius: 2vh;
+  color: #00A6FB;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.7vh;
+  padding: 2.5vh;
+  padding-right: 1vw;
+  width: 100%;
+  transition: background-color 0.2s ease;
+}
+.category-button:hover {
+  background-color: #00A6FB;
+  color: #F8F9FA;
+}
+.flech {
+  width: 1.4vw;
+  height: 1.9vw;
+  margin-left: 2vw;
+}
+.category-button:hover svg path{
+  stroke : #F8F9FA;
+}
+.quiz-img{
+  width: 16vw;
+  height: 20vh;
+  position: absolute;
+  left: 8vw;
+  bottom: 9vh;
+}
+
+.quiz-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.quiz-container h1{
+  background: #99DBFD;
+  box-shadow: 0px 45px 18px rgba(112, 128, 143, 0.01), 0px 26px 15px rgba(112, 128, 143, 0.05), 0px 11px 11px rgba(112, 128, 143, 0.09), 0px 3px 6px rgba(112, 128, 143, 0.1), 0px 0px 0px rgba(112, 128, 143, 0.1);
+  border-radius: 2.2vh;
+  padding: 3.5vh;
+  padding-left: 3vw;
+  color: #023047;
+  position: absolute;
+  top: 16vh;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 3vh;
+  width: 50vw;
+}
+.quizs{
+  border: 0.17vh solid #00A6FB;
+  border-radius: 3vh;
+  color: #00A6FB;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 40vw;
+  padding: 7vh;
+  gap: 4.7vh;
+  margin-top: 25vh ;
+  background-color: #F8F9FA;
+}
+.quizs li {
+  list-style: none;
+}
+label {
+  display: inline-block;
+  position: relative;
+  padding-left: 2.7vw;
+  cursor: pointer;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.6vh;
+}
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkmark {
+  position: absolute;
+  top: 0.4vh;
+  left: 0;
+  height: 2.3vh;
+  width: 2.3vh;
+  border: 0.2vh solid #00A6FB;
+  border-radius: 50%;
+}
+.checkmark::before {
+  content: "";
+  display: block;
+  height: 1.4vh;
+  width: 1.4vh;
+  border-radius: 50%;
+  background-color: transparent;
+  margin: 0.45vh;
+}
+label:hover .checkmark::before {
+  background-color: #99DBFD;
+}
+input:checked ~ .checkmark::before {
+  background-color: #00A6FB;
+}
+.submit-button, .skip-button {
+  width: auto;
+  height: auto;
+  position: absolute;
+  bottom: 17.5vh;
+  box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 3px 6px rgba(43, 110, 177, 0.1);    
+  border-radius: 1.5vw;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 2.2vh;
+}
+.skip-button {
+  background: var(--background-color);
+  left: 80vw;
+  padding: 2vh 3.3vw;
+  color: var(--blue);
+  border: 0.2vh solid var(--blue);
+}
+.submit-button {
+  background: var(--blue);
+  left: 66vw;  
+  padding: 2vh 2.5vw;
+  color: var(--background-color);
+  border: 0.2vh solid var(--blue);
+}
+.submit-button:hover {
+  background-color: #009de0;
+}
+.skip-button:hover {
+  background-color: #E9EBEE;
+}
+.submit-button.disabled {
+  opacity: 0.5; 
+  cursor: not-allowed;
+}
+
+.result-text {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.correct , .incorrect{
+  font-family: 'Montserrat';
+  color: #023047;
+  font-size: 3vh;
+  position: absolute;
+  bottom: 16vh;
+  left: 30vw;
+}
+.fx-img, .crt-img {
+  height: 4vh;
+  width: 1.8vw;
+  position: absolute;
+  bottom: 19vh;
+  left: 27.5vw;
+}
+
+.question-counter, .score-counter {
+  font-family: 'Montserrat';
+  color: #023047;
+  font-size: 3vh;
+}
+.question-counter{
+ position: absolute;
+ bottom: 3vh;
+ font-weight: 500;
+}
+.score-counter{
+  position: absolute;
+  bottom: 16vh;
+  font-weight: 550;
+ }
+
+ .restart-button, .sort-button {
+  width: auto;
+  height: auto;
+  position: absolute;
+  box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 3px 6px rgba(43, 110, 177, 0.1);    
+  border-radius: 1.5vw;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 2.2vh;
+}
+  .sort-button {
+    background: var(--background-color);
+    padding: 2vh 3.3vw;
+    color: var(--blue);
+    border: 0.2vh solid var(--blue);
+    margin-left: 12vw;
+    margin-top: 15vh;
+  }
+  .restart-button {
+    background: var(--blue);
+    padding: 1.8vh 2.5vw;
+    color: var(--background-color);
+    border: 0.1vh solid var(--blue);
+    margin-right: 12vw;
+    margin-top: 15.4vh;
+  }
+  .restart-button:hover {
+    background-color: #009de0;
+  }
+  .sort-button:hover {
+    background-color: #E9EBEE;
+  }
+.result-container {
+  width: 30vw;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: #F8F9FA;
+  box-shadow: 0px 157px 63px rgba(52, 65, 76, 0.01), 0px 88px 53px rgba(52, 65, 76, 0.05), 0px 39px 39px rgba(52, 65, 76, 0.09), 0px 10px 22px rgba(52, 65, 76, 0.1), 0px 0px 0px rgba(52, 65, 76, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out; /* Ajouter une animation de transition */
+  z-index: 1000; /* Au dessus de l'overlay */
+  opacity: 1;    /* Afficher l'élément */
+}
+.result-container h2{
+  margin-top: 6vh;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(182, 216, 242, 0.48);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

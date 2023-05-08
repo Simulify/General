@@ -73,7 +73,7 @@ function Container(props) {
         <Pile Pile={props.Pile}/>
         <CoEtBus Co={props.Co}/>
         <BusDonnees/>
-        <MemoireEtRam memoire={props.memoire} Ram={props.Ram} Rim={props.Rim} />
+        <MemoireEtRam memoire={props.memoire} Ram={props.Ram} Rim={props.Rim}  mot={props.mot}/>
         <UalEtBus case1={props.case1} case2={props.case2} Flags={props.Flags}/>
         <UcEtRi RI={props.RI}/>
         <RimBusDonnees />
