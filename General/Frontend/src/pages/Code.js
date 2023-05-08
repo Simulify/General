@@ -83,17 +83,17 @@ function Code(props) {
 
     /***************************************************************************************/
     
-    let nb=0;
-    codes[0].addEventListener('keydown', (e) => {
-        if (e.keyCode === 13) 
-        {
-          nb++;
-          let div = document.createElement('div');
-          let txt = document.createTextNode(nb);
-          div.appendChild(txt);
-          document.getElementById('blue_box_1').appendChild(div);
-        }
-    });
+    // let nb=0;
+    // codes[0].addEventListener('keydown', (e) => {
+    //     if (e.keyCode === 13) 
+    //     {
+    //       nb++;
+    //       let div = document.createElement('div');
+    //       let txt = document.createTextNode(nb);
+    //       div.appendChild(txt);
+    //       document.getElementById('blue_box_1').appendChild(div);
+    //     }
+    // });
     
   //   codes[1].addEventListener('keyup', (e)=>
   //   {
