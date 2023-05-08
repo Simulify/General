@@ -5,7 +5,7 @@
     
   }
   span {
-    color: black;
+    color: var(--dark-to-light);
   }
   .illustration{
     height: 98vh; 

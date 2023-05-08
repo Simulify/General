@@ -39,7 +39,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #023047;
+        color: var(--dark-to-light);
 }
 
  .RessourcesImg {

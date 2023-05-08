@@ -7,7 +7,7 @@ import { ReactComponent as Image3} from '../Images/slide3.svg';
 import { ReactComponent as CircleClair} from '../Images/Ellipse 7.svg';
 import { ReactComponent as Processor} from '../Images/Group 9.svg';
 
-function Home () {
+function Home (props) {
   const [currentImage, setCurrentImage] = useState(0);
  const handleClick = (index) => {
     setCurrentImage(index);
@@ -36,7 +36,7 @@ function Home () {
   
  return (
   <div className="hero"> 
-   <Navbar label="Page d'acceuil"/>   
+   <Navbar label="Page d'acceuil" isAuthenticated={props.isAuthenticated}/>   
    <div className="right">
     <div className="right-image"><Processor/></div>
     <div className="slider2-container">

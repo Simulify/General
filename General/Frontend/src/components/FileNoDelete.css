@@ -8,13 +8,13 @@
   }
   .File-button {
     height: 50px;
-      background-color: #F8F9FA;
+      background-color: var(--background-color);
       font-size: 13px;
       font-weight: Bold;
       font-family: Montserrat;
       width: 600px;
       border: none;
-      color: #023047;
+      color: var(--blue);
       padding: 10px;
       border-radius: 12px;
       display: grid;

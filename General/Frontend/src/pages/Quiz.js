@@ -7,7 +7,7 @@ import { ReactComponent as Crt } from '../Images/Correct.svg';
 import { ReactComponent as Fx } from '../Images/Faux.svg';
 import "./Quiz.css";
 
-const Quiz = () => {
+const Quiz = (props) => {
   const { category } = useParams();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
@@ -76,7 +76,7 @@ const Quiz = () => {
   }
  return (
   <div className="quiz-container">
-  <Navbar label="Quiz"/>
+  <Navbar label={`Quiz > ${category}`}  isAuthenticated={props.isAuthenticated} />
   <h1 >{quizzes[currentQuestion].question}</h1>
   <ul className="quizs">
     {quizzes[currentQuestion].options.map((option) => (

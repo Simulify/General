@@ -25,9 +25,7 @@ function ButtonExplication({ label, p1, p2, p3 }) {
       <p>{p1}</p>
       <p>{p2}</p>
       <p>{p3}</p>
-      <div className='lien'>
-        <a href='/code/simulation' > Simuler </a>
-      </div>
+      
     </div> : null}
   </div>
  );

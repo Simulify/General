@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import Code from './Code';
 import { createRoot } from 'react-dom/client';
 import Simulation from './Simulation';
+import Container from '../ComponentsArchi/Container';
 import Navbar from '../components/Navbar';
 import Button from '../components/Buttonn'
 import Side from '../components/side'
@@ -42,7 +43,7 @@ import LightRimUc from '../ComponentsArchi/LightRimUc';
 import { MyFun } from '../ComponentsArchi/yellow';
 //import { operandeNonValide } from '../Logic/Logic/src/functions.js';
 import { ErreurCop } from '../Logic/Logic/src/functions.js';
-export function Sim() {
+export function Sim(props) {
     function isBinary(value) {
         return /^[01]+$/.test(value);
       }
@@ -155,7 +156,7 @@ export function Sim() {
     const HandleClick = (event) => {
         try{
             let phrases=[]
-            phrases = Compile(Decoup(document.querySelector('textarea').value))
+            phrases = Compile(Decoup(document.querySelectorAll('textarea')[0].value))
             console.log(phrases[phrases.length - 1])
             if (phrases[phrases.length - 1] != "0110110000000000") {
                 throw new ErreurSyntax("Erreur Syntaxique : Le programme doit se terminer par l'instruction STOP")
@@ -1369,38 +1370,123 @@ export function Sim() {
 
     /**********************************************************************************************************/
         }
-        //***************  LOOP UNTIL CX==0 ***************** */
+    //***************  LOOP UNTIL CX==0 ***************** */
         else if (parseInt(Machine.UC.Cop, 2) == 17) {
-            //let op = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
-            //console.log("op", op)
+        
             if (Machine.CX.value.entier == 0) {
+
                 machine.CO.incCO()
                 machine.CO.incCO()
+
             } else {
-                //const flags = new Flags(new Mot16("0000000000000000"))
+
                 let op = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
                 Machine.CO.value=op
-                //console.log(Machine.CO.value)
                 Machine.CX.DecCX()
-                
+
+                tableCx.current.push(machine.CX.value.hexa)// we push the difference between the two positions
+                setTimeout(() => {
+                    document.querySelector('#Cx').classList.add('boxShadowBlue')       
+                    cx1.current = tableCx.current.shift()//we get the first element of the array
+                    setFo10(cx1.current)//we set the position of the element
+                }, timeRef.current);
+                timeRef.current += 1000    
+
+                setTimeout(() => {
+                    document.querySelector('#Cx').classList.remove('boxShadowBlue')       
+                }, timeRef.current);
+                timeRef.current += 1000    
             }
         }
+
+    
+    /**********************************************************************************************************/
         /** BCV */
         else if (parseInt(Machine.UC.Cop, 2) == 18) {
-            let op2 = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
+
+
+            console.log(Machine.Flags.flags)
+
             let op1 = parseInt(Machine.UC.C, 2)
+
+            console.log(op1)
+            console.log(Machine.CO.value)
+
+            console.log(Instructions.BCV(op1, Machine.Flags))
+
+            /*Si la condition est vérifiée*/
+
             if (Instructions.BCV(op1, Machine.Flags)) {
-                Co.value = new Mot16(Instructions.DEC(op2, new Flags(new Mot16("0000000000000000"))))
+                
+                let op2 = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
+                console.log(op2)
+
+                Machine.CO.value = new Mot16(op2.mot)
+                
             }
+            /*Si la consition n'est pas vérifiée*/
+            else {
+
+                  Machine.CO.incCO();
+                  Machine.CO.incCO();
+            } 
+
+            tableFlags.current.push(Machine.Flags.flags.hexa)
+            setTimeout(() => {
+                document.querySelector('.FLAG').classList.add('boxShadowBlue')       
+                flags1.current = tableFlags.current.shift()
+                setFo11(flags1.current)
+            }, timeRef.current)
+            timeRef.current += 1000  
+
+            setTimeout(() => {
+                document.querySelector('.FLAG').classList.remove('boxShadowBlue')       
+            }, timeRef.current)
+            timeRef.current += 1000   
+            
         }
+        
+    /**********************************************************************************************************/
         /**BCF */
         else if (parseInt(Machine.UC.Cop, 2) == 19) {
-            let op2 = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
+
             let op1 = parseInt(Machine.UC.C, 2)
+
+            /*Si la condition n'est pas vérifiée*/
+
             if (Instructions.BCF(op1, Machine.Flags)) {
-                Co.value = new Mot16(Instructions.DEC(op2, new Flags(new Mot16("0000000000000000"))))
+
+                let op2 = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
+                console.log(op2)
+
+                Machine.CO.value = new Mot16(op2.mot)
+
             }
+
+            /*Si la condition est vérifiée*/
+
+            else {
+                 Machine.CO.incCO();
+                 Machine.CO.incCO();
+            }
+
+            tableFlags.current.push(Machine.Flags.flags.hexa)
+            setTimeout(() => {
+                document.querySelector('.FLAG').classList.add('boxShadowBlue')       
+                flags1.current = tableFlags.current.shift()
+                setFo11(flags1.current)
+            }, timeRef.current)
+            timeRef.current += 1000  
+
+            setTimeout(() => {
+                document.querySelector('.FLAG').classList.remove('boxShadowBlue')       
+            }, timeRef.current)
+            timeRef.current += 1000   
         }
+
+    /**********************************************************************************************************/
+        /*ENT*/
+          
         else if (parseInt(Machine.UC.Cop, 2) == 20) {
             
             let here = prompt("Entrez une valeur");
@@ -1429,6 +1515,9 @@ export function Sim() {
             },timeRef.current)
 
         }
+
+    /**********************************************************************************************************/
+        /*SORT*/
         else if (parseInt(Machine.UC.Cop, 2) == 21) {
             setTimeout(() => {
             alert("La valeur de l'accumulateur est : " + Machine.ACC.value.entier)
@@ -1510,7 +1599,7 @@ export function Sim() {
                         default:
                             break;
                 }
-                //**********************************8 */
+                //************************************/
                 
             }
             else{
@@ -3243,9 +3332,9 @@ setTimeout(() => {
                     console.log(timeRef.current)
                     Traiter(machine)
                     setMachine(machine)
-                    if(parseInt(machine.UC.Cop, 2) != 17){
-                    machine.CO.incCO()//inc co
-                    console.log("here")
+                  
+                    if(parseInt(machine.UC.Cop, 2) != 17 && parseInt(machine.UC.Cop, 2) != 18 && parseInt(machine.UC.Cop, 2) != 19){
+                       machine.CO.incCO()//inc co
                     }
                     
                     console.log(machine.CO.value)
@@ -3435,7 +3524,7 @@ setTimeout(() => {
             <div className='Light1' ref={myRef1} style={{ position: 'absolute', transform: `translate(${position1.x}px, ${position1.y}px)` }} />
             <Simulation case1={fo5} case2={fo6} memoire={hexx} Co={fo}
                 elements={elem.current} Ram={fo1} Rim={fo2} RI={fo3} Pile={fo12}
-                ACC={fo4} SI={fo7} DI={fo8} BX={fo9} Flags={fo11} CX={fo10} mot={fo13} /></> : <Code handleToggle={HandleToggle} handleClick={HandleClick} />}
+                ACC={fo4} SI={fo7} DI={fo8} BX={fo9} Flags={fo11} CX={fo10} mot={fo13} /></> : <Code handleToggle={HandleToggle} handleClick={HandleClick} isAuthenticated={props.isAuthenticated}/>}
 
         </>
     )

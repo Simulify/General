@@ -4,13 +4,13 @@ import './RessourcesExplication.css';
 import Navbar from '../components/Navbar';
 import ButtonRessource from '../ComponentsRevision/ButtonRessource';
 
-function VideoPage() {
+function VideoPage(props) {
 
   return(
 
       <div className='VideoPage'>
 
-           <Navbar label="Videos"/>
+           <Navbar label="Videos"  isAuthenticated={props.isAuthenticated}/>
            <div className='containerVideos'>
                <ButtonRessource label="Video 1" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
                <ButtonRessource label="Video 2" p1="Ligne1" p2="Ligne2" p3="Ligne3"/>
