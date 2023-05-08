@@ -32,7 +32,7 @@ const questions = [
   }
 ];
 
-export default function FAQ() {
+export default function FAQ(props) {
   const [reponseVisible, setReponseVisible] = useState(null);
   const handleClickQuestion = (id) => {
     if (reponseVisible === id) {
@@ -46,7 +46,7 @@ export default function FAQ() {
 
  return (
   <div className="FAQ">
-    <Navbar label="Aide"/>
+    <Navbar label="Aide"  isAuthenticated={props.isAuthenticated}/>
     <p className='p'>Vous avez des questions? Vous pouvez retrouver leurs réponses dans notre FAQ.</p>
 
     <div className="questions">

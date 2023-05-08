@@ -6,11 +6,11 @@ import {ReactComponent as Livres} from '../Images/Livres.svg';
 import {ReactComponent as Sites} from '../Images/Sites.svg';
 import Navbar from '../components/Navbar';
 
-function RessourcePage () {
+function RessourcePage (props) {
 
   return(
    <div className='RessourcePage'>
-        <Navbar label="Ressources"/>
+        <Navbar label="Ressources"  isAuthenticated={props.isAuthenticated}/>
 
         <div className='ContainerRessources'>
             <div className='Videos'>

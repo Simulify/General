@@ -5,7 +5,7 @@ import "../pages/Settings.css";
 import InputButton from "../Components_login/InputButton";
 import axios from "axios";
 
-function ProfilePage() {
+function ProfilePage(props) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [isEditing, setIsEditing] = useState(false);
@@ -64,7 +64,7 @@ function ProfilePage() {
 
   return (
     <div className="ProfilePage">
-      <Navbar label="Parametres" />
+      <Navbar label="Parametres"  isAuthenticated={props.isAuthenticated}/>
       <FormSettings isEditing={isEditing} handleModify={handleModify} />
       <form onSubmit={handleSubmit}>
         <div className="ProfileContainer">
