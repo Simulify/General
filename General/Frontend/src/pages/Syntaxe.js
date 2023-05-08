@@ -85,7 +85,7 @@
     }
   ];
   
-  export default function Syntaxe() {
+  export default function Syntaxe(props) {
     const [reponseVisible, setReponseVisible] = useState(null);
     const handleClickQuestion = (id) => {
       if (reponseVisible === id) {
@@ -99,7 +99,7 @@
   
    return (
     <div className="Syntaxe">
-      <Navbar label="Syntaxe de programmation"/>
+      <Navbar label="Syntaxe de programmation"  isAuthenticated={props.isAuthenticated}/>
   
       <div className="explication">
        {explication.map(({ id, titre }) => (

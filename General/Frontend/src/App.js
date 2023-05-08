@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 
 import './pages/ColorsVar.css'; 
 import './App.css';
@@ -44,7 +44,11 @@ function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false); //une variable qui est mise à jour au login & logout
   const [currentUser, setCurrentUser] = useState(localStorage.getItem('user') || null);
-  
+  useEffect(() => {
+    const storedIsAuthenticated = localStorage.getItem('isAuthenticated');
+    setIsAuthenticated(storedIsAuthenticated === 'true');
+  }, []);
+
 
   function handleReset() {
     localStorage.removeItem('isAuthenticated');
@@ -67,40 +71,39 @@ function App() {
     <BrowserRouter>
     <Sidebar onReset={handleReset} />
      <Routes>
-      <Route path='/' element={<Home/>}></Route>
-      <Route path='/home' element={<Home/>}></Route>
-      <Route path='/code/programmation-syntaxe' element={<Syntaxe/>}></Route>
-      <Route path="/settings/*" element={<PrivateRoute><Routes><Route path="/" element={<Settings />} /></Routes></PrivateRoute>}/>
-      <Route path='/code' element={<Sim></Sim>}></Route>
+      <Route path='/' element={<Home isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/home' element={<Home isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/code/programmation-syntaxe' element={<Syntaxe isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path="/settings/*" element={<PrivateRoute><Routes><Route path="/" element={<Settings isAuthenticated={isAuthenticated}/>} /></Routes></PrivateRoute>}/>
+      <Route path='/code' element={<Sim isAuthenticated={isAuthenticated}></Sim>}></Route>
       <Route path='/code/simulation' element={<Sim></Sim>}></Route>
-      <Route path="/files/*" element={<PrivateRoute currentUser={currentUser}><Files currentUser={currentUser} /></PrivateRoute>} />
-      <Route path="/files/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<Files currentUser={currentUser} />} /></Routes></PrivateRoute>} />
-
+      <Route path="/files/*" element={<PrivateRoute currentUser={currentUser}><Files currentUser={currentUser} isAuthenticated={isAuthenticated} /></PrivateRoute>} />
+      <Route path="/files/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<Files currentUser={currentUser} isAuthenticated={isAuthenticated}/>} /></Routes></PrivateRoute>} />
       {/*  changes are done here */ }
-      <Route path="/settings/*" element={<PrivateRoute currentUser={currentUser}><Settings currentUser={currentUser} /></PrivateRoute>} />
-      <Route path="/settings/Userprofile/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<ProfilePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
-      <Route path="/settings/Userpassword/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<MotDePassePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
-      <Route path="/settings/Usermode/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<ModePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
-      <Route path="/settings/Userlanguage/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<LanguePage currentUser={currentUser} />} /></Routes></PrivateRoute>} />
-      <Route path='/revision' element={<Revision/>}></Route>
-      <Route path='/revision/ressources' element={<RessourcePage/>}></Route>
-      <Route path='/revision/ressources/livres' element={<LivresPage/>}></Route>
-      <Route path='/revision/ressources/sites' element={<SitesPage/>}></Route>
-      <Route path='/revision/ressource/videos' element={<VideoPage/>}></Route>
-      <Route path='/revision/explication' element={<ExplicationsPage/>}></Route>
-      <Route path='/revision/quiz' element={<QuizApp/>}></Route>
-      <Route path="/revision/quiz/:category" element={<Quiz />} />
-      <Route path='/guide' element={<Guide/>}></Route>
-      <Route path='/guide/architecture' element={<GuideArch/>}></Route>
-      <Route path='/guide/instruction-format' element={<GuideForm/>}></Route>
-      <Route path='/guide/instructions' element={<GuideInstr/>}></Route>
-      <Route path='/guide/instructions/arithmetic' element={<GuideInstrArth/>}></Route>
-      <Route path='/guide/instructions/logic' element={<GuideInstrLog/>}></Route>
-      <Route path='/guide/instructions/shift-rotation' element={<GuideInstrShrt/>}></Route>
-      <Route path='/guide/instructions/branch' element={<GuideInstrBrch/>}></Route>
-      <Route path='/guide/instructions/in-out' element={<GuideInstrInout/>}></Route>
-      <Route path='/guide/instructions/data-transfer' element={<GuideInstrDtrs/>}></Route>
-      <Route path='/faq' element={<FAQ/>}></Route>
+      <Route path="/settings/*" element={<PrivateRoute currentUser={currentUser} isAuthenticated={isAuthenticated}><Settings currentUser={currentUser} isAuthenticated={isAuthenticated}/></PrivateRoute>} />
+      <Route path="/settings/Userprofile/:username" element={<PrivateRoute currentUser={currentUser} ><Routes><Route path="/" element={<ProfilePage currentUser={currentUser}  isAuthenticated={isAuthenticated} />} /></Routes></PrivateRoute>} />
+      <Route path="/settings/Userpassword/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<MotDePassePage currentUser={currentUser} isAuthenticated={isAuthenticated} />} /></Routes></PrivateRoute>} />
+      <Route path="/settings/Usermode/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<ModePage currentUser={currentUser} isAuthenticated={isAuthenticated}/>} /></Routes></PrivateRoute>} />
+      <Route path="/settings/Userlanguage/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<LanguePage currentUser={currentUser} isAuthenticated={isAuthenticated} />} /></Routes></PrivateRoute>} />
+      <Route path='/revision' element={<Revision isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/revision/ressources' element={<RessourcePage isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/revision/ressources/livres' element={<LivresPage isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/revision/ressources/sites' element={<SitesPage isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/revision/ressource/videos' element={<VideoPage isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/revision/explication' element={<ExplicationsPage isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/revision/quiz' element={<QuizApp isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path="/revision/quiz/:category" element={<Quiz isAuthenticated={isAuthenticated} />} />
+      <Route path='/guide' element={<Guide isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/guide/architecture' element={<GuideArch isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/guide/instruction-format' element={<GuideForm isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/guide/instructions' element={<GuideInstr isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/guide/instructions/arithmetic' element={<GuideInstrArth isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/guide/instructions/logic' element={<GuideInstrLog isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/guide/instructions/shift-rotation' element={<GuideInstrShrt isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/guide/instructions/branch' element={<GuideInstrBrch isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/guide/instructions/in-out' element={<GuideInstrInout isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/guide/instructions/data-transfer' element={<GuideInstrDtrs isAuthenticated={isAuthenticated}/>}></Route>
+      <Route path='/faq' element={<FAQ isAuthenticated={isAuthenticated}/>}></Route>
       <Route path='/login' element={<Login setIsAuthenticated={setIsAuthenticated} setCurrentUser={setCurrentUser}/>}></Route>
       <Route path='/signup' element={<Signup/>}></Route>
       <Route path='/*' element={<ErrorPage/>}></Route>

@@ -15,7 +15,7 @@ const questions = [
   {
     id: 2,
     question: (<div className="q2">Quelles sont les fonctionnalités offertes par Simulify ?</div>),
-    reponse: (<div >Simulify est une plateforme pédagogique basée sur l'architecture de Von Neumann qui permet d'apprendre la structure machine</div>)
+    reponse: (<div >Simulify vous permet d'écrire, simuler et visualiser vos programmes de manière interactive</div>)
   },
   {
     id: 3,
@@ -34,11 +34,11 @@ const questions = [
   {
     id: 5,
     question: (<div className="q5">Qui sommes nous ?</div>),
-    reponse: (<div>Réponse5.</div>)
+    reponse: (<div>Nous sommes 6 étudiantes en 2CP à ESI Alger et réalisatrices de Simulify encadré par Mr Dahamni et Mme Charabi:Alismail Dyna Hayem, Dinari Yasmine , Aouinine Lylia , Dehili Hind , Malek Amina,Rezzoug Aicha  </div>)
   }
 ];
 
-export default function FAQ() {
+export default function FAQ(props) {
   const [reponseVisible, setReponseVisible] = useState(null);
   const handleClickQuestion = (id) => {
     if (reponseVisible === id) {
@@ -52,7 +52,7 @@ export default function FAQ() {
 
  return (
   <div className="FAQ">
-    <Navbar label="Aide"/>
+    <Navbar label="Aide"  isAuthenticated={props.isAuthenticated}/>
     <p className='p'>Vous avez des questions? Vous pouvez retrouver leurs réponses dans notre FAQ.</p>
 
     <div className="questions">

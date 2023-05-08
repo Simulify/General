@@ -6,11 +6,11 @@ function RegistreEtNom() {
   return (
     <div className="RegistreEtNom">
        <div className="NomReg">
-            <div  className="Nom">Bx</div>
-            <div  className="Nom">Cx</div>
-            <div  className="Nom">Dx</div>
-            <div  className="Nom">Si</div>
-            <div  className="Nom">Acc</div>
+            <div id="Bx" className="Nom">Bx</div>
+            <div id="Cx" className="Nom">Cx</div>
+            <div id="Dx"className="Nom">Dx</div>
+            <div id="Si"className="Nom">Si</div>
+            <div id="Acc" className="Nom">Acc</div>
        </div>
        <Registres/>
 
