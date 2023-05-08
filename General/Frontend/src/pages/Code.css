@@ -135,7 +135,7 @@ width: 30%;
     height: 20px;
     margin-left: 24px;
     cursor: pointer;
-    background: #00A6FB;
+    background: var(--blue);
     box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 3px 6px rgba(43, 110, 177, 0.1);
     border-radius: 30px;
     width: 100px;
@@ -195,7 +195,7 @@ button#btn4.button:hover
     margin-left: auto;
    margin-right: auto;
    color: #023047;
-   background-color: white;
+   background-color: var(--background-color);
    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
 }
 #btn3:hover
@@ -324,8 +324,13 @@ h4
     border-radius: 15px;
    background-color: white;  
   width: 40%;
+<<<<<<< HEAD
     height: 200px;
     margin-left: -5%;
+=======
+    height: 250px;
+    margin-left: -2%;
+>>>>>>> upstream/main
     margin-right: 0%;
 
     display: flex;
@@ -372,14 +377,24 @@ div.container > div
     display: flex;
     flex-direction: row;
 }
+<<<<<<< HEAD
 
   
 
 @media  (max-width:750px)
+=======
+@media (max-width: 700px)
+>>>>>>> upstream/main
 {
     #pop_up
     {
         width: 60%;
+<<<<<<< HEAD
     }  
 
 }
+=======
+        margin-left: -13%;
+    }
+}
+>>>>>>> upstream/main

@@ -1,6 +1,6 @@
 .Simulation .Container {
   position: relative;
-  color: #023047;
+  color: var( --dark-to-light);
   padding: 50px;
   height: 100Vh;
   margin: auto;
@@ -80,17 +80,17 @@
 }
 
 .RegToBusDonnees .triangleHaut {
-  border-bottom: 20px solid #023047;
+  border-bottom: 20px solid var( --dark-to-light);
 }
 
 .RegToBusDonnees .triangleBas {
-  border-top: 20px solid #023047;
+  border-top: 20px solid var( --dark-to-light);
 }
 
 .RegToBusDonnees .rectangle {
   width: 10%;
   height: 100%;
-  border: 1px solid #023047;
+  border: 1px solid var( --dark-to-light);
   transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -124,18 +124,18 @@
   width: 25%;
   padding: 2%;
   text-align: center;
-  border-right: 1px solid #023047;
-  border-bottom: 1px solid #023047;
+  border-right: 1px solid var( --dark-to-light);
+  border-bottom: 1px solid var( --dark-to-light);
 }
 
 .pile::-webkit-scrollbar {
   width: 5px;
-  background-color: #CFEFFF;
+  background-color: var(--background-color);
   border-radius: 5px;
 }
 
 .pile::-webkit-scrollbar-thumb {
-  background-color: #023047;
+  background-color: var( --dark-to-light);
   border-radius: 5px;
 }
 
@@ -155,17 +155,17 @@
 }
 
 .PileBusDonnees .triangleHaut {
-  border-bottom: 20px solid #023047;
+  border-bottom: 20px solid var( --dark-to-light);
 }
 
 .PileBusDonnees .triangleBas {
-  border-top: 20px solid #023047;
+  border-top: 20px solid var( --dark-to-light);
 }
 
 .PileBusDonnees .rectangle{
   width: 100%;
   height: 1000%;
-  border: 1px solid #023047;
+  border: 1px solid var( --dark-to-light);
   transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -188,7 +188,7 @@
 }
 
 .Memoire::-webkit-scrollbar-thumb {
-  background-color: #023047;
+  background-color: var( --background-color);
   height: 20px;
   border-radius: 5px;
 }
@@ -203,8 +203,8 @@
   width: 25%;
   padding: 2%;
   text-align: center;
-  border-right: 1px solid #023047;
-  border-bottom: 1px solid #023047;
+  border-right: 1px solid var(--dark-to-light);
+  border-bottom: 1px solid var();
 }
 
 
@@ -364,24 +364,24 @@
 }
 
 .BusCo .triangleHaut, .RamBusDonnees .triangleHaut {
-  border-bottom: 20px solid #023047;
+  border-bottom: 20px solid var(--dark-to-light);
 }
 
 .BusCo .triangleBas, .RamBusDonnees .triangleBas  {
-  border-top: 20px solid #023047;
+  border-top: 20px solid var(--dark-to-light);
 }
 
 .BusCo .rectangle{
   width: 100%;
   height: 100%;
-  border: 1px solid #023047;
+  border: 1px solid var(--dark-to-light);
   transition: box-shadow 0.3s ease-in-out;
 }
 
 .RamBusDonnees .rectangle {
     width: 100%;
     height: 100%;
-    border: 1px solid #023047;
+    border: 1px solid var(--dark-to-light);
     transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -397,7 +397,7 @@
 .CoToRam .rectangle {
   width: 100%;
   height: 100%;
-  border: 1px solid #023047;
+  border: 1px solid var(--dark-to-light);
   transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -406,7 +406,7 @@
   height: 0;
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
-  border-left: 30px solid #023047;
+  border-left: 30px solid var(--dark-to-light);
 }
 
 /****************************************************************/
@@ -440,9 +440,9 @@
     align-items: center;
     justify-content: center;
     height: 60%;
-    border-top: 2px solid #023047;
-    border-left: 2px solid #023047;
-    border-right: 2px solid #023047;
+    border-top: 2px solid var(--dark-to-light);
+    border-left: 2px solid var(--dark-to-light);
+    border-right: 2px solid var(--dark-to-light);
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     text-align: center;
@@ -455,9 +455,9 @@
 
 .UAL .ual2 .r1 , .UAL .ual2 .r3{
     width: 40%;
-    border-left: 2px solid #023047;
-    border-right: 2px solid #023047;
-    border-bottom: 2px solid #023047;
+    border-left: 2px solid var(--dark-to-light);
+    border-right: 2px solid var(--dark-to-light);
+    border-bottom: 2px solid var(--dark-to-light);
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 
@@ -465,7 +465,7 @@
 
 .UAL .ual2 .r2{
     width: 40%;
-    border-top: 2px solid #023047;
+    border-top: 2px solid var(--dark-to-light);
 }
 
 /**************************************************************/
@@ -505,7 +505,7 @@
 .Trait {
   width: 20%;
   height: 2px;
-  background-color: #023047;
+  background-color: var(--dark-to-light);
   transform-origin: center center;
   transform: rotate(150deg);
 }
@@ -550,7 +550,7 @@
   width: 100%;
   height: 30%;
   text-align: center;
-  border: 2px solid #023047;
+  border: 2px solid var(--dark-to-light);
   border-radius: 10px;
 }
 
@@ -611,17 +611,17 @@
 }
 
 .BusUcToRi .triangleHaut, .UcBusDonnees .triangleHaut, .UalBusDonnees .triangleHaut  {
-  border-bottom: 20px solid #023047;
+  border-bottom: 20px solid var(--dark-to-light);
 }
 
 .BusUcToRi .triangleBas, .UcBusDonnees .triangleBas {
-  border-top: 20px solid #023047;
+  border-top: 20px solid var(--dark-to-light);
 }
 
 .BusUcToRi .rectangle{
   width: 100%;
   height: 100%;
-  border: 1px solid #023047;
+  border: 1px solid var(--dark-to-light);
 }
 
 .UcBusDonnees {
@@ -635,9 +635,9 @@
 .UcBusDonnees .rectangle{
   width: 100%;
   height: 100%;
-  border-top: 1px solid #023047;
-  border-right: 1px solid #023047;
-  border-left: 1px solid #023047;
+  border-top: 1px solid var(--dark-to-light);
+  border-right: 1px solid var(--dark-to-light);
+  border-left: 1px solid var(--dark-to-light);
   transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -655,9 +655,9 @@
 .UalBusDonnees .rectangle{
   width: 8%;
   height: 100%;
-  border-top: 1px solid #023047;
-  border-right: 1px solid #023047;
-  border-left: 1px solid #023047;
+  border-top: 1px solid var(--dark-to-light);
+  border-right: 1px solid var(--dark-to-light);
+  border-left: 1px solid var(--dark-to-light);
   transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -678,13 +678,13 @@
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 20px solid #023047;
+  border-bottom: 20px solid var(--dark-to-light);
 }
 
 .EualsBusDonnees .rectangle {
   width: 100%;
   height: 100%;
-  border: 1px solid #023047;
+  border: 1px solid var(--dark-to-light);
   transition: box-shadow 0.3s ease-in-out;  
 }
 
@@ -702,13 +702,13 @@
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 20px solid #023047;
+  border-right: 20px solid var(--dark-to-light);
 }
 
 .BusEuals .rectangle {
   width: 100%;
   height: 100%;
-  border: 1px solid #023047;
+  border: 1px solid var(--dark-to-light);
   transition: box-shadow 0.3s ease-in-out;  
 }
 
@@ -740,13 +740,13 @@
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 20px solid #023047;
+  border-right: 20px solid var(--dark-to-light);
 }
 
 .RimBusDonnees .rectangle {
   width: 100%;
   height: 100%;
-  border: 1px solid #023047;
+  border: 1px solid var(--dark-to-light);
   transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -768,13 +768,13 @@
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 20px solid #023047;
+  border-bottom: 20px solid var(--dark-to-light);
 }
 
 .RimToRi .rectangle {
   width: 100%;
   height: 100%;
-  border: 1px solid #023047;
+  border: 1px solid var(--dark-to-light);
   transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -795,13 +795,13 @@
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 20px solid #023047;
+  border-right: 20px solid var(--dark-to-light);
 }
 
 .RimBusRi .rectangle {
   width: 100%;
   height: 100%;
-  border: 1px solid #023047;
+  border: 1px solid var(--dark-to-light);
 }
 
 @media screen and (max-width: 1275px) {

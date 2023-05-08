@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
@@ -9,25 +10,18 @@ import Button from '../components/Buttonn'
 import Side from '../components/side'
 import next from '../Images/next.svg'
 import { Link } from 'react-router-dom';
+import Btn_simule from '../components/Btn_simuler2.js';
 import Title from '../components/Title2.js';
-const ButoStyle = {
-  background: '#00A6FB',
-  position:'relative',
-  color: '#00A6FB',
-  border: 'none',
-  borderRadius: '4px',
-  padding: '1vw 2vw',
-  fontSize: '2vw',
-  fontWeight: 'bold',
-  cursor: 'pointer',
-  gridArea: 'sauv'
-};
+const ButoStyle=
+{
 
-
+background: '#00A6FB',
+position:'absolute',
+width:'148px',
+gridArea:'sauv'
+}
 
 function Code(props) {
-  const isAuthenticated= props.isAuthenticated;
-
   const [base,setBase]=useState("")
   // const handleClick1= (event)=>{
   //   if (event.target.textContent=="HEX") 
@@ -80,8 +74,11 @@ function Code(props) {
 
   }
   localStorage.setItem("buttonClicked", "false"); // we reput it at false until the next click
-  
-      //----------------------------------
+
+
+       //-----------------------------------------------------------------------------------------------//
+              //--------------------------------------------------------------------------------\\
+       //-----------------------------------------------------------------------------------------------//
 
   
   //  var simuler=document.querySelector('#btn2');
@@ -104,9 +101,37 @@ function Code(props) {
     var codes=document.getElementsByTagName('textarea');
     let compiler=document.querySelector('.container2 .button');
 
-    /*************************************    CONERSION EN BINAIRE   ************************/
     /***************************************************************************************/
-    let mnemonique='';
+    
+    // let nb=0;
+    // codes[0].addEventListener('keydown', (e) => {
+    //     if (e.key === "Enter") 
+    //     {
+    //       nb++;
+    //       let div = document.createElement('div');
+    //       let txt = document.createTextNode(nb);
+    //       div.appendChild(txt);
+    //       document.getElementById('blue_box_1').appendChild(div);
+    //     }
+    // });
+    function countLines() {
+      const value = codes[0].value;
+      const newlines = value.match(/\n/g);
+      const count = newlines ? newlines.length + 1 : 1;
+      console.log('Number of lines:', count);
+
+    }
+    codes[0].addEventListener('input', countLines);
+    
+  //   codes[1].addEventListener('keyup', (e)=>
+  //   {
+  //  if (e.keyCode===13)
+  //  { i++;
+  //   console.log(i);
+  //  }
+  //   })
+
+  /****************************************   RENDRE LE BOUTTON SIMULER VISIBLE    ********************************************************/
     compiler.addEventListener('click',()=>
     {
       if(codes[0].value!=='' || codes[1].value!=='')
@@ -115,12 +140,18 @@ function Code(props) {
       }
       console.log(codes[0].value);
     });
+
+
+
+
+      /****************************************    CONERSION DE L'HEXA VERS MNEMONIQUE      ***********************************/
+      /****************************************   RENDRE LE MNEMONIQUE DANS CODES [1]    ********************************************************/
+      let mnemonique='';
     compiler.addEventListener('click',()=>
     {
       if(codes[0].value==='' || codes[1].value!=='')
       {
       document.querySelector('#btn2').style.visibility='visible';
-      }
       binary=codes[1].value.split('\n');
       if(codes[1].readOnly===false)
       {
@@ -133,18 +164,71 @@ function Code(props) {
               binary[i]= binary[i].padStart(16,0);    
           }
         }
+        console.log(binary);
         for(let i=0;i<BinToMnem(binary).length;i++)
         {
-          mnemonique+=BinToMnem(binary)[i] + '\n';
+          if(i!==BinToMnem(binary).length-1)
+          {
+            mnemonique+=BinToMnem(binary)[i] + '\n';
+          }
+          else
+          {
+            mnemonique+=BinToMnem(binary)[i] ;
+          }
         }
+        console.log(mnemonique);
         codes[0].value=mnemonique;
       }
-    })
+ /**************************************           DU MNEMONIQUE VERS L'HEXA DECIMALE          ********************************************************** */     
+      }
+      else if (codes[0].value!=='' && codes[1].value==="")
+      {
+        let parties = Compile(Decoup(codes[0].value));
+console.log('resultat de parties'+ parties) ; 
+let hexa='';
+console.log(hexa);
+console.log(typeof(hexa)==='string');
+let arr=parties.toString().split(',');
+console.log(arr);
+
+for(let i=0;i<arr.length;i++)
+{
+ arr[i]=parseInt(arr[i],2).toString(16);
+ if(i!==arr.length-1)
+ {
+  hexa=hexa+arr[i]+'\n';
+ }
+ else
+ {
+  hexa=hexa+arr[i];
+ }
+}
+codes[1].value=hexa;
+}
+})
+/*************************************** FIN CONVERSION DU MNEMONIQUE VERS L'HEXA ******************************************************************* */
     
   
 
+
+           /************************************************************************************************* */
+ /*************************************** LIMITER LE NOMBRE DE CARACTERES DANS LE TITRE  ****************************************** */
+
+ document.querySelector('.Title').addEventListener('input', (e)=>
+{
+const max=50;
+if(e.target.value.length>max)
+ {
+  e.target.value=e.target.value.slice(0,max);
+ }
+})
+
+/*********************************************************************************************************************************/
+
+
+ 
     
-    /************************************************************************************************* */
+                     /************************************************************************************************* */
 /******************************************************** POP UP IN ****************************************************************** */
 
     document.querySelector('.buttons .button').addEventListener('click',()=>
@@ -154,41 +238,55 @@ function Code(props) {
     })
    document.querySelector('#submit').addEventListener('click',()=>
    {
-
     if (document.querySelector('.Title').value!=='')
     {
       document.querySelector('#pop_up').style.visibility="hidden";
       document.querySelector('.body').classList.remove('hide_bg');
-     
+      // document.querySelector('.Title').value='';
     }
    }
    );
-   document.querySelector('.Title').addEventListener('input', ()=>
-   {
-   
-   })
-
 
  /************************************************************************************************* */
 /**************************************************************************************************/
+if( codes[1].readOnly === false && codes[0].readOnly === true) 
+{
+  codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+  codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
 
+}
+else if( codes[0].readOnly === false && codes[1].readOnly === true)
+{
+  codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+  codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+}
+else 
+{  codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+}
 
   codes[0].addEventListener('click', () => 
   {
-    localStorage.setItem('textareaValue', codes[0].value);
-   localStorage.setItem('textareaValue1', codes[1].value);
 
     if( codes[1].value!=='' ) 
     {
       // codes[0].readOnly = true;
-      codes[1].readOnly = false;
-      codes[0].readOnly = true;
+      codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+      codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+
+      codes[1].readOnly = false;     
+       codes[0].readOnly = true;
+
     }
 
     else  
      {
       codes[0].readOnly = false;
+      codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+
       codes[1].readOnly = true;
+      codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+
     }
 
   })
@@ -196,6 +294,9 @@ function Code(props) {
   {
   if(codes[0].value!=='' ) 
   {
+    
+  codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+  codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
     codes[1].readOnly=true;
     codes[0].readOnly = false;
   }
@@ -203,12 +304,12 @@ function Code(props) {
   {
     codes[1].readOnly = false;
     codes[0].readOnly = true;    
+    codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+    codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+
+
   }
   }) 
-  
- 
-   
-
   
   }, []); // This empty array as a second argument ensures that the effect is only run once when the component mounts
   
@@ -301,49 +402,27 @@ function Code(props) {
     return(
       <div >
         <div className='body'>
-          <Navbar label="Simulation"  isAuthenticated={props.isAuthenticated}/>
+          <Navbar label="Simulation" />
         <br></br>         <br></br>
         <br></br>
         <div className='hugecontainer'>
        <div className='Bigcontainer'>
        {/* buttons in top *************** */}
-      
-       <div className="buttons" style={{ display: isAuthenticated ? 'block' : 'none' }}>
-  <Button
-  className='sauvegarder1'
-  text="Sauvegarder"
-  style={{
-    background: '#00A6FB',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '30px',
-    padding: '8px',
-    margin: '0 auto',
-    cursor: 'pointer',
-    fontSize: '18px',
-    letterSpacing: '1.7px',
-    fontWeight: 'bold',
-  }}
-></Button>
-
-
-          <Button link="/files" text="Fichiers" style={{ background: '#F8F9FA', color: '#023047', position: 'absolute', width: '148px', gridArea: 'exem' }}></Button>
+        <div className="buttons">
+        <Button className='sauvegarder1' text="Sauvegarder"  style={ButoStyle}  ></Button>
+        <Button link="/files" text="Fichiers" style={{background:'#F8F9FA',color:'#023047',position:'absolute',width:'100%',gridArea:'exem'}}></Button>
         </div>
-       
-       
-     
-      
-
         {/**************************/} 
    <div className="container">
          {/* <Side className="textarea" textareaValue={textareaValue} handleTextareaChange={handleTextareaChange}></Side> */}
       <div>
       <div className='blue_box' id='blue_box_1'> </div>
-           <textarea className="textarea" placeholder='Veuillez saisir le code en mnémonique'  handleTextareaChange={handleTextareaChange1} ></textarea>
+           <textarea className="textarea" placeholder='Veuillez saisir le code en mnémonique'></textarea>
          </div>
       <div>
          <div className='blue_box'  id='blue_box_2'>
-      <div className='hex'>Hex</div>          </div>  <textarea className="textarea" placeholder='Veuillez saisir le code en Hexa' handleTextareaChange={handleTextareaChange} ></textarea>
+      <div className='hex'>Hex</div>          
+      </div>  <textarea className="textarea" placeholder='Veuillez saisir le code en Hexa'></textarea>
          </div>         {/* <div className="base" >HEX</div> */}
          {/* <Side className="textarea" textareaValue={textareaValue1} handleTextareaChange={handleTextareaChange1}></Side> */}
         
@@ -375,13 +454,15 @@ function Code(props) {
           <div id='pop_up'>
           {/* <textarea className='Title' placeholder='Veuillez entrez le titre du programme' >
            </textarea> */}
-            <Title textareaValue={textAreaTitle} handleTextareaChange={handleTextareaChangeTitle}></Title>
+            <Title></Title>
            <br></br>
-           <button id='submit'  onClick={() => saveFile(localStorage.getItem('textareaValue'),localStorage.getItem('textareaValue1'),textAreaTitle)}  > 
+           <button id='submit'> 
                Soumettre
            </button>
           </div>
-           </div>
+           
+          <div className='erreur'></div>
+          </div>
     );
 }
 export default Code;

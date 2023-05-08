@@ -76,7 +76,7 @@ const Quiz = (props) => {
   }
  return (
   <div className="quiz-container">
-  <Navbar label="Quiz"  isAuthenticated={props.isAuthenticated}/>
+  <Navbar label={`Quiz > ${category}`}  isAuthenticated={props.isAuthenticated} />
   <h1 >{quizzes[currentQuestion].question}</h1>
   <ul className="quizs">
     {quizzes[currentQuestion].options.map((option) => (
