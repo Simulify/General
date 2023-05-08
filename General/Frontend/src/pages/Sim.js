@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import Code from './Code';
 import { createRoot } from 'react-dom/client';
 import Simulation from './Simulation';
+import Container from '../ComponentsArchi/Container';
 import Navbar from '../components/Navbar';
 import Button from '../components/Buttonn'
 import Side from '../components/side'
@@ -1302,197 +1303,122 @@ export function Sim() {
         }
     /**********************************************************************************************************/
         
-        //***************  LOOP UNTIL CX==0 ***************** */
+    //***************  LOOP UNTIL CX==0 ***************** */
+
         else if (parseInt(Machine.UC.Cop, 2) == 17) {
            
             if (Machine.CX.value.entier == 0) {
+
                 machine.CO.incCO()
                 machine.CO.incCO()
+
             } else {
+
                 let op = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
                 Machine.CO.value=op
-
-                timeRef.current=+1000
-                table.current.push(machine.CO.value.hexa)
-                let x1 = myRef.current.getBoundingClientRect().left;
-                let y1 = myRef.current.getBoundingClientRect().top;
-
-                setTimeout(() => {
-                    myRef.current.style.opacity = '0%'
-                }, timeRef.current)
-
-                timeRef.current=+1000;
-
-                let x2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().left
-                let y2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().top
-
-                tabPos2.current.push({ x: x2 - x1, y: y2 - y1 })// we push the difference between the two positions
-                setTimeout(() => {       
-                    pos.current = tabPos.current.shift()//we get the first element of the array
-                    setPosition(pos.current)//we set the position of the element
-                }, timeRef.current);
-
-                timeRef.current=+2000;
-
-                setTimeout(() => {
-                    myRef2.current.style.opacity = '60%'
-                }, timeRef.current)
-
-                timeRef.current=+1000;
-
-                y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;   
-                tabPos.current.push({ x: x2 - x1, y: y2 - y1})// we push the difference between the two positions
-    
-                setTimeout(() => {        
-                    pos.current = tabPos.current.shift()//we get the first element of the array
-                    setPosition(pos.current)//we set the position of the element
-                }, timeRef.current);
-                timeRef.current += 1000
-                    
-                x2 = document.querySelector('.RamBusDonnees .rectangle').getBoundingClientRect().left; 
-                tabPos.current.push({ x: x2 - x1, y: y2 - y1})// we push the difference between the two positions
-                setTimeout(() => {      
-                    pos.current = tabPos.current.shift()//we get the first element of the array
-                    setPosition(pos.current)//we set the position of the element
-                }, timeRef.current);
-                timeRef.current += 1000
-                    
-                y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;   
-                tabPos.current.push({ x: x2 - x1, y: y2 - y1 })// we push the difference between the two positions
-                setTimeout(() => {       
-                    pos.current = tabPos.current.shift()//we get the first element of the array
-                    setPosition(pos.current)//we set the position of the element
-                }, timeRef.current);
-                timeRef.current += 1000
-    
-                y2 = document.querySelector('.BusCo .triangleHaut').getBoundingClientRect().top;   
-                tabPos.current.push({ x: x2 - x1, y: y2 - y1 })// we push the difference between the two positions
-                setTimeout(() => {       
-                    pos.current = tabPos.current.shift()//we get the first element of the array
-                    setPosition(pos.current)//we set the position of the element
-                }, timeRef.current);
-                timeRef.current += 1000
-
-                // we push the difference between the two positions
-                setTimeout(() => {       
-                    coo.current = table.current.shift()//we get the first element of the array
-                    setFo(coo.current)//we set the position of the element
-                }, timeRef.current);
-
                 Machine.CX.DecCX()
 
                 tableCx.current.push(machine.CX.value.hexa)// we push the difference between the two positions
-                setTimeout(() => {       
+                setTimeout(() => {
+                    document.querySelector('#Cx').classList.add('boxShadowBlue')       
                     cx1.current = tableCx.current.shift()//we get the first element of the array
                     setFo10(cx1.current)//we set the position of the element
                 }, timeRef.current);
-                timeRef.current += 1000
+                timeRef.current += 1000    
 
-
-                
+                setTimeout(() => {
+                    document.querySelector('#Cx').classList.remove('boxShadowBlue')       
+                }, timeRef.current);
+                timeRef.current += 1000    
             }
         }
+
+    
+    /**********************************************************************************************************/
         /** BCV */
-        /***********************************************************************************/
         else if (parseInt(Machine.UC.Cop, 2) == 18) {
 
             console.log(Machine.Flags.flags)
-            let op2 = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
+
             let op1 = parseInt(Machine.UC.C, 2)
-            timeRef.current =+1000
+
+            console.log(op1)
+            console.log(Machine.CO.value)
+
             console.log(Instructions.BCV(op1, Machine.Flags))
+
+            /*Si la condition est vérifiée*/
+
             if (Instructions.BCV(op1, Machine.Flags)) {
                 
+                let op2 = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
+                console.log(op2)
 
-                setTimeout(() => {
-                    myRef.current.style.opacity = '0%'
-                }, timeRef.current)
-
-                let x1 = myRef.current.getBoundingClientRect().left;
-                let y1 = myRef.current.getBoundingClientRect().top;
-
-                let x2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().left;
-                let y2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().top
-
-                tabPos.current.push({ x: x2 - x1, y: y2 - y1 })
-                setTimeout(() => {
-                    myRef.current.style.opacity = '60%'
-                },timeRef.current)
-
-                timeRef.current= +1000
-
-                setTimeout(() => {
-                    pos.current = tabPos.current.shift()
-                    setPosition(pos.current)
-                },timeRef.current)
-
-                y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top
-                tabPos.current.push({x : x2 - x1, y : y2 - y1})
-
-                setTimeout(() => {
-                    pos.current = tabPos.current.shift()
-                    setPosition(pos.current)
-                }, timeRef.current)
-
-                timeRef.current = +1000
-
-               x2 =  document.querySelector('.RamBusDonnees .rectangle').getBoundingClientRect().left
-               tabPos.current.push({x : x2 - x1, y : y2 - y1})
-
-               setTimeout(() => {
-                   pos.current = tabPos.current.shift()
-                   setPosition(pos.current)
-               }, timeRef.current)
-
-               timeRef.current = +1000
-
-               y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top
-               tabPos.current.push({x : x2 - x1, y : y2 - y1})
-
-               setTimeout(() => {
-                   pos.current = tabPos.current.shift()
-                   setPosition(pos.current)
-               }, timeRef.current)
-
-               timeRef.current = +1000
-
-               y2 = document.querySelector('.BusCo .triangleHaut').getBoundingClientRect().top
-               tabPos.current.push({x : x2 - x1, y : y2 - y1})
-
-               setTimeout(() => {
-                   pos.current = tabPos.current.shift()
-                   setPosition(pos.current)
-               }, timeRef.current)
-
-               timeRef.current = +1000
-
-               setTimeout(() => {
-                 Co.value = new Mot16(op2.mot)
-               },timeRef.current)
- 
-               timeRef.current = +1000
-               setTimeout(() => {
-                myRef.current.style.opacity = '0%'
-            },timeRef.current)
-
-            timeRef.current = +1000
+                Machine.CO.value = new Mot16(op2.mot)
+                
             }
+            /*Si la consition n'est pas vérifiée*/
             else {
-                Machine.CO.incCO();
-            }
 
+                  Machine.CO.incCO();
+                  Machine.CO.incCO();
+            } 
+
+            tableFlags.current.push(Machine.Flags.flags.hexa)
+            setTimeout(() => {
+                document.querySelector('.FLAG').classList.add('boxShadowBlue')       
+                flags1.current = tableFlags.current.shift()
+                setFo11(flags1.current)
+            }, timeRef.current)
+            timeRef.current += 1000  
+
+            setTimeout(() => {
+                document.querySelector('.FLAG').classList.remove('boxShadowBlue')       
+            }, timeRef.current)
+            timeRef.current += 1000   
             
         }
+        
+    /**********************************************************************************************************/
         /**BCF */
-        /**********************************************************************************/
         else if (parseInt(Machine.UC.Cop, 2) == 19) {
-            let op2 = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
+
             let op1 = parseInt(Machine.UC.C, 2)
+
+            /*Si la condition n'est pas vérifiée*/
+
             if (Instructions.BCF(op1, Machine.Flags)) {
-                Co.value = new Mot16(Instructions.DEC(op2, new Flags(new Mot16("0000000000000000"))))
+
+                let op2 = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
+                console.log(op2)
+
+                Machine.CO.value = new Mot16(op2.mot)
+
             }
+
+            /*Si la condition est vérifiée*/
+
+            else {
+                 Machine.CO.incCO();
+                 Machine.CO.incCO();
+            }
+
+            tableFlags.current.push(Machine.Flags.flags.hexa)
+            setTimeout(() => {
+                document.querySelector('.FLAG').classList.add('boxShadowBlue')       
+                flags1.current = tableFlags.current.shift()
+                setFo11(flags1.current)
+            }, timeRef.current)
+            timeRef.current += 1000  
+
+            setTimeout(() => {
+                document.querySelector('.FLAG').classList.remove('boxShadowBlue')       
+            }, timeRef.current)
+            timeRef.current += 1000   
         }
-        /************************************************************************************/
+
+    /**********************************************************************************************************/
+        /*ENT*/
         else if (parseInt(Machine.UC.Cop, 2) == 20) {
             
             let here = prompt("Entrez une valeur");
@@ -1521,6 +1447,9 @@ export function Sim() {
             },timeRef.current)
 
         }
+
+    /**********************************************************************************************************/
+        /*SORT*/
         else if (parseInt(Machine.UC.Cop, 2) == 21) {
             setTimeout(() => {
             alert("La valeur de l'accumulateur est : " + Machine.ACC.value.entier)
@@ -1602,7 +1531,7 @@ export function Sim() {
                         default:
                             break;
                 }
-                //**********************************8 */
+                //************************************/
                 
             }
             else{
@@ -3336,7 +3265,7 @@ setTimeout(() => {
                     console.log(timeRef.current)
                     Traiter(machine)
                     setMachine(machine)
-                    if(parseInt(machine.UC.Cop, 2) != 17 && parseInt(machine.UC.Cop, 2) != 18){
+                    if(parseInt(machine.UC.Cop, 2) != 17 && parseInt(machine.UC.Cop, 2) != 18 && parseInt(machine.UC.Cop, 2) != 19){
                        machine.CO.incCO()//inc co
                     }
                     
