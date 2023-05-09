@@ -380,6 +380,14 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
     return(
       <div >
         <div className='body'>
+        <Button
+  link="/code/programmation-syntaxe"
+  text="syntaxe"
+  style={{
+    background: '#00A6FB', color: '#F8F9FA', 
+    cursor: 'pointer', position:'absolute', top:'14vh', right:'17vw'
+  }}
+></Button>
           <Navbar label="Simulation" isAuthenticated={props.isAuthenticated} />
         <div className='hugecontainer'>
        <div className='Bigcontainer'>
