@@ -13,7 +13,6 @@ import { Link } from 'react-router-dom';
 import Btn_simule from '../components/Btn_simuler2.js';
 import Title from '../components/Title2.js';
 
-
 function Code(props) {
   const isAuthenticated=props.isAuthenticated;
   const [base,setBase]=useState("")
@@ -74,22 +73,6 @@ function Code(props) {
               //--------------------------------------------------------------------------------\\
        //-----------------------------------------------------------------------------------------------//
 
-  
-  //  var simuler=document.querySelector('#btn2');
-  //  let compiled=false;
-  //  simuler.addEventListener('click',()=>
-  //  {
-  //   if(compiled===false)
-  //   {
-  //     localStorage.setItem("compiled", "false");
-  //     throw new Error ('compile first');
-  //   }
-  //   else
-  //   {
-  //     localStorage.setItem("compiled", "true")
-  //   }
-  //  })
-  
 
    let binary='';
     var codes=document.getElementsByTagName('textarea');
@@ -97,17 +80,6 @@ function Code(props) {
 
     /***************************************************************************************/
     
-    // let nb=0;
-    // codes[0].addEventListener('keydown', (e) => {
-    //     if (e.key === "Enter") 
-    //     {
-    //       nb++;
-    //       let div = document.createElement('div');
-    //       let txt = document.createTextNode(nb);
-    //       div.appendChild(txt);
-    //       document.getElementById('blue_box_1').appendChild(div);
-    //     }
-    // });
     function countLines() 
     {
       console.log('A LINTERIEUR DE LA FONCTION' );
@@ -139,23 +111,17 @@ return count ;    }
      
     });
     
-  //   codes[1].addEventListener('keyup', (e)=>
-  //   {
-  //  if (e.keyCode===13)
-  //  { i++;
-  //   console.log(i);
-  //  }
-  //   })
+  
 
   /****************************************   RENDRE LE BOUTTON SIMULER VISIBLE    ********************************************************/
-    compiler.addEventListener('click',()=>
-    {
-      if(codes[0].value!=='' || codes[1].value!=='')
-      {
-      document.querySelector('#btn2').style.visibility='visible';
-      }
-      console.log(codes[0].value);
-    });
+    // compiler.addEventListener('click',()=>
+    // {
+    //   if(codes[0].value!=='' || codes[1].value!=='')
+    //   {
+    //   document.querySelector('#btn2').style.visibility='visible';
+    //   }
+    //   console.log(codes[0].value);
+    // });
 
 
 
@@ -223,9 +189,6 @@ codes[1].value=hexa;
 }
 })
 /*************************************** FIN CONVERSION DU MNEMONIQUE VERS L'HEXA ******************************************************************* */
-    
-  
-
 
            /************************************************************************************************* */
  /*************************************** LIMITER LE NOMBRE DE CARACTERES DANS LE TITRE  ****************************************** */
@@ -243,8 +206,7 @@ if(e.target.value.length>max)
 
 
  
-    
-                     /************************************************************************************************* */
+                    /************************************************************************************************* */
 /******************************************************** POP UP IN ****************************************************************** */
 
     document.querySelector('.buttons .button').addEventListener('click',()=>
@@ -461,6 +423,14 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
         </div></Link>
 
       </div>
+          <div className='compiled' >
+          </div>
+          <br></br>
+          <hr>
+          </hr>
+          <br></br>
+          <br></br>
+          <div className='erreur'></div>
           </div>
           <div id='pop_up'>
            <Title textareaValue={textAreaTitle} handleTextareaChange={handleTextareaChangeTitle}></Title>
@@ -469,7 +439,6 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
            </button>
           </div>
            
-          <div className='erreur'></div>
           </div>
     );
 }
