@@ -4,10 +4,10 @@ import './RessourcesExplication.css';
 import Navbar from '../components/Navbar';
 import ButtonRessource from '../ComponentsRevision/ButtonRessource';
 
-function SitesPage() {
+function SitesPage(props) {
   return (
     <div className='SitesPage'>
-      <Navbar label='Sites' />
+      <Navbar label='Sites'   isAuthenticated={props.isAuthenticated}/>
       <div className='containerSites'>
         <ButtonRessource
           label="Cours de l'ESI"

@@ -508,7 +508,7 @@ export const quizData = [
   }
 ];
 
-const QuizApp = () => {
+const QuizApp = (props) => {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("");
   const handleCategorySelect = (category) => {
@@ -518,7 +518,7 @@ const QuizApp = () => {
 
   return (
     <div className="quizz">
-    <Navbar label="Quiz"/>
+    <Navbar label="Catégories"  isAuthenticated={props.isAuthenticated}/>
       <p className="p">Choisissez une catégorie</p>
       <ul className="categories">
         {quizData.map((data) => (

@@ -6,11 +6,11 @@ import {ReactComponent as Ressources} from '../Images/Ressources.svg';
 import '../App.css';
 import Navbar from '../components/Navbar';
 
-function Revision () {
+function Revision (props) {
 
   return(
    <div className='Revision'>
-     <Navbar label="Révision"/>
+     <Navbar label="Révisions"  isAuthenticated={props.isAuthenticated}/>
      <div className='ContainerRevision'>
 
         <div className='Explication'>

@@ -4,11 +4,11 @@ import './RessourcesExplication.css';
 import Navbar from '../components/Navbar';
 import ButtonRessource from '../ComponentsRevision/ButtonRessource';
 
-function VideosPage () {
+function VideosPage (props) {
 return(
 
   <div className='VideosPage'>
-     <Navbar label="Vidéos"/>
+     <Navbar label="Vidéos"  isAuthenticated={props.isAuthenticated}/>
     <div className='containerVideos'>
        <ButtonRessource label="Introduction to Assembly Language" 
          p1="Cette série de vidéos sur la chaîne YouTube de Derek Banas fournit une introduction complète à l'assembleur, couvrant les concepts de base et les opérations de base." 

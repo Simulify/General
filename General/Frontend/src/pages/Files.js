@@ -10,16 +10,12 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 
 
-function Files({ isAuthenticated, setIsAuthenticated, currentUser, setCurrentUser }) {
+function Files(props) {
 
 
   //the variables of the visibility of hte files and folders ... by default it's at false util click
   const [myFilesVisible, setMyFilesVisible] = useState(false);
-  const [arithmeticVisible, setArithmeticVisible] = useState(false);
-  const [logicVisible, setLogicVisible] = useState(false);
-  const [branchingVisible, setBranchingVisible] = useState(false);
-  const [transferVisible, setTransferVisible] = useState(false);
-  const [shiftVisible, setShiftVisible] = useState(false);
+
   const [fileExempleVisible, setFileExempleVisible] = useState(false);
   const [files, setFiles] = useState([]);
  //---------------------------------------------------------------------
@@ -66,25 +62,7 @@ async function removeFile(id) { // removes files based on their _id
     setMyFilesVisible((prevState) => !prevState);
   }
 
-  function handleArithmeticClick() {
-    setArithmeticVisible((prevState) => !prevState);
-  }
 
-  function handleLogicClick() {
-    setLogicVisible((prevState) => !prevState);
-  }
-
-  function handleBranchingClick() {
-    setBranchingVisible((prevState) => !prevState);
-  }
-
-  function handleTransferClick() {
-    setTransferVisible((prevState) => !prevState);
-  }
-
-  function handleShiftClick() {
-    setShiftVisible((prevState) => !prevState);
-  }
 //---------------------------------------------------------
   
 
@@ -93,7 +71,7 @@ async function removeFile(id) { // removes files based on their _id
   
     <div className="Files">
 
-      <Navbar label="Les fichiers" />
+      <Navbar label="Les fichiers"  isAuthenticated={props.isAuthenticated}/>
       <div className="Menu-container">
         <div className="menu-trigger-exemple"
         onClick={handleExempleClick}>
@@ -106,75 +84,94 @@ async function removeFile(id) { // removes files based on their _id
         <div
           className={`Menu-exemples ${fileExempleVisible ? 'show' : ''}`}
         >
-          <div className="subfiles-arithmetic" onClick={handleArithmeticClick}>
-            <SubfilesButton label="Arithmétiques"  />
-          </div>
-          <div className={`file-arithmetic ${arithmeticVisible ? 'show' : ''}`}>
+        
+          
           <Link to="/code">
-          <FileNoDelete label="ADD" codeHexa="azerty" codeMemo="azerty "  />
+          <FileNoDelete label="Maximum de deux nombres" codeHexa="" codeMemo="MOV BX 5678H
+MOV ACC BX
+CMP ACC 1234H
+BCV 02 L1
+MOV BX 1234H
+L1: MOV ACC BX
+SOR
+STOP" />
     </Link>
     <Link to="/code">
-    <FileNoDelete label="SUB" codeHexa="azerty" codeMemo="azerty "  />
+    <FileNoDelete label="Somme des entiers de 1 à 10" codeHexa="" codeMemo="MOV AX 0
+MOV CX 10
+MOV BX 1
+L1: ADD ACC BX
+INC BX
+LOOP L1
+SOR 
+STOP"  />
       </Link>
       <Link to="/code">
-      <FileNoDelete label="DIV" codeHexa="azerty" codeMemo="azerty " />
-      </Link>
-          </div>
-
-          <div className="subfiles-logic" onClick={handleLogicClick}>
-            <SubfilesButton label="Logique"  />
-          </div>
-
-          <div className={`file-logic ${logicVisible ? 'show' : ''}`}>
-          <Link to="/code">
-          <FileNoDelete label="ET" codeHexa="azerty" codeMemo="azerty "/>
+      <FileNoDelete label="Factorielle d'un nombre" codeHexa="" codeMemo="ENT AX
+MOV CX ACC
+L1: MUL ACC CX
+DEC CX
+CMP CX 00
+BCF 00 L1
+SOR
+STOP" />
       </Link>
       <Link to="/code">
-      <FileNoDelete label="OU" codeHexa="azerty" codeMemo="azerty " />
+          <FileNoDelete label="XOR( OU exclusif ) avec la pile" codeHexa="" codeMemo="MOV BX 12H
+PUSH BX
+MOV BX 56H
+PUSH BX
+POP BX
+POP ACC
+XOR ACC BX
+SOR
+STOP"/>
+      </Link>
+
+      <Link to="/code">
+          <FileNoDelete label="Reste de division euclidienne" codeHexa="" codeMemo="MOV AX 54H
+MOV BX 7H
+MOV DX 0H
+DIV: CMP AX BX 
+BCV 4 EXIT
+SUB ACC BX 
+INC DX 
+BCF 0 DIV
+EXIT: MOV ACC DX
+SOR"/>
     </Link>
     <Link to="/code">
-    <FileNoDelete label="NON" codeHexa="azerty" codeMemo="azerty " />
+          <FileNoDelete label="Permutation du contenu de 2 mot mémoire" codeHexa="" codeMemo="MOV AX 12H
+MOV DX 10H
+MOV SI 7H
+MOV BX 20H
+MOV CX 4H
+CHM ACC [BX + SI] 
+MOV DX AX
+CHM ACC *CX
+RGM [BX + SI] 
+MOV ACC DX
+RGM *CX
+STOP"  />
     </Link>
-           
-          </div>
-
-          <div className="subfiles-branching" onClick={handleBranchingClick}>
-            <SubfilesButton label="Branchement"  />
-          </div>
-
-          <div className={`file-branching ${branchingVisible ? 'show' : ''}`}>
-          <Link to="/code">
-          <FileNoDelete label="BCV" codeHexa="azerty" codeMemo="azerty " />
-    </Link>
-    
     <Link to="/code">
-    <FileNoDelete label="LOOP" codeHexa="azerty" codeMemo="azerty " />
+          <FileNoDelete label="Rotation et décalage" codeHexa="" codeMemo="MOV AX 8
+SHL ACC 3
+SOR
+MOV ACC 7
+SHR ACC 4
+SOR
+MOV ACC 32
+ROR ACC 5
+SOR
+MOV ACC 24
+ROL ACC 10
+SOR
+STOP"  />
     </Link>
+    {/*------------------ */}
          
-          </div>
 
-          <div className="subfiles-transfer" onClick={handleTransferClick}>
-            <SubfilesButton label="Transfert"  />
-          </div>
-
-          <div className={`file-transfer ${transferVisible ? 'show' : ''}`}>
-          <Link to="/code">
-          <FileNoDelete label="PERMUT" codeHexa="azerty" codeMemo="azerty "  />
-    </Link>
-          </div>
-
-          <div className="subfiles-shift" onClick={handleShiftClick}>
-            <SubfilesButton label="Décalages" />
-          </div>
-
-          <div className={`file-shift ${shiftVisible ? 'show' : ''}`}>
-          <Link to="/code">
-          <FileNoDelete label="SHIFT LEFT" codeHexa="azerty" codeMemo="azerty "  />
-    </Link>
-    <Link to="/code">
-    <FileNoDelete label="SHIFT RIGHT" codeHexa="azerty" codeMemo="azerty " />
-    </Link>
-          </div>
         </div>
         <div className="second-menu">
   <div className="menu-trigger-mesFichiers" onClick={handleMyFilesClick}>

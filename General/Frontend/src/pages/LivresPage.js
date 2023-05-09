@@ -4,10 +4,10 @@ import './RessourcesExplication.css';
 import Navbar from '../components/Navbar';
 import ButtonRessource from '../ComponentsRevision/ButtonRessource';
 
-function LivresPage () {
+function LivresPage (props) {
  return(
   <div className='LivresPage'>
-     <Navbar label="Livres"/>
+     <Navbar label="Livres"  isAuthenticated={props.isAuthenticated}/>
     <div className='containerLivres'>       
        <ButtonRessource label="Assembly Language for x86 Processors" p2="By Kip R. Irvine. Published by Pearson Education, Inc." p1="Includes exercises and projects to reinforce learning" lien ="https://www.amazon.com/Assembly-Language-x86-Processors-7th/dp/0133769402"/>
        <ButtonRessource label="The Art of Assembly Language" p1="Programming for PC and Linux Computers" p2="By Randall Hyde. Published by No Starch Press"  lien ="https://www.amazon.com/Art-Assembly-Language-2nd/dp/1593272073"/>

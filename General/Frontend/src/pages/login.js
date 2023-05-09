@@ -7,12 +7,21 @@ import { ReactSVG } from 'react-svg';
 import InputButton from '../Components_login/InputButton';
 import logo from '../Components_login/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
+import image1 from '../Components_login/image1.svg';
+import image2 from '../Components_login/image2.svg';
+import image3 from '../Components_login/image3.svg';
+import image4 from '../Components_login/image4.svg';
+import image5 from '../Components_login/image5.svg';
+import image6 from '../Components_login/image6.svg';
+import image7 from '../Components_login/image7.svg';
+import image8 from '../Components_login/image8.svg';
+import image9 from '../Components_login/image9.svg';
 
 function Login({ setIsAuthenticated,setCurrentUser,currentUser }) {
   const navigate = useNavigate(); 
   const [email, setEmail] = useState(''); 
   const [password, setPassword] = useState('');
-
+  const [currentImage, setCurrentImage] = useState(0);
   useEffect(() => { // sets the varible to true when user logs in 
     const isAuthenticated = localStorage.getItem('isAuthenticated');
     if (isAuthenticated) {
@@ -50,13 +59,18 @@ function Login({ setIsAuthenticated,setCurrentUser,currentUser }) {
         console.error(error);
       });
   };
-  
-  
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentImage((prevImage) => (prevImage + 1) % 6);
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
+  const images = [image1, image2, image3, image4, image5, image6, image7, image8,image9];
 
   return (
     <div className="Containerlogin">
       <div className="illustration">
-        <img src={Image} alt="illustration" />
+      <img src={images[currentImage]} alt="illustration" />
       </div>
       <div className="FormLogin">
         <ReactSVG src={logo} />

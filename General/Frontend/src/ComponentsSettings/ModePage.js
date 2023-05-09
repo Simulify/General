@@ -6,7 +6,7 @@ import Moon from "../Images/Moon.svg";
 import Sun from "../Images/Sun.svg";
 
 
-const ModePage = () => {
+const ModePage = (props) => {
     const [formValue, setFormValue] = useState("");
     const [isEditing, setIsEditing] = useState(false);
     const [modeDisabled, setModeDisabled] = useState(true);
@@ -56,7 +56,7 @@ const ModePage = () => {
 
     return (
         <div className="ModePage">
-            <Navbar label="Parametres" />
+            <Navbar label="Parametres"  isAuthenticated={props.isAuthenticated}/>
             <FormSettings handleModify={handleModify} handleSave={handleSave} handleCancel={handleCancel} isEditing={isEditing} />
             <div className="ModeForm">
                 <label className="ModeLabel">Selectionner un mode  :</label>

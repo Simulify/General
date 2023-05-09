@@ -204,7 +204,7 @@
   padding: 2%;
   text-align: center;
   border-right: 1px solid var(--dark-to-light);
-  border-bottom: 1px solid var();
+  border-bottom: 1px solid var(--dark-to-light);
 }
 
 
