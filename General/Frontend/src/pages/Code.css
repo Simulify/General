@@ -380,3 +380,10 @@ div.container > div
         margin-left: -13%;
     }
 }
+.erreur
+{
+text-align: center;
+width: 100%;
+color: red;
+font-weight: bold;
+}
