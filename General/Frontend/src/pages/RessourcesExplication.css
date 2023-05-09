@@ -27,6 +27,7 @@
 .Description {
     padding-left: 10%;
     display: block;
+    width: 60vw;
 }
 
 
@@ -102,7 +103,7 @@ p{
     position: relative;
     margin: 0;
     padding: 0;
-    margin-right: 30%; /* add a 10px right margin */
+    margin-right: 30%; 
     animation: slide-in 0.5s ease-out;
     animation-fill-mode: forwards;
     opacity: 0;

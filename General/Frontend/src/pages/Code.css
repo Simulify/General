@@ -4,6 +4,15 @@ body
     overflow-y: scroll;
     /* position: relative; */
 }
+.erreur{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5vw;
+    color: crimson;
+    display: flex;
+    justify-content: center;
+}
 .side{
     background-color: #99DBFD;
     width: 36px;
@@ -41,16 +50,11 @@ body
     border-radius: 8px 0px 0px 0px;
     font-size: 13px;
 }
-div.buttons
-{
-    position: relative;
-    margin: 0;
-    right: 22vw;
-    display: grid;
-    grid-template-columns: 10vw 10vw 10vw;
-    grid-template-areas: "sauv exem prgrm";
-    grid-gap:7vw;
-    background-color: #00A6FB;
+
+.sauvegarder1{
+    position: absolute;
+    left: 20vw;
+    top: 25vh;
 }
 .icon
 {
@@ -92,22 +96,9 @@ border-bottom-left-radius: 16px;
 display: inline;
 height: 200px;
 }
-.button
-{
-    border-radius:30px;
-    border-color: transparent;
-    padding: 8px;
-    margin-left: auto;
-    margin-right: auto;
-    cursor: pointer;
-    color: #023047;
-    letter-spacing: 1.7px;
-    font-size: 10px;
-}
 .buttons
 {
 display: flex;
-width: 30%;
 }
 #btn1:hover
 {
@@ -157,12 +148,12 @@ filter: drop-shadow(0 0 0.3rem #00A6FB);
 }
 .container
 {
-width: 70%;
+width: 70vw;
 display: flex;
 justify-content: space-between;
 flex-direction: row;
 flex-wrap: nowrap;
-margin-top: 84px;
+margin-top: 16vh;
 margin-bottom: 24px;
 }
 .container2
@@ -214,12 +205,12 @@ margin-right: auto;
 resize: none;
 color: #023047;
 font-size: 24px;
-width: 100%;
-min-height:30vh;
+width: 25vw;
+height: 40vh;
 border-color: #00A6FB;
 border-top-right-radius: 8px;
 border-bottom-right-radius: 8px;
-padding: 20px;
+padding: 3vh;
 }
 textarea:focus 
 {
@@ -230,13 +221,6 @@ textarea::placeholder
 {
     color: #023047; 
     font-size: 15px;
-}
-hr
-{
-width:40%;
-border-color: #00A6FB;
-position: relative;
-    top: 36px;
 }
 .Bigcontainer
 {
@@ -253,42 +237,13 @@ div.container  div.hex
     margin-left: auto;
    border-top-left-radius: 8px;;
 }
-/* 1230px */
-/* @media  (min-width: 900px) and (max-width:1200px)
-{
-    .buttons
-    {
-        width: 40%;
-    }
-    hr 
-    {
-        width:40%;
-    }
-} */
 h4
 {
     margin-top: auto;
     margin-bottom: auto;
     color: #023047;
 }
-/* @media  (max-width:900px)
-{
-    .buttons
-    {
-        width: 60%;
-    }
-    hr 
-    {
-        width: 50%;
-    }   
-} */
-.compiled
-{
-    margin-left:  65%;
-    width: 50%;
-    font-size: 15px;
-    margin-right: auto;
-}
+
 .body
 {
     top: 0px;
@@ -322,20 +277,16 @@ h4
 #pop_up
 {
     border-radius: 15px;
-   background-color: white;  
-  width: 40%;
-    height: 250px;
-    margin-left: -2%;
-    margin-right: 0%;
-
+    background-color: white;  
+    width: 40vw;
+    height: 34vh;
     display: flex;
-   position: fixed;
-    top: 30%;
-    left: 35%;
+    position: fixed;
+    top: 33vh;
+    left: 30vw;
     z-index: 10;
-visibility: hidden;  
-filter: drop-shadow(0 0 0.225rem #00A6FB);
-
+    visibility: hidden;  
+    filter: drop-shadow(0 0 0.225rem #00A6FB);
 }
 .hide_bg
 {
@@ -358,9 +309,9 @@ filter: drop-shadow(0 0 0.225rem #00A6FB);
 }
 div.container  div.blue_box
 {
-min-height: 300px;
 background-color: #99DBFD;
-width: 60px;
+width: 6vw;
+height: 46.2vh;
 border-top-left-radius: 8px;
 border-bottom-left-radius: 8px;
 display: flex;
