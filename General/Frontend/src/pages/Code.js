@@ -419,22 +419,19 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
       <div >
         <div className='body'>
           <Navbar label="Simulation" isAuthenticated={props.isAuthenticated} />
-        <br></br>         <br></br>
-        <br></br>
         <div className='hugecontainer'>
        <div className='Bigcontainer'>
-       <div className="buttons" style={{ display: isAuthenticated ? 'block' : 'none' }}>
+       <div className="buttons" style={{ display: isAuthenticated ? 'flex' : 'none' }}>
        <Button
   className='sauvegarder1'
   text="Sauvegarder"
   style={{
-    background: '#F8F9FA', color: '#023047', position: 'relative', width: '148px',
-    cursor: 'pointer',
-    gridArea: 'sauv'
+    background: '#00A6FB', color: '#F8F9FA', 
+    cursor: 'pointer', position:'absolute', top:'14vh', left:'15vw'
   }}
 ></Button>
 
-          <Button link="/files" text="Fichiers" style={{ background: '#F8F9FA', color: '#023047', position: 'absolute', width: '148px', gridArea: 'exem' }}></Button>
+          <Button link="/files" text="Fichiers" style={{ background: '#F8F9FA', color: '#023047', position: 'absolute', top:'14vh', left:'30vw', gridArea: 'exem' }}></Button>
         </div>
    <div className="container">
       <div>
@@ -464,16 +461,9 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
         </div></Link>
 
       </div>
-          <div className='compiled' >
-          </div>
-          <br></br>
-          <hr>
-          </hr>
-       
           </div>
           <div id='pop_up'>
            <Title textareaValue={textAreaTitle} handleTextareaChange={handleTextareaChangeTitle}></Title>
-           <br></br>
            <button id='submit'  onClick={() => saveFile(localStorage.getItem('textareaValue'),localStorage.getItem('textareaValue1'),textAreaTitle)}  > 
                Soumettre
            </button>
