@@ -12,23 +12,12 @@ import next from '../Images/next.svg'
 import { Link } from 'react-router-dom';
 import Btn_simule from '../components/Btn_simuler2.js';
 import Title from '../components/Title2.js';
-
 function Code(props) {
   const isAuthenticated=props.isAuthenticated;
-  const [base,setBase]=useState("")
-  // const handleClick1= (event)=>{
-  //   if (event.target.textContent=="HEX") 
-  //   {
-  //     event.target.textContent="BIN"
-  //   }
-  //   else{event.target.textContent="HEX"}
-  // }
- 
+  const [base,setBase]=useState("") 
   const [textareaValue, setTextareaValue] = useState("");
   const [textareaValue1, setTextareaValue1] = useState("");
   const [textAreaTitle, setTextAreaTitle] = useState("");
-
-  
   const handleTextareaChange = (event) => {
     setTextareaValue(event.target.value);
   };
@@ -45,7 +34,6 @@ function Code(props) {
   const storedTextareaValue = localStorage.getItem("filecodeHexa");// load the data in hexa
   const storedTitle = localStorage.getItem("title"); // load the title of the file
   const storedTextareaValue1 = localStorage.getItem("filecodeMemo"); // load the data with mémonique
-  console.log("in cide",storedTextareaValue1);
   const buttonClicked = localStorage.getItem("buttonClicked");
   if (buttonClicked === null) {
     localStorage.setItem("buttonClicked", "false"); // if the button is not click we put it at false
@@ -56,15 +44,9 @@ function Code(props) {
     setTextareaValue(storedTextareaValue || "");
     setTextareaValue1(storedTextareaValue1 || "");
     setTextAreaTitle(storedTitle || "");
-    console.log('im getting in ');
-    console.log("hyu 1111 avant le stockage du programme ",storedTextareaValue1);  
-    document.getElementsByTagName('textarea')[0].readOnly=false;
-    // console.log(document.getElementsByTagName('textarea')[0]);
-    
+    document.getElementsByTagName('textarea')[0].readOnly=false;    
     document.getElementsByTagName('textarea')[0].value=storedTextareaValue;
     document.getElementsByTagName('textarea')[0].value=storedTextareaValue1;
-  console.log(document.getElementsByTagName('textarea')[0].value==="visible")  ;
-
   }
   localStorage.setItem("buttonClicked", "false"); // we reput it at false until the next click
 
@@ -74,61 +56,27 @@ function Code(props) {
        //-----------------------------------------------------------------------------------------------//
 
 
-   let binary='';
-    var codes=document.getElementsByTagName('textarea');
-    let compiler=document.querySelector('.container2 .button');
 
     /***************************************************************************************/
-    
-    function countLines() 
-    {
-      console.log('A LINTERIEUR DE LA FONCTION' );
-      const value = codes[0].value;
-      const newlines = value.match(/\n/g);
-      const count = newlines ? newlines.length + 1 : 1;
-return count ;    }
+    let binary='';
+    var codes=document.getElementsByTagName('textarea');
+    let compiler=document.querySelector('.container2 .button');
+var textarea = codes[0];    // Récupérer Le premier champ du texte 
+textarea.addEventListener('input',()=>
+{
+// Récupérer la valeur de la zone de texte
+var text = textarea.value;
 
-    let x = 0;
-    codes[0].addEventListener('keyup',(e)=>
-    {
-      if(e.key==="Enter")
-      {
-        let nv_x=countLines();
-        if(nv_x>x)
-        {
-          let last_child=codes[0].lastChild;
-       if (last_child.textContent!==nv_x)
-       {
-        let span = document.createElement('span');
-                
-        span.textContent=nv_x;
-              document.getElementById('blue_box_1').appendChild(span);
-              x=nv_x;
-       }
-          
-        }
-      }
-     
-    });
-    
-  
+// Compter le nombre de lignes
+var count = (text.match(/\n/g) || []).length + 1;
 
-  /****************************************   RENDRE LE BOUTTON SIMULER VISIBLE    ********************************************************/
-    // compiler.addEventListener('click',()=>
-    // {
-    //   if(codes[0].value!=='' || codes[1].value!=='')
-    //   {
-    //   document.querySelector('#btn2').style.visibility='visible';
-    //   }
-    //   console.log(codes[0].value);
-    // });
-
-
-
-
+// Afficher le résultat dans l'étiquette HTML
+var countField = document.getElementById("blue_box_1");
+countField.value = count;
+})
       /****************************************    CONERSION DE L'HEXA VERS MNEMONIQUE      ***********************************/
       /****************************************   RENDRE LE MNEMONIQUE DANS CODES [1]    ********************************************************/
-      let mnemonique='';
+    let mnemonique='';
     compiler.addEventListener('click',()=>
     {
       if(codes[0].value==='' || codes[1].value!=='')
@@ -161,8 +109,9 @@ return count ;    }
         console.log(mnemonique);
         codes[0].value=mnemonique;
       }
+    }
  /**************************************           DU MNEMONIQUE VERS L'HEXA DECIMALE          ********************************************************** */     
-      }
+      
       else if (codes[0].value!=='' && codes[1].value==="")
       {
         let parties = Compile(Decoup(codes[0].value));
@@ -220,7 +169,6 @@ if(e.target.value.length>max)
     {
       document.querySelector('#pop_up').style.visibility="hidden";
       document.querySelector('.body').classList.remove('hide_bg');
-      // document.querySelector('.Title').value='';
     }
    }
    );
@@ -297,21 +245,11 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
     // Assign textareaValue to codes[0].value
     const codes = document.getElementsByTagName('textarea');
     codes[0].readOnly=false;
-    console.log('a linterieur de save'+ codes[0].value);
     codes[0].value = codes[0].value;
-    console.log("douka",codes[0].value);
   }, [textareaValue]);
   const saveFile = (textareaValue, textareaValue1,textAreaTitle) => { 
- 
-
-    console.log("before save textareaValue",textareaValue);
-    console.log("before save textareaValue",textareaValue1);
     localStorage.setItem('textareaValue', document.getElementsByTagName('textarea')[0].value); // save data with mémonique
     localStorage.setItem('textareaValue1', document.getElementsByTagName('textarea')[1].value);
-
-    console.log('the value FROM LOCAL STORAGE'+ localStorage.getItem('textareaValue'));
-    console.log('the value LOCAL STORAGE'+ localStorage.getItem('textareaValue1'));
-
     localStorage.setItem('textAreaTitle', textAreaTitle); // save title of the file
     const storedTitle = localStorage.getItem("textAreaTitle"); // we put in stored title the stored data title
     
@@ -326,11 +264,7 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
       "codeMemo": localStorage.getItem('textareaValue'),
     };
     const storedUser = JSON.parse(localStorage.getItem("currentUser")); // we get the current user & his _id
-    console.log('currentUser:', storedUser);
-    console.log('currentUser_id:', storedUser._id);
-    const storedCodeId = localStorage.getItem("storedCode.id");
-    console.log("storedCode.id:",storedCodeId);
-  
+    const storedCodeId = localStorage.getItem("storedCode.id");  
     // Check if there is already a code with the same title for the current user
     axios
       .get(`https://simulify.onrender.com/users/${storedUser._id}/codes/${storedCodeId}`) //access the code itself
@@ -339,9 +273,7 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
         let exist = false;
         if (existingCode !== undefined) { //if existing title we update else we create a new one 
           exist = true;
-        }
-        console.log ("existingCode:", existingCode);
-  
+        }  
         if (exist === true) {
           axios
             .put(`https://simulify.onrender.com/users/${storedUser._id}/codes/${storedCodeId}`, file) //updating the file
