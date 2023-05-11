@@ -556,7 +556,7 @@ export function Sim(props) {
                 tableCx.current.push(val.hexa)
                 setTimeout(() => {
                     cx1.current = tableCx.current.shift()
-                    setFo10(bx1.current)
+                    setFo10(cx1.current)
                 }, timeRef.current)
                 break;
             case 3:
