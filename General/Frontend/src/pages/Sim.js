@@ -784,7 +784,7 @@ export function Sim(props) {
                     tableCx.current.push(val.hexa)
                     setTimeout(() => {
                         cx1.current = tableCx.current.shift()
-                        setFo10(bx1.current)
+                        setFo10(cx1.current)
                     }, timeRef.current)
                     break;
                 case 3:
@@ -1200,7 +1200,7 @@ export function Sim(props) {
                     tableCx.current.push(val.hexa)
                     setTimeout(() => {
                         cx1.current = tableCx.current.shift()
-                        setFo10(bx1.current)
+                        setFo10(cx1.current)
                     }, timeRef.current)
                     break;
                 case 3:
@@ -1387,7 +1387,7 @@ export function Sim(props) {
             }, timeRef.current);                  
             timeRef.current += 1000
 
-            Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value = new Mot16(Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)], Machine.Flags))
+            val=Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value = new Mot16(Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)], Machine.Flags))
 
             tableFlags.current.push(Machine.Flags.flags.hexa)
 
@@ -1403,105 +1403,104 @@ export function Sim(props) {
             }, timeRef.current)
             timeRef.current += 1000
 
-            setTimeout(() => {
-            switch (parseInt(Machine.UC.R1, 2)) {
-
-            case 0:
-            tableAc.current.push(val.hexa)
-            setTimeout(() => {
-                document.querySelector('#Acc').classList.add('boxShadowBlue')
-                acc.current = tableAc.current.shift()
-                setFo4(acc.current)
-            }, timeRef.current)
-
-            timeRef.current = +500
-
-            setTimeout(() => {
-                document.querySelector('#Acc').classList.remove('boxShadowBlue')
-            }, timeRef.current)
-
-            break;
-            case 1:
-                tableBx.current.push(val.hexa)
-                setTimeout(() => {
-                    document.querySelector('#Bx').classList.add('boxShadowBlue')
-                    bx1.current = tableBx.current.shift()
-                    setFo9(bx1.current)
-                }, timeRef.current)
-
-                timeRef.current = +500
-
-                setTimeout(() => {
-                    document.querySelector('#Bx').classList.remove('boxShadowBlue')
-                }, timeRef.current)
+            
+                //timeRef.current += 1000
+                x22 = document.querySelector('.UalBusDonnees .rectangle').getBoundingClientRect().left;
+                y22 = document.querySelector('.UalBusDonnees .rectangle').getBoundingClientRect().top;
+                    
+                    tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
+                    setTimeout(() => {
+                        
+                        pos1.current = tabPos1.current.shift()//we get the first element of the array
+                        setPosition1(pos1.current)//we set the position of the element
+                    }, timeRef.current);
+                    timeRef.current += 800
+                    setTimeout(() => {
+                      
+                        myRef1.current.style.opacity='60%'
+                      }, timeRef.current);  
+                    timeRef.current += 500
+                    y22 = document.querySelector('.BusDonnees ').getBoundingClientRect().top;
+                    tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
+                    setTimeout(() => {
+                        
+                        pos1.current = tabPos1.current.shift()//we get the first element of the array
+                        setPosition1(pos1.current)//we set the position of the element
+                    }, timeRef.current);
+                    timeRef.current += 800
+                    x22 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
+                    tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
+                    setTimeout(() => {
+                        
+                        pos1.current = tabPos1.current.shift()//we get the first element of the array
+                        setPosition1(pos1.current)//we set the position of the element
+                    }, timeRef.current);
+                    timeRef.current += 800
+                    y22 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().top;
+                    tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
+                    setTimeout(() => {
+                        
+                        pos1.current = tabPos1.current.shift()//we get the first element of the array
+                        setPosition1(pos1.current)//we set the position of the element
+                    }, timeRef.current);
+                    timeRef.current += 800
+                    setTimeout(() => {
+                      
+                      myRef1.current.style.opacity='0%'
+                    }, timeRef.current);  
+               
+                timeRef.current += 800
     
-                break;
-            case 2:
-                tableCx.current.push(val.hexa)
+                //let val=Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value = new Mot16(Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)], Machine.Flags))
+                switch (parseInt(Machine.UC.R1, 2)) {
+                    case 0:
+                        tableAc.current.push(val.hexa)
                 setTimeout(() => {
-                    document.querySelector('#Cx').classList.add('boxShadowBlue')
-                    cx1.current = tableCx.current.shift()
-                    setFo10(cx1.current)
+                    acc.current = tableAc.current.shift()
+                    setFo4(acc.current)
                 }, timeRef.current)
-
-                timeRef.current = +500
-
-                setTimeout(() => {
-                    document.querySelector('#Cx').classList.remove('boxShadowBlue')
-                }, timeRef.current)
-    
-                break;
-            case 3:
-                tableDx.current.push(val.hexa)
-                setTimeout(() => {
-                    document.querySelector('#Dx').classList.add('boxShadowBlue')
-                    dx1.current = tableDx.current.shift()
-                    setFo8(dx1.current)
-                }, timeRef.current)
-
-                timeRef.current = +500
-
-                setTimeout(() => {
-                    document.querySelector('#Dx').classList.remove('boxShadowBlue')
-                }, timeRef.current)
-    
-                break;
-            case 4:
-
-                tableSi.current.push(val.hexa)
-                setTimeout(() => {
-                    document.querySelector('#Si').classList.add('boxShadowBlue')
-                    si1.current = tableSi.current.shift()
-                    setFo7(si1.current)
-                }, timeRef.current)
-
-                timeRef.current = +500
-
-                setTimeout(() => {
-                    document.querySelector('#Si').classList.remove('boxShadowBlue')
-                }, timeRef.current)
-                break;
-            case 5:
-
-                table.current.push(val.hexa)
-                setTimeout(() => {
-                    document.querySelector('.Co').classList.add('boxShadowBlue')
-                    coo.current = table.current.shift()
-                    setFo(coo.current)
-                }, timeRef.current)
-
-                timeRef.current = +500
-
-                setTimeout(() => {
-                    document.querySelector('.Co').classList.remove('boxShadowBlue')
-                }, timeRef.current)
-
-                break;
-                default:
-                break;
-            }
-        },timeRef.current + 1000)
-
+                        break;
+                case 1:
+                    tableBx.current.push(val.hexa)
+                    setTimeout(() => {
+                        bx1.current = tableBx.current.shift()
+                        setFo9(bx1.current)
+                    }, timeRef.current)
+                    break;
+                case 2:
+                    tableCx.current.push(val.hexa)
+                    setTimeout(() => {
+                        cx1.current = tableCx.current.shift()
+                        setFo10(cx1.current)
+                    }, timeRef.current)
+                    break;
+                case 3:
+                    tableDx.current.push(val.hexa)
+                    setTimeout(() => {
+                        dx1.current = tableDx.current.shift()
+                        setFo8(dx1.current)
+                    }, timeRef.current)
+                    break;
+                case 4:
+                    tableSi.current.push(val.hexa)
+                    setTimeout(() => {
+                        si1.current = tableSi.current.shift()
+                        setFo7(si1.current)
+                    }, timeRef.current)
+                    break;
+                case 5:
+                    table.current.push(val.hexa)
+                    setTimeout(() => {
+                        coo.current = table.current.shift()
+                        setFo(coo.current)
+                    }, timeRef.current)
+                    break;
+                    default:
+                        break;
+                }
+            
+                timeRef.current += 1000
+            
         }
     //***************  LOOP UNTIL CX==0 ***************** */
         else if (parseInt(Machine.UC.Cop, 2) == 17) {
