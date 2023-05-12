@@ -317,7 +317,7 @@ border-bottom-left-radius: 8px;
 display: flex;
 flex-direction: column;
 align-items: flex-start;
-}
+text-align: center;}
 div.container > div
 {
     display: flex;
@@ -337,4 +337,25 @@ text-align: center;
 width: 100%;
 color: red;
 font-weight: bold;
+}
+
+.blue_box div
+{
+color: #ffff;
+font-weight: bold;
+margin-left: 30%;
+}
+#blue_box_2 div
+{
+    margin-bottom:10px;
+}
+
+#blue_box_1 div
+{
+    margin-top:10px;
+}
+hr
+{
+    width: 50%;
+    border-color: #00A6FB;
 }
