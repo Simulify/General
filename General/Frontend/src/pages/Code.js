@@ -295,11 +295,17 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
   useEffect(() => 
   {
     // Assign textareaValue to codes[0].value
-    const codes = document.getElementsByTagName('textarea');
-    codes[0].readOnly=false;
-    console.log('a linterieur de save'+ codes[0].value);
-    codes[0].value = codes[0].value;
-    console.log("douka",codes[0].value);
+
+
+    const buttonClicked = localStorage.getItem("buttonClicked");
+
+    if (buttonClicked === "true") 
+    { //if button clicked we set the values of the fields with stored data
+      const codes = document.getElementsByTagName('textarea');
+      codes[0].readOnly=false;
+      codes[0].value = codes[0].value;
+    }
+    localStorage.setItem("buttonClicked", "false"); // we reput it at false until the next click
   }, [textareaValue]);
   const saveFile = (textareaValue, textareaValue1,textAreaTitle) => { 
  
