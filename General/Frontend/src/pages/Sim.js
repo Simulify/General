@@ -1451,7 +1451,6 @@ export function Sim(props) {
                
                 timeRef.current += 800
     
-                //let val=Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value = new Mot16(Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)], Machine.Flags))
                 switch (parseInt(Machine.UC.R1, 2)) {
                     case 0:
                         tableAc.current.push(val.hexa)
