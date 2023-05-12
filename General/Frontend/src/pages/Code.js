@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 import Btn_simule from '../components/Btn_simuler2.js';
 import Title from '../components/Title2.js';
 function Code(props) {
-  const isAuthenticated=props.isAuthenticated;
+  
   const [base,setBase]=useState("") 
   const [textareaValue, setTextareaValue] = useState("");
   const [textareaValue1, setTextareaValue1] = useState("");
@@ -30,7 +30,7 @@ function Code(props) {
    
   useEffect(() => {
   //we load the stored data is the button of the file has been clicked
-  
+
   const storedTextareaValue = localStorage.getItem("filecodeHexa");// load the data in hexa
   const storedTitle = localStorage.getItem("title"); // load the title of the file
   const storedTextareaValue1 = localStorage.getItem("filecodeMemo"); // load the data with mémonique
@@ -45,11 +45,10 @@ function Code(props) {
     setTextareaValue1(storedTextareaValue1 || "");
     setTextAreaTitle(storedTitle || "");
     document.getElementsByTagName('textarea')[0].readOnly=false;    
-    document.getElementsByTagName('textarea')[0].value=storedTextareaValue;
+    document.getElementsByTagName('textarea')[1].value=storedTextareaValue;
     document.getElementsByTagName('textarea')[0].value=storedTextareaValue1;
   }
   localStorage.setItem("buttonClicked", "false"); // we reput it at false until the next click
-
 
        //-----------------------------------------------------------------------------------------------//
               //--------------------------------------------------------------------------------\\
@@ -254,6 +253,7 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
       codes[0].value = codes[0].value;
     }
     localStorage.setItem("buttonClicked", "false"); // we reput it at false until the next click
+    
   }, [textareaValue]);
   const saveFile = (textareaValue, textareaValue1,textAreaTitle) => { 
     localStorage.setItem('textareaValue', document.getElementsByTagName('textarea')[0].value); // save data with mémonique
@@ -315,7 +315,7 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
       });
       
   };
-
+ 
   
     return(
       <div >
@@ -328,10 +328,10 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
     cursor: 'pointer', position:'absolute', top:'14vh', right:'17vw'
   }}
 ></Button>
-          <Navbar label="Simulation" isAuthenticated={props.isAuthenticated} />
+          <Navbar label="Simulation" isAuthenticated={localStorage.getItem('isAuthenticated')} />
         <div className='hugecontainer'>
        <div className='Bigcontainer'>
-       <div className="buttons" style={{ display: isAuthenticated ? 'flex' : 'none' }}>
+       <div className="buttons" style={{ display: localStorage.getItem('isAuthenticated') ? 'flex' : 'none' }}>
        <Button
   className='sauvegarder1'
   text="Sauvegarder"
@@ -381,6 +381,7 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
           <div className='erreur'></div>
           </div>
           <div id='pop_up'>
+            
            <Title textareaValue={textAreaTitle} handleTextareaChange={handleTextareaChangeTitle}></Title>
            <button id='submit'  onClick={() => saveFile(localStorage.getItem('textareaValue'),localStorage.getItem('textareaValue1'),textAreaTitle)}  > 
                Soumettre

@@ -7,7 +7,7 @@ import logo from "../Components_login/logo.svg";
 import SignLogButton from "../Components_login/SignLogButton";
 import { Link, useNavigate } from 'react-router-dom';
 
-function Signup (setIsAuthenticated,setCurrentUser,currentUser) {
+function Signup (setisAuthenticated,setCurrentUser,currentUser) {
   const navigate = useNavigate(); 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
