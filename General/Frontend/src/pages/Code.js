@@ -58,30 +58,37 @@ function Code(props) {
 
 
     /***************************************************************************************/
+ 
+
     let binary='';
     var codes=document.getElementsByTagName('textarea');
     let compiler=document.querySelector('.container2 .button');
-var textarea = codes[0];    // Récupérer Le premier champ du texte 
-textarea.addEventListener('input',()=>
-{
-// Récupérer la valeur de la zone de texte
-var text = textarea.value;
 
-// Compter le nombre de lignes
-var count = (text.match(/\n/g) || []).length + 1;
-
-// Afficher le résultat dans l'étiquette HTML
-var countField = document.getElementById("blue_box_1");
-countField.value = count;
-})
       /****************************************    CONERSION DE L'HEXA VERS MNEMONIQUE      ***********************************/
       /****************************************   RENDRE LE MNEMONIQUE DANS CODES [1]    ********************************************************/
     let mnemonique='';
-    compiler.addEventListener('click',()=>
+   
+    compiler.onclick = e=>
     {
-      if(codes[0].value==='' || codes[1].value!=='')
+      setTimeout(()=>
       {
+     let erreur=document.querySelector('.erreur')
+     console.log(' erreur'+ erreur.innerHTML);
+     if(erreur.innerHTML==='')
+     {
       document.querySelector('#btn2').style.visibility='visible';
+      const  hr=document.querySelector('hr');
+      hr.style.borderColor='#00ff00';
+     }
+     else 
+     {
+    const  hr=document.querySelector('hr');
+    hr.style.borderColor="red";
+     }
+     
+      },500)
+      if((codes[0].value==='' && codes[1].value!=='' ))
+      {
       binary=codes[1].value.split('\n');
       if(codes[1].readOnly===false)
       {
@@ -99,48 +106,66 @@ countField.value = count;
         {
           if(i!==BinToMnem(binary).length-1)
           {
-            mnemonique+=BinToMnem(binary)[i] + '\n';
+             mnemonique+=BinToMnem(binary)[i] + '\n';
           }
           else
           {
             mnemonique+=BinToMnem(binary)[i] ;
           }
         }
-        console.log(mnemonique);
-        codes[0].value=mnemonique;
-      }
-    }
- /**************************************           DU MNEMONIQUE VERS L'HEXA DECIMALE          ********************************************************** */     
-      
-      else if (codes[0].value!=='' && codes[1].value==="")
-      {
-        let parties = Compile(Decoup(codes[0].value));
-console.log('resultat de parties'+ parties) ; 
-let hexa='';
-console.log(hexa);
-console.log(typeof(hexa)==='string');
-let arr=parties.toString().split(',');
-console.log(arr);
-
-for(let i=0;i<arr.length;i++)
+       codes[0].readOnly=false;
+       let numLines=mnemonique.split('\n').length;
+       codes[0].value=mnemonique;
+       const blueBox = document.querySelector('#blue_box_1');
+       for(let i=2; i<=numLines;i++)
 {
- arr[i]=parseInt(arr[i],2).toString(16);
- if(i!==arr.length-1)
- {
-  hexa=hexa+arr[i].padStart(4,0)+'\n';
- }
- else
- {
-  hexa=hexa+arr[i].padStart(4,0);
+  let div=document.createElement('div');
+  div.textContent=i;
+  blueBox.appendChild(div);
+  console.log(numLines);
+}
+}
+}
+ /**************************************    DU MNEMONIQUE VERS L'HEXA DECIMALE    ********************************************************** */     
+  else if ((codes[0].value!=='' && codes[1].value==="") || (codes[0].value!=='' && codes[1].value!=="" && codes[1].value!=='' && document.querySelector('.erreur').innerHTML!==''))
+{
+    let parties = Compile(Decoup(codes[0].value));
+    console.log('resultat de parties'+ parties) ; 
+    let hexa='';
+    console.log(hexa);
+    console.log(typeof(hexa)==='string');
+    let arr=parties.toString().split(',');
+    console.log(arr); 
+    for(let i=0;i<arr.length;i++)
+    {
+     arr[i]=parseInt(arr[i],2).toString(16);
+     if(i!==arr.length-1)
+     {
+      hexa=hexa+arr[i].padStart(4,0)+'\n';
+     }
+     else
+     {
+      hexa=hexa+arr[i].padStart(4,0);
+     }
+    }
+    const numLines = hexa.split('\n').length;
+    codes[1].value=hexa;
+    const blueBox = document.querySelector('#blue_box_2');
+    for(let i=2; i<=numLines;i++)
+    {
+      let div=document.createElement('div');
+      div.textContent=i;
+      blueBox.appendChild(div);
+      console.log(numLines);
+    }
  }
 }
-codes[1].value=hexa;
-}
-})
 /*************************************** FIN CONVERSION DU MNEMONIQUE VERS L'HEXA ******************************************************************* */
 
            /************************************************************************************************* */
  /*************************************** LIMITER LE NOMBRE DE CARACTERES DANS LE TITRE  ****************************************** */
+
+ 
 
  document.querySelector('.Title').addEventListener('input', (e)=>
 {
@@ -151,8 +176,35 @@ if(e.target.value.length>max)
  }
 })
 
-/*********************************************************************************************************************************/
+/**************************************************** COMPTER LE NOMBRE DE LIGNES *************************************************************/
 
+codes[0].onkeydown=e=>
+ {
+  const blueBox = document.querySelector('#blue_box_1');
+  const numLines = codes[0].value.split('\n').length +1;
+  let div=document.createElement('div');
+  if(e.keyCode===13)
+  {
+  div.textContent=numLines;  
+  blueBox.appendChild(div);
+  }
+  if(e.keyCode===8 || e.which === 8)
+  {
+  div.textContent=numLines;  
+  blueBox.removeChild(div);
+  }
+ }
+ codes[1].onkeydown=e=>
+ {
+  const blueBox = document.querySelector('#blue_box_2');
+  const numLines = codes[1].value.split('\n').length+1;
+  let div=document.createElement('div');
+  if(e.keyCode===13)
+  {
+  div.textContent=numLines;  
+  blueBox.appendChild(div);
+  }
+ }
 
  
                     /************************************************************************************************* */
@@ -193,48 +245,69 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
 
   codes[0].addEventListener('click', () => 
   {
-
-    if( codes[1].value!=='' ) 
+    if(codes[0].value!=='' && codes[1].value!=='' && document.querySelector('.erreur').innerHTML !=='')
     {
-      // codes[0].readOnly = true;
-      codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
-      codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
-
-      codes[1].readOnly = false;     
-       codes[0].readOnly = true;
-
+      setTimeout(() => {
+        if(codes[0].value!=='' && codes[1].value!==''  ) 
+    {
+    codes[0].readOnly =false;
+    codes[1].readOnly =false;
+    } 
+    }, 500);
     }
-
-    else  
-     {
-      codes[0].readOnly = false;
-      codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
-
-      codes[1].readOnly = true;
-      codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
-
+    else 
+    {
+      if( codes[1].value!=='' ) 
+      {
+        // codes[0].readOnly = true;
+        codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+        codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+        codes[1].readOnly = false;     
+         codes[0].readOnly = true;
+      }
+  
+      else   if(codes[1].value==='')
+       {
+        codes[0].readOnly = false;
+        codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)' 
+        codes[1].readOnly = true;
+        codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+      }
     }
 
   })
   codes[1].addEventListener('click', () => 
   {
-  if(codes[0].value!=='' ) 
+    if(codes[0].value!=='' && codes[1].value!=='' && document.querySelector('.erreur').innerHTML !=='')
+    {
+      setTimeout(() => {
+        if(codes[0].value!=='' && codes[1].value!==''  ) 
+    {
+    codes[0].readOnly =false;
+    codes[1].readOnly =false;
+    } 
+      }, 500);
+    }
+  else 
   {
-    
-  codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
-  codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
-    codes[1].readOnly=true;
-    codes[0].readOnly = false;
+    if(codes[0].value!=='' ) 
+    {
+      
+    codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+    codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+      codes[1].readOnly=true;
+      codes[0].readOnly = false;
+    }
+    else if(codes[0].value==='')
+    {
+      codes[1].readOnly = false;
+      codes[0].readOnly = true;    
+      codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+      codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+    }
   }
-  else
-  {
-    codes[1].readOnly = false;
-    codes[0].readOnly = true;    
-    codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
-    codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
-
-
-  }
+  
+ 
   }) 
   
   }, []); // This empty array as a second argument ensures that the effect is only run once when the component mounts
@@ -345,13 +418,17 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
         </div>
    <div className="container">
       <div>
-      <div className='blue_box' id='blue_box_1'> </div>
+      <div className='blue_box' id='blue_box_1'> 
+<br></br>
+<div>1</div>
+</div>
            <textarea className="textarea" placeholder='Veuillez saisir le code en mnémonique'></textarea>
          </div>
       <div>
          <div className='blue_box'  id='blue_box_2'>
-      <div className='hex'>Hex</div>          
-      </div>  <textarea className="textarea" placeholder='Veuillez saisir le code en Hexa'></textarea>
+      <div className='hex' style={{color:"#023047"}}>Hex</div>     
+      <div>1</div>     
+      </div>  <textarea className="textarea" placeholder='Veuillez saisir le code en Hexa' style={{ padding:'3vh'}}></textarea>
          </div>         
            </div>             
              </div>      
