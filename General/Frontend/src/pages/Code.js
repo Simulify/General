@@ -12,23 +12,12 @@ import next from '../Images/next.svg'
 import { Link } from 'react-router-dom';
 import Btn_simule from '../components/Btn_simuler2.js';
 import Title from '../components/Title2.js';
-
 function Code(props) {
   const isAuthenticated=props.isAuthenticated;
-  const [base,setBase]=useState("")
-  // const handleClick1= (event)=>{
-  //   if (event.target.textContent=="HEX") 
-  //   {
-  //     event.target.textContent="BIN"
-  //   }
-  //   else{event.target.textContent="HEX"}
-  // }
- 
+  const [base,setBase]=useState("") 
   const [textareaValue, setTextareaValue] = useState("");
   const [textareaValue1, setTextareaValue1] = useState("");
   const [textAreaTitle, setTextAreaTitle] = useState("");
-
-  
   const handleTextareaChange = (event) => {
     setTextareaValue(event.target.value);
   };
@@ -45,7 +34,6 @@ function Code(props) {
   const storedTextareaValue = localStorage.getItem("filecodeHexa");// load the data in hexa
   const storedTitle = localStorage.getItem("title"); // load the title of the file
   const storedTextareaValue1 = localStorage.getItem("filecodeMemo"); // load the data with mémonique
-  console.log("in cide",storedTextareaValue1);
   const buttonClicked = localStorage.getItem("buttonClicked");
   if (buttonClicked === null) {
     localStorage.setItem("buttonClicked", "false"); // if the button is not click we put it at false
@@ -56,15 +44,9 @@ function Code(props) {
     setTextareaValue(storedTextareaValue || "");
     setTextareaValue1(storedTextareaValue1 || "");
     setTextAreaTitle(storedTitle || "");
-    console.log('im getting in ');
-    console.log("hyu 1111 avant le stockage du programme ",storedTextareaValue1);  
-    document.getElementsByTagName('textarea')[0].readOnly=false;
-    // console.log(document.getElementsByTagName('textarea')[0]);
-    
+    document.getElementsByTagName('textarea')[0].readOnly=false;    
     document.getElementsByTagName('textarea')[0].value=storedTextareaValue;
     document.getElementsByTagName('textarea')[0].value=storedTextareaValue1;
-  console.log(document.getElementsByTagName('textarea')[0].value==="visible")  ;
-
   }
   localStorage.setItem("buttonClicked", "false"); // we reput it at false until the next click
 
@@ -74,66 +56,39 @@ function Code(props) {
        //-----------------------------------------------------------------------------------------------//
 
 
-   let binary='';
+
+    /***************************************************************************************/
+ 
+
+    let binary='';
     var codes=document.getElementsByTagName('textarea');
     let compiler=document.querySelector('.container2 .button');
 
-    /***************************************************************************************/
-    
-    function countLines() 
-    {
-      console.log('A LINTERIEUR DE LA FONCTION' );
-      const value = codes[0].value;
-      const newlines = value.match(/\n/g);
-      const count = newlines ? newlines.length + 1 : 1;
-return count ;    }
-
-    let x = 0;
-    codes[0].addEventListener('keyup',(e)=>
-    {
-      if(e.key==="Enter")
-      {
-        let nv_x=countLines();
-        if(nv_x>x)
-        {
-          let last_child=codes[0].lastChild;
-       if (last_child.textContent!==nv_x)
-       {
-        let span = document.createElement('span');
-                
-        span.textContent=nv_x;
-              document.getElementById('blue_box_1').appendChild(span);
-              x=nv_x;
-       }
-          
-        }
-      }
-     
-    });
-    
-  
-
-  /****************************************   RENDRE LE BOUTTON SIMULER VISIBLE    ********************************************************/
-    // compiler.addEventListener('click',()=>
-    // {
-    //   if(codes[0].value!=='' || codes[1].value!=='')
-    //   {
-    //   document.querySelector('#btn2').style.visibility='visible';
-    //   }
-    //   console.log(codes[0].value);
-    // });
-
-
-
-
       /****************************************    CONERSION DE L'HEXA VERS MNEMONIQUE      ***********************************/
       /****************************************   RENDRE LE MNEMONIQUE DANS CODES [1]    ********************************************************/
-      let mnemonique='';
-    compiler.addEventListener('click',()=>
+    let mnemonique='';
+   
+    compiler.onclick = e=>
     {
-      if(codes[0].value==='' || codes[1].value!=='')
+      setTimeout(()=>
       {
+     let erreur=document.querySelector('.erreur')
+     console.log(' erreur'+ erreur.innerHTML);
+     if(erreur.innerHTML==='')
+     {
       document.querySelector('#btn2').style.visibility='visible';
+      const  hr=document.querySelector('hr');
+      hr.style.borderColor='#00ff00';
+     }
+     else 
+     {
+    const  hr=document.querySelector('hr');
+    hr.style.borderColor="red";
+     }
+     
+      },500)
+      if((codes[0].value==='' && codes[1].value!=='' ))
+      {
       binary=codes[1].value.split('\n');
       if(codes[1].readOnly===false)
       {
@@ -151,47 +106,66 @@ return count ;    }
         {
           if(i!==BinToMnem(binary).length-1)
           {
-            mnemonique+=BinToMnem(binary)[i] + '\n';
+             mnemonique+=BinToMnem(binary)[i] + '\n';
           }
           else
           {
             mnemonique+=BinToMnem(binary)[i] ;
           }
         }
-        console.log(mnemonique);
-        codes[0].value=mnemonique;
-      }
- /**************************************           DU MNEMONIQUE VERS L'HEXA DECIMALE          ********************************************************** */     
-      }
-      else if (codes[0].value!=='' && codes[1].value==="")
-      {
-        let parties = Compile(Decoup(codes[0].value));
-console.log('resultat de parties'+ parties) ; 
-let hexa='';
-console.log(hexa);
-console.log(typeof(hexa)==='string');
-let arr=parties.toString().split(',');
-console.log(arr);
-
-for(let i=0;i<arr.length;i++)
+       codes[0].readOnly=false;
+       let numLines=mnemonique.split('\n').length;
+       codes[0].value=mnemonique;
+       const blueBox = document.querySelector('#blue_box_1');
+       for(let i=2; i<=numLines;i++)
 {
- arr[i]=parseInt(arr[i],2).toString(16);
- if(i!==arr.length-1)
- {
-  hexa=hexa+arr[i].padStart(4,0)+'\n';
- }
- else
- {
-  hexa=hexa+arr[i].padStart(4,0);
+  let div=document.createElement('div');
+  div.textContent=i;
+  blueBox.appendChild(div);
+  console.log(numLines);
+}
+}
+}
+ /**************************************    DU MNEMONIQUE VERS L'HEXA DECIMALE    ********************************************************** */     
+  else if ((codes[0].value!=='' && codes[1].value==="") || (codes[0].value!=='' && codes[1].value!=="" && codes[1].value!=='' && document.querySelector('.erreur').innerHTML!==''))
+{
+    let parties = Compile(Decoup(codes[0].value));
+    console.log('resultat de parties'+ parties) ; 
+    let hexa='';
+    console.log(hexa);
+    console.log(typeof(hexa)==='string');
+    let arr=parties.toString().split(',');
+    console.log(arr); 
+    for(let i=0;i<arr.length;i++)
+    {
+     arr[i]=parseInt(arr[i],2).toString(16);
+     if(i!==arr.length-1)
+     {
+      hexa=hexa+arr[i].padStart(4,0)+'\n';
+     }
+     else
+     {
+      hexa=hexa+arr[i].padStart(4,0);
+     }
+    }
+    const numLines = hexa.split('\n').length;
+    codes[1].value=hexa;
+    const blueBox = document.querySelector('#blue_box_2');
+    for(let i=2; i<=numLines;i++)
+    {
+      let div=document.createElement('div');
+      div.textContent=i;
+      blueBox.appendChild(div);
+      console.log(numLines);
+    }
  }
 }
-codes[1].value=hexa;
-}
-})
 /*************************************** FIN CONVERSION DU MNEMONIQUE VERS L'HEXA ******************************************************************* */
 
            /************************************************************************************************* */
  /*************************************** LIMITER LE NOMBRE DE CARACTERES DANS LE TITRE  ****************************************** */
+
+ 
 
  document.querySelector('.Title').addEventListener('input', (e)=>
 {
@@ -202,8 +176,35 @@ if(e.target.value.length>max)
  }
 })
 
-/*********************************************************************************************************************************/
+/**************************************************** COMPTER LE NOMBRE DE LIGNES *************************************************************/
 
+codes[0].onkeydown=e=>
+ {
+  const blueBox = document.querySelector('#blue_box_1');
+  const numLines = codes[0].value.split('\n').length +1;
+  let div=document.createElement('div');
+  if(e.keyCode===13)
+  {
+  div.textContent=numLines;  
+  blueBox.appendChild(div);
+  }
+  if(e.keyCode===8 || e.which === 8)
+  {
+  div.textContent=numLines;  
+  blueBox.removeChild(div);
+  }
+ }
+ codes[1].onkeydown=e=>
+ {
+  const blueBox = document.querySelector('#blue_box_2');
+  const numLines = codes[1].value.split('\n').length+1;
+  let div=document.createElement('div');
+  if(e.keyCode===13)
+  {
+  div.textContent=numLines;  
+  blueBox.appendChild(div);
+  }
+ }
 
  
                     /************************************************************************************************* */
@@ -220,7 +221,6 @@ if(e.target.value.length>max)
     {
       document.querySelector('#pop_up').style.visibility="hidden";
       document.querySelector('.body').classList.remove('hide_bg');
-      // document.querySelector('.Title').value='';
     }
    }
    );
@@ -245,48 +245,69 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
 
   codes[0].addEventListener('click', () => 
   {
-
-    if( codes[1].value!=='' ) 
+    if(codes[0].value!=='' && codes[1].value!=='' && document.querySelector('.erreur').innerHTML !=='')
     {
-      // codes[0].readOnly = true;
-      codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
-      codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
-
-      codes[1].readOnly = false;     
-       codes[0].readOnly = true;
-
+      setTimeout(() => {
+        if(codes[0].value!=='' && codes[1].value!==''  ) 
+    {
+    codes[0].readOnly =false;
+    codes[1].readOnly =false;
+    } 
+    }, 500);
     }
-
-    else  
-     {
-      codes[0].readOnly = false;
-      codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
-
-      codes[1].readOnly = true;
-      codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
-
+    else 
+    {
+      if( codes[1].value!=='' ) 
+      {
+        // codes[0].readOnly = true;
+        codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+        codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+        codes[1].readOnly = false;     
+         codes[0].readOnly = true;
+      }
+  
+      else   if(codes[1].value==='')
+       {
+        codes[0].readOnly = false;
+        codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)' 
+        codes[1].readOnly = true;
+        codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+      }
     }
 
   })
   codes[1].addEventListener('click', () => 
   {
-  if(codes[0].value!=='' ) 
+    if(codes[0].value!=='' && codes[1].value!=='' && document.querySelector('.erreur').innerHTML !=='')
+    {
+      setTimeout(() => {
+        if(codes[0].value!=='' && codes[1].value!==''  ) 
+    {
+    codes[0].readOnly =false;
+    codes[1].readOnly =false;
+    } 
+      }, 500);
+    }
+  else 
   {
-    
-  codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
-  codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
-    codes[1].readOnly=true;
-    codes[0].readOnly = false;
+    if(codes[0].value!=='' ) 
+    {
+      
+    codes[0].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+    codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+      codes[1].readOnly=true;
+      codes[0].readOnly = false;
+    }
+    else if(codes[0].value==='')
+    {
+      codes[1].readOnly = false;
+      codes[0].readOnly = true;    
+      codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
+      codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
+    }
   }
-  else
-  {
-    codes[1].readOnly = false;
-    codes[0].readOnly = true;    
-    codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
-    codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
-
-
-  }
+  
+ 
   }) 
   
   }, []); // This empty array as a second argument ensures that the effect is only run once when the component mounts
@@ -295,23 +316,21 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
   useEffect(() => 
   {
     // Assign textareaValue to codes[0].value
-    const codes = document.getElementsByTagName('textarea');
-    codes[0].readOnly=false;
-    console.log('a linterieur de save'+ codes[0].value);
-    codes[0].value = codes[0].value;
-    console.log("douka",codes[0].value);
+
+
+    const buttonClicked = localStorage.getItem("buttonClicked");
+
+    if (buttonClicked === "true") 
+    { //if button clicked we set the values of the fields with stored data
+      const codes = document.getElementsByTagName('textarea');
+      codes[0].readOnly=false;
+      codes[0].value = codes[0].value;
+    }
+    localStorage.setItem("buttonClicked", "false"); // we reput it at false until the next click
   }, [textareaValue]);
   const saveFile = (textareaValue, textareaValue1,textAreaTitle) => { 
- 
-
-    console.log("before save textareaValue",textareaValue);
-    console.log("before save textareaValue",textareaValue1);
     localStorage.setItem('textareaValue', document.getElementsByTagName('textarea')[0].value); // save data with mémonique
     localStorage.setItem('textareaValue1', document.getElementsByTagName('textarea')[1].value);
-
-    console.log('the value FROM LOCAL STORAGE'+ localStorage.getItem('textareaValue'));
-    console.log('the value LOCAL STORAGE'+ localStorage.getItem('textareaValue1'));
-
     localStorage.setItem('textAreaTitle', textAreaTitle); // save title of the file
     const storedTitle = localStorage.getItem("textAreaTitle"); // we put in stored title the stored data title
     
@@ -326,11 +345,7 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
       "codeMemo": localStorage.getItem('textareaValue'),
     };
     const storedUser = JSON.parse(localStorage.getItem("currentUser")); // we get the current user & his _id
-    console.log('currentUser:', storedUser);
-    console.log('currentUser_id:', storedUser._id);
-    const storedCodeId = localStorage.getItem("storedCode.id");
-    console.log("storedCode.id:",storedCodeId);
-  
+    const storedCodeId = localStorage.getItem("storedCode.id");  
     // Check if there is already a code with the same title for the current user
     axios
       .get(`https://simulify.onrender.com/users/${storedUser._id}/codes/${storedCodeId}`) //access the code itself
@@ -339,9 +354,7 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
         let exist = false;
         if (existingCode !== undefined) { //if existing title we update else we create a new one 
           exist = true;
-        }
-        console.log ("existingCode:", existingCode);
-  
+        }  
         if (exist === true) {
           axios
             .put(`https://simulify.onrender.com/users/${storedUser._id}/codes/${storedCodeId}`, file) //updating the file
@@ -405,13 +418,17 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
         </div>
    <div className="container">
       <div>
-      <div className='blue_box' id='blue_box_1'> </div>
+      <div className='blue_box' id='blue_box_1'> 
+<br></br>
+<div>1</div>
+</div>
            <textarea className="textarea" placeholder='Veuillez saisir le code en mnémonique'></textarea>
          </div>
       <div>
          <div className='blue_box'  id='blue_box_2'>
-      <div className='hex'>Hex</div>          
-      </div>  <textarea className="textarea" placeholder='Veuillez saisir le code en Hexa'></textarea>
+      <div className='hex' style={{color:"#023047"}}>Hex</div>     
+      <div>1</div>     
+      </div>  <textarea className="textarea" placeholder='Veuillez saisir le code en Hexa' style={{ padding:'3vh'}}></textarea>
          </div>         
            </div>             
              </div>      
