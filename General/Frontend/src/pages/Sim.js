@@ -204,30 +204,17 @@ export function Sim() {
         //     setComp(false)
         // }
         console.log(hexx)
+        document.querySelector('.erreur').innerHTML = '';
         }
         
-        catch (error) {
-            
+        catch (error) 
+           {         
             const msg = error.message;
             document.querySelector('.erreur').innerHTML = msg;
             console.log(msg);
             setComp(false);
             }
-        
-        
-
     }   
-    /********************************************************************************** */
-    // document.querySelector('.container2 .button').addEventListener('click',()=>
-    // {
-    //     if(comp===true)
-    //       {
-    //       document.querySelector('#btn2').style.visibility='visible';
-    //       document.querySelector('hr').style.borderColor="red";
-    //       }
-    // }) 
-
-
     /******************************************************************************************************/
 
     const Traiter = (Machine) => {
@@ -2063,7 +2050,6 @@ y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().t
         var RI = Machine.RI
         let blue
         let som = 0
-
         Co.incCO()//incrementer le compteur ordinal
         table.current.push(Co.value.hexa)
         console.log(table.current)
