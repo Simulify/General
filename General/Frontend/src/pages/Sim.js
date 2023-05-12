@@ -1123,14 +1123,67 @@ export function Sim() {
                     document.querySelector('.FLAG').classList.remove("boxShadowBlue")
                 },timeRef.current)
         }
-        //***************************************************** */
-        //treating RAZ
+
+        //****************************************************************************/
+        /*RAZ*/
+
         else if (parseInt(Machine.UC.Cop, 2) == 12) {
             Instructions.RAZ(Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value, Machine.Flags)
+            let val=Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value
+
+                 switch (parseInt(Machine.UC.R1, 2)) {
+                    case 0:
+                        tableAc.current.push(val.hexa)
+                setTimeout(() => {
+                    acc.current = tableAc.current.shift()
+                    setFo4(acc.current)
+                }, timeRef.current)
+                        break;
+                case 1:
+                    tableBx.current.push(val.hexa)
+                    setTimeout(() => {
+                        bx1.current = tableBx.current.shift()
+                        setFo9(bx1.current)
+                    }, timeRef.current)
+                    break;
+                case 2:
+                    tableCx.current.push(val.hexa)
+                    setTimeout(() => {
+                        cx1.current = tableCx.current.shift()
+                        setFo10(bx1.current)
+                    }, timeRef.current)
+                    break;
+                case 3:
+                    tableDx.current.push(val.hexa)
+                    setTimeout(() => {
+                        dx1.current = tableDx.current.shift()
+                        setFo8(dx1.current)
+                    }, timeRef.current)
+                    break;
+                case 4:
+                    tableSi.current.push(val.hexa)
+                    setTimeout(() => {
+                        si1.current = tableSi.current.shift()
+                        setFo7(si1.current)
+                    }, timeRef.current)
+                    break;
+                case 5:
+                    table.current.push(val.hexa)
+                    setTimeout(() => {
+                        coo.current = table.current.shift()
+                        setFo(coo.current)
+                    }, timeRef.current)
+                    break;
+                    default:
+                        break;
+                }
 
         }
-        //***************************************************** */
+
+        //***********************************************************************/
+
         // treating instructions from SHL to ROR 
+
         else if (parseInt(Machine.UC.Cop, 2) >= 13 && parseInt(Machine.UC.Cop, 2) < 17) {
         
             let i = new Mot16(Machine.UC.C.padStart(16, "0"))
@@ -1305,7 +1358,8 @@ export function Sim() {
                     }, timeRef.current);  
                
                 timeRef.current += 800
-    
+                
+                let val=Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value    
                 switch (parseInt(Machine.UC.R1, 2)) {
                     case 0:
                         tableAc.current.push(val.hexa)
@@ -1357,37 +1411,94 @@ export function Sim() {
             
         }
         //***************  LOOP UNTIL CX==0 ***************** */
-        else if (parseInt(Machine.UC.Cop, 2) == 17) {
-            //let op = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
-            //console.log("op", op)
+         else if (parseInt(Machine.UC.Cop, 2) == 17) {
+        
             if (Machine.CX.value.entier == 0) {
                 machine.CO.incCO()
                 machine.CO.incCO()
             } else {
-                //const flags = new Flags(new Mot16("0000000000000000"))
                 let op = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
                 Machine.CO.value=op
-                //console.log(Machine.CO.value)
                 Machine.CX.DecCX()
+                tableCx.current.push(machine.CX.value.hexa)// we push the difference between the two positions
+                setTimeout(() => {
+                    document.querySelector('#Cx').classList.add('boxShadowBlue')       
+                    cx1.current = tableCx.current.shift()//we get the first element of the array
+                    setFo10(cx1.current)//we set the position of the element
+                }, timeRef.current);
+                timeRef.current += 1000    
+                setTimeout(() => {
+                    document.querySelector('#Cx').classList.remove('boxShadowBlue')       
+                }, timeRef.current);
+                timeRef.current += 1000    
+            }
+        }
+
+        /****************************************************************************/
+        /** BCV */
+               else if (parseInt(Machine.UC.Cop, 2) == 18) {
+                console.log(Machine.Flags.flags)
+                let op1 = parseInt(Machine.UC.C, 2)
+                console.log(op1)
+                console.log(Machine.CO.value)
+                console.log(Instructions.BCV(op1, Machine.Flags))
+                /*Si la condition est vérifiée*/
+                if (Instructions.BCV(op1, Machine.Flags)) {
+                    
+                    let op2 = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
+                    console.log(op2)
+                    Machine.CO.value = new Mot16(op2.mot)
+                    
+                }
+                /*Si la consition n'est pas vérifiée*/
+                else {
+                      Machine.CO.incCO();
+                      Machine.CO.incCO();
+                } 
+                tableFlags.current.push(Machine.Flags.flags.hexa)
+                setTimeout(() => {
+                    document.querySelector('.FLAG').classList.add('boxShadowBlue')       
+                    flags1.current = tableFlags.current.shift()
+                    setFo11(flags1.current)
+                }, timeRef.current)
+                timeRef.current += 1000  
+                setTimeout(() => {
+                    document.querySelector('.FLAG').classList.remove('boxShadowBlue')       
+                }, timeRef.current)
+                timeRef.current += 1000   
                 
             }
-        }
-        /** BCV */
-        else if (parseInt(Machine.UC.Cop, 2) == 18) {
-            let op2 = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
-            let op1 = parseInt(Machine.UC.C, 2)
-            if (Instructions.BCV(op1, Machine.Flags)) {
-                Co.value = new Mot16(Instructions.DEC(op2, new Flags(new Mot16("0000000000000000"))))
-            }
-        }
+
+        /****************************************************************************/
         /**BCF */
+
         else if (parseInt(Machine.UC.Cop, 2) == 19) {
-            let op2 = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
             let op1 = parseInt(Machine.UC.C, 2)
+            /*Si la condition n'est pas vérifiée*/
             if (Instructions.BCF(op1, Machine.Flags)) {
-                Co.value = new Mot16(Instructions.DEC(op2, new Flags(new Mot16("0000000000000000"))))
+                let op2 = Mode[0](Machine, Machine.UC.reg, Machine.UC.C).value
+                console.log(op2)
+                Machine.CO.value = new Mot16(op2.mot)
             }
+            /*Si la condition est vérifiée*/
+            else {
+                 Machine.CO.incCO();
+                 Machine.CO.incCO();
+            }
+            tableFlags.current.push(Machine.Flags.flags.hexa)
+            setTimeout(() => {
+                document.querySelector('.FLAG').classList.add('boxShadowBlue')       
+                flags1.current = tableFlags.current.shift()
+                setFo11(flags1.current)
+            }, timeRef.current)
+            timeRef.current += 1000  
+            setTimeout(() => {
+                document.querySelector('.FLAG').classList.remove('boxShadowBlue')       
+            }, timeRef.current)
+            timeRef.current += 1000   
         }
+
+        /****************************************************************************/
         else if (parseInt(Machine.UC.Cop, 2) == 20) {
             
             let here = prompt("Entrez une valeur");
@@ -1416,12 +1527,15 @@ export function Sim() {
             },timeRef.current)
 
         }
+
+        /***********************************************************************************/
         else if (parseInt(Machine.UC.Cop, 2) == 21) {
             setTimeout(() => {
             alert("La valeur de l'accumulateur est : " + Machine.ACC.value.entier)
         }, timeRef.current)
         timeRef.current += 800
         }
+        /**********************************************************************************/
         /**MOV */
         else if (parseInt(Machine.UC.Cop, 2) == 22) {
             let val = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
