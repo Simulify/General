@@ -133,6 +133,7 @@ export function Sim() {
     let [fo11, setFo11] = useState("0000")//pour flags
     let [fo12, setFo12] = useState([])//pour pile
     let [fo13, setFo13] = useState("0000")//pour mem
+    const [dyna, setdyna] = useState("");
     const [coor, setCoor] = useState([]);
     const myRef = useRef(null);
     const myRef1 = useRef(null);
@@ -2053,6 +2054,11 @@ y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().t
         Co.incCO()//incrementer le compteur ordinal
         table.current.push(Co.value.hexa)
         console.log(table.current)
+        
+        setTimeout(() => {
+            setdyna("INC CO")
+        }, timeRef.current)
+        timeRef.current += 500
         setTimeout(() => {
             coo.current = table.current.shift()
             setFo(coo.current)
@@ -2061,7 +2067,6 @@ y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().t
             blue.className = "Co boxShadowBlue"
         }, timeRef.current)
         timeRef.current += 500
-
         machine.bus_adresse.transferer(Machine.CO, Machine.RAM)//co->RAM
         tableR.current.push(Machine.RAM.value.hexa)
                 
@@ -2088,7 +2093,10 @@ y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().t
             blue.className = "Co"
         }, timeRef.current)
         timeRef.current += 500
-
+        setTimeout(() => {
+            setdyna("CO TO RAM")
+        }, timeRef.current)
+        timeRef.current += 800
         y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
         tabPos.current.push({ x: x2 - x1, y: y2 - y1+10 })
         setTimeout(() => {
@@ -2115,9 +2123,9 @@ y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().t
         setTimeout(() => {
             document.querySelector('.RAM').classList.remove('boxShadowBlue');
             myRef.current.style.opacity = '0%'
+            setdyna("")
         }, timeRef.current);
         timeRef.current += 800
-                
                 setTimeout(() => {
                     // blue.className = "RAM"
                     blue = document.querySelector(".Memoire")
@@ -3330,6 +3338,7 @@ setTimeout(() => {
 
     return (
         <>{showPageOne ? <>
+        <h2 style={{ position: 'absolute', top:'80vh',right:'3vw'}}  >{dyna}</h2>
             <div className='Light' ref={myRef} style={{ position: 'absolute', transform: `translate(${position.x}px, ${position.y}px)` }} />
             <div className='Light1' ref={myRef1} style={{ position: 'absolute', transform: `translate(${position1.x}px, ${position1.y}px)` }} />
             <Simulation case1={fo5} case2={fo6} memoire={hexx} Co={fo}
