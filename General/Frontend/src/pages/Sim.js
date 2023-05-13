@@ -156,6 +156,7 @@ export function Sim() {
     const HandleClick = (event) => {
         try{
             let phrases=[]
+            console.log(document.querySelectorAll('textarea')[0].value)
             phrases = Compile(Decoup(document.querySelectorAll('textarea')[0].value))
             console.log(phrases[phrases.length - 1])
             if (phrases[phrases.length - 1] != "0110110000000000") {
@@ -2255,6 +2256,7 @@ y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().t
             setdyna("INC CO")
         }, timeRef.current)
         timeRef.current += 500
+        console.log(timeRef.current)
         setTimeout(() => {
             coo.current = table.current.shift()
             setFo(coo.current)
@@ -2263,6 +2265,7 @@ y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().t
             blue.className = "Co boxShadowBlue"
         }, timeRef.current)
         timeRef.current += 500
+        console.log(timeRef.current,machine)
         machine.bus_adresse.transferer(Machine.CO, Machine.RAM)//co->RAM
         tableR.current.push(Machine.RAM.value.hexa)
                 
@@ -3157,6 +3160,7 @@ setTimeout(() => {
     const [hexx, setHexx] = useState([])
     const HandleToggle = () => {
         setShowPageOne(true)
+        timeRef.current = 0
         setTimeout(() => {
             if (comp) { 
                 co.RAZ()//RAZ co=0
