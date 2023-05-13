@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.728bd04b.css",
-    "main.js": "/static/js/main.64c733ca.js",
+    "main.css": "/static/css/main.953830d7.css",
+    "main.js": "/static/js/main.b50b4aa0.js",
     "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
     "static/media/homeguide.svg": "/static/media/homeguide.4c747507deebbbafd5b6bc693bc78846.svg",
     "static/media/arch.svg": "/static/media/arch.dda23d78dc8f359b0241cfc12b853696.svg",
@@ -9,6 +9,15 @@
     "static/media/slide3.svg": "/static/media/slide3.dc09d15c7a4a67c4cee2699c9e9ae9a9.svg",
     "static/media/Group 9.svg": "/static/media/Group 9.66e32300bd64c596a194da38da78c0a4.svg",
     "static/media/format.svg": "/static/media/format.54ed63cc375837c92d4427abe4587e47.svg",
+    "static/media/image8.svg": "/static/media/image8.80e6cd6de973e2c97f5fbbbfa3667d0b.svg",
+    "static/media/image9.svg": "/static/media/image9.c9074513c9aefd23c7ab94737c12ce2e.svg",
+    "static/media/image7.svg": "/static/media/image7.954bc91c165141a0d06da06033360799.svg",
+    "static/media/image5.svg": "/static/media/image5.888937c05edec4b053c9c926cd4ccae3.svg",
+    "static/media/image6.svg": "/static/media/image6.0dfd8bd5f1935f06e0e234ec7eb669b7.svg",
+    "static/media/image4.svg": "/static/media/image4.0f64243b9b31b55613922e4d4072b323.svg",
+    "static/media/image3.svg": "/static/media/image3.d3d71b45f1c00f6a0ce64330a3c109fa.svg",
+    "static/media/image2.svg": "/static/media/image2.67191c084a813d2b00e264b1782b36dd.svg",
+    "static/media/image1.svg": "/static/media/image1.4051a39141f29e7c0816b21b2b9c329b.svg",
     "static/media/Image.svg": "/static/media/Image.988a82864ee1edf5afca06042ff6309a.svg",
     "static/media/Quiz.svg": "/static/media/Quiz.8ded14de86b9efa78dac6feaed81002f.svg",
     "static/media/logo.svg": "/static/media/logo.a6cb65a44880c82e12c91e7439994fb7.svg",
@@ -22,7 +31,7 @@
     "static/media/Setting.svg": "/static/media/Setting.6fdd4a86c11ddee556f807837045149e.svg",
     "static/media/united-states-of-america.svg": "/static/media/united-states-of-america.60bcf13667a751b909e5d9ac057fa793.svg",
     "static/media/Guide.svg": "/static/media/Guide.da175931121677cd5c130eed5a0cdab6.svg",
-    "static/media/Trash.svg": "/static/media/Trash.7e7a92fa9a6043f2f764ba89260c492c.svg",
+    "static/media/Trash.svg": "/static/media/Trash.553859ca2c06f4416957b0aa801a9246.svg",
     "static/media/Icon.svg": "/static/media/Icon.2c3d1f6d44df7fad2b0081111ac33dd4.svg",
     "static/media/Folder-open.svg": "/static/media/Folder-open.6320bec5f48a429e27ffe7c7f866529e.svg",
     "static/media/Revision.svg": "/static/media/Revision.61ce395e7569595bb4cef10a361037ad.svg",
@@ -50,12 +59,12 @@
     "static/media/point.svg": "/static/media/point.52cc7006e5b58c08aad20f5d7c136e45.svg",
     "static/media/Dropdown.svg": "/static/media/Dropdown.7fb570a236e46fbf23d29f8c495b7b42.svg",
     "static/media/Ellipse 7.svg": "/static/media/Ellipse 7.e20aa074c04b6e8b83eda0b554b3c928.svg",
-    "main.728bd04b.css.map": "/static/css/main.728bd04b.css.map",
-    "main.64c733ca.js.map": "/static/js/main.64c733ca.js.map",
+    "main.953830d7.css.map": "/static/css/main.953830d7.css.map",
+    "main.b50b4aa0.js.map": "/static/js/main.b50b4aa0.js.map",
     "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.728bd04b.css",
-    "static/js/main.64c733ca.js"
+    "static/css/main.953830d7.css",
+    "static/js/main.b50b4aa0.js"
   ]
 }
