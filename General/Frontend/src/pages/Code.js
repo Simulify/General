@@ -65,7 +65,7 @@ function Code(props) {
     let compiler=document.querySelector('.container2 .button');
 
       /****************************************    CONERSION DE L'HEXA VERS MNEMONIQUE      ***********************************/
-      /****************************************   RENDRE LE MNEMONIQUE DANS CODES [1]    ********************************************************/
+      /****************************************   RENDRE LE MNEMONIQUE DANS CODES [0]    ********************************************************/
     let mnemonique='';
    
     compiler.onclick = e=>
@@ -78,7 +78,9 @@ function Code(props) {
      {
       document.querySelector('#btn2').style.visibility='visible';
       const  hr=document.querySelector('hr');
-      hr.style.borderColor='#00ff00';
+      hr.style.borderColor='#00A6FB';
+      document.querySelector('.erreur').innerHTML.style.fontSize='15px';
+     
      }
      else 
      {
@@ -148,6 +150,7 @@ function Code(props) {
       hexa=hexa+arr[i].padStart(4,0);
      }
     }
+    console.log('lhexa est'+ hexa);
     const numLines = hexa.split('\n').length;
     codes[1].value=hexa;
     const blueBox = document.querySelector('#blue_box_2');
@@ -177,34 +180,43 @@ if(e.target.value.length>max)
 })
 
 /**************************************************** COMPTER LE NOMBRE DE LIGNES *************************************************************/
+ let numlines2;
+ let numlines1;
+codes[1].oninput=e=>
+{
+ numlines2 = codes[1].value.split('\n').length +1;
+ console.log(numlines1);
+ const blueBox = document.querySelector('#blue_box_2');
+ blueBox.innerHTML = "<div class='hex'>Hex</div>"
+ for(let i=1; i<numlines2;i++)
+ {
+   let div=document.createElement('div');
 
-codes[0].onkeydown=e=>
+  
+   div.textContent=i;
+   blueBox.appendChild(div);
+   console.log(numlines2);
+ } 
+}
+codes[0].oninput=e=>
+{
+ numlines1 = codes[0].value.split('\n').length +1;
+ console.log(numlines1);
+ const blueBox = document.querySelector('#blue_box_1');
+ blueBox.innerHTML = ""
+ for(let i=1; i<numlines1;i++)
  {
-  const blueBox = document.querySelector('#blue_box_1');
-  const numLines = codes[0].value.split('\n').length +1;
-  let div=document.createElement('div');
-  if(e.keyCode===13)
-  {
-  div.textContent=numLines;  
-  blueBox.appendChild(div);
-  }
-  if(e.keyCode===8 || e.which === 8)
-  {
-  div.textContent=numLines;  
-  blueBox.removeChild(div);
-  }
- }
- codes[1].onkeydown=e=>
- {
-  const blueBox = document.querySelector('#blue_box_2');
-  const numLines = codes[1].value.split('\n').length+1;
-  let div=document.createElement('div');
-  if(e.keyCode===13)
-  {
-  div.textContent=numLines;  
-  blueBox.appendChild(div);
-  }
- }
+   let div=document.createElement('div');
+
+   if(i===1)
+   {
+    div.style.marginTop='30px';
+   }
+   div.textContent=i;
+   blueBox.appendChild(div);
+   console.log(numlines2);
+ } 
+}
 
  
                     /************************************************************************************************* */
