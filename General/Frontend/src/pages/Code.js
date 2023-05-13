@@ -119,13 +119,19 @@ function Code(props) {
        let numLines=mnemonique.split('\n').length;
        codes[0].value=mnemonique;
        const blueBox = document.querySelector('#blue_box_1');
-       for(let i=2; i<=numLines;i++)
-{
-  let div=document.createElement('div');
-  div.textContent=i;
-  blueBox.appendChild(div);
-  console.log(numLines);
-}
+       blueBox.innerHTML = ""
+       for(let i=1; i<=numLines;i++)
+       {
+         let div=document.createElement('div');
+      
+         if(i===1)
+         {
+          div.style.marginTop='30px';
+         }
+         div.textContent=i;
+         blueBox.appendChild(div);
+         console.log(numlines2);
+       } 
 }
 }
  /**************************************    DU MNEMONIQUE VERS L'HEXA DECIMALE    ********************************************************** */     
@@ -151,20 +157,21 @@ function Code(props) {
      }
     }
     console.log('lhexa est'+ hexa);
-    const numLines = hexa.split('\n').length;
+    const numlines2 = hexa.split('\n').length;
     codes[1].value=hexa;
     const blueBox = document.querySelector('#blue_box_2');
-    for(let i=2; i<=numLines;i++)
-    {
-      let div=document.createElement('div');
-      div.textContent=i;
-      blueBox.appendChild(div);
-      console.log(numLines);
-    }
+    blueBox.innerHTML='';
+  blueBox.innerHTML = "<div class='hex'>Hex</div>"
+ for(let i=1; i<=numlines2;i++)
+ {
+   let div=document.createElement('div');  
+   div.textContent=i;
+   blueBox.appendChild(div);
+   console.log(numlines2);
+ } 
  }
 }
 /*************************************** FIN CONVERSION DU MNEMONIQUE VERS L'HEXA ******************************************************************* */
-
            /************************************************************************************************* */
  /*************************************** LIMITER LE NOMBRE DE CARACTERES DANS LE TITRE  ****************************************** */
 
@@ -243,7 +250,6 @@ if( codes[1].readOnly === false && codes[0].readOnly === true)
 {
   codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
   codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
-
 }
 else if( codes[0].readOnly === false && codes[1].readOnly === true)
 {
@@ -260,10 +266,10 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
     if(codes[0].value!=='' && codes[1].value!=='' && document.querySelector('.erreur').innerHTML !=='')
     {
       setTimeout(() => {
-        if(codes[0].value!=='' && codes[1].value!==''  ) 
+        if(codes[0].value!=='' && codes[1].value!=='' ) 
     {
     codes[0].readOnly =false;
-    codes[1].readOnly =false;
+    codes[1].readOnly =true;
     } 
     }, 500);
     }
