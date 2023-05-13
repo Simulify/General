@@ -4,10 +4,10 @@ import '../pages/Guide.css';
 import { ReactComponent as Point } from '../Images/point.svg';
 import { ReactComponent as Arch } from '../Images/arch.svg';
 
-function GuideArch() {
+function GuideArch(props) {
  return (
   <div className="heroarch">
-    <Navbar label="Guide" />
+    <Navbar label="Guide" isAuthenticated={props.isAuthenticated} />
     <Arch className='Architecture'/>
     <a href="/guide/instruction-format" className="suiv">Suivant</a>
     <a href="/guide" className="prev">Retour</a>

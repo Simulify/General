@@ -2,10 +2,10 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import '../pages/Guide.css';
 
-function GuideInstrShrt() {
+function GuideInstrShrt(props) {
   return (
     <div className="heroinstr">
-      <Navbar label="Guide" />
+      <Navbar label="Guide" isAuthenticated={props.isAuthenticated}/>
       <a href="/guide/instructions" className="prev">Retour</a>
       <Table/>
     </div>
