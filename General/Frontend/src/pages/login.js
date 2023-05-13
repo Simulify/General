@@ -17,7 +17,7 @@ import image7 from '../Components_login/image7.svg';
 import image8 from '../Components_login/image8.svg';
 import image9 from '../Components_login/image9.svg';
 
-function Login({ setIsAuthenticated,setCurrentUser,currentUser }) {
+function Login({ setisAuthenticated,setCurrentUser,currentUser }) {
   const navigate = useNavigate(); 
   const [email, setEmail] = useState(''); 
   const [password, setPassword] = useState('');
@@ -25,7 +25,7 @@ function Login({ setIsAuthenticated,setCurrentUser,currentUser }) {
   useEffect(() => { // sets the varible to true when user logs in 
     const isAuthenticated = localStorage.getItem('isAuthenticated');
     if (isAuthenticated) {
-      setIsAuthenticated(true);
+      setisAuthenticated(true);
     }
   }, []);
 
@@ -48,7 +48,7 @@ function Login({ setIsAuthenticated,setCurrentUser,currentUser }) {
         const username = email.split('@')[0]; //we get the user's space name from the email 
         localStorage.setItem('username', username);
         localStorage.setItem('isAuthenticated', true);
-        setIsAuthenticated(true);
+        setisAuthenticated(true);
         localStorage.setItem('currentUser', JSON.stringify(response.data.user));
         console.log('currentUser:', response.data.user);
         console.log('currentUser_id:', response.data.user._id);
