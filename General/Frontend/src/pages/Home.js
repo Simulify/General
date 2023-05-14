@@ -8,13 +8,15 @@ import { ReactComponent as CircleClair} from '../Images/Ellipse 7.svg';
 import { ReactComponent as Processor} from '../Images/Group 9.svg';
 
 function Home (props) {
+
   const [currentImage, setCurrentImage] = useState(0);
  const handleClick = (index) => {
     setCurrentImage(index);
     const slider = document.querySelector(".slider");
     slider.style.transform = `translateX(-${index * 33.33}%)`;
  }
- useEffect(() => {  
+ useEffect(() => {
+
   const slider = document.querySelector(".slider");
   const interval = setInterval(() => {
    setCurrentImage(prevImage => {

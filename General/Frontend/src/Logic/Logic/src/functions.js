@@ -160,20 +160,33 @@ for (let i = 0; i < phrases.length; i++) {
             else if(v==17){
                 if (element.length!=3){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
                 instr=`${v.toString(2).padStart(6,"0")}0010100000`
+               
+                if (!isNaN(parseInt(element[2].slice(0, -1),16))) {
+                    phrases[i]=[instr,parseInt(element[1].slice(0, -1),16).toString(2).padStart(16,"0")]
+                    k=k+1
+                }
+                else{
+                   
                 if (labels.filter(obj => obj.value === element[2]).length==0) {throw new ErreurSyntax(`erreur dans la ligne ${i+1} : etiquette non existante"`)}
                 else{
                     phrases[i]=[instr,labels.filter(obj => obj.value === element[2])[0].adr]
                     k=k+1}
-            }
+            }}
             else if(v==18 || v==19){
                 if (!element.length==4){throw new ErreurSyntax(`erreur`)}
                 else{
                     instr=`${v.toString(2).padStart(6,"0")}001000${parseInt(element[2]).toString(2).padStart(4,"0")}`
+                    if (!isNaN(parseInt(element[2].slice(0, -1),16))) {
+                        phrases[i]=[instr,parseInt(element[1].slice(0, -1),16).toString(2).padStart(16,"0")]
+                        k=k+1
+                    }
+                    else{
+                       
                     if (labels.filter(obj => obj.value === element[3]).length==0) {throw new ErreurSyntax(`erreur dans la ligne ${i+1} : etiquette non existante"`)}
                 else{
                     phrases[i]=[instr,labels.filter(obj => obj.value === element[3])[0].adr]
                     k=k+1}
-                }
+                }}
             }
             else if(v==20||v==21){
                 if (!element.length==4){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
@@ -270,20 +283,34 @@ for (let i = 0; i < phrases.length; i++) {
             else if(v==17){
                 if (!element.length==2){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
                 instr=`${v.toString(2).padStart(6,"0")}0010100000`
+                
+                if (!isNaN(parseInt(element[1].slice(0, -1),16))) {
+                    phrases[i]=[instr,parseInt(element[1].slice(0, -1),16).toString(2).padStart(16,"0")]
+                    k=k+1
+                }
+                else{
+                    
                 if (labels.filter(obj => obj.value === element[1]).length==0) {throw new ErreurSyntax("erreur dans la ligne "(i+1)," etiquette non existante")}
                 else{
                     phrases[i]=[instr,(labels.filter(obj => obj.value === element[1]))[0].adr]
                     k=k+1}
-            }
+            }}
             else if(v==18 || v==19){
                 if (!element.length==3){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
                 else{
                     instr=`${v.toString(2).padStart(6,"0")}001000${parseInt(element[1]).toString(2).padStart(4,"0")}`
+                    console.log(element)
+                    
+                if (!isNaN(parseInt(element[2].slice(0, -1),16))) {
+                    phrases[i]=[instr,parseInt(element[2].slice(0, -1),16).toString(2).padStart(16,"0")]
+                    k=k+1
+                }
+                else{
                     if (labels.filter(obj => obj.value === element[2]).length==0) {throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
                 else{
                     phrases[i]=[instr,labels.filter(obj => obj.value === element[2])[0].adr]
                     k=k+1}
-                }
+                }}
             }
             else if(v==20||v==21){
                 if (!element.length==3){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
@@ -389,18 +416,18 @@ export function BinToMnem(mots) {
                 Instr=Instr+`${reg[parseInt(r1,2)]} `
                 if (parseInt(mod,2)==0) {
                     index++ 
-                    let imm=parseInt(mots[index],2).toString(16)
-                    Instr=Instr+imm
+                    let imm=parseInt(mots[index],2).toString(16).padStart(4,"0")
+                    Instr=Instr+imm+"H"
                 }
                 else if(parseInt(mod,2)==1){
                    index++ 
-                    let drct=parseInt(mots[index],2).toString(16)
-                    Instr=Instr+`[${drct}]`
+                    let drct=parseInt(mots[index],2).toString(16).padStart(4,"0")
+                    Instr=Instr+`[${drct}H]`
                 }
                 else if(parseInt(mod,2)==2){
                    index++ 
-                    let indrct=parseInt(mots[index],2).toString(16)
-                    Instr=Instr+`*,${indrct}`
+                    let indrct=parseInt(mots[index],2).toString(16).padStart(4,"0")
+                    Instr=Instr+`*,${indrct}H`
                 }
                 else if(parseInt(mod,2)==3){
                    
@@ -427,18 +454,18 @@ export function BinToMnem(mots) {
    
                if (parseInt(mod,2)==0) {
                     index++ 
-                    let imm=parseInt(mots[index],2).toString(16)
-                    Instr=Instr+imm
+                    let imm=parseInt(mots[index],2).toString(16).padStart(4,"0")
+                    Instr=Instr+imm+"H"
                 }
                 else if(parseInt(mod,2)==1){
                    index++ 
-                    let drct=parseInt(mots[index],2).toString(16)
-                    Instr=Instr+`[${drct}]`
+                    let drct=parseInt(mots[index],2).toString(16).padStart(4,"0")
+                    Instr=Instr+`[${drct}H]`
                 }
                 else if(parseInt(mod,2)==2){
                    index++ 
-                    let indrct=parseInt(mots[index],2).toString(16)
-                    Instr=Instr+`*,${indrct}`
+                    let indrct=parseInt(mots[index],2).toString(16).padStart(4,"0")
+                    Instr=Instr+`*,${indrct}H`
                 }
                 else if(parseInt(mod,2)==3){
                    
@@ -468,45 +495,45 @@ export function BinToMnem(mots) {
    
                 if(parseInt(mod,2)==1){
                   index++ 
-                   let drct=parseInt(mots[index],2).toString(16)
-                   Instr=Instr+`[${drct}] ${parseInt(r2,2).toString(16)}`
+                   let drct=parseInt(mots[index],2).toString(16).padStart(4,"0")
+                   Instr=Instr+`[${drct}H] ${parseInt(r2,2).toString(16).padStart(4,"0")}H`
                }
                else if(parseInt(mod,2)==2){
                   index++ 
-                   let indrct=parseInt(mots[index],2).toString(16)
-                   Instr=Instr+`*,${indrct} ${parseInt(r2,2).toString(16)}`
+                   let indrct=parseInt(mots[index],2).toString(16).padStart(4,"0")
+                   Instr=Instr+`*,${indrct}H ${parseInt(r2,2).toString(16).padStart(4,"0")}H`
                }
                else if(parseInt(mod,2)==3){
                   
-                  Instr=Instr+`${reg[parseInt(r1,2)]} ${parseInt(r2,2).toString(16)}`
+                  Instr=Instr+`${reg[parseInt(r1,2)]} ${parseInt(r2,2).toString(16).padStart(4,"0")}H`
                }
                else if(parseInt(mod,2)==4){
                   
-                  Instr=Instr+"[BX]"+` ${parseInt(r2,2).toString(16)}`
+                  Instr=Instr+"[BX]"+` ${parseInt(r2,2).toString(16).padStart(4,"0")}H`
                }
                else if(parseInt(mod,2)==5){
                   
-                  Instr=Instr+"[SI]"+` ${parseInt(r2,2).toString(16)}`
+                  Instr=Instr+"[SI]"+` ${parseInt(r2,2).toString(16).padStart(4,"0")}H`
                }
                else if(parseInt(mod,2)==6){
                   
-                  Instr=Instr+"[BX+SI]"+` ${parseInt(r2,2).toString(16)}`
+                  Instr=Instr+"[BX+SI]"+` ${parseInt(r2,2).toString(16).padStart(4,"0")}H`
                }
                else if(parseInt(mod,2)==7){
                   
-                  Instr=Instr+`[${reg[parseInt(r1,2)]}] ${parseInt(r2,2).toString(16)}`
+                  Instr=Instr+`[${reg[parseInt(r1,2)]}] ${parseInt(r2,2).toString(16).padStart(4,"0")}H`
                }
             }
             else if(parseInt(cop,2)==17){
                index++ 
-               Instr=`LOOP ${parseInt(mots[index],2).toString(16)}`
+               Instr=`LOOP ${parseInt(mots[index],2).toString(16).padStart(4,"0")}H`
             }
             else if(parseInt(cop,2)==19 ||parseInt(cop,2)==18){
                index++ 
-               Instr=Instr+`${parseInt(r2,2).toString(16)} ${parseInt(mots[index],2).toString(16)}`
+               Instr=Instr+`${parseInt(r2,2).toString(16)} ${parseInt(mots[index],2).toString(16).padStart(4,"0")}H`
             }
             else if(parseInt(cop,2)==20 ||parseInt(cop,2)==21){
-               Instr=Instr+`${parseInt(r2,2).toString(16)}`
+               Instr=Instr+`${parseInt(r2,2).toString(16).padStart(4,"0")}H`
             }
             Instructions.push(Instr)
     }
