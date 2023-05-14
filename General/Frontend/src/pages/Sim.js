@@ -42,6 +42,7 @@ import LightRimUc from '../ComponentsArchi/LightRimUc';
 import { MyFun } from '../ComponentsArchi/yellow';
 //import { operandeNonValide } from '../Logic/Logic/src/functions.js';
 import { ErreurCop } from '../Logic/Logic/src/functions.js';
+import FinSimulation from '../ComponentsArchi/FinSimulation';
 export function Sim() {
   
     
@@ -79,10 +80,6 @@ export function Sim() {
     const uc = new UniteCommandes(null, null, null, null)
     let mem = new Array(65536)
     let [Memoire, setMemoire] = useState(new memoire(mem))
-    const tabM = useRef([])
-    const MMM=useRef([])
-    const tabP = useRef([])
-    const Pilee=useRef([])
     let [machine, setMachine] = useState(new Machine(uc, Acc, ri, si, dx, bx, co, cx, rIM, rAM, busAdr, busData, flags, uAl, Memoire, pile))
 
     //const UC = new UniteCommandes(null, null, null, null);     
@@ -105,9 +102,6 @@ export function Sim() {
     const bx1 = useRef("0000")
     const cx1 = useRef("0001")
     const flags1 = useRef("0000")
-    const Mem=useRef("0000")
-    const pile1 = useRef([])
-    const [time, setTime] = useState(1000)
     const timeRef = useRef(0);
     const coo = useRef("0000")
     const table = useRef([])
@@ -122,8 +116,6 @@ export function Sim() {
     const tableBx = useRef([])
     const tableCx = useRef([])
     const tableFlags = useRef([])
-    const tablePile = useRef([])
-    const tableMem=useRef([])
     let [fo, setFo] = useState("0000")//poyr co
     let [fo1, setFo1] = useState("0000")//pour ram
     let [fo2, setFo2] = useState("0000")//pour rim
@@ -137,13 +129,12 @@ export function Sim() {
     let [fo10, setFo10] = useState("0001")//pour cx
     let [fo11, setFo11] = useState("0000")//pour flags
     let [fo12, setFo12] = useState([])//pour pile
-    let [fo13, setFo13] = useState("0000")//pour mem
+    let [fo13, setFo13] = useState([])//pour mem
     const [dyna, setdyna] = useState("");
-    const [coor, setCoor] = useState([]);
+    const [showPopup, setShowPopup] = useState(false);
     const myRef = useRef(null);
     const myRef1 = useRef(null);
-    const [element, setElement] = useState([])
-    const elem = useRef([])
+    
     const pos = useRef({ x: 0, y: 0 })
     const tabPos = useRef([])
     const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -151,17 +142,13 @@ export function Sim() {
     const tabPos1 = useRef([])
     const [position1, setPosition1] = useState({ x: 0, y: 0 })
 
-    const addChildComponent = (here) => {
-        elem.current.push(here)
-        setElement(elem.current)
-    };
-
     /*On découpe le texte en phrases*/
     let msg
     const HandleClick = (event) => {
         try{
            
             let phrases=[]
+            console.log(document.querySelectorAll('textarea')[0].value)
             phrases = Compile(Decoup(document.querySelectorAll('textarea')[0].value))
             console.log("A LINTERIEUR DU SIM :" + phrases);
 
@@ -200,6 +187,7 @@ export function Sim() {
         for (let index = 0; index < hexx.length; index++) {
             const element = hexx[index];
             hexx[index] = element.split("")
+            setFo13((prevFo13)=>[...prevFo13,element.split("")])
             temp.current[index] = temp.current[index].split("")
         }
         setHexx(hexx)
@@ -238,12 +226,13 @@ export function Sim() {
     // treating instructions from ADD to CMP in UAL
     /****************************************************************************************************/
 
-    if (parseInt(Machine.UC.Cop, 2) < 2 || parseInt(Machine.UC.Cop, 2) == 4 || (parseInt(Machine.UC.Cop, 2) >= 6 && parseInt(Machine.UC.Cop, 2) <= 10)) {
-        Machine.UAL.UAL2 = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C, time).value
-        console.log(Machine.UAL.UAL2)
-        tableUal2.current.push(Machine.UAL.UAL2.hexa)
-        Machine.UAL.UAL1 = Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value
-        let code = Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]
+
+        if (parseInt(Machine.UC.Cop, 2) < 2 || parseInt(Machine.UC.Cop, 2) == 4 || (parseInt(Machine.UC.Cop, 2) >= 6 && parseInt(Machine.UC.Cop, 2) <= 10)) {
+            Machine.UAL.UAL2 = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
+            console.log(Machine.UAL.UAL2)
+            tableUal2.current.push(Machine.UAL.UAL2.hexa)
+            Machine.UAL.UAL1 = Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value
+
 
         /*Si le mode registre*/
 
@@ -787,26 +776,11 @@ export function Sim() {
                 let val= new Mot16(Instructions[Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]](Machine.RIM.value,Machine.Flags) )
                 Instructions.MOV(val, mM, Machine)
                 tableR2.current.push(val.hexa)   
-                console.log("mmm",hexx)
                 
-                //temp.current=hexx
-                console.log("mmm",hexx,temp.current)
-                if (mM.adresse <hexx.length) {
-                    temp.current[mM.adresse]=val.hexa
-                }
-                else{
-                    for (let i = hexx.length; i < mM.adresse; i++) {
-                        temp.current.push("0000")
-                    }
-                    temp.current.push(val.hexa)
-                }
                 
-                console.log("ho",temp.current)
-            tabM.current.push(temp.current)
-            console.log("cc",tabM.current)
             let x12 = myRef1.current.getBoundingClientRect().left;//x1 we get actual position of the element
                 let y12 = myRef1.current.getBoundingClientRect().top;//y1 we get actual position of the element
-                let x22 = document.querySelector('.UalBusDonnees').getBoundingClientRect().left;
+                let x22 = document.querySelector('.UalBusDonnees .rectangle').getBoundingClientRect().left;
                 let y22 = document.querySelector('.UalBusDonnees .rectangle').getBoundingClientRect().top;
                 tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
                 setTimeout(() => {
@@ -847,6 +821,7 @@ export function Sim() {
                 setTimeout(() => {
                       document.querySelector('.rim').classList.add('boxShadowBlue')
                       console.log("rimm",tableR2.current)
+                      tableR2.current.shift()
                       rimm.current = tableR2.current.shift()
                       setFo2(rimm.current)
                     myRef1.current.style.opacity='0%'
@@ -856,10 +831,18 @@ export function Sim() {
               setTimeout(() => {
                 document.querySelector('.rim').classList.remove('boxShadowBlue')
                 document.querySelector('.Memoire').classList.add('boxShadowBlue')
-                console.log("mmm",hexx)
-                MMM.current = tabM.current.shift()
-                console.log("mmm",MMM.current)
-                setHexx(MMM.current)
+                if (mM.adresse >= fo13.length) {
+                    const length = mM.adresse-fo13.length;
+                   const defaultValue = "0000";
+                    const array = new Array(length).fill(defaultValue);
+                    setFo13((prevArray) => [...prevArray, ...array, val.hexa]);
+                  } else {
+                    setFo13((prevArray) => [
+                      ...prevArray.slice(0, mM.adresse),
+                      val.hexa,
+                      ...prevArray.slice(mM.adresse+1)
+                    ]);
+                  }
             }, timeRef.current);  
             timeRef.current += 800
             setTimeout(() => {
@@ -1911,19 +1894,10 @@ export function Sim() {
         }
         else if (parseInt(Machine.UC.Cop, 2) === 24) {
             let val = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
-            console.log(val)
+           tableR2.current.push(Machine.ACC.value.hexa)
             let mM = new mot_mem(Machine.RAM.value.entier, new Mot16("0000000000000000"))
-            Instructions.RGM(val, Machine)
-            if (mM.adresse <hexx.length) {
-                temp.current[mM.adresse]=val.hexa
-            }
-            else{
-                for (let i = hexx.length; i < mM.adresse; i++) {
-                    temp.current.push("0000")
-                }
-                temp.current.push(val.hexa)
-            }
-        tabM.current.push(temp.current)
+            Instructions.RGM(Machine.RAM.value, Machine)
+            
         let x12 = myRef1.current.getBoundingClientRect().left;//x1 we get actual position of the element
         let y12 = myRef1.current.getBoundingClientRect().top;//y1 we get actual position of the element
         let x22 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().left;
@@ -1934,12 +1908,12 @@ tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference be
             pos1.current = tabPos1.current.shift()//we get the first element of the array
             setPosition1(pos1.current)//we set the position of the element
         }, timeRef.current);
-        timeRef.current += 800
+        timeRef.current += 1000
 setTimeout(() => {
            
             myRef1.current.style.opacity = '60%'
         }, timeRef.current);
-        timeRef.current += 500
+        timeRef.current += 1000
 y22 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
         
         tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
@@ -1948,7 +1922,7 @@ y22 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect(
             pos1.current = tabPos1.current.shift()//we get the first element of the array
             setPosition1(pos1.current)//we set the position of the element
         }, timeRef.current);
-        timeRef.current += 800
+        timeRef.current += 1000
 x22 = document.querySelector('.RimToRi .rectangle').getBoundingClientRect().left;
         
         tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
@@ -1957,7 +1931,7 @@ x22 = document.querySelector('.RimToRi .rectangle').getBoundingClientRect().left
             pos1.current = tabPos1.current.shift()//we get the first element of the array
             setPosition1(pos1.current)//we set the position of the element
         }, timeRef.current);
-        timeRef.current += 800
+        timeRef.current += 1000
 y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().top;
         
         tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
@@ -1966,31 +1940,44 @@ y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().t
             pos1.current = tabPos1.current.shift()//we get the first element of the array
             setPosition1(pos1.current)//we set the position of the element
         }, timeRef.current);
-        timeRef.current += 800
+        timeRef.current += 1000
         setTimeout(() => {
             document.querySelector('.rim').classList.add('boxShadowBlue')
             myRef1.current.style.opacity = '0%'
+            rimm.current=tableR2.current.shift()
+            setFo2(rimm.current)
         }, timeRef.current);
-        timeRef.current += 800
+        timeRef.current += 1000
         setTimeout(() => {
           document.querySelector('.rim').classList.remove('boxShadowBlue')
           document.querySelector('.Memoire').classList.add('boxShadowBlue')
-          MMM.current = tabM.current.shift()
-          console.log("mmm",MMM.current)
-          setHexx(MMM.current)
+          
+          if (mM.adresse >= fo13.length) {
+            const length = mM.adresse-fo13.length;
+           const defaultValue = "0000";
+            const array = new Array(length).fill(defaultValue);
+            setFo13((prevArray) => [...prevArray, ...array, Machine.ACC.value.hexa]);
+          } else {
+            setFo13((prevArray) => [
+              ...prevArray.slice(0, mM.adresse),
+              Machine.ACC.value.hexa,
+              ...prevArray.slice(mM.adresse+1)
+            ]);
+          }
+          
       }, timeRef.current);  
-      timeRef.current += 800
+      timeRef.current += 1000
       setTimeout(() => {
           document.querySelector('.Memoire').classList.remove('boxShadowBlue')}, timeRef.current);
-            
+          console.log("fo13",fo13)
         }
         /**PUSH/POP */
         else if (parseInt(Machine.UC.Cop, 2) === 25) {
             let val = Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value
             Instructions.PUSH(Machine.pile, val)
-            pile1.current.push(val.hexa)
-            tabP.current.push(pile1.current)
-            console.log(tabP.current,pile1.current)
+           
+            let r=Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value.hexa
+            
             switch (parseInt(Machine.UC.R1, 2)) {
                 case 0:
                     
@@ -2110,8 +2097,9 @@ y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().t
                     timeRef.current += 800
                     setTimeout(() => {
                         document.querySelector('.pile').classList.add('boxShadowBlue')
-                        Pilee.current=tabP.current.shift()
-                        setFo12(Pilee.current)
+                        
+                        setFo12((prevFo12)=>[...prevFo12,r])
+                       
                         myRef1.current.style.opacity = '0%'
                     }, timeRef.current);
                     timeRef.current += 800
@@ -2123,9 +2111,9 @@ y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().t
         else if (parseInt(Machine.UC.Cop, 2) === 26) {
             let op = Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]]
             Machine.bus_donnes.transferer(Instructions.POP(Machine.pile), op)
-            pile1.current.pop()
-            tabP.current.push(pile1.current)
-            console.log(tabP.current)
+            
+           
+           
             let x12 = myRef1.current.getBoundingClientRect().left;//x1 we get actual position of the element
             let y12 = myRef1.current.getBoundingClientRect().top;//y1 we get actual position of the element
             let x22 = document.querySelector('.PileBusDonnees .triangleHaut').getBoundingClientRect().left;
@@ -2134,8 +2122,9 @@ y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().t
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
                 document.querySelector('.pile').classList.add('boxShadowBlue')
-                Pilee.current=tabP.current.shift()
-                        setFo12(Pilee.current)
+              
+                        
+                        setFo12((prevFo12)=>prevFo12.slice(0,prevFo12.length-1))
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -2257,7 +2246,7 @@ y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().t
     /************************************************* Les modes **********************************************/
     /*Le mode immédiat*/
 
-    let Mode = [function Imm(Machine, reg, C, time, elements) {
+    let Mode = [function Imm(Machine, reg, C) {
         var Co = Machine.CO
         var busAdr = Machine.bus_adresse
         var busData = Machine.bus_donnes
@@ -2273,6 +2262,7 @@ y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().t
             setdyna("INC CO")
         }, timeRef.current)
         timeRef.current += 500
+        console.log(timeRef.current)
         setTimeout(() => {
             coo.current = table.current.shift()
             setFo(coo.current)
@@ -2281,6 +2271,7 @@ y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().t
             blue.className = "Co boxShadowBlue"
         }, timeRef.current)
         timeRef.current += 500
+        console.log(timeRef.current,machine)
         machine.bus_adresse.transferer(Machine.CO, Machine.RAM)//co->RAM
         tableR.current.push(Machine.RAM.value.hexa)
                 
@@ -3174,6 +3165,7 @@ setTimeout(() => {
     const [hexx, setHexx] = useState([])
     const HandleToggle = () => {
         setShowPageOne(true)
+        timeRef.current = 0
 
         setTimeout(() => {
             if (comp) { 
@@ -3579,8 +3571,10 @@ setTimeout(() => {
                     Arr = machine.RI.decode()//decode la donnee de ri
                     machine.UC = new UniteCommandes(Arr[0], Arr[1], Arr[2], Arr[3])
                 }
-                console.log(elem.current)
+                
             }
+            setTimeout(() => {
+            setShowPopup(true)}, timeRef.current);
         }, 1000)
 
     }
@@ -3590,9 +3584,14 @@ setTimeout(() => {
         <h2 style={{ position: 'absolute', top:'80vh',right:'3vw'}}  >{dyna}</h2>
             <div className='Light' ref={myRef} style={{ position: 'absolute', transform: `translate(${position.x}px, ${position.y}px)` }} />
             <div className='Light1' ref={myRef1} style={{ position: 'absolute', transform: `translate(${position1.x}px, ${position1.y}px)` }} />
-            <Simulation case1={fo5} case2={fo6} memoire={hexx} Co={fo}
-                elements={elem.current} Ram={fo1} Rim={fo2} RI={fo3} Pile={fo12}
-                ACC={fo4} SI={fo7} DI={fo8} BX={fo9} Flags={fo11} CX={fo10} mot={fo13} /></> : <Code  handleToggle={HandleToggle} handleClick={HandleClick} />}
+            <Simulation case1={fo5} case2={fo6} memoire={fo13} Co={fo}
+               Ram={fo1} Rim={fo2} RI={fo3} Pile={fo12}
+                ACC={fo4} SI={fo7} DI={fo8} BX={fo9} Flags={fo11} CX={fo10} mot={fo13} /></> : <Code handleToggle={HandleToggle} handleClick={HandleClick} />}
+    {showPopup && (
+        <div className="overlay">
+              <FinSimulation/>
+        </div>
+        )}
 
         </>
         
