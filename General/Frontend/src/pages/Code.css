@@ -1,8 +1,5 @@
-body
-{
+body{
     font-family: montserrat;
-    overflow-y: scroll;
-    /* position: relative; */
 }
 .erreur
 {
