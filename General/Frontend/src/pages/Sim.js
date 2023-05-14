@@ -178,7 +178,11 @@ export function Sim() {
             document.querySelector('.erreur').innerHTML = '';
         } catch (error) {
             const msg = error.message;
-            document.querySelector('.erreur').innerHTML = msg;
+            if(msg!="element.split is not a function")
+            {
+                document.querySelector('.erreur').innerHTML = msg;
+
+            }
             console.log(msg);
             setComp(false);
         }

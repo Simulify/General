@@ -30,8 +30,7 @@ function Code(props) {
    
   useEffect(() => 
   {
-   
-  //we load the stored data is the button of the file has been clicked
+  // we load the stored data is the button of the file has been clicked
 
   const storedTextareaValue = localStorage.getItem("filecodeHexa");// load the data in hexa
   const storedTitle = localStorage.getItem("title"); // load the title of the file
@@ -79,8 +78,10 @@ function Code(props) {
       document.querySelector('#btn2').style.visibility='visible';
       const  hr=document.querySelector('hr');
       hr.style.borderColor='#00ff00';     
-       document.querySelector('.compiled').innerHTML="Compilé avec succès ✔"
-
+       document.querySelector('.compiled').innerHTML="Compilé avec succès ✔";
+       compiler.disabled=true;
+       compiler.ariaDisabled=true;
+       console.log(compiler.disabled);
      }
      else 
      {
@@ -402,83 +403,83 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
   };
  
   
-    return(
-      <div >
-        <div className='body'>
-        <Button
-  link="/code/programmation-syntaxe"
-  text="syntaxe"
-  style={{
-    background: '#00A6FB', color: '#F8F9FA', 
-    cursor: 'pointer', position:'absolute', top:'14vh', right:'17vw'
-  }}
+  return(
+    <div >
+      <div className='body'>
+      <Button
+link="/code/programmation-syntaxe"
+text="syntaxe"
+style={{
+  background: '#00A6FB', color: '#F8F9FA', 
+  cursor: 'pointer', position:'absolute', top:'14vh', right:'17vw'
+}}
 ></Button>
-          <Navbar label="Simulation" isAuthenticated={localStorage.getItem('isAuthenticated')} />
-        <div className='hugecontainer'>
-       <div className='Bigcontainer'>
-       <div className="buttons" style={{ display: localStorage.getItem('isAuthenticated') ? 'flex' : 'none' }}>
-       <Button
-  className='sauvegarder1'
-  text="Sauvegarder"
-  style={{
-    background: '#00A6FB', color: '#F8F9FA', 
-    cursor: 'pointer', position:'absolute', top:'14vh', left:'15vw'
-  }}
+        <Navbar label="Simulation" isAuthenticated={localStorage.getItem('isAuthenticated')} />
+      <div className='hugecontainer'>
+     <div className='Bigcontainer'>
+     <div className="buttons" style={{ display: localStorage.getItem('isAuthenticated') ? 'flex' : 'none' }}>
+     <Button
+className='sauvegarder1'
+text="Sauvegarder"
+style={{
+  background: '#00A6FB', color: '#F8F9FA', 
+  cursor: 'pointer', position:'absolute', top:'14vh', left:'15vw'
+}}
 ></Button>
 
-          <Button link="/files" text="Fichiers" style={{ background: '#F8F9FA', color: '#023047', position: 'absolute', top:'14vh', left:'30vw', gridArea: 'exem' }}></Button>
-        </div>
-   <div className="container">
-      <div>
-      <div className='blue_box' id='blue_box_1'> 
+        <Button link="/files" text="Fichiers" style={{ background: '#F8F9FA', color: '#023047', position: 'absolute', top:'14vh', left:'30vw', gridArea: 'exem' }}></Button>
+      </div>
+ <div className="container">
+    <div>
+    <div className='blue_box' id='blue_box_1'> 
 <br></br>
 <div>1</div>
 </div>
-           <textarea className="textarea" placeholder='Veuillez saisir le code en mnémonique'></textarea>
-         </div>
-      <div>
-         <div className='blue_box'  id='blue_box_2'>
-      <div className='hex' style={{color:"#023047"}}>Hex</div>     
-      <div>1</div>     
-      </div>  <textarea className="textarea" placeholder='Veuillez saisir le code en Hexa' style={{ padding:'3vh'}}></textarea>
-         </div>         
-           </div>             
-             </div>      
-        <script src="myscripts.js"></script>      
-      </div>
-    
-      <div className="container2">    
-      <Button onClick={props.handleClick} id="btn1" text="Compiler" style={{ fontSize: '16px', background: '#F8F9FA', color: '#023047',border:'1px solid #00A6FB',padding: '12px 24px'}}></Button>
-      <Link to="/code/Simulation">
-        <div id="btn2" onClick={props.handleToggle}>
-          Simuler
-          <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.454505 1.2045C0.893845 0.765165 1.60616 0.765165 2.0455 1.2045L8.0455 7.2045C8.48483 7.64384 8.48483 8.35616 8.0455 8.7955L2.0455 14.7955C1.60616 15.2348 0.893845 15.2348 0.454505 14.7955C0.015165 14.3562 0.015165 13.6438 0.454505 13.2045L5.65901 8L0.454505 2.7955C0.015165 2.35616 0.015165 1.64384 0.454505 1.2045Z" fill="#F8F9FA"/>
-  </svg>
+         <textarea className="textarea" placeholder='Veuillez saisir le code en mnémonique'></textarea>
+       </div>
+    <div>
+       <div className='blue_box'  id='blue_box_2'>
+    <div className='hex' style={{color:"#023047"}}>Hex</div>     
+    <div>1</div>     
+    </div>  <textarea className="textarea" placeholder='Veuillez saisir le code en Hexa' style={{ padding:'3vh'}}></textarea>
+       </div>         
+         </div>             
+           </div>      
+      <script src="myscripts.js"></script>      
+    </div>
   
-        </div></Link>
+    <div className="container2">    
+    <Button onClick={props.handleClick} id="btn1" text="Compiler" style={{ fontSize: '16px', background: '#F8F9FA', color: '#023047',border:'1px solid #00A6FB',padding: '12px 24px'}}></Button>
+    <Link to="/code/Simulation">
+      <div id="btn2" onClick={props.handleToggle}>
+        Simuler
+        <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0.454505 1.2045C0.893845 0.765165 1.60616 0.765165 2.0455 1.2045L8.0455 7.2045C8.48483 7.64384 8.48483 8.35616 8.0455 8.7955L2.0455 14.7955C1.60616 15.2348 0.893845 15.2348 0.454505 14.7955C0.015165 14.3562 0.015165 13.6438 0.454505 13.2045L5.65901 8L0.454505 2.7955C0.015165 2.35616 0.015165 1.64384 0.454505 1.2045Z" fill="#F8F9FA"/>
+</svg>
 
-      </div>
-          <div className='compiled' >
+      </div></Link>
 
-          </div>
-          <br></br>
-          <hr>
-          </hr>
-          <br></br>
-          <br></br>
-          <div className='erreur'></div>
-          </div>
-          <div id='pop_up'>
-            
-           <Title textareaValue={textAreaTitle} handleTextareaChange={handleTextareaChangeTitle}></Title>
-           <button id='submit'  onClick={() => saveFile(localStorage.getItem('textareaValue'),localStorage.getItem('textareaValue1'),textAreaTitle)}  > 
-               Soumettre
-           </button>
-          </div>
-           
-          </div>
-    );
+    </div>
+        <div className='compiled' >
+
+        </div>
+        <br></br>
+        <hr>
+        </hr>
+        <br></br>
+        <br></br>
+        <div className='erreur'></div>
+        </div>
+        <div id='pop_up'>
+          
+         <Title textareaValue={textAreaTitle} handleTextareaChange={handleTextareaChangeTitle}></Title>
+         <button id='submit'  onClick={() => saveFile(localStorage.getItem('textareaValue'),localStorage.getItem('textareaValue1'),textAreaTitle)}  > 
+             Soumettre
+         </button>
+        </div>
+         
+        </div>
+  );
 }
 export default Code;

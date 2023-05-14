@@ -67,7 +67,7 @@ async function removeFile(id) { // removes files based on their _id
 
   return (
     
-  
+ 
     <div className="Files">
 
       <Navbar label="Les fichiers"  isAuthenticated={props.isAuthenticated}/>
@@ -174,8 +174,7 @@ STOP"  />
       </div>
       </div>
 
-      
-   
+        
   );
 }
 
