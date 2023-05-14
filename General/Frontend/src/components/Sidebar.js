@@ -10,22 +10,27 @@ function Sidebar (props) {
     const state = localStorage.getItem('isAuthenticated');
     if (state !== null) {
       
-      localStorage.setItem('removedAuthenticated', true);
+      localStorage.setItem('removedAuthenticated', 'true');
     }
   }, []);
 
   const handleClick = () => {
-    // Toggle the effect here
-    const isAuthenticated = localStorage.getItem('isAuthenticated');
-    if (isAuthenticated === 'true') {
+    
     const removedAuthenticated = localStorage.getItem('removedAuthenticated');
+    const resetDone = localStorage.getItem('resetDone');
+  
     if (removedAuthenticated === 'true') {
       localStorage.removeItem('removedAuthenticated');
-      localStorage.setItem('isAuthenticated', true);
-    } else {
-      localStorage.setItem('removedAuthenticated', true);
-    }}
+  
+      if (resetDone === 'false') {
+        localStorage.setItem('isAuthenticated', 'true');
+      } 
+    }
   };
+  
+  
+  
+
     const handleReset = () => {
         props.onReset();
       };
@@ -40,8 +45,10 @@ function Sidebar (props) {
        className='row'
        id={window.location.pathname.startsWith(val.link)
         ||(window.location.pathname ==="/" && val.link === "/home")? 'active' : ''}
-       onClick={() => { window.location.pathname = val.link }}> 
-       <div onClick={handleClick}>{val.icon}</div>
+       onClick={() => { window.location.pathname = val.link;
+       handleClick();}}> 
+       <div >{val.icon}</div>
+       
       </li>
      );
     })}

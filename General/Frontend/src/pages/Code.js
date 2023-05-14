@@ -30,6 +30,7 @@ function Code(props) {
    
   useEffect(() => 
   {
+   
   //we load the stored data is the button of the file has been clicked
 
   const storedTextareaValue = localStorage.getItem("filecodeHexa");// load the data in hexa

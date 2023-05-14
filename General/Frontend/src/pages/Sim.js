@@ -29,12 +29,11 @@ import FinSimulation from '../ComponentsArchi/FinSimulation';
 export function Sim() {
     useEffect(() => {
         const state = localStorage.getItem('isAuthenticated');    
-            if (state!==null) {
+            if (state){
               localStorage.removeItem('isAuthenticated');
               localStorage.setItem('removedAuthenticated','true');
-            
         }
-  }, []); 
+  }, ); 
     function isBinary(value) {
         return /^[01]+$/.test(value);
     }

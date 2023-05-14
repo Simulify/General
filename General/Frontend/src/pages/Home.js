@@ -16,7 +16,9 @@ function Home (props) {
     slider.style.transform = `translateX(-${index * 33.33}%)`;
  }
  useEffect(() => {
-
+  console.log("reset:", localStorage.getItem('resetDone'));
+  console.log("auth:", localStorage.getItem('isAuthenticated'));
+  console.log("remov:", localStorage.getItem('removedAuthenticated'));
   const slider = document.querySelector(".slider");
   const interval = setInterval(() => {
    setCurrentImage(prevImage => {

@@ -47,18 +47,21 @@ function App() {
   
   useEffect(() => {
 
-    const storedisAuthenticated = localStorage.getItem('isAuthenticated');
-    setisAuthenticated(storedisAuthenticated === 'true');
+    const storedIsAuthenticated = localStorage.getItem('isAuthenticated');
+    setisAuthenticated(storedIsAuthenticated === 'true');
     
   }, []);
 
 
   function handleReset() {
+    localStorage.setItem('resetDone', 'true');
     localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('removedAuthenticated');
     localStorage.removeItem('user');
     setisAuthenticated(false);
-    localStorage.setItem("buttonClicked", "false");
+    localStorage.setItem('buttonClicked', 'false');
   }
+  
   function PrivateRoute({ children }) {
     const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
     const currentUser = JSON.parse(localStorage.getItem('user'));
@@ -72,7 +75,7 @@ function App() {
  return (
   <div className="App">
     <BrowserRouter>
-    <Sidebar onReset={handleReset} />
+    <Sidebar onReset={handleReset}  setisAuthenticated={setisAuthenticated}/>
      <Routes>
       <Route path='/' element={<Home isAuthenticated={isAuthenticated}/>}></Route>
       <Route path='/home' element={<Home isAuthenticated={isAuthenticated}/>}></Route>
