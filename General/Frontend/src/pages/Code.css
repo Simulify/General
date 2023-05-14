@@ -4,7 +4,8 @@ body
     overflow-y: scroll;
     /* position: relative; */
 }
-.erreur{
+.erreur
+{
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -235,7 +236,9 @@ div.container  div.hex
     text-align: center;
     background-color: #FFE600;
     margin-left: auto;
-   border-top-left-radius: 8px;;
+   border-top-left-radius: 8px;
+   font-weight: 500;
+   color: #023047;
 }
 h4
 {
