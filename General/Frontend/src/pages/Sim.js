@@ -476,7 +476,7 @@ export function Sim() {
     timeRef.current += 1000
     let val=Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value = new Mot16(Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)], Machine.Flags))
     setTimeout(() => {
-        //setdyna(code)
+        setdyna(code)
         here = document.querySelector(".UAL")
         here.className = "UAL boxShadowBlue"
     }, timeRef.current)
@@ -811,6 +811,7 @@ export function Sim() {
                 
             if(parseInt(Machine.UC.Mod, 2) === 3){
                 let val= Machine[Machine.UC.reg[parseInt(Machine.UC.C, 2)]].value =new Mot16(Instructions[Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]](Machine[Machine.UC.reg[parseInt(Machine.UC.C, 2)]].value,Machine.Flags) )
+                let code=Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]
                 tableFlags.current.push(Machine.Flags.flags.hexa)
                     //console.log(tableFlags.current)
                 setTimeout(() => {
@@ -980,6 +981,7 @@ export function Sim() {
             /*Rangement de resultat dans le registre correspondant*/
 
             let val = Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value = new Mot16(Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)], Machine.Flags))
+            let code=Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]
             switch (parseInt(Machine.UC.R1, 2)) {
                 case 0:
                     tableAc.current.push(val.hexa)
