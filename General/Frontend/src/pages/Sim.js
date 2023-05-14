@@ -3140,7 +3140,6 @@ setTimeout(() => {
                     document.querySelector('.Memoire').classList.add('boxShadowBlue');}, timeRef.current);
                 timeRef.current += 800
         //***************************************** */
-        //busAdr.transferer(busAdr, Machine.RAM)
         
         Mem.lecture(Machine.RAM, Machine.RIM)
         tableR2.current.push(Machine.RIM.value.hexa)
@@ -3153,7 +3152,6 @@ setTimeout(() => {
         timeRef.current += 800
         setTimeout(() => {
             document.querySelector('.Rim').classList.remove('boxShadowBlue');}, timeRef.current);
-        //Mem.lecture(Machine.RAM, Machine.RIM)
         return Machine.RIM
     }]
     /**************************************************************************** */
@@ -3202,19 +3200,19 @@ setTimeout(() => {
                 
                 setTimeout(() => {
                     blue.className = "Co"
-                    setdyna("CO TO RAM")
+                    setdyna("RAM <-- CO")
                 }, timeRef.current)
                 timeRef.current += 1000
                 setTimeout(() => {
                     myRef.current.style.opacity = '60%'
-                    setdyna("CO TO RAM")
+                    setdyna("RAM <-- CO")
                 }, timeRef.current);
                 timeRef.current += 800
                 y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1+10 })
                 setTimeout(() => {
                     pos.current = tabPos.current.shift()
-                    setdyna("CO TO RAM")
+                    setdyna("RAM <-- CO")
                     setPosition(pos.current)
                 }, timeRef.current);
                 timeRef.current += 800
@@ -3223,37 +3221,36 @@ setTimeout(() => {
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1+10 })
                 setTimeout(() => {
                     pos.current = tabPos.current.shift()
-                    setdyna("CO TO RAM")
+                    setdyna("RAM <-- CO")
                     setPosition(pos.current)
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
                     document.querySelector('.RAM').classList.add('boxShadowBlue');
-                    setdyna("CO TO RAM")
+                    setdyna("RAM <-- CO")
                     ramm.current = tableR.current.shift()
                     setFo1(ramm.current)
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
                     document.querySelector('.RAM').classList.remove('boxShadowBlue');
-                    setdyna("CO TO RAM")
+                    setdyna("RAM <-- CO")
                     myRef.current.style.opacity = '0%'
                 }, timeRef.current);
                 timeRef.current += 800
                 
-                setTimeout(() => {setdyna("LECTURE")
-                    // blue.className = "RAM"
+                setTimeout(() => {
+                    setdyna("LECTURE")
                     blue = document.querySelector(".Memoire")
-                    
                     blue.className = "Memoire boxShadowBlue"
                 }, timeRef.current)
                 timeRef.current += 1000
                 machine.memoire.lecture(machine.RAM, machine.RIM)//lecture 
                 tableR2.current.push(machine.RIM.value.hexa)
-                setTimeout(() => {setdyna("LECTURE")
+                setTimeout(() => {
+                    setdyna("LECTURE")
                     blue.className = "Memoire"
                     blue = document.querySelector(".rim")
-                    
                     blue.className = "rim boxShadowBlue"
                     rimm.current = tableR2.current.shift()
                     setFo2(rimm.current)
@@ -3269,12 +3266,12 @@ setTimeout(() => {
                 setTimeout(() => {
                     pos.current = tabPos.current.shift()//we get the first element of the array
                     setPosition(pos.current)//we set the position of the element
-                    setdyna("RIM TO RI")
+                    setdyna("RI <-- RIM")
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
                     myRef.current.style.opacity = '60%'
-                    setdyna("RIM TO RI")
+                    setdyna("RI <-- RIM")
                 }, timeRef.current);
                 timeRef.current += 800
                 y2 = document.querySelector('.RimBusRi .rectangle').getBoundingClientRect().top
@@ -3283,26 +3280,26 @@ setTimeout(() => {
                     blue.className = "rim"
                     pos.current = tabPos.current.shift()//we get the first element of the array
                     setPosition(pos.current)//we set the position of the element
-                    setdyna("RIM TO RI")
+                    setdyna("RI <-- RIM")
                 }, timeRef.current);    
                 timeRef.current += 1000
                 x2 = document.querySelector('.RimBusRi .triangleGauche').getBoundingClientRect().left;
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1 })
                 setTimeout(() => {
-                    setdyna("RIM TO RI")
+                    setdyna("RI <-- RIM")
                     pos.current = tabPos.current.shift()//we get the first element of the array
                     setPosition(pos.current)//we set the position of the element
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
-                    setdyna("RIM TO RI")
+                    setdyna("RI <-- RIM")
                   myRef.current.style.opacity='0%'
                 }, timeRef.current);
                 timeRef.current += 800
                 machine.bus_donnes.transferer(machine.RIM, machine.RI)//rim->ri
                 tableR3.current.push(machine.RIM.value.hexa)
                 setTimeout(() => {
-                    setdyna("RIM TO RI")
+                    setdyna("RI <-- RIM")
                   document.querySelector('.Ri').classList.add('boxShadowBlue');
                   rii.current = tableR3.current.shift()
                     setFo3(rii.current)
@@ -3311,14 +3308,14 @@ setTimeout(() => {
                 
                 
                 setTimeout(() => {
-                    setdyna("RIM TO RI")
+                    setdyna("RI <-- RIM")
                   document.querySelector('.Ri').classList.remove('boxShadowBlue');
                 }, timeRef.current);
                 //timeRef.current += 300
                  x2 = document.querySelector('.BusUcToRi').getBoundingClientRect().left;
                  tabPos.current.push({ x: x2 - x1, y: y2 - y1 })
                  setTimeout(() => {
-                    setdyna("RI TO UC")
+                    setdyna("UC <-- RI")
                      pos.current = tabPos.current.shift()//we get the first element of the array
                      setPosition(pos.current)//we set the position of the element
                  }, timeRef.current);
@@ -3327,20 +3324,20 @@ setTimeout(() => {
                 y2 = document.querySelector('.BusUcToRi .triangleBas').getBoundingClientRect().top;
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1 })
                 setTimeout(() => {
-                    setdyna("RI TO UC")
+                    setdyna("UC <-- RI")
                     pos.current = tabPos.current.shift()//we get the first element of the array
                     setPosition(pos.current)//we set the position of the element
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
-                    setdyna("RI TO UC")
+                    setdyna("UC <-- RI")
                     myRef.current.style.opacity='60%'
                   }, timeRef.current);
                   timeRef.current += 800
                  y2 = document.querySelector('.BusUcToRi, triangleHaut').getBoundingClientRect().top;
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1 })
                 setTimeout(() => {
-                    setdyna("RI TO UC")
+                    setdyna("UC <-- RI")
                     pos.current = tabPos.current.shift()//we get the first element of the array
                     setPosition(pos.current)//we set the position of the element
                 }, timeRef.current);
@@ -3356,16 +3353,6 @@ setTimeout(() => {
                   myRef.current.style.opacity='0%'
                 }, timeRef.current);
           
-                // setTimeout(() => {
-                //   myRef.current.style.opacity='0%'
-                // }, 8500);  
-                //******************************************* */
-                // setTimeout(() => {
-                //     blue.className = "rim"
-                //     addChildComponent(<LightRimUc time={0}></LightRimUc>)
-                // }, timeRef.current)
-                
-                
                 let Arr = machine.RI.decode();//decode la donnee de ri
                 machine.UC = new UniteCommandes(Arr[0], Arr[1], Arr[2], Arr[3])
 
@@ -3381,6 +3368,7 @@ setTimeout(() => {
                     setMachine(machine)
                     if(parseInt(machine.UC.Cop, 2) !== 17){
                     machine.CO.incCO()//inc co
+                    setdyna("INC CO")
                     console.log("here")
                     }
                     
@@ -3391,6 +3379,7 @@ setTimeout(() => {
                     coo.current = table.current.shift()
                     setFo(coo.current)
                     blue = document.querySelector(".Co")
+                    setdyna("INC CO")
                     console.log(blue)
                     blue.className = "Co boxShadowBlue"
                 }, timeRef.current)
@@ -3406,21 +3395,25 @@ setTimeout(() => {
                 let y2 = document.querySelector('.BusCo .triangleHaut').getBoundingClientRect().top;//destination position
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1 })// we push the difference between the two positions
                 setTimeout(() => {
+                    setdyna("RAM <-- CO")
                     pos.current = tabPos.current.shift()//we get the first element of the array
                     setPosition(pos.current)//we set the position of the element
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
+                    setdyna("RAM <-- CO")
                     myRef.current.style.opacity = '60%'
                 }, timeRef.current);
                 timeRef.current += 500
                 setTimeout(() => {
+                    setdyna("RAM <-- CO")
                     blue.className = "Co"
                 }, timeRef.current)
                 timeRef.current += 800
                 y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1+10 })
                 setTimeout(() => {
+                    setdyna("RAM <-- CO")
                     pos.current = tabPos.current.shift()
                     setPosition(pos.current)
                 }, timeRef.current);
@@ -3428,37 +3421,35 @@ setTimeout(() => {
                 x2 = document.querySelector('.CoToRam .triangleDroit').getBoundingClientRect().left;
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1+10 })
                 setTimeout(() => {
+                    setdyna("RAM <-- CO")
                     pos.current = tabPos.current.shift()
                     setPosition(pos.current)
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
+                    setdyna("RAM <-- CO")
                     document.querySelector('.RAM').classList.add('boxShadowBlue');
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
+                    setdyna("")
                     document.querySelector('.RAM').classList.remove('boxShadowBlue');
                     myRef.current.style.opacity = '0%'
                 }, timeRef.current);
                 timeRef.current += 800
                 console.log(myRef.current)
-                // setTimeout(() => {
-                //     myRef.current.style.opacity = '0%'
-                // }, timeRef.current);
-                // timeRef.current += 800
-                //********************************** */
                 console.log(myRef.current)
 
 
                 setTimeout(() => {
-                    // blue = document.querySelector(".RAM")
-                    // blue.className = "RAM boxShadowBlue"
+                    setdyna("LECTURE")
                     ramm.current = tableR.current.shift()
                     setFo1(ramm.current)
                 }, timeRef.current)
                 timeRef.current += 800
                 setTimeout(() => {
                     // blue.className = "RAM"
+                    setdyna("LECTURE")
                     blue = document.querySelector(".Memoire")
                     blue.className = "Memoire boxShadowBlue"
                 }, timeRef.current)
@@ -3466,6 +3457,7 @@ setTimeout(() => {
                 machine.memoire.lecture(machine.RAM, machine.RIM)//lecture 
                 tableR2.current.push(machine.RIM.value.hexa)
                 setTimeout(() => {
+                    setdyna("LECTURE")
                     blue.className = "Memoire"
                     blue = document.querySelector(".rim")
                     blue.className = "rim boxShadowBlue"
@@ -3481,17 +3473,20 @@ setTimeout(() => {
                 y2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().top;
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1 })
                 setTimeout(() => {
+                    setdyna("RI <-- RIM")
                     pos.current = tabPos.current.shift()//we get the first element of the array
                     setPosition(pos.current)//we set the position of the element
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
+                    setdyna("RI <-- RIM")
                     myRef.current.style.opacity = '60%'
                 }, timeRef.current);
                 timeRef.current += 800
                 y2 = document.querySelector('.RimBusRi .rectangle').getBoundingClientRect().top
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1 })
                 setTimeout(() => {
+                    setdyna("RI <-- RIM")
                     blue.className = "rim"
                     pos.current = tabPos.current.shift()//we get the first element of the array
                     setPosition(pos.current)//we set the position of the element
@@ -3500,11 +3495,13 @@ setTimeout(() => {
                 x2 = document.querySelector('.RimBusRi .triangleGauche').getBoundingClientRect().left;
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1 })
                 setTimeout(() => {
+                    setdyna("RI <-- RIM")
                     pos.current = tabPos.current.shift()//we get the first element of the array
                     setPosition(pos.current)//we set the position of the element
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
+                    setdyna("")
                   myRef.current.style.opacity='0%'
                 }, timeRef.current);
                 timeRef.current += 800
@@ -3514,17 +3511,20 @@ setTimeout(() => {
                   document.querySelector('.Ri').classList.add('boxShadowBlue');
                   rii.current = tableR3.current.shift()
                     setFo3(rii.current)
+                    setdyna("UC <-- RI")
                 }, timeRef.current);
                 timeRef.current += 800
                 
                 
                 setTimeout(() => {
                   document.querySelector('.Ri').classList.remove('boxShadowBlue');
+                  setdyna("UC <-- RI")
                 }, timeRef.current);
                 //timeRef.current += 300
                  x2 = document.querySelector('.BusUcToRi').getBoundingClientRect().left;
                  tabPos.current.push({ x: x2 - x1, y: y2 - y1 })
                  setTimeout(() => {
+                    setdyna("UC <-- RI")
                      pos.current = tabPos.current.shift()//we get the first element of the array
                      setPosition(pos.current)//we set the position of the element
                  }, timeRef.current);
@@ -3533,28 +3533,33 @@ setTimeout(() => {
                 y2 = document.querySelector('.BusUcToRi .triangleBas').getBoundingClientRect().top;
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1 })
                 setTimeout(() => {
+                    setdyna("UC <-- RI")
                     pos.current = tabPos.current.shift()//we get the first element of the array
                     setPosition(pos.current)//we set the position of the element
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
                     myRef.current.style.opacity='60%'
+                    setdyna("UC <-- RI")
                   }, timeRef.current);
                   timeRef.current += 800
                  y2 = document.querySelector('.BusUcToRi, triangleHaut').getBoundingClientRect().top;
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1 })
                 setTimeout(() => {
+                    setdyna("DECODAGE")
                     pos.current = tabPos.current.shift()//we get the first element of the array
                     setPosition(pos.current)//we set the position of the element
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
+                    setdyna("DECODAGE")
                   document.querySelector('.Uc').classList.add('boxShadowBlue');
                 }, timeRef.current);
                 timeRef.current += 2000
                  setTimeout(() => {
                   document.querySelector('.Uc').classList.remove('boxShadowBlue');
                   myRef.current.style.opacity='0%'
+                  setdyna("")
                 }, timeRef.current);
                     Arr = machine.RI.decode()//decode la donnee de ri
                     machine.UC = new UniteCommandes(Arr[0], Arr[1], Arr[2], Arr[3])
