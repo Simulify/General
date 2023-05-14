@@ -296,7 +296,7 @@ for (let i = 0; i < phrases.length; i++) {
                     k=k+1}
             }}
             else if(v==18 || v==19){
-                if (!element.length==3){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
+                if (!(element.length==3)){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
                 else{
                     instr=`${v.toString(2).padStart(6,"0")}001000${parseInt(element[1]).toString(2).padStart(4,"0")}`
                     console.log(element)
@@ -306,7 +306,7 @@ for (let i = 0; i < phrases.length; i++) {
                     k=k+1
                 }
                 else{
-                    if (labels.filter(obj => obj.value === element[2]).length==0) {throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
+                    if (labels.filter(obj => obj.value === element[2]).length==0) {throw new ErreurSyntax(`erreur dans la ligne ${i+1} : etiquette non existante`)}
                 else{
                     phrases[i]=[instr,labels.filter(obj => obj.value === element[2])[0].adr]
                     k=k+1}
