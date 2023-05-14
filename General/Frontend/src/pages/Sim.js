@@ -1133,8 +1133,8 @@ export function Sim() {
                 },timeRef.current)
         }
 
-        //****************************************************************************/
-        /*RAZ*/
+    //****************************************************************************/
+    /*RAZ*/
 
         else if (parseInt(Machine.UC.Cop, 2) == 12) {
             Instructions.RAZ(Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value, Machine.Flags)
@@ -1189,7 +1189,7 @@ export function Sim() {
 
         }
 
-        //**********************************************************************************************/
+    //**********************************************************************************************/
 
         // treating instructions from SHL to ROR 
 
@@ -1414,7 +1414,8 @@ export function Sim() {
         }
     }
 
-        //***************  LOOP UNTIL CX==0 ******************/
+    /**************************  LOOP UNTIL CX==0 ***************************/
+
          else if (parseInt(Machine.UC.Cop, 2) == 17) {
         
             if (Machine.CX.value.entier == 0) {
@@ -1438,8 +1439,8 @@ export function Sim() {
             }
         }
 
-        /****************************************************************************/
-        /** BCV */
+    /********************************** BCV *************************************/
+     
                else if (parseInt(Machine.UC.Cop, 2) == 18) {
                 console.log(Machine.Flags.flags)
                 let op1 = parseInt(Machine.UC.C, 2)
@@ -1473,8 +1474,7 @@ export function Sim() {
                 
             }
 
-        /****************************************************************************/
-        /**BCF */
+    /************************************BCF ***********************************/
 
         else if (parseInt(Machine.UC.Cop, 2) == 19) {
             let op1 = parseInt(Machine.UC.C, 2)
@@ -1502,7 +1502,8 @@ export function Sim() {
             timeRef.current += 1000   
         }
 
-        /****************************************************************************/
+    /********************************** ENT ************************************/
+
         else if (parseInt(Machine.UC.Cop, 2) == 20) {
             
             let here = prompt("Entrez une valeur");
@@ -1532,16 +1533,21 @@ export function Sim() {
 
         }
 
-        /***********************************************************************************/
+    /************************************** Sort *************************************/
+
         else if (parseInt(Machine.UC.Cop, 2) == 21) {
             setTimeout(() => {
             alert("La valeur de l'accumulateur est : " + Machine.ACC.value.entier)
         }, timeRef.current)
         timeRef.current += 800
         }
-        /**********************************************************************************/
-        /**MOV */
+
+
+    /************************************* Mov ***************************************/
+
+
         else if (parseInt(Machine.UC.Cop, 2) === 22) {
+
             let val = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
             Instructions.MOV(val, Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]], Machine)
             if (parseInt(Machine.UC.Mod, 2)===3) {
@@ -1615,7 +1621,7 @@ export function Sim() {
                         default:
                             break;
                 }
-                //**********************************8 */
+                //*****************************************/
                 
             }
             else{
@@ -1750,6 +1756,7 @@ export function Sim() {
                     break;
             }
         }
+
         else if (parseInt(Machine.UC.Cop, 2) === 23) {
             let val = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
             Instructions.CHM(val, Machine)
@@ -3352,7 +3359,9 @@ setTimeout(() => {
                     console.log(timeRef.current)
                     Traiter(machine)
                     setMachine(machine)
-                    if(parseInt(machine.UC.Cop, 2) !== 17){
+
+                    if(parseInt(machine.UC.Cop, 2) != 17 && parseInt(machine.UC.Cop, 2) != 18 && parseInt(machine.UC.Cop, 2) != 19){
+
                     machine.CO.incCO()//inc co
                     console.log("here")
                     }
