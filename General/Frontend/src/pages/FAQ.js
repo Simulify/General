@@ -20,7 +20,7 @@ const questions = [
   {
     id: 3,
     question: (
-      <div className="q3">Quelles ressources complémentaires sont disponibles <br/>sur Simulify ?</div>),
+      <div className="q3">Quelles ressources complémentaires sont disponibles<br/> sur Simulify ?</div>),
     reponse: (<div>Sur Simulify, vous trouverez des ressources complémentaires telles que des explications détaillées, des simulations graphiques pour faciliter la compréhension des concepts difficiles, ainsi que des quiz interactifs pour tester vos connaissances.
     </div>)
   },
@@ -34,7 +34,14 @@ const questions = [
   {
     id: 5,
     question: (<div className="q5">Qui sommes nous ?</div>),
-    reponse: (<div>Nous sommes 6 étudiantes en 2CP à ESI Alger et réalisatrices de Simulify encadré par Mr Dahamni et Mme Charabi:Alismail Dyna Hayem, Dinari Yasmine , Aouinine Lylia , Dehili Hind , Malek Amina,Rezzoug Aicha  </div>)
+    reponse: (<div>Nous sommes 6 étudiantes en 2CP à ESI Alger et réalisatrices de Simulify :
+      <br/><br/>1- ALISMAIL Dyna Hayem (Chef d'équipe)
+      <br/>2- AOUININE Lylia
+      <br/>3- DEHILI Hind
+      <br/>4- DINARI Yasmine
+      <br/>5- MALEK Amina
+      <br/>6- REZZOUG Aicha
+      <br/><br/>Encadré par : Mr Dahamni et Mme Charabi.</div>)
   }
 ];
 
