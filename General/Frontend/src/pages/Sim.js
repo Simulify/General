@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useRef } from 'react';
 import Code from './Code';
 import Simulation from './Simulation';
@@ -27,6 +27,14 @@ import "../ComponentsArchi/Light.css"
 import { Compile, Decoup, ErreurSyntax } from '../Logic/Logic/src/functions.js';
 import FinSimulation from '../ComponentsArchi/FinSimulation';
 export function Sim() {
+    useEffect(() => {
+        const state = localStorage.getItem('isAuthenticated');    
+            if (state!==null) {
+              localStorage.removeItem('isAuthenticated');
+              localStorage.setItem('removedAuthenticated','true');
+            
+        }
+  }, []); 
     function isBinary(value) {
         return /^[01]+$/.test(value);
     }
