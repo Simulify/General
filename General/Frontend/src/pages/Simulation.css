@@ -945,7 +945,7 @@
 .dynaa {
   position: absolute;
   top: 58vh;
-  left: 81vw;
+  left: 80vw;
   background: #99DBFD;
   box-shadow: 0px 45px 18px rgba(112, 128, 143, 0.01), 0px 26px 15px rgba(112, 128, 143, 0.05), 0px 11px 11px rgba(112, 128, 143, 0.09), 0px 3px 6px rgba(112, 128, 143, 0.1), 0px 0px 0px rgba(112, 128, 143, 0.1);
   border-radius: 2.2vh;
@@ -955,7 +955,7 @@
   color: #023047;
   font-style: normal;
   font-weight: 600;
-  font-size: 3vh;
+  font-size: 2.75vh;
   width: 14vw;
   height: 10vh;
 }
