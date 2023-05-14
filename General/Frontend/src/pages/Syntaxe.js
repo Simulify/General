@@ -14,9 +14,9 @@
       description: (
         <div>
         Dans le cas d'un seul opérande :
-        <br />[Etiquette:] Opérateur Op 
+        <br />[Etiquette:] Opérateur OP
         <br /><br />Dans le cas de deux opérandes :
-        <br />[Etiquette:] Opérateur Op1 op2 
+        <br />[Etiquette:] Opérateur OP1 OP2 
         <br /><br />Dans le cas d'instruction LOOP/BCV/BCF :
         <br />LOOP Etiquette 
         <br />BCV CDT Étiquette

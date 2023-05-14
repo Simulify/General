@@ -9,7 +9,7 @@
   top: 11vh;
 }
 .questions {
-  width: 39vw;
+  width: 39.5vw;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -80,8 +80,10 @@
   display: flex;
   width: 30vw;
   height: 45vh;
-  padding-left: 4.5vw;
-  padding-top: 13vh;
+  padding-left: 5vw;
+  padding-right: 1.5vw;
+  padding-top: 10vh;
+  padding-bottom: 3vh;
   background: #DDEBF4;
   border-radius: 20px;
   transition: display 0.2s ease-in-out;

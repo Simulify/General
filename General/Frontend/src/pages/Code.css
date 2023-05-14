@@ -1,8 +1,6 @@
-body
-{
+body{
     font-family: montserrat;
     overflow-y: scroll;
-    /* position: relative; */
 }
 .erreur
 {
@@ -23,7 +21,7 @@ body
     border-radius: 8px 0px 0px 8px;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     padding: 20px;
     gap: 0px;
