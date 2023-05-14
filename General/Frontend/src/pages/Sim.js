@@ -249,7 +249,7 @@ export function Sim() {
         timeRef.current += 800
 
         setTimeout(() => {    
-            myRef1.current.style.opacity = '60%'
+            myRef1.current.style.opacity = '100%'
             setdyna("EUAL2 <-- Registre")
         }, timeRef.current);
         timeRef.current += 800
@@ -330,7 +330,7 @@ export function Sim() {
 
         setTimeout(() => {
             setdyna("EUAL2 <-- RIM")
-            myRef.current.style.opacity = '60%'
+            myRef.current.style.opacity = '100%'
         }, timeRef.current);
         timeRef.current += 500
 
@@ -410,7 +410,7 @@ export function Sim() {
 
     setTimeout(() => {
     setdyna("EUAL1 <-- Registre")
-        myRef1.current.style.opacity = '60%'
+        myRef1.current.style.opacity = '100%'
     }, timeRef.current);
     timeRef.current += 500
 
@@ -512,7 +512,7 @@ export function Sim() {
 
     setTimeout(() => {
     //setdyna("EUAL1 <-- Registre")
-        myRef1.current.style.opacity = '60%'
+        myRef1.current.style.opacity = '100%'
     }, timeRef.current);
     timeRef.current += 500
     y22 = document.querySelector('.BusDonnees').getBoundingClientRect().top;
@@ -652,7 +652,7 @@ export function Sim() {
                 timeRef.current += 800
 
                 setTimeout(() => {
-                    myRef1.current.style.opacity = '60%'
+                    myRef1.current.style.opacity = '100%'
                     setdyna("EUAL2 <-- Registre")
                 }, timeRef.current);
                 timeRef.current += 800
@@ -733,7 +733,7 @@ export function Sim() {
 
                 setTimeout(() => {
                     setdyna("EUAL2 <-- RIM")
-                    myRef.current.style.opacity = '60%'
+                    myRef.current.style.opacity = '100%'
                 }, timeRef.current);
                 timeRef.current += 500
 
@@ -900,7 +900,7 @@ export function Sim() {
 
             setTimeout(() => {
                 setdyna("EUAL1 <-- Registre")
-                myRef1.current.style.opacity = '60%'
+                myRef1.current.style.opacity = '100%'
             }, timeRef.current);
             timeRef.current += 500
 
@@ -1058,7 +1058,7 @@ export function Sim() {
                 timeRef.current += 800
                 setTimeout(() => {
 
-                    myRef1.current.style.opacity = '60%'
+                    myRef1.current.style.opacity = '100%'
                 }, timeRef.current);
                 timeRef.current += 500
                 y22 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
@@ -1128,7 +1128,7 @@ export function Sim() {
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
-                    myRef.current.style.opacity = '60%'
+                    myRef.current.style.opacity = '100%'
 
                 }, timeRef.current);
                 timeRef.current += 500
@@ -1296,7 +1296,7 @@ export function Sim() {
                 timeRef.current += 800
                 setTimeout(() => {
 
-                    myRef1.current.style.opacity = '60%'
+                    myRef1.current.style.opacity = '100%'
                 }, timeRef.current);
                 timeRef.current += 500
                 y22 = document.querySelector('.BusDonnees ').getBoundingClientRect().top;
@@ -1373,7 +1373,7 @@ export function Sim() {
                 timeRef.current += 800
                 setTimeout(() => {
 
-                    myRef1.current.style.opacity = '60%'
+                    myRef1.current.style.opacity = '100%'
                 }, timeRef.current);
                 timeRef.current += 1000
                 y22 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
@@ -1449,7 +1449,7 @@ export function Sim() {
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
-                    myRef.current.style.opacity = '60%'
+                    myRef.current.style.opacity = '100%'
 
                 }, timeRef.current);
                 timeRef.current += 1000
@@ -1533,7 +1533,7 @@ export function Sim() {
             timeRef.current += 800
             setTimeout(() => {
 
-                myRef1.current.style.opacity = '60%'
+                myRef1.current.style.opacity = '100%'
             }, timeRef.current);
             timeRef.current += 500
 
@@ -1713,7 +1713,7 @@ export function Sim() {
             timeRef.current += 800
 
             setTimeout(() => {
-                myRef1.current.style.opacity = '60%'
+                myRef1.current.style.opacity = '100%'
             }, timeRef.current);
             timeRef.current += 500
 
@@ -1781,7 +1781,7 @@ export function Sim() {
             timeRef.current += 500
 
             setTimeout(() => {
-                myRef.current.style.opacity = '60%'
+                myRef.current.style.opacity = '100%'
             }, timeRef.current);
             timeRef.current += 800
 
@@ -2135,7 +2135,7 @@ export function Sim() {
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
-                    myRef.current.style.opacity = '60%'
+                    myRef.current.style.opacity = '100%'
 
                 }, timeRef.current);
                 timeRef.current += 500
@@ -2347,7 +2347,7 @@ export function Sim() {
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
-                    myRef.current.style.opacity = '60%'
+                    myRef.current.style.opacity = '100%'
 
                 }, timeRef.current);
                 timeRef.current += 500
@@ -2418,7 +2418,7 @@ export function Sim() {
             timeRef.current += 1000
             setTimeout(() => {
 
-                myRef1.current.style.opacity = '60%'
+                myRef1.current.style.opacity = '100%'
             }, timeRef.current);
             timeRef.current += 1000
             y22 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
@@ -2571,7 +2571,7 @@ export function Sim() {
             timeRef.current += 800
             setTimeout(() => {
 
-                myRef1.current.style.opacity = '60%'
+                myRef1.current.style.opacity = '100%'
             }, timeRef.current);
             timeRef.current += 500
 
@@ -2640,7 +2640,7 @@ export function Sim() {
             setTimeout(() => {
                 document.querySelector('.pile').classList.remove('boxShadowBlue')
 
-                myRef1.current.style.opacity = '60%'
+                myRef1.current.style.opacity = '100%'
             }, timeRef.current);
             timeRef.current += 500
             y22 = document.querySelector('.BusDonnees').getBoundingClientRect().top;
@@ -2783,7 +2783,7 @@ export function Sim() {
         timeRef.current += 800
         setTimeout(() => {
             setdyna("INC CO")
-            myRef.current.style.opacity = '60%'
+            myRef.current.style.opacity = '100%'
         }, timeRef.current);
         timeRef.current += 500
         setTimeout(() => {
@@ -2792,7 +2792,7 @@ export function Sim() {
         }, timeRef.current)
         timeRef.current += 500
         y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
-        tabPos.current.push({ x: x2 - x1, y: y2 - y1 + 10 })
+        tabPos.current.push({ x: x2 - x1, y: y2 - y1  })
         setTimeout(() => {
             setdyna("RAM <-- CO")
             pos.current = tabPos.current.shift()
@@ -2800,7 +2800,7 @@ export function Sim() {
         }, timeRef.current);
         timeRef.current += 800
         x2 = document.querySelector('.CoToRam .triangleDroit').getBoundingClientRect().left;
-        tabPos.current.push({ x: x2 - x1, y: y2 - y1 + 10 })
+        tabPos.current.push({ x: x2 - x1, y: y2 - y1  })
         setTimeout(() => {
             setdyna("RAM <-- CO")
             pos.current = tabPos.current.shift()
@@ -2876,7 +2876,7 @@ export function Sim() {
         timeRef.current += 800
         setTimeout(() => {
             setdyna("INC CO")
-            myRef.current.style.opacity = '60%'
+            myRef.current.style.opacity = '100%'
         }, timeRef.current);
         timeRef.current += 500
         setTimeout(() => {
@@ -2885,7 +2885,7 @@ export function Sim() {
         }, timeRef.current)
         timeRef.current += 500
         y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
-        tabPos.current.push({ x: x2 - x1, y: y2 - y1 + 10 })
+        tabPos.current.push({ x: x2 - x1, y: y2 - y1   })
         setTimeout(() => {
             setdyna("RAM <-- CO")
             pos.current = tabPos.current.shift()
@@ -2893,7 +2893,7 @@ export function Sim() {
         }, timeRef.current);
         timeRef.current += 800
         x2 = document.querySelector('.CoToRam .triangleDroit').getBoundingClientRect().left;
-        tabPos.current.push({ x: x2 - x1, y: y2 - y1 + 10 })
+        tabPos.current.push({ x: x2 - x1, y: y2 - y1   })
         setTimeout(() => {
             setdyna("RAM <-- CO")
             pos.current = tabPos.current.shift()
@@ -2946,7 +2946,7 @@ export function Sim() {
         timeRef.current += 500
         setTimeout(() => {
             setdyna("RAM <-- RIM")
-            myRef.current.style.opacity = '60%'
+            myRef.current.style.opacity = '100%'
         }, timeRef.current);
         y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
         tabPos.current.push({ x: x2 - x1, y: y2 - y1 })
@@ -3061,7 +3061,7 @@ export function Sim() {
         timeRef.current += 800
         setTimeout(() => {
             setdyna("INC CO")
-            myRef.current.style.opacity = '60%'
+            myRef.current.style.opacity = '100%'
         }, timeRef.current);
         timeRef.current += 500
         setTimeout(() => {
@@ -3070,7 +3070,7 @@ export function Sim() {
         }, timeRef.current)
         timeRef.current += 500
         y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
-        tabPos.current.push({ x: x2 - x1, y: y2 - y1 + 10 })
+        tabPos.current.push({ x: x2 - x1, y: y2 - y1   })
         setTimeout(() => {
             setdyna("RAM <-- CO")
             pos.current = tabPos.current.shift()
@@ -3078,7 +3078,7 @@ export function Sim() {
         }, timeRef.current);
         timeRef.current += 800
         x2 = document.querySelector('.CoToRam .triangleDroit').getBoundingClientRect().left;
-        tabPos.current.push({ x: x2 - x1, y: y2 - y1 + 10 })
+        tabPos.current.push({ x: x2 - x1, y: y2 - y1   })
         setTimeout(() => {
             setdyna("RAM <-- CO")
             pos.current = tabPos.current.shift()
@@ -3131,7 +3131,7 @@ export function Sim() {
         timeRef.current += 500
         setTimeout(() => {
             setdyna("RAM <-- RIM")
-            myRef.current.style.opacity = '60%'
+            myRef.current.style.opacity = '100%'
         }, timeRef.current);
         y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
         tabPos.current.push({ x: x2 - x1, y: y2 - y1 })
@@ -3224,7 +3224,7 @@ export function Sim() {
         timeRef.current += 500
         setTimeout(() => {
             setdyna("RAM <-- RIM")
-            myRef.current.style.opacity = '60%'
+            myRef.current.style.opacity = '100%'
         }, timeRef.current);
         y2 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
         tabPos.current.push({ x: x2 - x1, y: y2 - y1 })
@@ -3333,7 +3333,7 @@ export function Sim() {
         timeRef.current += 800
         setTimeout(() => {
             setdyna("RAM <-- BX")
-            myRef1.current.style.opacity = '60%'
+            myRef1.current.style.opacity = '100%'
         }, timeRef.current);
         timeRef.current += 500
         y22 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
@@ -3421,7 +3421,7 @@ export function Sim() {
         timeRef.current += 800
         setTimeout(() => {
             setdyna("RAM <-- SI")
-            myRef1.current.style.opacity = '60%'
+            myRef1.current.style.opacity = '100%'
         }, timeRef.current);
         timeRef.current += 500
         y22 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
@@ -3510,7 +3510,7 @@ export function Sim() {
         timeRef.current += 800
         setTimeout(() => {
             setdyna("RAM <-- SI")
-            myRef1.current.style.opacity = '60%'
+            myRef1.current.style.opacity = '100%'
         }, timeRef.current);
         timeRef.current += 500
         y22 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
@@ -3598,7 +3598,7 @@ export function Sim() {
         timeRef.current += 800
         setTimeout(() => {
             setdyna("RAM <--" + reg[parseInt(C, 2)])
-            myRef1.current.style.opacity = '60%'
+            myRef1.current.style.opacity = '100%'
         }, timeRef.current);
         timeRef.current += 500
         y22 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
@@ -3707,11 +3707,11 @@ export function Sim() {
                 timeRef.current += 1000
                 setTimeout(() => {
                     setdyna("RAM <-- CO")
-                    myRef.current.style.opacity = '60%'
+                    myRef.current.style.opacity = '100%'
                 }, timeRef.current);
                 timeRef.current += 800
                 y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
-                tabPos.current.push({ x: x2 - x1, y: y2 - y1 + 10 })
+                tabPos.current.push({ x: x2 - x1, y: y2 - y1   })
                 setTimeout(() => {
                     setdyna("RAM <-- CO")
                     pos.current = tabPos.current.shift()
@@ -3719,7 +3719,7 @@ export function Sim() {
                 }, timeRef.current);
                 timeRef.current += 800
                 x2 = document.querySelector('.CoToRam .triangleDroit').getBoundingClientRect().left;
-                tabPos.current.push({ x: x2 - x1, y: y2 - y1 + 10 })
+                tabPos.current.push({ x: x2 - x1, y: y2 - y1   })
                 setTimeout(() => {
                     setdyna("RAM <-- CO")
                     pos.current = tabPos.current.shift()
@@ -3770,7 +3770,7 @@ export function Sim() {
                 timeRef.current += 800
                 setTimeout(() => {
                     setdyna("RI <-- RIM")
-                    myRef.current.style.opacity = '60%'
+                    myRef.current.style.opacity = '100%'
                 }, timeRef.current);
                 timeRef.current += 800
                 y2 = document.querySelector('.RimBusRi .rectangle').getBoundingClientRect().top
@@ -3826,7 +3826,7 @@ export function Sim() {
                 timeRef.current += 800
                 setTimeout(() => {
                     setdyna("UC <-- RI")
-                    myRef.current.style.opacity = '60%'
+                    myRef.current.style.opacity = '100%'
                 }, timeRef.current);
                 timeRef.current += 800
                 y2 = document.querySelector('.BusUcToRi, triangleHaut').getBoundingClientRect().top;
@@ -3886,7 +3886,7 @@ export function Sim() {
                     timeRef.current += 800
                     setTimeout(() => {
                         setdyna("INC CO")
-                        myRef.current.style.opacity = '60%'
+                        myRef.current.style.opacity = '100%'
                     }, timeRef.current);
                     timeRef.current += 500
                     setTimeout(() => {
@@ -3895,7 +3895,7 @@ export function Sim() {
                     }, timeRef.current)
                     timeRef.current += 800
                     y2 = document.querySelector('.CoToRam .rectangle').getBoundingClientRect().top;
-                    tabPos.current.push({ x: x2 - x1, y: y2 - y1 + 10 })
+                    tabPos.current.push({ x: x2 - x1, y: y2 - y1   })
                     setTimeout(() => {
                         setdyna("RAM <-- CO")
                         pos.current = tabPos.current.shift()
@@ -3903,7 +3903,7 @@ export function Sim() {
                     }, timeRef.current);
                     timeRef.current += 800
                     x2 = document.querySelector('.CoToRam .triangleDroit').getBoundingClientRect().left;
-                    tabPos.current.push({ x: x2 - x1, y: y2 - y1 + 10 })
+                    tabPos.current.push({ x: x2 - x1, y: y2 - y1   })
                     setTimeout(() => {
                         setdyna("RAM <-- CO")
                         pos.current = tabPos.current.shift()
@@ -3960,7 +3960,7 @@ export function Sim() {
                     timeRef.current += 800
                     setTimeout(() => {
                         setdyna("RI <-- RIM")
-                        myRef.current.style.opacity = '60%'
+                        myRef.current.style.opacity = '100%'
                     }, timeRef.current);
                     timeRef.current += 800
                     y2 = document.querySelector('.RimBusRi .rectangle').getBoundingClientRect().top
@@ -4016,7 +4016,7 @@ export function Sim() {
                     timeRef.current += 800
                     setTimeout(() => {
                         setdyna("UC <-- RI")
-                        myRef.current.style.opacity = '60%'
+                        myRef.current.style.opacity = '100%'
                     }, timeRef.current);
                     timeRef.current += 800
                     y2 = document.querySelector('.BusUcToRi, triangleHaut').getBoundingClientRect().top;

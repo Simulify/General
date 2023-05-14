@@ -5,14 +5,16 @@
 .LightPileCo, .LightUalCo, .LightRimEual1, .LightEual1Rim, .LightRegRim, .LightRegUal, .LightUalReg,
 .LightFlagPile, .LightPileFlag, .LightFlagUal, .LightUalFlag ,.LighPileBx ,.LightPileAcc ,.LightPileCX ,.LightRimBx,.LightCxPile ,.LightBxPile ,.LightDxPile ,.LightAccPile,.LightSiPile{
 
-  height: 12px;
-  width: 12px;
+  height: 30px;
+  width: 30px;
   z-index: 10;
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: #FFE600;
   box-shadow: 0 0 5px 4px #FFE600;
+  box-shadow: -1px 11px 5px rgba(18, 79, 109, 0.03), -1px 6px 4px rgba(18, 79, 109, 0.1), 0px 3px 3px rgba(18, 79, 109, 0.17), 0px 1px 2px rgba(18, 79, 109, 0.2), 0px 0px 0px rgba(18, 79, 109, 0.2);
   opacity: 0%;
   transition: all 0.5s ease-in-out;
+  filter: blur(8px);
 }
 /* 
 ,.LightCoRam, .LightRimRam, .LightRimUc , .LightRegPile, .LightCoPile, .LightCoUa
