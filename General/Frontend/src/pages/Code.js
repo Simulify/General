@@ -14,43 +14,43 @@ import Btn_simule from '../components/Btn_simuler2.js';
 import Title from '../components/Title2.js';
 function Code(props) {
   
-  const [base,setBase]=useState("") 
-  const [textareaValue, setTextareaValue] = useState("");
-  const [textareaValue1, setTextareaValue1] = useState("");
-  const [textAreaTitle, setTextAreaTitle] = useState("");
-  const handleTextareaChange = (event) => {
-    setTextareaValue(event.target.value);
-  };
-  const handleTextareaChange1 = (event) => {
-    setTextareaValue1(event.target.value);
-  };
-  const handleTextareaChangeTitle = (event) => {
-    setTextAreaTitle(event.target.value);
-  };
+  // const [base,setBase]=useState("") 
+  // const [textareaValue, setTextareaValue] = useState("");
+  // const [textareaValue1, setTextareaValue1] = useState("");
+  // const [textAreaTitle, setTextAreaTitle] = useState("");
+  // const handleTextareaChange = (event) => {
+  //   setTextareaValue(event.target.value);
+  // };
+  // const handleTextareaChange1 = (event) => {
+  //   setTextareaValue1(event.target.value);
+  // };
+  // const handleTextareaChangeTitle = (event) => {
+  //   setTextAreaTitle(event.target.value);
+  // };
    
   useEffect(() => 
   {
   //we load the stored data is the button of the file has been clicked
 
-  const storedTextareaValue = localStorage.getItem("filecodeHexa");// load the data in hexa
-  const storedTitle = localStorage.getItem("title"); // load the title of the file
-  const storedTextareaValue1 = localStorage.getItem("filecodeMemo"); // load the data with mémonique
-  const buttonClicked = localStorage.getItem("buttonClicked");
-  if (buttonClicked === null) 
-  {
-    localStorage.setItem("buttonClicked", "false"); // if the button is not click we put it at false
-  }
-  if (buttonClicked === "true") 
-  {
-    // if button clicked we set the values of the fields with stored data
-    setTextareaValue(storedTextareaValue || "");
-    setTextareaValue1(storedTextareaValue1 || "");
-    setTextAreaTitle(storedTitle || "");
-    document.getElementsByTagName('textarea')[0].readOnly=false;    
-    document.getElementsByTagName('textarea')[1].value=storedTextareaValue;
-    document.getElementsByTagName('textarea')[0].value=storedTextareaValue1;
-  }
-  localStorage.setItem("buttonClicked", "false"); // we reput it at false until the next click
+  // const storedTextareaValue = localStorage.getItem("filecodeHexa");// load the data in hexa
+  // const storedTitle = localStorage.getItem("title"); // load the title of the file
+  // const storedTextareaValue1 = localStorage.getItem("filecodeMemo"); // load the data with mémonique
+  // const buttonClicked = localStorage.getItem("buttonClicked");
+  // if (buttonClicked === null) 
+  // {
+  //   localStorage.setItem("buttonClicked", "false"); // if the button is not click we put it at false
+  // }
+  // if (buttonClicked === "true") 
+  // {
+  //   // if button clicked we set the values of the fields with stored data
+  //   setTextareaValue(storedTextareaValue || "");
+  //   setTextareaValue1(storedTextareaValue1 || "");
+  //   setTextAreaTitle(storedTitle || "");
+  //   document.getElementsByTagName('textarea')[0].readOnly=false;    
+  //   document.getElementsByTagName('textarea')[1].value=storedTextareaValue;
+  //   document.getElementsByTagName('textarea')[0].value=storedTextareaValue1;
+  // }
+  // localStorage.setItem("buttonClicked", "false"); // we reput it at false until the next click
 
        //-----------------------------------------------------------------------------------------------//
               //--------------------------------------------------------------------------------\\
@@ -78,8 +78,10 @@ function Code(props) {
       document.querySelector('#btn2').style.visibility='visible';
       const  hr=document.querySelector('hr');
       hr.style.borderColor='#00ff00';     
-       document.querySelector('.compiled').innerHTML="Compilé avec succès ✔"
-
+       document.querySelector('.compiled').innerHTML="Compilé avec succès ✔";
+       compiler.disabled=true;
+       compiler.ariaDisabled=true;
+       console.log(compiler.disabled);
      }
      else 
      {
@@ -327,78 +329,78 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
   }, []); // This empty array as a second argument ensures that the effect is only run once when the component mounts
   
 
-  useEffect(() => 
-  {
-    const buttonClicked = localStorage.getItem("buttonClicked");
-    if (buttonClicked === "true") 
-    { //if button clicked we set the values of the fields with stored data
-      const codes = document.getElementsByTagName('textarea');
-      codes[0].readOnly=false;
-      codes[0].value = codes[0].value;
-    }
-    localStorage.setItem("buttonClicked", "false"); // we reput it at false until the next click
+  // useEffect(() => 
+  // {
+  //   const buttonClicked = localStorage.getItem("buttonClicked");
+  //   if (buttonClicked === "true") 
+  //   { //if button clicked we set the values of the fields with stored data
+  //     const codes = document.getElementsByTagName('textarea');
+  //     codes[0].readOnly=false;
+  //     codes[0].value = codes[0].value;
+  //   }
+  //   localStorage.setItem("buttonClicked", "false"); // we reput it at false until the next click
     
-  }, [textareaValue]);
-  const saveFile = (textareaValue, textareaValue1,textAreaTitle) => { 
-    localStorage.setItem('textareaValue', document.getElementsByTagName('textarea')[0].value); // save data with mémonique
-    localStorage.setItem('textareaValue1', document.getElementsByTagName('textarea')[1].value);
-    localStorage.setItem('textAreaTitle', textAreaTitle); // save title of the file
-    const storedTitle = localStorage.getItem("textAreaTitle"); // we put in stored title the stored data title
+  // }, [textareaValue]);
+  // const saveFile = (textareaValue, textareaValue1,textAreaTitle) => { 
+  //   localStorage.setItem('textareaValue', document.getElementsByTagName('textarea')[0].value); // save data with mémonique
+  //   localStorage.setItem('textareaValue1', document.getElementsByTagName('textarea')[1].value);
+  //   localStorage.setItem('textAreaTitle', textAreaTitle); // save title of the file
+  //   const storedTitle = localStorage.getItem("textAreaTitle"); // we put in stored title the stored data title
     
-    // check if the storedTitle is an exemple => not allow saving
-    if (storedTitle === "Maximum de deux nombres" || storedTitle === "Somme des entiers de 1 à 10" || storedTitle === "Factorielle d'un nombre" || storedTitle === "XOR( OU exclusif ) avec la pile" || storedTitle === "Reste de division euclidienne"|| storedTitle === "Permutation du contenu de 2 mot mémoire"|| storedTitle === "Rotation et décalage") {
-      return;
-    }
+  //   // check if the storedTitle is an exemple => not allow saving
+  //   if (storedTitle === "Maximum de deux nombres" || storedTitle === "Somme des entiers de 1 à 10" || storedTitle === "Factorielle d'un nombre" || storedTitle === "XOR( OU exclusif ) avec la pile" || storedTitle === "Reste de division euclidienne"|| storedTitle === "Permutation du contenu de 2 mot mémoire"|| storedTitle === "Rotation et décalage") {
+  //     return;
+  //   }
   
-    const file = { // we init the fields of the object code 
-      "title": storedTitle,  
-      "codeHexa": localStorage.getItem('textareaValue1'),
-      "codeMemo": localStorage.getItem('textareaValue'),
-    };
-    const storedUser = JSON.parse(localStorage.getItem("currentUser")); // we get the current user & his _id
-    const storedCodeId = localStorage.getItem("storedCode.id");  
-    // Check if there is already a code with the same title for the current user
-    axios
-      .get(`https://simulify.onrender.com/users/${storedUser._id}/codes/${storedCodeId}`) //access the code itself
-      .then((response) => {
-        const existingCode = response.data.title === file.title ? response.data : undefined;
-        let exist = false;
-        if (existingCode !== undefined) { //if existing title we update else we create a new one 
-          exist = true;
-        }  
-        if (exist === true) {
-          axios
-            .put(`https://simulify.onrender.com/users/${storedUser._id}/codes/${storedCodeId}`, file) //updating the file
-            .then((response) => {
-              console.log("API call successful:", response); 
-            })
-            .catch((error) => {
-              console.error(error);
-            });
-        } else {
-          axios
-            .post(`https://simulify.onrender.com/users/${storedUser._id}/codes`, file) //creating new code
-            .then((response) => {
-              console.log("API call successful:", response);
-            })
-            .catch((error) => {
-              console.error(error);
-           });
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        axios
-          .post(`https://simulify.onrender.com/users/${storedUser._id}/codes`, file)
-          .then((response) => {
-            console.log("API call successful:", response);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      });
+  //   const file = { // we init the fields of the object code 
+  //     "title": storedTitle,  
+  //     "codeHexa": localStorage.getItem('textareaValue1'),
+  //     "codeMemo": localStorage.getItem('textareaValue'),
+  //   };
+  //   const storedUser = JSON.parse(localStorage.getItem("currentUser")); // we get the current user & his _id
+  //   const storedCodeId = localStorage.getItem("storedCode.id");  
+  //   // Check if there is already a code with the same title for the current user
+  //   axios
+  //     .get(`https://simulify.onrender.com/users/${storedUser._id}/codes/${storedCodeId}`) //access the code itself
+  //     .then((response) => {
+  //       const existingCode = response.data.title === file.title ? response.data : undefined;
+  //       let exist = false;
+  //       if (existingCode !== undefined) { //if existing title we update else we create a new one 
+  //         exist = true;
+  //       }  
+  //       if (exist === true) {
+  //         axios
+  //           .put(`https://simulify.onrender.com/users/${storedUser._id}/codes/${storedCodeId}`, file) //updating the file
+  //           .then((response) => {
+  //             console.log("API call successful:", response); 
+  //           })
+  //           .catch((error) => {
+  //             console.error(error);
+  //           });
+  //       } else {
+  //         axios
+  //           .post(`https://simulify.onrender.com/users/${storedUser._id}/codes`, file) //creating new code
+  //           .then((response) => {
+  //             console.log("API call successful:", response);
+  //           })
+  //           .catch((error) => {
+  //             console.error(error);
+  //          });
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //       axios
+  //         .post(`https://simulify.onrender.com/users/${storedUser._id}/codes`, file)
+  //         .then((response) => {
+  //           console.log("API call successful:", response);
+  //         })
+  //         .catch((error) => {
+  //           console.error(error);
+  //         });
+  //     });
       
-  };
+  // };
  
   
     return(
@@ -471,8 +473,8 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
           </div>
           <div id='pop_up'>
             
-           <Title textareaValue={textAreaTitle} handleTextareaChange={handleTextareaChangeTitle}></Title>
-           <button id='submit'  onClick={() => saveFile(localStorage.getItem('textareaValue'),localStorage.getItem('textareaValue1'),textAreaTitle)}  > 
+           <Title ></Title>
+           <button id='submit'   > 
                Soumettre
            </button>
           </div>

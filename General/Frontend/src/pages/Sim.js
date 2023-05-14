@@ -149,8 +149,12 @@ export function Sim() {
            
             let phrases=[]
             console.log(document.querySelectorAll('textarea')[0].value)
-            phrases = Compile(Decoup(document.querySelectorAll('textarea')[0].value))
-            console.log("A LINTERIEUR DU SIM :" + phrases);
+            phrases = Compile(Decoup(document.querySelectorAll('textarea')[0].value));
+            for(let i=0;i<phrases.length;i++)
+            {
+                console.log(" la bouclie numero "+i+ "eme"+ phrases[i]);
+            }
+            console.log("A LINTERIEUR DU SIM" + phrases);
 
             console.log(phrases[phrases.length - 1])
             if (phrases[phrases.length - 1] !== "0110110000000000") {
@@ -476,7 +480,7 @@ export function Sim() {
     timeRef.current += 1000
 
     setTimeout(() => {
-        setdyna(code)
+        setdyna(Code)
         here = document.querySelector(".UAL")
         here.className = "UAL boxShadowBlue"
     }, timeRef.current)
