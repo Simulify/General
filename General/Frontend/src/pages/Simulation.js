@@ -1,8 +1,9 @@
 import React from 'react';
+import { useEffect } from 'react';
 import Container from '../ComponentsArchi/Container';
 
 function Simulation (props) {
-   
+
   function toggle() {
     var blur = document.getElementById('blur');
     blur.classList.toggle('.avtive');

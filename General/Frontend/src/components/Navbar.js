@@ -13,7 +13,7 @@ function Navbar(props) {
         <h2 className="title">{props.label}</h2>
         <div className="nav-icons">
           {isAuthenticated ? (
-             <Link to="/login"><img className="avatar-icon" src={avatar} alt="Avatar" /></Link>
+             <Link to="/settings"><img className="avatar-icon" src={avatar} alt="Avatar" /></Link>
             
           ) : (
             <Link to="/login" className="login-link">Login</Link>
