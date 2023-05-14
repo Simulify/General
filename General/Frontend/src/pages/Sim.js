@@ -157,6 +157,8 @@ export function Sim() {
         try{
             let phrases=[]
             phrases = Compile(Decoup(document.querySelectorAll('textarea')[0].value))
+            console.log("A LINTERIEUR DU SIM :" + phrases);
+
             console.log(phrases[phrases.length - 1])
             if (phrases[phrases.length - 1] != "0110110000000000") {
                 throw new ErreurSyntax("!Erreur Syntaxique : Le programme doit se terminer par l'instruction STOP")

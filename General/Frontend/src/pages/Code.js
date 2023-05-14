@@ -28,35 +28,32 @@ function Code(props) {
     setTextAreaTitle(event.target.value);
   };
    
-  useEffect(() => {
+  useEffect(() => 
+  {
   //we load the stored data is the button of the file has been clicked
-  
   const storedTextareaValue = localStorage.getItem("filecodeHexa");// load the data in hexa
   const storedTitle = localStorage.getItem("title"); // load the title of the file
   const storedTextareaValue1 = localStorage.getItem("filecodeMemo"); // load the data with mémonique
   const buttonClicked = localStorage.getItem("buttonClicked");
-  if (buttonClicked === null) {
+  if (buttonClicked === null) 
+  {
     localStorage.setItem("buttonClicked", "false"); // if the button is not click we put it at false
   }
-  if (buttonClicked === "true") 
-  { //if button clicked we set the values of the fields with stored data
-    
+  if (1===2) 
+  {
+    // if button clicked we set the values of the fields with stored data
     setTextareaValue(storedTextareaValue || "");
     setTextareaValue1(storedTextareaValue1 || "");
     setTextAreaTitle(storedTitle || "");
     document.getElementsByTagName('textarea')[0].readOnly=false;    
-    document.getElementsByTagName('textarea')[0].value=storedTextareaValue;
+    document.getElementsByTagName('textarea')[1].value=storedTextareaValue;
     document.getElementsByTagName('textarea')[0].value=storedTextareaValue1;
   }
   localStorage.setItem("buttonClicked", "false"); // we reput it at false until the next click
 
-
        //-----------------------------------------------------------------------------------------------//
               //--------------------------------------------------------------------------------\\
        //-----------------------------------------------------------------------------------------------//
-
-
-
     /***************************************************************************************/
  
 
@@ -65,11 +62,12 @@ function Code(props) {
     let compiler=document.querySelector('.container2 .button');
 
       /****************************************    CONERSION DE L'HEXA VERS MNEMONIQUE      ***********************************/
-      /****************************************   RENDRE LE MNEMONIQUE DANS CODES [0]    ********************************************************/
+      /****************************************   RENDRE LE MNEMONIQUE DANS CODES [0]    **************************************************/
     let mnemonique='';
    
     compiler.onclick = e=>
     {
+      console.log('la valeur du' +codes[0].value);
       setTimeout(()=>
       {
      let erreur=document.querySelector('.erreur')
@@ -78,16 +76,15 @@ function Code(props) {
      {
       document.querySelector('#btn2').style.visibility='visible';
       const  hr=document.querySelector('hr');
-      hr.style.borderColor='#00A6FB';
-      document.querySelector('.erreur').innerHTML.style.fontSize='15px';
-     
+      hr.style.borderColor='#00ff00';     
+       document.querySelector('.compiled').innerHTML="Compilé avec succès ✔"
+
      }
      else 
      {
     const  hr=document.querySelector('hr');
     hr.style.borderColor="red";
      }
-     
       },500)
       if((codes[0].value==='' && codes[1].value!=='' ))
       {
@@ -202,8 +199,7 @@ codes[1].oninput=e=>
   
    div.textContent=i;
    blueBox.appendChild(div);
-   console.log(numlines2);
- } 
+} 
 }
 codes[0].oninput=e=>
 {
@@ -221,7 +217,6 @@ codes[0].oninput=e=>
    }
    div.textContent=i;
    blueBox.appendChild(div);
-   console.log(numlines2);
  } 
 }
 
@@ -333,11 +328,7 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
 
   useEffect(() => 
   {
-    // Assign textareaValue to codes[0].value
-
-
     const buttonClicked = localStorage.getItem("buttonClicked");
-
     if (buttonClicked === "true") 
     { //if button clicked we set the values of the fields with stored data
       const codes = document.getElementsByTagName('textarea');
@@ -390,7 +381,7 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
             })
             .catch((error) => {
               console.error(error);
-            });
+           });
         }
       })
       .catch((error) => {
@@ -467,6 +458,7 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
 
       </div>
           <div className='compiled' >
+
           </div>
           <br></br>
           <hr>
