@@ -472,9 +472,9 @@ export function Sim() {
     }, timeRef.current);  
            
     timeRef.current += 1000
-
+    let val=Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value = new Mot16(Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)], Machine.Flags))
     setTimeout(() => {
-        setdyna(code)
+        //setdyna(code)
         here = document.querySelector(".UAL")
         here.className = "UAL boxShadowBlue"
     }, timeRef.current)
@@ -484,53 +484,139 @@ export function Sim() {
         setdyna("")
         here.className = "UAL"
     }, timeRef.current)
-    timeRef.current += 1000
+    tableFlags.current.push(Machine.Flags.flags.hexa)
+                    //console.log(tableFlags.current)
+                setTimeout(() => {
+                    document.querySelector('.FLAG').classList.add("boxShadowBlue")
+                    //console.log("here",tableFlags.current)
+                   flags1.current = tableFlags.current.shift()
+                    setFo11(flags1.current)
+                }, timeRef.current)
+                timeRef.current += 800
+                setTimeout(()=>{
+                    document.querySelector('.FLAG').classList.remove("boxShadowBlue")
+                },timeRef.current)
+                
+    x22 = document.querySelector('.UalBusDonnees .rectangle').getBoundingClientRect().left;
+     y22 = document.querySelector('.UalBusDonnees .rectangle').getBoundingClientRect().top;
+                
+    tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
+    setTimeout(() => {
+        //setdyna("EUAL1 <-- Registre")
+        pos1.current = tabPos1.current.shift()//we get the first element of the array
+        setPosition1(pos1.current)//we set the position of the element
+    }, timeRef.current);
+    timeRef.current += 800
 
+    setTimeout(() => {
+    //setdyna("EUAL1 <-- Registre")
+        myRef1.current.style.opacity = '60%'
+    }, timeRef.current);
+    timeRef.current += 500
+    y22 = document.querySelector('.BusDonnees').getBoundingClientRect().top;
+    tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
+    setTimeout(() => {
+        //setdyna("EUAL1 <-- Registre")
+        pos1.current = tabPos1.current.shift()//we get the first element of the array
+        setPosition1(pos1.current)//we set the position of the element
+    }, timeRef.current);
+    timeRef.current += 800
+    x22 = document.querySelector('.RegToBusDonnees .triangleBas').getBoundingClientRect().left;
+    tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
+    setTimeout(() => {
+        //setdyna("EUAL1 <-- Registre")
+        pos1.current = tabPos1.current.shift()//we get the first element of the array
+        setPosition1(pos1.current)//we set the position of the element
+    }, timeRef.current);
+    timeRef.current += 800
+    y22 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().top;
+    tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
+    setTimeout(() => {
+        //setdyna("EUAL1 <-- Registre")
+        pos1.current = tabPos1.current.shift()//we get the first element of the array
+        setPosition1(pos1.current)//we set the position of the element
+    }, timeRef.current);
+    timeRef.current += 800
+    setTimeout(() => {
+        //setdyna("EUAL1 <-- Registre")
+            myRef1.current.style.opacity = '0%'
+        }, timeRef.current);
+        timeRef.current += 500
     /*Rangement de resultat dans le registre correspondant*/
 
-            let val=Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value = new Mot16(Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)], Machine.Flags))
+            
             switch (parseInt(Machine.UC.R1, 2)) {
                 case 0:
                     tableAc.current.push(val.hexa)
             setTimeout(() => {
+                document.querySelector('#Acc').classList.add("boxShadowBlue")
                 acc.current = tableAc.current.shift()
                 setFo4(acc.current)
             }, timeRef.current)
+            timeRef.current+=800
+            setTimeout(()=>{
+                document.querySelector('#Acc').classList.remove("boxShadowBlue")
+            },timeRef.current)
                     break;
             case 1:
                 tableBx.current.push(val.hexa)
                 setTimeout(() => {
+                    document.querySelector('#Bx').classList.add("boxShadowBlue")
                     bx1.current = tableBx.current.shift()
                     setFo9(bx1.current)
                 }, timeRef.current)
+                timeRef.current+=800
+                setTimeout(()=>{
+                    document.querySelector('#Bx').classList.remove("boxShadowBlue")
+                },timeRef.current)
                 break;
             case 2:
                 tableCx.current.push(val.hexa)
                 setTimeout(() => {
+                    document.querySelector('#Cx').classList.add("boxShadowBlue")
                     cx1.current = tableCx.current.shift()
                     setFo10(bx1.current)
                 }, timeRef.current)
+                timeRef.current+=800
+                setTimeout(()=>{
+                    document.querySelector('#Cx').classList.remove("boxShadowBlue")
+                },timeRef.current)
                 break;
             case 3:
                 tableDx.current.push(val.hexa)
                 setTimeout(() => {
+                    document.querySelector('#Dx').classList.add("boxShadowBlue")
                     dx1.current = tableDx.current.shift()
                     setFo8(dx1.current)
                 }, timeRef.current)
+                timeRef.current+=800
+                setTimeout(()=>{
+                    document.querySelector('#Dx').classList.remove("boxShadowBlue")
+                },timeRef.current)
                 break;
             case 4:
                 tableSi.current.push(val.hexa)
                 setTimeout(() => {
+                    document.querySelector('#Si').classList.add("boxShadowBlue")
                     si1.current = tableSi.current.shift()
                     setFo7(si1.current)
                 }, timeRef.current)
+                timeRef.current+=800
+                setTimeout(()=>{
+                    document.querySelector('#Si').classList.remove("boxShadowBlue")
+                },timeRef.current)
                 break;
             case 5:
                 table.current.push(val.hexa)
                 setTimeout(() => {
+                    document.querySelector('.Co').classList.add("boxShadowBlue")
                     coo.current = table.current.shift()
                     setFo(coo.current)
                 }, timeRef.current)
+                timeRef.current+=800
+                setTimeout(()=>{
+                    document.querySelector('.Co').classList.remove("boxShadowBlue")
+                },timeRef.current)
                 break;
                 default:
                     break;
@@ -713,10 +799,22 @@ export function Sim() {
                 timeRef.current += 1000
                 setTimeout(() => {
                     here.className = "UAL"}, timeRef.current)
-                timeRef.current += 1000
+                
             if(parseInt(Machine.UC.Mod, 2) === 3){
                 let val= Machine[Machine.UC.reg[parseInt(Machine.UC.C, 2)]].value =new Mot16(Instructions[Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]](Machine[Machine.UC.reg[parseInt(Machine.UC.C, 2)]].value,Machine.Flags) )
-                
+                tableFlags.current.push(Machine.Flags.flags.hexa)
+                    //console.log(tableFlags.current)
+                setTimeout(() => {
+                    document.querySelector('.FLAG').classList.add("boxShadowBlue")
+                    //console.log("here",tableFlags.current)
+                   flags1.current = tableFlags.current.shift()
+                    setFo11(flags1.current)
+                }, timeRef.current)
+                timeRef.current += 800
+                setTimeout(()=>{
+                    document.querySelector('.FLAG').classList.remove("boxShadowBlue")
+                },timeRef.current)
+                timeRef.current += 1000
                  switch (parseInt(Machine.UC.C, 2)) {
                     case 0:
                         tableAc.current.push(val.hexa)
