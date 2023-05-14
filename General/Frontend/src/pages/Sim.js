@@ -42,6 +42,7 @@ import LightRimUc from '../ComponentsArchi/LightRimUc';
 import { MyFun } from '../ComponentsArchi/yellow';
 //import { operandeNonValide } from '../Logic/Logic/src/functions.js';
 import { ErreurCop } from '../Logic/Logic/src/functions.js';
+import FinSimulation from '../ComponentsArchi/FinSimulation';
 export function Sim() {
     function isBinary(value) {
         return /^[01]+$/.test(value);
@@ -75,10 +76,6 @@ export function Sim() {
     const uc = new UniteCommandes(null, null, null, null)
     let mem = new Array(65536)
     let [Memoire, setMemoire] = useState(new memoire(mem))
-    const tabM = useRef([])
-    const MMM=useRef([])
-    const tabP = useRef([])
-    const Pilee=useRef([])
     let [machine, setMachine] = useState(new Machine(uc, Acc, ri, si, dx, bx, co, cx, rIM, rAM, busAdr, busData, flags, uAl, Memoire, pile))
 
     //const UC = new UniteCommandes(null, null, null, null);     
@@ -100,9 +97,6 @@ export function Sim() {
     const bx1 = useRef("0000")
     const cx1 = useRef("0001")
     const flags1 = useRef("0000")
-    const Mem=useRef("0000")
-    const pile1 = useRef([])
-    const [time, setTime] = useState(1000)
     const timeRef = useRef(0);
     const coo = useRef("0000")
     const table = useRef([])
@@ -117,8 +111,6 @@ export function Sim() {
     const tableBx = useRef([])
     const tableCx = useRef([])
     const tableFlags = useRef([])
-    const tablePile = useRef([])
-    const tableMem=useRef([])
     let [fo, setFo] = useState("0000")//poyr co
     let [fo1, setFo1] = useState("0000")//pour ram
     let [fo2, setFo2] = useState("0000")//pour rim
@@ -134,22 +126,16 @@ export function Sim() {
     let [fo12, setFo12] = useState([])//pour pile
     let [fo13, setFo13] = useState([])//pour mem
     const [dyna, setdyna] = useState("");
-    const [coor, setCoor] = useState([]);
+    const [showPopup, setShowPopup] = useState(false);
     const myRef = useRef(null);
     const myRef1 = useRef(null);
-    const [element, setElement] = useState([])
-    const elem = useRef([])
+    
     const pos = useRef({ x: 0, y: 0 })
     const tabPos = useRef([])
     const [position, setPosition] = useState({ x: 0, y: 0 })
     const pos1 = useRef({ x: 0, y: 0 })
     const tabPos1 = useRef([])
     const [position1, setPosition1] = useState({ x: 0, y: 0 })
-
-    const addChildComponent = (here) => {
-        elem.current.push(here)
-        setElement(elem.current)
-    };
 
     /*On découpe le texte en phrases*/
     let msg
@@ -233,7 +219,7 @@ export function Sim() {
         /*********************************************/
 
         if (parseInt(Machine.UC.Cop, 2) < 2 || parseInt(Machine.UC.Cop, 2) == 4 || (parseInt(Machine.UC.Cop, 2) >= 6 && parseInt(Machine.UC.Cop, 2) <= 10)) {
-            Machine.UAL.UAL2 = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C, time).value
+            Machine.UAL.UAL2 = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
             console.log(Machine.UAL.UAL2)
             tableUal2.current.push(Machine.UAL.UAL2.hexa)
             Machine.UAL.UAL1 = Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value
@@ -2240,7 +2226,7 @@ y22 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().t
     /************************************************* Les modes **********************************************/
     /*Le mode immédiat*/
 
-    let Mode = [function Imm(Machine, reg, C, time, elements) {
+    let Mode = [function Imm(Machine, reg, C) {
         var Co = Machine.CO
         var busAdr = Machine.bus_adresse
         var busData = Machine.bus_donnes
@@ -3530,8 +3516,10 @@ setTimeout(() => {
                     Arr = machine.RI.decode()//decode la donnee de ri
                     machine.UC = new UniteCommandes(Arr[0], Arr[1], Arr[2], Arr[3])
                 }
-                console.log(elem.current)
+                
             }
+            setTimeout(() => {
+            setShowPopup(true)}, timeRef.current);
         }, 1000)
 
     }
@@ -3542,9 +3530,13 @@ setTimeout(() => {
             <div className='Light' ref={myRef} style={{ position: 'absolute', transform: `translate(${position.x}px, ${position.y}px)` }} />
             <div className='Light1' ref={myRef1} style={{ position: 'absolute', transform: `translate(${position1.x}px, ${position1.y}px)` }} />
             <Simulation case1={fo5} case2={fo6} memoire={fo13} Co={fo}
-                elements={elem.current} Ram={fo1} Rim={fo2} RI={fo3} Pile={fo12}
+               Ram={fo1} Rim={fo2} RI={fo3} Pile={fo12}
                 ACC={fo4} SI={fo7} DI={fo8} BX={fo9} Flags={fo11} CX={fo10} mot={fo13} /></> : <Code handleToggle={HandleToggle} handleClick={HandleClick} />}
-
+    {showPopup && (
+        <div className="overlay">
+              <FinSimulation/>
+        </div>
+        )}
         </>
     )
 }
