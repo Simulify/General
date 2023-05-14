@@ -157,6 +157,7 @@ flex-wrap: nowrap;
 margin-top: 16vh;
 margin-bottom: 24px;
 }
+
 .container2
 {
 display: flex;
@@ -207,7 +208,7 @@ resize: none;
 color: #023047;
 font-size: 24px;
 width: 25vw;
-height: 40vh;
+min-height: 40vh;
 border-color: #00A6FB;
 border-top-right-radius: 8px;
 border-bottom-right-radius: 8px;
@@ -321,6 +322,7 @@ display: flex;
 flex-direction: column;
 align-items: flex-start;
 text-align: center;
+
 }
 div.container > div
 {

@@ -211,7 +211,11 @@ export function Sim() {
         catch (error) 
            {         
             const msg = error.message;
-            document.querySelector('.erreur').innerHTML = msg;
+            if(msg!="element.split is not a function")
+            {
+                document.querySelector('.erreur').innerHTML = msg;
+
+            }
             console.log(msg);
             setComp(false);
             }
