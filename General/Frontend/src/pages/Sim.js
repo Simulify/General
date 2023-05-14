@@ -628,7 +628,7 @@ export function Sim() {
 
         }
         /*************************************************************************************************************/
-        else if (parseInt(Machine.UC.Cop, 2) === 2 || parseInt(Machine.UC.Cop, 2) === 3 || parseInt(Machine.UC.Cop, 2) === 5) {
+        /*else if (parseInt(Machine.UC.Cop, 2) === 2 || parseInt(Machine.UC.Cop, 2) === 3 || parseInt(Machine.UC.Cop, 2) === 5) {
 
             Machine.UAL.UAL1 = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
             tableUal.current.push(Machine.UAL.UAL1.hexa)
@@ -978,7 +978,7 @@ export function Sim() {
             }, timeRef.current)
             timeRef.current += 1000
 
-            /*Rangement de resultat dans le registre correspondant*/
+            /*Rangement de resultat dans le registre correspondant
 
             let val = Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value = new Mot16(Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)], Machine.Flags))
             let code=Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]
@@ -1032,6 +1032,7 @@ export function Sim() {
             timeRef.current += 1000
 
         }
+        */
         /*************************************************************************************************************/
         else if (parseInt(Machine.UC.Cop, 2) === 2 || parseInt(Machine.UC.Cop, 2) === 3 || parseInt(Machine.UC.Cop, 2) === 5) {
 
@@ -1210,7 +1211,19 @@ export function Sim() {
             timeRef.current += 1000
             if (parseInt(Machine.UC.Mod, 2) === 3) {
                 let val = Machine[Machine.UC.reg[parseInt(Machine.UC.C, 2)]].value = new Mot16(Instructions[Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]](Machine[Machine.UC.reg[parseInt(Machine.UC.C, 2)]].value, Machine.Flags))
-
+                tableFlags.current.push(Machine.Flags.flags.hexa)
+                    //console.log(tableFlags.current)
+                setTimeout(() => {
+                    document.querySelector('.FLAG').classList.add("boxShadowBlue")
+                    //console.log("here",tableFlags.current)
+                   flags1.current = tableFlags.current.shift()
+                    setFo11(flags1.current)
+                }, timeRef.current)
+                timeRef.current += 800
+                setTimeout(()=>{
+                    document.querySelector('.FLAG').classList.remove("boxShadowBlue")
+                },timeRef.current)
+                timeRef.current += 1000
                 switch (parseInt(Machine.UC.C, 2)) {
                     case 0:
                         tableAc.current.push(val.hexa)
@@ -1313,7 +1326,7 @@ export function Sim() {
                 setTimeout(() => {
                     document.querySelector('.rim').classList.add('boxShadowBlue')
                     console.log("rimm", tableR2.current)
-                    tableR2.current.shift()
+                    //tableR2.current.shift()
                     rimm.current = tableR2.current.shift()
                     setFo2(rimm.current)
                     myRef1.current.style.opacity = '0%'
