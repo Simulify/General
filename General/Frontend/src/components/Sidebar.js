@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useEffect}from 'react';
 import './Sidebar.css';
 import {SidebarData} from './SidebarData';
 import { ReactComponent as Logo } from '../SidebarIcons/Logo.svg';
@@ -6,6 +6,26 @@ import { ReactComponent as ExitIcon} from '../SidebarIcons/Exit.svg';
 import { Link } from 'react-router-dom';
 
 function Sidebar (props) {
+  useEffect(() => {
+    const state = localStorage.getItem('isAuthenticated');
+    if (state !== null) {
+      
+      localStorage.setItem('removedAuthenticated', true);
+    }
+  }, []);
+
+  const handleClick = () => {
+    // Toggle the effect here
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    if (isAuthenticated === 'true') {
+    const removedAuthenticated = localStorage.getItem('removedAuthenticated');
+    if (removedAuthenticated === 'true') {
+      localStorage.removeItem('removedAuthenticated');
+      localStorage.setItem('isAuthenticated', true);
+    } else {
+      localStorage.setItem('removedAuthenticated', true);
+    }}
+  };
     const handleReset = () => {
         props.onReset();
       };
@@ -21,7 +41,7 @@ function Sidebar (props) {
        id={window.location.pathname.startsWith(val.link)
         ||(window.location.pathname ==="/" && val.link === "/home")? 'active' : ''}
        onClick={() => { window.location.pathname = val.link }}> 
-       <div>{val.icon}</div>
+       <div onClick={handleClick}>{val.icon}</div>
       </li>
      );
     })}

@@ -42,9 +42,16 @@ import LightRimUc from '../ComponentsArchi/LightRimUc';
 import { MyFun } from '../ComponentsArchi/yellow';
 //import { operandeNonValide } from '../Logic/Logic/src/functions.js';
 import { ErreurCop } from '../Logic/Logic/src/functions.js';
+
 export function Sim() {
-  
-    
+    useEffect(() => {
+        const state = localStorage.getItem('isAuthenticated');    
+            if (state!==null) {
+              localStorage.removeItem('isAuthenticated');
+              localStorage.setItem('removedAuthenticated','true');
+            
+        }
+  }, []); 
     function isBinary(value) {
         
         return /^[01]+$/.test(value);
@@ -159,6 +166,7 @@ export function Sim() {
     /*On découpe le texte en phrases*/
     let msg
     const HandleClick = (event) => {
+        
         try{
            
             let phrases=[]

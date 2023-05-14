@@ -78,8 +78,8 @@ function App() {
       <Route path='/home' element={<Home isAuthenticated={isAuthenticated}/>}></Route>
       <Route path='/code/programmation-syntaxe' element={<Syntaxe isAuthenticated={isAuthenticated}/>}></Route>
       <Route path="/settings/*" element={<PrivateRoute><Routes><Route path="/" element={<Settings isAuthenticated={isAuthenticated}/>} /></Routes></PrivateRoute>}/>
-      <Route path='/code' element={<Sim setisAuthenticated={setisAuthenticated} ></Sim>}></Route>
-      <Route path='/code/simulation' element={<Sim setisAuthenticated={setisAuthenticated} ></Sim>}></Route>
+      <Route path='/code' element={<Sim></Sim>}></Route>
+      <Route path='/code/simulation' element={<Sim></Sim>}></Route>
       <Route path="/files/*" element={<PrivateRoute currentUser={currentUser}><Files currentUser={currentUser} isAuthenticated={isAuthenticated} /></PrivateRoute>} />
       <Route path="/files/:username" element={<PrivateRoute currentUser={currentUser}><Routes><Route path="/" element={<Files currentUser={currentUser} isAuthenticated={isAuthenticated}/>} /></Routes></PrivateRoute>} />
       <Route path="/settings/*" element={<PrivateRoute currentUser={currentUser} isAuthenticated={isAuthenticated}><Settings currentUser={currentUser} isAuthenticated={isAuthenticated}/></PrivateRoute>} />
