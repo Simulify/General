@@ -77,7 +77,7 @@ router.post('/signup', async (req, res) => {
     // Check if the user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(409).send({ error: 'User already exists' });
+      return res.status(409).send({ error: 'This account already exists log in !' });
     }
 
     // Hash the password and create a new user
@@ -104,12 +104,12 @@ router.post('/login', async (req, res) => {
     // Check if the user exists
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).send({ error: 'Account not found' });
+      return res.status(401).send({ error: 'Invalid credentials' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(401).send({ error: 'Invalid password' });
+      return res.status(401).send({ error: 'Invalid credentials' });
     }
     
     // Generate a JWT token
@@ -119,14 +119,13 @@ router.post('/login', async (req, res) => {
     const userSpace = `/user-space/${user.username}`;
 
     // Send back the token and redirect URL
-    return res.status(200).send({ token, redirectUrl: userSpace, user });
+    return res.status(200).send({ token, redirectUrl: userSpace,user });
 
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: 'Server error' });
   }
 });
-
 
 // Define the login function
 function login(req, res, next) {

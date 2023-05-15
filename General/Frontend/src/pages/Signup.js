@@ -7,22 +7,28 @@ import logo from "../Components_login/logo.svg";
 import SignLogButton from "../Components_login/SignLogButton";
 import { Link, useNavigate } from 'react-router-dom';
 
-function Signup (setisAuthenticated,setCurrentUser,currentUser) {
-  const navigate = useNavigate(); 
+function Signup() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSignUp = () => {
-    console.log('handleSignUp called');
-    if (!(username && email && password && confirmPassword) || password !== confirmPassword) {
-      console.log('All fields are required and passwords must match');
-      return;
-    }
-    
-    console.log('handleSignUp called');
-    axios.post('https://simulify.onrender.com/signup', {
+ // ...
+
+const handleSignUp = () => {
+  if (!(username && email && password && confirmPassword)) {
+    setError('All fields are required');
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    setError('Passwords do not match');
+    return;
+  }
+  axios
+    .post('https://simulify.onrender.com/signup', {
       username,
       email,
       password,
@@ -31,82 +37,88 @@ function Signup (setisAuthenticated,setCurrentUser,currentUser) {
       console.log(email);
       console.log(response.data);
       axios
-      .post('https://simulify.onrender.com/login', { // we post the user's data to the database 
-        email,
-        password,
-      })
-      .then((response) => {
-        console.log(email);
-        console.log(response.data);
-        localStorage.setItem('token', response.data.token); // we get the token of the identification 
-        const username = email.split('@')[0]; //we get the user's space name from the email 
-        localStorage.setItem('username', username);
-        localStorage.setItem('isAuthenticated', true);
-        localStorage.setItem('currentUser', JSON.stringify(response.data.user));
-        console.log('currentUser:', response.data.user);
-        console.log('currentUser_id:', response.data.user._id);
-        navigate(`/home`); // we redirect to home to indicate the successful login 
-      })
-      .catch((error) => {
-        console.log(email);
-        console.error(error);
-      });
-     
+        .post('https://simulify.onrender.com/login', {
+          email,
+          password,
+        })
+        .then(response => {
+          console.log(email);
+          console.log(response.data);
+          localStorage.setItem('token', response.data.token);
+          const username = email.split('@')[0];
+          localStorage.setItem('username', username);
+          localStorage.setItem('isAuthenticated', true);
+          localStorage.setItem('currentUser', JSON.stringify(response.data.user));
+          console.log('currentUser:', response.data.user);
+          console.log('currentUser_id:', response.data.user._id);
+          navigate(`/home`);
+        })
+        .catch(error => {
+          console.error(error);
+          setError('An error occurred during login. Please try again later.');
+        });
     })
     .catch(error => {
-      console.log(username);
-      console.error(error);
+      console.error(error.response);
+      if (error.response && error.response.data && error.response.data.error) {
+        setError(error.response.data.error);
+      } else {
+        setError('An error occurred during signup. Please try again later.');
+      }
     });
-   
-  };
+};
+
+// ...
+
 
   return (
     <div className="Singupcontainer">
       <div className="Form2">
         <ReactSVG src={logo} />
         <InputButton
-  className="button-1"
-  placeholder="Nom d'utilisateur "
-  value={username}
-  onChange={e => {
-    console.log("Username changed: ", e.target.value);
-    setUsername(e.target.value);
-  }}
-/>
+          className="button-1"
+          placeholder="Nom d'utilisateur"
+          value={username}
+          onChange={e => {
+            console.log("Username changed: ", e.target.value);
+            setUsername(e.target.value);
+          }}
+        />
         <InputButton
           className="button-3"
-          placeholder="Email "
+          placeholder="Email"
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
         <InputButton
           className="button-2"
-          placeholder="Mot de passe "
+          placeholder="Mot de passe"
           type="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
         <InputButton
           className="button-2"
-          placeholder="Confirmer Mot de passe "
+          placeholder="Confirmer Mot de passe"
           type="password"
           value={confirmPassword}
           onChange={e => setConfirmPassword(e.target.value)}
         />
-        <SignLogButton className="SignLogButton1" label="S'inscrire" onClick={handleSignUp} />
-     </div>
-       
-        <div className="Login">
-        
-          <span>Avez-vous déjà un compte ? </span>
-          <Link to="/login">
-          <a  href=" " target=" _blank " > Connexion  </a>
-            </Link>
-        </div>
-     
-      
+        {error && <p className="ErrorMessage">{error}</p>}
+        <SignLogButton className="SignLogButton1" label="S'inscrire" onClick={handleSignUp} error={error}  />
+      </div>
+
+      <div className="Login">
+        <span>Avez-vous déjà un compte ?</span>
+        <Link to="/login">
+          <a href=" " target="_blank">
+            Connexion
+          </a>
+        </Link>
+      </div>
     </div>
   );
 }
 
 export default Signup;
+

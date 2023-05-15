@@ -47,6 +47,8 @@
   }  
  
   .ErrorMessage {
+    font-family: Montserrat;
+    font-weight: bold;
     color: red;
     margin-top: 10px;
   }

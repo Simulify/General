@@ -91,11 +91,8 @@ function Login({ setisAuthenticated, setCurrentUser, currentUser }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {error ? (
-          <p className="ErrorMessage">{error}</p>
-        ) : (
-          <SignLogButton label="Connexion" onClick={handleLogin} loading={error} />
-        )}
+        {error && <p className="ErrorMessage">{error}</p>}
+        <SignLogButton label="Connexion" onClick={handleLogin} error={error} />
         <Link to="/signup">
           <div className="SignUp">
             <span>Vous n'avez pas un compte ?</span>
@@ -107,6 +104,7 @@ function Login({ setisAuthenticated, setCurrentUser, currentUser }) {
       </div>
     </div>
   );
+  
 }
 
 export default Login;
