@@ -1955,15 +1955,11 @@ export function Sim() {
     /************************************** RGM ***********************************************/
     
         else if (parseInt(Machine.UC.Cop, 2) === 24) {
-
-            // tableR2.current.push(Machine.ACC.value.hexa)
-            // let mM = new mot_mem(Machine.RAM.value.entier, new Mot16("0000000000000000"))
-            // Instructions.RGM(Machine.RAM.value, Machine)
             let val = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
             tableR2.current.push(Machine.ACC.value.hexa)
             let mM = new mot_mem(Machine.RAM.value.entier, new Mot16("0000000000000000"))
             Instructions.RGM(Machine.RAM.value, Machine)
-            
+
             let x12 = myRef1.current.getBoundingClientRect().left;//x1 we get actual position of the element
             let y12 = myRef1.current.getBoundingClientRect().top;//y1 we get actual position of the element
             let x22 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().left;
