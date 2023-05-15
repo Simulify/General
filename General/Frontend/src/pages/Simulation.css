@@ -321,7 +321,7 @@
 
 
 .boxShadowBlue {
-  box-shadow: 0px 0px 16px 10px rgba(0, 166, 251, 0.13), 0px 102px 41px rgba(0, 166, 251, 0.01), 0px 57px 34px rgba(0, 166, 251, 0.05), 0px 25px 25px rgba(0, 166, 251, 0.09), 0px 6px 14px rgba(0, 166, 251, 0.1), 0px 0px 0px rgba(0, 166, 251, 0.1);
+  box-shadow: 0px 0px 24px rgba(0, 166, 251, 0.48), 0px 0px 16px 10px rgba(0, 166, 251, 0.13), 0px 102px 41px rgba(0, 166, 251, 0.01), 0px 57px 34px rgba(0, 166, 251, 0.05), 0px 25px 25px rgba(0, 166, 251, 0.09), 0px 6px 14px rgba(0, 166, 251, 0.1), 0px 0px 0px rgba(0, 166, 251, 0.1);
 }
 
 .Co .C1,
@@ -854,7 +854,7 @@
 .ButtonStop {
   grid-row: 3;
   grid-column: 9 / span 2;
-  margin-left: 7vw;
+  margin-left: 8vw;
   margin-top: 20vh;
 }
 
@@ -955,7 +955,7 @@
   color: #023047;
   font-style: normal;
   font-weight: 600;
-  font-size: 3vh;
-  width: 14vw;
+  font-size: 2.75vh;
+  width: 16vw;
   height: 10vh;
 }

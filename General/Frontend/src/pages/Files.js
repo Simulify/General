@@ -1,6 +1,5 @@
 import React, { useState ,useEffect} from 'react';
 import '../pages/Files.css';
-import SubfilesButton from '../components/SubfilesButton';
 import FilesButton from '../components/FilesButton';
 import File from '../components/File';
 import FileNoDelete from '../components/FileNoDelete';
@@ -68,7 +67,7 @@ async function removeFile(id) { // removes files based on their _id
 
   return (
     
-  
+ 
     <div className="Files">
 
       <Navbar label="Les fichiers"  isAuthenticated={props.isAuthenticated}/>
@@ -86,87 +85,62 @@ async function removeFile(id) { // removes files based on their _id
         >
         
           
-          <Link to="/code">
-          <FileNoDelete label="Maximum de deux nombres" codeHexa="" codeMemo="MOV BX 5678H
-MOV ACC BX
-CMP ACC 1234H
-BCV 02 L1
-MOV BX 1234H
-L1: MOV ACC BX
-SOR
-STOP" />
-    </Link>
+         
     <Link to="/code">
-    <FileNoDelete label="Somme des entiers de 1 à 10" codeHexa="" codeMemo="MOV AX 0
+    <FileNoDelete label="Somme des entiers de 1 à 10" codeHexa="" codeMemo="MOV ACC 0
 MOV CX 10
 MOV BX 1
-L1: ADD ACC BX
+ETIQ: ADD ACC BX
 INC BX
-LOOP L1
-SOR 
+LOOP ETIQ
+SORT
 STOP"  />
       </Link>
       <Link to="/code">
-      <FileNoDelete label="Factorielle d'un nombre" codeHexa="" codeMemo="ENT AX
-MOV CX ACC
-L1: MUL ACC CX
-DEC CX
-CMP CX 00
-BCF 00 L1
-SOR
+      <FileNoDelete label="Factorielle d'un nombre" codeHexa="" codeMemo="MOV ACC 3
+MOV BX ACC
+ETIQ: MUL ACC BX
+DEC BX
+CMP BX 0
+BCF 4 ETIQ
+SORT
 STOP" />
       </Link>
       <Link to="/code">
-          <FileNoDelete label="XOR( OU exclusif ) avec la pile" codeHexa="" codeMemo="MOV BX 12H
+          <FileNoDelete label="XOR( OU exclusif ) avec la pile" codeHexa="" codeMemo="MOV BX 12
 PUSH BX
-MOV BX 56H
+MOV BX 56
 PUSH BX
-POP BX
 POP ACC
+POP BX
 XOR ACC BX
-SOR
+SORT
 STOP"/>
       </Link>
 
-      <Link to="/code">
-          <FileNoDelete label="Reste de division euclidienne" codeHexa="" codeMemo="MOV AX 54H
-MOV BX 7H
-MOV DX 0H
-DIV: CMP AX BX 
-BCV 4 EXIT
-SUB ACC BX 
-INC DX 
-BCF 0 DIV
-EXIT: MOV ACC DX
-SOR"/>
-    </Link>
+   
     <Link to="/code">
-          <FileNoDelete label="Permutation du contenu de 2 mot mémoire" codeHexa="" codeMemo="MOV AX 12H
-MOV DX 10H
-MOV SI 7H
-MOV BX 20H
-MOV CX 4H
-CHM ACC [BX + SI] 
-MOV DX AX
-CHM ACC *CX
-RGM [BX + SI] 
+          <FileNoDelete label="Permutation du contenu de 2 cases mémoire" codeHexa="" codeMemo="MOV ACC 12
+MOV DX 10
+MOV SI 7
+MOV BX 20
+CHM [BX]
+MOV DX ACC
+CHM [SI]
+RGM [BX]
 MOV ACC DX
-RGM *CX
+RGM [SI]
 STOP"  />
     </Link>
     <Link to="/code">
-          <FileNoDelete label="Rotation et décalage" codeHexa="" codeMemo="MOV AX 8
-SHL ACC 3
-SOR
-MOV ACC 7
-SHR ACC 4
-SOR
-MOV ACC 32
-ROR ACC 5
-SOR
-MOV ACC 24
-ROL ACC 10
-SOR
+          <FileNoDelete label="Rotation et décalage" codeHexa="" codeMemo="MOV ACC 8
+SHR ACC 3
+MOV BX 7
+SHL BX 4
+MOV CX 32
+ROR CX 5
+MOV DX 24
+ROL DX 10
 STOP"  />
     </Link>
     {/*------------------ */}
@@ -200,8 +174,7 @@ STOP"  />
       </div>
       </div>
 
-      
-   
+        
   );
 }
 
