@@ -104,12 +104,12 @@ router.post('/login', async (req, res) => {
     // Check if the user exists
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).send({ error: 'Invalid credentials' });
+      return res.status(401).send({ error: 'Account not found' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(401).send({ error: 'Invalid credentials' });
+      return res.status(401).send({ error: 'Invalid password' });
     }
     
     // Generate a JWT token
@@ -119,13 +119,14 @@ router.post('/login', async (req, res) => {
     const userSpace = `/user-space/${user.username}`;
 
     // Send back the token and redirect URL
-    return res.status(200).send({ token, redirectUrl: userSpace,user });
+    return res.status(200).send({ token, redirectUrl: userSpace, user });
 
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: 'Server error' });
   }
 });
+
 
 // Define the login function
 function login(req, res, next) {

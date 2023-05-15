@@ -28,7 +28,7 @@ function Login({ setisAuthenticated, setCurrentUser, currentUser }) {
       setError('All fields are required');
       return;
     }
-
+  
     axios
       .post('https://simulify.onrender.com/login', {
         email,
@@ -41,7 +41,7 @@ function Login({ setisAuthenticated, setCurrentUser, currentUser }) {
         const username = email.split('@')[0];
         localStorage.setItem('username', username);
         localStorage.setItem('isAuthenticated', 'true');
-
+  
         localStorage.setItem('resetDone', 'false');
         console.log('reset:', localStorage.getItem('resetDone'));
         localStorage.setItem('currentUser', JSON.stringify(response.data.user));
@@ -52,7 +52,7 @@ function Login({ setisAuthenticated, setCurrentUser, currentUser }) {
       .catch((error) => {
         console.log(email);
         if (error.response) {
-          const errorMessage = error.response.data.message;
+          const errorMessage = error.response.data.error;
           console.error(errorMessage);
           setError(errorMessage);
         } else {
