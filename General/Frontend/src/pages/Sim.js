@@ -178,7 +178,7 @@ export function Sim() {
             document.querySelector('.erreur').innerHTML = '';
         } catch (error) {
             const msg = error.message;
-            if(msg!="element.split is not a function")
+            if(msg!=="element.split is not a function")
             {
                 document.querySelector('.erreur').innerHTML = msg;
 
@@ -1118,6 +1118,7 @@ export function Sim() {
                 here.className = "UAL"
             }, timeRef.current)
             timeRef.current += 1000
+            if(parseInt(Machine.UC.Mod,2)===3){
                 let val = Machine[Machine.UC.reg[parseInt(Machine.UC.C, 2)]].value = new Mot16(Instructions[Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]](Machine[Machine.UC.reg[parseInt(Machine.UC.C, 2)]].value, Machine.Flags))
                 tableFlags.current.push(Machine.Flags.flags.hexa)
                 setTimeout(() => {
@@ -1250,10 +1251,11 @@ export function Sim() {
                 timeRef.current += 800
 
                 setTimeout(() => {
+                   
                     setdyna(Code)
                     document.querySelector('.rim').classList.remove('boxShadowBlue')
                     document.querySelector('.Memoire').classList.add('boxShadowBlue')
-
+                    
                     if (mM.adresse >= fo13.length) {
                         const length = mM.adresse - fo13.length;
                         const defaultValue = "0000";
@@ -1272,7 +1274,8 @@ export function Sim() {
                 timeRef.current += 800
 
                 setTimeout(() => {
-                    setdyna("")
+                setdyna("")
+                   
                     document.querySelector('.Memoire').classList.remove('boxShadowBlue')
                 }, timeRef.current);
             }
@@ -1852,7 +1855,7 @@ export function Sim() {
 
         /**************************  LOOP UNTIL CX==0 ***************************/
 
-        else if (parseInt(Machine.UC.Cop, 2) == 17) {
+        else if (parseInt(Machine.UC.Cop, 2) === 17) {
             let code = Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]
 
             if (Machine.CX.value.entier === 0) {
@@ -1883,7 +1886,7 @@ export function Sim() {
 
         /****************************************** BCV *********************************************/
 
-        else if (parseInt(Machine.UC.Cop, 2) == 18) {
+        else if (parseInt(Machine.UC.Cop, 2) === 18) {
 
             let op1 = parseInt(Machine.UC.C, 2)
         
