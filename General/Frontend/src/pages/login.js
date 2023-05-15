@@ -47,8 +47,10 @@ function Login({ setisAuthenticated,setCurrentUser,currentUser }) {
         localStorage.setItem('token', response.data.token); // we get the token of the identification 
         const username = email.split('@')[0]; //we get the user's space name from the email 
         localStorage.setItem('username', username);
-        localStorage.setItem('isAuthenticated', true);
-        setisAuthenticated(true);
+        localStorage.setItem('isAuthenticated', 'true');
+      
+        localStorage.setItem('resetDone','false');
+        console.log("reset:", localStorage.getItem('resetDone'));
         localStorage.setItem('currentUser', JSON.stringify(response.data.user));
         console.log('currentUser:', response.data.user);
         console.log('currentUser_id:', response.data.user._id);

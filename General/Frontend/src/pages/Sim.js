@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useRef } from 'react';
 import Code from './Code';
 import Simulation from './Simulation';
@@ -27,6 +27,13 @@ import "../ComponentsArchi/Light.css"
 import { Compile, Decoup, ErreurSyntax } from '../Logic/Logic/src/functions.js';
 import FinSimulation from '../ComponentsArchi/FinSimulation';
 export function Sim() {
+    useEffect(() => {
+        const state = localStorage.getItem('isAuthenticated');    
+            if (state){
+              localStorage.removeItem('isAuthenticated');
+              localStorage.setItem('removedAuthenticated','true');
+        }
+  }, ); 
     function isBinary(value) {
         return /^[01]+$/.test(value);
     }
@@ -171,7 +178,11 @@ export function Sim() {
             document.querySelector('.erreur').innerHTML = '';
         } catch (error) {
             const msg = error.message;
-            document.querySelector('.erreur').innerHTML = msg;
+            if(msg!="element.split is not a function")
+            {
+                document.querySelector('.erreur').innerHTML = msg;
+
+            }
             console.log(msg);
             setComp(false);
         }
