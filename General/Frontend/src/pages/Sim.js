@@ -178,7 +178,7 @@ export function Sim() {
             document.querySelector('.erreur').innerHTML = '';
         } catch (error) {
             const msg = error.message;
-            if(msg!="element.split is not a function")
+            if(msg!=="element.split is not a function")
             {
                 document.querySelector('.erreur').innerHTML = msg;
 
@@ -1855,7 +1855,7 @@ export function Sim() {
 
         /**************************  LOOP UNTIL CX==0 ***************************/
 
-        else if (parseInt(Machine.UC.Cop, 2) == 17) {
+        else if (parseInt(Machine.UC.Cop, 2) === 17) {
             let code = Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]
 
             if (Machine.CX.value.entier === 0) {
@@ -1886,7 +1886,7 @@ export function Sim() {
 
         /****************************************** BCV *********************************************/
 
-        else if (parseInt(Machine.UC.Cop, 2) == 18) {
+        else if (parseInt(Machine.UC.Cop, 2) === 18) {
 
             let op1 = parseInt(Machine.UC.C, 2)
         
