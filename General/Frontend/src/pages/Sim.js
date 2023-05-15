@@ -2336,7 +2336,6 @@ export function Sim() {
 
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -3730,17 +3729,21 @@ export function Sim() {
                     setPosition(pos.current)//we set the position of the element
                 }, timeRef.current);
                 timeRef.current += 800
+                let Arr = machine.RI.decode();//decode la donnee de ri
+                machine.UC = new UniteCommandes(Arr[0], Arr[1], Arr[2], Arr[3])
+                setMachine(machine)
+                let CC = machine.UC.Coprnd[parseInt(machine.UC.Cop, 2)]
+                console.log(CC)
                 setTimeout(() => {
-                    setdyna("DECODAGE")
+                    setdyna(CC)
                     document.querySelector('.Uc').classList.add('boxShadowBlue');
                 }, timeRef.current);
                 timeRef.current += 2000
                 setTimeout(() => {
-                    setdyna("DECODAGE")
+                    setdyna(CC)
                     document.querySelector('.Uc').classList.remove('boxShadowBlue');
                     myRef.current.style.opacity = '0%'
                 }, timeRef.current);
-                let Arr = machine.RI.decode();//decode la donnee de ri
                 machine.UC = new UniteCommandes(Arr[0], Arr[1], Arr[2], Arr[3])
                 setMachine(machine)
                 while (parseInt(machine.UC.Cop, 2) !== 27) {
@@ -3749,7 +3752,7 @@ export function Sim() {
                     Traiter(machine)
                     setMachine(machine)
                     if (parseInt(machine.UC.Cop, 2) !== 17 && parseInt(machine.UC.Cop, 2) !== 18 && parseInt(machine.UC.Cop, 2) !== 19) {
-                        machine.CO.incCO()//inc co
+                        machine.CO.incCO()
                     }
                     table.current.push(machine.CO.value.hexa)
                     setTimeout(() => {
@@ -3919,18 +3922,20 @@ export function Sim() {
                         setPosition(pos.current)//we set the position of the element
                     }, timeRef.current);
                     timeRef.current += 800
+                    Arr = machine.RI.decode()//decode la donnee de ri
+                    machine.UC = new UniteCommandes(Arr[0], Arr[1], Arr[2], Arr[3])
+                    let code1 = machine.UC.Coprnd[parseInt(machine.UC.Cop, 2)]
                     setTimeout(() => {
-                        setdyna("DECODAGE")
+                        setdyna(code1)
                         document.querySelector('.Uc').classList.add('boxShadowBlue');
                     }, timeRef.current);
                     timeRef.current += 2000
                     setTimeout(() => {
+                        setdyna(code1)
                         document.querySelector('.Uc').classList.remove('boxShadowBlue');
                         myRef.current.style.opacity = '0%'
-                        setdyna("DECODAGE")
                     }, timeRef.current);
-                    Arr = machine.RI.decode()//decode la donnee de ri
-                    machine.UC = new UniteCommandes(Arr[0], Arr[1], Arr[2], Arr[3])
+                    
                 }
             }
             setTimeout(() => {
