@@ -69,55 +69,53 @@ const handleSignUp = () => {
 };
 
 // ...
-
-
-  return (
-    <div className="Singupcontainer">
-      <div className="Form2">
-        <ReactSVG src={logo} />
-        <InputButton
-          className="button-1"
-          placeholder="Nom d'utilisateur"
-          value={username}
-          onChange={e => {
-            console.log("Username changed: ", e.target.value);
-            setUsername(e.target.value);
-          }}
-        />
-        <InputButton
-          className="button-3"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-        <InputButton
-          className="button-2"
-          placeholder="Mot de passe"
-          type="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-        <InputButton
-          className="button-2"
-          placeholder="Confirmer Mot de passe"
-          type="password"
-          value={confirmPassword}
-          onChange={e => setConfirmPassword(e.target.value)}
-        />
-        {error && <p className="ErrorMessage">{error}</p>}
-        <SignLogButton className="SignLogButton1" label="S'inscrire" onClick={handleSignUp} error={error}  />
-      </div>
-
-      <div className="Login">
-        <span>Avez-vous déjà un compte ?</span>
-        <Link to="/login">
-          <a href=" " target="_blank">
-            Connexion
-          </a>
-        </Link>
-      </div>
+return (
+  <div className="Singupcontainer">
+    <div className="Form2">
+      <ReactSVG src={logo} />
+      <InputButton
+        className="button-1"
+        placeholder="Nom d'utilisateur"
+        value={username}
+        onChange={e => {
+          console.log("Username changed: ", e.target.value);
+          setUsername(e.target.value);
+        }}
+      />
+      <InputButton
+        className="button-3"
+        placeholder="Email"
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+      />
+      <InputButton
+        className="button-2"
+        placeholder="Mot de passe"
+        type="password"
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+      />
+      <InputButton
+        className="button-2"
+        placeholder="Confirmer Mot de passe"
+        type="password"
+        value={confirmPassword}
+        onChange={e => setConfirmPassword(e.target.value)}
+      />
+      {error && <p className="ErrorMessage">{error}</p>}
+      <SignLogButton className="SignLogButton1" label="S'inscrire" onClick={handleSignUp} error={error} />
     </div>
-  );
+    <div className="Login">
+      <span>Avez-vous déjà un compte ?</span>
+      <Link to="/login">
+        <a href=" " target="_blank">
+          Connexion
+        </a>
+      </Link>
+    </div>
+  </div>
+);
+
 }
 
 export default Signup;
