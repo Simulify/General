@@ -1118,6 +1118,7 @@ export function Sim() {
                 here.className = "UAL"
             }, timeRef.current)
             timeRef.current += 1000
+            if(parseInt(Machine.UC.Mod,2)===3){
                 let val = Machine[Machine.UC.reg[parseInt(Machine.UC.C, 2)]].value = new Mot16(Instructions[Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]](Machine[Machine.UC.reg[parseInt(Machine.UC.C, 2)]].value, Machine.Flags))
                 tableFlags.current.push(Machine.Flags.flags.hexa)
                 setTimeout(() => {
@@ -1250,10 +1251,11 @@ export function Sim() {
                 timeRef.current += 800
 
                 setTimeout(() => {
+                   
                     setdyna(Code)
                     document.querySelector('.rim').classList.remove('boxShadowBlue')
                     document.querySelector('.Memoire').classList.add('boxShadowBlue')
-
+                    
                     if (mM.adresse >= fo13.length) {
                         const length = mM.adresse - fo13.length;
                         const defaultValue = "0000";
@@ -1272,7 +1274,8 @@ export function Sim() {
                 timeRef.current += 800
 
                 setTimeout(() => {
-                    setdyna("")
+                setdyna("")
+                   
                     document.querySelector('.Memoire').classList.remove('boxShadowBlue')
                 }, timeRef.current);
             }
