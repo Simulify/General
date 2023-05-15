@@ -137,16 +137,4 @@ class UAL {
     }
 }
 
-// let ual = new UAL("1010101010101010", "1111110");
-// console.log(`UAL1 = ${ual.getUAL1().getMot()}`);
-// console.log(`UAL2 = ${ual.getUAL2().getMot()}`);
-// let resADD = ual.executer("XOR");
-// console.log(`UAL1 + UAL2 = ${resADD}`);
-
-// ual.setUAL1(new Mot16("1110011100111001"));
-// ual.setUAL2(new Mot16("0110"));
-// console.log(`UAL1 = ${ual.getUAL1().getMot()}`);
-// console.log(`UAL2 = ${ual.getUAL2().getMot()}`);
-// let resADD2 = ual.executer("OU");
-// console.log(`UAL1 + UAL2 = ${resADD2}`);
 export default UAL
