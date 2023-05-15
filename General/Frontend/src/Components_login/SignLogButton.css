@@ -23,3 +23,21 @@
   border: 0.1vh solid #0091EA;
   box-shadow: 0px 42px 17px rgba(43, 110, 177, 0.01), 0px 8px 16px rgba(43, 110, 177, 0.2);
 }
+.LoadingIcon {
+  width: 2vw;
+  height: 2vw;
+ 
+}
+.SignLogButton.loading .LoadingIcon {
+  animation: spin 1s infinite linear;
+  filter: brightness(0) invert(1);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

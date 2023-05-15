@@ -16,63 +16,65 @@ import image6 from '../Components_login/image6.svg';
 import image7 from '../Components_login/image7.svg';
 import image8 from '../Components_login/image8.svg';
 import image9 from '../Components_login/image9.svg';
-
-function Login({ setisAuthenticated,setCurrentUser,currentUser }) {
-  const navigate = useNavigate(); 
-  const [email, setEmail] = useState(''); 
+function Login({ setisAuthenticated, setCurrentUser, currentUser }) {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [currentImage, setCurrentImage] = useState(0);
-  useEffect(() => { // sets the varible to true when user logs in 
-    const isAuthenticated = localStorage.getItem('isAuthenticated');
-    if (isAuthenticated) {
-      setisAuthenticated(true);
-    }
-  }, []);
+  const [error, setError] = useState('');
 
-
-  const handleLogin = () => {  
-    if (!email || !password) { //checks the presence of the email & password
-      console.log('All fields are required');
+  const handleLogin = () => {
+    if (!email || !password) {
+      setError('All fields are required');
       return;
     }
-    console.log('handleSignUp called');
+
     axios
-      .post('https://simulify.onrender.com/login', { // we post the user's data to the database 
+      .post('https://simulify.onrender.com/login', {
         email,
         password,
       })
       .then((response) => {
         console.log(email);
         console.log(response.data);
-        localStorage.setItem('token', response.data.token); // we get the token of the identification 
-        const username = email.split('@')[0]; //we get the user's space name from the email 
+        localStorage.setItem('token', response.data.token);
+        const username = email.split('@')[0];
         localStorage.setItem('username', username);
         localStorage.setItem('isAuthenticated', 'true');
-      
-        localStorage.setItem('resetDone','false');
-        console.log("reset:", localStorage.getItem('resetDone'));
+
+        localStorage.setItem('resetDone', 'false');
+        console.log('reset:', localStorage.getItem('resetDone'));
         localStorage.setItem('currentUser', JSON.stringify(response.data.user));
         console.log('currentUser:', response.data.user);
         console.log('currentUser_id:', response.data.user._id);
-        navigate(`/home`); // we redirect to home to indicate the successful login 
+        navigate(`/home`);
       })
       .catch((error) => {
         console.log(email);
-        console.error(error);
+        if (error.response) {
+          const errorMessage = error.response.data.message;
+          console.error(errorMessage);
+          setError(errorMessage);
+        } else {
+          console.error(error);
+          setError('An error occurred. Please try again later.');
+        }
       });
   };
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentImage((prevImage) => (prevImage + 1) % 6);
     }, 1000);
     return () => clearInterval(intervalId);
   }, []);
-  const images = [image1, image2, image3, image4, image5, image6, image7, image8,image9];
+
+  const images = [image1, image2, image3, image4, image5, image6];
 
   return (
     <div className="Containerlogin">
       <div className="illustration">
-      <img src={images[currentImage]} alt="illustration" />
+        <img src={images[currentImage]} alt="illustration" />
       </div>
       <div className="FormLogin">
         <ReactSVG src={logo} />
@@ -89,13 +91,16 @@ function Login({ setisAuthenticated,setCurrentUser,currentUser }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <SignLogButton label="Connexion" onClick={handleLogin} />
+        {error ? (
+          <p className="ErrorMessage">{error}</p>
+        ) : (
+          <SignLogButton label="Connexion" onClick={handleLogin} loading={error} />
+        )}
         <Link to="/signup">
-          <div className=" SignUp ">
-            <span> Vous n'avez pas un compte ? </span>
+          <div className="SignUp">
+            <span>Vous n'avez pas un compte ?</span>
             <a href=" " target="_blank">
-              {' '}
-              S'inscrire{' '}
+              S'inscrire
             </a>
           </div>
         </Link>
@@ -105,3 +110,8 @@ function Login({ setisAuthenticated,setCurrentUser,currentUser }) {
 }
 
 export default Login;
+
+
+
+
+
