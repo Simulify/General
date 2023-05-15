@@ -147,8 +147,7 @@ function login(req, res, next) {
 }
 
 
-// Log in a user after sign up
-router.post('/signup', login);
+
 
 // Log out a user
 router.post('/logout', (req, res) => {
