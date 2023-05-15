@@ -1232,7 +1232,7 @@ export function Sim() {
                 setTimeout(() => {
                     document.querySelector('.rim').classList.add('boxShadowBlue')
                     console.log("rimm", tableR2.current)
-                    //tableR2.current.shift()
+                    tableR2.current.shift()
                     rimm.current = tableR2.current.shift()
                     setFo2(rimm.current)
                     myRef1.current.style.opacity = '0%'
@@ -2917,6 +2917,7 @@ export function Sim() {
         }, timeRef.current)
         timeRef.current += 500
         machine.memoire.lecture(Machine.RAM, Machine.RIM)//lecture 
+        tableR2.current.push(Machine.RIM.value.hexa)
         setTimeout(() => {
             setdyna("LECTURE")
             blue.className = "Memoire"
