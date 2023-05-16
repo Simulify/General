@@ -207,6 +207,9 @@ for (let i = 0; i < phrases.length; i++) {
         } else {
             if (v==12 || v==2 || v==3 || v==5|| (v>=23&&v<=26)) {
                 if (element.length>2){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
+                else if (element[1]=="ACC") {
+                    throw new ErreurSyntax(`erreur dans la ligne ${i+1} : chargement ACC dans ACC non autorisé`)
+                }
                 else{
                     if (v==12 || v==25 || v==26 ) {
                       if ( treatReg(element[1],reg)==-1){
@@ -248,6 +251,9 @@ for (let i = 0; i < phrases.length; i++) {
             }
             else if(v==0 || v==1 || v==4 || (v>=6&&v<=11) ||v==22){
                 if (!element.length==3){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
+                else if(v==22 && element[1]==element[2]){
+                    throw new ErreurSyntax(`erreur dans la ligne ${i+1} : MOV avec deux opérandes identiques`)
+                }
                 else
                 {
                     let registre=treatReg(element[1],reg)

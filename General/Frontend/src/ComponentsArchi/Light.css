@@ -5,8 +5,8 @@
 .LightPileCo, .LightUalCo, .LightRimEual1, .LightEual1Rim, .LightRegRim, .LightRegUal, .LightUalReg,
 .LightFlagPile, .LightPileFlag, .LightFlagUal, .LightUalFlag ,.LighPileBx ,.LightPileAcc ,.LightPileCX ,.LightRimBx,.LightCxPile ,.LightBxPile ,.LightDxPile ,.LightAccPile,.LightSiPile{
 
-  height: 30px;
-  width: 30px;
+  height: 24px;
+  width: 24px;
   z-index: 10;
   border-radius: 20px;
   background-color: #FFE600;

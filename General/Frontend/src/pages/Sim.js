@@ -45,7 +45,7 @@ export function Sim() {
     }
 
     /// initialisation des instances de classes
-    const mot = new Mot16("0000000000000111");
+    const mot = new Mot16("0000000000000000");
     const flags = new Flags(new Mot16("0000000000000000"));
     const Acc = new ACC(mot);
     const bx = new BX(new Mot16("0000000000000000"));
