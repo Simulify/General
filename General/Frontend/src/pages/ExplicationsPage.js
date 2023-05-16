@@ -1,8 +1,10 @@
+/***************************************************************************************/
 import React from 'react';
 import '../App.css';
 import './RessourcesExplication.css';
 import Navbar from '../components/Navbar';
 import ButtonExplication from '../ComponentsRevision/ButtonExplication';
+/***************************************************************************************/
 
 //la page des explication des concepts 
 function ExplicationsPage(props) {

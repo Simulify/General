@@ -1,3 +1,4 @@
+/***************************************************************************************/
 import React from 'react';
 import { useState,useEffect } from 'react';
 import { useRef } from 'react';
@@ -26,6 +27,7 @@ import Machine from '../Logic/Logic/src/Machine.js';
 import "../ComponentsArchi/Light.css"
 import { Compile, Decoup, ErreurSyntax } from '../Logic/Logic/src/functions.js';
 import FinSimulation from '../ComponentsArchi/FinSimulation';
+/***************************************************************************************/
 export function Sim() {
     useEffect(() => {
         const state = localStorage.getItem('isAuthenticated');    

@@ -1,3 +1,4 @@
+/***************************************************************************************/
 import React, { useState } from "react";
 import axios from 'axios';
 import "./SignUpPage.css";
@@ -6,6 +7,9 @@ import { ReactSVG } from 'react-svg';
 import logo from "../Components_login/logo.svg";
 import SignLogButton from "../Components_login/SignLogButton";
 import { Link, useNavigate } from 'react-router-dom';
+/***************************************************************************************/
+
+
 //------------------------------------------------------------------------------------------------
 
 function Signup(setisAuthenticated, setCurrentUser, currentUser) {

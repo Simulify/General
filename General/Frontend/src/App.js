@@ -1,6 +1,6 @@
+/***************************************************************************************/
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import React, {useState,useEffect} from 'react';
-
 import './pages/ColorsVar.css'; 
 import './App.css';
 import Sidebar from './components/Sidebar';
@@ -37,15 +37,17 @@ import { Sim } from './pages/Sim';
 import FAQ from './pages/FAQ';
 import Quiz from './pages/Quiz';
 import QuizApp from './pages/QuizApp';
+/***************************************************************************************/
 
 function App() {
   
-
+ // Déclaration des variables d'état à l'aide du hook useState
 
   const [isAuthenticated, setisAuthenticated] = useState(false); //une variable qui est mise à jour au login & logout
   const [currentUser, setCurrentUser] = useState(localStorage.getItem('user') || null);
   
   useEffect(() => {
+      // Effet secondaire pour initialiser l'état isAuthenticated
 
     const storedIsAuthenticated = localStorage.getItem('isAuthenticated');
     setisAuthenticated(storedIsAuthenticated === 'true');
@@ -54,6 +56,7 @@ function App() {
 
 
   function handleReset() {
+      // Fonction pour réinitialiser les valeurs et les supprimer du stockage local
     localStorage.setItem('resetDone', 'true');
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('removedAuthenticated');
@@ -63,6 +66,7 @@ function App() {
   }
   
   function PrivateRoute({ children }) {
+    // Composant de route privée pour protéger l'accès aux routes spécifiques
     const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
     const currentUser = JSON.parse(localStorage.getItem('user'));
     return isAuthenticated ? (
@@ -77,6 +81,7 @@ function App() {
     <BrowserRouter>
     <Sidebar onReset={handleReset}  setisAuthenticated={setisAuthenticated}/>
      <Routes>
+       {/* Définition des différentes routes avec leurs composants correspondants */}
       <Route path='/' element={<Home isAuthenticated={isAuthenticated}/>}></Route>
       <Route path='/home' element={<Home isAuthenticated={isAuthenticated}/>}></Route>
       <Route path='/code/programmation-syntaxe' element={<Syntaxe isAuthenticated={isAuthenticated}/>}></Route>

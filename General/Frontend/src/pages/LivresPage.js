@@ -1,8 +1,10 @@
+/***************************************************************************************/
 import React from 'react';
 import '../App.css';
 import './RessourcesExplication.css';
 import Navbar from '../components/Navbar';
 import ButtonRessource from '../ComponentsRevision/ButtonRessource';
+/***************************************************************************************/
 
 function LivresPage (props) {
  return(

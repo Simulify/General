@@ -1,7 +1,9 @@
+/***************************************************************************************/
 import React from 'react';
 import Navbar from '../components/Navbar';
 import './Guide.css';
 import { ReactComponent as HomeGuide} from '../Images/homeguide.svg';
+/***************************************************************************************/
 
 function Guide (props) {
  return (

@@ -1,3 +1,4 @@
+/***************************************************************************************/
 import React, { useState, useEffect } from 'react';
 import SignLogButton from '../Components_login/SignLogButton';
 import axios from 'axios';
@@ -17,6 +18,8 @@ import image7 from '../Components_login/image7.svg';
 import image8 from '../Components_login/image8.svg';
 import image9 from '../Components_login/image9.svg';
 //-------------------------------------------------------------------------------
+/***************************************************************************************/
+
 
 function Login({ setisAuthenticated,setCurrentUser,currentUser }) {
   const navigate = useNavigate(); 

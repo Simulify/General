@@ -1,3 +1,4 @@
+/***************************************************************************************/
 import React, { useState, useEffect } from 'react';
 import FormSettings from "./FormSettings";
 import { useTranslation } from 'react-i18next';
@@ -5,6 +6,7 @@ import { ReactSVG } from "react-svg";
 import france from "../Images/france.svg";
 import unitedStates from "../Images/united-states-of-america.svg";
 import Navbar from "../components/Navbar";
+/***************************************************************************************/
 
 function LanguePage(props) {
     const { i18n } = useTranslation();

@@ -1,3 +1,4 @@
+/***************************************************************************************/
 import React, { useState ,useEffect} from 'react';
 import '../pages/Files.css';
 import FilesButton from '../components/FilesButton';
@@ -7,6 +8,7 @@ import Navbar from '../components/Navbar';
 import Loope from '../Images/No Results@3x.svg';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+/***************************************************************************************/
 
 
 function Files(props) {

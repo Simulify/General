@@ -1,9 +1,11 @@
+/***************************************************************************************/
 import React, { useState } from "react";
 import "./FAQ.css";
 import Navbar from '../components/Navbar';
 import { ReactComponent as Point } from '../Images/point.svg';
 import { ReactComponent as Fleche } from '../Images/Dropdown.svg';
-
+/***************************************************************************************/
+// Tableau des questions et réponses
 const questions = [
   {
     id: 1,
@@ -47,7 +49,7 @@ const questions = [
 
 export default function FAQ(props) {
   const [reponseVisible, setReponseVisible] = useState(null);
-  const handleClickQuestion = (id) => {
+  const handleClickQuestion = (id) => { // Gestion du clic sur une question
     if (reponseVisible === id) {
       // Si la réponse est déjà visible, la masquer
       setReponseVisible(null);

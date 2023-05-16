@@ -1,9 +1,11 @@
+/***************************************************************************************/
 import React, { useState,useEffect } from "react";
 import FormSettings from "./FormSettings";
 import Navbar from "../components/Navbar";
 import "../pages/Settings.css";
 import InputButton from "../Components_login/InputButton";
 import axios from "axios";
+/***************************************************************************************/
 
 function ProfilePage(props) {
   const [email, setEmail] = useState("");// État pour le champ d'e-mail

@@ -1,7 +1,12 @@
+/***************************************************************************************/
 import React from "react";
 import Settingsbar from "./Settingsbar";
 import { ReactSVG } from "react-svg";
 import navbarpic from "../Images/navbarpic.svg";
+/***************************************************************************************/
+
+
+
 //------------------------------------------------------------------------------------
 function FormSettings(props) {
   return (

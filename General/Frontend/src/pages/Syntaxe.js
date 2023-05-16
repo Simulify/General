@@ -1,17 +1,20 @@
 
+  /***************************************************************************************/
   import React, { useState } from "react";
   import "./Syntaxe.css";
   import Navbar from '../components/Navbar';
   import { ReactComponent as Point } from '../Images/point.svg';
   import { ReactComponent as Fleche } from '../Images/Dropdown.svg';
+  /***************************************************************************************/
   
   const explication = [
+    // Définit un tableau d'objets contenant des explications
     {
-      id: 1,
-      titre:(
+      id: 1,// Identifiant de l'explication
+      titre:(// Propriété titre avec une valeur JSX
         <div className="p1">Format d'une ligne en code
         </div>), 
-      description: (
+      description: (// Propriété description avec une valeur JSX
         <div>
         Dans le cas d'un seul opérande :
         <br />[Etiquette:] Opérateur OP
@@ -100,13 +103,14 @@
    return (
     <div className="Syntaxe">
       <Navbar label="Syntaxe de programmation"  isAuthenticated={props.isAuthenticated}/>
-  
+      {/* // Si la réponse est déjà visible, la masquer */}
       <div className="explication">
-       {explication.map(({ id, titre }) => (
+       {explication.map(({ id, titre }) => ( // Parcours le tableau d'explications et affiche chaque élément
         <div
          key={id}
          className={`titre ${reponseVisible === id ? "active" : ""}`}
-         onClick={() => handleClickQuestion(id)}>
+         onClick={() => handleClickQuestion(id) }>
+          {/*  Appelle la fonction handleClickQuestion au clic */}
           <Point className="point"/>
           {titre}
           <Fleche className="fleche"/>

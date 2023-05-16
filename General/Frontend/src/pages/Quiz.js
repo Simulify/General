@@ -1,3 +1,4 @@
+/***************************************************************************************/
 import { useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import { quizData } from "./QuizApp";
@@ -6,63 +7,63 @@ import { ReactComponent as QuizImg } from '../Images/Quiz.svg';
 import { ReactComponent as Crt } from '../Images/Correct.svg';
 import { ReactComponent as Fx } from '../Images/Faux.svg';
 import "./Quiz.css";
+/***************************************************************************************/
 
 const Quiz = (props) => {
-  const { category } = useParams();
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [showResult, setShowResult] = useState(false);
-  const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
-  const [canAnswer, setCanAnswer] = useState(true);
-  const quizzes = quizData.find((data) => data.category === category).quizzes;
-  const totalQuestions = quizzes.length;
-  const [showPopup, setShowPopup] = useState(false); // state to show/hide popup
-  const [popupScore, setPopupScore] = useState(0); // state for popup score
+  const { category } = useParams(); // Récupère la catégorie à partir des paramètres de l'URL
+  const [currentQuestion, setCurrentQuestion] = useState(0); // État de la question actuelle
+  const [score, setScore] = useState(0); // État du score
+  const [selectedAnswer, setSelectedAnswer] = useState(null); // État de la réponse sélectionnée par l'utilisateur
+  const [showResult, setShowResult] = useState(false); // État pour afficher le résultat de la question
+  const [isCorrectAnswer, setIsCorrectAnswer] = useState(false); // État pour indiquer si la réponse est correcte ou non
+  const [canAnswer, setCanAnswer] = useState(true); // État pour autoriser ou empêcher l'utilisateur de répondre
+  const quizzes = quizData.find((data) => data.category === category).quizzes; // Sélectionne les quiz de la catégorie correspondante
+  const totalQuestions = quizzes.length; // Nombre total de questions
+  const [showPopup, setShowPopup] = useState(false); // État pour afficher/cacher la fenêtre contextuelle (popup)
+  const [popupScore, setPopupScore] = useState(0); // État pour le score dans la fenêtre contextuelle
 
   const handleAnswerSelect = (answer) => {
     if (canAnswer) {
-      setSelectedAnswer(answer);
+      setSelectedAnswer(answer); // Sélectionne la réponse choisie par l'utilisateur
     }
   };
 
+  
   const handleSubmit = () => {
     if (canAnswer && selectedAnswer !== null) {
       if (selectedAnswer === quizzes[currentQuestion].answer) {
-        setScore(score + 1);
-        setIsCorrectAnswer(true);
-        setShowResult(true);
-        setCanAnswer(false);
+        setScore(score + 1); // Incrémente le score si la réponse est correcte
+        setIsCorrectAnswer(true); // Définit l'état de la réponse comme correcte
+        setShowResult(true); // Affiche le résultat de la question
+        setCanAnswer(false); // Empêche l'utilisateur de répondre à nouveau
         setTimeout(() => {
-          setCurrentQuestion(currentQuestion + 1);
-          setSelectedAnswer(null);
-          setShowResult(false);
-          setCanAnswer(true);
+          setCurrentQuestion(currentQuestion + 1); // Passe à la question suivante
+          setSelectedAnswer(null); // Réinitialise la réponse sélectionnée
+          setShowResult(false); // Cache le résultat de la question
+          setCanAnswer(true); // Autorise l'utilisateur à répondre à la prochaine question
         }, 1500);
       } else {
-        setIsCorrectAnswer(false);
-        setShowResult(true);
-        setSelectedAnswer(null);
+        setIsCorrectAnswer(false); // Définit l'état de la réponse comme incorrecte
+        setShowResult(true); // Affiche le résultat de la question
+        setSelectedAnswer(null); // Réinitialise la réponse sélectionnée
       }
     }
   };
-
   const handleSkipQuestion = () => {
-    setCurrentQuestion(currentQuestion + 1);
-    setSelectedAnswer(null);
-    setCanAnswer(true);
+    setCurrentQuestion(currentQuestion + 1); // Passe à la question suivante
+    setSelectedAnswer(null); // Réinitialise la réponse sélectionnée
+    setCanAnswer(true); // Autorise l'utilisateur à répondre à la prochaine question
   };
-
   const handleShowPopup = () => {
     setShowPopup(true);
     setPopupScore(score);
   };
 
   const handleHidePopup = () => {
-    setShowPopup(false);
+    setShowPopup(false); // Cache la fenêtre contextuelle (popup)
   };
 
-  if (currentQuestion === totalQuestions) {
+  if (currentQuestion === totalQuestions) {  // Si toutes les questions ont été répondues
     return (
       <div className="overlay">
         <div className="result-container">

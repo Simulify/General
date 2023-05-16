@@ -1,8 +1,10 @@
+/***************************************************************************************/
 import React, { useState } from 'react';
 import FormSettings from './FormSettings';
 import Navbar from '../components/Navbar';
 import InputButton from '../Components_login/InputButton'; 
 import axios from 'axios';
+/***************************************************************************************/
 
 //la page des parametres du mot de passe 
 

@@ -1,8 +1,10 @@
+/***************************************************************************************/
 import React, { useState } from 'react';
+/***************************************************************************************/
+
 
 function SignUpForm() {
   const [isChecked, setIsChecked] = useState(false);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isChecked) {
@@ -18,6 +20,7 @@ function SignUpForm() {
     setIsChecked(e.target.checked);
   };
 
+  /***************************************************************************************/
   return (
     <form onSubmit={handleSubmit}>
       <label>
@@ -29,5 +32,5 @@ function SignUpForm() {
     </form>
   );
 }
-
+/***************************************************************************************/
 export default SignUpForm;

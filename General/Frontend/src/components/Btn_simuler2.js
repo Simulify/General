@@ -1,5 +1,6 @@
+/***************************************************************************************/
 import { Link } from 'react-router-dom';
-
+/***************************************************************************************/
 function Btn_simule() {
   const condition = localStorage.getItem('compiled');
 
@@ -13,7 +14,7 @@ function Btn_simule() {
         <Link to="/code/Simulation">
           <div id="btn2" onClick={handleToggle}>
             Simuler
-            <svg
+            <svg  //style du svg 
               width="9"
               height="16"
               viewBox="0 0 9 16"

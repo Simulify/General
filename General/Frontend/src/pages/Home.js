@@ -1,3 +1,4 @@
+/***************************************************************************************/
 import React, { useEffect, useState } from 'react';
 import './Home.css';
 import Navbar from '../components/Navbar';
@@ -6,16 +7,17 @@ import { ReactComponent as Image2} from '../Images/slide2.svg';
 import { ReactComponent as Image3} from '../Images/slide3.svg';
 import { ReactComponent as CircleClair} from '../Images/Ellipse 7.svg';
 import { ReactComponent as Processor} from '../Images/Group 9.svg';
+/***************************************************************************************/
 
 function Home (props) {
 
   const [currentImage, setCurrentImage] = useState(0);
- const handleClick = (index) => {
+ const handleClick = (index) => { // Gestion du clic sur un point de navigation
     setCurrentImage(index);
     const slider = document.querySelector(".slider");
     slider.style.transform = `translateX(-${index * 33.33}%)`;
  }
- useEffect(() => {
+ useEffect(() => {  // Effet pour le défilement automatique des images
   const slider = document.querySelector(".slider");
   const interval = setInterval(() => {
    setCurrentImage(prevImage => {
@@ -30,7 +32,7 @@ function Home (props) {
   }, 3000);
   return () => clearInterval(interval);
  }, []);
- useEffect(() => {
+ useEffect(() => { // Effet pour gérer la classe CSS 'no-overflow' du body
   document.body.classList.add('no-overflow');
   return () => document.body.classList.remove('no-overflow');
 }, []);

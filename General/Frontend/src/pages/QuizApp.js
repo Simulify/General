@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+/***************************************************************************************/import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { ReactComponent as Fleche } from '../Images/Dropdown.svg';
 import { ReactComponent as QuizImg } from '../Images/Quiz.svg';
 import './Quiz.css';
-
+/***************************************************************************************/
+//introduire avec chaque  question , les options et la bonne reponse selon la categorie 
 export const quizData = [
   {
+    //categorie 1-------------------------------------------------------------------
     category: "Architecture de base",
     quizzes: [
       {
@@ -87,6 +89,7 @@ export const quizData = [
     ]
   },
   {
+    //categorie 2-------------------------------------------------------------------
     category: "Mémoire",
     quizzes: [
       {
@@ -167,6 +170,7 @@ export const quizData = [
     ]
   },
   {
+    //categorie 3-------------------------------------------------------------------
     category: "Manipulation du pile",
     quizzes: [
       {
@@ -247,6 +251,7 @@ export const quizData = [
     ]
   },
   {
+    //categorie 4-------------------------------------------------------------------
     category: "Instructions",
     quizzes: [
       {
@@ -327,6 +332,7 @@ export const quizData = [
     ]
   },
   {
+    //categorie 5-------------------------------------------------------------------
     category: "Programmation",
     quizzes: [
       {
@@ -407,6 +413,7 @@ export const quizData = [
     ]
   },
   {
+    //categorie 6-------------------------------------------------------------------
     category: "Autre",
     quizzes: [
       {
