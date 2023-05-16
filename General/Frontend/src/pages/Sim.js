@@ -45,12 +45,12 @@ export function Sim() {
     }
 
     /// initialisation des instances de classes
-    const mot = new Mot16("0000000000010011");
+    const mot = new Mot16("0000000000000000");
     const flags = new Flags(new Mot16("0000000000000000"));
     const Acc = new ACC(mot);
-    const bx = new BX(new Mot16("0000000000000010"));
-    const dx = new DX(new Mot16("0000000000000111"));
-    const cx = new CX(new Mot16("0000000000011111"));
+    const bx = new BX(new Mot16("0000000000000000"));
+    const dx = new DX(new Mot16("0000000000000000"));
+    const cx = new CX(new Mot16("0000000000000000"));
     const si = new SI(new Mot16("0000000000000000"));
     const ri = new RI(new Mot16("0000000000000000"));
     const rIM = new RIM(new Mot16("0000000000000000"));
