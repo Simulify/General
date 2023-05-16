@@ -1213,7 +1213,7 @@ export function Sim() {
             timeRef.current += 1000
 
             setTimeout(() => {
-                setdyna("")
+                setdyna(code)
                 here.className = "UAL"
             }, timeRef.current)
             timeRef.current += 500
