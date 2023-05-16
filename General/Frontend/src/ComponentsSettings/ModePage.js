@@ -5,28 +5,28 @@ import { ReactSVG } from "react-svg";
 import Moon from "../Images/Moon.svg";
 import Sun from "../Images/Sun.svg";
 
-
+//la page du mode 
 const ModePage = (props) => {
     const [formValue, setFormValue] = useState("");
     const [isEditing, setIsEditing] = useState(false);
     const [modeDisabled, setModeDisabled] = useState(true);
 
     const handleModify = () => {
-        setIsEditing(true);
-        setModeDisabled(false);
+        setIsEditing(true);// Active le mode modification
+        setModeDisabled(false);// Active le mode
     };
 
     const handleSave = (event) => {
         event.preventDefault();
-        console.log("Form value saved:", formValue);
-        setIsEditing(false);
-        setModeDisabled(true);
+        console.log("Form value saved:", formValue);// Affiche la valeur du formulaire sauvegardée
+        setIsEditing(false);// Désactive le mode modification
+        setModeDisabled(true);// Désactive le mode
     };
 
     const handleCancel = () => {
-        setFormValue("");
-        setIsEditing(false);
-        setModeDisabled(true);
+        setFormValue("");// Réinitialise la valeur du formulaire
+        setIsEditing(false); // Désactive le mode modification
+        setModeDisabled(true);// Désactive le mode
     };
 
     const [darkMode, setDarkMode] = useState(
@@ -34,23 +34,23 @@ const ModePage = (props) => {
     );
 
     const setLightTheme = () => {
-        setDarkMode(false);
-        localStorage.setItem("theme", "light");
-        document.documentElement.setAttribute("data-theme", "light");
+        setDarkMode(false);// Active le mode clair
+        localStorage.setItem("theme", "light");// Stocke le thème dans le stockage local
+        document.documentElement.setAttribute("data-theme", "light"); // Définit le thème clair sur l'élément racine 
     };
 
     const setDarkTheme = () => {
-        setDarkMode(true);
-        localStorage.setItem("theme", "dark");
-        document.documentElement.setAttribute("data-theme", "dark");
+        setDarkMode(true);// Active le mode sombre
+        localStorage.setItem("theme", "dark");// Stocke le thème dans le stockage local
+        document.documentElement.setAttribute("data-theme", "dark");// Définit le thème sombre sur l'élément racine du DOM
     };
 
     useEffect(() => {
         const savedTheme = localStorage.getItem("theme");
         if (savedTheme === "dark") {
-            setDarkTheme();
+            setDarkTheme();// Applique le thème sombre s'il est enregistré dans le stockage local
         } else {
-            setLightTheme();
+            setLightTheme(); // Applique le thème clair par défaut
         }
     }, []);
 

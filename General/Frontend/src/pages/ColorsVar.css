@@ -1,4 +1,6 @@
+/* couleurs light mode  */
 :root {
+   
     --background-color: #F8F9FA;
     --light-dark: #F8F9FA;
     --blue: #00A6FB;
@@ -10,7 +12,7 @@
     --settingsNav : #5784BA ; 
 
   }
-  
+  /* couleur dark mode  */
   :root[data-theme="dark"] {
     --background-color: #171720;
     --light-dark: #252E46;

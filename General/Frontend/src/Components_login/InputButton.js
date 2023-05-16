@@ -1,6 +1,6 @@
 import React from "react";
 import "./InputButton.css";
-
+//le composant du bouton utilisé dans notre site 
 function InputButton(props) {
  return (
   <div className="InputButton">

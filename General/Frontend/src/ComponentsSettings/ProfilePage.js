@@ -6,9 +6,9 @@ import InputButton from "../Components_login/InputButton";
 import axios from "axios";
 
 function ProfilePage(props) {
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [isEditing, setIsEditing] = useState(false);
+  const [email, setEmail] = useState("");// État pour le champ d'e-mail
+  const [username, setUsername] = useState("");// État pour le champ de nom d'utilisateur
+  const [isEditing, setIsEditing] = useState(false);// État pour indiquer si l'édition est en cours ou non
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -63,6 +63,7 @@ function ProfilePage(props) {
   
 
   return (
+    //les composants de la page 
     <div className="ProfilePage">
       <Navbar label="Parametres"  isAuthenticated={props.isAuthenticated}/>
       <FormSettings isEditing={isEditing} handleModify={handleModify} />

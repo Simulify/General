@@ -4,21 +4,24 @@ import Navbar from '../components/Navbar';
 import InputButton from '../Components_login/InputButton'; 
 import axios from 'axios';
 
+//la page des parametres du mot de passe 
+
 function MotDePassePage(props) {
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [isEditing, setIsEditing] = useState(false);
+  const [password, setPassword] = useState('');// État pour le champ de mot de passe
+  const [confirmPassword, setConfirmPassword] = useState('');// État pour le champ de confirmation du mot de passe
+  const [isEditing, setIsEditing] = useState(false); // État pour indiquer si l'édition est en cours ou non
  
   const handleModify = () => {
-    setIsEditing(true);
+    setIsEditing(true);// Définir l'état d'édition sur true lorsque l'utilisateur souhaite modifier
   };
 
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+    setPassword(event.target.value);// Mettre à jour l'état du mot de passe à chaque modification du champ de mot de passe
   };
 
   const handleConfirmPasswordChange = (event) => {
-    setConfirmPassword(event.target.value);
+    setConfirmPassword(event.target.value);// Mettre à jour l'état du mot de passe de confirmation à chaque modification du champ de confirmation du mot de passe
+  
   };
 
   const handleSubmit = (event) => {
@@ -26,15 +29,15 @@ function MotDePassePage(props) {
 
     // backend work here ( send data to backend )
 
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
-    setIsEditing(false);
+    console.log('Password:', password);// Afficher le mot de passe dans la console
+    console.log('Confirm Password:', confirmPassword);// Afficher le mot de passe de confirmation dans la console
+    setIsEditing(false);// Terminer l'édition
   };
 
   const handleCancel = () => {
-    // Reset form fields
-    setPassword('');
-    setConfirmPassword('');
+     // Réinitialiser les champs du formulaire
+    setPassword('');// Réinitialiser le champ de mot de passe
+    setConfirmPassword(''); // Réinitialiser le champ de confirmation du mot de passe
   };
   const handleClick = async () => {
     try {
@@ -86,6 +89,7 @@ function MotDePassePage(props) {
             </div>
           </div>
           {isEditing && (
+            // les bouttons sauvegarder et annuler 
           <div className="TwoButtons">
             <button className="sauvegarder" type="submit" onClick={handleClick}>
               Sauvegarder
