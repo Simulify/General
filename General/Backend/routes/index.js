@@ -77,7 +77,7 @@ router.post('/signup', async (req, res) => {
     // Check if the user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(409).send({ error: 'User already exists' });
+      return res.status(409).send({ error: 'This account already exists log in !' });
     }
 
     // Hash the password and create a new user
@@ -104,12 +104,12 @@ router.post('/login', async (req, res) => {
     // Check if the user exists
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).send({ error: 'Invalid credentials' });
+      return res.status(401).send({ error: 'Account Not Found' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(401).send({ error: 'Invalid credentials' });
+      return res.status(401).send({ error: 'Wrong Password' });
     }
     
     // Generate a JWT token
@@ -146,10 +146,8 @@ function login(req, res, next) {
   })(req, res, next);
 }
 
-// Log in a user
-router.post('/login', login);
-// Log in a user after sign up
-router.post('/signup', login);
+
+
 
 // Log out a user
 router.post('/logout', (req, res) => {
