@@ -5,7 +5,6 @@ import Mot16 from "./Mot16.js";
 import RAM from "./Registres/RAM.js";
 import Flags from "./Flags.js";
 import mot_mem from "./mot_mem.js";
-import ACCUal from "../../../ComponentsArchi/LightACCUal.js"
 import React from "react";
 import ReactDOM from 'react-dom';
 class UniteCommandes{
