@@ -19,3 +19,10 @@
 .Login a {
   color: #00A6FB;
 }
+.ErrorMessage {
+  font-size: 14px;
+  font-family: Montserrat;
+  font-weight: bold;
+  color: red;
+  margin-top: 10px;
+}
