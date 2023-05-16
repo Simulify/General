@@ -45,12 +45,12 @@ export function Sim() {
     }
 
     /// initialisation des instances de classes
-    const mot = new Mot16("0000000000000000");
+    const mot = new Mot16("0000000000000110");
     const flags = new Flags(new Mot16("0000000000000000"));
     const Acc = new ACC(mot);
-    const bx = new BX(new Mot16("0000000000000000"));
+    const bx = new BX(new Mot16("0000000000000111"));
     const dx = new DX(new Mot16("0000000000000000"));
-    const cx = new CX(new Mot16("0000000000000000"));
+    const cx = new CX(new Mot16("0000000000000001"));
     const si = new SI(new Mot16("0000000000000000"));
     const ri = new RI(new Mot16("0000000000000000"));
     const rIM = new RIM(new Mot16("0000000000000000"));
@@ -198,11 +198,12 @@ export function Sim() {
             tableUal2.current.push(Machine.UAL.UAL2.hexa)
             Machine.UAL.UAL1 = Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value
             let code = Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]
-            let ual1= Machine.UC.reg[parseInt(Machine.UC.C, 2)]
-            let ual2= Machine.UC.reg[parseInt(Machine.UC.R1, 2)]
+            let ual1, ual2
 
             /*Si le mode registre*/
             if (parseInt(Machine.UC.Mod, 2) === 3) {
+                ual2= Machine.UC.reg[parseInt(Machine.UC.R1, 2)]
+                ual1= Machine.UC.reg[parseInt(Machine.UC.C, 2)]
                 let x12 = myRef1.current.getBoundingClientRect().left;//x1 we get actual position of the element
                 let y12 = myRef1.current.getBoundingClientRect().top;//y1 we get actual position of the element
                 let x22 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().left;
@@ -268,6 +269,7 @@ export function Sim() {
                 }, timeRef.current);
                 timeRef.current += 500
             } else {
+                ual1= Machine.UC.reg[parseInt(Machine.UC.R1, 2)]
                 let x1 = myRef.current.getBoundingClientRect().left;//x1 we get actual position of the element
                 let y1 = myRef.current.getBoundingClientRect().top;//y1 we get actual position of the element
                 let x2 = document.querySelector('.RimToRi .rectangle').getBoundingClientRect().left;
@@ -548,8 +550,7 @@ export function Sim() {
         tableR2.current.push(Machine.RIM.value.hexa)
         let mM = new mot_mem(Machine.RAM.value.entier, new Mot16("0000000000000000"))
         let CODE = Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]
-
-
+        
         if (parseInt(Machine.UC.Mod, 2) === 3) {
             let x12 = myRef1.current.getBoundingClientRect().left;//x1 we get actual position of the element
             let y12 = myRef1.current.getBoundingClientRect().top;//y1 we get actual position of the element
