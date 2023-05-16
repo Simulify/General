@@ -5,8 +5,8 @@
 .LightPileCo, .LightUalCo, .LightRimEual1, .LightEual1Rim, .LightRegRim, .LightRegUal, .LightUalReg,
 .LightFlagPile, .LightPileFlag, .LightFlagUal, .LightUalFlag ,.LighPileBx ,.LightPileAcc ,.LightPileCX ,.LightRimBx,.LightCxPile ,.LightBxPile ,.LightDxPile ,.LightAccPile,.LightSiPile{
 
-  height: 30px;
-  width: 30px;
+  height: 24px;
+  width: 24px;
   z-index: 10;
   border-radius: 20px;
   background-color: #FFE600;
@@ -16,44 +16,6 @@
   transition: all 0.5s ease-in-out;
   filter: blur(8px);
 }
-/* 
-,.LightCoRam, .LightRimRam, .LightRimUc , .LightRegPile, .LightCoPile, .LightCoUa
-.Light, .LightCoRam, .LightRimRam, .LightRimUc , .LightRegPile, .LightCoPile, .LightCoUal{
-
-
-/* .LightCoRam, .LightRimRam, .LightRimUc , .LightRegPile, .LightCoPile, .LightCoUal, .LightPileCo, .LightUalCo{
-
-    height: 4%;
-    width: 5%;
-    z-index: 10;
-    border-radius: 10px;
-    background-color: #FFE600;
-    box-shadow: 0 0 5px 4px #FFE600;
-    opacity: 0%;
-    transition: all 1s ease-in-out;
-  }
-  */
-
-/* .LightCo {
-    grid-row: 1 / span 1;
-    grid-column: 7 / span 1;
-    width: 5%;
-} 
-
-.LightRim, .LightRimRam  {
-     grid-row: 1 / span 1;
-     grid-column: 9 / span 1;
-     margin-left: 2%;
-     margin-top: 180%;
-}
-
-.LightRiUc {
-  grid-row: 3 / span 1;
-  grid-column: 5 / span 1;
-  margin-left: 47%;
-  margin-top: 170%;
-}
-*/
 
 .LightRemove 
 {
