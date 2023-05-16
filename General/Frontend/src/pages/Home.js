@@ -6,17 +6,16 @@ import { ReactComponent as Image2} from '../Images/slide2.svg';
 import { ReactComponent as Image3} from '../Images/slide3.svg';
 import { ReactComponent as CircleClair} from '../Images/Ellipse 7.svg';
 import { ReactComponent as Processor} from '../Images/Group 9.svg';
-/***************************************************************************************/
 
 function Home (props) {
 
   const [currentImage, setCurrentImage] = useState(0);
- const handleClick = (index) => { // Gestion du clic sur un point de navigation
+ const handleClick = (index) => {
     setCurrentImage(index);
     const slider = document.querySelector(".slider");
     slider.style.transform = `translateX(-${index * 33.33}%)`;
  }
- useEffect(() => {  // Effet pour le défilement automatique des images
+ useEffect(() => {
   const slider = document.querySelector(".slider");
   const interval = setInterval(() => {
    setCurrentImage(prevImage => {
@@ -31,7 +30,7 @@ function Home (props) {
   }, 3000);
   return () => clearInterval(interval);
  }, []);
- useEffect(() => { // Effet pour gérer la classe CSS 'no-overflow' du body
+ useEffect(() => {
   document.body.classList.add('no-overflow');
   return () => document.body.classList.remove('no-overflow');
 }, []);
