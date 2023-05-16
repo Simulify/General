@@ -432,14 +432,14 @@ export function Sim() {
             }, timeRef.current);
             timeRef.current += 800
             setTimeout(() => {
-                setdyna(REG + "<-- EUAL1")
+                setdyna(REG + "<-- RESULTAT")
                 myRef1.current.style.opacity = '100%'
             }, timeRef.current);
             timeRef.current += 500
             y22 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna(REG + "<-- EUAL1")
+                setdyna(REG + "<-- RESULTAT")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -447,7 +447,7 @@ export function Sim() {
             x22 = document.querySelector('.RegToBusDonnees .triangleBas').getBoundingClientRect().left;
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna(REG + "<-- EUAL1")
+                setdyna(REG + "<-- RESULTAT")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -455,13 +455,13 @@ export function Sim() {
             y22 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().top;
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna(REG + "<-- EUAL1")
+                setdyna(REG + "<-- RESULTAT")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
             timeRef.current += 800
             setTimeout(() => {
-                setdyna(REG + "<-- EUAL1")
+                setdyna(REG + "<-- RESULTAT")
                 myRef1.current.style.opacity = '0%'
             }, timeRef.current);
             timeRef.current += 500
@@ -472,70 +472,70 @@ export function Sim() {
                     tableAc.current.push(val.hexa)
                     setTimeout(() => {
                         document.querySelector('#Acc').classList.add("boxShadowBlue")
-                        setdyna("ACC <-- EUAL1")
+                        setdyna("ACC <-- RESULTAT")
                         acc.current = tableAc.current.shift()
                         setFo4(acc.current)
                     }, timeRef.current)
                     timeRef.current += 800
                     setTimeout(() => {
                         document.querySelector('#Acc').classList.remove("boxShadowBlue")
-                        setdyna("ACC <-- EUAL1")
+                        setdyna("ACC <-- RESULTAT")
                     }, timeRef.current)
                     break;
                 case 1:
                     tableBx.current.push(val.hexa)
                     setTimeout(() => {
                         document.querySelector('#Bx').classList.add("boxShadowBlue")
-                        setdyna("BX <-- EUAL1")
+                        setdyna("BX <-- RESULTAT")
                         bx1.current = tableBx.current.shift()
                         setFo9(bx1.current)
                     }, timeRef.current)
                     timeRef.current += 800
                     setTimeout(() => {
                         document.querySelector('#Bx').classList.remove("boxShadowBlue")
-                        setdyna("BX <-- EUAL1")
+                        setdyna("BX <-- RESULTAT")
                     }, timeRef.current)
                     break;
                 case 2:
                     tableCx.current.push(val.hexa)
                     setTimeout(() => {
                         document.querySelector('#Cx').classList.add("boxShadowBlue")
-                        setdyna("CX <-- EUAL1")
+                        setdyna("CX <-- RESULTAT")
                         cx1.current = tableCx.current.shift()
                         setFo10(cx1.current)
                     }, timeRef.current)
                     timeRef.current += 800
                     setTimeout(() => {
                         document.querySelector('#Cx').classList.remove("boxShadowBlue")
-                        setdyna("CX <-- EUAL1")
+                        setdyna("CX <-- RESULTAT")
                     }, timeRef.current)
                     break;
                 case 3:
                     tableDx.current.push(val.hexa)
                     setTimeout(() => {
                         document.querySelector('#Dx').classList.add("boxShadowBlue")
-                        setdyna("DX <-- EUAL1")
+                        setdyna("DX <-- RESULTAT")
                         dx1.current = tableDx.current.shift()
                         setFo8(dx1.current)
                     }, timeRef.current)
                     timeRef.current += 800
                     setTimeout(() => {
                         document.querySelector('#Dx').classList.remove("boxShadowBlue")
-                        setdyna("DX <-- EUAL1")
+                        setdyna("DX <-- RESULTAT")
                     }, timeRef.current)
                     break;
                 case 4:
                     tableSi.current.push(val.hexa)
                     setTimeout(() => {
                         document.querySelector('#Si').classList.add("boxShadowBlue")
-                        setdyna("SI <-- EUAL1")
+                        setdyna("SI <-- RESULTAT")
                         si1.current = tableSi.current.shift()
                         setFo7(si1.current)
                     }, timeRef.current)
                     timeRef.current += 800
                     setTimeout(() => {
                         document.querySelector('#Si').classList.remove("boxShadowBlue")
-                        setdyna("SI <-- EUAL1")
+                        setdyna("SI <-- RESULTAT")
                     }, timeRef.current)
                     break;
                 default:
@@ -543,7 +543,7 @@ export function Sim() {
             }
             timeRef.current += 1000
         }
-       
+
     /************************************** INC, DEC, NOT ************************************************/
         
     else if (parseInt(Machine.UC.Cop, 2) === 2 || parseInt(Machine.UC.Cop, 2) === 3 || parseInt(Machine.UC.Cop, 2) === 5) {
@@ -739,7 +739,7 @@ export function Sim() {
             timeRef.current += 800
 
             setTimeout(() => {
-                setdyna(REG + "<-- EUAL1")
+                setdyna(REG + "<-- RESULTAT")
                 myRef1.current.style.opacity = '100%'
             }, timeRef.current);
             timeRef.current += 500
@@ -748,7 +748,7 @@ export function Sim() {
             tabPos1.current.push({ x: x2 - x1, y: y2 - y1 })// we push the difference between the two positions
            
             setTimeout(() => {
-                setdyna(REG + "<-- EUAL1")
+                setdyna(REG + "<-- RESULTAT")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -757,7 +757,7 @@ export function Sim() {
             x2 = document.querySelector('.RegToBusDonnees .triangleBas').getBoundingClientRect().left;
             tabPos1.current.push({ x: x2 - x1, y: y2 - y1 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna(REG + "<-- EUAL1")
+                setdyna(REG + "<-- RESULTAT")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -766,7 +766,7 @@ export function Sim() {
             y2 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().top;
             tabPos1.current.push({ x: x2 - x1, y: y2 - y1 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna(REG + "<-- EUAL1")
+                setdyna(REG + "<-- RESULTAT")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -776,7 +776,7 @@ export function Sim() {
                 case 0:
                     tableAc.current.push(val.hexa)
                     setTimeout(() => {
-                        setdyna("ACC <-- EUAL1")
+                        setdyna("ACC <-- RESULTAT")
                         document.querySelector('#Acc').classList.add("boxShadowBlue")
                         acc.current = tableAc.current.shift()
                         setFo4(acc.current)
@@ -784,14 +784,14 @@ export function Sim() {
                     timeRef.current +=800
 
                     setTimeout(() => {
-                        setdyna("ACC <-- EUAL1")
+                        setdyna("ACC <-- RESULTAT")
                         document.querySelector('#Acc').classList.remove("boxShadowBlue")
                     }, timeRef.current)
                     break;
                 case 1:
                     tableBx.current.push(val.hexa)
                     setTimeout(() => {
-                        setdyna("BX <-- EUAL1")
+                        setdyna("BX <-- RESULTAT")
                         document.querySelector('#Bx').classList.add("boxShadowBlue")
                         bx1.current = tableBx.current.shift()
                         setFo9(bx1.current)
@@ -799,14 +799,14 @@ export function Sim() {
                     timeRef.current +=800
 
                     setTimeout(() => {
-                        setdyna("BX <-- EUAL1")
+                        setdyna("BX <-- RESULTAT")
                         document.querySelector('#Bx').classList.remove("boxShadowBlue")
                     }, timeRef.current)
                     break;
                 case 2:
                     tableCx.current.push(val.hexa)
                     setTimeout(() => {
-                        setdyna("CX <-- EUAL1")
+                        setdyna("CX <-- RESULTAT")
                         document.querySelector('#Cx').classList.add("boxShadowBlue")
                         cx1.current = tableCx.current.shift()
                         setFo10(cx1.current)
@@ -814,21 +814,21 @@ export function Sim() {
                     timeRef.current +=800
 
                     setTimeout(() => {
-                        setdyna("CX <-- EUAL1")
+                        setdyna("CX <-- RESULTAT")
                         document.querySelector('#Cx').classList.remove("boxShadowBlue")
                     }, timeRef.current)
                     break;
                 case 3:
                     tableDx.current.push(val.hexa)
                     setTimeout(() => {
-                        setdyna("DX <-- EUAL1")
+                        setdyna("DX <-- RESULTAT")
                         document.querySelector('#Dx').classList.add("boxShadowBlue")
                         dx1.current = tableDx.current.shift()
                         setFo8(dx1.current)
                         timeRef.current +=800
 
                     setTimeout(() => {
-                        setdyna("DX <-- EUAL1")
+                        setdyna("DX <-- RESULTAT")
                         document.querySelector('#Dx').classList.remove("boxShadowBlue")
                     }, timeRef.current)
                     }, timeRef.current)
@@ -836,7 +836,7 @@ export function Sim() {
                 case 4:
                     tableSi.current.push(val.hexa)
                     setTimeout(() => {
-                        setdyna("SI <-- EUAL1")
+                        setdyna("SI <-- RESULTAT")
                         document.querySelector('#Si').classList.add("boxShadowBlue")
                         si1.current = tableSi.current.shift()
                         setFo7(si1.current)
@@ -844,14 +844,14 @@ export function Sim() {
                     timeRef.current +=800
 
                     setTimeout(() => {
-                        setdyna("SI <-- EUAL1")
+                        setdyna("SI <-- RESULTAT")
                         document.querySelector('#Si').classList.remove("boxShadowBlue")
                     }, timeRef.current)
                     break;
                 case 5:
                     table.current.push(val.hexa)
                     setTimeout(() => {
-                        setdyna("CO <-- EUAL1")
+                        setdyna("CO <-- RESULTAT")
                         document.querySelector('#Co').classList.add("boxShadowBlue")
                         coo.current = table.current.shift()
                         setFo(coo.current)
@@ -859,7 +859,7 @@ export function Sim() {
                     timeRef.current +=800
 
                     setTimeout(() => {
-                        setdyna("CO <-- EUAL1")
+                        setdyna("CO <-- RESULTAT")
                         document.querySelector('#Co').classList.remove("boxShadowBlue")
                     }, timeRef.current)
                     break;
@@ -891,7 +891,7 @@ export function Sim() {
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
 
             setTimeout(() => {
-                setdyna("RIM <-- EUAL1")
+                setdyna("RIM <-- RESULTAT")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -905,7 +905,7 @@ export function Sim() {
             y22 = document.querySelector('.BusDonnees ').getBoundingClientRect().top;
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna("RIM <-- EUAL1")
+                setdyna("RIM <-- RESULTAT")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -914,7 +914,7 @@ export function Sim() {
             x22 = document.querySelector('.RimToRi ').getBoundingClientRect().left;
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna("RIM <-- EUAL1")
+                setdyna("RIM <-- RESULTAT")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -923,14 +923,14 @@ export function Sim() {
             y22 = document.querySelector('.RimToRi .triangleHaut ').getBoundingClientRect().top;
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna("RIM <-- EUAL1")
+                setdyna("RIM <-- RESULTAT")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
             timeRef.current += 800
 
             setTimeout(() => {
-                setdyna("RIM <-- EUAL1")
+                setdyna("RIM <-- RESULTAT")
                 document.querySelector('.rim').classList.add('boxShadowBlue')
                 console.log("rimm", tableR2.current)
                 tableR2.current.shift()
