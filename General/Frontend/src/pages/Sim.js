@@ -68,12 +68,11 @@ export function Sim() {
     let [Memoire, setMemoire] = useState(new memoire(mem))
     let [machine, setMachine] = useState(new Machine(uc, Acc, ri, si, dx, bx, co, cx, rIM, rAM, busAdr, busData, flags, uAl, Memoire, pile))
 
-    //const UC = new UniteCommandes(null, null, null, null);     
     for (let index = 0; index < mem.length; index++) {
         mem[index] = new mot_mem(index, "0000000000000000")
     }
 
-    //*************************************************************************** */
+    //******************************************************************************************/
     const [showPageOne, setShowPageOne] = useState(false); // to determine which page to show
     const [comp, setComp] = useState(false) // yo determine if code is compiled or no
     let temp = useRef([])
@@ -192,8 +191,8 @@ export function Sim() {
     const Traiter = (Machine) => {
         let here
 
-        // treating instructions from ADD to CMP in UAL
-        /****************************************************************************************************/
+    // treating instructions from ADD to CMP in UAL
+    /****************************************************************************************************/
         if (parseInt(Machine.UC.Cop, 2) < 2 || parseInt(Machine.UC.Cop, 2) === 4 || (parseInt(Machine.UC.Cop, 2) >= 6 && parseInt(Machine.UC.Cop, 2) <= 10)) {
             Machine.UAL.UAL2 = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
             console.log(Machine.UAL.UAL2)
@@ -539,7 +538,7 @@ export function Sim() {
             timeRef.current += 1000
         }
        
-    /*************************************************************************************************************/
+    /************************************** INC, DEC, NOT ************************************************/
         
     else if (parseInt(Machine.UC.Cop, 2) === 2 || parseInt(Machine.UC.Cop, 2) === 3 || parseInt(Machine.UC.Cop, 2) === 5) {
         Machine.UAL.UAL1 = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
@@ -858,7 +857,8 @@ export function Sim() {
             }, timeRef.current);
         }
     }
-    /*****************************************************************************************************/
+
+    /******************************************** CMP *************************************************/
 
         else if (parseInt(Machine.UC.Cop, 2) === 11) {
             Machine.UAL.UAL2 = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
@@ -1122,8 +1122,7 @@ export function Sim() {
             }, timeRef.current)
         }
 
-    //***********************************************************************************************/
-        /*RAZ*/
+    //******************************************** RAZ **************************************************/
 
         else if (parseInt(Machine.UC.Cop, 2) === 12) {
             Instructions.RAZ(Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value, Machine.Flags)
@@ -1430,7 +1429,7 @@ export function Sim() {
             }
         }
 
-        /**************************  LOOP UNTIL CX==0 ***************************/
+    /*************************************  LOOP UNTIL CX==0 **************************************/
 
         else if (parseInt(Machine.UC.Cop, 2) === 17) {
             let code = Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]
@@ -1461,7 +1460,7 @@ export function Sim() {
             }
         }
 
-        /****************************************** BCV *********************************************/
+    /****************************************** BCV *********************************************/
 
         else if (parseInt(Machine.UC.Cop, 2) === 18) {
 
@@ -1496,7 +1495,7 @@ export function Sim() {
 
         }
 
-    /*******************************************BCF ********************************************/
+    /******************************************* BCF ********************************************/
 
         else if (parseInt(Machine.UC.Cop, 2) === 19) {
             let op1 = parseInt(Machine.UC.C, 2)
@@ -1797,7 +1796,7 @@ export function Sim() {
             }
         }
 
-    /*************************************************************************************************/
+    /******************************************** CHM ************************************************/
 
         else if (parseInt(Machine.UC.Cop, 2) === 23) {
             let val = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
@@ -1952,13 +1951,13 @@ export function Sim() {
             }, timeRef.current)
         }
 
-    /************************************** RGM ***********************************************/
+    /******************************************** RGM ***********************************************/
     
         else if (parseInt(Machine.UC.Cop, 2) === 24) {
+            let val = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
             tableR2.current.push(Machine.ACC.value.hexa)
             let mM = new mot_mem(Machine.RAM.value.entier, new Mot16("0000000000000000"))
             Instructions.RGM(Machine.RAM.value, Machine)
-
             let x12 = myRef1.current.getBoundingClientRect().left;//x1 we get actual position of the element
             let y12 = myRef1.current.getBoundingClientRect().top;//y1 we get actual position of the element
             let x22 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().left;
@@ -2038,9 +2037,7 @@ export function Sim() {
             console.log("fo13", fo13)
         }
 
-    /********************************************************************************************/
-
-        /**PUSH/POP */
+    /********************************************** PUSH **************************************************/
 
         else if (parseInt(Machine.UC.Cop, 2) === 25) {
             let val = Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value
