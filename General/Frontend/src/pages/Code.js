@@ -68,10 +68,7 @@ function Code(props) {
    
     compiler.onclick = e=>
     {
-       if(codes[0].value===''&& codes[1].value==='' )
-      {
-     document.querySelector('.erreur').innerHTML='rien a compilé';
-      }
+     
       console.log('la valeur du' +codes[0].value);
       setTimeout(()=>
       {
@@ -79,6 +76,7 @@ function Code(props) {
      console.log(' erreur'+ erreur.innerHTML);
      if(erreur.innerHTML==='')
      {
+      erreur.remove();
       document.querySelector('#btn2').style.visibility='visible';
       const  hr=document.querySelector('hr');
       hr.style.borderColor='#00ff00';     
@@ -87,7 +85,6 @@ function Code(props) {
        compiler.ariaDisabled=true;
        console.log(compiler.disabled);
        console.log(erreur.innerHTML);
-      
      }
      else 
      {
@@ -280,7 +277,14 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
     }
     else 
     {
-      if( codes[1].value!=='' ) 
+      if(codes[0].value!=='' && codes[1].value!=='' && document.querySelector('.compiled').innerHTML !=='')
+      {
+        codes[0].readOnly=true;
+        codes[1].readOnly=true;
+      }
+      else 
+      {
+   if( codes[1].value!=='' ) 
       {
         // codes[0].readOnly = true;
         codes[1].style.backgroundImage='radial-gradient(circle at 95% 3%, #00ff00 0%, #00ff00 6px, transparent 5px, transparent 100%)'
@@ -296,6 +300,8 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
         codes[1].readOnly = true;
         codes[1].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#ff0000 6px, transparent 5px, transparent 100%)';
       }
+      }
+   
     }
 
   })
@@ -332,6 +338,7 @@ codes[0].style.backgroundImage= 'radial-gradient(circle at 95% 3%, #ff0000 0%,#f
   
  
   }) 
+  /////////////////////////////////////////////
   
   }, []); // This empty array as a second argument ensures that the effect is only run once when the component mounts
   
@@ -464,7 +471,6 @@ style={{
 </svg>
 
       </div></Link>
-
     </div>
         <div className='compiled' >
 

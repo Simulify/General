@@ -3,10 +3,10 @@ import Navbar from '../components/Navbar';
 import '../pages/Guide.css';
 import { ReactComponent as Format } from '../Images/format.svg';
 
-function GuideForm() {
+function GuideForm(props) {
  return (
   <div className="heroform">
-    <Navbar label="Guide" />
+    <Navbar label="Guide" isAuthenticated={props.isAuthenticated}/>
     <a href="/guide/instructions" className="suiv">Suivant</a>
     <a href="/guide/architecture" className="prev">Retour</a>
     <h2 className='h2'>Format d'instruction</h2>

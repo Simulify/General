@@ -16,7 +16,6 @@ function Home (props) {
     slider.style.transform = `translateX(-${index * 33.33}%)`;
  }
  useEffect(() => {
-
   const slider = document.querySelector(".slider");
   const interval = setInterval(() => {
    setCurrentImage(prevImage => {

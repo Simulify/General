@@ -81,7 +81,7 @@ body{
 {
     padding:2%;
     width: 40%;
-    min-height: 200px;
+    min-height: 2vh;
     background-color: #F8F9FA;
     border-radius: 0px 10px 10px 0px;
     filter: drop-shadow(82px 37px 36px rgba(170, 204, 238, 0.01)) drop-shadow(46px 21px 30px rgba(170, 204, 238, 0.05)) drop-shadow(20px 9px 22px rgba(170, 204, 238, 0.09)) drop-shadow(5px 2px 12px rgba(170, 204, 238, 0.1)) drop-shadow(0px 0px 0px rgba(170, 204, 238, 0.1));
@@ -93,7 +93,6 @@ width: 10%;
 border-top-left-radius: 16px;
 border-bottom-left-radius: 16px;
 display: inline;
-height: 200px;
 }
 .buttons
 {
@@ -105,10 +104,8 @@ display: flex;
 }
 #btn1
 {
-
    margin-left: auto;
    margin-right: auto;
-   
 }
 #btn2
 {
@@ -153,7 +150,7 @@ justify-content: space-between;
 flex-direction: row;
 flex-wrap: nowrap;
 margin-top: 16vh;
-margin-bottom: 24px;
+margin-bottom: 1.5vh;
 }
 
 .container2
@@ -204,7 +201,7 @@ margin-left: auto;
 margin-right: auto;
 resize: none;
 color: #023047;
-font-size: 24px;
+font-size: 25PX;
 width: 25vw;
 min-height: 40vh;
 border-color: #00A6FB;
@@ -220,7 +217,7 @@ border-color: #00A6FB /* Cette propriété permet de définir la couleur de la b
 textarea::placeholder
 {
     color: #023047; 
-    font-size: 15px;
+    font-size: 2.5vh;
 }
 .Bigcontainer
 {
@@ -231,10 +228,10 @@ textarea::placeholder
 }
 div.container  div.hex
 {
-    width: 100%;
-    text-align: center;
-    background-color: #FFE600;
-    margin-left: auto;
+   width: 100%;
+   text-align: center;
+   background-color: #FFE600;
+   margin-left: auto;
    border-top-left-radius: 8px;
    font-weight: 500;
    color: #023047;
@@ -245,7 +242,6 @@ h4
     margin-bottom: auto;
     color: #023047;
 }
-
 .body
 {
     top: 0px;
@@ -273,7 +269,7 @@ h4
 }
 .Title::placeholder
 {
-    font-size: 15px;
+    font-size: 2.5vh;
     opacity: .8;
 }
 #pop_up
@@ -292,7 +288,7 @@ h4
 }
 .hide_bg
 {
-    filter: blur(23px);
+    filter: blur(20px);
 }
 #submit
 {
@@ -320,8 +316,19 @@ display: flex;
 flex-direction: column;
 align-items: flex-start;
 text-align: center;
-
+overflow-y: scroll;
 }
+
+ .blue_box::-webkit-scrollbar {
+    background-color:#99DBFD ;
+    border-radius: 1px;
+    width: 1px;
+  }
+  
+  .blue_box::-webkit-scrollbar-thumb {
+    background-color: #99DBFD;
+    border-radius: 0.1px;
+  }
 div.container > div
 {
     display: flex;
@@ -351,12 +358,12 @@ margin-left: 30%;
 }
 #blue_box_2 div
 {
-    margin-bottom:10px;
+    margin-bottom:1.3vh;
 }
 
 #blue_box_1 div
 {
-    margin-top:10px;
+    margin-top:01.35vh;
 }
 hr
 {
@@ -368,7 +375,7 @@ hr
     margin-left: auto;
     margin-right: auto;
     width: 20%;
-    font-size: 20px;
+    font-size: 1.25vw;
     font-weight: bold;
     color: 	#32CD32
 }
