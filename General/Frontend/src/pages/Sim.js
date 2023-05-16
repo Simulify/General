@@ -45,12 +45,12 @@ export function Sim() {
     }
 
     /// initialisation des instances de classes
-    const mot = new Mot16("0000000000000000");
+    const mot = new Mot16("0000000000000110");
     const flags = new Flags(new Mot16("0000000000000000"));
     const Acc = new ACC(mot);
-    const bx = new BX(new Mot16("0000000000000000"));
+    const bx = new BX(new Mot16("0000000000000111"));
     const dx = new DX(new Mot16("0000000000000000"));
-    const cx = new CX(new Mot16("0000000000000000"));
+    const cx = new CX(new Mot16("0000000000000001"));
     const si = new SI(new Mot16("0000000000000000"));
     const ri = new RI(new Mot16("0000000000000000"));
     const rIM = new RIM(new Mot16("0000000000000000"));
@@ -177,11 +177,7 @@ export function Sim() {
             document.querySelector('.erreur').innerHTML = '';
         } catch (error) {
             const msg = error.message;
-            if(msg!=="element.split is not a function")
-            {
-                document.querySelector('.erreur').innerHTML = msg;
-
-            }
+            document.querySelector('.erreur').innerHTML = msg;
             console.log(msg);
             setComp(false);
         }
@@ -195,13 +191,15 @@ export function Sim() {
     /****************************************************************************************************/
         if (parseInt(Machine.UC.Cop, 2) < 2 || parseInt(Machine.UC.Cop, 2) === 4 || (parseInt(Machine.UC.Cop, 2) >= 6 && parseInt(Machine.UC.Cop, 2) <= 10)) {
             Machine.UAL.UAL2 = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
-            console.log(Machine.UAL.UAL2)
             tableUal2.current.push(Machine.UAL.UAL2.hexa)
             Machine.UAL.UAL1 = Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]].value
             let code = Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]
+            let ual1, ual2
 
             /*Si le mode registre*/
             if (parseInt(Machine.UC.Mod, 2) === 3) {
+                ual2= Machine.UC.reg[parseInt(Machine.UC.R1, 2)]
+                ual1= Machine.UC.reg[parseInt(Machine.UC.C, 2)]
                 let x12 = myRef1.current.getBoundingClientRect().left;//x1 we get actual position of the element
                 let y12 = myRef1.current.getBoundingClientRect().top;//y1 we get actual position of the element
                 let x22 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().left;
@@ -212,15 +210,15 @@ export function Sim() {
                     setPosition1(pos1.current)//we set the position of the element
                 }, timeRef.current);
                 timeRef.current += 800
-                setTimeout(() => {
+                setTimeout(() => {                    
+                    setdyna("EUAL2 <-- "+ual2)
                     myRef1.current.style.opacity = '100%'
-                    setdyna("EUAL2 <-- Registre")
                 }, timeRef.current);
                 timeRef.current += 800
                 y22 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
                 tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
                 setTimeout(() => {
-                    setdyna("EUAL2 <-- Registre")
+                    setdyna("EUAL2 <-- "+ ual2)
                     pos1.current = tabPos1.current.shift()//we get the first element of the array
                     setPosition1(pos1.current)//we set the position of the element
                 }, timeRef.current);
@@ -228,7 +226,7 @@ export function Sim() {
                 x22 = document.querySelector('.EualsBusDonnees .triangleHaut').getBoundingClientRect().left;
                 tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
                 setTimeout(() => {
-                    setdyna("EUAL2 <-- Registre")
+                    setdyna("EUAL2 <-- "+ ual2)
                     pos1.current = tabPos1.current.shift()//we get the first element of the array
                     setPosition1(pos1.current)//we set the position of the element
                 }, timeRef.current);
@@ -236,7 +234,7 @@ export function Sim() {
                 y22 = document.querySelector('.BusEuals').getBoundingClientRect().top;
                 tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
                 setTimeout(() => {
-                    setdyna("EUAL2 <-- Registre")
+                    setdyna("EUAL2 <-- "+ ual2)
                     pos1.current = tabPos1.current.shift()//we get the first element of the array
                     setPosition1(pos1.current)//we set the position of the element
                 }, timeRef.current);
@@ -244,29 +242,30 @@ export function Sim() {
                 x22 = document.querySelector('#Eual2 #eual2').getBoundingClientRect().left;
                 tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
                 setTimeout(() => {
-                    setdyna("EUAL2 <-- Registre")
+                    setdyna("EUAL2 <-- "+ ual2)
                     pos1.current = tabPos1.current.shift()//we get the first element of the array
                     setPosition1(pos1.current)//we set the position of the element
                 }, timeRef.current);
                 timeRef.current += 1000
                 setTimeout(() => {
+                    setdyna("EUAL2 <-- "+ ual2)
                     document.querySelector('.Eual2').classList.add('boxShadowBlue');
-                    setdyna("EUAL2 <-- Registre")
                     uall.current = tableUal2.current.shift()
                     setFo6(uall.current)
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
+                    setdyna("EUAL2 <-- "+ ual2)
                     document.querySelector('.Eual2').classList.remove('boxShadowBlue');
-                    setdyna("EUAL2 <-- Registre")
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
-                    setdyna("")
+                    setdyna("EUAL2 <-- "+ ual2)
                     myRef1.current.style.opacity = '0%'
                 }, timeRef.current);
                 timeRef.current += 500
             } else {
+                ual1= Machine.UC.reg[parseInt(Machine.UC.R1, 2)]
                 let x1 = myRef.current.getBoundingClientRect().left;//x1 we get actual position of the element
                 let y1 = myRef.current.getBoundingClientRect().top;//y1 we get actual position of the element
                 let x2 = document.querySelector('.RimToRi .rectangle').getBoundingClientRect().left;
@@ -340,20 +339,20 @@ export function Sim() {
             let y22 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().top;
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna("EUAL1 <-- Registre")
+                setdyna("EUAL1 <-- " +ual1)
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
             timeRef.current += 800
             setTimeout(() => {
-                setdyna("EUAL1 <-- Registre")
+                setdyna("EUAL1 <-- " + ual1)
                 myRef1.current.style.opacity = '100%'
             }, timeRef.current);
             timeRef.current += 500
             y22 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna("EUAL1 <-- Registre")
+                setdyna("EUAL1 <-- " + ual1)
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -361,7 +360,7 @@ export function Sim() {
             x22 = document.querySelector('.EualsBusDonnees .triangleHaut').getBoundingClientRect().left;
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna("EUAL1 <-- Registre")
+                setdyna("EUAL1 <-- " + ual1)
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -369,7 +368,7 @@ export function Sim() {
             y22 = document.querySelector('.BusEuals').getBoundingClientRect().top;
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna("EUAL1 <-- Registre")
+                setdyna("EUAL1 <-- " + ual1)
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -377,25 +376,25 @@ export function Sim() {
             x22 = document.querySelector('#Eual1 #eual2').getBoundingClientRect().left;
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna("EUAL1 <-- Registre")
+                setdyna("EUAL1 <-- " + ual1)
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
             timeRef.current += 1000
             setTimeout(() => {
-                setdyna("EUAL1 <-- Registre")
+                setdyna("EUAL1 <-- " + ual1)
                 document.querySelector('.Eual1').classList.add('boxShadowBlue');
                 ual.current = tableUal.current.shift()
                 setFo5(ual.current)
             }, timeRef.current);
             timeRef.current += 1000
             setTimeout(() => {
-                setdyna("EUAL1 <-- Registre")
+                setdyna("EUAL1 <-- " + ual1)
                 document.querySelector('.Eual1').classList.remove('boxShadowBlue');
             }, timeRef.current);
             timeRef.current += 800
             setTimeout(() => {
-                setdyna("")
+                setdyna("EUAL1 <-- " + ual1)
                 myRef1.current.style.opacity = '0%'
             }, timeRef.current);
             timeRef.current += 1000
@@ -547,8 +546,7 @@ export function Sim() {
         tableR2.current.push(Machine.RIM.value.hexa)
         let mM = new mot_mem(Machine.RAM.value.entier, new Mot16("0000000000000000"))
         let CODE = Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]
-
-
+        
         if (parseInt(Machine.UC.Mod, 2) === 3) {
             let x12 = myRef1.current.getBoundingClientRect().left;//x1 we get actual position of the element
             let y12 = myRef1.current.getBoundingClientRect().top;//y1 we get actual position of the element
@@ -1109,7 +1107,7 @@ export function Sim() {
                 here.className = "UAL"
             }, timeRef.current)
             timeRef.current += 500
-            let res = Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)], Machine.Flags)
+            Machine.UAL.executer(Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)], Machine.Flags)
             tableFlags.current.push(Machine.Flags.flags.hexa)
             setTimeout(() => {
                 document.querySelector('.FLAG').classList.add("boxShadowBlue")
@@ -1470,8 +1468,6 @@ export function Sim() {
     /*************************************  LOOP UNTIL CX==0 **************************************/
 
         else if (parseInt(Machine.UC.Cop, 2) === 17) {
-            let code = Machine.UC.Coprnd[parseInt(Machine.UC.Cop, 2)]
-
             if (Machine.CX.value.entier === 0) {
                 machine.CO.incCO()
                 machine.CO.incCO()
@@ -1992,7 +1988,7 @@ export function Sim() {
     /******************************************** RGM ***********************************************/
     
         else if (parseInt(Machine.UC.Cop, 2) === 24) {
-            let val = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
+            Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C)
             tableR2.current.push(Machine.ACC.value.hexa)
             let mM = new mot_mem(Machine.RAM.value.entier, new Mot16("0000000000000000"))
             Instructions.RGM(Machine.RAM.value, Machine)
@@ -2829,6 +2825,7 @@ export function Sim() {
             setdyna("LECTURE")
             document.querySelector('.rim').classList.remove('boxShadowBlue');
         }, timeRef.current);
+        busData.transferer(Machine.RIM, busAdr)
         x2 = document.querySelector('.RimToRi .rectangle').getBoundingClientRect().left;
         y2 = document.querySelector('.RimToRi .triangleHaut').getBoundingClientRect().top;
         tabPos.current.push({ x: x2 - x1, y: y2 - y1 })
@@ -2907,6 +2904,7 @@ export function Sim() {
         }, timeRef.current)
         timeRef.current += 500
         machine.memoire.lecture(Machine.RAM, Machine.RIM)//lecture 
+        tableR2.current.push(Machine.RIM.value.hexa) 
         setTimeout(() => {
             setdyna("LECTURE")
             blue.className = "Memoire"
@@ -2989,14 +2987,14 @@ export function Sim() {
         setTimeout(() => {
             setdyna("RAM <-- BX")
             myRef1.current.style.opacity = '0%'
-            document.querySelector('.Ram').classList.add('boxShadowBlue');
+            document.querySelector('.RAM').classList.add('boxShadowBlue');
             ramm.current = tableR.current.shift()
             setFo1(ramm.current)
         }, timeRef.current);
         timeRef.current += 800
         setTimeout(() => {
             setdyna("LECTURE")
-            document.querySelector('.Ram').classList.remove('boxShadowBlue');
+            document.querySelector('.RAM').classList.remove('boxShadowBlue');
             document.querySelector('.Memoire').classList.add('boxShadowBlue');
         }, timeRef.current);
         timeRef.current += 800
@@ -3005,14 +3003,14 @@ export function Sim() {
         setTimeout(() => {
             setdyna("LECTURE")
             document.querySelector('.Memoire').classList.remove('boxShadowBlue');
-            document.querySelector('.Rim').classList.add('boxShadowBlue');
+            document.querySelector('.rim').classList.add('boxShadowBlue');
             rimm.current = tableR2.current.shift()
             setFo2(rimm.current)
         }, timeRef.current);
         timeRef.current += 800
         setTimeout(() => {
             setdyna("LECTURE")
-            document.querySelector('.Rim').classList.remove('boxShadowBlue');
+            document.querySelector('.rim').classList.remove('boxShadowBlue');
         }, timeRef.current);
         return Machine.RIM
 
@@ -3077,14 +3075,14 @@ export function Sim() {
         setTimeout(() => {
             setdyna("RAM <-- SI")
             myRef1.current.style.opacity = '0%'
-            document.querySelector('.Ram').classList.add('boxShadowBlue');
+            document.querySelector('.RAM').classList.add('boxShadowBlue');
             ramm.current = tableR.current.shift()
             setFo1(ramm.current)
         }, timeRef.current);
         timeRef.current += 800
         setTimeout(() => {
             setdyna("LECTURE")
-            document.querySelector('.Ram').classList.remove('boxShadowBlue');
+            document.querySelector('.RAM').classList.remove('boxShadowBlue');
             document.querySelector('.Memoire').classList.add('boxShadowBlue');
         }, timeRef.current);
         timeRef.current += 800
@@ -3093,14 +3091,14 @@ export function Sim() {
         setTimeout(() => {
             setdyna("LECTURE")
             document.querySelector('.Memoire').classList.remove('boxShadowBlue');
-            document.querySelector('.Rim').classList.add('boxShadowBlue');
+            document.querySelector('.rim').classList.add('boxShadowBlue');
             rimm.current = tableR2.current.shift()
             setFo2(rimm.current)
         }, timeRef.current);
         timeRef.current += 800
         setTimeout(() => {
             setdyna("LECTURE")
-            document.querySelector('.Rim').classList.remove('boxShadowBlue');
+            document.querySelector('.rim').classList.remove('boxShadowBlue');
         }, timeRef.current);
         return Machine.RIM
 
@@ -3164,14 +3162,14 @@ export function Sim() {
         setTimeout(() => {
             setdyna("RAM <-- SI")
             myRef1.current.style.opacity = '0%'
-            document.querySelector('.Ram').classList.add('boxShadowBlue');
+            document.querySelector('.RAM').classList.add('boxShadowBlue');
             ramm.current = tableR.current.shift()
             setFo1(ramm.current)
         }, timeRef.current);
         timeRef.current += 800
         setTimeout(() => {
             setdyna("LECTURE")
-            document.querySelector('.Ram').classList.remove('boxShadowBlue');
+            document.querySelector('.RAM').classList.remove('boxShadowBlue');
             document.querySelector('.Memoire').classList.add('boxShadowBlue');
         }, timeRef.current);
         timeRef.current += 800
@@ -3180,14 +3178,14 @@ export function Sim() {
         setTimeout(() => {
             setdyna("LECTURE")
             document.querySelector('.Memoire').classList.remove('boxShadowBlue');
-            document.querySelector('.Rim').classList.add('boxShadowBlue');
+            document.querySelector('.rim').classList.add('boxShadowBlue');
             rimm.current = tableR2.current.shift()
             setFo2(rimm.current)
         }, timeRef.current);
         timeRef.current += 800
         setTimeout(() => {
             setdyna("LECTURE")
-            document.querySelector('.Rim').classList.remove('boxShadowBlue');
+            document.querySelector('.rim').classList.remove('boxShadowBlue');
         }, timeRef.current);
         return Machine.RIM
 
@@ -3252,14 +3250,14 @@ export function Sim() {
         setTimeout(() => {
             setdyna("RAM <--" + reg[parseInt(C, 2)])
             myRef1.current.style.opacity = '0%'
-            document.querySelector('.Ram').classList.add('boxShadowBlue');
+            document.querySelector('.RAM').classList.add('boxShadowBlue');
             ramm.current = tableR.current.shift()
             setFo1(ramm.current)
         }, timeRef.current);
         timeRef.current += 800
         setTimeout(() => {
             setdyna("LECTURE")
-            document.querySelector('.Ram').classList.remove('boxShadowBlue');
+            document.querySelector('.RAM').classList.remove('boxShadowBlue');
             document.querySelector('.Memoire').classList.add('boxShadowBlue');
         }, timeRef.current);
         timeRef.current += 800
@@ -3268,14 +3266,14 @@ export function Sim() {
         setTimeout(() => {
             setdyna("LECTURE")
             document.querySelector('.Memoire').classList.remove('boxShadowBlue');
-            document.querySelector('.Rim').classList.add('boxShadowBlue');
+            document.querySelector('.rim').classList.add('boxShadowBlue');
             rimm.current = tableR2.current.shift()
             setFo2(rimm.current)
         }, timeRef.current);
         timeRef.current += 800
         setTimeout(() => {
             setdyna("LECTURE")
-            document.querySelector('.Rim').classList.remove('boxShadowBlue');
+            document.querySelector('.rim').classList.remove('boxShadowBlue');
         }, timeRef.current);
         return Machine.RIM
     }]
