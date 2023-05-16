@@ -207,7 +207,7 @@ for (let i = 0; i < phrases.length; i++) {
         } else {
             if (v==12 || v==2 || v==3 || v==5|| (v>=23&&v<=26)) {
                 if (element.length>2){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
-                else if (element[1]=="ACC") {
+                else if (v==23 && element[1]=="ACC") {
                     throw new ErreurSyntax(`erreur dans la ligne ${i+1} : chargement ACC dans ACC non autorisé`)
                 }
                 else{
