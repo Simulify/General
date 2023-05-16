@@ -1527,7 +1527,7 @@ export function Sim() {
             timeRef.current += 800
 
             setTimeout(() => {
-                setdyna("")
+                setdyna("EUAL2 <-- UC.C")
                 document.querySelector('.Eual2').classList.remove('boxShadowBlue');
             }, timeRef.current);
             timeRef.current += 800
@@ -1544,7 +1544,7 @@ export function Sim() {
             timeRef.current += 1000
 
             setTimeout(() => {
-                setdyna("")
+                setdyna(valeur)
                 document.querySelector('.UAL').classList.remove('boxShadowBlue');
             }, timeRef.current);
             timeRef.current += 1000
@@ -1915,6 +1915,7 @@ export function Sim() {
 
             let val = Mode[parseInt(Machine.UC.Mod, 2)](Machine, Machine.UC.reg, Machine.UC.C).value
             Instructions.MOV(val, Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]], Machine)
+            let REG = Machine.UC.reg[parseInt(Machine.UC.R1, 2)]
             if (parseInt(Machine.UC.Mod, 2) === 3) {
                 switch (parseInt(Machine.UC.C, 2)) {
                     case 0:
@@ -2011,7 +2012,7 @@ export function Sim() {
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1 })// we push the difference between the two positions
 
                 setTimeout(() => {
-                    setdyna("Registre <-- RIM")
+                    setdyna(REG + " <-- RIM")
                     pos.current = tabPos.current.shift()//we get the first element of the array
                     setPosition(pos.current)//we set the position of the element
 
@@ -2022,7 +2023,7 @@ export function Sim() {
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1 })// we push the difference between the two positions
 
                 setTimeout(() => {
-                    setdyna("Registre <-- RIM")
+                    setdyna(REG + " <-- RIM")
                     pos.current = tabPos.current.shift()//we get the first element of the array
                     setPosition(pos.current)//we set the position of the element
 
@@ -2033,14 +2034,14 @@ export function Sim() {
                 tabPos.current.push({ x: x2 - x1, y: y2 - y1 })// we push the difference between the two positions
 
                 setTimeout(() => {
-                    setdyna("Registre <-- RIM")
+                    setdyna(REG + " <-- RIM")
                     pos.current = tabPos.current.shift()//we get the first element of the array
                     setPosition(pos.current)//we set the position of the element
 
                 }, timeRef.current);
                 timeRef.current += 800
                 setTimeout(() => {
-                    setdyna("")
+                    setdyna(REG + " <-- RIM")
                     myRef.current.style.opacity = '0%'
 
                 }, timeRef.current);
@@ -2526,6 +2527,7 @@ export function Sim() {
         else if (parseInt(Machine.UC.Cop, 2) === 26) {
             let op = Machine[Machine.UC.reg[parseInt(Machine.UC.R1, 2)]]
             Machine.bus_donnes.transferer(Instructions.POP(Machine.pile), op)
+            let REG = Machine.UC.reg[parseInt(Machine.UC.R1, 2)]
 
             let x12 = myRef1.current.getBoundingClientRect().left;//x1 we get actual position of the element
             let y12 = myRef1.current.getBoundingClientRect().top;//y1 we get actual position of the element
@@ -2542,14 +2544,14 @@ export function Sim() {
             timeRef.current += 800
             setTimeout(() => {
                 document.querySelector('.pile').classList.remove('boxShadowBlue')
-                setdyna("Registre <-- PILE")
+                setdyna(REG +" <-- PILE")
                 myRef1.current.style.opacity = '100%'
             }, timeRef.current);
             timeRef.current += 500
             y22 = document.querySelector('.RimBusDonnees .rectangle').getBoundingClientRect().top;
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna("Registre <-- PILE")
+                setdyna(REG +" <-- PILE")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -2557,7 +2559,7 @@ export function Sim() {
             x22 = document.querySelector('.RegToBusDonnees .rectangle').getBoundingClientRect().left;
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna("Registre <-- PILE")
+                setdyna(REG +" <-- PILE")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -2565,13 +2567,13 @@ export function Sim() {
             y22 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().top;
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-                setdyna("Registre <-- PILE")
+                setdyna(REG +" <-- PILE")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
             timeRef.current += 800
             setTimeout(() => {
-                setdyna("Registre <-- PILE")
+                setdyna(REG +" <-- PILE")
                 myRef1.current.style.opacity = '0%'
             }, timeRef.current);
             timeRef.current += 500
