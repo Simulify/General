@@ -15,20 +15,19 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
- // ...
-
+ // Fonction d'inscription 
 const handleSignUp = () => {
-  if (!(username && email && password && confirmPassword)) {
+  if (!(username && email && password && confirmPassword)) { // Ses parametres
     setError('All fields are required');
     return;
   }
 
-  if (password !== confirmPassword) {
+  if (password !== confirmPassword) { //Verifie si mot de passe confirmé correctement
     setError('Passwords do not match');
     return;
   }
   axios
-    .post('https://simulify.onrender.com/signup', {
+    .post('https://simulify.onrender.com/signup', {//envoie un appel à la base de données et récupere l'objet user
       username,
       email,
       password,
@@ -41,7 +40,7 @@ const handleSignUp = () => {
           email,
           password,
         })
-        .then(response => {
+        .then(response => { //MAJ des variables d'authetification 
           console.log(email);
           console.log(response.data);
           localStorage.setItem('token', response.data.token);

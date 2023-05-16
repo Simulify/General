@@ -22,25 +22,23 @@ function Login({ setisAuthenticated, setCurrentUser, currentUser }) {
   const [password, setPassword] = useState('');
   const [currentImage, setCurrentImage] = useState(0);
   const [error, setError] = useState('');
-
-  const handleLogin = () => {
+// La fonction d'authentification 
+  const handleLogin = () => { // verfie email et mot de passe 
     if (!email || !password) {
-      setError('All fields are required');
+      setError('All fields are required'); //verifie que tout les champs sont rempli
       return;
     }
   
     axios
-      .post('https://simulify.onrender.com/login', {
+      .post('https://simulify.onrender.com/login', { //envoie un appel à la base de données
         email,
         password,
       })
-      .then((response) => {
-        console.log(email);
-        console.log(response.data);
+      .then((response) => { //Si reponse 
         localStorage.setItem('token', response.data.token);
         const username = email.split('@')[0];
         localStorage.setItem('username', username);
-        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('isAuthenticated', 'true'); //MAJ des variables d'authetification 
         localStorage.setItem('resetDone', 'false');
         console.log('reset:', localStorage.getItem('resetDone'));
         localStorage.setItem('currentUser', JSON.stringify(response.data.user));
@@ -48,7 +46,7 @@ function Login({ setisAuthenticated, setCurrentUser, currentUser }) {
         console.log('currentUser_id:', response.data.user._id);
         navigate(`/home`);
       })
-      .catch((error) => {
+      .catch((error) => { //Sinon affiche erreur
         console.log(email);
         if (error.response) {
           const errorMessage = error.response.data.error;
