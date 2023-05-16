@@ -12,6 +12,7 @@ function UcEtRi(props) {
             <Uc/> 
             <BusUcToRi/>
             <Ri RI={props.RI}/>
+            <div> RI </div>
         </div>
     );
 }

@@ -85,27 +85,7 @@ async function removeFile(id) { // removes files based on their _id
         >
         
           
-         
-    <Link to="/code">
-    <FileNoDelete label="Somme des entiers de 1 à 10" codeHexa="" codeMemo="MOV ACC 0
-MOV CX 10
-MOV BX 1
-ETIQ: ADD ACC BX
-INC BX
-LOOP ETIQ
-SORT
-STOP"  />
-      </Link>
-      <Link to="/code">
-      <FileNoDelete label="Factorielle d'un nombre" codeHexa="" codeMemo="MOV ACC 3
-MOV BX ACC
-ETIQ: MUL ACC BX
-DEC BX
-CMP BX 0
-BCF 4 ETIQ
-SORT
-STOP" />
-      </Link>
+      
       <Link to="/code">
           <FileNoDelete label="XOR( OU exclusif ) avec la pile" codeHexa="" codeMemo="MOV BX 12
 PUSH BX
