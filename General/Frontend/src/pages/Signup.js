@@ -47,7 +47,9 @@ const handleSignUp = () => {
           localStorage.setItem('token', response.data.token);
           const username = email.split('@')[0];
           localStorage.setItem('username', username);
-          localStorage.setItem('isAuthenticated', true);
+          localStorage.setItem('isAuthenticated', 'true');
+          localStorage.setItem('resetDone', 'false');
+          console.log('reset:', localStorage.getItem('resetDone'));
           localStorage.setItem('currentUser', JSON.stringify(response.data.user));
           console.log('currentUser:', response.data.user);
           console.log('currentUser_id:', response.data.user._id);
