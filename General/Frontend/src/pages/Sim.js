@@ -2071,13 +2071,13 @@ export function Sim() {
             let y22 = document.querySelector('.RegToBusDonnees .triangleHaut').getBoundingClientRect().top;
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-
+                setdyna("RIM <-- ACC")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
             timeRef.current += 1000
             setTimeout(() => {
-
+                setdyna("RIM <-- ACC")
                 myRef1.current.style.opacity = '100%'
             }, timeRef.current);
             timeRef.current += 1000
@@ -2085,7 +2085,7 @@ export function Sim() {
 
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-
+                setdyna("RIM <-- ACC")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -2094,7 +2094,7 @@ export function Sim() {
 
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-
+                setdyna("RIM <-- ACC")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
@@ -2103,12 +2103,13 @@ export function Sim() {
 
             tabPos1.current.push({ x: x22 - x12, y: y22 - y12 })// we push the difference between the two positions
             setTimeout(() => {
-
+                setdyna("RIM <-- ACC")
                 pos1.current = tabPos1.current.shift()//we get the first element of the array
                 setPosition1(pos1.current)//we set the position of the element
             }, timeRef.current);
             timeRef.current += 1000
             setTimeout(() => {
+                setdyna("RIM <-- ACC")
                 document.querySelector('.rim').classList.add('boxShadowBlue')
                 myRef1.current.style.opacity = '0%'
                 rimm.current = tableR2.current.shift()
@@ -2116,9 +2117,9 @@ export function Sim() {
             }, timeRef.current);
             timeRef.current += 1000
             setTimeout(() => {
+                setdyna("ECRITURE")
                 document.querySelector('.rim').classList.remove('boxShadowBlue')
                 document.querySelector('.Memoire').classList.add('boxShadowBlue')
-
                 if (mM.adresse >= fo13.length) {
                     const length = mM.adresse - fo13.length;
                     const defaultValue = "0000";
