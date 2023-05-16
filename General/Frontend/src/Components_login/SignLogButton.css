@@ -28,7 +28,11 @@
   height: 2vw;
  
 }
+.SignLogButton.loading {
+  cursor: not-allowed;
+}
 .SignLogButton.loading .LoadingIcon {
+ 
   animation: spin 1s infinite linear;
   filter: brightness(0) invert(1);
 }
