@@ -68,6 +68,10 @@ function Code(props) {
    
     compiler.onclick = e=>
     {
+       if(codes[0].value===''&& codes[1].value==='' )
+      {
+     document.querySelector('.erreur').innerHTML='rien a compilé';
+      }
       console.log('la valeur du' +codes[0].value);
       setTimeout(()=>
       {
@@ -82,6 +86,8 @@ function Code(props) {
        compiler.disabled=true;
        compiler.ariaDisabled=true;
        console.log(compiler.disabled);
+       console.log(erreur.innerHTML);
+      
      }
      else 
      {
@@ -170,6 +176,7 @@ function Code(props) {
    console.log(numlines2);
  } 
  }
+
 }
 /*************************************** FIN CONVERSION DU MNEMONIQUE VERS L'HEXA ******************************************************************* */
            /************************************************************************************************* */
@@ -426,8 +433,6 @@ style={{
   cursor: 'pointer', position:'absolute', top:'14vh', left:'15vw'
 }}
 ></Button>
-
-        <Button link="/files" text="Fichiers" style={{ background: '#F8F9FA', color: '#023047', position: 'absolute', top:'14vh', left:'30vw', gridArea: 'exem' }}></Button>
       </div>
  <div className="container">
     <div>
