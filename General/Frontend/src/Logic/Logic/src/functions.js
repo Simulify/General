@@ -84,6 +84,9 @@ for (let i = 0; i < phrases.length; i++) {
         else{
             if (v==12 || v==2 || v==3 || v==5|| (v>=23&&v<=26)) {
                 if (element.length!=3){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
+                else if (v==23 && element[2]=="ACC") {
+                    throw new ErreurSyntax(`erreur dans la ligne ${i+1} : chargement ACC dans ACC non autorisé`)
+                }
                 else{
                     if (v==12 || v==25 || v==26 ) {
                         if(treatReg(element[2],reg)==-1){
@@ -127,6 +130,9 @@ for (let i = 0; i < phrases.length; i++) {
             }
             else if(v==0 || v==1 || v==4 || (v>=6&&v<=11) ||v==22){
                 if (element.length!=4){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
+                else if(v==22 && element[2]==element[3]){
+                    throw new ErreurSyntax(`erreur dans la ligne ${i+1} : MOV avec deux opérandes identiques`)
+                }
                 else
                 {let registre=treatReg(element[2],reg)
                     if (registre == -1) {
@@ -146,6 +152,10 @@ for (let i = 0; i < phrases.length; i++) {
             else if(v>=13&&v<=16){
                 if (element.length!=4){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
                 else{
+                    if(isNaN(parseInt(element[3],10)) || parseInt(element[3],10)>16){
+                        throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de decalage non valide `)
+                    }
+                    else{
                     let obj=detectOp(element[2],reg)
                     if (obj.kind==0) {throw new operandeNonValide(`erreur dans la ligne ${i+1} valeur immédiate non valide pour ce type d'instructions`)} 
                     else {
@@ -154,7 +164,7 @@ for (let i = 0; i < phrases.length; i++) {
                         else if(obj.kind==1 || obj.kind==2){instr=instr+`000${parseInt(element[3]).toString(2).padStart(4,"0")}`
                         phrases[i]=[instr,obj.value];k=k+1}
                         else{instr=instr+`000${parseInt(element[3]).toString(2).padStart(4,"0")}`;phrases[i]=instr}
-                    }
+                    }}
                 }
             }
             else if(v==17){
@@ -173,7 +183,7 @@ for (let i = 0; i < phrases.length; i++) {
                     k=k+1}
             }}
             else if(v==18 || v==19){
-                if (!element.length==4){throw new ErreurSyntax(`erreur`)}
+                if (!element.length==4){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
                 else{
                     instr=`${v.toString(2).padStart(6,"0")}001000${parseInt(element[2]).toString(2).padStart(4,"0")}`
                     if (!isNaN(parseInt(element[2].slice(0, -1),16))) {
@@ -272,8 +282,12 @@ for (let i = 0; i < phrases.length; i++) {
                 else {instr=instr+"0000";phrases[i]=instr}}
             }}}
             else if(v>=13&&v<=16){
-                if (!element.length==3){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
+                if (!(element.length==3)){throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de mots non valide`)}
                 else{
+                    if(isNaN(parseInt(element[2],10)) || parseInt(element[2],10)>16){
+                        throw new ErreurSyntax(`erreur dans la ligne ${i+1} : nombre de decalage non valide `)
+                    }
+                    else{
                     let obj=detectOp(element[1],reg)
                     if (obj.kind==0) {throw new operandeNonValide(`erreur dans la ligne ${i+1} : valeur immédiate non valide pour ce type d'instructions`)} 
                     else {
@@ -283,7 +297,7 @@ for (let i = 0; i < phrases.length; i++) {
                         phrases[i]=[instr,obj.value]
                         k=k+1}
                         else{instr=instr+`000${parseInt(element[2]).toString(2).padStart(4,"0")}`;phrases[i]=instr}
-                    }
+                    }}
                 }
             }
             else if(v==17){
