@@ -17,12 +17,12 @@ class Pile {
   
     // Méthode qui ajoute un mot à la pile
     PUSH(mot) {
-      this.pile.push(mot)
+      this.pile.unshift(mot)
     }
   
     // Méthode qui retire un mot de la pile
     POP() {
-      return this.pile.pop()
+      return this.pile.shift()
     }
   }
   
